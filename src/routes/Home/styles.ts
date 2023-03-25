@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
-export const ColoredDiv = styled.div`
-  background-color: #27ae60;
-  border: 5px solid #2980b9;
-  border-radius: 5px;
-  width: 200px;
-  height: 50px;
+export const HomeContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 10px;
 `;

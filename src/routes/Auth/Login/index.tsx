@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Form, Input, message, Typography } from "antd";
 import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const { Item } = Form;
 const { Password } = Input;
 const { Title } = Typography;
 
 const Login = () => {
+  const navigate = useNavigate();
   const { loginAccount, loginResponse } = useAuth();
 
   const onFinish = (values: any) => {
@@ -17,12 +19,13 @@ const Login = () => {
     if (loginResponse) {
       if (loginResponse.error === null) {
         message.success("Login Success");
+        navigate("/");
         return;
       }
 
       message.error(loginResponse.error[0]);
     }
-  }, [loginResponse]);
+  }, [loginResponse, navigate]);
 
   return (
     <div>

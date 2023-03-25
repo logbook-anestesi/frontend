@@ -1,17 +1,35 @@
-import React from "react";
-import useGetAllUser from "../../hooks/useGetAllUser";
-import { ColoredDiv } from "./styles";
+import { Button, Divider, Typography } from "antd";
+import { useNavigate } from "react-router-dom";
+
+import { ButtonContainer, HomeContainer } from "./styles";
+
+const { Title } = Typography;
 
 const Home = () => {
-  const { listUser } = useGetAllUser();
+  const navigate = useNavigate();
 
-  console.log("[List User]", listUser);
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
 
   return (
-    <div>
-      <h3>This is homepage</h3>
-      <ColoredDiv>React Emotion Styled</ColoredDiv>
-    </div>
+    <HomeContainer>
+      <Title level={3}>Logbook Anastesi</Title>
+      <ButtonContainer>
+        <Button type="primary" onClick={() => handleNavigate("/login")}>
+          Login
+        </Button>
+        <Button>Logout</Button>
+      </ButtonContainer>
+      <Divider />
+
+      <Button type="link" onClick={() => handleNavigate("/about")}>
+        About
+      </Button>
+      <Button type="link" onClick={() => handleNavigate("/users")}>
+        List User (Private)
+      </Button>
+    </HomeContainer>
   );
 };
 

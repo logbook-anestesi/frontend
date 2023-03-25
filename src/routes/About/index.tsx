@@ -1,9 +1,11 @@
-import React from "react";
+import { Typography } from "antd";
+
+const { Title } = Typography;
 
 const About = () => {
   return (
     <div>
-      <h3>This is About page</h3>
+      <Title level={3}>List User</Title>
     </div>
   );
 };

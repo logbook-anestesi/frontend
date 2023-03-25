@@ -1,34 +1,12 @@
 import Cookies from "js-cookie";
 import { useCallback, useState } from "react";
-import axiosClient from "../networks/apiClient";
-
-interface RegisterDataInterface {
-  email: string;
-  name: string;
-  password: string;
-}
-
-interface LoginDataInterface {
-  email: string;
-  password: string;
-}
-
-interface RegisterResponse {
-  data: {
-    email: string;
-    name: string;
-  };
-  error: string[];
-  status: number;
-}
-
-interface LoginResponse {
-  status: number;
-  error: string[];
-  data: {
-    token: string;
-  };
-}
+import axiosClient from "../../networks/apiClient";
+import {
+  LoginDataInterface,
+  LoginResponse,
+  RegisterDataInterface,
+  RegisterResponse,
+} from "./types";
 
 const useAuth = () => {
   const [loginResponse, setLoginResponse] = useState<LoginResponse>();
@@ -36,7 +14,7 @@ const useAuth = () => {
     useState<RegisterResponse>();
 
   const loading = false;
-  const isAuthenticated = false;
+  const isAuthenticated = Cookies.get("jwt_token");
 
   const registerAccount = useCallback(
     async ({ email, name, password }: RegisterDataInterface) => {
@@ -67,7 +45,6 @@ const useAuth = () => {
         const responseLogin = await axiosClient.post("/auth/login", loginData);
 
         if (responseLogin.data.error === null) {
-          console.log(responseLogin.data.data.token);
           Cookies.set("jwt_token", responseLogin.data.data.token);
         }
 
