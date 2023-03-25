@@ -1,9 +1,7 @@
 import axios from "axios";
-import UniversalCookie from "universal-cookie";
+import Cookies from "js-cookie";
 
-export const cookies = new UniversalCookie();
-
-export const axiosClient = axios.create({
+const axiosClient = axios.create({
   // Put your base URL here
   baseURL: "https://backend-dev-tbth.onrender.com",
   headers: {
@@ -14,7 +12,7 @@ export const axiosClient = axios.create({
 
 // Interceptor for authentication
 axiosClient.interceptors.request.use((config) => {
-  const token = cookies.get("jwt_token");
+  const token = Cookies.get("jwt_token");
 
   if (token) {
     config.headers = config.headers || {};
@@ -22,3 +20,5 @@ axiosClient.interceptors.request.use((config) => {
   }
   return config;
 });
+
+export default axiosClient;
