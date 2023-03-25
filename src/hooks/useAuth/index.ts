@@ -1,3 +1,4 @@
+import { message } from "antd";
 import Cookies from "js-cookie";
 import { useCallback, useState } from "react";
 import axiosClient from "../../networks/apiClient";
@@ -56,11 +57,17 @@ const useAuth = () => {
     []
   );
 
+  const logoutAccount = useCallback(() => {
+    Cookies.remove("jwt_token");
+    message.success("Logout Success");
+  }, []);
+
   return {
     loading,
     isAuthenticated,
     registerAccount,
     loginAccount,
+    logoutAccount,
     registerResponses,
     loginResponse,
   };

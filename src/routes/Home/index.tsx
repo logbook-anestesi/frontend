@@ -1,11 +1,13 @@
 import { Button, Divider, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 import { ButtonContainer, HomeContainer } from "./styles";
 
 const { Title } = Typography;
 
 const Home = () => {
+  const { logoutAccount } = useAuth();
   const navigate = useNavigate();
 
   const handleNavigate = (path: string) => {
@@ -19,7 +21,7 @@ const Home = () => {
         <Button type="primary" onClick={() => handleNavigate("/login")}>
           Login
         </Button>
-        <Button>Logout</Button>
+        <Button onClick={logoutAccount}>Logout</Button>
       </ButtonContainer>
       <Divider />
 
