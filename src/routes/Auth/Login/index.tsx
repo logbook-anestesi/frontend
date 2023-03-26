@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { Button, Form, Input, message, Typography } from "antd";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { LoginRegisterContainer } from "./styles";
 
 const { Item } = Form;
 const { Password } = Input;
-const { Title } = Typography;
+const { Title, Text, Link } = Typography;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -52,11 +53,14 @@ const Login = () => {
           <Password />
         </Item>
 
-        <Item>
+        <LoginRegisterContainer>
           <Button type="primary" htmlType="submit">
             Login
           </Button>
-        </Item>
+          <Text>
+            Don't have an account? <Link href="/register">SIGN UP</Link>
+          </Text>
+        </LoginRegisterContainer>
       </Form>
     </div>
   );

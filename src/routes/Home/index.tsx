@@ -7,7 +7,7 @@ import { ButtonContainer, HomeContainer } from "./styles";
 const { Title } = Typography;
 
 const Home = () => {
-  const { logoutAccount } = useAuth();
+  const { logoutAccount, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const handleNavigate = (path: string) => {
@@ -18,10 +18,18 @@ const Home = () => {
     <HomeContainer>
       <Title level={3}>Logbook Anastesi</Title>
       <ButtonContainer>
-        <Button type="primary" onClick={() => handleNavigate("/login")}>
-          Login
-        </Button>
-        <Button onClick={logoutAccount}>Logout</Button>
+        {isAuthenticated && <Button onClick={logoutAccount}>Logout</Button>}
+
+        {!isAuthenticated && (
+          <>
+            <Button type="primary" onClick={() => handleNavigate("/login")}>
+              Login
+            </Button>
+            <Button type="primary" onClick={() => handleNavigate("/register")}>
+              Register
+            </Button>
+          </>
+        )}
       </ButtonContainer>
       <Divider />
 

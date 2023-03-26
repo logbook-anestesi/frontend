@@ -2,7 +2,7 @@ import { Typography } from "antd";
 import React from "react";
 import useGetAllUser from "../../hooks/useGetAllUser";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const UsersPage = () => {
   const { listUser } = useGetAllUser();
@@ -12,6 +12,7 @@ const UsersPage = () => {
   return (
     <div>
       <Title level={3}>List User</Title>
+      <Text>You area authenticated!</Text>
     </div>
   );
 };

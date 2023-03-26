@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, message, Typography } from "antd";
 import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { SubmitLoginContainer } from "./styles";
 
 const { Item } = Form;
 const { Password } = Input;
-const { Title } = Typography;
+const { Title, Text, Link } = Typography;
 
 const Register = () => {
+  const navigate = useNavigate();
   const { registerAccount, registerResponses } = useAuth();
 
   const onFinish = async (values: any) => {
@@ -14,9 +17,15 @@ const Register = () => {
   };
 
   useEffect(() => {
+    if (registerResponses && registerResponses.error === null) {
+      navigate("/");
+    }
+  }, [navigate, registerResponses]);
+
+  useEffect(() => {
     if (registerResponses) {
       if (registerResponses?.error === null) {
-        message.success("Success Register");
+        message.success("Success Register, Please Login");
         return;
       }
 
@@ -57,11 +66,14 @@ const Register = () => {
           <Password />
         </Item>
 
-        <Item>
+        <SubmitLoginContainer>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-        </Item>
+          <Text>
+            Already have an account? <Link href="/login">LOGIN</Link>
+          </Text>
+        </SubmitLoginContainer>
       </Form>
     </div>
   );

@@ -26,9 +26,23 @@ interface LoginResponse {
   };
 }
 
+interface UserDataInterface {
+  email: string;
+  id: string;
+  image_url: string;
+  name: string;
+  phone_number: string;
+}
+
+interface AuthStateInterface {
+  isAuthenticated: boolean;
+}
+
 export type {
   RegisterDataInterface,
   LoginDataInterface,
   LoginResponse,
   RegisterResponse,
+  UserDataInterface,
+  AuthStateInterface,
 };
