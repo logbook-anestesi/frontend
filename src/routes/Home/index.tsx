@@ -4,10 +4,10 @@ import useAuth from "../../hooks/useAuth";
 
 import { ButtonContainer, HomeContainer } from "./styles";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Home = () => {
-  const { logoutAccount, isAuthenticated } = useAuth();
+  const { logoutAccount, isAuthenticated, accountData } = useAuth();
   const navigate = useNavigate();
 
   const handleNavigate = (path: string) => {
@@ -17,6 +17,13 @@ const Home = () => {
   return (
     <HomeContainer>
       <Title level={3}>Logbook Anastesi</Title>
+
+      {isAuthenticated && (
+        <Text>
+          Halo, <strong>{accountData?.name}</strong>
+        </Text>
+      )}
+
       <ButtonContainer>
         {isAuthenticated && <Button onClick={logoutAccount}>Logout</Button>}
 
