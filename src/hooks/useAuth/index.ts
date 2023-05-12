@@ -14,6 +14,7 @@ import {
 import { useAuthDispatch } from "../../contexts/AuthContext";
 
 const useAuth = () => {
+  const [loading, setLoading] = useState(false);
   const [loginResponse, setLoginResponse] = useState<LoginResponse>();
   const [registerResponses, setRegisterResponses] =
     useState<RegisterResponse>();
@@ -45,6 +46,8 @@ const useAuth = () => {
   const loginAccount = useCallback(
     async ({ email, password }: LoginDataInterface) => {
       try {
+        setLoading(true);
+
         const loginData = {
           email: email,
           password: password,
@@ -75,8 +78,10 @@ const useAuth = () => {
         }
 
         setLoginResponse(responseLogin.data);
+        setLoading(false);
       } catch (err) {
         console.log("[Login Account]", err);
+        setLoading(false);
       }
     },
     [authDispatch]
@@ -109,6 +114,7 @@ const useAuth = () => {
     registerResponses,
     loginResponse,
     accountData,
+    loading,
   };
 };
 
