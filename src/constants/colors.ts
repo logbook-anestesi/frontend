@@ -6,4 +6,5 @@ export const colors = {
   lightYellow: "rgba(249, 191, 36, 0.3)",
   lightRed: "rgba(246, 106, 57, 0.3)",
   primaryRed: "#EB5757",
+  white: "#FFFFFF",
 };

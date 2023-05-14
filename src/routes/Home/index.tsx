@@ -12,7 +12,7 @@ import ButtonTambah from "./components/ButtonTambah";
 
 const Home = () => {
   return (
-    <Flex direction="column" padding="30px 30px" gap="30px">
+    <Flex direction="column" padding="30px" gap="30px">
       <HeaderHome />
       <Profile
         image={dummyProfileImage}

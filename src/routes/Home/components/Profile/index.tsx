@@ -1,4 +1,5 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import Ticker from "../../../../components/Ticker";
 import { colors } from "../../../../constants/colors";
 
@@ -9,6 +10,12 @@ interface ProfileInterface {
 }
 
 const Profile = ({ image, name, term }: ProfileInterface) => {
+  const navigate = useNavigate();
+
+  const redirectProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <Flex gap="16px" align="center">
       <Image src={image} borderRadius="full" boxSize="58px" />
@@ -17,7 +24,12 @@ const Profile = ({ image, name, term }: ProfileInterface) => {
 
         <Flex justify="space-between">
           <Ticker text={term} />
-          <Text as="b" fontSize="12px" color={colors.primaryPurple}>
+          <Text
+            as="b"
+            fontSize="12px"
+            color={colors.primaryPurple}
+            onClick={redirectProfile}
+          >
             Lihat Profil
           </Text>
         </Flex>
