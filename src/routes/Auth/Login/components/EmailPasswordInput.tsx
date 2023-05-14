@@ -11,6 +11,7 @@ import {
 import useAuth from "../../../../hooks/useAuth";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { colors } from "../../../../constants/colors";
 
 const EmailPasswordInput = () => {
   const [email, setEmail] = useState("");
@@ -68,14 +69,14 @@ const EmailPasswordInput = () => {
     <FormControl isInvalid={isError}>
       <Flex direction="column" gap={4} align="center">
         <Flex direction="column" gap={2}>
-          <Text fontSize="md" color="#8B8B8B">
+          <Text fontSize="md" color={colors.darkGrey}>
             Email
           </Text>
           <Input width={297} borderRadius={10} onChange={handleChangeEmail} />
         </Flex>
 
         <Flex direction="column" gap={2}>
-          <Text fontSize="md" color="#8B8B8B">
+          <Text fontSize="md" color={colors.darkGrey}>
             Password
           </Text>
           <Input
@@ -92,7 +93,7 @@ const EmailPasswordInput = () => {
 
         <Text
           fontSize="xs"
-          color="#662D91"
+          color={colors.primaryPurple}
           marginTop={1}
           textDecoration="underline"
         >
@@ -102,7 +103,7 @@ const EmailPasswordInput = () => {
         <Button
           colorScheme="teal"
           className={buttonSubmit}
-          backgroundColor="#662D91"
+          backgroundColor={colors.primaryPurple}
           onClick={handleSubmit}
           disabled={loading}
         >

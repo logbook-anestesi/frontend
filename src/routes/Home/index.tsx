@@ -1,52 +1,46 @@
-import { Button, Divider, Typography } from "antd";
-import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-
-import { ButtonContainer, HomeContainer } from "./styles";
-
-const { Title, Text } = Typography;
+import { Flex } from "@chakra-ui/react";
+import HeaderHome from "./components/HeaderHome";
+import Profile from "./components/Profile";
+import dummyProfileImage from "../../assets/dummyPhotoProfile.png";
+import InfoBox from "../../components/InfoBox";
+import LevelCard from "./components/LevelCard";
+import ReportCard from "./components/ReportCard";
+import cases from "./assets/cases.png";
+import exam from "./assets/exam.png";
+import ilmiah from "./assets/ilmiah.png";
+import ButtonTambah from "./components/ButtonTambah";
 
 const Home = () => {
-  const { logoutAccount, isAuthenticated, accountData } = useAuth();
-  const navigate = useNavigate();
-
-  const handleNavigate = (path: string) => {
-    navigate(path);
-  };
-
   return (
-    <HomeContainer>
-      <Title level={3}>Logbook Anastesi</Title>
+    <Flex direction="column" padding="30px 30px" gap="30px">
+      <HeaderHome />
+      <Profile
+        image={dummyProfileImage}
+        name="dr. Jessica Mila Agnesia"
+        term="Term 2022 / 1"
+      />
 
-      {isAuthenticated && (
-        <Text>
-          Halo, <strong>{accountData?.name}</strong>
-        </Text>
-      )}
+      <Flex direction="column" gap="10px">
+        <InfoBox type="warning" message="Anda memiliki 3 pending approval" />
+        <InfoBox
+          type="alert"
+          message="Anda belum memperbarui stase Maret 2023"
+        />
+      </Flex>
 
-      <ButtonContainer>
-        {isAuthenticated && <Button onClick={logoutAccount}>Logout</Button>}
+      <Flex direction="column" gap="10px">
+        <LevelCard title="Residen Pembekalan" type="Level Kompetensi" />
+        <LevelCard title="Obgyn" type="Stase" />
+      </Flex>
 
-        {!isAuthenticated && (
-          <>
-            <Button type="primary" onClick={() => handleNavigate("/login")}>
-              Login
-            </Button>
-            <Button type="primary" onClick={() => handleNavigate("/register")}>
-              Register
-            </Button>
-          </>
-        )}
-      </ButtonContainer>
-      <Divider />
+      <Flex justify="space-between" gap="15px">
+        <ReportCard icon={cases} title="Cases" />
+        <ReportCard icon={ilmiah} title="Ilmiah" />
+        <ReportCard icon={exam} title="Exam" />
+      </Flex>
 
-      <Button type="link" onClick={() => handleNavigate("/about")}>
-        About
-      </Button>
-      <Button type="link" onClick={() => handleNavigate("/users")}>
-        List User (Private)
-      </Button>
-    </HomeContainer>
+      <ButtonTambah />
+    </Flex>
   );
 };
 
