@@ -6,6 +6,7 @@ import Register from "./Auth/Register";
 import Home from "./Home";
 import NotificationsPage from "./Notifications";
 import ProfilePage from "./Profile";
+import StasePage from "./Stase";
 import UsersPage from "./Users";
 
 const MainRoutes = () => {
@@ -21,6 +22,7 @@ const MainRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/notifications" element={<NotificationsPage />} />
+      <Route path="/stase" element={<StasePage />} />
     </Routes>
   );
 };
