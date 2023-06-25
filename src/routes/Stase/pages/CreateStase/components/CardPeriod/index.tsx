@@ -5,7 +5,7 @@ interface Props {
   monthValue: string;
 }
 
-const PeriodCard = ({ monthValue }: Props) => {
+const CardPeriod = ({ monthValue }: Props) => {
   return (
     <Flex direction="column" gap={2}>
       <Text color={colors.darkGrey} fontSize="sm">
@@ -25,4 +25,4 @@ const PeriodCard = ({ monthValue }: Props) => {
   );
 };
 
-export default PeriodCard;
+export default CardPeriod;

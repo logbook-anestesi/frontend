@@ -1,8 +1,12 @@
 import Header from "../../../../components/Header";
-import { Flex } from "@chakra-ui/react";
-import PeriodCard from "./components/PeriodCard";
+import { Box, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { colors } from "../../../../constants/colors";
+import CardPeriod from "./components/CardPeriod";
+import ModalSelectStase from "./components/ModalSelectStase";
 
 const CreateStase = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
+
   const getCurrentMonth = (): string => {
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = {
@@ -16,9 +20,33 @@ const CreateStase = () => {
     <div>
       <Header onClick={() => {}} title="Pembaruan Stase" />
 
-      <Flex padding="30px" direction="column" gap="16px">
-        <PeriodCard monthValue={getCurrentMonth()} />
+      <Flex padding="30px" direction="column" gap={10}>
+        <CardPeriod monthValue={getCurrentMonth()} />
+
+        <Flex gap={2} direction="column">
+          <Text color={colors.darkGrey} fontSize="sm">
+            Stase yang akan diambil
+          </Text>
+          <Box
+            borderWidth="1px"
+            borderRadius="lg"
+            padding="6px 10px"
+            onClick={onOpen}
+          >
+            Pilih Stase
+          </Box>
+        </Flex>
+
+        <Button
+          colorScheme="teal"
+          backgroundColor={colors.primaryPurple}
+          mt={10}
+        >
+          Submit
+        </Button>
       </Flex>
+
+      <ModalSelectStase isOpen={isOpen} closeModal={onClose} onOpen={onOpen} />
     </div>
   );
 };
