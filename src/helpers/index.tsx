@@ -6,3 +6,13 @@ export const getCurrentMonth = (): string => {
   };
   return date.toLocaleString("id-ID", options);
 };
+
+export const getMonthYearString = (): string => {
+  const date = new Date();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = String(date.getFullYear());
+
+  const monthYearString = month + year;
+
+  return monthYearString;
+};
