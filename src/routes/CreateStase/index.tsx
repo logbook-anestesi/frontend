@@ -1,6 +1,7 @@
-import Header from "../../../../components/Header";
 import { Box, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
+import { colors } from "../../constants/colors";
+
+import Header from "../../components/Header";
 import CardPeriod from "./components/CardPeriod";
 import ModalSelectStase from "./components/ModalSelectStase";
 

@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../../../../../constants/colors";
+import { colors } from "../../../../constants/colors";
 
 interface Props {
   monthValue: string;
