@@ -11,7 +11,7 @@ const useGetAllStase = () => {
       setStatus("loading");
 
       const responses = await axiosClient.get("/station");
-      const data = await responses.data;
+      const data = await responses.data.data;
 
       setListStase(data);
       setStatus("finish");

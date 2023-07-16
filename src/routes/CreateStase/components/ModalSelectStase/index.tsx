@@ -9,6 +9,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import CardStase from "../CardStase";
+import useGetAllStase from "../../hooks/useGetAllStase";
 
 interface Props {
   isOpen: boolean;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const ModalSelectStase = ({ isOpen, closeModal }: Props) => {
+  const { listStase } = useGetAllStase();
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -30,9 +33,14 @@ const ModalSelectStase = ({ isOpen, closeModal }: Props) => {
 
         <Box height={3} />
 
-        <CardStase lecturer="dr. Nana Mirdad" staseName="Ortho" />
-        <CardStase lecturer="dr. Ari Angga Nugraha" staseName="Jantung" />
-        <CardStase lecturer="dr. Erlangga" staseName="Saraf" />
+        {listStase?.map((stase) => {
+          return (
+            <CardStase
+              lecturer={stase.leaderUserName}
+              staseName={stase.stationName}
+            />
+          );
+        })}
       </ModalContent>
     </Modal>
   );
