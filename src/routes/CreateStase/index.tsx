@@ -4,21 +4,20 @@ import { colors } from "../../constants/colors";
 import Header from "../../components/Header";
 import CardPeriod from "./components/CardPeriod";
 import ModalSelectStase from "./components/ModalSelectStase";
+import { useState } from "react";
+import { getCurrentMonth } from "../../helpers";
+
+export interface SelectedStase {
+  name: string;
+  id: string;
+}
 
 const CreateStase = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
-
-  const getCurrentMonth = (): string => {
-    const date = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      month: "long",
-      year: "numeric",
-    };
-    return date.toLocaleString("id-ID", options);
-  };
+  const [selectedStase, setSelectedStase] = useState<SelectedStase>();
 
   return (
-    <div>
+    <Flex flexDirection="column">
       <Header onClick={() => {}} title="Pembaruan Stase" />
 
       <Flex padding="30px" direction="column" gap={10}>
@@ -34,7 +33,7 @@ const CreateStase = () => {
             padding="6px 10px"
             onClick={onOpen}
           >
-            Pilih Stase
+            {selectedStase?.name || "Pilih Stase"}
           </Box>
         </Flex>
 
@@ -47,8 +46,13 @@ const CreateStase = () => {
         </Button>
       </Flex>
 
-      <ModalSelectStase isOpen={isOpen} closeModal={onClose} onOpen={onOpen} />
-    </div>
+      <ModalSelectStase
+        isOpen={isOpen}
+        closeModal={onClose}
+        onOpen={onOpen}
+        setStase={setSelectedStase}
+      />
+    </Flex>
   );
 };
 

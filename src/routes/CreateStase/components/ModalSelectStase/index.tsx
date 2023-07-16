@@ -10,15 +10,23 @@ import {
 } from "@chakra-ui/react";
 import CardStase from "../CardStase";
 import useGetAllStase from "../../hooks/useGetAllStase";
-import { ChangeEvent, useMemo, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useMemo,
+  useState,
+} from "react";
+import { SelectedStase } from "../..";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
   onOpen: () => void;
+  setStase: Dispatch<SetStateAction<SelectedStase | undefined>>;
 }
 
-const ModalSelectStase = ({ isOpen, closeModal }: Props) => {
+const ModalSelectStase = ({ isOpen, closeModal, setStase }: Props) => {
   const { listStase } = useGetAllStase();
   const [filteredStase, setFilteredStase] = useState(listStase);
 
@@ -57,7 +65,10 @@ const ModalSelectStase = ({ isOpen, closeModal }: Props) => {
             <CardStase
               lecturer={stase.leaderUserName}
               staseName={stase.stationName}
+              id={stase.id}
               key={idx}
+              setStase={setStase}
+              closeModal={closeModal}
             />
           );
         })}
