@@ -1,4 +1,6 @@
 import {
+  Flex,
+  Spinner,
   Table,
   TableContainer,
   Tbody,
@@ -7,15 +9,19 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import Loading from "./Loading";
 import { colors } from "../../../../constants/colors";
 import { StaseUser } from "../../hooks/useGetStaseUser/types";
 import { formatMonthYear } from "../../../../helpers";
 
 interface Props {
   staseData?: StaseUser[];
+  loading: string;
 }
 
-const TableComponent = ({ staseData }: Props) => {
+const TableComponent = ({ staseData, loading }: Props) => {
+  if (loading === "loading") return <Loading />;
+
   return (
     <TableContainer>
       <Table variant="striped" colorScheme="gray" size="sm">

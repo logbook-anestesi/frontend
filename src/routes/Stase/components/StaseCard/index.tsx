@@ -20,7 +20,7 @@ const StaseCard = ({ staseName }: Props) => {
     >
       <Text fontSize="xs">Stase saat ini</Text>
       <Text as="b" color={colors.primaryPurple}>
-        {staseName}
+        {staseName || "-"}
       </Text>
       <Flex alignSelf="flex-end">
         <Ticker text={getCurrentMonth()} />

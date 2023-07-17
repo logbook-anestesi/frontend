@@ -4,18 +4,18 @@ import { StaseUser } from "./types";
 import { getMonthYearString } from "../../../../helpers";
 
 const useGetStaseUser = () => {
-  const [status, setStatus] = useState("idle");
+  const [loading, setLoading] = useState("idle");
   const [staseData, setStaseData] = useState<StaseUser[]>();
 
   useEffect(() => {
     const fetchData = async () => {
-      setStatus("loading");
+      setLoading("loading");
 
       const response = await axiosClient.get("/station/entry");
       const data = await response.data.data;
 
       setStaseData(data);
-      setStatus("finish");
+      setLoading("finish");
     };
 
     fetchData();
@@ -30,7 +30,7 @@ const useGetStaseUser = () => {
   return {
     staseData,
     currentStase,
-    status,
+    loading,
   };
 };
 

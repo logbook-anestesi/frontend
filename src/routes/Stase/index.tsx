@@ -6,7 +6,7 @@ import TableTitle from "./components/StaseTable";
 import TableComponent from "./components/TableComponent";
 
 const StasePage = () => {
-  const { currentStase, staseData } = useGetStaseUser();
+  const { currentStase, staseData, loading } = useGetStaseUser();
 
   return (
     <Flex flexDirection="column">
@@ -14,7 +14,8 @@ const StasePage = () => {
       <Flex padding="30px" direction="column" gap="16px">
         <StaseCard staseName={currentStase?.stationName} />
         <TableTitle />
-        <TableComponent staseData={staseData} />
+
+        <TableComponent staseData={staseData} loading={loading} />
       </Flex>
     </Flex>
   );
