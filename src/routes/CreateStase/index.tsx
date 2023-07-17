@@ -30,7 +30,7 @@ const CreateStase = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header onClick={() => {}} title="Pembaruan Stase" />
+      <Header pathBack="/stase" title="Pembaruan Stase" />
 
       <Flex padding="30px" direction="column" gap={10}>
         <CardPeriod monthValue={getCurrentMonth()} />

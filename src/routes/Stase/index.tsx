@@ -1,17 +1,23 @@
 import { Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import StaseCard from "./components/StaseCard";
-import StaseTable from "./components/StaseTable";
+import useGetStaseUser from "./hooks/useGetStaseUser";
+import TableTitle from "./components/StaseTable";
+import TableComponent from "./components/TableComponent";
 
 const StasePage = () => {
+  const { currentStase, staseData, loading } = useGetStaseUser();
+
   return (
-    <div>
-      <Header onClick={() => {}} title="Stase" />
+    <Flex flexDirection="column">
+      <Header pathBack="/" title="Stase" />
       <Flex padding="30px" direction="column" gap="16px">
-        <StaseCard />
-        <StaseTable />
+        <StaseCard staseName={currentStase?.stationName} />
+        <TableTitle />
+
+        <TableComponent staseData={staseData} loading={loading} />
       </Flex>
-    </div>
+    </Flex>
   );
 };
 

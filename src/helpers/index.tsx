@@ -16,3 +16,36 @@ export const getMonthYearString = (): string => {
 
   return monthYearString;
 };
+
+export const formatMonthYear = (inputString: string) => {
+  // Ensure the input string is exactly 6 characters
+  if (inputString.length !== 6) {
+    throw new Error("Invalid input string. It should be exactly 6 characters.");
+  }
+
+  // Extract the month and year from the input string
+  const month = inputString.substring(0, 2);
+  const year = inputString.substring(2);
+
+  // Convert the month number to a month name
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthName = monthNames[parseInt(month, 10) - 1];
+
+  // Format the result as "Month Year" (e.g., "June 2023")
+  const formattedString = `${monthName} ${year}`;
+
+  return formattedString;
+};
