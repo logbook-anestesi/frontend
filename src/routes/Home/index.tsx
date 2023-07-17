@@ -29,8 +29,12 @@ const Home = () => {
       </Flex>
 
       <Flex direction="column" gap="10px">
-        <LevelCard title="Residen Pembekalan" type="Level Kompetensi" />
-        <LevelCard title="Obgyn" type="Stase" />
+        <LevelCard
+          title="Residen Pembekalan"
+          type="Level Kompetensi"
+          path="/"
+        />
+        <LevelCard title="Obgyn" type="Stase" path="/stase" />
       </Flex>
 
       <Flex justify="space-between" gap="15px">

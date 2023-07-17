@@ -2,13 +2,20 @@ import { Flex, Text } from "@chakra-ui/react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { headers } from "./styles";
 import { colors } from "../../constants/colors";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderInterface {
   title: string;
-  onClick: () => void;
+  pathBack: string;
 }
 
-const Header = ({ title, onClick }: HeaderInterface) => {
+const Header = ({ title, pathBack }: HeaderInterface) => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(pathBack);
+  };
+
   return (
     <Flex className={headers} alignItems="center" gap={5}>
       <ChevronLeftIcon
@@ -17,7 +24,7 @@ const Header = ({ title, onClick }: HeaderInterface) => {
         backgroundColor="#EAEAEA"
         borderRadius="10px"
         color={colors.primaryPurple}
-        onClick={onClick}
+        onClick={handleBack}
       />
 
       <Text fontWeight="bold" color={colors.primaryPurple} fontSize="20px">

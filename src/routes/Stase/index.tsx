@@ -10,7 +10,7 @@ const StasePage = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header onClick={() => {}} title="Stase" />
+      <Header pathBack="/" title="Stase" />
       <Flex padding="30px" direction="column" gap="16px">
         <StaseCard staseName={currentStase?.stationName} />
         <TableTitle />
