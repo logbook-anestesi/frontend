@@ -8,8 +8,14 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
+import { StaseUser } from "../../hooks/useGetStaseUser/types";
+import { formatMonthYear } from "../../../../helpers";
 
-const TableComponent = () => {
+interface Props {
+  staseData?: StaseUser[];
+}
+
+const TableComponent = ({ staseData }: Props) => {
   return (
     <TableContainer>
       <Table variant="striped" colorScheme="gray" size="sm">
@@ -22,36 +28,16 @@ const TableComponent = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>1</Td>
-            <Td>THT</Td>
-            <Td>Februari 2023</Td>
-            <Td>Lulus</Td>
-          </Tr>
-          <Tr>
-            <Td>2</Td>
-            <Td>Mata</Td>
-            <Td>Desember 2023</Td>
-            <Td>Tidak Lulus</Td>
-          </Tr>
-          <Tr>
-            <Td>3</Td>
-            <Td>Obgyn</Td>
-            <Td>Maret 2023</Td>
-            <Td>Lulus</Td>
-          </Tr>
-          <Tr>
-            <Td>4</Td>
-            <Td>Ortho</Td>
-            <Td>Januari 2023</Td>
-            <Td>Lulus</Td>
-          </Tr>
-          <Tr>
-            <Td>5</Td>
-            <Td>Dharmais</Td>
-            <Td>September 2023</Td>
-            <Td>Tidak Lulus</Td>
-          </Tr>
+          {staseData?.map((stase, index) => {
+            return (
+              <Tr key={`userStase-${index}`}>
+                <Td>{index + 1}</Td>
+                <Td>{stase?.stationName}</Td>
+                <Td>{formatMonthYear(stase?.periodMmYyyy)}</Td>
+                <Td>Lulus</Td>
+              </Tr>
+            );
+          })}
         </Tbody>
       </Table>
     </TableContainer>
