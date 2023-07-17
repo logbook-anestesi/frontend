@@ -1,8 +1,13 @@
 import { Flex, Text } from "@chakra-ui/react";
 import Ticker from "../../../../components/Ticker";
 import { colors } from "../../../../constants/colors";
+import { getCurrentMonth } from "../../../../helpers";
 
-const StaseCard = () => {
+interface Props {
+  staseName?: string;
+}
+
+const StaseCard = ({ staseName }: Props) => {
   return (
     <Flex
       direction="column"
@@ -15,10 +20,10 @@ const StaseCard = () => {
     >
       <Text fontSize="xs">Stase saat ini</Text>
       <Text as="b" color={colors.primaryPurple}>
-        Uro-Gimul
+        {staseName}
       </Text>
       <Flex alignSelf="flex-end">
-        <Ticker text="Maret 2023" />
+        <Ticker text={getCurrentMonth()} />
       </Flex>
     </Flex>
   );
