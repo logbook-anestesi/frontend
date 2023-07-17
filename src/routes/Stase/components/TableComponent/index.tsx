@@ -1,6 +1,4 @@
 import {
-  Flex,
-  Spinner,
   Table,
   TableContainer,
   Tbody,
