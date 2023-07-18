@@ -16,6 +16,7 @@ import { getCurrentMonth, getMonthYearString } from "../../helpers";
 import useAuth from "../../hooks/useAuth";
 import useUpdateStase from "./hooks/useUpdateStase";
 import { useNavigate } from "react-router-dom";
+import ModalConfirmUpdate from "./components/ModalConfirmUpdate";
 
 export interface SelectedStase {
   name: string;
@@ -28,6 +29,11 @@ const CreateStase = () => {
   const { accountData } = useAuth();
   const { postData, loading } = useUpdateStase();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenConfirm,
+    onClose: onCloseConfirm,
+    onOpen: onOpenConfirm,
+  } = useDisclosure();
   const [selectedStase, setSelectedStase] = useState<SelectedStase>();
 
   const finalData = useMemo(() => {
@@ -88,18 +94,25 @@ const CreateStase = () => {
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
           mt={10}
-          onClick={handleSubmitData}
+          onClick={onOpenConfirm}
           isLoading={loading}
         >
           Submit
         </Button>
       </Flex>
 
+      {/* All modal is below */}
       <ModalSelectStase
         isOpen={isOpen}
         closeModal={onClose}
-        onOpen={onOpen}
         setStase={setSelectedStase}
+      />
+
+      <ModalConfirmUpdate
+        isOpen={isOpenConfirm}
+        closeModal={onCloseConfirm}
+        selectedStase={selectedStase?.name}
+        onSubmit={handleSubmitData}
       />
     </Flex>
   );

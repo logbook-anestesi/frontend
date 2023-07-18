@@ -22,7 +22,6 @@ import { SelectedStase } from "../..";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  onOpen: () => void;
   setStase: Dispatch<SetStateAction<SelectedStase | undefined>>;
 }
 
