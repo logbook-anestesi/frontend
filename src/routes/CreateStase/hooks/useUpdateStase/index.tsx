@@ -1,9 +1,7 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
-import { useToast } from "@chakra-ui/react";
 
 const useUpdateStase = () => {
-  const toast = useToast();
   const [loading, setLoading] = useState(false);
 
   const postData = useCallback(
@@ -18,33 +16,21 @@ const useUpdateStase = () => {
         const response = await axiosClient.post("/station/entry", payload);
         const data = response.data;
 
+        setLoading(false);
+
         if (data.error) {
-          toast({
-            position: "top",
-            status: "error",
-            duration: 2000,
-            isClosable: true,
-            title: "Gagal Update Stase",
-            description: data.message[0],
-          });
+          return { success: false, message: data?.message[0] };
         }
 
         if (!data.error) {
-          toast({
-            position: "top",
-            status: "success",
-            duration: 2000,
-            isClosable: true,
-            title: "Berhasil Update Stase",
-          });
+          return { success: true, message: "Berhasil Update Stase" };
         }
       } catch (e) {
+        setLoading(false);
         console.log("[Error Update Stase]", e);
       }
-
-      setLoading(false);
     },
-    [toast]
+    []
   );
 
   return { postData, loading };

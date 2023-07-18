@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import { colors } from "../../constants/colors";
 
 import Header from "../../components/Header";
@@ -8,6 +15,7 @@ import { useMemo, useState } from "react";
 import { getCurrentMonth, getMonthYearString } from "../../helpers";
 import useAuth from "../../hooks/useAuth";
 import useUpdateStase from "./hooks/useUpdateStase";
+import { useNavigate } from "react-router-dom";
 
 export interface SelectedStase {
   name: string;
@@ -15,10 +23,12 @@ export interface SelectedStase {
 }
 
 const CreateStase = () => {
+  const toast = useToast();
+  const navigate = useNavigate();
   const { accountData } = useAuth();
+  const { postData, loading } = useUpdateStase();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedStase, setSelectedStase] = useState<SelectedStase>();
-  const { postData, loading } = useUpdateStase();
 
   const finalData = useMemo(() => {
     return {
@@ -27,6 +37,31 @@ const CreateStase = () => {
       periodMmYyyy: getMonthYearString(),
     };
   }, [accountData.id, selectedStase?.id]);
+
+  const handleSubmitData = async () => {
+    await postData(finalData).then((response) => {
+      if (response?.success) {
+        toast({
+          position: "top",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          title: "Berhasil Update Stase",
+        });
+
+        navigate("/stase");
+      } else {
+        toast({
+          position: "top",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          title: "Gagal Update Stase",
+          description: response?.message,
+        });
+      }
+    });
+  };
 
   return (
     <Flex flexDirection="column">
@@ -53,7 +88,7 @@ const CreateStase = () => {
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
           mt={10}
-          onClick={() => postData(finalData)}
+          onClick={handleSubmitData}
           isLoading={loading}
         >
           Submit

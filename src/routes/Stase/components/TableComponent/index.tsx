@@ -14,11 +14,11 @@ import { formatMonthYear } from "../../../../helpers";
 
 interface Props {
   staseData?: StaseUser[];
-  loading: string;
+  loading: boolean;
 }
 
 const TableComponent = ({ staseData, loading }: Props) => {
-  if (loading === "loading") return <Loading />;
+  if (loading) return <Loading />;
 
   return (
     <TableContainer>
