@@ -4,18 +4,18 @@ import { StaseUser } from "./types";
 import { getMonthYearString } from "../../../../helpers";
 
 const useGetStaseUser = () => {
-  const [loading, setLoading] = useState("idle");
+  const [loading, setLoading] = useState(false);
   const [staseData, setStaseData] = useState<StaseUser[]>();
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading("loading");
+      setLoading(true);
 
       const response = await axiosClient.get("/station/entry");
       const data = await response.data.data;
 
       setStaseData(data);
-      setLoading("finish");
+      setLoading(false);
     };
 
     fetchData();
