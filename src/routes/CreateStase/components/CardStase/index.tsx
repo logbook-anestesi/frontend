@@ -23,7 +23,7 @@ const CardStase = ({
       direction="column"
       mt={2}
       onClick={() => {
-        setStase({ id: id, name: staseName });
+        setStase({ id: id, name: staseName, lecturer: lecturer });
         closeModal();
       }}
     >

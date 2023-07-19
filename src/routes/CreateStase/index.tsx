@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  useDisclosure,
-  useToast,
-} from "@chakra-ui/react";
+import { Button, Flex, useDisclosure, useToast } from "@chakra-ui/react";
 import { colors } from "../../constants/colors";
 
 import Header from "../../components/Header";
@@ -16,10 +9,13 @@ import { getCurrentMonth, getMonthYearString } from "../../helpers";
 import useAuth from "../../hooks/useAuth";
 import useUpdateStase from "./hooks/useUpdateStase";
 import { useNavigate } from "react-router-dom";
+import ModalConfirmUpdate from "./components/ModalConfirmUpdate";
+import StaseDropdown from "./components/StaseDropdown";
 
 export interface SelectedStase {
   name: string;
   id: string;
+  lecturer: string;
 }
 
 const CreateStase = () => {
@@ -28,6 +24,11 @@ const CreateStase = () => {
   const { accountData } = useAuth();
   const { postData, loading } = useUpdateStase();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenConfirm,
+    onClose: onCloseConfirm,
+    onOpen: onOpenConfirm,
+  } = useDisclosure();
   const [selectedStase, setSelectedStase] = useState<SelectedStase>();
 
   const finalData = useMemo(() => {
@@ -70,36 +71,31 @@ const CreateStase = () => {
       <Flex padding="30px" direction="column" gap={10}>
         <CardPeriod monthValue={getCurrentMonth()} />
 
-        <Flex gap={2} direction="column">
-          <Text color={colors.darkGrey} fontSize="sm">
-            Stase yang akan diambil
-          </Text>
-          <Box
-            borderWidth="1px"
-            borderRadius="lg"
-            padding="6px 10px"
-            onClick={onOpen}
-          >
-            {selectedStase?.name || "Pilih Stase"}
-          </Box>
-        </Flex>
+        <StaseDropdown onOpen={onOpen} selectedStase={selectedStase} />
 
         <Button
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
-          mt={10}
-          onClick={handleSubmitData}
+          mt={5}
+          onClick={onOpenConfirm}
           isLoading={loading}
         >
           Submit
         </Button>
       </Flex>
 
+      {/* All modal is below */}
       <ModalSelectStase
         isOpen={isOpen}
         closeModal={onClose}
-        onOpen={onOpen}
         setStase={setSelectedStase}
+      />
+
+      <ModalConfirmUpdate
+        isOpen={isOpenConfirm}
+        closeModal={onCloseConfirm}
+        selectedStase={selectedStase?.name}
+        onSubmit={handleSubmitData}
       />
     </Flex>
   );
