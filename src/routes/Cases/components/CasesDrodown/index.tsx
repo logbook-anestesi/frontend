@@ -1,11 +1,13 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Flex, Text } from "@chakra-ui/react";
+import { Case } from "../../types";
 
 interface Props {
   onClick: () => void;
+  selectedCase: Case;
 }
 
-const CasesDropdown = ({ onClick }: Props) => {
+const CasesDropdown = ({ onClick, selectedCase }: Props) => {
   return (
     <Flex
       borderWidth="1px"
@@ -16,7 +18,7 @@ const CasesDropdown = ({ onClick }: Props) => {
       align="center"
       onClick={onClick}
     >
-      <Text>OK/Surgery</Text>
+      <Text>{selectedCase?.title}</Text>
 
       <ChevronDownIcon boxSize="35px" />
     </Flex>
