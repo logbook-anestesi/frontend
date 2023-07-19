@@ -10,6 +10,7 @@ import StasePage from "./Stase";
 import UsersPage from "./Users";
 import CreateStase from "./CreateStase";
 import CasesPage from "./Cases";
+import AddCasesPage from "./AddCases";
 
 const MainRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const MainRoutes = () => {
         <Route path="/stase/create" element={<CreateStase />} />
 
         <Route path="/cases" element={<CasesPage />} />
+        <Route path="/cases/add/:type" element={<AddCasesPage />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

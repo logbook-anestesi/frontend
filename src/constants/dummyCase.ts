@@ -24,7 +24,7 @@ export const DUMMY_CASES = [
     supervising: "dr. Budi Sudartono",
   },
   {
-    id: "OK-014-03",
+    id: "OK-014-04",
     date: "12/02/2023",
     dpjp: "dr. James Arthur",
     type: "Kulit",
