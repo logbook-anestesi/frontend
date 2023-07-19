@@ -7,10 +7,10 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import Loading from "./Loading";
 import { colors } from "../../../../constants/colors";
 import { StaseUser } from "../../hooks/useGetStaseUser/types";
 import { formatMonthYear } from "../../../../helpers";
+import LoaderCircle from "../../../../components/LoaderCircle";
 
 interface Props {
   staseData?: StaseUser[];
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const TableComponent = ({ staseData, loading }: Props) => {
-  if (loading) return <Loading />;
+  if (loading) return <LoaderCircle />;
 
   return (
     <TableContainer>

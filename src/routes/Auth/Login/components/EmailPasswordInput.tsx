@@ -12,6 +12,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { colors } from "../../../../constants/colors";
+import LoaderCircle from "../../../../components/LoaderCircle";
 
 const EmailPasswordInput = () => {
   const [email, setEmail] = useState("");
@@ -107,7 +108,7 @@ const EmailPasswordInput = () => {
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? "..." : "Masuk"}
+          {loading ? <LoaderCircle /> : "Masuk"}
         </Button>
       </Flex>
     </FormControl>
