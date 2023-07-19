@@ -38,9 +38,9 @@ const Home = () => {
       </Flex>
 
       <Flex justify="space-between" gap="15px">
-        <ReportCard icon={cases} title="Cases" />
-        <ReportCard icon={ilmiah} title="Ilmiah" />
-        <ReportCard icon={exam} title="Exam" />
+        <ReportCard icon={cases} title="Cases" path="/cases" />
+        <ReportCard icon={ilmiah} title="Ilmiah" path="/" />
+        <ReportCard icon={exam} title="Exam" path="/" />
       </Flex>
 
       <ButtonTambah />
