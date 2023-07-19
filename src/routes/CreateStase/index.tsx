@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  useDisclosure,
-  useToast,
-} from "@chakra-ui/react";
+import { Button, Flex, useDisclosure, useToast } from "@chakra-ui/react";
 import { colors } from "../../constants/colors";
 
 import Header from "../../components/Header";
@@ -17,10 +10,12 @@ import useAuth from "../../hooks/useAuth";
 import useUpdateStase from "./hooks/useUpdateStase";
 import { useNavigate } from "react-router-dom";
 import ModalConfirmUpdate from "./components/ModalConfirmUpdate";
+import StaseDropdown from "./components/StaseDropdown";
 
 export interface SelectedStase {
   name: string;
   id: string;
+  lecturer: string;
 }
 
 const CreateStase = () => {
@@ -76,24 +71,12 @@ const CreateStase = () => {
       <Flex padding="30px" direction="column" gap={10}>
         <CardPeriod monthValue={getCurrentMonth()} />
 
-        <Flex gap={2} direction="column">
-          <Text color={colors.darkGrey} fontSize="sm">
-            Stase yang akan diambil
-          </Text>
-          <Box
-            borderWidth="1px"
-            borderRadius="lg"
-            padding="6px 10px"
-            onClick={onOpen}
-          >
-            {selectedStase?.name || "Pilih Stase"}
-          </Box>
-        </Flex>
+        <StaseDropdown onOpen={onOpen} selectedStase={selectedStase} />
 
         <Button
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
-          mt={10}
+          mt={5}
           onClick={onOpenConfirm}
           isLoading={loading}
         >
