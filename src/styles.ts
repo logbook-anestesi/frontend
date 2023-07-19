@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const AppContainer = styled.div`
   background: rgb(255, 255, 255);
