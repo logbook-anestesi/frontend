@@ -16,7 +16,7 @@ const BottomNav = () => {
       <Divider />
       <Box height={1} />
 
-      <Flex height={50} justify="center" gap={12}>
+      <Flex height={50} justify="space-around">
         <BottomNavIcon image={iconCase} title="Daftar Cases" isActive />
         <BottomNavIcon image={summary} title="Summary" isActive={false} />
       </Flex>
