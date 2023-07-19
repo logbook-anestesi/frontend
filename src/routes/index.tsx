@@ -9,6 +9,7 @@ import ProfilePage from "./Profile";
 import StasePage from "./Stase";
 import UsersPage from "./Users";
 import CreateStase from "./CreateStase";
+import CasesPage from "./Cases";
 
 const MainRoutes = () => {
   return (
@@ -19,8 +20,11 @@ const MainRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
+
         <Route path="/stase" element={<StasePage />} />
         <Route path="/stase/create" element={<CreateStase />} />
+
+        <Route path="/cases" element={<CasesPage />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

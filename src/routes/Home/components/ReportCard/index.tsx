@@ -1,12 +1,20 @@
 import { Card, Flex, Image, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
+import { useNavigate } from "react-router-dom";
 
 interface ReportCardInterface {
   icon: string;
   title: string;
+  path: string;
 }
 
-const ReportCard = ({ icon, title }: ReportCardInterface) => {
+const ReportCard = ({ icon, title, path }: ReportCardInterface) => {
+  const navigate = useNavigate();
+
+  const handleClickCard = () => {
+    navigate(path);
+  };
+
   return (
     <Card
       variant="outline"
@@ -14,6 +22,7 @@ const ReportCard = ({ icon, title }: ReportCardInterface) => {
       direction={{ base: "column", sm: "row" }}
       justify="space-between"
       align="center"
+      onClick={handleClickCard}
     >
       <Flex
         width="50px"
