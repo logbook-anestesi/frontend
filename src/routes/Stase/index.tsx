@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import StaseCard from "./components/StaseCard";
 import useGetStaseUser from "./hooks/useGetStaseUser";
-import TableTitle from "./components/StaseTable";
+import TableTitle from "./components/TableTitle";
 import TableComponent from "./components/TableComponent";
 import RedStaseCard from "./components/RedStaseCard";
 

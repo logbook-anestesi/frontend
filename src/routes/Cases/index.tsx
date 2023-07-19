@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Case } from "./types";
 import { CASE_LIST } from "../../constants/caseList";
 import ButtonAddCase from "./components/ButtonAddCase";
+import CaseListSection from "./components/CaseListSection";
 
 const Cases = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -24,6 +25,8 @@ const Cases = () => {
         />
 
         <ButtonAddCase caseName={selectedCase.title} />
+
+        <CaseListSection />
       </Flex>
     </Flex>
   );

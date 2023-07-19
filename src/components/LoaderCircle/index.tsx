@@ -1,6 +1,6 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 
-const Loading = () => {
+const LoaderCircle = () => {
   return (
     <Flex justifyContent="center">
       <Spinner />
@@ -8,4 +8,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoaderCircle;
