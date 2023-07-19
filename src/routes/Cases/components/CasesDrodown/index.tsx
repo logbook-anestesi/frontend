@@ -11,12 +11,12 @@ const CasesDropdown = ({ onClick, selectedCase }: Props) => {
   return (
     <Flex
       borderWidth="1px"
-      borderRadius="lg"
+      borderRadius={10}
       padding="6px 10px 6px 18px"
-      // onClick={onOpen}
       justify="space-between"
       align="center"
       onClick={onClick}
+      mb={2}
     >
       <Text>{selectedCase?.title}</Text>
 

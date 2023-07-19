@@ -5,6 +5,7 @@ import ModalSelectCases from "./components/ModalSelectCases";
 import { useState } from "react";
 import { Case } from "./types";
 import { CASE_LIST } from "../../constants/caseList";
+import ButtonAddCase from "./components/ButtonAddCase";
 
 const Cases = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -21,6 +22,8 @@ const Cases = () => {
           closeModal={onClose}
           setCase={setSelectedCase}
         />
+
+        <ButtonAddCase caseName={selectedCase.title} />
       </Flex>
     </Flex>
   );
