@@ -23,4 +23,12 @@ export const DUMMY_CASES = [
     status: "Disetujui",
     supervising: "dr. Budi Sudartono",
   },
+  {
+    id: "OK-014-03",
+    date: "12/02/2023",
+    dpjp: "dr. James Arthur",
+    type: "Kulit",
+    status: "Disetujui",
+    supervising: "dr. Shawn",
+  },
 ];
