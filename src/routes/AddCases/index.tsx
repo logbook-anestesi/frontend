@@ -6,7 +6,7 @@ import FormDPJP from "./components/FormDPJP";
 const AddCases = () => {
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/cases" title="Pembaruan Stase" />
+      <Header pathBack="/cases" title="Tambah OK/Surgery" />
 
       <Flex padding="30px" direction="column" gap={3}>
         <FormDate />
