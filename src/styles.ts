@@ -6,4 +6,10 @@ export const AppContainer = styled.div`
   -webkit-box-pack: center;
   justify-content: center;
   margin: 0px auto;
+
+  * {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+    outline: none !important;
+  }
 `;
