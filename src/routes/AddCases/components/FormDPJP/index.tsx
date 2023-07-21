@@ -2,9 +2,16 @@ import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import profileIcon from "../../assets/profile.png";
 import ModalDPJP from "../ModalDPJP";
+import { useState } from "react";
+
+export interface DPJP {
+  name: string;
+  id: number;
+}
 
 const FormDPJP = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [selectedDPJP, setSelectedDPJP] = useState<DPJP>();
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
@@ -22,12 +29,16 @@ const FormDPJP = () => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>Select DPJP</Text>
+        <Text>{selectedDPJP?.name || "Pilih DPJP"}</Text>
 
         <Image src={profileIcon} width={5} alt="" />
       </Flex>
 
-      <ModalDPJP isOpen={isOpen} closeModal={onClose} />
+      <ModalDPJP
+        isOpen={isOpen}
+        closeModal={onClose}
+        setDPJP={setSelectedDPJP}
+      />
     </Flex>
   );
 };

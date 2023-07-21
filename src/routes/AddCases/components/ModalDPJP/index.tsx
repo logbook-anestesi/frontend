@@ -10,13 +10,16 @@ import {
 } from "@chakra-ui/react";
 import CardName from "./CardName";
 import { DUMMY_DPJP } from "./dummyDPJP";
+import { Dispatch, SetStateAction } from "react";
+import { DPJP } from "../FormDPJP";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  setDPJP: Dispatch<SetStateAction<DPJP | undefined>>;
 }
 
-const ModalDPJP = ({ isOpen, closeModal }: Props) => {
+const ModalDPJP = ({ isOpen, closeModal, setDPJP }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -31,7 +34,14 @@ const ModalDPJP = ({ isOpen, closeModal }: Props) => {
         <Box height={3} />
 
         {DUMMY_DPJP?.map((dpjp) => {
-          return <CardName name={dpjp.name} key={dpjp.id} />;
+          return (
+            <CardName
+              dpjp={dpjp}
+              key={dpjp.id}
+              setDPJP={setDPJP}
+              closeModal={closeModal}
+            />
+          );
         })}
       </ModalContent>
     </Modal>

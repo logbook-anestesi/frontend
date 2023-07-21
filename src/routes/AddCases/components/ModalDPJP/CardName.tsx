@@ -1,13 +1,28 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
+import { Dispatch, SetStateAction } from "react";
+import { DPJP } from "../FormDPJP";
 
 interface Props {
-  name: string;
+  dpjp: DPJP;
+  setDPJP: Dispatch<SetStateAction<DPJP | undefined>>;
+  closeModal: () => void;
 }
 
-const CardName = ({ name }: Props) => {
+const CardName = ({ dpjp, setDPJP, closeModal }: Props) => {
+  const handleClickCard = () => {
+    setDPJP(dpjp);
+    closeModal();
+  };
+
   return (
-    <Flex padding={2} direction="column" gap={3} fontSize="md">
-      <Text>{name}</Text>
+    <Flex
+      padding={2}
+      direction="column"
+      gap={3}
+      fontSize="md"
+      onClick={handleClickCard}
+    >
+      <Text>{dpjp.name}</Text>
       <Divider />
     </Flex>
   );
