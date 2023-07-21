@@ -12,7 +12,7 @@ const Ticker = ({ text }: TickerInterface) => {
       backgroundColor="rgba(102, 45, 145, 0.1)"
       align="center"
       borderRadius="6px"
-      width="fit-content"
+      minWidth="fit-content"
     >
       <Text
         as="b"

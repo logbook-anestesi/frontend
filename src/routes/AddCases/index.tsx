@@ -9,6 +9,7 @@ import {
   DUMMY_RADIO_ITEM_3,
   DUMMY_RADIO_ITEM_4,
 } from "./components/FormRadio/dummyRadio";
+import FormOperasi from "./components/FormOperasi";
 
 const AddCases = () => {
   return (
@@ -22,6 +23,7 @@ const AddCases = () => {
         <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_2} />
         <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
         <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
+        <FormOperasi />
       </Flex>
     </Flex>
   );
