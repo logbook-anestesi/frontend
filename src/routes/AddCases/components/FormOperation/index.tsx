@@ -24,10 +24,6 @@ const FormOperation = ({ formData }: Props) => {
   } = useDisclosure();
   const [operation, setOperation] = useState<OperationType>();
 
-  useEffect(() => {
-    console.log("999 DATA FORM OPERASI", operation);
-  }, [operation, selectedOperation]);
-
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
