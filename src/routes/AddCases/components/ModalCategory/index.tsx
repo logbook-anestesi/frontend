@@ -6,9 +6,9 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-import { DUMMY_CATEGORY } from "./dummyCategory";
 import CardCategory from "./CardCategory";
 import { Dispatch, SetStateAction } from "react";
+import { OperationType } from "../../hooks/useGetCasesForm/types";
 
 export interface Category {
   name: string;
@@ -19,14 +19,16 @@ interface Props {
   isOpen: boolean;
   closeModal: () => void;
   onOpenSub: () => void;
-  setCategory: Dispatch<SetStateAction<Category | undefined>>;
+  setOperation: Dispatch<SetStateAction<OperationType | undefined>>;
+  operationType?: OperationType[];
 }
 
 const ModalCategory = ({
   isOpen,
   closeModal,
-  setCategory,
+  setOperation,
   onOpenSub,
+  operationType,
 }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
@@ -37,13 +39,13 @@ const ModalCategory = ({
 
         <Box height={3} />
 
-        {DUMMY_CATEGORY?.map((category) => {
+        {operationType?.map((operation) => {
           return (
             <CardCategory
-              key={category.id}
-              category={category}
+              key={operation.id}
+              operation={operation}
               closeModal={closeModal}
-              setCategory={setCategory}
+              setOperation={setOperation}
               onOpenSub={onOpenSub}
             />
           );

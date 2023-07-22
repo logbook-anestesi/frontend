@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
@@ -6,10 +6,15 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import Ticker from "../../../../components/Ticker";
 import { useAddCasesContext } from "../../contexts";
-import ModalCategory, { Category } from "../ModalCategory";
+import ModalCategory from "../ModalCategory";
+import { OperationType } from "../../hooks/useGetCasesForm/types";
 import ModalSubCategory from "../ModalSubCategory";
 
-const FormOperasi = () => {
+interface Props {
+  formData?: OperationType[];
+}
+
+const FormOperation = ({ formData }: Props) => {
   const { selectedOperation } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -17,7 +22,11 @@ const FormOperasi = () => {
     onClose: onCloseSub,
     onOpen: onOpenSub,
   } = useDisclosure();
-  const [selectedCategory, setSelectedCategory] = useState<Category>();
+  const [operation, setOperation] = useState<OperationType>();
+
+  useEffect(() => {
+    console.log("999 DATA FORM OPERASI", operation);
+  }, [operation, selectedOperation]);
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
@@ -35,7 +44,7 @@ const FormOperasi = () => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>{selectedCategory?.name || "Tambah Tipe Operasi"}</Text>
+        <Text>{operation?.name || "Tambah Tipe Operasi"}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -63,16 +72,18 @@ const FormOperasi = () => {
         closeModal={onClose}
         isOpen={isOpen}
         onOpenSub={onOpenSub}
-        setCategory={setSelectedCategory}
+        setOperation={setOperation}
+        operationType={formData}
       />
 
       <ModalSubCategory
         closeModal={onCloseSub}
         isOpen={isOpenSub}
-        category={selectedCategory?.name || "-"}
+        operationName={operation?.name || "-"}
+        subCategoryOperation={operation?.children || []}
       />
     </Flex>
   );
 };
 
-export default FormOperasi;
+export default FormOperation;

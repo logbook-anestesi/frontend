@@ -1,14 +1,14 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { SubCategory } from ".";
 import { useAddCasesDispatch } from "../../contexts";
+import { OperationCategory } from "../../hooks/useGetCasesForm/types";
 
 interface Props {
-  subCategory: SubCategory;
+  subCategory: OperationCategory;
   closeModal: () => void;
-  category: string;
+  operationName: string;
 }
 
-const CardSubCategory = ({ subCategory, closeModal, category }: Props) => {
+const CardSubCategory = ({ subCategory, closeModal, operationName }: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
   const handleClickCard = () => {
@@ -18,7 +18,7 @@ const CardSubCategory = ({ subCategory, closeModal, category }: Props) => {
       data: {
         operation: {
           operation: subCategory.name,
-          category: category,
+          category: operationName,
         },
       },
     });

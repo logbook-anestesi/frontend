@@ -1,22 +1,22 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Category } from ".";
 import { Dispatch, SetStateAction } from "react";
+import { OperationType } from "../../hooks/useGetCasesForm/types";
 
 interface Props {
-  category: Category;
+  operation: OperationType;
   closeModal: () => void;
   onOpenSub: () => void;
-  setCategory: Dispatch<SetStateAction<Category | undefined>>;
+  setOperation: Dispatch<SetStateAction<OperationType | undefined>>;
 }
 
 const CardCategory = ({
   closeModal,
-  category,
-  setCategory,
+  operation,
+  setOperation,
   onOpenSub,
 }: Props) => {
   const handleClickCard = () => {
-    setCategory(category);
+    setOperation(operation);
     closeModal();
     onOpenSub();
   };
@@ -29,7 +29,7 @@ const CardCategory = ({
       fontSize="md"
       onClick={handleClickCard}
     >
-      <Text>{category.name}</Text>
+      <Text>{operation.name}</Text>
       <Divider />
     </Flex>
   );

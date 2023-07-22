@@ -9,10 +9,13 @@ import {
   DUMMY_RADIO_ITEM_3,
   DUMMY_RADIO_ITEM_4,
 } from "./components/FormRadio/dummyRadio";
-import FormCategory from "./components/FormCategory";
+import FormOperation from "./components/FormOperation";
 import AddCasesProvider from "./contexts";
+import useGetCasesForm from "./hooks/useGetCasesForm";
 
 const AddCases = () => {
+  const { casesForm } = useGetCasesForm();
+
   return (
     <AddCasesProvider>
       <Flex flexDirection="column">
@@ -25,7 +28,7 @@ const AddCases = () => {
           <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_2} />
           <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
           <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
-          <FormCategory />
+          <FormOperation formData={casesForm?.operationTypes} />
         </Flex>
       </Flex>
     </AddCasesProvider>

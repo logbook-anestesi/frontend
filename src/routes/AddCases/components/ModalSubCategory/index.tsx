@@ -6,9 +6,9 @@ import {
   ModalOverlay,
   Text,
 } from "@chakra-ui/react";
-import { DUMMY_SUB_CATEGORY } from "../ModalCategory/dummyCategory";
-import CardSubCategory from "./CardSubCategory";
 import { colors } from "../../../../constants/colors";
+import { OperationCategory } from "../../hooks/useGetCasesForm/types";
+import CardSubCategory from "./CardSubCategory";
 
 export interface SubCategory {
   name: string;
@@ -18,10 +18,16 @@ export interface SubCategory {
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  category: string;
+  operationName: string;
+  subCategoryOperation: OperationCategory[];
 }
 
-const ModalSubCategory = ({ isOpen, closeModal, category }: Props) => {
+const ModalSubCategory = ({
+  isOpen,
+  closeModal,
+  operationName,
+  subCategoryOperation,
+}: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -29,19 +35,19 @@ const ModalSubCategory = ({ isOpen, closeModal, category }: Props) => {
         <ModalHeader pl={2} py={4} pr={7}>
           Pilih subkategori dari operasi{" "}
           <Text color={colors.primaryPurple} as="b">
-            {category}
+            {operationName}
           </Text>
         </ModalHeader>
 
         <ModalCloseButton />
 
-        {DUMMY_SUB_CATEGORY?.map((subCategory) => {
+        {subCategoryOperation?.map((subCategory) => {
           return (
             <CardSubCategory
               key={subCategory.id}
               subCategory={subCategory}
               closeModal={closeModal}
-              category={category}
+              operationName={operationName}
             />
           );
         })}
