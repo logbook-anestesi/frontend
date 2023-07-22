@@ -40,7 +40,7 @@ const ModalSubCategory = ({ isOpen, closeModal, category }: Props) => {
             <CardSubCategory
               key={subCategory.id}
               subCategory={subCategory}
-              // closeModal={closeModal}
+              closeModal={closeModal}
               // setSubCategory={setsubCategory}
               // onOpenSub={onOpenSub}
             />

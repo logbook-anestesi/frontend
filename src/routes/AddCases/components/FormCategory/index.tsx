@@ -5,8 +5,10 @@ import Ticker from "../../../../components/Ticker";
 import ModalCategory, { Category } from "../ModalCategory";
 import { useState } from "react";
 import ModalSubCategory from "../ModalSubCategory";
+import { useAddCasesContext } from "../../contexts";
 
 const FormOperasi = () => {
+  const { selectedOperation } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenSub,
@@ -46,8 +48,9 @@ const FormOperasi = () => {
           },
         }}
       >
-        <Ticker text="Ortho: Spine Surgery" />
-        <Ticker text="Obgyn: SC" />
+        {selectedOperation.map((operation, idx) => (
+          <Ticker text={operation} key={idx} />
+        ))}
       </Flex>
 
       {/* Modal */}
