@@ -1,11 +1,13 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import Ticker from "../../../../components/Ticker";
-import ModalCategory, { Category } from "../ModalCategory";
 import { useState } from "react";
-import ModalSubCategory from "../ModalSubCategory";
+
+import { ChevronRightIcon } from "@chakra-ui/icons";
+import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+
+import { colors } from "../../../../constants/colors";
+import Ticker from "../../../../components/Ticker";
 import { useAddCasesContext } from "../../contexts";
+import ModalCategory, { Category } from "../ModalCategory";
+import ModalSubCategory from "../ModalSubCategory";
 
 const FormOperasi = () => {
   const { selectedOperation } = useAddCasesContext();
@@ -49,7 +51,10 @@ const FormOperasi = () => {
         }}
       >
         {selectedOperation.map((operation, idx) => (
-          <Ticker text={operation} key={idx} />
+          <Ticker
+            text={`${operation.category}: ${operation.operation}`}
+            key={idx}
+          />
         ))}
       </Flex>
 

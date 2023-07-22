@@ -41,8 +41,7 @@ const ModalSubCategory = ({ isOpen, closeModal, category }: Props) => {
               key={subCategory.id}
               subCategory={subCategory}
               closeModal={closeModal}
-              // setSubCategory={setsubCategory}
-              // onOpenSub={onOpenSub}
+              category={category}
             />
           );
         })}

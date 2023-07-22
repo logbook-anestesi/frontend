@@ -1,11 +1,15 @@
+interface Operation {
+  category: string;
+  operation: string;
+}
 interface InitialState {
-  selectedOperation: string[];
+  selectedOperation: Operation[];
 }
 
 interface SetSelectedOperation {
   type: "set_selected_operation";
   data: {
-    operation: string;
+    operation: Operation;
   };
 }
 

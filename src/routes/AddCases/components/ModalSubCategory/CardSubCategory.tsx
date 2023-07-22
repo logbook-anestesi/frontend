@@ -5,9 +5,10 @@ import { useAddCasesDispatch } from "../../contexts";
 interface Props {
   subCategory: SubCategory;
   closeModal: () => void;
+  category: string;
 }
 
-const CardSubCategory = ({ subCategory, closeModal }: Props) => {
+const CardSubCategory = ({ subCategory, closeModal, category }: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
   const handleClickCard = () => {
@@ -15,7 +16,10 @@ const CardSubCategory = ({ subCategory, closeModal }: Props) => {
     casesDispatch({
       type: "set_selected_operation",
       data: {
-        operation: subCategory.name,
+        operation: {
+          operation: subCategory.name,
+          category: category,
+        },
       },
     });
   };

@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useReducer } from "react";
 import type { Dispatch } from "react";
-import { ACTION_TYPE } from "./types";
+import { ACTION_TYPE, InitialState } from "./types";
 import { reducer } from "./reducer";
 
-const AddCasesContext = createContext({
-  selectedOperation: [""],
+const AddCasesContext = createContext<InitialState>({
+  selectedOperation: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
