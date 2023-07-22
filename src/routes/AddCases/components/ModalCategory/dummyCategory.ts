@@ -40,3 +40,22 @@ export const DUMMY_CATEGORY = [
     id: "10",
   },
 ];
+
+export const DUMMY_SUB_CATEGORY = [
+  {
+    name: "Histerektomi",
+    id: "1",
+  },
+  {
+    name: "Histeroskopi",
+    id: "2",
+  },
+  {
+    name: "Transvaginal Procedure",
+    id: "3",
+  },
+  {
+    name: "Laparotomi Ginekologi",
+    id: "4",
+  },
+];

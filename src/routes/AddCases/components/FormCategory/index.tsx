@@ -4,9 +4,15 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import Ticker from "../../../../components/Ticker";
 import ModalCategory, { Category } from "../ModalCategory";
 import { useState } from "react";
+import ModalSubCategory from "../ModalSubCategory";
 
 const FormOperasi = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenSub,
+    onClose: onCloseSub,
+    onOpen: onOpenSub,
+  } = useDisclosure();
   const [selectedCategory, setSelectedCategory] = useState<Category>();
 
   return (
@@ -48,8 +54,11 @@ const FormOperasi = () => {
       <ModalCategory
         closeModal={onClose}
         isOpen={isOpen}
+        onOpenSub={onOpenSub}
         setCategory={setSelectedCategory}
       />
+
+      <ModalSubCategory closeModal={onCloseSub} isOpen={isOpenSub} />
     </Flex>
   );
 };

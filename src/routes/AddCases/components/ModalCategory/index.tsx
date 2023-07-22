@@ -20,10 +20,16 @@ export interface Category {
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  onOpenSub: () => void;
   setCategory: Dispatch<SetStateAction<Category | undefined>>;
 }
 
-const ModalCategory = ({ isOpen, closeModal, setCategory }: Props) => {
+const ModalCategory = ({
+  isOpen,
+  closeModal,
+  setCategory,
+  onOpenSub,
+}: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -44,6 +50,7 @@ const ModalCategory = ({ isOpen, closeModal, setCategory }: Props) => {
               category={category}
               closeModal={closeModal}
               setCategory={setCategory}
+              onOpenSub={onOpenSub}
             />
           );
         })}

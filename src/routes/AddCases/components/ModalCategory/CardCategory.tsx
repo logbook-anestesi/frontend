@@ -5,13 +5,20 @@ import { Dispatch, SetStateAction } from "react";
 interface Props {
   category: Category;
   closeModal: () => void;
+  onOpenSub: () => void;
   setCategory: Dispatch<SetStateAction<Category | undefined>>;
 }
 
-const CardCategory = ({ closeModal, category, setCategory }: Props) => {
+const CardCategory = ({
+  closeModal,
+  category,
+  setCategory,
+  onOpenSub,
+}: Props) => {
   const handleClickCard = () => {
     setCategory(category);
     closeModal();
+    onOpenSub();
   };
 
   return (
