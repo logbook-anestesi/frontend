@@ -58,7 +58,11 @@ const FormOperasi = () => {
         setCategory={setSelectedCategory}
       />
 
-      <ModalSubCategory closeModal={onCloseSub} isOpen={isOpenSub} />
+      <ModalSubCategory
+        closeModal={onCloseSub}
+        isOpen={isOpenSub}
+        category={selectedCategory?.name || "-"}
+      />
     </Flex>
   );
 };

@@ -1,11 +1,9 @@
-import { Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
-  Input,
-  InputGroup,
-  InputRightElement,
   Modal,
+  ModalCloseButton,
   ModalContent,
+  ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
 import { DUMMY_CATEGORY } from "./dummyCategory";
@@ -34,12 +32,8 @@ const ModalCategory = ({
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
-        <InputGroup>
-          <Input placeholder="Cari Operasi..." />
-          <InputRightElement>
-            <Search2Icon />
-          </InputRightElement>
-        </InputGroup>
+        <ModalHeader pl={2}>Pilih kategori tipe operasi</ModalHeader>
+        <ModalCloseButton />
 
         <Box height={3} />
 

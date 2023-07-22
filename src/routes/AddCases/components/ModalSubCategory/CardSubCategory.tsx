@@ -1,5 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { Divider } from "antd";
+import { Divider, Flex, Text } from "@chakra-ui/react";
 import { SubCategory } from ".";
 
 interface Props {
@@ -9,7 +8,9 @@ interface Props {
 const CardSubCategory = ({ subCategory }: Props) => {
   return (
     <Flex
+      padding={2}
       direction="column"
+      gap={3}
       fontSize="md"
       // onClick={handleClickCard}
     >

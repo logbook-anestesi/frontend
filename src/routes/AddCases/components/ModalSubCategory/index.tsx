@@ -1,15 +1,14 @@
-import { Search2Icon } from "@chakra-ui/icons";
 import {
-  Box,
-  Input,
-  InputGroup,
-  InputRightElement,
   Modal,
+  ModalCloseButton,
   ModalContent,
+  ModalHeader,
   ModalOverlay,
+  Text,
 } from "@chakra-ui/react";
 import { DUMMY_SUB_CATEGORY } from "../ModalCategory/dummyCategory";
 import CardSubCategory from "./CardSubCategory";
+import { colors } from "../../../../constants/colors";
 
 export interface SubCategory {
   name: string;
@@ -19,21 +18,22 @@ export interface SubCategory {
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  category: string;
 }
 
-const ModalSubCategory = ({ isOpen, closeModal }: Props) => {
+const ModalSubCategory = ({ isOpen, closeModal, category }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
-        <InputGroup>
-          <Input placeholder="Cari Sub Category..." />
-          <InputRightElement>
-            <Search2Icon />
-          </InputRightElement>
-        </InputGroup>
+        <ModalHeader pl={2} py={4} pr={7}>
+          Pilih subkategori dari operasi{" "}
+          <Text color={colors.primaryPurple} as="b">
+            {category}
+          </Text>
+        </ModalHeader>
 
-        <Box height={3} />
+        <ModalCloseButton />
 
         {DUMMY_SUB_CATEGORY?.map((subCategory) => {
           return (
