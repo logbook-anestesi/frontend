@@ -20,7 +20,7 @@ const CardTypeProcedure = ({
     casesDispatch({
       type: "set_selected_anesthesia",
       data: {
-        anesthesia: anesthesia,
+        anesthesia: anesthesia.name,
       },
     });
 

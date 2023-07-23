@@ -1,12 +1,10 @@
-import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
-
 interface Operation {
   category: string;
   operation: string;
 }
 interface InitialState {
   selectedOperation: Operation[];
-  selectedAnesthesia: AnesthesiaType[];
+  selectedAnesthesia: string[];
 }
 
 interface SetSelectedOperation {
@@ -19,7 +17,7 @@ interface SetSelectedOperation {
 interface SetSelectedAnesthesia {
   type: "set_selected_anesthesia";
   data: {
-    anesthesia: AnesthesiaType;
+    anesthesia: string;
   };
 }
 

@@ -10,6 +10,9 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
+import useAddAnesthesia from "../../hooks/useAddAnesthesia";
+import { ChangeEvent, useState } from "react";
+import { useAddCasesDispatch } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -17,6 +20,26 @@ interface Props {
 }
 
 const ModalAddOther = ({ isOpen, closeModal }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
+  const { createAnesthesia, loading } = useAddAnesthesia();
+  const [anesthesia, setAnesthesia] = useState("");
+
+  const handleCreateAnesthesia = async () => {
+    await createAnesthesia({ name: anesthesia });
+    casesDispatch({
+      type: "set_selected_anesthesia",
+      data: {
+        anesthesia: anesthesia,
+      },
+    });
+
+    closeModal();
+  };
+
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setAnesthesia(e.target.value);
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -28,7 +51,10 @@ const ModalAddOther = ({ isOpen, closeModal }: Props) => {
         <ModalCloseButton />
 
         <InputGroup>
-          <Input placeholder="Masukkan tipe operasi ..." />
+          <Input
+            placeholder="Masukkan tipe operasi ..."
+            onChange={handleChangeInput}
+          />
         </InputGroup>
 
         <Box height={7} />
@@ -37,6 +63,8 @@ const ModalAddOther = ({ isOpen, closeModal }: Props) => {
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
           color={colors.white}
+          onClick={handleCreateAnesthesia}
+          isLoading={loading}
         >
           Submit
         </Button>
