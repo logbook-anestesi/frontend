@@ -9,21 +9,29 @@ import {
   DUMMY_RADIO_ITEM_3,
   DUMMY_RADIO_ITEM_4,
 } from "./components/FormRadio/dummyRadio";
+import FormOperation from "./components/FormOperation";
+import AddCasesProvider from "./contexts";
+import useGetCasesForm from "./hooks/useGetCasesForm";
 
 const AddCases = () => {
-  return (
-    <Flex flexDirection="column">
-      <Header pathBack="/cases" title="Tambah OK/Surgery" />
+  const { casesForm } = useGetCasesForm();
 
-      <Flex padding="30px" direction="column" gap={4}>
-        <FormDate />
-        <FormDPJP />
-        <FormRadio title="Merupakan Exam*" listOptions={DUMMY_RADIO_ITEM_1} />
-        <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_2} />
-        <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
-        <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
+  return (
+    <AddCasesProvider>
+      <Flex flexDirection="column">
+        <Header pathBack="/cases" title="Tambah OK/Surgery" />
+
+        <Flex padding="30px" direction="column" gap={4}>
+          <FormDate />
+          <FormDPJP />
+          <FormRadio title="Merupakan Exam*" listOptions={DUMMY_RADIO_ITEM_1} />
+          <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_2} />
+          <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
+          <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
+          <FormOperation formData={casesForm?.operationTypes} />
+        </Flex>
       </Flex>
-    </Flex>
+    </AddCasesProvider>
   );
 };
 
