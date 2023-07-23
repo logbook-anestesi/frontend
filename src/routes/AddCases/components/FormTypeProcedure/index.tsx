@@ -5,12 +5,15 @@ import ModalTypeProcedure from "../ModalTypeProcedure";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
 import ModalAddOther from "../ModalAddOther";
+import { useAddCasesContext } from "../../contexts";
+import Ticker from "../../../../components/Ticker";
 
 interface Props {
   anesthesiaList: AnesthesiaType[];
 }
 
 const FormTypeProcedure = ({ anesthesiaList }: Props) => {
+  const { selectedAnesthesia } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenAddOther,
@@ -39,6 +42,21 @@ const FormTypeProcedure = ({ anesthesiaList }: Props) => {
         <Text>{anesthesia?.name || "Masukkan tipe anastesi ..."}</Text>
 
         <ChevronRightIcon boxSize={7} />
+      </Flex>
+
+      <Flex
+        mt={1}
+        gap={2}
+        overflowX="auto"
+        css={{
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
+        {selectedAnesthesia.map((anesthesia, idx) => (
+          <Ticker text={anesthesia.name} key={idx} />
+        ))}
       </Flex>
 
       {/* Modal Section */}

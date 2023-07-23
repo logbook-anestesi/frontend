@@ -1,20 +1,30 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
+import { useAddCasesDispatch } from "../../contexts";
 
 interface Props {
-  anashtesia: AnesthesiaType;
+  anesthesia: AnesthesiaType;
   closeModal: () => void;
   setAnesthesia: Dispatch<SetStateAction<AnesthesiaType | undefined>>;
 }
 
 const CardTypeProcedure = ({
-  anashtesia,
+  anesthesia,
   closeModal,
   setAnesthesia,
 }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
+
   const handleClickCard = () => {
-    setAnesthesia(anashtesia);
+    casesDispatch({
+      type: "set_selected_anesthesia",
+      data: {
+        anesthesia: anesthesia,
+      },
+    });
+
+    setAnesthesia(anesthesia);
     closeModal();
   };
 
@@ -26,7 +36,7 @@ const CardTypeProcedure = ({
       fontSize="md"
       onClick={handleClickCard}
     >
-      <Text>{anashtesia.name}</Text>
+      <Text>{anesthesia.name}</Text>
       <Divider />
     </Flex>
   );

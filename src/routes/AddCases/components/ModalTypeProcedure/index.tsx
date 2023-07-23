@@ -91,7 +91,7 @@ const ModalTypeProcedure = ({
           return (
             <CardTypeProcedure
               key={anesthesia.id}
-              anashtesia={anesthesia}
+              anesthesia={anesthesia}
               closeModal={closeModal}
               setAnesthesia={setAnesthesia}
             />
