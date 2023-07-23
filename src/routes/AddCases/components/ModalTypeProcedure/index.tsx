@@ -8,6 +8,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Text,
 } from "@chakra-ui/react";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import CardTypeProcedure from "./CardTypeProcedure";
@@ -19,12 +20,14 @@ import {
   useState,
 } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
+import { colors } from "../../../../constants/colors";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
   anesthesiaList: AnesthesiaType[];
   setAnesthesia: Dispatch<SetStateAction<AnesthesiaType | undefined>>;
+  onOpenAddOther: () => void;
 }
 
 const ModalTypeProcedure = ({
@@ -32,6 +35,7 @@ const ModalTypeProcedure = ({
   closeModal,
   anesthesiaList,
   setAnesthesia,
+  onOpenAddOther,
 }: Props) => {
   const [filteredAnesthesi, setFilteredAnesthesi] = useState(anesthesiaList);
 
@@ -46,6 +50,11 @@ const ModalTypeProcedure = ({
     );
 
     setFilteredAnesthesi(filtered);
+  };
+
+  const handleClickAddOther = () => {
+    onOpenAddOther();
+    closeModal();
   };
 
   return (
@@ -66,6 +75,17 @@ const ModalTypeProcedure = ({
         </InputGroup>
 
         <Box height={3} />
+
+        <Text
+          as="u"
+          alignSelf="center"
+          fontSize="sm"
+          color={colors.primaryPurple}
+          mb={2}
+          onClick={handleClickAddOther}
+        >
+          Tipe tidak ada di daftar
+        </Text>
 
         {filteredAnesthesi?.map((anesthesia) => {
           return (
