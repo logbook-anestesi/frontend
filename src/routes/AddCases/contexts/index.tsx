@@ -5,6 +5,7 @@ import { reducer } from "./reducer";
 
 const AddCasesContext = createContext<InitialState>({
   selectedOperation: [],
+  selectedAnesthesia: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -16,6 +17,7 @@ interface Props {
 const AddCasesProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, {
     selectedOperation: [],
+    selectedAnesthesia: [],
   });
 
   return (
