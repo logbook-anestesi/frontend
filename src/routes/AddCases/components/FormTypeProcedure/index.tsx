@@ -6,10 +6,10 @@ import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
 
 interface Props {
-  anasthesiaList: AnesthesiaType[];
+  anesthesiaList: AnesthesiaType[];
 }
 
-const FormTypeProcedure = ({ anasthesiaList }: Props) => {
+const FormTypeProcedure = ({ anesthesiaList }: Props) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [anesthesia, setAnesthesia] = useState<AnesthesiaType>();
 
@@ -37,7 +37,7 @@ const FormTypeProcedure = ({ anasthesiaList }: Props) => {
       <ModalTypeProcedure
         closeModal={onClose}
         isOpen={isOpen}
-        anasthesiaList={anasthesiaList}
+        anesthesiaList={anesthesiaList}
         setAnesthesia={setAnesthesia}
       />
     </Flex>
