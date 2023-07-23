@@ -2,6 +2,7 @@ import { ACTION_TYPE, InitialState } from "../types";
 
 const initialState: InitialState = {
   selectedOperation: [],
+  selectedAnesthesia: [],
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -10,6 +11,15 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         selectedOperation: [...state.selectedOperation, action.data.operation],
+      };
+    }
+    case "set_selected_anesthesia": {
+      return {
+        ...state,
+        selectedAnesthesia: [
+          ...state.selectedAnesthesia,
+          action.data.anesthesia,
+        ],
       };
     }
   }
