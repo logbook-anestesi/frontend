@@ -29,8 +29,10 @@ const AddCases = () => {
           <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_2} />
           <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
           <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
-          <FormOperation formData={casesForm?.operationTypes} />
-          <FormTypeProcedure />
+          <FormOperation formData={casesForm?.operationTypes || []} />
+          <FormTypeProcedure
+            anasthesiaList={casesForm?.anesthesiaTypes || []}
+          />
         </Flex>
       </Flex>
     </AddCasesProvider>

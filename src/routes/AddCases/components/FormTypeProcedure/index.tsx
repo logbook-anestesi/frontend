@@ -1,10 +1,20 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import ModalTypeProcedure from "../ModalTypeProcedure";
+import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
+import { useState } from "react";
 
-const FormTypeProcedure = () => {
+interface Props {
+  anasthesiaList: AnesthesiaType[];
+}
+
+const FormTypeProcedure = ({ anasthesiaList }: Props) => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
+  const [anesthesia, setAnesthesia] = useState<AnesthesiaType>();
+
   return (
-    <Flex direction="column" gap={1}>
+    <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Tipe Anastesi*
       </Text>
@@ -19,10 +29,17 @@ const FormTypeProcedure = () => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>Masukkan tipe anastesi ...</Text>
+        <Text>{anesthesia?.name || "Masukkan tipe anastesi ..."}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
+
+      <ModalTypeProcedure
+        closeModal={onClose}
+        isOpen={isOpen}
+        anasthesiaList={anasthesiaList}
+        setAnesthesia={setAnesthesia}
+      />
     </Flex>
   );
 };
