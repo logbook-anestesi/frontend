@@ -12,7 +12,7 @@ import {
 import FormOperation from "./components/FormOperation";
 import AddCasesProvider from "./contexts";
 import useGetCasesForm from "./hooks/useGetCasesForm";
-import FormTypeProcedure from "./components/FormTypeProcedure";
+import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -30,7 +30,7 @@ const AddCases = () => {
           <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
           <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
           <FormOperation formData={casesForm?.operationTypes || []} />
-          <FormTypeProcedure
+          <FormTypeAnesthesia
             anesthesiaList={casesForm?.anesthesiaTypes || []}
           />
         </Flex>

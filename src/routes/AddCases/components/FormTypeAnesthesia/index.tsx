@@ -4,7 +4,7 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import ModalTypeProcedure from "../ModalTypeProcedure";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
-import ModalAddOther from "../ModalAddOther";
+import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
 import { useAddCasesContext } from "../../contexts";
 import Ticker from "../../../../components/Ticker";
 
@@ -12,7 +12,7 @@ interface Props {
   anesthesiaList: AnesthesiaType[];
 }
 
-const FormTypeProcedure = ({ anesthesiaList }: Props) => {
+const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
   const { selectedAnesthesia } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -68,9 +68,12 @@ const FormTypeProcedure = ({ anesthesiaList }: Props) => {
         onOpenAddOther={onOpenAddOther}
       />
 
-      <ModalAddOther isOpen={isOpenAddOther} closeModal={onCloseAddOther} />
+      <ModalAddOtherAnesthesia
+        isOpen={isOpenAddOther}
+        closeModal={onCloseAddOther}
+      />
     </Flex>
   );
 };
 
-export default FormTypeProcedure;
+export default FormTypeAnesthesia;

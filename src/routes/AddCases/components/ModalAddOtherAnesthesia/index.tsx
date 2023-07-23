@@ -19,7 +19,7 @@ interface Props {
   closeModal: () => void;
 }
 
-const ModalAddOther = ({ isOpen, closeModal }: Props) => {
+const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createAnesthesia, loading } = useAddAnesthesia();
   const [anesthesia, setAnesthesia] = useState("");
@@ -73,4 +73,4 @@ const ModalAddOther = ({ isOpen, closeModal }: Props) => {
   );
 };
 
-export default ModalAddOther;
+export default ModalAddOtherAnesthesia;
