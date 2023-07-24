@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Input,
   InputGroup,
   InputRightElement,
@@ -81,22 +82,24 @@ const ModalTypeProcedure = ({
           alignSelf="center"
           fontSize="sm"
           color={colors.primaryPurple}
-          mb={2}
+          mb={5}
           onClick={handleClickAddOther}
         >
           Tipe tidak ada di daftar
         </Text>
 
-        {filteredAnesthesi?.map((anesthesia) => {
-          return (
-            <CardTypeProcedure
-              key={anesthesia.id}
-              anesthesia={anesthesia}
-              closeModal={closeModal}
-              setAnesthesia={setAnesthesia}
-            />
-          );
-        })}
+        <Flex direction="column" maxH={300} overflowY="scroll">
+          {filteredAnesthesi?.map((anesthesia) => {
+            return (
+              <CardTypeProcedure
+                key={anesthesia.id}
+                anesthesia={anesthesia}
+                closeModal={closeModal}
+                setAnesthesia={setAnesthesia}
+              />
+            );
+          })}
+        </Flex>
       </ModalContent>
     </Modal>
   );
