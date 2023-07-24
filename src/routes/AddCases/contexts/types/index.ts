@@ -5,6 +5,7 @@ interface Operation {
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: string[];
+  date: string;
 }
 
 interface SetSelectedOperation {
@@ -21,6 +22,13 @@ interface SetSelectedAnesthesia {
   };
 }
 
-type ACTION_TYPE = SetSelectedOperation | SetSelectedAnesthesia;
+interface SetDate {
+  type: "set_date";
+  data: {
+    date: string;
+  };
+}
+
+type ACTION_TYPE = SetSelectedOperation | SetSelectedAnesthesia | SetDate;
 
 export type { ACTION_TYPE, InitialState };
