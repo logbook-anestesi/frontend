@@ -3,11 +3,7 @@ import { colors } from "../../../../constants/colors";
 import profileIcon from "../../assets/profile.png";
 import ModalDPJP from "../ModalDPJP";
 import { useState } from "react";
-
-export interface DPJP {
-  name: string;
-  id: number;
-}
+import { DPJP } from "../../hooks/useGetDPJP/types";
 
 const FormDPJP = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();

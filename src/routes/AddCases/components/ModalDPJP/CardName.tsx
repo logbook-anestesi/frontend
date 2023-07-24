@@ -1,6 +1,6 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
-import { DPJP } from "../FormDPJP";
+import { DPJP } from "../../hooks/useGetDPJP/types";
 
 interface Props {
   dpjp: DPJP;

@@ -1,23 +1,26 @@
 import { Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
+  Flex,
   Input,
   InputGroup,
   InputRightElement,
   Modal,
   ModalContent,
+  ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
 import CardName from "./CardName";
-import { DUMMY_DPJP } from "./dummyDPJP";
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
+  useEffect,
   useMemo,
   useState,
 } from "react";
-import { DPJP } from "../FormDPJP";
+import useGetDPJP from "../../hooks/useGetDPJP";
+import { DPJP } from "../../hooks/useGetDPJP/types";
 
 interface Props {
   isOpen: boolean;
@@ -26,13 +29,13 @@ interface Props {
 }
 
 const ModalDPJP = ({ isOpen, closeModal, setDPJP }: Props) => {
-  const listDPJP = DUMMY_DPJP;
-  const [filteredDPJP, setFilteredDPJP] = useState(listDPJP);
+  const { dpjpList } = useGetDPJP();
+  const [filteredDPJP, setFilteredDPJP] = useState(dpjpList);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
-    const filtered = listDPJP.filter((dpjp) =>
-      dpjp.name.toLowerCase().includes(loweredFilter)
+    const filtered = dpjpList.filter((dpjp) =>
+      dpjp.name.toLocaleLowerCase().includes(loweredFilter)
     );
 
     setFilteredDPJP(filtered);
@@ -40,16 +43,18 @@ const ModalDPJP = ({ isOpen, closeModal, setDPJP }: Props) => {
 
   const finalDataDPJP = useMemo(() => {
     if (filteredDPJP.length === 0) {
-      return listDPJP;
+      return dpjpList;
     }
 
     return filteredDPJP;
-  }, [filteredDPJP, listDPJP]);
+  }, [dpjpList, filteredDPJP]);
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
+        <ModalHeader pl={2}>Pilih DPJP</ModalHeader>
+
         <InputGroup>
           <Input placeholder="Search DPJP..." onChange={handleChangeSearch} />
           <InputRightElement>
@@ -59,16 +64,18 @@ const ModalDPJP = ({ isOpen, closeModal, setDPJP }: Props) => {
 
         <Box height={3} />
 
-        {finalDataDPJP?.map((dpjp) => {
-          return (
-            <CardName
-              dpjp={dpjp}
-              key={dpjp.id}
-              setDPJP={setDPJP}
-              closeModal={closeModal}
-            />
-          );
-        })}
+        <Flex direction="column" maxH={300} overflowY="scroll">
+          {finalDataDPJP?.map((dpjp) => {
+            return (
+              <CardName
+                dpjp={dpjp}
+                key={dpjp.id}
+                setDPJP={setDPJP}
+                closeModal={closeModal}
+              />
+            );
+          })}
+        </Flex>
       </ModalContent>
     </Modal>
   );
