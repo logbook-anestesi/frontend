@@ -4,6 +4,7 @@ const initialState: InitialState = {
   selectedOperation: [],
   selectedAnesthesia: [],
   date: "",
+  dpjpUserId: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -27,6 +28,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         date: action.data.date,
+      };
+    }
+    case "set_dpjp": {
+      return {
+        ...state,
+        dpjpUserId: action.data.dpjpId,
       };
     }
   }
