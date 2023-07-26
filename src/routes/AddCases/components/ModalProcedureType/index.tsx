@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   Text,
 } from "@chakra-ui/react";
-import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
+import { ProcedureType } from "../../hooks/useGetCasesForm/types";
 import {
   ChangeEvent,
   Dispatch,
@@ -21,36 +21,36 @@ import {
 } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
-import CardAnesthesiType from "./CardAnesthesiType";
+import CardProcedureType from "./CardProcedureType";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  anesthesiaList: AnesthesiaType[];
-  setAnesthesia: Dispatch<SetStateAction<AnesthesiaType | undefined>>;
+  procedureList: ProcedureType[];
+  setProcedure: Dispatch<SetStateAction<ProcedureType | undefined>>;
   onOpenAddOther: () => void;
 }
 
-const ModalAnesthesiType = ({
+const ModalProcedureType = ({
   isOpen,
   closeModal,
-  anesthesiaList,
-  setAnesthesia,
   onOpenAddOther,
+  procedureList,
+  setProcedure,
 }: Props) => {
-  const [filteredAnesthesi, setFilteredAnesthesi] = useState(anesthesiaList);
+  const [filteredProcedure, setFilteredProcedure] = useState(procedureList);
 
   useEffect(() => {
-    setFilteredAnesthesi(anesthesiaList);
-  }, [anesthesiaList]);
+    setFilteredProcedure(procedureList);
+  }, [procedureList]);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
-    const filtered = anesthesiaList.filter((anesthesia) =>
-      anesthesia.name.toLowerCase().includes(loweredFilter)
+    const filtered = procedureList.filter((procedure) =>
+      procedure.name.toLowerCase().includes(loweredFilter)
     );
 
-    setFilteredAnesthesi(filtered);
+    setFilteredProcedure(filtered);
   };
 
   const handleClickAddOther = () => {
@@ -62,12 +62,12 @@ const ModalAnesthesiType = ({
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
-        <ModalHeader pl={2}>Pilih tipe anestesi</ModalHeader>
+        <ModalHeader pl={2}>Pilih prosedur</ModalHeader>
         <ModalCloseButton />
 
         <InputGroup>
           <Input
-            placeholder="Cari tipe anestesi ..."
+            placeholder="Cari nama prosedur ..."
             onChange={handleChangeSearch}
           />
           <InputRightElement>
@@ -85,17 +85,17 @@ const ModalAnesthesiType = ({
           mb={5}
           onClick={handleClickAddOther}
         >
-          Tipe tidak ada di daftar
+          Prosedur tidak ada di daftar
         </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
-          {filteredAnesthesi?.map((anesthesia) => {
+          {filteredProcedure?.map((procedure) => {
             return (
-              <CardAnesthesiType
-                key={anesthesia.id}
-                anesthesia={anesthesia}
+              <CardProcedureType
+                key={procedure.id}
                 closeModal={closeModal}
-                setAnesthesia={setAnesthesia}
+                setProcedure={setProcedure}
+                procedure={procedure}
               />
             );
           })}
@@ -105,4 +105,4 @@ const ModalAnesthesiType = ({
   );
 };
 
-export default ModalAnesthesiType;
+export default ModalProcedureType;

@@ -9,7 +9,7 @@ interface Props {
   setAnesthesia: Dispatch<SetStateAction<AnesthesiaType | undefined>>;
 }
 
-const CardTypeProcedure = ({
+const CardAnesthesiType = ({
   anesthesia,
   closeModal,
   setAnesthesia,
@@ -49,4 +49,4 @@ const CardTypeProcedure = ({
   );
 };
 
-export default CardTypeProcedure;
+export default CardAnesthesiType;
