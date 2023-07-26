@@ -24,6 +24,13 @@ const CardTypeProcedure = ({
       },
     });
 
+    casesDispatch({
+      type: "set_anethesia_type_ids",
+      data: {
+        anesthesiaId: anesthesia.id,
+      },
+    });
+
     setAnesthesia(anesthesia);
     closeModal();
   };

@@ -11,6 +11,7 @@ interface InitialState {
   isExam: boolean;
   caseType: string;
   operationTypeIds: string[];
+  anesthesiaTypeIds: string[];
 }
 
 interface SetSelectedOperation {
@@ -62,6 +63,13 @@ interface SetOperationTypeIds {
   };
 }
 
+interface SetAnesthesiaTypeIds {
+  type: "set_anethesia_type_ids";
+  data: {
+    anesthesiaId: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -69,6 +77,7 @@ type ACTION_TYPE =
   | SetDPJP
   | SetIsExam
   | SetCaseType
-  | SetOperationTypeIds;
+  | SetOperationTypeIds
+  | SetAnesthesiaTypeIds;
 
 export type { ACTION_TYPE, InitialState };
