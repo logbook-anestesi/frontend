@@ -2,12 +2,23 @@ import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import profileIcon from "../../assets/profile.png";
 import ModalDPJP from "../ModalDPJP";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DPJP } from "../../hooks/useGetDPJP/types";
+import { useAddCasesDispatch } from "../../contexts";
 
 const FormDPJP = () => {
+  const casesDispatch = useAddCasesDispatch();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedDPJP, setSelectedDPJP] = useState<DPJP>();
+
+  useEffect(() => {
+    casesDispatch({
+      type: "set_dpjp",
+      data: {
+        dpjpId: selectedDPJP?.id || "",
+      },
+    });
+  }, [casesDispatch, selectedDPJP?.id]);
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>

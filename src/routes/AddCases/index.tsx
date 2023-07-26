@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import FormDate from "./components/FormDate";
 import FormDPJP from "./components/FormDPJP";
@@ -10,12 +10,19 @@ import {
   RADIO_EXAM,
 } from "./constants";
 import FormOperation from "./components/FormOperation";
-import AddCasesProvider from "./contexts";
+import AddCasesProvider, { useAddCasesContext } from "./contexts";
 import useGetCasesForm from "./hooks/useGetCasesForm";
 import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
+import { colors } from "../../constants/colors";
+import { useEffect } from "react";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
+  const state = useAddCasesContext();
+
+  // useEffect(() => {
+  //   console.log("999 INI STATE", state);
+  // }, [state]);
 
   return (
     <AddCasesProvider>
@@ -33,6 +40,16 @@ const AddCases = () => {
           <FormTypeAnesthesia
             anesthesiaList={casesForm?.anesthesiaTypes || []}
           />
+
+          <Button
+            colorScheme="teal"
+            backgroundColor={colors.primaryPurple}
+            color={colors.white}
+            // onClick={handleCreateAnesthesia}
+            // isLoading={loading}
+          >
+            Submit
+          </Button>
         </Flex>
       </Flex>
     </AddCasesProvider>
