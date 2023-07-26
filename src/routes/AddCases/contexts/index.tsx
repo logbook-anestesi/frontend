@@ -10,6 +10,7 @@ const AddCasesContext = createContext<InitialState>({
   dpjpUserId: "",
   isExam: false,
   caseType: "OK",
+  operationTypeIds: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -26,6 +27,7 @@ const AddCasesProvider = ({ children }: Props) => {
     dpjpUserId: "",
     isExam: false,
     caseType: "OK",
+    operationTypeIds: [],
   });
 
   return (
