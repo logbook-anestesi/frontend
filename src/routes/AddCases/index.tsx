@@ -15,7 +15,7 @@ const AddCases = () => {
   const state = useAddCasesContext();
 
   const handleSubmitForm = () => {
-    console.log("999 INI HASIL AKHIRRRR", state);
+    console.log("999 INI ADALAH HASIL AKHIR FORM", state);
   };
 
   return (
