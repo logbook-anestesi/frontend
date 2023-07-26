@@ -1,4 +1,4 @@
-export const DUMMY_RADIO_ITEM_1 = [
+export const RADIO_EXAM = [
   {
     title: "Ya",
     value: "Ya",
