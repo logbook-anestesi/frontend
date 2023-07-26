@@ -8,6 +8,7 @@ const AddCasesContext = createContext<InitialState>({
   selectedAnesthesia: [],
   date: "",
   dpjpUserId: "",
+  isExam: false,
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -22,6 +23,7 @@ const AddCasesProvider = ({ children }: Props) => {
     selectedAnesthesia: [],
     date: "",
     dpjpUserId: "",
+    isExam: false,
   });
 
   return (

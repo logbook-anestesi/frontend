@@ -2,11 +2,13 @@ interface Operation {
   category: string;
   operation: string;
 }
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: string[];
   date: string;
   dpjpUserId: string;
+  isExam: boolean;
 }
 
 interface SetSelectedOperation {
@@ -37,10 +39,18 @@ interface SetDPJP {
   };
 }
 
+interface SetIsExam {
+  type: "set_is_exam";
+  data: {
+    isExam: boolean;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
   | SetDate
-  | SetDPJP;
+  | SetDPJP
+  | SetIsExam;
 
 export type { ACTION_TYPE, InitialState };
