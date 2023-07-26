@@ -7,13 +7,15 @@ import {
 } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
 import ModalProcedureType from "../ModalProcedureType";
+import Ticker from "../../../../components/Ticker";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   procedureList: ProcedureType[];
 }
 
 const FormTypeProcedure = ({ procedureList }: Props) => {
-  // const { selectedAnesthesia } = useAddCasesContext();
+  const { selectedProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     // isOpen: isOpenAddOther,
@@ -44,7 +46,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         <ChevronRightIcon boxSize={7} />
       </Flex>
 
-      {/* <Flex
+      <Flex
         mt={1}
         gap={2}
         overflowX="auto"
@@ -54,10 +56,10 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
           },
         }}
       >
-        {selectedAnesthesia.map((anesthesia, idx) => (
-          <Ticker text={anesthesia} key={idx} />
+        {selectedProcedure.map((procedure, idx) => (
+          <Ticker text={procedure} key={idx} />
         ))}
-      </Flex> */}
+      </Flex>
 
       {/* Modal Section */}
       <ModalProcedureType
