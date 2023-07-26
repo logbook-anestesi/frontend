@@ -9,6 +9,7 @@ const initialState: InitialState = {
   caseType: "OK",
   operationTypeIds: [],
   anesthesiaTypeIds: [],
+  selectedProcedure: [],
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -64,6 +65,15 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         anesthesiaTypeIds: [
           ...state.anesthesiaTypeIds,
           action.data.anesthesiaId,
+        ],
+      };
+    }
+    case "set_procedure_type": {
+      return {
+        ...state,
+        selectedProcedure: [
+          ...state.selectedProcedure,
+          action.data.procedureType,
         ],
       };
     }
