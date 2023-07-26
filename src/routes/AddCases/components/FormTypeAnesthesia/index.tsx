@@ -1,7 +1,7 @@
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import ModalTypeProcedure from "../ModalTypeProcedure";
+import ModalAnesthesiType from "../ModalAnesthesiType";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
 import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
@@ -60,7 +60,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
       </Flex>
 
       {/* Modal Section */}
-      <ModalTypeProcedure
+      <ModalAnesthesiType
         closeModal={onClose}
         isOpen={isOpen}
         anesthesiaList={anesthesiaList}

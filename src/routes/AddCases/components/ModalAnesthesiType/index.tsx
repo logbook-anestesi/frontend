@@ -31,7 +31,7 @@ interface Props {
   onOpenAddOther: () => void;
 }
 
-const ModalTypeProcedure = ({
+const ModalAnesthesiType = ({
   isOpen,
   closeModal,
   anesthesiaList,
@@ -105,4 +105,4 @@ const ModalTypeProcedure = ({
   );
 };
 
-export default ModalTypeProcedure;
+export default ModalAnesthesiType;
