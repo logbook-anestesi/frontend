@@ -9,6 +9,7 @@ interface InitialState {
   date: string;
   dpjpUserId: string;
   isExam: boolean;
+  caseType: string;
 }
 
 interface SetSelectedOperation {
@@ -46,11 +47,19 @@ interface SetIsExam {
   };
 }
 
+interface SetCaseType {
+  type: "set_case_type";
+  data: {
+    caseType: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
   | SetDate
   | SetDPJP
-  | SetIsExam;
+  | SetIsExam
+  | SetCaseType;
 
 export type { ACTION_TYPE, InitialState };

@@ -6,6 +6,7 @@ const initialState: InitialState = {
   date: "",
   dpjpUserId: "",
   isExam: false,
+  caseType: "OK",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -41,6 +42,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         isExam: action.data.isExam,
+      };
+    }
+    case "set_case_type": {
+      return {
+        ...state,
+        caseType: action.data.caseType,
       };
     }
   }
