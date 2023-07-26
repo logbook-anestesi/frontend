@@ -20,12 +20,12 @@ const CardProcedureType = ({ procedure, closeModal, setProcedure }: Props) => {
       },
     });
 
-    // casesDispatch({
-    //   type: "set_anethesia_type_ids",
-    //   data: {
-    //     anesthesiaId: procedure.id,
-    //   },
-    // });
+    casesDispatch({
+      type: "set_procedure_type_ids",
+      data: {
+        procedureId: procedure.id,
+      },
+    });
 
     setProcedure(procedure);
     closeModal();

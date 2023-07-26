@@ -13,6 +13,7 @@ const AddCasesContext = createContext<InitialState>({
   operationTypeIds: [],
   anesthesiaTypeIds: [],
   selectedProcedure: [],
+  procedureTypeIds: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -32,6 +33,7 @@ const AddCasesProvider = ({ children }: Props) => {
     operationTypeIds: [],
     anesthesiaTypeIds: [],
     selectedProcedure: [],
+    procedureTypeIds: [],
   });
 
   return (
