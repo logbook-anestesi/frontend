@@ -28,18 +28,18 @@ export const RADIO_AGE_GROUP = [
   },
 ];
 
-export const DUMMY_RADIO_ITEM_3 = [
+export const RADIO_PRIORITY = [
   {
-    title: "Elevtive",
-    value: "Elevtive",
+    title: "Elective",
+    value: "ELECTIVE",
   },
   {
     title: "Emergency",
-    value: "Emergency",
+    value: "EMERGENCY",
   },
   {
     title: "Urgent",
-    value: "Urgent",
+    value: "URGENT",
   },
 ];
 

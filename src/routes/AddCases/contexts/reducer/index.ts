@@ -13,6 +13,7 @@ const initialState: InitialState = {
   procedureTypeIds: [],
   ageGroup: "",
   location: "",
+  priority: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -96,6 +97,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         location: action.data.location,
+      };
+    }
+    case "set_priority": {
+      return {
+        ...state,
+        priority: action.data.priority,
       };
     }
   }

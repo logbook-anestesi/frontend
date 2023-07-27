@@ -12,6 +12,7 @@ import { colors } from "../../constants/colors";
 import FormTypeProcedure from "./components/FormTypeProcedure";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import FormRadioLocation from "./components/FormRadioLocation";
+import FormRadioPriority from "./components/FormRadioPriority";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -31,6 +32,7 @@ const AddCases = () => {
         <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
         <FormRadioAgeGroup />
         <FormRadioLocation />
+        <FormRadioPriority />
         <FormOperation formData={casesForm?.operationTypes || []} />
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
