@@ -15,6 +15,7 @@ interface InitialState {
   anesthesiaTypeIds: string[];
   procedureTypeIds: string[];
   ageGroup: string;
+  location: string;
 }
 
 interface SetSelectedOperation {
@@ -94,6 +95,13 @@ interface SetAgeGroup {
   };
 }
 
+interface SetLocation {
+  type: "set_location";
+  data: {
+    location: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -105,6 +113,7 @@ type ACTION_TYPE =
   | SetAnesthesiaTypeIds
   | SetProcedureType
   | SetProcedureTypeIds
-  | SetAgeGroup;
+  | SetAgeGroup
+  | SetLocation;
 
 export type { ACTION_TYPE, InitialState };

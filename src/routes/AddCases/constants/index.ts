@@ -43,10 +43,10 @@ export const DUMMY_RADIO_ITEM_3 = [
   },
 ];
 
-export const DUMMY_RADIO_ITEM_4 = [
+export const RADIO_LOCATION = [
   {
-    title: "Lokasi",
-    value: "Lokasi",
+    title: "RSCM",
+    value: "RSCM",
   },
   {
     title: "RS Jejaring",

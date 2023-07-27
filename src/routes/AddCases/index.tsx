@@ -11,6 +11,7 @@ import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
 import { colors } from "../../constants/colors";
 import FormTypeProcedure from "./components/FormTypeProcedure";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
+import FormRadioLocation from "./components/FormRadioLocation";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -29,6 +30,7 @@ const AddCases = () => {
         <FormDPJP />
         <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
         <FormRadioAgeGroup />
+        <FormRadioLocation />
         <FormOperation formData={casesForm?.operationTypes || []} />
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />

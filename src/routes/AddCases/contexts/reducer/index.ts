@@ -12,6 +12,7 @@ const initialState: InitialState = {
   selectedProcedure: [],
   procedureTypeIds: [],
   ageGroup: "",
+  location: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -89,6 +90,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         ageGroup: action.data.ageGroup,
+      };
+    }
+    case "set_location": {
+      return {
+        ...state,
+        location: action.data.location,
       };
     }
   }
