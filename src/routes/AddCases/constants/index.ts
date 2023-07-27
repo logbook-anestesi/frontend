@@ -9,22 +9,22 @@ export const RADIO_EXAM = [
   },
 ];
 
-export const DUMMY_RADIO_ITEM_2 = [
+export const RADIO_AGE_GROUP = [
   {
     title: "Neo",
-    value: "Neo",
+    value: "NEO",
   },
   {
     title: "Peds",
-    value: "Peds",
+    value: "PEDS",
   },
   {
     title: "Adult",
-    value: "Adult",
+    value: "ADULT",
   },
   {
     title: "Geriatric",
-    value: "Geriatric",
+    value: "GERIATRIC",
   },
 ];
 
