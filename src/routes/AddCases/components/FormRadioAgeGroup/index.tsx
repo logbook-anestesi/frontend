@@ -1,20 +1,21 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RADIO_AGE_GROUP } from "../../constants";
+import { useAddCasesDispatch } from "../../contexts";
 
 const FormRadioAgeGroup = () => {
-  // const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("1");
+  const casesDispatch = useAddCasesDispatch();
+  const [value, setValue] = useState("");
 
-  // useEffect(() => {
-  //   casesDispatch({
-  //     type: "set_is_exam",
-  //     data: {
-  //       isExam: value === "Ya",
-  //     },
-  //   });
-  // }, [casesDispatch, value]);
+  useEffect(() => {
+    casesDispatch({
+      type: "set_age_group",
+      data: {
+        ageGroup: value,
+      },
+    });
+  }, [casesDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>

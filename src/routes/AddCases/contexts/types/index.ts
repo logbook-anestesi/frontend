@@ -14,6 +14,7 @@ interface InitialState {
   operationTypeIds: string[];
   anesthesiaTypeIds: string[];
   procedureTypeIds: string[];
+  ageGroup: string;
 }
 
 interface SetSelectedOperation {
@@ -86,6 +87,13 @@ interface SetProcedureTypeIds {
   };
 }
 
+interface SetAgeGroup {
+  type: "set_age_group";
+  data: {
+    ageGroup: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -96,6 +104,7 @@ type ACTION_TYPE =
   | SetOperationTypeIds
   | SetAnesthesiaTypeIds
   | SetProcedureType
-  | SetProcedureTypeIds;
+  | SetProcedureTypeIds
+  | SetAgeGroup;
 
 export type { ACTION_TYPE, InitialState };

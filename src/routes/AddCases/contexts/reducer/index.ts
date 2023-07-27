@@ -11,6 +11,7 @@ const initialState: InitialState = {
   anesthesiaTypeIds: [],
   selectedProcedure: [],
   procedureTypeIds: [],
+  ageGroup: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -82,6 +83,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         procedureTypeIds: [...state.procedureTypeIds, action.data.procedureId],
+      };
+    }
+    case "set_age_group": {
+      return {
+        ...state,
+        ageGroup: action.data.ageGroup,
       };
     }
   }
