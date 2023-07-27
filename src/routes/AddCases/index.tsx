@@ -1,41 +1,53 @@
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import FormDate from "./components/FormDate";
 import FormDPJP from "./components/FormDPJP";
-import FormRadio from "./components/FormRadio";
-import {
-  DUMMY_RADIO_ITEM_1,
-  DUMMY_RADIO_ITEM_2,
-  DUMMY_RADIO_ITEM_3,
-  DUMMY_RADIO_ITEM_4,
-} from "./components/FormRadio/dummyRadio";
+import FormRadioExam from "./components/FormRadioExam";
+import { RADIO_EXAM } from "./constants";
 import FormOperation from "./components/FormOperation";
-import AddCasesProvider from "./contexts";
+import { useAddCasesContext } from "./contexts";
 import useGetCasesForm from "./hooks/useGetCasesForm";
 import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
+import { colors } from "../../constants/colors";
+import FormTypeProcedure from "./components/FormTypeProcedure";
+import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
+import FormRadioLocation from "./components/FormRadioLocation";
+import FormRadioPriority from "./components/FormRadioPriority";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
+  const state = useAddCasesContext();
+
+  const handleSubmitForm = () => {
+    console.log("999 INI ADALAH HASIL AKHIR FORM", state);
+  };
 
   return (
-    <AddCasesProvider>
-      <Flex flexDirection="column">
-        <Header pathBack="/cases" title="Tambah OK/Surgery" />
+    <Flex flexDirection="column">
+      <Header pathBack="/cases" title="Tambah OK/Surgery" />
 
-        <Flex padding="30px" direction="column" gap={4}>
-          <FormDate />
-          <FormDPJP />
-          <FormRadio title="Merupakan Exam*" listOptions={DUMMY_RADIO_ITEM_1} />
-          <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_2} />
-          <FormRadio title="Jenis*" listOptions={DUMMY_RADIO_ITEM_3} />
-          <FormRadio title="Lokasi*" listOptions={DUMMY_RADIO_ITEM_4} />
-          <FormOperation formData={casesForm?.operationTypes || []} />
-          <FormTypeAnesthesia
-            anesthesiaList={casesForm?.anesthesiaTypes || []}
-          />
-        </Flex>
+      <Flex padding="30px" direction="column" gap={4}>
+        <FormDate />
+        <FormDPJP />
+        <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
+        <FormRadioAgeGroup />
+        <FormRadioLocation />
+        <FormRadioPriority />
+        <FormOperation formData={casesForm?.operationTypes || []} />
+        <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
+        <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
+
+        <Button
+          colorScheme="teal"
+          backgroundColor={colors.primaryPurple}
+          color={colors.white}
+          onClick={handleSubmitForm}
+          // isLoading={loading}
+        >
+          Submit
+        </Button>
       </Flex>
-    </AddCasesProvider>
+    </Flex>
   );
 };
 

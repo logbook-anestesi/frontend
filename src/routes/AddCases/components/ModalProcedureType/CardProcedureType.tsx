@@ -1,30 +1,33 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
+import { ProcedureType } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
 import { useAddCasesDispatch } from "../../contexts";
 
 interface Props {
-  anesthesia: AnesthesiaType;
+  procedure: ProcedureType;
   closeModal: () => void;
-  setAnesthesia: Dispatch<SetStateAction<AnesthesiaType | undefined>>;
+  setProcedure: Dispatch<SetStateAction<ProcedureType | undefined>>;
 }
 
-const CardTypeProcedure = ({
-  anesthesia,
-  closeModal,
-  setAnesthesia,
-}: Props) => {
+const CardProcedureType = ({ procedure, closeModal, setProcedure }: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_selected_anesthesia",
+      type: "set_procedure_type",
       data: {
-        anesthesia: anesthesia.name,
+        procedureType: procedure.name,
       },
     });
 
-    setAnesthesia(anesthesia);
+    casesDispatch({
+      type: "set_procedure_type_ids",
+      data: {
+        procedureId: procedure.id,
+      },
+    });
+
+    setProcedure(procedure);
     closeModal();
   };
 
@@ -36,10 +39,10 @@ const CardTypeProcedure = ({
       fontSize="md"
       onClick={handleClickCard}
     >
-      <Text>{anesthesia.name}</Text>
+      <Text>{procedure.name}</Text>
       <Divider />
     </Flex>
   );
 };
 
-export default CardTypeProcedure;
+export default CardProcedureType;

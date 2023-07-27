@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Input,
   InputGroup,
   InputRightElement,
@@ -11,7 +12,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
-import CardTypeProcedure from "./CardTypeProcedure";
 import {
   ChangeEvent,
   Dispatch,
@@ -21,6 +21,7 @@ import {
 } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
+import CardAnesthesiType from "./CardAnesthesiType";
 
 interface Props {
   isOpen: boolean;
@@ -30,7 +31,7 @@ interface Props {
   onOpenAddOther: () => void;
 }
 
-const ModalTypeProcedure = ({
+const ModalAnesthesiType = ({
   isOpen,
   closeModal,
   anesthesiaList,
@@ -81,25 +82,27 @@ const ModalTypeProcedure = ({
           alignSelf="center"
           fontSize="sm"
           color={colors.primaryPurple}
-          mb={2}
+          mb={5}
           onClick={handleClickAddOther}
         >
           Tipe tidak ada di daftar
         </Text>
 
-        {filteredAnesthesi?.map((anesthesia) => {
-          return (
-            <CardTypeProcedure
-              key={anesthesia.id}
-              anesthesia={anesthesia}
-              closeModal={closeModal}
-              setAnesthesia={setAnesthesia}
-            />
-          );
-        })}
+        <Flex direction="column" maxH={300} overflowY="scroll">
+          {filteredAnesthesi?.map((anesthesia) => {
+            return (
+              <CardAnesthesiType
+                key={anesthesia.id}
+                anesthesia={anesthesia}
+                closeModal={closeModal}
+                setAnesthesia={setAnesthesia}
+              />
+            );
+          })}
+        </Flex>
       </ModalContent>
     </Modal>
   );
 };
 
-export default ModalTypeProcedure;
+export default ModalAnesthesiType;

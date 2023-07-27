@@ -6,6 +6,17 @@ import { reducer } from "./reducer";
 const AddCasesContext = createContext<InitialState>({
   selectedOperation: [],
   selectedAnesthesia: [],
+  date: "",
+  dpjpUserId: "",
+  isExam: false,
+  caseType: "OK",
+  operationTypeIds: [],
+  anesthesiaTypeIds: [],
+  selectedProcedure: [],
+  procedureTypeIds: [],
+  ageGroup: "",
+  location: "",
+  priority: "",
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -18,6 +29,17 @@ const AddCasesProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, {
     selectedOperation: [],
     selectedAnesthesia: [],
+    date: "",
+    dpjpUserId: "",
+    isExam: false,
+    caseType: "OK",
+    operationTypeIds: [],
+    anesthesiaTypeIds: [],
+    selectedProcedure: [],
+    procedureTypeIds: [],
+    ageGroup: "",
+    location: "",
+    priority: "",
   });
 
   return (

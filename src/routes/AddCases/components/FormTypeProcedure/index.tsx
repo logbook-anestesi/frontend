@@ -1,32 +1,34 @@
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import ModalAnesthesiType from "../ModalAnesthesiType";
-import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
+import {
+  AnesthesiaType,
+  ProcedureType,
+} from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
-import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
-import { useAddCasesContext } from "../../contexts";
+import ModalProcedureType from "../ModalProcedureType";
 import Ticker from "../../../../components/Ticker";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
-  anesthesiaList: AnesthesiaType[];
+  procedureList: ProcedureType[];
 }
 
-const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
-  const { selectedAnesthesia } = useAddCasesContext();
+const FormTypeProcedure = ({ procedureList }: Props) => {
+  const { selectedProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
-    isOpen: isOpenAddOther,
-    onClose: onCloseAddOther,
+    // isOpen: isOpenAddOther,
+    // onClose: onCloseAddOther,
     onOpen: onOpenAddOther,
   } = useDisclosure();
 
-  const [anesthesia, setAnesthesia] = useState<AnesthesiaType>();
+  const [procedure, setProcedure] = useState<AnesthesiaType>();
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Anastesi*
+        Procedure Done*
       </Text>
 
       <Flex
@@ -39,7 +41,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>{anesthesia?.name || "Masukkan tipe anastesi ..."}</Text>
+        <Text>{procedure?.name || "Masukkan nama procedur ..."}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -54,26 +56,26 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
           },
         }}
       >
-        {selectedAnesthesia.map((anesthesia, idx) => (
-          <Ticker text={anesthesia} key={idx} />
+        {selectedProcedure.map((procedure, idx) => (
+          <Ticker text={procedure} key={idx} />
         ))}
       </Flex>
 
       {/* Modal Section */}
-      <ModalAnesthesiType
+      <ModalProcedureType
         closeModal={onClose}
         isOpen={isOpen}
-        anesthesiaList={anesthesiaList}
-        setAnesthesia={setAnesthesia}
+        procedureList={procedureList}
+        setProcedure={setProcedure}
         onOpenAddOther={onOpenAddOther}
       />
 
-      <ModalAddOtherAnesthesia
+      {/* <ModalAddOtherAnesthesia
         isOpen={isOpenAddOther}
         closeModal={onCloseAddOther}
-      />
+      /> */}
     </Flex>
   );
 };
 
-export default FormTypeAnesthesia;
+export default FormTypeProcedure;

@@ -1,6 +1,7 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAddCasesDispatch } from "../../contexts";
 
 interface Option {
   title: string;
@@ -12,8 +13,18 @@ interface Props {
   listOptions: Option[];
 }
 
-const FormRadio = ({ title, listOptions }: Props) => {
+const FormRadioExam = ({ title, listOptions }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
   const [value, setValue] = useState("1");
+
+  useEffect(() => {
+    casesDispatch({
+      type: "set_is_exam",
+      data: {
+        isExam: value === "Ya",
+      },
+    });
+  }, [casesDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>
@@ -43,4 +54,4 @@ const FormRadio = ({ title, listOptions }: Props) => {
   );
 };
 
-export default FormRadio;
+export default FormRadioExam;
