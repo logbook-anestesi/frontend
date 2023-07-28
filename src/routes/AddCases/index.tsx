@@ -1,4 +1,4 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Divider, Flex, Text } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import FormDate from "./components/FormDate";
 import FormDPJP from "./components/FormDPJP";
@@ -13,6 +13,7 @@ import FormTypeProcedure from "./components/FormTypeProcedure";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import FormRadioLocation from "./components/FormRadioLocation";
 import FormRadioPriority from "./components/FormRadioPriority";
+import FormUsiaAndRM from "./components/FormUsiaAndRM";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -36,6 +37,14 @@ const AddCases = () => {
         <FormOperation formData={casesForm?.operationTypes || []} />
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
+
+        <Divider />
+
+        <Text as="b" fontSize="xl">
+          Data Pasien
+        </Text>
+
+        <FormUsiaAndRM />
 
         <Button
           colorScheme="teal"

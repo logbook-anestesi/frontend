@@ -17,6 +17,8 @@ interface InitialState {
   ageGroup: string;
   location: string;
   priority: string;
+  patientAge: number;
+  patientRecordNumber: string;
 }
 
 interface SetSelectedOperation {
@@ -110,6 +112,20 @@ interface SetPriority {
   };
 }
 
+interface SetPatientAge {
+  type: "set_patient_age";
+  data: {
+    age: number;
+  };
+}
+
+interface SetPatientRecordNumber {
+  type: "set_patient_rm";
+  data: {
+    rm: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -123,6 +139,8 @@ type ACTION_TYPE =
   | SetProcedureTypeIds
   | SetAgeGroup
   | SetLocation
-  | SetPriority;
+  | SetPriority
+  | SetPatientAge
+  | SetPatientRecordNumber;
 
 export type { ACTION_TYPE, InitialState };

@@ -14,6 +14,8 @@ const initialState: InitialState = {
   ageGroup: "",
   location: "",
   priority: "",
+  patientAge: 0,
+  patientRecordNumber: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -103,6 +105,18 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         priority: action.data.priority,
+      };
+    }
+    case "set_patient_age": {
+      return {
+        ...state,
+        patientAge: action.data.age,
+      };
+    }
+    case "set_patient_rm": {
+      return {
+        ...state,
+        patientRecordNumber: action.data.rm,
       };
     }
   }
