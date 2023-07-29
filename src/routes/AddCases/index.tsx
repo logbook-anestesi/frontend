@@ -14,6 +14,7 @@ import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import FormRadioLocation from "./components/FormRadioLocation";
 import FormRadioPriority from "./components/FormRadioPriority";
 import FormUsiaAndRM from "./components/FormUsiaAndRM";
+import FormRadioGender from "./components/FormRadioGender";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -45,6 +46,7 @@ const AddCases = () => {
         </Text>
 
         <FormUsiaAndRM />
+        <FormRadioGender />
 
         <Button
           colorScheme="teal"
