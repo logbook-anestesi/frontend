@@ -1,8 +1,12 @@
 import { Button, Stack } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import { colors } from "../../../../constants/colors";
+import { colors } from "../../constants/colors";
 
-const ButtonTambah = () => {
+interface ButtonTambahInterface {
+  buttonTitle: string;
+}
+
+const ButtonTambah = ({buttonTitle}: ButtonTambahInterface) => {
   return (
     <Stack direction="row" spacing={4}>
       <Button
@@ -12,7 +16,7 @@ const ButtonTambah = () => {
         color={colors.primaryPurple}
         width="100%"
       >
-        Tambah Cases
+        {buttonTitle}
       </Button>
     </Stack>
   );
