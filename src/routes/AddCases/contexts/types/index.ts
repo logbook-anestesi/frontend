@@ -7,6 +7,7 @@ interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: string[];
   selectedProcedure: string[];
+  selectedASATags: string[];
   date: string;
   dpjpUserId: string;
   isExam: boolean;
@@ -14,6 +15,7 @@ interface InitialState {
   operationTypeIds: string[];
   anesthesiaTypeIds: string[];
   procedureTypeIds: string[];
+  asaTagsIds: string[];
   ageGroup: string;
   location: string;
   priority: string;
@@ -150,6 +152,20 @@ interface SetAsIsEmergency {
   };
 }
 
+interface SetASATags {
+  type: "set_asa_tags";
+  data: {
+    tag: string;
+  };
+}
+
+interface SetASATagsId {
+  type: "set_asa_tags_type_ids";
+  data: {
+    tagId: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -168,6 +184,8 @@ type ACTION_TYPE =
   | SetPatientRecordNumber
   | SetPatientGender
   | SetTier
-  | SetAsIsEmergency;
+  | SetAsIsEmergency
+  | SetASATags
+  | SetASATagsId;
 
 export type { ACTION_TYPE, InitialState };

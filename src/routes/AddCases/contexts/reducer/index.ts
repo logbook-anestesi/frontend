@@ -3,6 +3,7 @@ import { ACTION_TYPE, InitialState } from "../types";
 const initialState: InitialState = {
   selectedOperation: [],
   selectedAnesthesia: [],
+  selectedASATags: [],
   date: "",
   dpjpUserId: "",
   isExam: false,
@@ -11,6 +12,7 @@ const initialState: InitialState = {
   anesthesiaTypeIds: [],
   selectedProcedure: [],
   procedureTypeIds: [],
+  asaTagsIds: [],
   ageGroup: "",
   location: "",
   priority: "",
@@ -138,6 +140,18 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         asaTier: action.data.tier,
+      };
+    }
+    case "set_asa_tags": {
+      return {
+        ...state,
+        selectedASATags: [...state.selectedASATags, action.data.tag],
+      };
+    }
+    case "set_asa_tags_type_ids": {
+      return {
+        ...state,
+        asaTagsIds: [...state.asaTagsIds, action.data.tagId],
       };
     }
   }

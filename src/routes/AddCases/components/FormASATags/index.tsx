@@ -4,13 +4,15 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Tag } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
 import ModalASATags from "../ModalASATags";
+import Ticker from "../../../../components/Ticker";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   tagList: Tag[];
 }
 
 const FormASATags = ({ tagList }: Props) => {
-  // const { selectedAnesthesia } = useAddCasesContext();
+  const { selectedASATags } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenAddOther,
@@ -41,7 +43,7 @@ const FormASATags = ({ tagList }: Props) => {
         <ChevronRightIcon boxSize={7} />
       </Flex>
 
-      {/* <Flex
+      <Flex
         mt={1}
         gap={2}
         overflowX="auto"
@@ -51,10 +53,10 @@ const FormASATags = ({ tagList }: Props) => {
           },
         }}
       >
-        {selectedAnesthesia.map((anesthesia, idx) => (
-          <Ticker text={anesthesia} key={idx} />
+        {selectedASATags.map((tag, idx) => (
+          <Ticker text={tag} key={idx} />
         ))}
-      </Flex> */}
+      </Flex>
 
       {/* Modal Section */}
       <ModalASATags
