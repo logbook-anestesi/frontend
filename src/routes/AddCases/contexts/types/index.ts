@@ -26,6 +26,7 @@ interface InitialState {
   patientGender: string;
   asaTier: number;
   asaIsEmergency: boolean;
+  notes: string;
 }
 
 interface SetSelectedOperation {
@@ -182,6 +183,13 @@ interface SetSupervisorIds {
   };
 }
 
+interface SetNote {
+  type: "set_note";
+  data: {
+    note: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -204,6 +212,7 @@ type ACTION_TYPE =
   | SetASATags
   | SetASATagsId
   | SetSupervisor
-  | SetSupervisorIds;
+  | SetSupervisorIds
+  | SetNote;
 
 export type { ACTION_TYPE, InitialState };

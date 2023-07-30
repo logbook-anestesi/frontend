@@ -26,6 +26,7 @@ const AddCasesContext = createContext<InitialState>({
   patientGender: "MALE",
   asaIsEmergency: false,
   asaTier: 0,
+  notes: "",
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -58,6 +59,7 @@ const AddCasesProvider = ({ children }: Props) => {
     patientGender: "MALE",
     asaIsEmergency: false,
     asaTier: 0,
+    notes: "",
   });
 
   return (

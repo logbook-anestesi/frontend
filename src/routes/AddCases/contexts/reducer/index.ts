@@ -23,6 +23,7 @@ const initialState: InitialState = {
   patientGender: "MALE",
   asaIsEmergency: false,
   asaTier: 0,
+  notes: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -169,6 +170,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         supervisorIds: [...state.supervisorIds, action.data.supervisorId],
+      };
+    }
+    case "set_note": {
+      return {
+        ...state,
+        notes: action.data.note,
       };
     }
   }
