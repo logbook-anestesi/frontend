@@ -18,7 +18,11 @@ const useAddTags = () => {
       }
 
       if (!data.error) {
-        return { success: true, message: "Berhasil Update Stase" };
+        return {
+          success: true,
+          message: "Berhasil Update Stase",
+          tagId: data?.data?.id,
+        };
       }
     } catch (e) {
       setLoading(false);

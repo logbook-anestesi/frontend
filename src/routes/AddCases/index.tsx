@@ -19,6 +19,7 @@ import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
 import FormASATags from "./components/FormASATags";
 import FormSupervised from "./components/FormSupervised";
 import FormNotes from "./components/FormNotes";
+import FormAdditionalTags from "./components/FormAdditionalTags";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -65,6 +66,7 @@ const AddCases = () => {
 
         <FormSupervised />
         <FormNotes />
+        <FormAdditionalTags />
 
         <Button
           colorScheme="teal"

@@ -24,6 +24,8 @@ const initialState: InitialState = {
   asaIsEmergency: false,
   asaTier: 0,
   notes: "",
+  additionalTags: [],
+  additionalTagIds: [],
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -176,6 +178,18 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         notes: action.data.note,
+      };
+    }
+    case "set_additional_tags": {
+      return {
+        ...state,
+        additionalTags: [...state.additionalTags, action.data.tag],
+      };
+    }
+    case "set_additional_tag_ids": {
+      return {
+        ...state,
+        additionalTagIds: [...state.additionalTagIds, action.data.tagId],
       };
     }
   }

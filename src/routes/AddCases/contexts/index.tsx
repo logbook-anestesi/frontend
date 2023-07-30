@@ -27,6 +27,8 @@ const AddCasesContext = createContext<InitialState>({
   asaIsEmergency: false,
   asaTier: 0,
   notes: "",
+  additionalTags: [],
+  additionalTagIds: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -60,6 +62,8 @@ const AddCasesProvider = ({ children }: Props) => {
     asaIsEmergency: false,
     asaTier: 0,
     notes: "",
+    additionalTags: [],
+    additionalTagIds: [],
   });
 
   return (

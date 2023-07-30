@@ -27,6 +27,8 @@ interface InitialState {
   asaTier: number;
   asaIsEmergency: boolean;
   notes: string;
+  additionalTags: string[];
+  additionalTagIds: string[];
 }
 
 interface SetSelectedOperation {
@@ -190,6 +192,20 @@ interface SetNote {
   };
 }
 
+interface SetAdditionalTags {
+  type: "set_additional_tags";
+  data: {
+    tag: string;
+  };
+}
+
+interface SetAdditionalTagIds {
+  type: "set_additional_tag_ids";
+  data: {
+    tagId: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -213,6 +229,8 @@ type ACTION_TYPE =
   | SetASATagsId
   | SetSupervisor
   | SetSupervisorIds
-  | SetNote;
+  | SetNote
+  | SetAdditionalTags
+  | SetAdditionalTagIds;
 
 export type { ACTION_TYPE, InitialState };
