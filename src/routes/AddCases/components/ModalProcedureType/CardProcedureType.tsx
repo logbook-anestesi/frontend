@@ -1,26 +1,33 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
+import { ProcedureType } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
-import { DPJP } from "../../hooks/useGetDPJP/types";
 import { useAddCasesDispatch } from "../../contexts";
 
 interface Props {
-  dpjp: DPJP;
-  setDPJP: Dispatch<SetStateAction<DPJP | undefined>>;
+  procedure: ProcedureType;
   closeModal: () => void;
+  setProcedure: Dispatch<SetStateAction<ProcedureType | undefined>>;
 }
 
-const CardName = ({ dpjp, setDPJP, closeModal }: Props) => {
+const CardProcedureType = ({ procedure, closeModal, setProcedure }: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_dpjp",
+      type: "set_procedure_type",
       data: {
-        dpjpId: dpjp.id,
+        procedureType: procedure.name,
       },
     });
 
-    setDPJP(dpjp);
+    casesDispatch({
+      type: "set_procedure_type_ids",
+      data: {
+        procedureId: procedure.id,
+      },
+    });
+
+    setProcedure(procedure);
     closeModal();
   };
 
@@ -32,10 +39,10 @@ const CardName = ({ dpjp, setDPJP, closeModal }: Props) => {
       fontSize="md"
       onClick={handleClickCard}
     >
-      <Text>{dpjp.name}</Text>
+      <Text>{procedure.name}</Text>
       <Divider />
     </Flex>
   );
 };
 
-export default CardName;
+export default CardProcedureType;

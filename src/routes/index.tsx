@@ -14,6 +14,7 @@ import AddCasesPage from "./AddCases";
 import CompetencePage from "./Competence";
 import CasesReviewDashboardPage from "./CasesReviewDashboard";
 import StationDashboardPage from "./StationDashboard";
+import AddCasesProvider from "./AddCases/contexts";
 
 const MainRoutes = () => {
   return (
@@ -35,7 +36,14 @@ const MainRoutes = () => {
         <Route path="/dashboard/station" element={<StationDashboardPage />} />
 
         <Route path="/cases" element={<CasesPage />} />
-        <Route path="/cases/add/:type" element={<AddCasesPage />} />
+        <Route
+          path="/cases/add/:type"
+          element={
+            <AddCasesProvider>
+              <AddCasesPage />
+            </AddCasesProvider>
+          }
+        />
       </Route>
 
       <Route path="/login" element={<Login />} />

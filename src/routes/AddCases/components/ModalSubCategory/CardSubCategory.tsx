@@ -22,6 +22,13 @@ const CardSubCategory = ({ subCategory, closeModal, operationName }: Props) => {
         },
       },
     });
+
+    casesDispatch({
+      type: "set_operation_type_ids",
+      data: {
+        operationId: subCategory.id,
+      },
+    });
   };
 
   return (

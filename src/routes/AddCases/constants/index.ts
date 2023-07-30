@@ -1,4 +1,4 @@
-export const DUMMY_RADIO_ITEM_1 = [
+export const RADIO_EXAM = [
   {
     title: "Ya",
     value: "Ya",
@@ -9,44 +9,44 @@ export const DUMMY_RADIO_ITEM_1 = [
   },
 ];
 
-export const DUMMY_RADIO_ITEM_2 = [
+export const RADIO_AGE_GROUP = [
   {
     title: "Neo",
-    value: "Neo",
+    value: "NEO",
   },
   {
     title: "Peds",
-    value: "Peds",
+    value: "PEDS",
   },
   {
     title: "Adult",
-    value: "Adult",
+    value: "ADULT",
   },
   {
     title: "Geriatric",
-    value: "Geriatric",
+    value: "GERIATRIC",
   },
 ];
 
-export const DUMMY_RADIO_ITEM_3 = [
+export const RADIO_PRIORITY = [
   {
-    title: "Elevtive",
-    value: "Elevtive",
+    title: "Elective",
+    value: "ELECTIVE",
   },
   {
     title: "Emergency",
-    value: "Emergency",
+    value: "EMERGENCY",
   },
   {
     title: "Urgent",
-    value: "Urgent",
+    value: "URGENT",
   },
 ];
 
-export const DUMMY_RADIO_ITEM_4 = [
+export const RADIO_LOCATION = [
   {
-    title: "Lokasi",
-    value: "Lokasi",
+    title: "RSCM",
+    value: "RSCM",
   },
   {
     title: "RS Jejaring",
