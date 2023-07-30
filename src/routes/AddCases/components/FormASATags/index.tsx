@@ -6,6 +6,7 @@ import { useState } from "react";
 import ModalASATags from "../ModalASATags";
 import Ticker from "../../../../components/Ticker";
 import { useAddCasesContext } from "../../contexts";
+import ModalAddOtherASAtags from "../ModalAddOtherASATags";
 
 interface Props {
   tagList: Tag[];
@@ -67,10 +68,10 @@ const FormASATags = ({ tagList }: Props) => {
         onOpenAddOther={onOpenAddOther}
       />
 
-      {/* <ModalAddOtherAnesthesia
+      <ModalAddOtherASAtags
         isOpen={isOpenAddOther}
         closeModal={onCloseAddOther}
-      /> */}
+      />
     </Flex>
   );
 };
