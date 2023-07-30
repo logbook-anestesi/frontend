@@ -9,6 +9,7 @@ import { useState } from "react";
 import ModalProcedureType from "../ModalProcedureType";
 import Ticker from "../../../../components/Ticker";
 import { useAddCasesContext } from "../../contexts";
+import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
   procedureList: ProcedureType[];
@@ -18,8 +19,8 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
   const { selectedProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
-    // isOpen: isOpenAddOther,
-    // onClose: onCloseAddOther,
+    isOpen: isOpenAddOther,
+    onClose: onCloseAddOther,
     onOpen: onOpenAddOther,
   } = useDisclosure();
 
@@ -70,10 +71,10 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         onOpenAddOther={onOpenAddOther}
       />
 
-      {/* <ModalAddOtherAnesthesia
+      <ModalAddOtherTypeProcedure
         isOpen={isOpenAddOther}
         closeModal={onCloseAddOther}
-      /> */}
+      />
     </Flex>
   );
 };

@@ -10,34 +10,34 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import useAddAnesthesia from "../../hooks/useAddAnesthesia";
 import { ChangeEvent, useState } from "react";
 import { useAddCasesDispatch } from "../../contexts";
+import useAddProcedureType from "../../hooks/useAddProcedureType";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
 }
 
-const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
+const ModalAddOtherTypeProcedure = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
-  const { createAnesthesia, loading } = useAddAnesthesia();
-  const [anesthesia, setAnesthesia] = useState("");
+  const { createProcedureType, loading } = useAddProcedureType();
+  const [procedureType, setProcedureType] = useState("");
 
-  const handleCreateAnesthesia = async () => {
-    const response = await createAnesthesia({ name: anesthesia });
+  const handleCreateProcedureType = async () => {
+    const response = await createProcedureType({ name: procedureType });
 
     casesDispatch({
-      type: "set_selected_anesthesia",
+      type: "set_procedure_type",
       data: {
-        anesthesia: anesthesia,
+        procedureType: procedureType,
       },
     });
 
     casesDispatch({
-      type: "set_anethesia_type_ids",
+      type: "set_procedure_type_ids",
       data: {
-        anesthesiaId: response?.anesthesiaId,
+        procedureId: response?.procedureTypeId,
       },
     });
 
@@ -45,7 +45,7 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
   };
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setAnesthesia(e.target.value);
+    setProcedureType(e.target.value);
   };
 
   return (
@@ -53,14 +53,14 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <ModalHeader pl={2} py={4} pr={7}>
-          Masukkan tipe operasi lainnya
+          Masukkan Type Procedure Lainnya
         </ModalHeader>
 
         <ModalCloseButton />
 
         <InputGroup>
           <Input
-            placeholder="Masukkan tipe operasi ..."
+            placeholder="Masukkan type procedure ..."
             onChange={handleChangeInput}
           />
         </InputGroup>
@@ -71,7 +71,7 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
           color={colors.white}
-          onClick={handleCreateAnesthesia}
+          onClick={handleCreateProcedureType}
           isLoading={loading}
         >
           Submit
@@ -81,4 +81,4 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
   );
 };
 
-export default ModalAddOtherAnesthesia;
+export default ModalAddOtherTypeProcedure;
