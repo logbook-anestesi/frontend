@@ -6,6 +6,8 @@ import { reducer } from "./reducer";
 const AddCasesContext = createContext<InitialState>({
   selectedOperation: [],
   selectedAnesthesia: [],
+  selectedASATags: [],
+  selectedSupervisor: [],
   date: "",
   dpjpUserId: "",
   isExam: false,
@@ -14,9 +16,19 @@ const AddCasesContext = createContext<InitialState>({
   anesthesiaTypeIds: [],
   selectedProcedure: [],
   procedureTypeIds: [],
+  supervisorIds: [],
+  asaTagsIds: [],
   ageGroup: "",
   location: "",
   priority: "",
+  patientAge: 0,
+  patientRecordNumber: "",
+  patientGender: "MALE",
+  asaIsEmergency: false,
+  asaTier: 0,
+  notes: "",
+  additionalTags: [],
+  additionalTagIds: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -29,6 +41,8 @@ const AddCasesProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, {
     selectedOperation: [],
     selectedAnesthesia: [],
+    selectedASATags: [],
+    selectedSupervisor: [],
     date: "",
     dpjpUserId: "",
     isExam: false,
@@ -37,9 +51,19 @@ const AddCasesProvider = ({ children }: Props) => {
     anesthesiaTypeIds: [],
     selectedProcedure: [],
     procedureTypeIds: [],
+    supervisorIds: [],
+    asaTagsIds: [],
     ageGroup: "",
     location: "",
     priority: "",
+    patientAge: 0,
+    patientRecordNumber: "",
+    patientGender: "MALE",
+    asaIsEmergency: false,
+    asaTier: 0,
+    notes: "",
+    additionalTags: [],
+    additionalTagIds: [],
   });
 
   return (

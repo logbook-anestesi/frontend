@@ -3,6 +3,8 @@ import { ACTION_TYPE, InitialState } from "../types";
 const initialState: InitialState = {
   selectedOperation: [],
   selectedAnesthesia: [],
+  selectedASATags: [],
+  selectedSupervisor: [],
   date: "",
   dpjpUserId: "",
   isExam: false,
@@ -11,9 +13,19 @@ const initialState: InitialState = {
   anesthesiaTypeIds: [],
   selectedProcedure: [],
   procedureTypeIds: [],
+  supervisorIds: [],
+  asaTagsIds: [],
   ageGroup: "",
   location: "",
   priority: "",
+  patientAge: 0,
+  patientRecordNumber: "",
+  patientGender: "MALE",
+  asaIsEmergency: false,
+  asaTier: 0,
+  notes: "",
+  additionalTags: [],
+  additionalTagIds: [],
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -103,6 +115,81 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         priority: action.data.priority,
+      };
+    }
+    case "set_patient_age": {
+      return {
+        ...state,
+        patientAge: action.data.age,
+      };
+    }
+    case "set_patient_rm": {
+      return {
+        ...state,
+        patientRecordNumber: action.data.rm,
+      };
+    }
+    case "set_patient_gender": {
+      return {
+        ...state,
+        patientGender: action.data.gender,
+      };
+    }
+    case "set_emergency": {
+      return {
+        ...state,
+        asaIsEmergency: action.data.isEmergency,
+      };
+    }
+    case "set_tier": {
+      return {
+        ...state,
+        asaTier: action.data.tier,
+      };
+    }
+    case "set_asa_tags": {
+      return {
+        ...state,
+        selectedASATags: [...state.selectedASATags, action.data.tag],
+      };
+    }
+    case "set_asa_tags_type_ids": {
+      return {
+        ...state,
+        asaTagsIds: [...state.asaTagsIds, action.data.tagId],
+      };
+    }
+    case "set_supervisor": {
+      return {
+        ...state,
+        selectedSupervisor: [
+          ...state.selectedSupervisor,
+          action.data.supervisor,
+        ],
+      };
+    }
+    case "set_supervisor_ids": {
+      return {
+        ...state,
+        supervisorIds: [...state.supervisorIds, action.data.supervisorId],
+      };
+    }
+    case "set_note": {
+      return {
+        ...state,
+        notes: action.data.note,
+      };
+    }
+    case "set_additional_tags": {
+      return {
+        ...state,
+        additionalTags: [...state.additionalTags, action.data.tag],
+      };
+    }
+    case "set_additional_tag_ids": {
+      return {
+        ...state,
+        additionalTagIds: [...state.additionalTagIds, action.data.tagId],
       };
     }
   }
