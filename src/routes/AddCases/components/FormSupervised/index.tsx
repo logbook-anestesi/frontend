@@ -4,20 +4,13 @@ import profileIcon from "../../assets/profile.png";
 import { useState } from "react";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import ModalSupervisor from "../ModalSupervisor";
+import { useAddCasesContext } from "../../contexts";
+import Ticker from "../../../../components/Ticker";
 
 const FormSupervised = () => {
-  // const casesDispatch = useAddCasesDispatch();
+  const { selectedSupervisor: supervisorList } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedSupervisor, setSelectedSupervisor] = useState<Supervisor>();
-
-  // useEffect(() => {
-  //   casesDispatch({
-  //     type: "set_dpjp",
-  //     data: {
-  //       dpjpId: selectedDPJP?.id || "",
-  //     },
-  //   });
-  // }, [casesDispatch, selectedDPJP?.id]);
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
@@ -38,6 +31,21 @@ const FormSupervised = () => {
         <Text>{selectedSupervisor?.name || "Masukkan Supervisor"}</Text>
 
         <Image src={profileIcon} width={5} alt="" />
+      </Flex>
+
+      <Flex
+        mt={1}
+        gap={2}
+        overflowX="auto"
+        css={{
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
+        {supervisorList.map((supervisor, idx) => (
+          <Ticker text={supervisor} key={idx} />
+        ))}
       </Flex>
 
       <ModalSupervisor

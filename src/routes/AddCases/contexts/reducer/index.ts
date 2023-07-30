@@ -13,6 +13,7 @@ const initialState: InitialState = {
   anesthesiaTypeIds: [],
   selectedProcedure: [],
   procedureTypeIds: [],
+  supervisorIds: [],
   asaTagsIds: [],
   ageGroup: "",
   location: "",
@@ -162,6 +163,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           ...state.selectedSupervisor,
           action.data.supervisor,
         ],
+      };
+    }
+    case "set_supervisor_ids": {
+      return {
+        ...state,
+        supervisorIds: [...state.supervisorIds, action.data.supervisorId],
       };
     }
   }

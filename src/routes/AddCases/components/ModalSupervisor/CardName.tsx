@@ -20,6 +20,13 @@ const CardName = ({ setSupervisor, supervisor, closeModal }: Props) => {
       },
     });
 
+    casesDispatch({
+      type: "set_supervisor_ids",
+      data: {
+        supervisorId: supervisor.id,
+      },
+    });
+
     setSupervisor(supervisor);
     closeModal();
   };

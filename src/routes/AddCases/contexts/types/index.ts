@@ -16,6 +16,7 @@ interface InitialState {
   operationTypeIds: string[];
   anesthesiaTypeIds: string[];
   procedureTypeIds: string[];
+  supervisorIds: string[];
   asaTagsIds: string[];
   ageGroup: string;
   location: string;
@@ -174,6 +175,13 @@ interface SetSupervisor {
   };
 }
 
+interface SetSupervisorIds {
+  type: "set_supervisor_ids";
+  data: {
+    supervisorId: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -195,6 +203,7 @@ type ACTION_TYPE =
   | SetAsIsEmergency
   | SetASATags
   | SetASATagsId
-  | SetSupervisor;
+  | SetSupervisor
+  | SetSupervisorIds;
 
 export type { ACTION_TYPE, InitialState };
