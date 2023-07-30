@@ -25,11 +25,18 @@ const ModalAddOtherASAtags = ({ isOpen, closeModal }: Props) => {
   const [tag, setTag] = useState("");
 
   const handleCreateTag = async () => {
-    await createTag({ name: tag });
+    const response = await createTag({ name: tag });
     casesDispatch({
       type: "set_asa_tags",
       data: {
         tag: tag,
+      },
+    });
+
+    casesDispatch({
+      type: "set_asa_tags_type_ids",
+      data: {
+        tagId: response?.tagId,
       },
     });
 
