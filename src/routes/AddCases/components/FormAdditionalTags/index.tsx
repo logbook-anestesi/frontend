@@ -49,6 +49,10 @@ const FormAdditionalTags = () => {
         ))}
       </Flex>
 
+      <Text fontSize="3xs" color={colors.darkGrey} mt={1}>
+        Gunakan aditional tags untuk mengelompokkan kasus - kasus tertentu
+      </Text>
+
       {/* Modal Section */}
       <ModalAddAdditionalTags
         isOpen={isOpenAddOther}
