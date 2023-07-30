@@ -17,6 +17,7 @@ import FormUsiaAndRM from "./components/FormUsiaAndRM";
 import FormRadioGender from "./components/FormRadioGender";
 import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
 import FormASATags from "./components/FormASATags";
+import FormSupervised from "./components/FormSupervised";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -58,6 +59,10 @@ const AddCases = () => {
 
         <FormTingkatAndEmergency />
         <FormASATags tagList={casesForm?.tags || []} />
+
+        <Divider />
+
+        <FormSupervised />
 
         <Button
           colorScheme="teal"

@@ -4,6 +4,7 @@ const initialState: InitialState = {
   selectedOperation: [],
   selectedAnesthesia: [],
   selectedASATags: [],
+  selectedSupervisor: [],
   date: "",
   dpjpUserId: "",
   isExam: false,
@@ -152,6 +153,15 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         asaTagsIds: [...state.asaTagsIds, action.data.tagId],
+      };
+    }
+    case "set_supervisor": {
+      return {
+        ...state,
+        selectedSupervisor: [
+          ...state.selectedSupervisor,
+          action.data.supervisor,
+        ],
       };
     }
   }

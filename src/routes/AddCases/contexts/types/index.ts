@@ -8,6 +8,7 @@ interface InitialState {
   selectedAnesthesia: string[];
   selectedProcedure: string[];
   selectedASATags: string[];
+  selectedSupervisor: string[];
   date: string;
   dpjpUserId: string;
   isExam: boolean;
@@ -166,6 +167,13 @@ interface SetASATagsId {
   };
 }
 
+interface SetSupervisor {
+  type: "set_supervisor";
+  data: {
+    supervisor: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -186,6 +194,7 @@ type ACTION_TYPE =
   | SetTier
   | SetAsIsEmergency
   | SetASATags
-  | SetASATagsId;
+  | SetASATagsId
+  | SetSupervisor;
 
 export type { ACTION_TYPE, InitialState };
