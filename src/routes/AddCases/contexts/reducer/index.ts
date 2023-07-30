@@ -17,6 +17,8 @@ const initialState: InitialState = {
   patientAge: 0,
   patientRecordNumber: "",
   patientGender: "MALE",
+  asaIsEmergency: false,
+  asaTier: 0,
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -124,6 +126,18 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         patientGender: action.data.gender,
+      };
+    }
+    case "set_emergency": {
+      return {
+        ...state,
+        asaIsEmergency: action.data.isEmergency,
+      };
+    }
+    case "set_tier": {
+      return {
+        ...state,
+        asaTier: action.data.tier,
       };
     }
   }

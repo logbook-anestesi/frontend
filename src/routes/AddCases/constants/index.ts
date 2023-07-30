@@ -64,3 +64,14 @@ export const RADIO_GENDER = [
     value: "FEMALE",
   },
 ];
+
+export const RADIO_EMERGENCY = [
+  {
+    title: "Ya",
+    value: "ya",
+  },
+  {
+    title: "Tidak",
+    value: "tidak",
+  },
+];

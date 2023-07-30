@@ -15,6 +15,7 @@ import FormRadioLocation from "./components/FormRadioLocation";
 import FormRadioPriority from "./components/FormRadioPriority";
 import FormUsiaAndRM from "./components/FormUsiaAndRM";
 import FormRadioGender from "./components/FormRadioGender";
+import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
@@ -47,6 +48,14 @@ const AddCases = () => {
 
         <FormUsiaAndRM />
         <FormRadioGender />
+
+        <Divider />
+
+        <Text as="b" fontSize="xl">
+          ASA
+        </Text>
+
+        <FormTingkatAndEmergency />
 
         <Button
           colorScheme="teal"

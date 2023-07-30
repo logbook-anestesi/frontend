@@ -20,6 +20,8 @@ interface InitialState {
   patientAge: number;
   patientRecordNumber: string;
   patientGender: string;
+  asaTier: number;
+  asaIsEmergency: boolean;
 }
 
 interface SetSelectedOperation {
@@ -134,6 +136,20 @@ interface SetPatientGender {
   };
 }
 
+interface SetTier {
+  type: "set_tier";
+  data: {
+    tier: number;
+  };
+}
+
+interface SetAsIsEmergency {
+  type: "set_emergency";
+  data: {
+    isEmergency: boolean;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -150,6 +166,8 @@ type ACTION_TYPE =
   | SetPriority
   | SetPatientAge
   | SetPatientRecordNumber
-  | SetPatientGender;
+  | SetPatientGender
+  | SetTier
+  | SetAsIsEmergency;
 
 export type { ACTION_TYPE, InitialState };
