@@ -1,4 +1,4 @@
-import { Button, Divider, Flex, Text } from "@chakra-ui/react";
+import { Button, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import FormDate from "./components/FormDate";
 import FormDPJP from "./components/FormDPJP";
@@ -21,10 +21,12 @@ import FormSupervised from "./components/FormSupervised";
 import FormNotes from "./components/FormNotes";
 import FormAdditionalTags from "./components/FormAdditionalTags";
 import useAddCases from "./hooks/useAddCases";
+import { useNavigate } from "react-router-dom";
 
 const AddCases = () => {
+  const toast = useToast();
+  const navigate = useNavigate();
   const { casesForm } = useGetCasesForm();
-  const state = useAddCasesContext();
   const { createCases, loading } = useAddCases();
   const {
     location,
@@ -70,9 +72,31 @@ const AddCases = () => {
       caseType,
       tagIds,
     });
-    console.log("999 INI ADALAH HASIL AKHIR FORM", state);
 
-    console.log("999 INI HASIL SUBMIT", response);
+    if (response?.success) {
+      toast({
+        title: "Success",
+        description: "Case Berhasil Dibuat",
+        status: "success",
+        position: "top",
+        duration: 5000,
+        isClosable: true,
+      });
+
+      navigate("/cases");
+      return;
+    }
+
+    if (!response?.success) {
+      toast({
+        title: "Failed Add Cases",
+        description: response?.message,
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

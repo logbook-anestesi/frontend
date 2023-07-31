@@ -22,12 +22,16 @@ const useAddCases = () => {
         return {
           success: true,
           message: "Berhasil Create Stase",
-          casesId: data.data.id,
         };
       }
-    } catch (e) {
+    } catch (e: any) {
       setLoading(false);
+      const errorMessage =
+        e?.response?.data?.message?.[0] || "An error occurred.";
+
       console.log("[Error Update Stase]", e);
+
+      return { success: false, message: errorMessage };
     }
   }, []);
 
