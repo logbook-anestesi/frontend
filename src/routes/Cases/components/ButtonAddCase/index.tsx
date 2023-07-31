@@ -30,6 +30,7 @@ const ButtonAddCase = ({ caseName }: Props) => {
       color={colors.primaryPurple}
       borderRadius={10}
       onClick={handleOnClick}
+      mb={3}
     >
       <Text as="b">+ Tambah {caseName}</Text>
     </Button>
