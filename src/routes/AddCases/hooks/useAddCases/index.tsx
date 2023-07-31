@@ -1,17 +1,15 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
+import { CreateCasePayload } from "./types";
 
-const useAddAnesthesia = () => {
+const useAddCases = () => {
   const [loading, setLoading] = useState(false);
 
-  const createAnesthesia = useCallback(async (payload: { name: string }) => {
+  const createCases = useCallback(async (payload: CreateCasePayload) => {
     setLoading(true);
 
     try {
-      const response = await axiosClient.post(
-        "/cases/anesthesia-type/",
-        payload
-      );
+      const response = await axiosClient.post("/cases/", payload);
       const data = response.data;
 
       setLoading(false);
@@ -23,20 +21,24 @@ const useAddAnesthesia = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Update Stase",
-          anesthesiaId: data.data.id,
+          message: "Berhasil Create Stase",
         };
       }
-    } catch (e) {
+    } catch (e: any) {
       setLoading(false);
+      const errorMessage =
+        e?.response?.data?.message?.[0] || "An error occurred.";
+
       console.log("[Error Update Stase]", e);
+
+      return { success: false, message: errorMessage };
     }
   }, []);
 
   return {
-    createAnesthesia,
+    createCases,
     loading,
   };
 };
 
-export default useAddAnesthesia;
+export default useAddCases;

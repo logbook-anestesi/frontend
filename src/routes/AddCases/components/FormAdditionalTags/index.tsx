@@ -49,7 +49,7 @@ const FormAdditionalTags = () => {
         ))}
       </Flex>
 
-      <Text fontSize="3xs" color={colors.darkGrey} mt={1}>
+      <Text fontSize="3xs" color={colors.darkGrey}>
         Gunakan aditional tags untuk mengelompokkan kasus - kasus tertentu
       </Text>
 

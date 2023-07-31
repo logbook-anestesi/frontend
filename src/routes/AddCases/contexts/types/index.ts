@@ -17,7 +17,7 @@ interface InitialState {
   anesthesiaTypeIds: string[];
   procedureTypeIds: string[];
   supervisorIds: string[];
-  asaTagsIds: string[];
+  asaTagIds: string[];
   ageGroup: string;
   location: string;
   priority: string;
@@ -28,7 +28,7 @@ interface InitialState {
   asaIsEmergency: boolean;
   notes: string;
   additionalTags: string[];
-  additionalTagIds: string[];
+  tagIds: string[];
 }
 
 interface SetSelectedOperation {

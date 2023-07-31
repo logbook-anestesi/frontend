@@ -1,15 +1,15 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
 
-const useAddAnesthesia = () => {
+const useAddProcedureType = () => {
   const [loading, setLoading] = useState(false);
 
-  const createAnesthesia = useCallback(async (payload: { name: string }) => {
+  const createProcedureType = useCallback(async (payload: { name: string }) => {
     setLoading(true);
 
     try {
       const response = await axiosClient.post(
-        "/cases/anesthesia-type/",
+        "/cases/procedure-type/",
         payload
       );
       const data = response.data;
@@ -23,8 +23,8 @@ const useAddAnesthesia = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Update Stase",
-          anesthesiaId: data.data.id,
+          message: "Berhasil Update Procedure",
+          procedureTypeId: data.data.id,
         };
       }
     } catch (e) {
@@ -34,9 +34,9 @@ const useAddAnesthesia = () => {
   }, []);
 
   return {
-    createAnesthesia,
+    createProcedureType,
     loading,
   };
 };
 
-export default useAddAnesthesia;
+export default useAddProcedureType;
