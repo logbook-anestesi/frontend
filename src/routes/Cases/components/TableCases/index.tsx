@@ -17,7 +17,7 @@ interface Props {
 
 const TableCases = ({ caseList }: Props) => {
   return (
-    <TableContainer>
+    <TableContainer maxHeight={300} overflowY="scroll">
       <Table variant="striped" colorScheme="gray" size="sm">
         <Thead>
           <Tr color={colors.primaryPurple}>
