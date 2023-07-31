@@ -20,13 +20,59 @@ import FormASATags from "./components/FormASATags";
 import FormSupervised from "./components/FormSupervised";
 import FormNotes from "./components/FormNotes";
 import FormAdditionalTags from "./components/FormAdditionalTags";
+import useAddCases from "./hooks/useAddCases";
 
 const AddCases = () => {
   const { casesForm } = useGetCasesForm();
   const state = useAddCasesContext();
+  const { createCases, loading } = useAddCases();
+  const {
+    location,
+    date,
+    isExam,
+    ageGroup,
+    patientAge,
+    patientRecordNumber,
+    patientGender,
+    asaTier,
+    priority,
+    notes,
+    dpjpUserId,
+    operationTypeIds,
+    anesthesiaTypeIds,
+    procedureTypeIds,
+    supervisorIds,
+    asaTagIds,
+    tagIds,
+    asaIsEmergency,
+    caseType,
+  } = useAddCasesContext();
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
+    const response = await createCases({
+      location,
+      date,
+      isExam,
+      ageGroup,
+      patientAge,
+      patientRecordNumber,
+      patientGender,
+      asaTier,
+      priority,
+      notes,
+      dpjpUserId,
+      operationTypeIds,
+      anesthesiaTypeIds,
+      procedureTypeIds,
+      supervisorIds,
+      asaTagIds,
+      asaIsEmergency,
+      caseType,
+      tagIds,
+    });
     console.log("999 INI ADALAH HASIL AKHIR FORM", state);
+
+    console.log("999 INI HASIL SUBMIT", response);
   };
 
   return (
@@ -73,7 +119,7 @@ const AddCases = () => {
           backgroundColor={colors.primaryPurple}
           color={colors.white}
           onClick={handleSubmitForm}
-          // isLoading={loading}
+          isLoading={loading}
         >
           Submit
         </Button>

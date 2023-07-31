@@ -17,7 +17,7 @@ const AddCasesContext = createContext<InitialState>({
   selectedProcedure: [],
   procedureTypeIds: [],
   supervisorIds: [],
-  asaTagsIds: [],
+  asaTagIds: [],
   ageGroup: "",
   location: "",
   priority: "",
@@ -28,7 +28,7 @@ const AddCasesContext = createContext<InitialState>({
   asaTier: 0,
   notes: "",
   additionalTags: [],
-  additionalTagIds: [],
+  tagIds: [],
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -52,7 +52,7 @@ const AddCasesProvider = ({ children }: Props) => {
     selectedProcedure: [],
     procedureTypeIds: [],
     supervisorIds: [],
-    asaTagsIds: [],
+    asaTagIds: [],
     ageGroup: "",
     location: "",
     priority: "",
@@ -63,7 +63,7 @@ const AddCasesProvider = ({ children }: Props) => {
     asaTier: 0,
     notes: "",
     additionalTags: [],
-    additionalTagIds: [],
+    tagIds: [],
   });
 
   return (

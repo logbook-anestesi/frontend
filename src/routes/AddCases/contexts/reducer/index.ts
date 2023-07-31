@@ -14,7 +14,7 @@ const initialState: InitialState = {
   selectedProcedure: [],
   procedureTypeIds: [],
   supervisorIds: [],
-  asaTagsIds: [],
+  asaTagIds: [],
   ageGroup: "",
   location: "",
   priority: "",
@@ -25,7 +25,7 @@ const initialState: InitialState = {
   asaTier: 0,
   notes: "",
   additionalTags: [],
-  additionalTagIds: [],
+  tagIds: [],
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -156,7 +156,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case "set_asa_tags_type_ids": {
       return {
         ...state,
-        asaTagsIds: [...state.asaTagsIds, action.data.tagId],
+        asaTagIds: [...state.asaTagIds, action.data.tagId],
       };
     }
     case "set_supervisor": {
@@ -189,7 +189,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case "set_additional_tag_ids": {
       return {
         ...state,
-        additionalTagIds: [...state.additionalTagIds, action.data.tagId],
+        tagIds: [...state.tagIds, action.data.tagId],
       };
     }
   }
