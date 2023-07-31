@@ -8,8 +8,11 @@ import { CASE_LIST } from "../../constants/caseList";
 import ButtonAddCase from "./components/ButtonAddCase";
 import CaseListSection from "./components/CaseListSection";
 import BottomNav from "./components/BottomNav";
+import useGetCases from "./hooks/useGetCases";
+import LoaderCircle from "../../components/LoaderCircle";
 
 const Cases = () => {
+  const { caseList, loading } = useGetCases();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedCase, setSelectedCase] = useState<Case>(CASE_LIST[0]);
 
@@ -27,7 +30,7 @@ const Cases = () => {
           />
 
           <ButtonAddCase caseName={selectedCase.title} />
-          <CaseListSection />
+          {loading ? <LoaderCircle /> : <CaseListSection caseList={caseList} />}
         </Flex>
 
         <BottomNav />

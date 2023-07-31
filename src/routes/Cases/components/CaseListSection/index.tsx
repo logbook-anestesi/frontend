@@ -7,8 +7,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import TableCases from "../TableCases";
+import { Case } from "../../hooks/useGetCases/types";
 
-const CaseListSection = () => {
+interface Props {
+  caseList: Case[];
+}
+
+const CaseListSection = ({ caseList }: Props) => {
   return (
     <Flex direction="column" mt={5} gap={3}>
       <Text as="b" fontSize="xl">
@@ -22,7 +27,7 @@ const CaseListSection = () => {
         </InputRightElement>
       </InputGroup>
 
-      <TableCases />
+      <TableCases caseList={caseList} />
     </Flex>
   );
 };
