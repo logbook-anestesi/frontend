@@ -25,11 +25,19 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
   const [anesthesia, setAnesthesia] = useState("");
 
   const handleCreateAnesthesia = async () => {
-    await createAnesthesia({ name: anesthesia });
+    const response = await createAnesthesia({ name: anesthesia });
+
     casesDispatch({
       type: "set_selected_anesthesia",
       data: {
         anesthesia: anesthesia,
+      },
+    });
+
+    casesDispatch({
+      type: "set_anethesia_type_ids",
+      data: {
+        anesthesiaId: response?.anesthesiaId,
       },
     });
 

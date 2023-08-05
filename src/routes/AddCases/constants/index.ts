@@ -53,3 +53,25 @@ export const RADIO_LOCATION = [
     value: "RS Jejaring",
   },
 ];
+
+export const RADIO_GENDER = [
+  {
+    title: "Laki - Laki",
+    value: "MALE",
+  },
+  {
+    title: "Perempuan",
+    value: "FEMALE",
+  },
+];
+
+export const RADIO_EMERGENCY = [
+  {
+    title: "Ya",
+    value: "ya",
+  },
+  {
+    title: "Tidak",
+    value: "tidak",
+  },
+];

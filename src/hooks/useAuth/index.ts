@@ -12,8 +12,10 @@ import {
   UserDataInterface,
 } from "./types";
 import { useAuthDispatch } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [loginResponse, setLoginResponse] = useState<LoginResponse>();
   const [registerResponses, setRegisterResponses] =
@@ -92,7 +94,9 @@ const useAuth = () => {
     message.success("Logout Success");
 
     setAuthState({ isAuthenticated: false });
-  }, []);
+
+    navigate("/login");
+  }, [navigate]);
 
   const accountData = useMemo<UserDataInterface>(() => {
     const jwtToken = Cookies.get("jwt_token") || "";

@@ -8,11 +8,19 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import { DUMMY_CASES } from "../../../../constants/dummyCase";
+import { Case } from "../../hooks/useGetCases/types";
+import { formatDateMonthYear } from "../../../../helpers";
+import { useNavigate } from "react-router-dom";
 
-const TableCases = () => {
+interface Props {
+  caseList: Case[];
+}
+
+const TableCases = ({ caseList }: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <TableContainer>
+    <TableContainer maxHeight={300} overflowY="scroll">
       <Table variant="striped" colorScheme="gray" size="sm">
         <Thead>
           <Tr color={colors.primaryPurple}>
@@ -25,15 +33,18 @@ const TableCases = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {DUMMY_CASES?.map((caseData) => {
+          {caseList?.map((caseData) => {
             return (
-              <Tr key={`userStase-${caseData.id}`}>
-                <Td>{caseData.id}</Td>
-                <Td>{caseData.date}</Td>
-                <Td>{caseData.dpjp}</Td>
-                <Td>{caseData.type}</Td>
-                <Td>{caseData.status}</Td>
-                <Td>{caseData.supervising}</Td>
+              <Tr
+                key={`userStase-${caseData.id}`}
+                onClick={() => navigate("/cases/details")}
+              >
+                <Td>{caseData?.id.substring(0, 5)}</Td>
+                <Td>{formatDateMonthYear(new Date(caseData?.date))}</Td>
+                <Td>{caseData?.dpjpUserName}</Td>
+                <Td>{caseData?.caseType}</Td>
+                <Td>{caseData?.notes}</Td>
+                <Td>{caseData?.supervisees[0]?.userName}</Td>
               </Tr>
             );
           })}

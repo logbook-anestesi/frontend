@@ -1,4 +1,4 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import FormDate from "./components/FormDate";
 import FormDPJP from "./components/FormDPJP";
@@ -13,13 +13,90 @@ import FormTypeProcedure from "./components/FormTypeProcedure";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import FormRadioLocation from "./components/FormRadioLocation";
 import FormRadioPriority from "./components/FormRadioPriority";
+import FormUsiaAndRM from "./components/FormUsiaAndRM";
+import FormRadioGender from "./components/FormRadioGender";
+import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
+import FormASATags from "./components/FormASATags";
+import FormSupervised from "./components/FormSupervised";
+import FormNotes from "./components/FormNotes";
+import FormAdditionalTags from "./components/FormAdditionalTags";
+import useAddCases from "./hooks/useAddCases";
+import { useNavigate } from "react-router-dom";
 
 const AddCases = () => {
+  const toast = useToast();
+  const navigate = useNavigate();
   const { casesForm } = useGetCasesForm();
-  const state = useAddCasesContext();
+  const { createCases, loading } = useAddCases();
+  const {
+    location,
+    date,
+    isExam,
+    ageGroup,
+    patientAge,
+    patientRecordNumber,
+    patientGender,
+    asaTier,
+    priority,
+    notes,
+    dpjpUserId,
+    operationTypeIds,
+    anesthesiaTypeIds,
+    procedureTypeIds,
+    supervisorIds,
+    asaTagIds,
+    tagIds,
+    asaIsEmergency,
+    caseType,
+  } = useAddCasesContext();
 
-  const handleSubmitForm = () => {
-    console.log("999 INI ADALAH HASIL AKHIR FORM", state);
+  const handleSubmitForm = async () => {
+    const response = await createCases({
+      location,
+      date,
+      isExam,
+      ageGroup,
+      patientAge,
+      patientRecordNumber,
+      patientGender,
+      asaTier,
+      priority,
+      notes,
+      dpjpUserId,
+      operationTypeIds,
+      anesthesiaTypeIds,
+      procedureTypeIds,
+      supervisorIds,
+      asaTagIds,
+      asaIsEmergency,
+      caseType,
+      tagIds,
+    });
+
+    if (response?.success) {
+      toast({
+        title: "Success",
+        description: "Case Berhasil Dibuat",
+        status: "success",
+        position: "top",
+        duration: 5000,
+        isClosable: true,
+      });
+
+      navigate("/cases");
+      return;
+    }
+
+    if (!response?.success) {
+      toast({
+        title: "Failed Add Cases",
+        description: response?.message,
+        status: "error",
+        position: "top",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -37,12 +114,36 @@ const AddCases = () => {
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
 
+        <Divider />
+
+        <Text as="b" fontSize="xl">
+          Data Pasien
+        </Text>
+
+        <FormUsiaAndRM />
+        <FormRadioGender />
+
+        <Divider />
+
+        <Text as="b" fontSize="xl">
+          ASA
+        </Text>
+
+        <FormTingkatAndEmergency />
+        <FormASATags tagList={casesForm?.tags || []} />
+
+        <Divider />
+
+        <FormSupervised />
+        <FormNotes />
+        <FormAdditionalTags />
+
         <Button
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
           color={colors.white}
           onClick={handleSubmitForm}
-          // isLoading={loading}
+          isLoading={loading}
         >
           Submit
         </Button>

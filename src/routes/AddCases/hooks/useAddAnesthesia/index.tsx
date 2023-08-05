@@ -21,7 +21,11 @@ const useAddAnesthesia = () => {
       }
 
       if (!data.error) {
-        return { success: true, message: "Berhasil Update Stase" };
+        return {
+          success: true,
+          message: "Berhasil Update Stase",
+          anesthesiaId: data.data.id,
+        };
       }
     } catch (e) {
       setLoading(false);

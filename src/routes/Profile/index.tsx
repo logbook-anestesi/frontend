@@ -1,26 +1,74 @@
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+
+import doctorIcon from "../../assets/doctor.png";
+import useGetProfile from "../../hooks/useGetProfile";
 import Header from "../../components/Header";
 import { colors } from "../../constants/colors";
-import profileDummy from "./assets/profileDummy.png";
-import { dummyDataProfile } from "./constants";
+import LoaderCircle from "../../components/LoaderCircle";
+import useAuth from "../../hooks/useAuth";
 
 const ProfilePage = () => {
+  const { loading, profile } = useGetProfile();
+  const { logoutAccount } = useAuth();
+
+  const selectedProfileData = [
+    {
+      label: "Nama",
+      value: profile?.name,
+    },
+    {
+      label: "NPM",
+      value: profile?.npm,
+    },
+    {
+      label: "Email",
+      value: profile?.email,
+    },
+    {
+      label: "No. Handphone",
+      value: profile?.phoneNumber,
+    },
+    {
+      label: "Term",
+      value: profile?.joinTerm,
+    },
+    {
+      label: "Level Kompetensi",
+      value: profile?.role,
+    },
+  ];
+
+  if (loading) {
+    return (
+      <Flex direction="column">
+        <Header title="Profile" pathBack="/" />
+        <Box mb={20} />
+        <LoaderCircle />
+      </Flex>
+    );
+  }
+
   return (
-    <div>
+    <Flex direction="column">
       <Header title="Profile" pathBack="/" />
       <Flex direction="column" gap="38px" padding="30px">
         <Flex direction="column" align="center" gap="8px">
-          <Image src={profileDummy} width="135px" height="135px" />
+          <Image
+            src={profile?.imageUrl || doctorIcon}
+            width="80px"
+            height="80px"
+            mb={3}
+          />
           <Text as="b" fontSize="xs" color={colors.primaryPurple}>
             Ganti Foto
           </Text>
         </Flex>
 
         <Flex direction="column" gap="24px">
-          {dummyDataProfile.map((data) => (
+          {selectedProfileData.map((data) => (
             <Flex direction="column">
               <Text color={colors.darkGrey} fontSize="sm">
-                {data.title}
+                {data.label}
               </Text>
               <Text as="b" fontSize="sm">
                 {data.value}
@@ -32,11 +80,12 @@ const ProfilePage = () => {
           color={colors.white}
           backgroundColor={colors.primaryPurple}
           colorScheme={colors.lightPurple}
+          onClick={logoutAccount}
         >
           Logout
         </Button>
       </Flex>
-    </div>
+    </Flex>
   );
 };
 
