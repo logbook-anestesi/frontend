@@ -12,7 +12,7 @@ import ButtonTambah from "./components/ButtonTambah";
 import useGetProfile from "../../hooks/useGetProfile";
 
 const Home = () => {
-  const { loading, profile } = useGetProfile();
+  const { profile } = useGetProfile();
 
   return (
     <Flex direction="column" padding="30px" gap="30px">
