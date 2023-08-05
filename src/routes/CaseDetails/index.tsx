@@ -13,7 +13,7 @@ import {
 const CaseDetails = () => {
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/case" title="Case Detail" />
+      <Header pathBack="/cases" title="Case Detail" />
 
       <Flex padding="30px" direction="column" gap={4}>
         <FieldText label="Residen" value="dr. Ari Angga Nugraha" />
