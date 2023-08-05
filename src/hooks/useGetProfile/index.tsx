@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 
-import axiosClient from "../../../../networks/apiClient";
+import axiosClient from "../../networks/apiClient";
 import { Profile } from "./types";
 import { DecodedJwt } from "./types";
 

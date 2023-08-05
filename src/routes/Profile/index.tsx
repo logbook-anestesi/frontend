@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 
-import doctorIcon from "./assets/doctor.png";
-import useGetProfile from "./hooks/useGetProfile";
+import doctorIcon from "../../assets/doctor.png";
+import useGetProfile from "../../hooks/useGetProfile";
 import Header from "../../components/Header";
 import { colors } from "../../constants/colors";
 import LoaderCircle from "../../components/LoaderCircle";

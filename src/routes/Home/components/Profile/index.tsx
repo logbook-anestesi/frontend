@@ -6,7 +6,7 @@ import { colors } from "../../../../constants/colors";
 interface ProfileInterface {
   image: string;
   name: string;
-  term: string;
+  term: string | number;
 }
 
 const Profile = ({ image, name, term }: ProfileInterface) => {
@@ -18,12 +18,12 @@ const Profile = ({ image, name, term }: ProfileInterface) => {
 
   return (
     <Flex gap="16px" align="center">
-      <Image src={image} borderRadius="full" boxSize="58px" />
+      <Image src={image} boxSize="58px" />
       <Flex direction="column" width="100%" gap="7px">
         <Text as="b">{name}</Text>
 
         <Flex justify="space-between">
-          <Ticker text={term} />
+          <Ticker text={`Term ${term.toString()}`} />
           <Text
             as="b"
             fontSize="12px"

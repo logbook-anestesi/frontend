@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import HeaderHome from "./components/HeaderHome";
 import Profile from "./components/Profile";
-import dummyProfileImage from "../../assets/dummyPhotoProfile.png";
+import doctorIcon from "../../assets/doctor.png";
 import InfoBox from "../../components/InfoBox";
 import LevelCard from "./components/LevelCard";
 import ReportCard from "./components/ReportCard";
@@ -9,15 +9,18 @@ import cases from "./assets/cases.png";
 import exam from "./assets/exam.png";
 import ilmiah from "./assets/ilmiah.png";
 import ButtonTambah from "./components/ButtonTambah";
+import useGetProfile from "../../hooks/useGetProfile";
 
 const Home = () => {
+  const { profile } = useGetProfile();
+
   return (
     <Flex direction="column" padding="30px" gap="30px">
       <HeaderHome />
       <Profile
-        image={dummyProfileImage}
-        name="dr. Jessica Mila Agnesia"
-        term="Term 2022 / 1"
+        image={profile?.imageUrl || doctorIcon}
+        name={profile?.name || "-"}
+        term={profile?.joinTerm || "-"}
       />
 
       <Flex direction="column" gap="10px">
