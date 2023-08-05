@@ -6,8 +6,8 @@ import { colors, getCompetenceColor } from "../../../../constants/colors";
 interface CompetenceCardInterface {
     competenceNumber: Number;
     competenceLevel: string;
-    startDate: EpochTimeStamp | null | undefined;
-    endDate: EpochTimeStamp | null | undefined;
+    startDate: string | null | undefined;
+    endDate: string | null | undefined;
 }
 const CompetenceCard = ({ competenceNumber, competenceLevel, startDate, endDate}: CompetenceCardInterface) => {
     const fontColor = (startDate == undefined) ? colors.darkGrey : getCompetenceColor(competenceLevel)
