@@ -1,17 +1,22 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 
-const FieldResiden = () => {
+interface Props {
+  label: string;
+  value: string;
+}
+
+const FieldText = ({ label, value }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Residen
+        {label}
       </Text>
       <Text as="b" fontSize="sm">
-        Ari Angga Nugraha
+        {value}
       </Text>
     </Flex>
   );
 };
 
-export default FieldResiden;
+export default FieldText;
