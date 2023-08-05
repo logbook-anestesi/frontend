@@ -5,9 +5,11 @@ import useGetProfile from "../../hooks/useGetProfile";
 import Header from "../../components/Header";
 import { colors } from "../../constants/colors";
 import LoaderCircle from "../../components/LoaderCircle";
+import useAuth from "../../hooks/useAuth";
 
 const ProfilePage = () => {
   const { loading, profile } = useGetProfile();
+  const { logoutAccount } = useAuth();
 
   const selectedProfileData = [
     {
@@ -78,6 +80,7 @@ const ProfilePage = () => {
           color={colors.white}
           backgroundColor={colors.primaryPurple}
           colorScheme={colors.lightPurple}
+          onClick={logoutAccount}
         >
           Logout
         </Button>
