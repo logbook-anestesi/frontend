@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import FormASATags from "../AddCases/components/FormASATags";
 import FormTypeProcedure from "../AddCases/components/FormTypeProcedure";
 import FormTypeAnesthesia from "../AddCases/components/FormTypeAnesthesia";
+import FormNoraTypeProcedure from "../AddCases/components/FormNoraTypeProcedure";
 
 const AddCaseNora = () => {
   const toast = useToast();
@@ -128,8 +129,8 @@ const AddCaseNora = () => {
 
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
-        <FormTypeProcedure
-          procedureList={casesForm?.noraProcedureTypes || []}
+        <FormNoraTypeProcedure
+          noraProcedureList={casesForm?.noraProcedureTypes || []}
         />
 
         <FormNotes />

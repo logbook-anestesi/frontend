@@ -11,9 +11,15 @@ interface Props {
 const CaseListSection = ({ caseList, selectedCase }: Props) => {
   return (
     <Flex direction="column" mt={5} gap={3}>
-      <Text as="b" fontSize="xl" mb={3}>
-        Daftar Cases
-      </Text>
+      {selectedCase.value === "-" ? (
+        <Text as="b" fontSize="xl" mb={3}>
+          Daftar Seluruh Cases
+        </Text>
+      ) : (
+        <Text as="b" fontSize="xl" mb={3}>
+          Daftar Cases {selectedCase.title}
+        </Text>
+      )}
 
       {/* temporary hide */}
       {/* <InputGroup mb={3}>

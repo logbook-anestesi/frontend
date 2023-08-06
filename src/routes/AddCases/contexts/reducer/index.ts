@@ -15,6 +15,7 @@ const initialState: InitialState = {
   procedureTypeIds: [],
   supervisorIds: [],
   asaTagIds: [],
+  selectedNoraProcedure: [],
   noraProcedureTypeIds: [],
   ageGroup: "",
   location: "",
@@ -100,6 +101,27 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         procedureTypeIds: [...state.procedureTypeIds, action.data.procedureId],
       };
     }
+
+
+    case "set_nora_procedure_type": {
+      return {
+        ...state,
+        selectedNoraProcedure: [
+          ...state.selectedNoraProcedure,
+          action.data.noraProcedureType,
+        ],
+      };
+    }
+    case "set_nora_procedure_type_ids": {
+      return {
+        ...state,
+        noraProcedureTypeIds: [...state.noraProcedureTypeIds, action.data.noraProcedureId],
+      };
+    }
+
+
+
+
     case "set_age_group": {
       return {
         ...state,
