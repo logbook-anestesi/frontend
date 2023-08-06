@@ -2,11 +2,15 @@ import { Flex, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 
 interface Props {
-  label: string;
-  value: string;
+  label?: string;
+  value?: string | number;
 }
 
 const FieldText = ({ label, value }: Props) => {
+  if (!value) {
+    return null;
+  }
+
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>

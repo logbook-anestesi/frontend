@@ -9,54 +9,79 @@ import {
   DUMMY_TAGS,
   DUMMY_TYPE_OPERATION,
 } from "./constants";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import useGetDetailCases from "./hooks/useGetDetailCase";
+import LoaderCircle from "../../components/LoaderCircle";
 
 const CaseDetails = () => {
+  const location = useLocation();
+  const { caseData, loading } = useGetDetailCases(
+    location?.state?.caseId || ""
+  );
+
+  useEffect(() => {
+    console.log("999 INI CASE DATA", loading, caseData);
+  }, [caseData, loading, location.state]);
+
   return (
     <Flex flexDirection="column">
       <Header pathBack="/cases" title="Case Detail" />
 
       <Flex padding="30px" direction="column" gap={4}>
-        <FieldText label="Residen" value="dr. Ari Angga Nugraha" />
-        <FieldText label="DPJP" value="dr. Erlangga" />
-        <FieldText label="Merupakan Exam" value="Ya" />
+        {loading && <LoaderCircle />}
 
-        <Flex gap={20}>
-          <FieldText label="Age Group" value="Neo" />
-          <FieldText label="Priority" value="Elective" />
-        </Flex>
+        {!loading && (
+          <>
+            <FieldText label="Residen" value={caseData?.userName} />
+            <FieldText label="DPJP" value={caseData?.dpjpUserName} />
+            <FieldText
+              label="Merupakan Exam"
+              value={caseData?.isExam ? "Ya" : "Tidak"}
+            />
 
-        <FieldText label="Lokasi" value="RSCM" />
-        <FieldTicker label="Tipe Operasi" listValue={DUMMY_TYPE_OPERATION} />
-        <FieldTicker label="Tipe Anesthesi" listValue={DUMMY_ANESTHESIA} />
-        <FieldTicker label="Procedure Done" listValue={DUMMY_PROCEDURE} />
+            <Flex gap={20}>
+              <FieldText label="Age Group" value={caseData?.ageGroup} />
+              <FieldText label="Priority" value={caseData?.priority} />
+            </Flex>
 
-        <Divider />
+            <FieldText label="Lokasi" value={caseData?.location} />
+            <FieldTicker
+              label="Tipe Operasi"
+              listValue={DUMMY_TYPE_OPERATION}
+            />
+            <FieldTicker label="Tipe Anesthesi" listValue={DUMMY_ANESTHESIA} />
+            <FieldTicker label="Procedure Done" listValue={DUMMY_PROCEDURE} />
 
-        <Text as="b" fontSize="xl">
-          Data Pasien
-        </Text>
+            <Divider />
 
-        <Flex gap={20}>
-          <FieldText label="Tingkat" value="1" />
-          <FieldText label="Emergency" value="Ya" />
-        </Flex>
+            <Text as="b" fontSize="xl">
+              Data Pasien
+            </Text>
 
-        <FieldTicker label="Procedure Done" listValue={DUMMY_TAGS} />
+            <Flex gap={20}>
+              <FieldText label="Usia Pasien" value={caseData?.patientAge} />
+              <FieldText label="No. RM" value={caseData?.patientRecordNumber} />
+            </Flex>
 
-        <Divider />
+            <FieldTicker label="Procedure Done" listValue={DUMMY_TAGS} />
 
-        <FieldText label="Supervised By" value="Dr. Nurhasanah" />
-        <FieldText label="Notes" value="-" />
-        <FieldTicker
-          label="Additional Tags "
-          listValue={DUMMY_ADDITIONAL_TAGS}
-        />
+            <Divider />
 
-        <Divider />
+            <FieldText label="Supervised By" value="Dr. Nurhasanah" />
+            <FieldText label="Notes" value="-" />
+            <FieldTicker
+              label="Additional Tags "
+              listValue={DUMMY_ADDITIONAL_TAGS}
+            />
 
-        <Text as="b" fontSize="xl">
-          Penilaian Konsulen
-        </Text>
+            <Divider />
+
+            <Text as="b" fontSize="xl">
+              Penilaian Konsulen
+            </Text>
+          </>
+        )}
       </Flex>
     </Flex>
   );

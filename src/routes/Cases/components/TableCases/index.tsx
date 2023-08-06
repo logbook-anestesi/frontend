@@ -55,7 +55,11 @@ const TableCases = ({ caseList, selectedCase }: Props) => {
                 <Td
                   textDecoration="underline"
                   color="#3498db"
-                  onClick={() => navigate("/cases/details")}
+                  onClick={() =>
+                    navigate("/cases/details", {
+                      state: { caseId: caseData?.id },
+                    })
+                  }
                 >
                   {caseData?.id.substring(0, 5)}
                 </Td>
