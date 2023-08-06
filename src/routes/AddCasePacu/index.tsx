@@ -82,8 +82,13 @@ const AddCasePacu = () => {
     }
   };
 
-  // change case type when first render page
+  // reset state and change case type when first render page
   useEffect(() => {
+    casesDispatch({
+      type: "reset_state",
+      data: {},
+    });
+
     casesDispatch({
       type: "set_case_type",
       data: {

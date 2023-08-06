@@ -5,7 +5,7 @@ import FormDPJP from "./components/FormDPJP";
 import FormRadioExam from "./components/FormRadioExam";
 import { RADIO_EXAM } from "./constants";
 import FormOperation from "./components/FormOperation";
-import { useAddCasesContext } from "./contexts";
+import { useAddCasesContext, useAddCasesDispatch } from "./contexts";
 import useGetCasesForm from "./hooks/useGetCasesForm";
 import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
 import { colors } from "../../constants/colors";
@@ -22,8 +22,10 @@ import FormNotes from "./components/FormNotes";
 import FormAdditionalTags from "./components/FormAdditionalTags";
 import useAddCases from "./hooks/useAddCases";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const AddCases = () => {
+  const casesDispatch = useAddCasesDispatch();
   const toast = useToast();
   const navigate = useNavigate();
   const { casesForm } = useGetCasesForm();
@@ -98,6 +100,13 @@ const AddCases = () => {
       });
     }
   };
+
+  useEffect(() => {
+    casesDispatch({
+      type: "reset_state",
+      data: {},
+    });
+  }, [casesDispatch]);
 
   return (
     <Flex flexDirection="column">

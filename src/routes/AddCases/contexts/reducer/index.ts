@@ -102,7 +102,6 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       };
     }
 
-
     case "set_nora_procedure_type": {
       return {
         ...state,
@@ -115,13 +114,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case "set_nora_procedure_type_ids": {
       return {
         ...state,
-        noraProcedureTypeIds: [...state.noraProcedureTypeIds, action.data.noraProcedureId],
+        noraProcedureTypeIds: [
+          ...state.noraProcedureTypeIds,
+          action.data.noraProcedureId,
+        ],
       };
     }
-
-
-
-
     case "set_age_group": {
       return {
         ...state,
@@ -213,6 +211,11 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         tagIds: [...state.tagIds, action.data.tagId],
+      };
+    }
+    case "reset_state": {
+      return {
+        ...initialState,
       };
     }
   }

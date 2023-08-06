@@ -2,7 +2,7 @@ import { Flex, useDisclosure } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import CasesDropdown from "./components/CasesDrodown";
 import ModalSelectCases from "./components/ModalSelectCases";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CaseMenu } from "./types";
 import ButtonAddCase from "./components/ButtonAddCase";
 import CaseListSection from "./components/CaseListSection";

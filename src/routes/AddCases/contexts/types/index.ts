@@ -222,6 +222,11 @@ interface SetAdditionalTagIds {
   };
 }
 
+interface ResetState {
+  type: "reset_state";
+  data: {};
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -249,6 +254,7 @@ type ACTION_TYPE =
   | SetSupervisorIds
   | SetNote
   | SetAdditionalTags
-  | SetAdditionalTagIds;
+  | SetAdditionalTagIds
+  | ResetState;
 
 export type { ACTION_TYPE, InitialState };
