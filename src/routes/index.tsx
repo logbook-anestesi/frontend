@@ -17,6 +17,7 @@ import StationDashboardPage from "./StationDashboard";
 import AddCasePacu from "./AddCasePacu";
 import AddCaseNora from "./AddCaseNora";
 import CaseDetails from "./CaseDetails";
+import StaseAllList from "./StaseAllList";
 
 const MainRoutes = () => {
   return (
@@ -30,6 +31,7 @@ const MainRoutes = () => {
 
         <Route path="/stase" element={<StasePage />} />
         <Route path="/stase/create" element={<CreateStase />} />
+        <Route path="/stase/all" element={<StaseAllList />} />
 
         <Route path="/competence" element={<CompetencePage />} />
 
