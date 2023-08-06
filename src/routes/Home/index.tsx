@@ -66,7 +66,7 @@ const Home = () => {
         />
       </Flex>
 
-      <Flex justify="space-between" gap="15px">
+      <Flex justify="space-between" gap={2}>
         <ReportCard icon={cases} title="Cases" path="/cases" />
         <ReportCard icon={ilmiah} title="Ilmiah" path="/" />
         <ReportCard icon={exam} title="Exam" path="/" />
