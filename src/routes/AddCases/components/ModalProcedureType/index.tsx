@@ -44,7 +44,8 @@ const ModalProcedureType = ({
 
   useEffect(() => {
     const filtered = procedureList.filter(
-      (procedure) => !selectedProcedure.some((item) => item === procedure?.name)
+      (procedure) =>
+        !selectedProcedure.some((item) => item.title === procedure?.name)
     );
 
     setFilteredProcedure(filtered);

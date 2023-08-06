@@ -91,7 +91,10 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedProcedure: [
           ...state.selectedProcedure,
-          action.data.procedureType,
+          {
+            title: action.data.procedureType,
+            id: action.data.procedureId,
+          },
         ],
       };
     }
@@ -216,6 +219,17 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case "reset_state": {
       return {
         ...initialState,
+      };
+    }
+    case "remove_procedure_type": {
+      return {
+        ...state,
+        selectedProcedure: state.selectedProcedure.filter(
+          (procedure) => procedure.id !== action.data.id
+        ),
+        procedureTypeIds: state.procedureTypeIds.filter(
+          (id) => id !== action.data.id
+        ),
       };
     }
   }

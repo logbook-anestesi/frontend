@@ -31,6 +31,7 @@ const ModalAddOtherTypeProcedure = ({ isOpen, closeModal }: Props) => {
       type: "set_procedure_type",
       data: {
         procedureType: procedureType,
+        procedureId: response?.procedureTypeId,
       },
     });
 

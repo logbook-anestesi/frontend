@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const AddCases = () => {
+  const state = useAddCasesContext();
   const casesDispatch = useAddCasesDispatch();
   const toast = useToast();
   const navigate = useNavigate();
@@ -107,6 +108,10 @@ const AddCases = () => {
       data: {},
     });
   }, [casesDispatch]);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <Flex flexDirection="column">

@@ -3,10 +3,15 @@ interface Operation {
   operation: string;
 }
 
+interface Procedure {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: string[];
-  selectedProcedure: string[];
+  selectedProcedure: Procedure[];
   selectedNoraProcedure: string[];
   selectedASATags: string[];
   selectedSupervisor: string[];
@@ -93,6 +98,7 @@ interface SetProcedureType {
   type: "set_procedure_type";
   data: {
     procedureType: string;
+    procedureId: string;
   };
 }
 
@@ -227,6 +233,13 @@ interface ResetState {
   data: {};
 }
 
+interface RemoveProcedureType {
+  type: "remove_procedure_type";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -255,6 +268,7 @@ type ACTION_TYPE =
   | SetNote
   | SetAdditionalTags
   | SetAdditionalTagIds
-  | ResetState;
+  | ResetState
+  | RemoveProcedureType;
 
 export type { ACTION_TYPE, InitialState };

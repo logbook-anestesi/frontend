@@ -1,11 +1,13 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { colors } from "../../constants/colors";
+import { CloseIcon } from "@chakra-ui/icons";
 
 interface TickerInterface {
   text: string;
+  onClick?: () => void;
 }
 
-const Ticker = ({ text }: TickerInterface) => {
+const Ticker = ({ text, onClick }: TickerInterface) => {
   return (
     <Flex
       padding="3px 8px"
@@ -13,6 +15,7 @@ const Ticker = ({ text }: TickerInterface) => {
       align="center"
       borderRadius="6px"
       minWidth="fit-content"
+      gap={2}
     >
       <Text
         as="b"
@@ -22,6 +25,8 @@ const Ticker = ({ text }: TickerInterface) => {
       >
         {text}
       </Text>
+
+      <CloseIcon w={2} color={colors.primaryPurple} onClick={onClick} />
     </Flex>
   );
 };

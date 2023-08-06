@@ -2,10 +2,10 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { ProcedureType } from "../../hooks/useGetCasesForm/types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ModalProcedureType from "../ModalProcedureType";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext } from "../../contexts";
+import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
 }
 
 const FormTypeProcedure = ({ procedureList }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
   const { selectedProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -23,8 +24,20 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
 
   const [procedure, setProcedure] = useState<ProcedureType>();
 
+  const removeProcedure = useCallback(
+    (procedureId: string) => {
+      casesDispatch({
+        type: "remove_procedure_type",
+        data: {
+          id: procedureId,
+        },
+      });
+    },
+    [casesDispatch]
+  );
+
   return (
-    <Flex direction="column" gap={1} onClick={onOpen}>
+    <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Procedure Done*
       </Text>
@@ -36,7 +49,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         borderColor={colors.lightGrey}
         padding="10px 15px"
         borderRadius={10}
-        // onClick={handleButtonClick}
+        onClick={onOpen}
         mb={1}
       >
         <Text>{procedure?.name || "Masukkan nama prosedur ..."}</Text>
@@ -55,7 +68,11 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         }}
       >
         {selectedProcedure.map((procedure, idx) => (
-          <Ticker text={procedure} key={idx} />
+          <Ticker
+            text={procedure.title}
+            onClick={() => removeProcedure(procedure?.id)}
+            key={idx}
+          />
         ))}
       </Flex>
 

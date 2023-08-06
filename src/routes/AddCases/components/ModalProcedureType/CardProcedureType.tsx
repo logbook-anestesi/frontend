@@ -17,6 +17,7 @@ const CardProcedureType = ({ procedure, closeModal, setProcedure }: Props) => {
       type: "set_procedure_type",
       data: {
         procedureType: procedure.name,
+        procedureId: procedure.id,
       },
     });
 
