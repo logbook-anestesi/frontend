@@ -1,32 +1,32 @@
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { ProcedureType } from "../../hooks/useGetCasesForm/types";
+import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
 import { useState } from "react";
-import ModalProcedureType from "../ModalProcedureType";
+import ModalNoraProcedureType from "../ModalNoraProcedureType";
 import Ticker from "../../../../components/Ticker";
 import { useAddCasesContext } from "../../contexts";
-import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
+// import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
-  procedureList: ProcedureType[];
+  noraProcedureList: NoraProcedureType[];
 }
 
-const FormTypeProcedure = ({ procedureList }: Props) => {
-  const { selectedProcedure } = useAddCasesContext();
+const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
+  const { selectedNoraProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
-    isOpen: isOpenAddOther,
-    onClose: onCloseAddOther,
+    // isOpen: isOpenAddOther,
+    // onClose: onCloseAddOther,
     onOpen: onOpenAddOther,
   } = useDisclosure();
 
-  const [procedure, setProcedure] = useState<ProcedureType>();
+  const [noraProcedure, setNoraProcedure] = useState<NoraProcedureType>();
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Procedure Done*
+        Nora Procedure Type
       </Text>
 
       <Flex
@@ -39,7 +39,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>{procedure?.name || "Masukkan nama prosedur ..."}</Text>
+        <Text>{noraProcedure?.name || "Masukkan nama prosedur ..."}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -54,26 +54,26 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
           },
         }}
       >
-        {selectedProcedure.map((procedure, idx) => (
+        {selectedNoraProcedure.map((procedure, idx) => (
           <Ticker text={procedure} key={idx} />
         ))}
       </Flex>
 
       {/* Modal Section */}
-      <ModalProcedureType
+      <ModalNoraProcedureType
         closeModal={onClose}
         isOpen={isOpen}
-        procedureList={procedureList}
-        setProcedure={setProcedure}
+        noraProcedureList={noraProcedureList}
+        setNoraProcedure={setNoraProcedure}
         onOpenAddOther={onOpenAddOther}
       />
 
-      <ModalAddOtherTypeProcedure
+      {/* <ModalAddOtherTypeProcedure
         isOpen={isOpenAddOther}
         closeModal={onCloseAddOther}
-      />
+      /> */}
     </Flex>
   );
 };
 
-export default FormTypeProcedure;
+export default FormNoraTypeProcedure;

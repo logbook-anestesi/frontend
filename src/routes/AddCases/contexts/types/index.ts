@@ -7,6 +7,7 @@ interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: string[];
   selectedProcedure: string[];
+  selectedNoraProcedure: string[];
   selectedASATags: string[];
   selectedSupervisor: string[];
   date: string;
@@ -95,10 +96,24 @@ interface SetProcedureType {
   };
 }
 
+interface SetNoraProcedureType {
+  type: "set_nora_procedure_type";
+  data: {
+    noraProcedureType: string;
+  };
+}
+
 interface SetProcedureTypeIds {
   type: "set_procedure_type_ids";
   data: {
     procedureId: string;
+  };
+}
+
+interface SetNoraProcedureTypeIds {
+  type: "set_nora_procedure_type_ids";
+  data: {
+    noraProcedureId: string;
   };
 }
 
@@ -218,6 +233,8 @@ type ACTION_TYPE =
   | SetAnesthesiaTypeIds
   | SetProcedureType
   | SetProcedureTypeIds
+  | SetNoraProcedureType
+  | SetNoraProcedureTypeIds
   | SetAgeGroup
   | SetLocation
   | SetPriority
