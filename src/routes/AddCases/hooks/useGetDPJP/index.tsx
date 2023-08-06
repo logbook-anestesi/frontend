@@ -10,7 +10,7 @@ const useGetDPJP = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      const response = await axiosClient.get("/users");
+      const response = await axiosClient.get("/users/?role=KONSULEN");
       const data = await response.data.data;
 
       setLoading(false);
