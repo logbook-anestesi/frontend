@@ -15,11 +15,13 @@ import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
+  useEffect,
   useMemo,
   useState,
 } from "react";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import useGetSupervisor from "../../hooks/useGetSupervisor";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -28,8 +30,17 @@ interface Props {
 }
 
 const ModalSupervisor = ({ isOpen, closeModal, setSupervisor }: Props) => {
+  const { selectedSupervisor: supervisorList } = useAddCasesContext();
   const { supervisors } = useGetSupervisor();
   const [filteredSupervisor, setFilteredASupervisor] = useState(supervisors);
+
+  useEffect(() => {
+    const filtered = supervisors.filter(
+      (supervisor) => !supervisorList.some((item) => item === supervisor?.name)
+    );
+
+    setFilteredASupervisor(filtered);
+  }, [supervisorList, supervisors]);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
