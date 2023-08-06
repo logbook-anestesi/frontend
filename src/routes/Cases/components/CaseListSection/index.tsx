@@ -1,33 +1,29 @@
-import { Search2Icon } from "@chakra-ui/icons";
-import {
-  Flex,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import TableCases from "../TableCases";
+import { CaseMenu } from "../../types";
 import { Case } from "../../hooks/useGetCases/types";
 
 interface Props {
   caseList: Case[];
+  selectedCase: CaseMenu;
 }
 
-const CaseListSection = ({ caseList }: Props) => {
+const CaseListSection = ({ caseList, selectedCase }: Props) => {
   return (
     <Flex direction="column" mt={5} gap={3}>
-      <Text as="b" fontSize="xl">
+      <Text as="b" fontSize="xl" mb={3}>
         Daftar Cases
       </Text>
 
-      <InputGroup mb={3}>
+      {/* temporary hide */}
+      {/* <InputGroup mb={3}>
         <Input placeholder="Cari berdasarkan tags/atribut..." />
         <InputRightElement>
           <Search2Icon />
         </InputRightElement>
-      </InputGroup>
+      </InputGroup> */}
 
-      <TableCases caseList={caseList} />
+      <TableCases caseList={caseList} selectedCase={selectedCase} />
     </Flex>
   );
 };

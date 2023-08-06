@@ -1,10 +1,10 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Flex, Text } from "@chakra-ui/react";
-import { Case } from "../../types";
+import { CaseMenu } from "../../types";
 
 interface Props {
   onClick: () => void;
-  selectedCase: Case;
+  selectedCase: CaseMenu;
 }
 
 const CasesDropdown = ({ onClick, selectedCase }: Props) => {

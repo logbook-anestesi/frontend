@@ -3,18 +3,22 @@ import Header from "../../components/Header";
 import CasesDropdown from "./components/CasesDrodown";
 import ModalSelectCases from "./components/ModalSelectCases";
 import { useState } from "react";
-import { Case } from "./types";
-import { CASE_LIST } from "../../constants/caseList";
+import { CaseMenu } from "./types";
 import ButtonAddCase from "./components/ButtonAddCase";
 import CaseListSection from "./components/CaseListSection";
 import BottomNav from "./components/BottomNav";
 import useGetCases from "./hooks/useGetCases";
 import LoaderCircle from "../../components/LoaderCircle";
 
+const DEFAULT_CASE_MENU = {
+  title: "Select Type Case",
+  value: "-",
+};
+
 const Cases = () => {
   const { caseList, loading } = useGetCases();
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const [selectedCase, setSelectedCase] = useState<Case>(CASE_LIST[0]);
+  const [selectedCase, setSelectedCase] = useState<CaseMenu>(DEFAULT_CASE_MENU);
 
   return (
     <Flex flexDirection="column" height="100vh">
@@ -30,7 +34,11 @@ const Cases = () => {
           />
 
           <ButtonAddCase caseName={selectedCase.title} />
-          {loading ? <LoaderCircle /> : <CaseListSection caseList={caseList} />}
+          {loading ? (
+            <LoaderCircle />
+          ) : (
+            <CaseListSection caseList={caseList} selectedCase={selectedCase} />
+          )}
         </Flex>
 
         <BottomNav />

@@ -11,13 +11,29 @@ import { colors } from "../../../../constants/colors";
 import { Case } from "../../hooks/useGetCases/types";
 import { formatDateMonthYear } from "../../../../helpers";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { CaseMenu } from "../../types";
 
 interface Props {
   caseList: Case[];
+  selectedCase: CaseMenu;
 }
 
-const TableCases = ({ caseList }: Props) => {
+const TableCases = ({ caseList, selectedCase }: Props) => {
   const navigate = useNavigate();
+  const [finalData, setFinalData] = useState<Case[]>(caseList);
+
+  useEffect(() => {
+    if (selectedCase?.value === "-") {
+      return;
+    }
+
+    const filteredData = caseList?.filter(
+      (caseData) => caseData.caseType === selectedCase.value
+    );
+
+    setFinalData(filteredData);
+  }, [caseList, selectedCase]);
 
   return (
     <TableContainer maxHeight={300} overflowY="scroll">
@@ -33,7 +49,7 @@ const TableCases = ({ caseList }: Props) => {
           </Tr>
         </Thead>
         <Tbody>
-          {caseList?.map((caseData) => {
+          {finalData?.map((caseData) => {
             return (
               <Tr
                 key={`userStase-${caseData.id}`}

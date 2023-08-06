@@ -1,14 +1,14 @@
 export const CASE_LIST = [
   {
     title: "OK / Surgery",
-    value: 1,
+    value: "OK",
   },
   {
     title: "PACU",
-    value: 2,
+    value: "PACU",
   },
   {
     title: "NORA",
-    value: 3,
+    value: "NORA",
   },
 ];

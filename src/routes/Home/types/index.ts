@@ -1,4 +1,4 @@
 export interface Case {
   title: string;
-  value: number;
+  value: string;
 }
