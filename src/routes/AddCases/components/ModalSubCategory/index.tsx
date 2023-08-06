@@ -9,6 +9,7 @@ import {
 import { colors } from "../../../../constants/colors";
 import { OperationCategory } from "../../hooks/useGetCasesForm/types";
 import CardSubCategory from "./CardSubCategory";
+import EmptyData from "./EmptyData";
 
 export interface SubCategory {
   name: string;
@@ -41,16 +42,19 @@ const ModalSubCategory = ({
 
         <ModalCloseButton />
 
-        {subCategoryOperation?.map((subCategory) => {
-          return (
-            <CardSubCategory
-              key={subCategory.id}
-              subCategory={subCategory}
-              closeModal={closeModal}
-              operationName={operationName}
-            />
-          );
-        })}
+        {subCategoryOperation?.length === 0 && <EmptyData />}
+
+        {subCategoryOperation?.length > 0 &&
+          subCategoryOperation?.map((subCategory) => {
+            return (
+              <CardSubCategory
+                key={subCategory.id}
+                subCategory={subCategory}
+                closeModal={closeModal}
+                operationName={operationName}
+              />
+            );
+          })}
       </ModalContent>
     </Modal>
   );
