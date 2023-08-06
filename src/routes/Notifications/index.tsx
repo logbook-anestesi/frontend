@@ -1,19 +1,15 @@
 import { Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
-import NotificationItem from "./components/NotificationItem";
+import ListNotifications from "./components/ListNotifications";
 
 const NotificationsPage = () => {
   return (
-    <div>
+    <Flex direction="column">
       <Header pathBack="/" title="Notifikasi" />
       <Flex direction="column" padding="30px" gap="8px">
-        <NotificationItem />
-        <NotificationItem />
-        <NotificationItem />
-        <NotificationItem />
-        <NotificationItem />
+        <ListNotifications />
       </Flex>
-    </div>
+    </Flex>
   );
 };
 
