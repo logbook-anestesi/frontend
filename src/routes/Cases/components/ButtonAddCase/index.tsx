@@ -27,6 +27,10 @@ const ButtonAddCase = ({ caseName }: Props) => {
     }
   };
 
+  if (caseName === "Select Type Case") {
+    return null;
+  }
+
   return (
     <Button
       variant="outline"
