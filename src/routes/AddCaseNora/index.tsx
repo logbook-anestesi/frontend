@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import FormDate from "../AddCases/components/FormDate";
 import FormDPJP from "../AddCases/components/FormDPJP";
 import FormRadioAgeGroup from "../AddCases/components/FormRadioAgeGroup";
-import FormOperation from "../AddCases/components/FormOperation";
 import FormUsiaAndRM from "../AddCases/components/FormUsiaAndRM";
 import FormRadioGender from "../AddCases/components/FormRadioGender";
 import FormTingkatAndEmergency from "../AddCases/components/FormTingkatAndEmergency";
@@ -17,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import FormASATags from "../AddCases/components/FormASATags";
 import FormTypeProcedure from "../AddCases/components/FormTypeProcedure";
 import FormTypeAnesthesia from "../AddCases/components/FormTypeAnesthesia";
-
 
 const AddCaseNora = () => {
   const toast = useToast();
@@ -46,21 +44,21 @@ const AddCaseNora = () => {
 
   const handleSubmitForm = async () => {
     const response = await createCases({
-        caseType,
-        date,
-        ageGroup,
-        patientAge,
-        patientRecordNumber,
-        patientGender,
-        asaTier,
-        asaIsEmergency,
-        notes,
-        dpjpUserId,
-        asaTagIds,
-        procedureTypeIds,
-        noraProcedureTypeIds,
-        anesthesiaTypeIds,
-        tagIds,
+      caseType,
+      date,
+      ageGroup,
+      patientAge,
+      patientRecordNumber,
+      patientGender,
+      asaTier,
+      asaIsEmergency,
+      notes,
+      dpjpUserId,
+      asaTagIds,
+      procedureTypeIds,
+      noraProcedureTypeIds,
+      anesthesiaTypeIds,
+      tagIds,
     });
 
     if (response?.success) {
@@ -130,7 +128,9 @@ const AddCaseNora = () => {
 
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
-        <FormTypeProcedure procedureList={casesForm?.noraProcedureTypes || []} />
+        <FormTypeProcedure
+          procedureList={casesForm?.noraProcedureTypes || []}
+        />
 
         <FormNotes />
 
