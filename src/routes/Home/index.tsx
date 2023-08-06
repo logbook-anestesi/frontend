@@ -37,7 +37,7 @@ const Home = () => {
       <Flex direction="column" gap="10px">
         {profile?.role === "RESIDEN" ? (
           <LevelCard
-            title="Pembekalan"
+            title={profile?.competenceName || ""}
             type="Level Kompetensi"
             path="/competence"
           />

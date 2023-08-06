@@ -13,6 +13,7 @@ export interface Profile {
   joinYear: number;
   joinTerm: number;
   stationName: string;
+  competenceName: string;
 }
 
 export interface DecodedJwt {
