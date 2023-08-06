@@ -10,8 +10,8 @@ interface CompetenceCardInterface {
     endDate: string | null | undefined;
 }
 const CompetenceCard = ({ competenceNumber, competenceLevel, startDate, endDate}: CompetenceCardInterface) => {
-    const fontColor = (startDate == undefined) ? colors.darkGrey : getCompetenceColor(competenceLevel)
-    const borderColor = (startDate == undefined) ? colors.lightGrey : getCompetenceColor(competenceLevel)
+    const fontColor = (startDate === undefined) ? colors.darkGrey : getCompetenceColor(competenceLevel)
+    const borderColor = (startDate === undefined) ? colors.lightGrey : getCompetenceColor(competenceLevel)
 
     return (
         <Flex

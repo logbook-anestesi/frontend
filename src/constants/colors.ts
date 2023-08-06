@@ -13,11 +13,11 @@ export const colors = {
 };
 
 export const getCompetenceColor = (competenceLevel: string) => {
-    if (competenceLevel.toLowerCase() == "pembekalan"){
+    if (competenceLevel.toLowerCase() === "pembekalan"){
       return colors.primaryRed
-    } else if (competenceLevel.toLowerCase() == "magang"){
+    } else if (competenceLevel.toLowerCase() === "magang"){
       return colors.primaryYellow
-    } else if (competenceLevel.toLowerCase() == "mandiri"){
+    } else if (competenceLevel.toLowerCase() === "mandiri"){
       return colors.primaryGreen
     } else {
       return "black"

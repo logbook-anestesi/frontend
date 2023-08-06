@@ -14,7 +14,6 @@ import AddCasesPage from "./AddCases";
 import CompetencePage from "./Competence";
 import CasesReviewDashboardPage from "./CasesReviewDashboard";
 import StationDashboardPage from "./StationDashboard";
-import AddCasesProvider from "./AddCases/contexts";
 import AddCasePacu from "./AddCasePacu";
 import CaseDetails from "./CaseDetails";
 
