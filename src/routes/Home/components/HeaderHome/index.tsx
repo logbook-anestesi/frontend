@@ -12,6 +12,10 @@ const HeaderHome = () => {
     navigate("/notifications");
   };
 
+  const handleRedirectProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <Flex justify="space-between" width="100%" marginBottom="32px">
       <Image
@@ -22,6 +26,7 @@ const HeaderHome = () => {
         padding="8px"
         color={colors.primaryPurple}
         src={profileIcon}
+        onClick={handleRedirectProfile}
       />
 
       <Image src={logbookIcon} maxWidth="109px" />
