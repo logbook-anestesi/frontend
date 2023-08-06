@@ -22,6 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardASATags from "./CardASATags";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -38,11 +39,16 @@ const ModalASATags = ({
   setTag,
   onOpenAddOther,
 }: Props) => {
+  const { selectedASATags } = useAddCasesContext();
   const [filteredTags, setFilteredTags] = useState(tagList);
 
   useEffect(() => {
-    setFilteredTags(tagList);
-  }, [tagList]);
+    const filtered = tagList.filter(
+      (tag) => !selectedASATags.some((selectedTag) => selectedTag === tag?.name)
+    );
+
+    setFilteredTags(filtered);
+  }, [selectedASATags, tagList]);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
