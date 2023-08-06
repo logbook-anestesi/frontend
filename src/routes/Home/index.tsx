@@ -38,10 +38,32 @@ const Home = () => {
           type="Level Kompetensi"
           path="/competence"
         />
-        <LevelCard title="Obgyn" type="Stase" path="/stase" />
-        <LevelCardWithLogo title="Cases" type="Pending Review" path="/review/cases" icon={cases} cardNumber={1}/>
-        <LevelCardWithLogo title="Ilmiah & Exam" type="Pending Review" path="/stase" icon={cases} cardNumber={1}/>
-        <LevelCardWithLogo title="Uro-Gimul" type="Dashboard Stase" path="/dashboard/station" icon={cases} cardNumber={1}/>
+        <LevelCard
+          title={profile?.stationName || ""}
+          type="Stase"
+          path="/stase"
+        />
+        <LevelCardWithLogo
+          title="Cases"
+          type="Pending Review"
+          path="/review/cases"
+          icon={cases}
+          cardNumber={1}
+        />
+        <LevelCardWithLogo
+          title="Ilmiah & Exam"
+          type="Pending Review"
+          path="/stase"
+          icon={cases}
+          cardNumber={1}
+        />
+        <LevelCardWithLogo
+          title="Uro-Gimul"
+          type="Dashboard Stase"
+          path="/dashboard/station"
+          icon={cases}
+          cardNumber={1}
+        />
       </Flex>
 
       <Flex justify="space-between" gap="15px">
