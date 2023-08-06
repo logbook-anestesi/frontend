@@ -1,6 +1,7 @@
 import { Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
+  Flex,
   Input,
   InputGroup,
   InputRightElement,
@@ -59,16 +60,18 @@ const ModalSelectStase = ({ isOpen, closeModal, setStase }: Props) => {
 
         <Box height={3} />
 
-        {finalDataStase?.map((stase, idx) => {
-          return (
-            <CardStase
-              stase={stase}
-              key={idx}
-              setStase={setStase}
-              closeModal={closeModal}
-            />
-          );
-        })}
+        <Flex direction="column" maxH={300} overflowY="scroll">
+          {finalDataStase?.map((stase, idx) => {
+            return (
+              <CardStase
+                stase={stase}
+                key={idx}
+                setStase={setStase}
+                closeModal={closeModal}
+              />
+            );
+          })}
+        </Flex>
       </ModalContent>
     </Modal>
   );
