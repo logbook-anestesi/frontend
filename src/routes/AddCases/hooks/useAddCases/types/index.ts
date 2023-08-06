@@ -17,5 +17,6 @@ export interface CreateCasePayload {
   operationTypeIds?: string[];
   anesthesiaTypeIds?: string[];
   procedureTypeIds?: string[];
+  noraProcedureTypeIds?: string[];
   supervisorIds?: string[];
 }

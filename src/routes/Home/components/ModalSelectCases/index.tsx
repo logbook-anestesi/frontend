@@ -23,15 +23,15 @@ const ModalSelectCases = ({ isOpen, closeModal }: Props) => {
 
   const handleClickCase = (dataCase: Case) => {
     switch (dataCase?.value) {
-      case 1: {
+      case "OK": {
         navigate("/cases/add/ok");
         return;
       }
-      case 2: {
+      case "PACU": {
         navigate("/cases/add/pacu");
         return;
       }
-      case 3: {
+      case "NORA": {
         navigate("/case/add/nora");
         return;
       }

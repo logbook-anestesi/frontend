@@ -1,4 +1,4 @@
-export interface Case {
+export interface CaseMenu {
   title: string;
-  value: number;
+  value: string;
 }

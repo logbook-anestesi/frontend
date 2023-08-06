@@ -11,16 +11,16 @@ import {
 import { CASE_LIST } from "../../../../constants/caseList";
 import { colors } from "../../../../constants/colors";
 import { Dispatch, SetStateAction } from "react";
-import { Case } from "../../types";
+import { CaseMenu } from "../../types";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  setCase: Dispatch<SetStateAction<Case>>;
+  setCase: Dispatch<SetStateAction<CaseMenu>>;
 }
 
 const ModalSelectCases = ({ isOpen, closeModal, setCase }: Props) => {
-  const handleClickCase = (dataCase: Case) => {
+  const handleClickCase = (dataCase: CaseMenu) => {
     setCase(dataCase);
     closeModal();
   };

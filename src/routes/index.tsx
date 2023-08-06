@@ -15,7 +15,9 @@ import CompetencePage from "./Competence";
 import CasesReviewDashboardPage from "./CasesReviewDashboard";
 import StationDashboardPage from "./StationDashboard";
 import AddCasePacu from "./AddCasePacu";
+import AddCaseNora from "./AddCaseNora";
 import CaseDetails from "./CaseDetails";
+import StaseAllList from "./StaseAllList";
 
 const MainRoutes = () => {
   return (
@@ -29,6 +31,7 @@ const MainRoutes = () => {
 
         <Route path="/stase" element={<StasePage />} />
         <Route path="/stase/create" element={<CreateStase />} />
+        <Route path="/stase/all" element={<StaseAllList />} />
 
         <Route path="/competence" element={<CompetencePage />} />
 
@@ -39,6 +42,7 @@ const MainRoutes = () => {
         <Route path="/cases" element={<CasesPage />} />
         <Route path="/cases/add/ok" element={<AddCasesPage />} />
         <Route path="/cases/add/pacu" element={<AddCasePacu />} />
+        <Route path="/cases/add/nora" element={<AddCaseNora />} />
         <Route path="/cases/details" element={<CaseDetails />} />
       </Route>
 
