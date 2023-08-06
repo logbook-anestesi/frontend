@@ -22,6 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardAnesthesiType from "./CardAnesthesiType";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -38,11 +39,17 @@ const ModalAnesthesiType = ({
   setAnesthesia,
   onOpenAddOther,
 }: Props) => {
+  const { selectedAnesthesia } = useAddCasesContext();
   const [filteredAnesthesi, setFilteredAnesthesi] = useState(anesthesiaList);
 
   useEffect(() => {
-    setFilteredAnesthesi(anesthesiaList);
-  }, [anesthesiaList]);
+    const filtered = anesthesiaList.filter(
+      (anesthesia) =>
+        !selectedAnesthesia.some((item) => item === anesthesia?.name)
+    );
+
+    setFilteredAnesthesi(filtered);
+  }, [anesthesiaList, selectedAnesthesia]);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
