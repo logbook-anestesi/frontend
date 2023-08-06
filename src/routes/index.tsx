@@ -12,6 +12,7 @@ import CreateStase from "./CreateStase";
 import CasesPage from "./Cases";
 import AddCasesPage from "./AddCases";
 import AddCasePacu from "./AddCasePacu";
+import AddCaseNora from "./AddCaseNora";
 import CaseDetails from "./CaseDetails";
 
 const MainRoutes = () => {
@@ -30,6 +31,7 @@ const MainRoutes = () => {
         <Route path="/cases" element={<CasesPage />} />
         <Route path="/cases/add/ok" element={<AddCasesPage />} />
         <Route path="/cases/add/pacu" element={<AddCasePacu />} />
+        <Route path="/cases/add/nora" element={<AddCaseNora />} />
         <Route path="/cases/details" element={<CaseDetails />} />
       </Route>
 

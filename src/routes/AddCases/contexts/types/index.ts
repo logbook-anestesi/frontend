@@ -18,6 +18,7 @@ interface InitialState {
   procedureTypeIds: string[];
   supervisorIds: string[];
   asaTagIds: string[];
+  noraProcedureTypeIds: string[];
   ageGroup: string;
   location: string;
   priority: string;
