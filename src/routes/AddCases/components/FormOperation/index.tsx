@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 
 import { colors } from "../../../../constants/colors";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext } from "../../contexts";
+import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalCategory from "../ModalCategory";
 import { OperationType } from "../../hooks/useGetCasesForm/types";
 import ModalSubCategory from "../ModalSubCategory";
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const FormOperation = ({ formData }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
   const { selectedOperation } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -24,8 +25,20 @@ const FormOperation = ({ formData }: Props) => {
   } = useDisclosure();
   const [operation, setOperation] = useState<OperationType>();
 
+  const handleRemoveOperation = useCallback(
+    (operationId: string) => {
+      casesDispatch({
+        type: "remove_operation_type",
+        data: {
+          id: operationId,
+        },
+      });
+    },
+    [casesDispatch]
+  );
+
   return (
-    <Flex direction="column" gap={1} onClick={onOpen}>
+    <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Tipe Operasi*
       </Text>
@@ -37,7 +50,7 @@ const FormOperation = ({ formData }: Props) => {
         borderColor={colors.lightGrey}
         padding="10px 15px"
         borderRadius={10}
-        // onClick={handleButtonClick}
+        onClick={onOpen}
         mb={1}
       >
         <Text>{operation?.name || "Tambah Tipe Operasi"}</Text>
@@ -59,6 +72,7 @@ const FormOperation = ({ formData }: Props) => {
           <Ticker
             text={`${operation.category}: ${operation.operation}`}
             key={idx}
+            onClick={() => handleRemoveOperation(operation.id)}
           />
         ))}
       </Flex>

@@ -1,6 +1,7 @@
 interface Operation {
   category: string;
   operation: string;
+  id: string;
 }
 
 interface Procedure {
@@ -41,7 +42,9 @@ interface InitialState {
 interface SetSelectedOperation {
   type: "set_selected_operation";
   data: {
-    operation: Operation;
+    category: string;
+    operation: string;
+    id: string;
   };
 }
 
@@ -240,6 +243,13 @@ interface RemoveProcedureType {
   };
 }
 
+interface RemoveOperationType {
+  type: "remove_operation_type";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -269,6 +279,7 @@ type ACTION_TYPE =
   | SetAdditionalTags
   | SetAdditionalTagIds
   | ResetState
-  | RemoveProcedureType;
+  | RemoveProcedureType
+  | RemoveOperationType;
 
 export type { ACTION_TYPE, InitialState };

@@ -52,6 +52,7 @@ const ModalSubCategory = ({
                 subCategory={subCategory}
                 closeModal={closeModal}
                 operationName={operationName}
+                id={subCategory.id}
               />
             );
           })}

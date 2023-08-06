@@ -6,9 +6,15 @@ interface Props {
   subCategory: OperationCategory;
   closeModal: () => void;
   operationName: string;
+  id: string;
 }
 
-const CardSubCategory = ({ subCategory, closeModal, operationName }: Props) => {
+const CardSubCategory = ({
+  subCategory,
+  closeModal,
+  operationName,
+  id,
+}: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
   const handleClickCard = () => {
@@ -16,10 +22,9 @@ const CardSubCategory = ({ subCategory, closeModal, operationName }: Props) => {
     casesDispatch({
       type: "set_selected_operation",
       data: {
-        operation: {
-          operation: subCategory.name,
-          category: operationName,
-        },
+        category: operationName,
+        id: id,
+        operation: subCategory.name,
       },
     });
 
