@@ -35,37 +35,51 @@ const Home = () => {
       </Flex>
 
       <Flex direction="column" gap="10px">
-        <LevelCard
-          title="Pembekalan"
-          type="Level Kompetensi"
-          path="/competence"
-        />
-        <LevelCard
-          title={profile?.stationName || ""}
-          type="Stase"
-          path="/stase"
-        />
-        <LevelCardWithLogo
-          title="Cases"
-          type="Pending Review"
-          path="/review/cases"
-          icon={cases}
-          cardNumber={1}
-        />
-        <LevelCardWithLogo
-          title="Ilmiah & Exam"
-          type="Pending Review"
-          path="/stase"
-          icon={cases}
-          cardNumber={1}
-        />
-        <LevelCardWithLogo
-          title="Uro-Gimul"
-          type="Dashboard Stase"
-          path="/dashboard/station"
-          icon={cases}
-          cardNumber={1}
-        />
+        {profile?.role === "RESIDEN" ? (
+          <LevelCard
+            title="Pembekalan"
+            type="Level Kompetensi"
+            path="/competence"
+          />
+        ) : null}
+
+        {profile?.role === "RESIDEN" ? (
+          <LevelCard
+            title={profile?.stationName || ""}
+            type="Stase"
+            path="/stase"
+          />
+        ) : null}
+
+        {profile?.role === "KONSULEN" ? (
+          <LevelCardWithLogo
+            title="Cases"
+            type="Pending Review"
+            path="/review/cases"
+            icon={cases}
+            cardNumber={1}
+          />
+        ) : null}
+
+        {profile?.role === "KONSULEN" ? (
+          <LevelCardWithLogo
+            title="Ilmiah & Exam"
+            type="Pending Review"
+            path="/stase"
+            icon={cases}
+            cardNumber={1}
+          />
+        ) : null}
+
+        {profile?.role === "KETUA_STASE" ? (
+          <LevelCardWithLogo
+            title="Uro-Gimul"
+            type="Dashboard Stase"
+            path="/dashboard/station"
+            icon={cases}
+            cardNumber={1}
+          />
+        ) : null}
       </Flex>
 
       <Flex justify="space-between" gap={2}>

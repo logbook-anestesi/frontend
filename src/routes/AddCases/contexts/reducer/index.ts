@@ -15,6 +15,7 @@ const initialState: InitialState = {
   procedureTypeIds: [],
   supervisorIds: [],
   asaTagIds: [],
+  noraProcedureTypeIds: [],
   ageGroup: "",
   location: "",
   priority: "",
