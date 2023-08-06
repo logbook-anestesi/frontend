@@ -22,6 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardProcedureType from "./CardProcedureType";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -38,11 +39,16 @@ const ModalProcedureType = ({
   procedureList,
   setProcedure,
 }: Props) => {
+  const { selectedProcedure } = useAddCasesContext();
   const [filteredProcedure, setFilteredProcedure] = useState(procedureList);
 
   useEffect(() => {
-    setFilteredProcedure(procedureList);
-  }, [procedureList]);
+    const filtered = procedureList.filter(
+      (procedure) => !selectedProcedure.some((item) => item === procedure?.name)
+    );
+
+    setFilteredProcedure(filtered);
+  }, [procedureList, selectedProcedure]);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
