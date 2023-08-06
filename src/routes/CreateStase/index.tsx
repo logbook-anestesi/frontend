@@ -11,6 +11,7 @@ import useUpdateStase from "./hooks/useUpdateStase";
 import { useNavigate } from "react-router-dom";
 import ModalConfirmUpdate from "./components/ModalConfirmUpdate";
 import StaseDropdown from "./components/StaseDropdown";
+import { Stase } from "./hooks/useGetAllStase/types";
 
 export interface SelectedStase {
   name: string;
@@ -29,7 +30,7 @@ const CreateStase = () => {
     onClose: onCloseConfirm,
     onOpen: onOpenConfirm,
   } = useDisclosure();
-  const [selectedStase, setSelectedStase] = useState<SelectedStase>();
+  const [selectedStase, setSelectedStase] = useState<Stase>();
 
   const finalData = useMemo(() => {
     return {
@@ -94,7 +95,7 @@ const CreateStase = () => {
       <ModalConfirmUpdate
         isOpen={isOpenConfirm}
         closeModal={onCloseConfirm}
-        selectedStase={selectedStase?.name}
+        selectedStase={selectedStase?.stationName}
         onSubmit={handleSubmitData}
       />
     </Flex>

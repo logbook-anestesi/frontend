@@ -17,12 +17,12 @@ import {
   useMemo,
   useState,
 } from "react";
-import { SelectedStase } from "../..";
+import { Stase } from "../../hooks/useGetAllStase/types";
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  setStase: Dispatch<SetStateAction<SelectedStase | undefined>>;
+  setStase: Dispatch<SetStateAction<Stase | undefined>>;
 }
 
 const ModalSelectStase = ({ isOpen, closeModal, setStase }: Props) => {
@@ -62,9 +62,7 @@ const ModalSelectStase = ({ isOpen, closeModal, setStase }: Props) => {
         {finalDataStase?.map((stase, idx) => {
           return (
             <CardStase
-              lecturer={stase.leaderUserName}
-              staseName={stase.stationName}
-              id={stase.id}
+              stase={stase}
               key={idx}
               setStase={setStase}
               closeModal={closeModal}

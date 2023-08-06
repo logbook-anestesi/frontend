@@ -1,11 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { SelectedStase } from "../..";
+import { Stase } from "../../hooks/useGetAllStase/types";
 
 interface Props {
   onOpen: () => void;
-  selectedStase?: SelectedStase;
+  selectedStase?: Stase;
 }
 const StaseDropdown = ({ onOpen, selectedStase }: Props) => {
   return (
@@ -22,16 +22,16 @@ const StaseDropdown = ({ onOpen, selectedStase }: Props) => {
         align="center"
       >
         <Flex flexDirection="column">
-          <Text as={selectedStase?.name ? "b" : "p"}>
-            {selectedStase?.name || "Pilih Stase"}
+          <Text as={selectedStase?.stationName ? "b" : "p"}>
+            {selectedStase?.stationName || "Pilih Stase"}
           </Text>
-          {selectedStase?.name && (
+          {selectedStase?.stationName && (
             <>
               <Text fontSize="sm" color={colors.darkGrey} mt={2}>
                 Ketua Modul:
               </Text>
               <Text fontSize="sm" color={colors.darkGrey}>
-                {selectedStase?.lecturer}
+                {selectedStase?.leaderName}
               </Text>
             </>
           )}

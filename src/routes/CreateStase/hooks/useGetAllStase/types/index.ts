@@ -7,11 +7,10 @@ export interface StaseAPI {
 
 export interface Stase {
   id: string;
-  created: Date;
-  createBy: string;
-  lastUpdated: Date;
-  lastUpdateBy: string;
+  created: string;
+  leaderName: string;
+  lastUpdated: string;
   stationName: string;
-  leaderUserName: string;
-  leaderStartDate: Date;
+  leaderUserId: string;
+  leaderStartDate: string;
 }

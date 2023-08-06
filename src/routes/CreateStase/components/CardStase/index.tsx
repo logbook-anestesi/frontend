@@ -1,37 +1,29 @@
 import { Dispatch, SetStateAction } from "react";
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import { SelectedStase } from "../..";
+import { Stase } from "../../hooks/useGetAllStase/types";
 
 interface Props {
-  staseName: string;
-  lecturer: string;
-  id: string;
-  setStase: Dispatch<SetStateAction<SelectedStase | undefined>>;
+  stase: Stase;
+  setStase: Dispatch<SetStateAction<Stase | undefined>>;
   closeModal: () => void;
 }
 
-const CardStase = ({
-  lecturer,
-  staseName,
-  id,
-  setStase,
-  closeModal,
-}: Props) => {
+const CardStase = ({ stase, setStase, closeModal }: Props) => {
   return (
     <Flex
       direction="column"
       mt={2}
       onClick={() => {
-        setStase({ id: id, name: staseName, lecturer: lecturer });
+        setStase(stase);
         closeModal();
       }}
     >
       <Text fontSize="sm" fontWeight="bold">
-        {staseName}
+        {stase.stationName}
       </Text>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Ketua: {lecturer}
+        Ketua: {stase.leaderName}
       </Text>
       <Divider color={colors.darkGrey} mt={2} />
     </Flex>
