@@ -4,11 +4,12 @@ import Profile from "./components/Profile";
 import doctorIcon from "../../assets/doctor.png";
 import InfoBox from "../../components/InfoBox";
 import LevelCard from "./components/LevelCard";
+import LevelCardWithLogo from "./components/LevelCardWithLogo";
 import ReportCard from "./components/ReportCard";
 import cases from "./assets/cases.png";
 import exam from "./assets/exam.png";
 import ilmiah from "./assets/ilmiah.png";
-import ButtonTambah from "./components/ButtonTambah";
+import ButtonTambah from "../../components/ButtonTambah";
 import useGetProfile from "../../hooks/useGetProfile";
 
 const Home = () => {
@@ -33,20 +34,45 @@ const Home = () => {
 
       <Flex direction="column" gap="10px">
         <LevelCard
-          title="Residen Pembekalan"
+          title="Pembekalan"
           type="Level Kompetensi"
-          path="/"
+          path="/competence"
         />
-        <LevelCard title="Obgyn" type="Stase" path="/stase" />
+        <LevelCard
+          title={profile?.stationName || ""}
+          type="Stase"
+          path="/stase"
+        />
+        <LevelCardWithLogo
+          title="Cases"
+          type="Pending Review"
+          path="/review/cases"
+          icon={cases}
+          cardNumber={1}
+        />
+        <LevelCardWithLogo
+          title="Ilmiah & Exam"
+          type="Pending Review"
+          path="/stase"
+          icon={cases}
+          cardNumber={1}
+        />
+        <LevelCardWithLogo
+          title="Uro-Gimul"
+          type="Dashboard Stase"
+          path="/dashboard/station"
+          icon={cases}
+          cardNumber={1}
+        />
       </Flex>
 
-      <Flex justify="space-between" gap="15px">
+      <Flex justify="space-between" gap={2}>
         <ReportCard icon={cases} title="Cases" path="/cases" />
         <ReportCard icon={ilmiah} title="Ilmiah" path="/" />
         <ReportCard icon={exam} title="Exam" path="/" />
       </Flex>
 
-      <ButtonTambah />
+      <ButtonTambah buttonTitle="Tambah Cases" />
     </Flex>
   );
 };
