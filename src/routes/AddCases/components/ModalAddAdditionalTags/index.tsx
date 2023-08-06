@@ -53,16 +53,13 @@ const ModalAddAdditionalTags = ({ isOpen, closeModal }: Props) => {
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <ModalHeader pl={2} py={4} pr={7}>
-          Masukkan tipe operasi lainnya
+          Masukkan Tag lainnya
         </ModalHeader>
 
         <ModalCloseButton />
 
         <InputGroup>
-          <Input
-            placeholder="Masukkan tipe operasi ..."
-            onChange={handleChangeInput}
-          />
+          <Input placeholder="Masukkan tag ..." onChange={handleChangeInput} />
         </InputGroup>
 
         <Box height={7} />

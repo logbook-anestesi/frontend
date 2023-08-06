@@ -53,14 +53,14 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <ModalHeader pl={2} py={4} pr={7}>
-          Masukkan tipe operasi lainnya
+          Masukkan tipe Anesthesia lainnya
         </ModalHeader>
 
         <ModalCloseButton />
 
         <InputGroup>
           <Input
-            placeholder="Masukkan tipe operasi ..."
+            placeholder="Masukkan tipe anesthesia ..."
             onChange={handleChangeInput}
           />
         </InputGroup>
