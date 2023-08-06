@@ -107,6 +107,12 @@ const AddCaseNora = () => {
         <FormDPJP />
         <FormRadioAgeGroup />
 
+        <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
+        <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
+        <FormNoraTypeProcedure
+          noraProcedureList={casesForm?.noraProcedureTypes || []}
+        />
+
         <Divider />
 
         <Text as="b" fontSize="xl">
@@ -126,12 +132,6 @@ const AddCaseNora = () => {
         <FormASATags tagList={casesForm?.tags || []} />
 
         <Divider />
-
-        <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
-        <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
-        <FormNoraTypeProcedure
-          noraProcedureList={casesForm?.noraProcedureTypes || []}
-        />
 
         <FormNotes />
 
