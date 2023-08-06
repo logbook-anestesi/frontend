@@ -22,6 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardNoraProcedureType from "./CardNoraProcedureType";
+import { useAddCasesContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -38,12 +39,20 @@ const ModalNoraProcedureType = ({
   noraProcedureList,
   setNoraProcedure,
 }: Props) => {
+  const { selectedNoraProcedure } = useAddCasesContext();
   const [filteredNoraProcedure, setFilteredNoraProcedure] =
     useState(noraProcedureList);
 
   useEffect(() => {
-    setFilteredNoraProcedure(noraProcedureList);
-  }, [noraProcedureList]);
+    const filtered = noraProcedureList.filter(
+      (nora) =>
+        !selectedNoraProcedure.some(
+          (noraProcedure) => noraProcedure === nora?.name
+        )
+    );
+
+    setFilteredNoraProcedure(filtered);
+  }, [noraProcedureList, selectedNoraProcedure]);
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
