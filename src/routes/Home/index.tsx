@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useDisclosure } from "@chakra-ui/react";
 import HeaderHome from "./components/HeaderHome";
 import Profile from "./components/Profile";
 import doctorIcon from "../../assets/doctor.png";
@@ -11,9 +11,11 @@ import exam from "./assets/exam.png";
 import ilmiah from "./assets/ilmiah.png";
 import ButtonTambah from "../../components/ButtonTambah";
 import useGetProfile from "../../hooks/useGetProfile";
+import ModalSelectCases from "./components/ModalSelectCases";
 
 const Home = () => {
   const { profile } = useGetProfile();
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
     <Flex direction="column" padding="30px" gap="30px">
@@ -72,7 +74,8 @@ const Home = () => {
         <ReportCard icon={exam} title="Exam" path="/" />
       </Flex>
 
-      <ButtonTambah buttonTitle="Tambah Cases" />
+      <ButtonTambah buttonTitle="Tambah Cases" onClick={onOpen} />
+      <ModalSelectCases closeModal={onClose} isOpen={isOpen} />
     </Flex>
   );
 };

@@ -4,11 +4,12 @@ import { colors } from "../../constants/colors";
 
 interface ButtonTambahInterface {
   buttonTitle: string;
+  onClick?: () => void;
 }
 
-const ButtonTambah = ({buttonTitle}: ButtonTambahInterface) => {
+const ButtonTambah = ({ buttonTitle, onClick }: ButtonTambahInterface) => {
   return (
-    <Stack direction="row" spacing={4}>
+    <Stack direction="row" spacing={4} onClick={onClick}>
       <Button
         leftIcon={<AddIcon />}
         borderColor={colors.primaryPurple}
