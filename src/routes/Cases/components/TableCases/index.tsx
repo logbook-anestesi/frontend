@@ -51,11 +51,14 @@ const TableCases = ({ caseList, selectedCase }: Props) => {
         <Tbody>
           {finalData?.map((caseData) => {
             return (
-              <Tr
-                key={`userStase-${caseData.id}`}
-                onClick={() => navigate("/cases/details")}
-              >
-                <Td>{caseData?.id.substring(0, 5)}</Td>
+              <Tr key={`userStase-${caseData.id}`}>
+                <Td
+                  textDecoration="underline"
+                  color="#3498db"
+                  onClick={() => navigate("/cases/details")}
+                >
+                  {caseData?.id.substring(0, 5)}
+                </Td>
                 <Td>{formatDateMonthYear(new Date(caseData?.date))}</Td>
                 <Td>{caseData?.dpjpUserName}</Td>
                 <Td>{caseData?.caseType}</Td>
