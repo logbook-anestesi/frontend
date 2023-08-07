@@ -6,17 +6,25 @@ import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import ModalSupervisor from "../ModalSupervisor";
 import { useAddCasesContext } from "../../contexts";
 import Ticker from "../../../../components/Ticker";
+import useGetProfile from "../../../../hooks/useGetProfile";
 
 const FormSupervised = () => {
   const { selectedSupervisor: supervisorList } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedSupervisor, setSelectedSupervisor] = useState<Supervisor>();
+  const { profile } = useGetProfile();
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
-      <Text fontSize="sm" color={colors.darkGrey}>
-        Supervised By*
-      </Text>
+      {profile?.competenceName === "PEMBEKALAN" ? (
+        <Text fontSize="sm" color={colors.darkGrey}>
+          Supervised By
+        </Text>
+      ) : (
+        <Text fontSize="sm" color={colors.darkGrey}>
+          Supervising
+        </Text>
+      )}
 
       <Flex
         justify="space-between"

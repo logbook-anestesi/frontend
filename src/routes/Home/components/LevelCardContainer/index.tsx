@@ -3,17 +3,27 @@ import LevelCard from "../LevelCard";
 import LevelCardWithLogo from "../LevelCardWithLogo";
 import cases from "../../assets/cases.png";
 import { Profile } from "../../../../hooks/useGetProfile/types";
+import useGetCompetenceUser from "../../../Competence/hooks/useGetCompetenceUser";
+import LoaderCircle from "../../../../components/LoaderCircle";
 
 interface Props {
   profile?: Profile;
 }
 
 const LevelCardContainer = ({ profile }: Props) => {
+  const { competenceData, loading } = useGetCompetenceUser();
+  console.log(competenceData);
+  const currentCompetence = competenceData?.find(
+    (item) => item.recordFlag === true
+  );
+
+  if (loading) return <LoaderCircle />;
+
   return (
     <Flex direction="column" gap="10px">
       {profile?.role === "RESIDEN" ? (
         <LevelCard
-          title={profile?.competenceName || ""}
+          title={currentCompetence?.level || "test"}
           type="Level Kompetensi"
           path="/competence"
         />
