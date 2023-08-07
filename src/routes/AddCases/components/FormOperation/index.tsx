@@ -73,6 +73,7 @@ const FormOperation = ({ formData }: Props) => {
             text={`${operation.category}: ${operation.operation}`}
             key={idx}
             onClick={() => handleRemoveOperation(operation.id)}
+            isShowClose
           />
         ))}
       </Flex>

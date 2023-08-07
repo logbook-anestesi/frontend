@@ -45,7 +45,7 @@ const FormAdditionalTags = () => {
         }}
       >
         {additionalTags.map((tag, idx) => (
-          <Ticker text={tag} key={idx} />
+          <Ticker text={tag} key={idx} isShowClose />
         ))}
       </Flex>
 

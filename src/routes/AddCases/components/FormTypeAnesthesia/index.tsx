@@ -55,7 +55,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
         }}
       >
         {selectedAnesthesia.map((anesthesia, idx) => (
-          <Ticker text={anesthesia} key={idx} />
+          <Ticker text={anesthesia} key={idx} isShowClose />
         ))}
       </Flex>
 

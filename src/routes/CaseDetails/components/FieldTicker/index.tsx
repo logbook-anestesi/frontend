@@ -25,7 +25,7 @@ const FieldTicker = ({ label, listValue }: Props) => {
         }}
       >
         {listValue.map((value, idx) => (
-          <Ticker text={value} key={idx} />
+          <Ticker text={value} key={idx} isShowClose={false} />
         ))}
       </Flex>
     </Flex>

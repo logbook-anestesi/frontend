@@ -72,6 +72,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
             text={procedure.title}
             onClick={() => removeProcedure(procedure?.id)}
             key={idx}
+            isShowClose
           />
         ))}
       </Flex>

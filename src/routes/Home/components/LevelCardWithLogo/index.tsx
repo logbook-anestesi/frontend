@@ -12,7 +12,13 @@ interface LevelCardWithLogoInterface {
   cardNumber: Number;
 }
 
-const LevelCardWithLogo = ({ type, title, path, icon, cardNumber }: LevelCardWithLogoInterface) => {
+const LevelCardWithLogo = ({
+  type,
+  title,
+  path,
+  icon,
+  cardNumber,
+}: LevelCardWithLogoInterface) => {
   const navigate = useNavigate();
 
   return (
@@ -24,28 +30,29 @@ const LevelCardWithLogo = ({ type, title, path, icon, cardNumber }: LevelCardWit
       align="center"
       onClick={() => navigate(path)}
     >
-        <Flex gap="16px" align="center">
-        <Image src={icon} maxWidth="44px" maxHeight="44px" backgroundColor={colors.lightGrey}         borderRadius="10px"
-        padding="10px"/>
-      <Flex direction="column">
-        <Text fontSize="sm" color={colors.darkGrey} >
-          {type}
-        </Text>
-        <Text
-          fontSize="md"
-          as="b"
-          color={getCompetenceColor(title)}
-        >
-          {title}
-        </Text>
+      <Flex gap="16px" align="center">
+        <Image
+          src={icon}
+          maxWidth="44px"
+          maxHeight="44px"
+          backgroundColor={colors.lightGrey}
+          borderRadius="10px"
+          padding="10px"
+        />
+        <Flex direction="column">
+          <Text fontSize="sm" color={colors.darkGrey}>
+            {type}
+          </Text>
+          <Text fontSize="md" as="b" color={getCompetenceColor(title)}>
+            {title}
+          </Text>
+        </Flex>
       </Flex>
-        </Flex>
 
-        <Flex direction="row" gap="10px">
-        <Ticker text={String(cardNumber)} />
-      <ChevronRightIcon boxSize="35px" color={colors.darkGrey} />
-        </Flex>
-
+      <Flex direction="row" gap="10px">
+        <Ticker text={String(cardNumber)} isShowClose={false} />
+        <ChevronRightIcon boxSize="35px" color={colors.darkGrey} />
+      </Flex>
     </Card>
   );
 };

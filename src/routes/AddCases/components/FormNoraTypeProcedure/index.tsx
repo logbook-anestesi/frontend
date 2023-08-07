@@ -55,7 +55,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
         }}
       >
         {selectedNoraProcedure.map((procedure, idx) => (
-          <Ticker text={procedure} key={idx} />
+          <Ticker text={procedure} key={idx} isShowClose />
         ))}
       </Flex>
 

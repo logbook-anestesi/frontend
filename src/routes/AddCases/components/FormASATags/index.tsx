@@ -55,7 +55,7 @@ const FormASATags = ({ tagList }: Props) => {
         }}
       >
         {selectedASATags.map((tag, idx) => (
-          <Ticker text={tag} key={idx} />
+          <Ticker text={tag} key={idx} isShowClose />
         ))}
       </Flex>
 

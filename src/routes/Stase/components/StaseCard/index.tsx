@@ -23,7 +23,7 @@ const StaseCard = ({ staseName }: Props) => {
         {staseName || "-"}
       </Text>
       <Flex alignSelf="flex-end">
-        <Ticker text={getCurrentMonth()} />
+        <Ticker text={getCurrentMonth()} isShowClose={false} />
       </Flex>
     </Flex>
   );

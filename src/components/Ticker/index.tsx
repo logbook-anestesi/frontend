@@ -5,9 +5,10 @@ import { CloseIcon } from "@chakra-ui/icons";
 interface TickerInterface {
   text: string;
   onClick?: () => void;
+  isShowClose: boolean;
 }
 
-const Ticker = ({ text, onClick }: TickerInterface) => {
+const Ticker = ({ text, onClick, isShowClose }: TickerInterface) => {
   return (
     <Flex
       padding="3px 8px"
@@ -26,7 +27,9 @@ const Ticker = ({ text, onClick }: TickerInterface) => {
         {text}
       </Text>
 
-      <CloseIcon w={2} color={colors.primaryPurple} onClick={onClick} />
+      {isShowClose && (
+        <CloseIcon w={2} color={colors.primaryPurple} onClick={onClick} />
+      )}
     </Flex>
   );
 };

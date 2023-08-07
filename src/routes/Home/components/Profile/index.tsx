@@ -23,7 +23,7 @@ const Profile = ({ image, name, term }: ProfileInterface) => {
         <Text as="b">{name}</Text>
 
         <Flex justify="space-between">
-          <Ticker text={`Term ${term.toString()}`} />
+          <Ticker text={`Term ${term.toString()}`} isShowClose={false} />
           <Text
             as="b"
             fontSize="12px"

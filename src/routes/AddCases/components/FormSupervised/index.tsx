@@ -44,7 +44,7 @@ const FormSupervised = () => {
         }}
       >
         {supervisorList.map((supervisor, idx) => (
-          <Ticker text={supervisor} key={idx} />
+          <Ticker text={supervisor} key={idx} isShowClose />
         ))}
       </Flex>
 

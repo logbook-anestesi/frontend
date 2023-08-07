@@ -57,7 +57,7 @@ const CompetenceCard = ({
 
       {startDate != null && endDate == null ? (
         <Flex alignSelf="flex-end">
-          <Ticker text="Kompetensi Saat Ini" />
+          <Ticker text="Kompetensi Saat Ini" isShowClose={false} />
         </Flex>
       ) : null}
     </Flex>
