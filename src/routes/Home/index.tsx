@@ -22,7 +22,7 @@ const Home = () => {
         term={profile?.joinTerm || "-"}
       />
 
-      <InfoBoxContainer />
+      {/* <InfoBoxContainer /> */}
       <LevelCardContainer profile={profile} />
       <ReportCardContainer />
       <ButtonTambah buttonTitle="Tambah Cases" onClick={onOpen} />
