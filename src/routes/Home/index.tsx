@@ -7,7 +7,7 @@ import useGetProfile from "../../hooks/useGetProfile";
 import ModalSelectCases from "./components/ModalSelectCases";
 import LevelCardContainer from "./components/LevelCardContainer";
 import ReportCardContainer from "./components/ReportCardContainer";
-import InfoBoxContainer from "./components/InfoBoxContainer";
+// import InfoBoxContainer from "./components/InfoBoxContainer";
 
 const Home = () => {
   const { profile } = useGetProfile();

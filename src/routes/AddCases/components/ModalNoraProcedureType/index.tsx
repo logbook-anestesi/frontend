@@ -94,9 +94,7 @@ const ModalNoraProcedureType = ({
           color={colors.primaryPurple}
           mb={5}
           onClick={handleClickAddOther}
-        >
-          Prosedur tidak ada di daftar
-        </Text>
+        ></Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredNoraProcedure?.map((noraProcedure) => {
