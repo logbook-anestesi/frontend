@@ -5,7 +5,7 @@ const initialState: InitialState = {
   selectedAnesthesia: [],
   selectedASATags: [],
   selectedSupervisor: [],
-  date: "",
+  date: new Date().toJSON(),
   dpjpUserId: "",
   isExam: false,
   caseType: "OK",
