@@ -2,13 +2,6 @@ import { Divider, Flex, Text } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import FieldText from "./components/FieldText";
 import FieldTicker from "./components/FieldTicker";
-import {
-  DUMMY_ADDITIONAL_TAGS,
-  DUMMY_ANESTHESIA,
-  DUMMY_PROCEDURE,
-  DUMMY_TAGS,
-  DUMMY_TYPE_OPERATION,
-} from "./constants";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useGetDetailCases from "./hooks/useGetDetailCase";
@@ -16,9 +9,16 @@ import LoaderCircle from "../../components/LoaderCircle";
 
 const CaseDetails = () => {
   const location = useLocation();
-  const { caseData, loading } = useGetDetailCases(
-    location?.state?.caseId || ""
-  );
+  const {
+    caseData,
+    loading,
+    anesthesiaTypes,
+    asaTags,
+    noraProcedureTypes,
+    operationTypes,
+    procedureTypes,
+    tags,
+  } = useGetDetailCases(location?.state?.caseId || "");
 
   useEffect(() => {
     console.log("999 INI CASE DATA", loading, caseData);
@@ -46,12 +46,14 @@ const CaseDetails = () => {
             </Flex>
 
             <FieldText label="Lokasi" value={caseData?.location} />
+
+            <FieldTicker label="Tipe Operasi" listValue={operationTypes} />
+            <FieldTicker label="Tipe Anesthesi" listValue={anesthesiaTypes} />
+            <FieldTicker label="Procedure Done" listValue={procedureTypes} />
             <FieldTicker
-              label="Tipe Operasi"
-              listValue={DUMMY_TYPE_OPERATION}
+              label="NORA Procedure"
+              listValue={noraProcedureTypes}
             />
-            <FieldTicker label="Tipe Anesthesi" listValue={DUMMY_ANESTHESIA} />
-            <FieldTicker label="Procedure Done" listValue={DUMMY_PROCEDURE} />
 
             <Divider />
 
@@ -64,22 +66,35 @@ const CaseDetails = () => {
               <FieldText label="No. RM" value={caseData?.patientRecordNumber} />
             </Flex>
 
-            <FieldTicker label="Procedure Done" listValue={DUMMY_TAGS} />
+            <FieldText label="Jenis Kelamin" value={caseData?.patientGender} />
+
+            <Divider />
+
+            <Text as="b" fontSize="xl">
+              ASA
+            </Text>
+
+            <Flex gap={20}>
+              <FieldText label="Tingkat" value={caseData?.asaTier} />
+              <FieldText
+                label="Emergensi"
+                value={caseData?.asaIsEmergency ? "YA" : "TIDAK"}
+              />
+            </Flex>
+
+            <FieldTicker label="Tags" listValue={asaTags} />
 
             <Divider />
 
             <FieldText label="Supervised By" value="Dr. Nurhasanah" />
             <FieldText label="Notes" value="-" />
-            <FieldTicker
-              label="Additional Tags "
-              listValue={DUMMY_ADDITIONAL_TAGS}
-            />
+            <FieldTicker label="Additional Tags " listValue={tags} />
 
-            <Divider />
+            {/* <Divider />
 
             <Text as="b" fontSize="xl">
               Penilaian Konsulen
-            </Text>
+            </Text> */}
           </>
         )}
       </Flex>

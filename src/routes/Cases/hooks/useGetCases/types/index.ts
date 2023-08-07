@@ -27,7 +27,7 @@ export interface Case {
   operationTypes: OperationType[];
   anesthesiaTypes: AnesthesiaType[];
   procedureTypes: ProcedureType[];
-  noraProcedureTypes: any[];
+  noraProcedureTypes: Nora[];
   supervisors: Supervisor[];
   supervisees: Supervisee[];
 }
@@ -73,4 +73,10 @@ export interface Supervisee {
   userName: string;
   caseId: string;
   userId: string;
+}
+
+export interface Nora {
+  noraProcedureTypeName: string;
+  caseId: string;
+  noraProcedureTypeId: string;
 }

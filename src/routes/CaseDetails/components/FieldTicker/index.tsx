@@ -4,10 +4,12 @@ import Ticker from "../../../../components/Ticker";
 
 interface Props {
   label: string;
-  listValue: string[];
+  listValue?: string[];
 }
 
 const FieldTicker = ({ label, listValue }: Props) => {
+  if (listValue?.length === 0) return null;
+
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
@@ -24,7 +26,7 @@ const FieldTicker = ({ label, listValue }: Props) => {
           },
         }}
       >
-        {listValue.map((value, idx) => (
+        {listValue?.map((value, idx) => (
           <Ticker text={value} key={idx} isShowClose={false} />
         ))}
       </Flex>
