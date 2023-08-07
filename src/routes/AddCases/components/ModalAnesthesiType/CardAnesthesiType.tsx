@@ -7,12 +7,14 @@ interface Props {
   anesthesia: AnesthesiaType;
   closeModal: () => void;
   setAnesthesia: Dispatch<SetStateAction<AnesthesiaType | undefined>>;
+  id: string;
 }
 
 const CardAnesthesiType = ({
   anesthesia,
   closeModal,
   setAnesthesia,
+  id,
 }: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
@@ -20,7 +22,8 @@ const CardAnesthesiType = ({
     casesDispatch({
       type: "set_selected_anesthesia",
       data: {
-        anesthesia: anesthesia.name,
+        id: id,
+        title: anesthesia.name,
       },
     });
 

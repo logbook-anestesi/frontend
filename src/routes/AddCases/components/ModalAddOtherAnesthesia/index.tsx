@@ -30,7 +30,8 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
     casesDispatch({
       type: "set_selected_anesthesia",
       data: {
-        anesthesia: anesthesia,
+        title: anesthesia,
+        id: response?.anesthesiaId,
       },
     });
 

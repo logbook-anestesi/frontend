@@ -45,7 +45,7 @@ const ModalAnesthesiType = ({
   useEffect(() => {
     const filtered = anesthesiaList.filter(
       (anesthesia) =>
-        !selectedAnesthesia.some((item) => item === anesthesia?.name)
+        !selectedAnesthesia.some((item) => item.title === anesthesia?.name)
     );
 
     setFilteredAnesthesi(filtered);
@@ -96,13 +96,14 @@ const ModalAnesthesiType = ({
         </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
-          {filteredAnesthesi?.map((anesthesia) => {
+          {filteredAnesthesi?.map((anesthesia, idx) => {
             return (
               <CardAnesthesiType
-                key={anesthesia.id}
+                key={`anesthesia-${idx}`}
                 anesthesia={anesthesia}
                 closeModal={closeModal}
                 setAnesthesia={setAnesthesia}
+                id={anesthesia.id}
               />
             );
           })}

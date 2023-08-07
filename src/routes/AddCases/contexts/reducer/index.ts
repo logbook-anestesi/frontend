@@ -50,7 +50,10 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedAnesthesia: [
           ...state.selectedAnesthesia,
-          action.data.anesthesia,
+          {
+            title: action.data.title,
+            id: action.data.id,
+          },
         ],
       };
     }
@@ -246,6 +249,17 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (operation) => operation.id !== action.data.id
         ),
         operationTypeIds: state.operationTypeIds.filter(
+          (id) => id !== action.data.id
+        ),
+      };
+    }
+    case "remove_anesthesia_type": {
+      return {
+        ...state,
+        selectedAnesthesia: state.selectedAnesthesia.filter(
+          (anesthesia) => anesthesia.id !== action.data.id
+        ),
+        anesthesiaTypeIds: state.anesthesiaTypeIds.filter(
           (id) => id !== action.data.id
         ),
       };
