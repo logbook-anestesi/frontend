@@ -86,8 +86,19 @@ const CaseDetails = () => {
 
             <Divider />
 
-            <FieldText label="Supervised By" value="Dr. Nurhasanah" />
-            <FieldText label="Notes" value="-" />
+            {/* <FieldText label="Supervised By" value="Dr. Nurhasanah" /> */}
+            <FieldTicker
+              label="Supervised By"
+              listValue={caseData?.supervisors.map((senior) => senior.userName)}
+            />
+
+            <FieldTicker
+              label="Supervising"
+              listValue={caseData?.supervisees
+                .map((junior) => junior.userName)
+                .filter((junior) => junior !== caseData?.userName)}
+            />
+            <FieldText label="Notes" value={caseData?.notes || " "} />
             <FieldTicker label="Additional Tags " listValue={tags} />
 
             {/* <Divider />
