@@ -14,12 +14,17 @@ interface Anesthesia {
   id: string;
 }
 
+interface ASATags {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
   selectedProcedure: Procedure[];
   selectedNoraProcedure: string[];
-  selectedASATags: string[];
+  selectedASATags: ASATags[];
   selectedSupervisor: string[];
   date: string;
   dpjpUserId: string;
@@ -192,6 +197,7 @@ interface SetASATags {
   type: "set_asa_tags";
   data: {
     tag: string;
+    id: string;
   };
 }
 
@@ -263,6 +269,13 @@ interface RemoveAnesthesiaType {
   };
 }
 
+interface RemoveAsaTags {
+  type: "remove_asa_tags";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -294,6 +307,7 @@ type ACTION_TYPE =
   | ResetState
   | RemoveProcedureType
   | RemoveOperationType
-  | RemoveAnesthesiaType;
+  | RemoveAnesthesiaType
+  | RemoveAsaTags;
 
 export type { ACTION_TYPE, InitialState };

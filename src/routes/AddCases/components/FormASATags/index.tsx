@@ -2,10 +2,10 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Tag } from "../../hooks/useGetCasesForm/types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ModalASATags from "../ModalASATags";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext } from "../../contexts";
+import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalAddOtherASAtags from "../ModalAddOtherASATags";
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
 }
 
 const FormASATags = ({ tagList }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
   const { selectedASATags } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -23,8 +24,20 @@ const FormASATags = ({ tagList }: Props) => {
 
   const [tag, setTag] = useState<Tag>();
 
+  const handleRemoveOperation = useCallback(
+    (asaTagId: string) => {
+      casesDispatch({
+        type: "remove_asa_tags",
+        data: {
+          id: asaTagId,
+        },
+      });
+    },
+    [casesDispatch]
+  );
+
   return (
-    <Flex direction="column" gap={1} onClick={onOpen}>
+    <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         ASA Tags
       </Text>
@@ -36,7 +49,7 @@ const FormASATags = ({ tagList }: Props) => {
         borderColor={colors.lightGrey}
         padding="10px 15px"
         borderRadius={10}
-        // onClick={handleButtonClick}
+        onClick={onOpen}
         mb={1}
       >
         <Text>{tag?.name || "Masukkan tags ..."}</Text>
@@ -55,7 +68,12 @@ const FormASATags = ({ tagList }: Props) => {
         }}
       >
         {selectedASATags.map((tag, idx) => (
-          <Ticker text={tag} key={idx} isShowClose />
+          <Ticker
+            text={tag.title}
+            key={idx}
+            isShowClose
+            onClick={() => handleRemoveOperation(tag.id)}
+          />
         ))}
       </Flex>
 

@@ -16,6 +16,7 @@ const CardASATags = ({ tag, closeModal, setTag }: Props) => {
     casesDispatch({
       type: "set_asa_tags",
       data: {
+        id: tag.id,
         tag: tag.name,
       },
     });
