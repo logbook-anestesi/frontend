@@ -24,11 +24,16 @@ interface Supervisor {
   id: string;
 }
 
+interface Nora {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
   selectedProcedure: Procedure[];
-  selectedNoraProcedure: string[];
+  selectedNoraProcedure: Nora[];
   selectedASATags: ASATags[];
   selectedSupervisor: Supervisor[];
   date: string;
@@ -125,6 +130,7 @@ interface SetNoraProcedureType {
   type: "set_nora_procedure_type";
   data: {
     noraProcedureType: string;
+    id: string;
   };
 }
 
@@ -289,6 +295,13 @@ interface RemoveSupervisor {
   };
 }
 
+interface RemoveNoraProcedure {
+  type: "remove_nora_procedure";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -322,6 +335,7 @@ type ACTION_TYPE =
   | RemoveOperationType
   | RemoveAnesthesiaType
   | RemoveAsaTags
-  | RemoveSupervisor;
+  | RemoveSupervisor
+  | RemoveNoraProcedure;
 
 export type { ACTION_TYPE, InitialState };

@@ -47,7 +47,7 @@ const ModalNoraProcedureType = ({
     const filtered = noraProcedureList.filter(
       (nora) =>
         !selectedNoraProcedure.some(
-          (noraProcedure) => noraProcedure === nora?.name
+          (noraProcedure) => noraProcedure.title === nora?.name
         )
     );
 

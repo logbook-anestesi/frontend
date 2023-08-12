@@ -120,7 +120,10 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedNoraProcedure: [
           ...state.selectedNoraProcedure,
-          action.data.noraProcedureType,
+          {
+            id: action.data.id,
+            title: action.data.noraProcedureType,
+          },
         ],
       };
     }
@@ -289,6 +292,17 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (supervisor) => supervisor.id !== action.data.id
         ),
         supervisorIds: state.supervisorIds.filter(
+          (id) => id !== action.data.id
+        ),
+      };
+    }
+    case "remove_nora_procedure": {
+      return {
+        ...state,
+        selectedNoraProcedure: state.selectedNoraProcedure.filter(
+          (noraProcedure) => noraProcedure.id !== action.data.id
+        ),
+        noraProcedureTypeIds: state.noraProcedureTypeIds.filter(
           (id) => id !== action.data.id
         ),
       };

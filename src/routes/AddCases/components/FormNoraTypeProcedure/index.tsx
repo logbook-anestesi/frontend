@@ -2,10 +2,10 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ModalNoraProcedureType from "../ModalNoraProcedureType";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext } from "../../contexts";
+import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 // import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
 }
 
 const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
+  const casesDispatch = useAddCasesDispatch();
   const { selectedNoraProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -23,8 +24,20 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
 
   const [noraProcedure, setNoraProcedure] = useState<NoraProcedureType>();
 
+  const handleRemoveAsaTag = useCallback(
+    (noraId: string) => {
+      casesDispatch({
+        type: "remove_nora_procedure",
+        data: {
+          id: noraId,
+        },
+      });
+    },
+    [casesDispatch]
+  );
+
   return (
-    <Flex direction="column" gap={1} onClick={onOpen}>
+    <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Nora Procedure Type
       </Text>
@@ -36,7 +49,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
         borderColor={colors.lightGrey}
         padding="10px 15px"
         borderRadius={10}
-        // onClick={handleButtonClick}
+        onClick={onOpen}
         mb={1}
       >
         <Text>{noraProcedure?.name || "Masukkan nama prosedur ..."}</Text>
@@ -54,8 +67,13 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
           },
         }}
       >
-        {selectedNoraProcedure.map((procedure, idx) => (
-          <Ticker text={procedure} key={idx} isShowClose />
+        {selectedNoraProcedure.map((noraProcedure, idx) => (
+          <Ticker
+            text={noraProcedure.title}
+            key={idx}
+            isShowClose
+            onClick={() => handleRemoveAsaTag(noraProcedure.id)}
+          />
         ))}
       </Flex>
 
