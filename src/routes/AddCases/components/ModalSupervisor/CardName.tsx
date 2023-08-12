@@ -17,6 +17,7 @@ const CardName = ({ setSupervisor, supervisor, closeModal }: Props) => {
       type: "set_supervisor",
       data: {
         supervisor: supervisor.name,
+        id: supervisor.id,
       },
     });
 

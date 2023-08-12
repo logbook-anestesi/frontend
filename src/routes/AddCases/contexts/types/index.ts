@@ -14,13 +14,28 @@ interface Anesthesia {
   id: string;
 }
 
+interface ASATags {
+  title: string;
+  id: string;
+}
+
+interface Supervisor {
+  name: string;
+  id: string;
+}
+
+interface Nora {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
   selectedProcedure: Procedure[];
-  selectedNoraProcedure: string[];
-  selectedASATags: string[];
-  selectedSupervisor: string[];
+  selectedNoraProcedure: Nora[];
+  selectedASATags: ASATags[];
+  selectedSupervisor: Supervisor[];
   date: string;
   dpjpUserId: string;
   isExam: boolean;
@@ -115,6 +130,7 @@ interface SetNoraProcedureType {
   type: "set_nora_procedure_type";
   data: {
     noraProcedureType: string;
+    id: string;
   };
 }
 
@@ -192,6 +208,7 @@ interface SetASATags {
   type: "set_asa_tags";
   data: {
     tag: string;
+    id: string;
   };
 }
 
@@ -206,6 +223,7 @@ interface SetSupervisor {
   type: "set_supervisor";
   data: {
     supervisor: string;
+    id: string;
   };
 }
 
@@ -263,6 +281,27 @@ interface RemoveAnesthesiaType {
   };
 }
 
+interface RemoveAsaTags {
+  type: "remove_asa_tags";
+  data: {
+    id: string;
+  };
+}
+
+interface RemoveSupervisor {
+  type: "remove_supervisor";
+  data: {
+    id: string;
+  };
+}
+
+interface RemoveNoraProcedure {
+  type: "remove_nora_procedure";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -294,6 +333,9 @@ type ACTION_TYPE =
   | ResetState
   | RemoveProcedureType
   | RemoveOperationType
-  | RemoveAnesthesiaType;
+  | RemoveAnesthesiaType
+  | RemoveAsaTags
+  | RemoveSupervisor
+  | RemoveNoraProcedure;
 
 export type { ACTION_TYPE, InitialState };

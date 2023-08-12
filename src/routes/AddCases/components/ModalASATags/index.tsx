@@ -44,7 +44,8 @@ const ModalASATags = ({
 
   useEffect(() => {
     const filtered = tagList.filter(
-      (tag) => !selectedASATags.some((selectedTag) => selectedTag === tag?.name)
+      (tag) =>
+        !selectedASATags.some((selectedTag) => selectedTag.title === tag?.name)
     );
 
     setFilteredTags(filtered);

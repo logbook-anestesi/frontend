@@ -120,7 +120,10 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedNoraProcedure: [
           ...state.selectedNoraProcedure,
-          action.data.noraProcedureType,
+          {
+            id: action.data.id,
+            title: action.data.noraProcedureType,
+          },
         ],
       };
     }
@@ -184,7 +187,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case "set_asa_tags": {
       return {
         ...state,
-        selectedASATags: [...state.selectedASATags, action.data.tag],
+        selectedASATags: [
+          ...state.selectedASATags,
+          {
+            id: action.data.id,
+            title: action.data.tag,
+          },
+        ],
       };
     }
     case "set_asa_tags_type_ids": {
@@ -198,7 +207,10 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedSupervisor: [
           ...state.selectedSupervisor,
-          action.data.supervisor,
+          {
+            name: action.data.supervisor,
+            id: action.data.id,
+          },
         ],
       };
     }
@@ -260,6 +272,37 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (anesthesia) => anesthesia.id !== action.data.id
         ),
         anesthesiaTypeIds: state.anesthesiaTypeIds.filter(
+          (id) => id !== action.data.id
+        ),
+      };
+    }
+    case "remove_asa_tags": {
+      return {
+        ...state,
+        selectedASATags: state.selectedASATags.filter(
+          (asaTags) => asaTags.id !== action.data.id
+        ),
+        asaTagIds: state.asaTagIds.filter((id) => id !== action.data.id),
+      };
+    }
+    case "remove_supervisor": {
+      return {
+        ...state,
+        selectedSupervisor: state.selectedSupervisor.filter(
+          (supervisor) => supervisor.id !== action.data.id
+        ),
+        supervisorIds: state.supervisorIds.filter(
+          (id) => id !== action.data.id
+        ),
+      };
+    }
+    case "remove_nora_procedure": {
+      return {
+        ...state,
+        selectedNoraProcedure: state.selectedNoraProcedure.filter(
+          (noraProcedure) => noraProcedure.id !== action.data.id
+        ),
+        noraProcedureTypeIds: state.noraProcedureTypeIds.filter(
           (id) => id !== action.data.id
         ),
       };

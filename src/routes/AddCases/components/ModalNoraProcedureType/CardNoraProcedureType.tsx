@@ -21,6 +21,7 @@ const CardNoraProcedureType = ({
       type: "set_nora_procedure_type",
       data: {
         noraProcedureType: noraProcedure.name,
+        id: noraProcedure.id,
       },
     });
 

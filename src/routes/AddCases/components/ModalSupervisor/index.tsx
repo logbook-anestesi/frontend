@@ -36,7 +36,8 @@ const ModalSupervisor = ({ isOpen, closeModal, setSupervisor }: Props) => {
 
   useEffect(() => {
     const filtered = supervisors.filter(
-      (supervisor) => !supervisorList.some((item) => item === supervisor?.name)
+      (supervisor) =>
+        !supervisorList.some((item) => item.name === supervisor?.name)
     );
 
     setFilteredASupervisor(filtered);

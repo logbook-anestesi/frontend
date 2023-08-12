@@ -29,6 +29,7 @@ const ModalAddOtherASAtags = ({ isOpen, closeModal }: Props) => {
     casesDispatch({
       type: "set_asa_tags",
       data: {
+        id: response?.tagId,
         tag: tag,
       },
     });
