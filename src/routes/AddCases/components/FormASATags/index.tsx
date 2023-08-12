@@ -24,7 +24,7 @@ const FormASATags = ({ tagList }: Props) => {
 
   const [tag, setTag] = useState<Tag>();
 
-  const handleRemoveOperation = useCallback(
+  const handleRemoveAsaTag = useCallback(
     (asaTagId: string) => {
       casesDispatch({
         type: "remove_asa_tags",
@@ -72,7 +72,7 @@ const FormASATags = ({ tagList }: Props) => {
             text={tag.title}
             key={idx}
             isShowClose
-            onClick={() => handleRemoveOperation(tag.id)}
+            onClick={() => handleRemoveAsaTag(tag.id)}
           />
         ))}
       </Flex>

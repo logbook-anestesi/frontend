@@ -204,7 +204,10 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedSupervisor: [
           ...state.selectedSupervisor,
-          action.data.supervisor,
+          {
+            name: action.data.supervisor,
+            id: action.data.id,
+          },
         ],
       };
     }
@@ -277,6 +280,17 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (asaTags) => asaTags.id !== action.data.id
         ),
         asaTagIds: state.asaTagIds.filter((id) => id !== action.data.id),
+      };
+    }
+    case "remove_supervisor": {
+      return {
+        ...state,
+        selectedSupervisor: state.selectedSupervisor.filter(
+          (supervisor) => supervisor.id !== action.data.id
+        ),
+        supervisorIds: state.supervisorIds.filter(
+          (id) => id !== action.data.id
+        ),
       };
     }
   }

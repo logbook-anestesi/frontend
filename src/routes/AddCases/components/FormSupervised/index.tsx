@@ -1,21 +1,34 @@
 import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import profileIcon from "../../assets/profile.png";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import ModalSupervisor from "../ModalSupervisor";
-import { useAddCasesContext } from "../../contexts";
+import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import Ticker from "../../../../components/Ticker";
 import useGetProfile from "../../../../hooks/useGetProfile";
 
 const FormSupervised = () => {
+  const casesDispatch = useAddCasesDispatch();
   const { selectedSupervisor: supervisorList } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedSupervisor, setSelectedSupervisor] = useState<Supervisor>();
   const { profile } = useGetProfile();
 
+  const handleRemoveSupervisor = useCallback(
+    (superVisorId: string) => {
+      casesDispatch({
+        type: "remove_supervisor",
+        data: {
+          id: superVisorId,
+        },
+      });
+    },
+    [casesDispatch]
+  );
+
   return (
-    <Flex direction="column" gap={1} onClick={onOpen}>
+    <Flex direction="column" gap={1}>
       {profile?.competenceName === "PEMBEKALAN" ? (
         <Text fontSize="sm" color={colors.darkGrey}>
           Supervised By
@@ -33,7 +46,7 @@ const FormSupervised = () => {
         borderColor={colors.lightGrey}
         padding="10px 15px"
         borderRadius={10}
-        // onClick={handleButtonClick}
+        onClick={onOpen}
         mb={1}
       >
         <Text>{selectedSupervisor?.name || "Masukkan Supervisor"}</Text>
@@ -52,7 +65,12 @@ const FormSupervised = () => {
         }}
       >
         {supervisorList.map((supervisor, idx) => (
-          <Ticker text={supervisor} key={idx} isShowClose />
+          <Ticker
+            text={supervisor.name}
+            key={idx}
+            isShowClose
+            onClick={() => handleRemoveSupervisor(supervisor.id)}
+          />
         ))}
       </Flex>
 
