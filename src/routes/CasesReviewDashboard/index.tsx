@@ -7,8 +7,6 @@ import CardApproval from "./components/CardApproval";
 const CasesReviewDashboardPage = () => {
   const { reviewData } = useGetPendingReview();
 
-  console.log("999 REVIEW DATA", reviewData);
-
   return (
     <Flex flexDirection="column">
       <Header pathBack="/" title="Pending Cases Review" />
@@ -22,9 +20,9 @@ const CasesReviewDashboardPage = () => {
           Approve All
         </Button>
 
-        <CardApproval />
-        <CardApproval />
-        <CardApproval />
+        {reviewData?.map((review) => (
+          <CardApproval caseData={review} />
+        ))}
       </Flex>
     </Flex>
   );
