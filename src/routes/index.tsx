@@ -19,6 +19,8 @@ import AddCaseNora from "./AddCaseNora";
 import CaseDetails from "./CaseDetails";
 import StaseAllList from "./StaseAllList";
 import PendingApproval from "./PendingApproval";
+import ApprovalCases from "./ApprovalCases";
+import ApprovingProcess from "./ApprovingProcess";
 
 const MainRoutes = () => {
   return (
@@ -46,6 +48,8 @@ const MainRoutes = () => {
         <Route path="/cases/add/nora" element={<AddCaseNora />} />
         <Route path="/cases/details" element={<CaseDetails />} />
         <Route path="/approval" element={<PendingApproval />} />
+        <Route path="/approval/pending" element={<ApprovalCases />} />
+        <Route path="/approval/process" element={<ApprovingProcess />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
