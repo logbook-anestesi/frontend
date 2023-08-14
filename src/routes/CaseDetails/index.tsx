@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import FieldText from "./components/FieldText";
 import FieldTicker from "./components/FieldTicker";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import useGetDetailCases from "./hooks/useGetDetailCase";
 import LoaderCircle from "../../components/LoaderCircle";
 
@@ -19,10 +18,6 @@ const CaseDetails = () => {
     procedureTypes,
     tags,
   } = useGetDetailCases(location?.state?.caseId || "");
-
-  useEffect(() => {
-    console.log("999 INI CASE DATA", loading, caseData);
-  }, [caseData, loading, location.state]);
 
   return (
     <Flex flexDirection="column">

@@ -24,7 +24,9 @@ const CasesReviewDashboardPage = () => {
         {loading ? (
           <LoaderCircle />
         ) : (
-          reviewData?.map((review) => <CardApproval caseData={review} />)
+          reviewData?.map((review) => (
+            <CardApproval caseData={review} key={review.id} />
+          ))
         )}
       </Flex>
     </Flex>

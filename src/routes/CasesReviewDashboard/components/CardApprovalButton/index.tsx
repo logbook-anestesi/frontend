@@ -1,8 +1,21 @@
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import { Button, Flex } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
+import { useNavigate } from "react-router-dom";
 
 const CardApprovalButton = () => {
+  const navigate = useNavigate();
+
+  const handleClickReview = (isReject: boolean) => {
+    const state = {
+      isReject: isReject,
+    };
+
+    navigate("/review/process", {
+      state: state,
+    });
+  };
+
   return (
     <Flex justify="end" gap={4}>
       <Button
@@ -22,6 +35,7 @@ const CardApprovalButton = () => {
         borderColor={colors.primaryGreen}
         size="xs"
         py={4}
+        onClick={() => handleClickReview(false)}
       >
         Approve
       </Button>
@@ -32,6 +46,7 @@ const CardApprovalButton = () => {
         variant="outline"
         size="xs"
         py={4}
+        onClick={() => handleClickReview(true)}
       >
         Reject
       </Button>
