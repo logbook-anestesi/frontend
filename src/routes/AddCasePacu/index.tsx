@@ -99,7 +99,7 @@ const AddCasePacu = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/cases" title="Tambah PACU" />
+      <Header title="Tambah PACU" />
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />

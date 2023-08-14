@@ -6,14 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 interface HeaderInterface {
   title: string;
-  pathBack: string;
+  pathBack?: string;
 }
 
 const Header = ({ title, pathBack }: HeaderInterface) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(pathBack);
+    if (pathBack) {
+      navigate(pathBack);
+      return;
+    }
+
+    navigate(-1);
   };
 
   return (

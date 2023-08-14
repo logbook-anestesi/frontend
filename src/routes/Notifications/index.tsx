@@ -5,7 +5,7 @@ import ListNotifications from "./components/ListNotifications";
 const NotificationsPage = () => {
   return (
     <Flex direction="column">
-      <Header pathBack="/" title="Notifikasi" />
+      <Header title="Notifikasi" />
       <Flex direction="column" padding="30px" gap="8px">
         <ListNotifications />
       </Flex>

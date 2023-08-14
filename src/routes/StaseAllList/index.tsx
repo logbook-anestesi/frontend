@@ -8,7 +8,7 @@ const StaseAllList = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/stase" title="Stase" />
+      <Header title="Stase" />
       <Flex padding="30px" direction="column" gap="16px">
         <TableAllStase staseList={staseList} loading={loading} />
       </Flex>

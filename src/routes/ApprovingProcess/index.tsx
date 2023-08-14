@@ -9,7 +9,7 @@ const ApprovingProcess = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/" title="Approve OK-014-01" />
+      <Header title="Approve OK-014-01" />
 
       <Flex padding="30px" direction="column" gap="16px">
         <RadioPenilaian />

@@ -115,7 +115,7 @@ const AddCases = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/cases" title="Tambah OK/Surgery" />
+      <Header title="Tambah OK/Surgery" />
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />

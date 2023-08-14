@@ -41,7 +41,7 @@ const ProfilePage = () => {
   if (loading) {
     return (
       <Flex direction="column">
-        <Header title="Profile" pathBack="/" />
+        <Header title="Profile" />
         <Box mb={20} />
         <LoaderCircle />
       </Flex>
@@ -50,7 +50,7 @@ const ProfilePage = () => {
 
   return (
     <Flex direction="column">
-      <Header title="Profile" pathBack="/" />
+      <Header title="Profile" />
       <Flex direction="column" gap="38px" padding="30px">
         <Flex direction="column" align="center" gap="8px">
           <Image
