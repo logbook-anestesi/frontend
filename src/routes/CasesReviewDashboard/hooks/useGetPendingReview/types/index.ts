@@ -1,0 +1,34 @@
+export interface ReviewItem {
+  id: string;
+  created: string;
+  createBy: string;
+  lastUpdated: string;
+  lastUpdateBy: string;
+  userId: string;
+  userName: string;
+  userType: string;
+  caseType: string;
+  date: string;
+  dpjpUserId: string;
+  dpjpUserName: string;
+  isExam: boolean;
+  ageGroup: string;
+  priority: string;
+  location: string;
+  patientAge: number;
+  patientRecordNumber: string;
+  patientGender: string;
+  asaTier: number;
+  asaIsEmergency: boolean;
+  numberOfPatient: any;
+  notes: string;
+  status: string;
+  asaTags: any;
+  tags: any;
+  operationTypes: any;
+  anesthesiaTypes: any;
+  procedureTypes: any;
+  noraProcedureTypes: any;
+  supervisors: any;
+  supervisees: any;
+}
