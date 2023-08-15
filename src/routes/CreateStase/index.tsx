@@ -67,7 +67,7 @@ const CreateStase = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/stase" title="Pembaruan Stase" />
+      <Header title="Pembaruan Stase" />
 
       <Flex padding="30px" direction="column" gap={10}>
         <CardPeriod monthValue={getCurrentMonth()} />

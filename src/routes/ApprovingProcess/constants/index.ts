@@ -1,18 +1,18 @@
 export const RADIO_PENILAIAN_GROUP = [
   {
     title: "Sangat Baik",
-    value: "0",
+    value: "VERY_GOOD",
   },
   {
     title: "Baik",
-    value: "1",
+    value: "GOOD",
   },
   {
     title: "Kurang Baik",
-    value: "2",
+    value: "NOT_GOOD",
   },
   {
     title: "Sangat Tidak Baik",
-    value: "3",
+    value: "VERY_BAD",
   },
 ];

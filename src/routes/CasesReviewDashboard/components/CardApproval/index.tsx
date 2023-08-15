@@ -30,10 +30,13 @@ const CardApproval = ({ caseData }: Props) => {
           </Flex>
         </Flex>
 
-        <ButtonFile title="C-OK24-L" />
+        <ButtonFile
+          title={`${caseData?.caseType} - ${caseData?.id.substring(0, 4)}`}
+          caseId={caseData?.id}
+        />
       </Flex>
 
-      <CardApprovalButton />
+      <CardApprovalButton caseData={caseData} />
 
       <Divider mt={5} />
     </Flex>

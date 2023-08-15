@@ -5,7 +5,7 @@ import CardApproval from "./components/CardApproval";
 const PendingApproval = () => {
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/" title="Pending Approval" />
+      <Header title="Pending Approval" />
 
       <Flex padding="30px" direction="column" gap="16px">
         <CardApproval />

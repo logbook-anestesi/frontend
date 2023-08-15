@@ -105,7 +105,7 @@ const AddCaseNora = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header pathBack="/cases" title="Tambah NORA" />
+      <Header title="Tambah NORA" />
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />

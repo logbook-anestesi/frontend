@@ -1,8 +1,30 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { RADIO_PENILAIAN_GROUP } from "../../constants";
+import {
+  useApprovingProcess,
+  useApprovingProcessDispatch,
+} from "../../contexts";
+import { useEffect, useState } from "react";
 
 const RadioPenilaian = () => {
+  const [value, setValue] = useState("");
+  const { notes, rate } = useApprovingProcess();
+  const approvingProcessDispatch = useApprovingProcessDispatch();
+
+  useEffect(() => {
+    approvingProcessDispatch({
+      type: "set_rate",
+      data: {
+        rate: value,
+      },
+    });
+  }, [approvingProcessDispatch, notes, rate, value]);
+
+  useEffect(() => {
+    console.log("999 ini data approving", { notes, rate });
+  }, [notes, rate]);
+
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
@@ -10,8 +32,8 @@ const RadioPenilaian = () => {
       </Text>
 
       <RadioGroup
-        // onChange={setValue}
-        // value={value}
+        onChange={setValue}
+        value={value}
         overflowX="scroll"
         css={{
           "&::-webkit-scrollbar": {
