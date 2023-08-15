@@ -36,7 +36,7 @@ const CardApproval = ({ caseData }: Props) => {
         />
       </Flex>
 
-      <CardApprovalButton />
+      <CardApprovalButton caseData={caseData} />
 
       <Divider mt={5} />
     </Flex>

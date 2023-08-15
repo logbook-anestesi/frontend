@@ -8,13 +8,16 @@ import { useLocation } from "react-router-dom";
 
 const ApprovingProcess = () => {
   const location = useLocation();
-  const isReject = location?.state?.isReject || false;
+  const { isReject, caseData } = location?.state;
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  console.log("999 INI IS REJECT", isReject);
   return (
     <Flex flexDirection="column">
-      <Header title="Approve OK-014-01" />
+      <Header
+        title={`${isReject ? "Reject" : "Approve"} ${
+          caseData?.caseType
+        } - ${caseData?.id.substring(0, 4)}`}
+      />
 
       <Flex padding="30px" direction="column" gap="16px">
         {!isReject && <RadioPenilaian />}
@@ -27,7 +30,7 @@ const ApprovingProcess = () => {
           mt={10}
           onClick={onOpen}
         >
-          Approve
+          {isReject ? "Reject" : "Approve"}
         </Button>
       </Flex>
 
