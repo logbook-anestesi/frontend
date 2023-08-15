@@ -7,6 +7,7 @@ import AuthProvider from "./contexts/AuthContext";
 import { AppContainer } from "./styles";
 import { ChakraProvider } from "@chakra-ui/react";
 import AddCasesProvider from "./routes/AddCases/contexts";
+import ApprovingProcessProvider from "./routes/ApprovingProcess/contexts";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,9 +18,11 @@ root.render(
       <AuthProvider>
         <AppContainer>
           <AddCasesProvider>
-            <ChakraProvider>
-              <MainRoutes />
-            </ChakraProvider>
+            <ApprovingProcessProvider>
+              <ChakraProvider>
+                <MainRoutes />
+              </ChakraProvider>
+            </ApprovingProcessProvider>
           </AddCasesProvider>
         </AppContainer>
       </AuthProvider>

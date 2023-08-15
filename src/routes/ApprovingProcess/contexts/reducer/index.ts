@@ -19,6 +19,11 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         rate: action.data.rate,
       };
     }
+    case "reset": {
+      return {
+        ...initialState,
+      };
+    }
     default: {
       return state;
     }

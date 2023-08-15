@@ -17,6 +17,10 @@ interface SetNotes {
   };
 }
 
-type ACTION_TYPE = SetRates | SetNotes;
+interface ResetState {
+  type: "reset";
+}
+
+type ACTION_TYPE = SetRates | SetNotes | ResetState;
 
 export type { ACTION_TYPE, InitialState };
