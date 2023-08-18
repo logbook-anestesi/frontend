@@ -1,28 +1,19 @@
 import { Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import useGetDetailCases from "./hooks/useGetDetailCase";
 import LoaderCircle from "../../components/LoaderCircle";
 import FormRadioExam from "./components/FormRadioExam";
 import { RADIO_EXAM } from "./constants";
-import { useApprovalEditDispatch } from "./contexts";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
+import FormRadioPriority from "./components/FormRadioPriority";
+import FormRadioGender from "./components/FormRadioGender";
+import FormRadioLocation from "./components/FormRadioLocation";
+import FormRadioEmergency from "./components/FormRadioEmergency";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
-  const approveEditDispatch = useApprovalEditDispatch();
   const { caseData, loading } = useGetDetailCases(location?.state?.caseId);
-
-  useEffect(() => {
-    approveEditDispatch({
-      type: "set_all_data_case",
-      data: {
-        isExam: caseData?.isExam,
-      },
-    });
-    console.log("999 INI CASE ID", caseData);
-  }, [approveEditDispatch, caseData]);
 
   return (
     <Flex flexDirection="column">
@@ -39,6 +30,10 @@ const ApprovingProcessEdit = () => {
               initialValue={caseData?.isExam}
             />
             <FormRadioAgeGroup initialValue={caseData?.ageGroup} />
+            <FormRadioPriority initialValue={caseData?.priority} />
+            <FormRadioGender initialValue={caseData?.patientGender} />
+            <FormRadioLocation initialValue={caseData?.location} />
+            <FormRadioEmergency initialValue={caseData?.asaIsEmergency} />
           </>
         )}
       </Flex>

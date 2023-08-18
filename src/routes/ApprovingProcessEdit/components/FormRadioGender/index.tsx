@@ -4,18 +4,26 @@ import { useEffect, useState } from "react";
 import { RADIO_GENDER } from "../../constants";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormRadioGender = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: string;
+}
+
+const FormRadioGender = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    casesDispatch({
+    setValue(initialValue || "");
+  }, [initialValue]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_patient_gender",
       data: {
         gender: value,
       },
     });
-  }, [casesDispatch, value]);
+  }, [approveEditDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>

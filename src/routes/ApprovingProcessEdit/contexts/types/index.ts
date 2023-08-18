@@ -302,14 +302,6 @@ interface RemoveNoraProcedure {
   };
 }
 
-interface SetAllData {
-  type: "set_all_data_case";
-  data: {
-    isExam?: boolean;
-    ageGroup?: string;
-  };
-}
-
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -344,7 +336,6 @@ type ACTION_TYPE =
   | RemoveAnesthesiaType
   | RemoveAsaTags
   | RemoveSupervisor
-  | RemoveNoraProcedure
-  | SetAllData;
+  | RemoveNoraProcedure;
 
 export type { ACTION_TYPE, InitialState };

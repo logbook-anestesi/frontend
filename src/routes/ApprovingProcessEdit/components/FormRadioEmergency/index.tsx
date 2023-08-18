@@ -4,18 +4,26 @@ import { useEffect, useState } from "react";
 import { RADIO_EMERGENCY } from "../../constants";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormRadioEmergency = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: boolean;
+}
+
+const FormRadioEmergency = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("ya");
 
   useEffect(() => {
-    casesDispatch({
+    setValue(initialValue ? "ya" : "tidak");
+  }, [initialValue]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_emergency",
       data: {
         isEmergency: value === "ya",
       },
     });
-  }, [casesDispatch, value]);
+  }, [approveEditDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>

@@ -4,18 +4,26 @@ import { useEffect, useState } from "react";
 import { RADIO_PRIORITY } from "../../constants";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormRadioPriority = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: string;
+}
+
+const FormRadioPriority = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    casesDispatch({
+    setValue(initialValue || "");
+  }, [initialValue]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_priority",
       data: {
         priority: value,
       },
     });
-  }, [casesDispatch, value]);
+  }, [approveEditDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>

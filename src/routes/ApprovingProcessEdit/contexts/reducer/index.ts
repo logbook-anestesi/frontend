@@ -307,13 +307,6 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ),
       };
     }
-    case "set_all_data_case": {
-      return {
-        ...state,
-        isExam: action?.data?.isExam || false,
-        ageGroup: action?.data?.ageGroup || "",
-      };
-    }
   }
 }
 
