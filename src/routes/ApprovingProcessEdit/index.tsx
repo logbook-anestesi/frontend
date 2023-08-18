@@ -3,22 +3,29 @@ import Header from "../../components/Header";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import useGetDetailCases from "./hooks/useGetDetailCase";
+import LoaderCircle from "../../components/LoaderCircle";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
-
-  const caseId = location?.state?.caseId;
+  const { caseData, loading } = useGetDetailCases(location?.state?.caseId);
 
   useEffect(() => {
-    console.log("999 INI CASE ID", caseId);
-  }, [caseId]);
+    console.log("999 INI CASE ID", caseData);
+  }, [caseData]);
 
   return (
     <Flex flexDirection="column">
       <Header pathBack="/review/cases" title="Approve OK-014-01" />
 
       <Flex padding="30px" direction="column" gap="16px">
-        <FormRadioAgeGroup />
+        {loading ? (
+          <LoaderCircle />
+        ) : (
+          <>
+            <FormRadioAgeGroup />
+          </>
+        )}
       </Flex>
     </Flex>
   );

@@ -302,6 +302,32 @@ interface RemoveNoraProcedure {
   };
 }
 
+interface SetAllData {
+  type: "set_all_data_case";
+  data: {
+    date: string;
+    userId: string;
+    isExam: boolean;
+    ageGroup: string;
+    priority: string;
+    location: string;
+    patientAge: number;
+    patientRecordNumber: string;
+    patientGender: string;
+    asaTier: number;
+    asaIsEmergency: boolean;
+    numberOfPatient: number;
+    notes: string;
+    asaTagIds: string[];
+    tagIds: string[];
+    operationTypeIds: string[];
+    anesthesiaTypeIds: string[];
+    procedureTypeIds: string[];
+    noraProcedureTypeIds: string[];
+    superviseeIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -336,6 +362,7 @@ type ACTION_TYPE =
   | RemoveAnesthesiaType
   | RemoveAsaTags
   | RemoveSupervisor
-  | RemoveNoraProcedure;
+  | RemoveNoraProcedure
+  | SetAllData;
 
 export type { ACTION_TYPE, InitialState };

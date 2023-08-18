@@ -307,6 +307,29 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ),
       };
     }
+    case "set_all_data_case": {
+      return {
+        ...state,
+        date: action.data.date,
+        isExam: action.data.isExam,
+        ageGroup: action.data.ageGroup,
+        priority: action.data.priority,
+        location: action.data.location,
+        patientAge: action.data.patientAge,
+        patientRecordNumber: action.data.patientRecordNumber,
+        patientGender: action.data.patientGender,
+        asaTier: action.data.asaTier,
+        asaIsEmergency: action.data.asaIsEmergency,
+        notes: action.data.notes,
+        asaTagIds: action.data.asaTagIds,
+        tagIds: action.data.tagIds,
+        operationTypeIds: action.data.operationTypeIds,
+        anesthesiaTypeIds: action.data.anesthesiaTypeIds,
+        procedureTypeIds: action.data.procedureTypeIds,
+        noraProcedureTypeIds: action.data.noraProcedureTypeIds,
+        supervisorIds: action.data.superviseeIds,
+      };
+    }
   }
 }
 
