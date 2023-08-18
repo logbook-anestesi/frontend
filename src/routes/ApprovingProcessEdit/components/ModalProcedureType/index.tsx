@@ -22,7 +22,10 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardProcedureType from "./CardProcedureType";
-import { useAddCasesContext } from "../../contexts";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -39,7 +42,7 @@ const ModalProcedureType = ({
   procedureList,
   setProcedure,
 }: Props) => {
-  const { selectedProcedure } = useAddCasesContext();
+  const { selectedProcedure } = useApprovalEditContext();
   const [filteredProcedure, setFilteredProcedure] = useState(procedureList);
 
   useEffect(() => {

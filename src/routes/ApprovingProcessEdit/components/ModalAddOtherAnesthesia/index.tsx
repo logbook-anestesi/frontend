@@ -12,7 +12,7 @@ import {
 import { colors } from "../../../../constants/colors";
 import useAddAnesthesia from "../../hooks/useAddAnesthesia";
 import { ChangeEvent, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const { createAnesthesia, loading } = useAddAnesthesia();
   const [anesthesia, setAnesthesia] = useState("");
 

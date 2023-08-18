@@ -1,11 +1,11 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
 import { RADIO_GENDER } from "../../constants";
+import { useApprovalEditDispatch } from "../../contexts";
 
 const FormRadioGender = () => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("");
 
   useEffect(() => {

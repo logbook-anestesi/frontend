@@ -4,10 +4,10 @@ import profileIcon from "../../assets/profile.png";
 import ModalDPJP from "../ModalDPJP";
 import { useEffect, useState } from "react";
 import { DPJP } from "../../hooks/useGetDPJP/types";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 const FormDPJP = () => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedDPJP, setSelectedDPJP] = useState<DPJP>();
 

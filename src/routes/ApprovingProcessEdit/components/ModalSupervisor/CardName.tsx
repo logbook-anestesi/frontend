@@ -1,7 +1,7 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   supervisor: Supervisor;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CardName = ({ setSupervisor, supervisor, closeModal }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const handleClickCard = () => {
     casesDispatch({

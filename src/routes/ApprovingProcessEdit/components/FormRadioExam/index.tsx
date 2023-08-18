@@ -1,7 +1,7 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Option {
   title: string;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const FormRadioExam = ({ title, listOptions }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("1");
 
   useEffect(() => {

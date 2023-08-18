@@ -1,6 +1,6 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { useAddCasesDispatch } from "../../contexts";
 import { OperationCategory } from "../../hooks/useGetCasesForm/types";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   subCategory: OperationCategory;
@@ -15,7 +15,7 @@ const CardSubCategory = ({
   operationName,
   id,
 }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const handleClickCard = () => {
     closeModal();

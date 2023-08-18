@@ -1,10 +1,10 @@
 import { Flex, Input, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 const FormUsiaAndRM = () => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const [age, setAge] = useState(0);
   const [recordNumber, setRecordNumber] = useState("");

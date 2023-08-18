@@ -5,16 +5,18 @@ import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
 import { useCallback, useState } from "react";
 import ModalNoraProcedureType from "../ModalNoraProcedureType";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
-// import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Props {
   noraProcedureList: NoraProcedureType[];
 }
 
 const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
-  const { selectedNoraProcedure } = useAddCasesContext();
+  const casesDispatch = useApprovalEditDispatch();
+  const { selectedNoraProcedure } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     // isOpen: isOpenAddOther,

@@ -11,8 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
 import useAddTags from "../../hooks/useAddTags";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const ModalAddAdditionalTags = ({ isOpen, closeModal }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const { createTag, loading } = useAddTags();
   const [additionalTag, setAdditionalTag] = useState("");
 

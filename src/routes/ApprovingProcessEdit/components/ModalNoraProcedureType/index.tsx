@@ -22,7 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardNoraProcedureType from "./CardNoraProcedureType";
-import { useAddCasesContext } from "../../contexts";
+import { useApprovalEditContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -39,7 +39,7 @@ const ModalNoraProcedureType = ({
   noraProcedureList,
   setNoraProcedure,
 }: Props) => {
-  const { selectedNoraProcedure } = useAddCasesContext();
+  const { selectedNoraProcedure } = useApprovalEditContext();
   const [filteredNoraProcedure, setFilteredNoraProcedure] =
     useState(noraProcedureList);
 

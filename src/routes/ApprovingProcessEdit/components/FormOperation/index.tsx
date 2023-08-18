@@ -5,18 +5,21 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 
 import { colors } from "../../../../constants/colors";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalCategory from "../ModalCategory";
 import { OperationType } from "../../hooks/useGetCasesForm/types";
 import ModalSubCategory from "../ModalSubCategory";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Props {
   formData?: OperationType[];
 }
 
 const FormOperation = ({ formData }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
-  const { selectedOperation } = useAddCasesContext();
+  const casesDispatch = useApprovalEditDispatch();
+  const { selectedOperation } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenSub,

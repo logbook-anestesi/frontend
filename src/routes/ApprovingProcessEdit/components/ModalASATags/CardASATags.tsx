@@ -1,7 +1,7 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { Tag } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   tag: Tag;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CardASATags = ({ tag, closeModal, setTag }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const handleClickCard = () => {
     casesDispatch({

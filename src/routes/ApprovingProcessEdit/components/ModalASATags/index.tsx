@@ -22,7 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardASATags from "./CardASATags";
-import { useAddCasesContext } from "../../contexts";
+import { useApprovalEditContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -39,7 +39,7 @@ const ModalASATags = ({
   setTag,
   onOpenAddOther,
 }: Props) => {
-  const { selectedASATags } = useAddCasesContext();
+  const { selectedASATags } = useApprovalEditContext();
   const [filteredTags, setFilteredTags] = useState(tagList);
 
   useEffect(() => {

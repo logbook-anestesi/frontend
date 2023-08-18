@@ -5,16 +5,19 @@ import { ProcedureType } from "../../hooks/useGetCasesForm/types";
 import { useCallback, useState } from "react";
 import ModalProcedureType from "../ModalProcedureType";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Props {
   procedureList: ProcedureType[];
 }
 
 const FormTypeProcedure = ({ procedureList }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
-  const { selectedProcedure } = useAddCasesContext();
+  const casesDispatch = useApprovalEditDispatch();
+  const { selectedProcedure } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenAddOther,

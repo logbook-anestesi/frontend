@@ -2,11 +2,12 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext } from "../../contexts";
+
 import ModalAddAdditionalTags from "../ModalAddAdditionalTags";
+import { useApprovalEditContext } from "../../contexts";
 
 const FormAdditionalTags = () => {
-  const { additionalTags } = useAddCasesContext();
+  const { additionalTags } = useApprovalEditContext();
   const {
     isOpen: isOpenAddOther,
     onClose: onCloseAddOther,

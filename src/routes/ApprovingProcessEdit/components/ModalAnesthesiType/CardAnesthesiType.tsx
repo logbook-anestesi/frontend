@@ -1,7 +1,7 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   anesthesia: AnesthesiaType;
@@ -16,7 +16,7 @@ const CardAnesthesiType = ({
   setAnesthesia,
   id,
 }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const handleClickCard = () => {
     casesDispatch({

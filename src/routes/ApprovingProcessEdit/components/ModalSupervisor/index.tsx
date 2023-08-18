@@ -21,7 +21,7 @@ import {
 } from "react";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import useGetSupervisor from "../../hooks/useGetSupervisor";
-import { useAddCasesContext } from "../../contexts";
+import { useApprovalEditContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -30,7 +30,7 @@ interface Props {
 }
 
 const ModalSupervisor = ({ isOpen, closeModal, setSupervisor }: Props) => {
-  const { selectedSupervisor: supervisorList } = useAddCasesContext();
+  const { selectedSupervisor: supervisorList } = useApprovalEditContext();
   const { supervisors } = useGetSupervisor();
   const [filteredSupervisor, setFilteredASupervisor] = useState(supervisors);
 

@@ -4,13 +4,16 @@ import profileIcon from "../../assets/profile.png";
 import { useCallback, useState } from "react";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import ModalSupervisor from "../ModalSupervisor";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import Ticker from "../../../../components/Ticker";
 import useGetProfile from "../../../../hooks/useGetProfile";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 const FormSupervised = () => {
-  const casesDispatch = useAddCasesDispatch();
-  const { selectedSupervisor: supervisorList } = useAddCasesContext();
+  const casesDispatch = useApprovalEditDispatch();
+  const { selectedSupervisor: supervisorList } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedSupervisor, setSelectedSupervisor] = useState<Supervisor>();
   const { profile } = useGetProfile();

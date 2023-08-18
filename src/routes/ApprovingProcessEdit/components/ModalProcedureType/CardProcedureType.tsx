@@ -1,7 +1,7 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { ProcedureType } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   procedure: ProcedureType;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CardProcedureType = ({ procedure, closeModal, setProcedure }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const handleClickCard = () => {
     casesDispatch({

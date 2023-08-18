@@ -22,7 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardAnesthesiType from "./CardAnesthesiType";
-import { useAddCasesContext } from "../../contexts";
+import { useApprovalEditContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;
@@ -39,7 +39,7 @@ const ModalAnesthesiType = ({
   setAnesthesia,
   onOpenAddOther,
 }: Props) => {
-  const { selectedAnesthesia } = useAddCasesContext();
+  const { selectedAnesthesia } = useApprovalEditContext();
   const [filteredAnesthesi, setFilteredAnesthesi] = useState(anesthesiaList);
 
   useEffect(() => {

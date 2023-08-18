@@ -5,16 +5,19 @@ import { Tag } from "../../hooks/useGetCasesForm/types";
 import { useCallback, useState } from "react";
 import ModalASATags from "../ModalASATags";
 import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalAddOtherASAtags from "../ModalAddOtherASATags";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Props {
   tagList: Tag[];
 }
 
 const FormASATags = ({ tagList }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
-  const { selectedASATags } = useAddCasesContext();
+  const casesDispatch = useApprovalEditDispatch();
+  const { selectedASATags } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenAddOther,

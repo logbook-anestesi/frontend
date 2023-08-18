@@ -1,7 +1,7 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {
   noraProcedure: NoraProcedureType;
@@ -14,7 +14,7 @@ const CardNoraProcedureType = ({
   closeModal,
   setNoraProcedure,
 }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const handleClickCard = () => {
     casesDispatch({

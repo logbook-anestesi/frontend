@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { colors } from "../../../../constants/colors";
 import { formatDateMonthYear } from "../../../../helpers";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 const FormDate = () => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 

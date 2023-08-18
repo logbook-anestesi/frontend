@@ -1,11 +1,11 @@
 import { Flex, Input, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
 import FormRadioEmergency from "../FormRadioEmergency";
+import { useApprovalEditDispatch } from "../../contexts";
 
 const FormTingkatAndEmergency = () => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
 
   const [tier, setTier] = useState(0);
   const handleChangeTingkat = (event: ChangeEvent<HTMLInputElement>) =>

@@ -5,16 +5,19 @@ import ModalAnesthesiType from "../ModalAnesthesiType";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
 import { useCallback, useState } from "react";
 import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import Ticker from "../../../../components/Ticker";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Props {
   anesthesiaList: AnesthesiaType[];
 }
 
 const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
-  const casesDispatch = useAddCasesDispatch();
-  const { selectedAnesthesia } = useAddCasesContext();
+  const casesDispatch = useApprovalEditDispatch();
+  const { selectedAnesthesia } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
     isOpen: isOpenAddOther,

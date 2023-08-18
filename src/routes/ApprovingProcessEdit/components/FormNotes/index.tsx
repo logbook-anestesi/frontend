@@ -1,10 +1,10 @@
 import { Flex, Input, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { useApprovalEditDispatch } from "../../contexts";
 
 const FormNotes = () => {
-  const casesDispatch = useAddCasesDispatch();
+  const casesDispatch = useApprovalEditDispatch();
   const [notes, setNotes] = useState("");
   const handleChangeNotes = (event: ChangeEvent<HTMLInputElement>) =>
     setNotes(event.target.value);
