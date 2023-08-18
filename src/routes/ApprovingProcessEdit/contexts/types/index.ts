@@ -306,6 +306,7 @@ interface SetAllData {
   type: "set_all_data_case";
   data: {
     isExam?: boolean;
+    ageGroup?: string;
   };
 }
 

@@ -7,6 +7,7 @@ import LoaderCircle from "../../components/LoaderCircle";
 import FormRadioExam from "./components/FormRadioExam";
 import { RADIO_EXAM } from "./constants";
 import { useApprovalEditDispatch } from "./contexts";
+import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -32,7 +33,12 @@ const ApprovingProcessEdit = () => {
           <LoaderCircle />
         ) : (
           <>
-            <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
+            <FormRadioExam
+              title="Merupakan Exam*"
+              listOptions={RADIO_EXAM}
+              initialValue={caseData?.isExam}
+            />
+            <FormRadioAgeGroup initialValue={caseData?.ageGroup} />
           </>
         )}
       </Flex>

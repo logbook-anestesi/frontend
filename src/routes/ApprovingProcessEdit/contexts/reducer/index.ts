@@ -311,6 +311,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         isExam: action?.data?.isExam || false,
+        ageGroup: action?.data?.ageGroup || "",
       };
     }
   }

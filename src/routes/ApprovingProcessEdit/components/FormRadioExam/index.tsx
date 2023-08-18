@@ -14,16 +14,17 @@ interface Option {
 interface Props {
   title: string;
   listOptions: Option[];
+  initialValue?: boolean;
 }
 
-const FormRadioExam = ({ title, listOptions }: Props) => {
+const FormRadioExam = ({ title, listOptions, initialValue }: Props) => {
   const { isExam } = useApprovalEditContext();
   const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("1");
 
   useEffect(() => {
-    setValue(isExam ? "Ya" : "Tidak");
-  }, [isExam]);
+    setValue(initialValue ? "Ya" : "Tidak");
+  }, [initialValue, isExam]);
 
   useEffect(() => {
     approveEditDispatch({

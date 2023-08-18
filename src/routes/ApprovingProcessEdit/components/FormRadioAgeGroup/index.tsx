@@ -4,18 +4,26 @@ import { useEffect, useState } from "react";
 import { RADIO_AGE_GROUP } from "../../constants";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormRadioAgeGroup = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: string;
+}
+
+const FormRadioAgeGroup = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    casesDispatch({
+    setValue(initialValue || "");
+  }, [initialValue]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_age_group",
       data: {
         ageGroup: value,
       },
     });
-  }, [casesDispatch, value]);
+  }, [approveEditDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>
