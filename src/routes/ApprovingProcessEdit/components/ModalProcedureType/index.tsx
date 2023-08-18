@@ -22,10 +22,7 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 import { colors } from "../../../../constants/colors";
 import CardProcedureType from "./CardProcedureType";
-import {
-  useApprovalEditContext,
-  useApprovalEditDispatch,
-} from "../../contexts";
+import { useApprovalEditContext } from "../../contexts";
 
 interface Props {
   isOpen: boolean;

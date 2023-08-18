@@ -22,8 +22,16 @@ const CardApprovalButton = ({ caseData }: Props) => {
     });
   };
 
+  const handleOnClick = () => {
+    navigate("/review/process/edit", {
+      state: {
+        caseId: caseData?.id,
+      },
+    });
+  };
+
   return (
-    <Flex justify="end" gap={4}>
+    <Flex justify="end" gap={4} onClick={handleOnClick}>
       <Button
         leftIcon={<EditIcon />}
         color={colors.primaryPurple}
