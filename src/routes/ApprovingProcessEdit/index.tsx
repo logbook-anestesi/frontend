@@ -1,18 +1,27 @@
 import { Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
-import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useGetDetailCases from "./hooks/useGetDetailCase";
 import LoaderCircle from "../../components/LoaderCircle";
+import FormRadioExam from "./components/FormRadioExam";
+import { RADIO_EXAM } from "./constants";
+import { useApprovalEditDispatch } from "./contexts";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
+  const approveEditDispatch = useApprovalEditDispatch();
   const { caseData, loading } = useGetDetailCases(location?.state?.caseId);
 
   useEffect(() => {
+    approveEditDispatch({
+      type: "set_all_data_case",
+      data: {
+        isExam: caseData?.isExam,
+      },
+    });
     console.log("999 INI CASE ID", caseData);
-  }, [caseData]);
+  }, [approveEditDispatch, caseData]);
 
   return (
     <Flex flexDirection="column">
@@ -23,7 +32,7 @@ const ApprovingProcessEdit = () => {
           <LoaderCircle />
         ) : (
           <>
-            <FormRadioAgeGroup />
+            <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
           </>
         )}
       </Flex>

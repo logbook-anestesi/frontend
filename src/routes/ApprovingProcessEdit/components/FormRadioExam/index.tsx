@@ -1,7 +1,10 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { useEffect, useState } from "react";
-import { useApprovalEditDispatch } from "../../contexts";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
 
 interface Option {
   title: string;
@@ -14,17 +17,22 @@ interface Props {
 }
 
 const FormRadioExam = ({ title, listOptions }: Props) => {
-  const casesDispatch = useApprovalEditDispatch();
+  const { isExam } = useApprovalEditContext();
+  const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState("1");
 
   useEffect(() => {
-    casesDispatch({
+    setValue(isExam ? "Ya" : "Tidak");
+  }, [isExam]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_is_exam",
       data: {
         isExam: value === "Ya",
       },
     });
-  }, [casesDispatch, value]);
+  }, [approveEditDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>
