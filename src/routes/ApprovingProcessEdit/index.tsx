@@ -15,6 +15,7 @@ import FormRadioLocation from "./components/FormRadioLocation";
 import FormNotes from "./components/FormNotes";
 import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
 import FormUsiaAndRM from "./components/FormUsiaAndRM";
+import FormDate from "./components/FormDate";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -50,6 +51,7 @@ const ApprovingProcessEdit = () => {
               initialNoRm={caseData?.patientRecordNumber}
               initialUsia={caseData?.patientAge}
             />
+            <FormDate initialValue={caseData?.date} />
           </>
         )}
       </Flex>

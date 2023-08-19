@@ -6,10 +6,21 @@ import { colors } from "../../../../constants/colors";
 import { formatDateMonthYear } from "../../../../helpers";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormDate = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: string;
+}
+
+const FormDate = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  useEffect(() => {
+    if (initialValue) {
+      const initialDate = new Date(initialValue);
+      setSelectedDate(initialDate);
+    }
+  }, [initialValue]);
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -21,13 +32,13 @@ const FormDate = () => {
   };
 
   useEffect(() => {
-    casesDispatch({
+    approveEditDispatch({
       type: "set_date",
       data: {
         date: selectedDate?.toJSON(),
       },
     });
-  }, [casesDispatch, selectedDate]);
+  }, [approveEditDispatch, selectedDate]);
 
   return (
     <Flex direction="column" gap={1}>
