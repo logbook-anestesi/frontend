@@ -320,6 +320,14 @@ interface SetDPJPAll {
   };
 }
 
+interface SetAllNoraProcedure {
+  type: "set_nora_procedure_type_all";
+  data: {
+    nora: Nora[];
+    noraIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -356,6 +364,7 @@ type ACTION_TYPE =
   | RemoveSupervisor
   | RemoveNoraProcedure
   | SetAllASATags
-  | SetDPJPAll;
+  | SetDPJPAll
+  | SetAllNoraProcedure;
 
 export type { ACTION_TYPE, InitialState };

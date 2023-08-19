@@ -323,6 +323,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         dpjpUserName: action.data.dpjpUsername,
       };
     }
+    case "set_nora_procedure_type_all": {
+      return {
+        ...state,
+        selectedNoraProcedure: action.data.nora,
+        noraProcedureTypeIds: action.data.noraIds,
+      };
+    }
   }
 }
 

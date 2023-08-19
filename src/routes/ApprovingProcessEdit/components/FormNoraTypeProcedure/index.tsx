@@ -2,20 +2,22 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ModalNoraProcedureType from "../ModalNoraProcedureType";
 import Ticker from "../../../../components/Ticker";
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
 } from "../../contexts";
+import { Nora } from "../../../Cases/hooks/useGetCases/types";
 
 interface Props {
-  noraProcedureList: NoraProcedureType[];
+  noraProcedureList?: NoraProcedureType[];
+  initialValue?: Nora[];
 }
 
-const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
-  const casesDispatch = useApprovalEditDispatch();
+const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { selectedNoraProcedure } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -26,16 +28,35 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
 
   const [noraProcedure, setNoraProcedure] = useState<NoraProcedureType>();
 
+  useEffect(() => {
+    const normalizeNora = initialValue?.map((nora) => {
+      return {
+        title: nora.noraProcedureTypeName,
+        id: nora.noraProcedureTypeId,
+      };
+    });
+
+    const normalizeIds = initialValue?.map((nora) => nora.noraProcedureTypeId);
+
+    approveEditDispatch({
+      type: "set_nora_procedure_type_all",
+      data: {
+        nora: normalizeNora || [],
+        noraIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
+
   const handleRemoveAsaTag = useCallback(
     (noraId: string) => {
-      casesDispatch({
+      approveEditDispatch({
         type: "remove_nora_procedure",
         data: {
           id: noraId,
         },
       });
     },
-    [casesDispatch]
+    [approveEditDispatch]
   );
 
   return (
@@ -83,7 +104,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
       <ModalNoraProcedureType
         closeModal={onClose}
         isOpen={isOpen}
-        noraProcedureList={noraProcedureList}
+        noraProcedureList={noraProcedureList || []}
         setNoraProcedure={setNoraProcedure}
         onOpenAddOther={onOpenAddOther}
       />
