@@ -2,7 +2,7 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { ProcedureType } from "../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ModalProcedureType from "../ModalProcedureType";
 import Ticker from "../../../../components/Ticker";
 import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
@@ -10,13 +10,15 @@ import {
   useApprovalEditContext,
   useApprovalEditDispatch,
 } from "../../contexts";
+import { ProcedureType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
 
 interface Props {
-  procedureList: ProcedureType[];
+  procedureList?: ProcedureType[];
+  initialValue?: InitialTypes[];
 }
 
-const FormTypeProcedure = ({ procedureList }: Props) => {
-  const casesDispatch = useApprovalEditDispatch();
+const FormTypeProcedure = ({ procedureList, initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { selectedProcedure } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -27,16 +29,37 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
 
   const [procedure, setProcedure] = useState<ProcedureType>();
 
+  useEffect(() => {
+    const normalizeProcedure = initialValue?.map((procedure) => {
+      return {
+        title: procedure.procedureTypeName,
+        id: procedure?.procedureTypeId,
+      };
+    });
+
+    const normalizeIds = initialValue?.map(
+      (procedure) => procedure.procedureTypeId
+    );
+
+    approveEditDispatch({
+      type: "set_procedure_type_all",
+      data: {
+        procedures: normalizeProcedure || [],
+        procedureIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
+
   const removeProcedure = useCallback(
     (procedureId: string) => {
-      casesDispatch({
+      approveEditDispatch({
         type: "remove_procedure_type",
         data: {
           id: procedureId,
         },
       });
     },
-    [casesDispatch]
+    [approveEditDispatch]
   );
 
   return (
@@ -84,7 +107,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
       <ModalProcedureType
         closeModal={onClose}
         isOpen={isOpen}
-        procedureList={procedureList}
+        procedureList={procedureList || []}
         setProcedure={setProcedure}
         onOpenAddOther={onOpenAddOther}
       />

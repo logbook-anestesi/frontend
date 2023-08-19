@@ -24,6 +24,7 @@ import FormOperation from "./components/FormOperation";
 import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
 import FormAdditionalTags from "./components/FormAdditionalTags";
 import FormSupervised from "./components/FormSupervised";
+import FormTypeProcedure from "./components/FormTypeProcedure";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -83,6 +84,10 @@ const ApprovingProcessEdit = () => {
             />
             <FormAdditionalTags initialValue={caseData?.tags} />
             <FormSupervised initialValue={caseData?.supervisors} />
+            <FormTypeProcedure
+              procedureList={casesForm?.procedureTypes}
+              initialValue={caseData?.procedureTypes}
+            />
           </>
         )}
       </Flex>

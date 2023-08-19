@@ -358,6 +358,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         supervisorIds: action.data.supervisorIds,
       };
     }
+    case "set_procedure_type_all": {
+      return {
+        ...state,
+        selectedProcedure: action.data.procedures,
+        procedureTypeIds: action.data.procedureIds,
+      };
+    }
   }
 }
 

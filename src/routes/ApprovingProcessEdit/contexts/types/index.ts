@@ -368,6 +368,14 @@ interface SetAllSupervisor {
   };
 }
 
+interface SetAllProcedureType {
+  type: "set_procedure_type_all";
+  data: {
+    procedures: Procedure[];
+    procedureIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -409,6 +417,7 @@ type ACTION_TYPE =
   | SetAllSelectedOperation
   | SetAllAnesthesiaType
   | SetAllAdditionalTag
-  | SetAllSupervisor;
+  | SetAllSupervisor
+  | SetAllProcedureType;
 
 export type { ACTION_TYPE, InitialState };
