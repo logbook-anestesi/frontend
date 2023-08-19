@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Divider, Flex, Text } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import { useApprovalEditContext } from "./contexts";
 
@@ -43,51 +43,74 @@ const ApprovingProcessEdit = () => {
           <LoaderCircle />
         ) : (
           <>
+            <FormDate initialValue={caseData?.date} />
+            <FormDPJP
+              initialDpjpId={caseData?.dpjpUserId}
+              initialDpjpName={caseData?.dpjpUserName}
+            />
             <FormRadioExam
               title="Merupakan Exam*"
               listOptions={RADIO_EXAM}
               initialValue={caseData?.isExam}
             />
             <FormRadioAgeGroup initialValue={caseData?.ageGroup} />
-            <FormRadioPriority initialValue={caseData?.priority} />
-            <FormRadioGender initialValue={caseData?.patientGender} />
             <FormRadioLocation initialValue={caseData?.location} />
-            <FormNotes initialValue={caseData?.notes} />
-            <FormTingkatAndEmergency
-              initialValue={caseData?.asaTier}
-              emergencyInitialValue={caseData?.asaIsEmergency}
-            />
-            <FormUsiaAndRM
-              initialNoRm={caseData?.patientRecordNumber}
-              initialUsia={caseData?.patientAge}
-            />
-            <FormDate initialValue={caseData?.date} />
-            <FormASATags
-              tagList={casesForm?.tags}
-              initialValue={caseData?.asaTags}
-            />
-            <FormDPJP
-              initialDpjpId={caseData?.dpjpUserId}
-              initialDpjpName={caseData?.dpjpUserName}
-            />
-            <FormNoraTypeProcedure
-              initialValue={caseData?.noraProcedureTypes}
-              noraProcedureList={casesForm?.noraProcedureTypes}
-            />
+            <FormRadioPriority initialValue={caseData?.priority} />
+
             <FormOperation
               formData={casesForm?.operationTypes}
               initialValue={caseData?.operationTypes}
             />
+
             <FormTypeAnesthesia
               anesthesiaList={casesForm?.anesthesiaTypes}
               initialValue={caseData?.anesthesiaTypes}
             />
-            <FormAdditionalTags initialValue={caseData?.tags} />
-            <FormSupervised initialValue={caseData?.supervisors} />
+
             <FormTypeProcedure
               procedureList={casesForm?.procedureTypes}
               initialValue={caseData?.procedureTypes}
             />
+
+            <FormNoraTypeProcedure
+              initialValue={caseData?.noraProcedureTypes}
+              noraProcedureList={casesForm?.noraProcedureTypes}
+            />
+
+            <Divider />
+
+            <Text as="b" fontSize="xl">
+              Data Pasien
+            </Text>
+
+            <FormUsiaAndRM
+              initialNoRm={caseData?.patientRecordNumber}
+              initialUsia={caseData?.patientAge}
+            />
+
+            <FormRadioGender initialValue={caseData?.patientGender} />
+
+            <Divider />
+
+            <Text as="b" fontSize="xl">
+              ASA
+            </Text>
+
+            <FormTingkatAndEmergency
+              initialValue={caseData?.asaTier}
+              emergencyInitialValue={caseData?.asaIsEmergency}
+            />
+
+            <FormASATags
+              tagList={casesForm?.tags}
+              initialValue={caseData?.asaTags}
+            />
+
+            <Divider />
+
+            <FormSupervised initialValue={caseData?.supervisors} />
+            <FormNotes initialValue={caseData?.notes} />
+            <FormAdditionalTags initialValue={caseData?.tags} />
           </>
         )}
       </Flex>
