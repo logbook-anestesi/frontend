@@ -22,7 +22,7 @@ const Cases = () => {
 
   return (
     <Flex flexDirection="column" height="100vh">
-      <Header title="Cases" />
+      <Header title="Cases" pathBack="/" />
 
       <Flex direction="column" justify="space-between" height="100%">
         <Flex padding="30px" direction="column" gap="16px">

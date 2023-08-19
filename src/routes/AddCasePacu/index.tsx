@@ -23,37 +23,42 @@ const AddCasePacu = () => {
   const casesDispatch = useAddCasesDispatch();
   const { createCases, loading } = useAddCases();
 
-  const {
-    caseType,
-    date,
-    ageGroup,
-    patientAge,
-    patientRecordNumber,
-    patientGender,
-    asaTier,
-    asaIsEmergency,
-    notes,
-    dpjpUserId,
-    asaTagIds,
-    operationTypeIds,
-    tagIds,
-  } = useAddCasesContext();
+  const state = useAddCasesContext();
 
   const handleSubmitForm = async () => {
     const response = await createCases({
-      date,
-      ageGroup,
-      patientAge,
-      patientRecordNumber,
-      patientGender,
-      asaTier,
-      notes,
-      dpjpUserId,
-      operationTypeIds,
-      asaTagIds,
-      asaIsEmergency,
-      caseType,
-      tagIds,
+      asaIsEmergency: state.asaIsEmergency,
+      date: state.date,
+      isExam: state.isExam,
+      patientAge: state.patientAge,
+      patientGender: state.patientGender,
+      caseType: state.caseType,
+      dpjpUserId: state.dpjpUserId,
+      ...(state?.asaTier !== 0 ? { asaTier: state.asaTier } : {}),
+      ...(state?.ageGroup !== "" ? { ageGroup: state.ageGroup } : {}),
+      ...(state?.location !== "" ? { location: state.location } : {}),
+      ...(state?.priority !== "" ? { priority: state.priority } : {}),
+      ...(state?.tagIds.length !== 0 ? { tagIds: state.tagIds } : {}),
+      ...(state?.notes !== "" ? { notes: state.notes } : {}),
+      ...(state?.anesthesiaTypeIds.length !== 0
+        ? { anesthesiaTypeIds: state.anesthesiaTypeIds }
+        : {}),
+      ...(state?.asaTagIds.length !== 0 ? { asaTagIds: state.asaTagIds } : {}),
+      ...(state?.noraProcedureTypeIds.length !== 0
+        ? { noraProcedureTypeIds: state.noraProcedureTypeIds }
+        : {}),
+      ...(state?.operationTypeIds.length !== 0
+        ? { operationTypeIds: state.operationTypeIds }
+        : {}),
+      ...(state?.patientRecordNumber !== ""
+        ? { patientRecordNumber: state.patientRecordNumber }
+        : {}),
+      ...(state?.procedureTypeIds.length !== 0
+        ? { procedureTypeIds: state.procedureTypeIds }
+        : {}),
+      ...(state?.supervisorIds.length !== 0
+        ? { superviseeIds: state.supervisorIds }
+        : {}),
     });
 
     if (response?.success) {
