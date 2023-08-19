@@ -344,6 +344,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         anesthesiaTypeIds: action.data.anesthesiaIds,
       };
     }
+    case "set_additional_tags_all": {
+      return {
+        ...state,
+        tagIds: action.data.additionalTags,
+        additionalTags: action.data.additionalTagIds,
+      };
+    }
   }
 }
 

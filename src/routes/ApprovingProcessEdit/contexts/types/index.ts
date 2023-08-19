@@ -352,6 +352,14 @@ interface SetAllAnesthesiaType {
   };
 }
 
+interface SetAllAdditionalTag {
+  type: "set_additional_tags_all";
+  data: {
+    additionalTags: string[];
+    additionalTagIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -391,6 +399,7 @@ type ACTION_TYPE =
   | SetDPJPAll
   | SetAllNoraProcedure
   | SetAllSelectedOperation
-  | SetAllAnesthesiaType;
+  | SetAllAnesthesiaType
+  | SetAllAdditionalTag;
 
 export type { ACTION_TYPE, InitialState };

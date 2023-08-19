@@ -4,15 +4,39 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import Ticker from "../../../../components/Ticker";
 
 import ModalAddAdditionalTags from "../ModalAddAdditionalTags";
-import { useApprovalEditContext } from "../../contexts";
+import {
+  useApprovalEditContext,
+  useApprovalEditDispatch,
+} from "../../contexts";
+import { Tag } from "../../../Cases/hooks/useGetCases/types";
+import { useEffect } from "react";
 
-const FormAdditionalTags = () => {
+interface Props {
+  initialValue?: Tag[];
+}
+
+const FormAdditionalTags = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { additionalTags } = useApprovalEditContext();
   const {
     isOpen: isOpenAddOther,
     onClose: onCloseAddOther,
     onOpen: onOpenAddOther,
   } = useDisclosure();
+
+  useEffect(() => {
+    const normalizeTags = initialValue?.map((tag) => tag.tagName);
+
+    const normalizeIds = initialValue?.map((tag) => tag.tagId);
+
+    approveEditDispatch({
+      type: "set_additional_tags_all",
+      data: {
+        additionalTags: normalizeTags || [],
+        additionalTagIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
 
   return (
     <Flex direction="column" gap={1} onClick={onOpenAddOther}>
