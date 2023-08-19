@@ -337,6 +337,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         operationTypeIds: action.data.operationIds,
       };
     }
+    case "set_anesthesia_type_all": {
+      return {
+        ...state,
+        selectedAnesthesia: action.data.anesthesia,
+        anesthesiaTypeIds: action.data.anesthesiaIds,
+      };
+    }
   }
 }
 

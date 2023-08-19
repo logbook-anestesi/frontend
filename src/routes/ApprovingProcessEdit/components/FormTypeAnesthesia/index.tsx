@@ -3,7 +3,8 @@ import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import ModalAnesthesiType from "../ModalAnesthesiType";
 import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
+import { AnesthesiaType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
+import { useCallback, useEffect, useState } from "react";
 import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
 import Ticker from "../../../../components/Ticker";
 import {
@@ -12,11 +13,12 @@ import {
 } from "../../contexts";
 
 interface Props {
-  anesthesiaList: AnesthesiaType[];
+  anesthesiaList?: AnesthesiaType[];
+  initialValue?: InitialTypes[];
 }
 
-const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
-  const casesDispatch = useApprovalEditDispatch();
+const FormTypeAnesthesia = ({ anesthesiaList, initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { selectedAnesthesia } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -27,16 +29,37 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
 
   const [anesthesia, setAnesthesia] = useState<AnesthesiaType>();
 
+  useEffect(() => {
+    const normalizedAnesthesia = initialValue?.map((anesthesia) => {
+      return {
+        title: anesthesia.anesthesiaTypeName,
+        id: anesthesia.anesthesiaTypeId,
+      };
+    });
+
+    const normalizeIds = initialValue?.map(
+      (anesthesia) => anesthesia.anesthesiaTypeId
+    );
+
+    approveEditDispatch({
+      type: "set_anesthesia_type_all",
+      data: {
+        anesthesia: normalizedAnesthesia || [],
+        anesthesiaIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
+
   const handleRemoveAnesthesia = useCallback(
     (anesthesiaId: string) => {
-      casesDispatch({
+      approveEditDispatch({
         type: "remove_anesthesia_type",
         data: {
           id: anesthesiaId,
         },
       });
     },
-    [casesDispatch]
+    [approveEditDispatch]
   );
 
   return (
@@ -84,7 +107,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
       <ModalAnesthesiType
         closeModal={onClose}
         isOpen={isOpen}
-        anesthesiaList={anesthesiaList}
+        anesthesiaList={anesthesiaList || []}
         setAnesthesia={setAnesthesia}
         onOpenAddOther={onOpenAddOther}
       />

@@ -21,6 +21,7 @@ import useGetCasesForm from "./hooks/useGetCasesForm";
 import FormDPJP from "./components/FormDPJP";
 import FormNoraTypeProcedure from "./components/FormNoraTypeProcedure";
 import FormOperation from "./components/FormOperation";
+import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -73,6 +74,10 @@ const ApprovingProcessEdit = () => {
             <FormOperation
               formData={casesForm?.operationTypes}
               initialValue={caseData?.operationTypes}
+            />
+            <FormTypeAnesthesia
+              anesthesiaList={casesForm?.anesthesiaTypes}
+              initialValue={caseData?.anesthesiaTypes}
             />
           </>
         )}

@@ -344,6 +344,14 @@ interface SetAllSelectedOperation {
   };
 }
 
+interface SetAllAnesthesiaType {
+  type: "set_anesthesia_type_all";
+  data: {
+    anesthesia: Anesthesia[];
+    anesthesiaIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -382,6 +390,7 @@ type ACTION_TYPE =
   | SetAllASATags
   | SetDPJPAll
   | SetAllNoraProcedure
-  | SetAllSelectedOperation;
+  | SetAllSelectedOperation
+  | SetAllAnesthesiaType;
 
 export type { ACTION_TYPE, InitialState };
