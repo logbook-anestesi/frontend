@@ -4,21 +4,33 @@ import { ChangeEvent, useEffect, useState } from "react";
 import FormRadioEmergency from "../FormRadioEmergency";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormTingkatAndEmergency = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: number;
+  emergencyInitialValue?: boolean;
+}
+
+const FormTingkatAndEmergency = ({
+  initialValue,
+  emergencyInitialValue,
+}: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
 
   const [tier, setTier] = useState(0);
   const handleChangeTingkat = (event: ChangeEvent<HTMLInputElement>) =>
     setTier(Number(event.target.value));
 
   useEffect(() => {
-    casesDispatch({
+    setTier(initialValue || 0);
+  }, [initialValue]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_tier",
       data: {
         tier: tier,
       },
     });
-  }, [casesDispatch, tier]);
+  }, [approveEditDispatch, tier]);
 
   return (
     <Flex direction="row" justify="space-between" gap={2}>
@@ -27,11 +39,11 @@ const FormTingkatAndEmergency = () => {
           Tingkat
         </Text>
 
-        <Input placeholder="1" onChange={handleChangeTingkat} />
+        <Input placeholder="1" onChange={handleChangeTingkat} value={tier} />
       </Flex>
 
       <Flex direction="column" flex={1} justify="center" align="center">
-        <FormRadioEmergency />
+        <FormRadioEmergency initialValue={emergencyInitialValue} />
       </Flex>
     </Flex>
   );

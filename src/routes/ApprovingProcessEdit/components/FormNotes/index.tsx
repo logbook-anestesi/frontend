@@ -3,20 +3,28 @@ import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormNotes = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: string;
+}
+
+const FormNotes = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const [notes, setNotes] = useState("");
   const handleChangeNotes = (event: ChangeEvent<HTMLInputElement>) =>
     setNotes(event.target.value);
 
   useEffect(() => {
-    casesDispatch({
+    setNotes(initialValue || "");
+  }, [initialValue]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_note",
       data: {
         note: notes,
       },
     });
-  }, [casesDispatch, notes]);
+  }, [approveEditDispatch, notes]);
 
   return (
     <Flex direction="column">
@@ -24,7 +32,11 @@ const FormNotes = () => {
         Notes
       </Text>
 
-      <Input placeholder="Masukkan catatan" onChange={handleChangeNotes} />
+      <Input
+        placeholder="Masukkan catatan"
+        onChange={handleChangeNotes}
+        value={notes}
+      />
     </Flex>
   );
 };

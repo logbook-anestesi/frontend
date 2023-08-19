@@ -9,11 +9,16 @@ import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import FormRadioPriority from "./components/FormRadioPriority";
 import FormRadioGender from "./components/FormRadioGender";
 import FormRadioLocation from "./components/FormRadioLocation";
-import FormRadioEmergency from "./components/FormRadioEmergency";
+import FormNotes from "./components/FormNotes";
+import { useApprovalEditContext } from "./contexts";
+import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
   const { caseData, loading } = useGetDetailCases(location?.state?.caseId);
+  const state = useApprovalEditContext();
+
+  console.log("999 state full", state);
 
   return (
     <Flex flexDirection="column">
@@ -33,7 +38,11 @@ const ApprovingProcessEdit = () => {
             <FormRadioPriority initialValue={caseData?.priority} />
             <FormRadioGender initialValue={caseData?.patientGender} />
             <FormRadioLocation initialValue={caseData?.location} />
-            <FormRadioEmergency initialValue={caseData?.asaIsEmergency} />
+            <FormNotes initialValue={caseData?.notes} />
+            <FormTingkatAndEmergency
+              initialValue={caseData?.asaTier}
+              emergencyInitialValue={caseData?.asaIsEmergency}
+            />
           </>
         )}
       </Flex>
