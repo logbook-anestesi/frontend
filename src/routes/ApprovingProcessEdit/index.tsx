@@ -18,6 +18,7 @@ import FormUsiaAndRM from "./components/FormUsiaAndRM";
 import FormDate from "./components/FormDate";
 import FormASATags from "./components/FormASATags";
 import useGetCasesForm from "./hooks/useGetCasesForm";
+import FormDPJP from "./components/FormDPJP";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -58,6 +59,10 @@ const ApprovingProcessEdit = () => {
             <FormASATags
               tagList={casesForm?.tags}
               initialValue={caseData?.asaTags}
+            />
+            <FormDPJP
+              initialDpjpId={caseData?.dpjpUserId}
+              initialDpjpName={caseData?.dpjpUserName}
             />
           </>
         )}

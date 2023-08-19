@@ -38,6 +38,7 @@ interface InitialState {
   selectedSupervisor: Supervisor[];
   date: string;
   dpjpUserId: string;
+  dpjpUserName: string;
   isExam: boolean;
   caseType: string;
   operationTypeIds: string[];
@@ -87,6 +88,7 @@ interface SetDPJP {
   type: "set_dpjp";
   data: {
     dpjpId: string;
+    dpjpName?: string;
   };
 }
 
@@ -310,6 +312,14 @@ interface SetAllASATags {
   };
 }
 
+interface SetDPJPAll {
+  type: "set_dpjp_all";
+  data: {
+    dpjpId: string;
+    dpjpUsername: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -345,6 +355,7 @@ type ACTION_TYPE =
   | RemoveAsaTags
   | RemoveSupervisor
   | RemoveNoraProcedure
-  | SetAllASATags;
+  | SetAllASATags
+  | SetDPJPAll;
 
 export type { ACTION_TYPE, InitialState };

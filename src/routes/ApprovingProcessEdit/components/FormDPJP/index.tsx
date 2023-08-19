@@ -6,19 +6,31 @@ import { useEffect, useState } from "react";
 import { DPJP } from "../../hooks/useGetDPJP/types";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormDPJP = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialDpjpName?: string;
+  initialDpjpId?: string;
+}
+
+const FormDPJP = ({ initialDpjpId, initialDpjpName }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedDPJP, setSelectedDPJP] = useState<DPJP>();
 
   useEffect(() => {
-    casesDispatch({
+    approveEditDispatch({
       type: "set_dpjp",
       data: {
-        dpjpId: selectedDPJP?.id || "",
+        dpjpId: selectedDPJP?.id || initialDpjpId || "",
+        dpjpName: selectedDPJP?.name || initialDpjpName || "",
       },
     });
-  }, [casesDispatch, selectedDPJP?.id]);
+  }, [
+    approveEditDispatch,
+    initialDpjpId,
+    initialDpjpName,
+    selectedDPJP?.id,
+    selectedDPJP?.name,
+  ]);
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
@@ -36,7 +48,7 @@ const FormDPJP = () => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>{selectedDPJP?.name || "Pilih DPJP"}</Text>
+        <Text>{selectedDPJP?.name || initialDpjpName || "Pilih DPJP"}</Text>
 
         <Image src={profileIcon} width={5} alt="" />
       </Flex>

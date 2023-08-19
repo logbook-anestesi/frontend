@@ -31,6 +31,7 @@ const ApprovalEditContext = createContext<InitialState>({
   notes: "",
   additionalTags: [],
   tagIds: [],
+  dpjpUserName: "",
 });
 
 const ApprovalEditContextDispatch = createContext<Dispatch<ACTION_TYPE>>(
@@ -70,6 +71,7 @@ const ApprovalEditProvider = ({ children }: Props) => {
     notes: "",
     additionalTags: [],
     tagIds: [],
+    dpjpUserName: "",
   });
 
   return (

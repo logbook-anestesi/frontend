@@ -17,6 +17,7 @@ const CardName = ({ dpjp, setDPJP, closeModal }: Props) => {
       type: "set_dpjp",
       data: {
         dpjpId: dpjp.id,
+        dpjpName: dpjp.name,
       },
     });
 

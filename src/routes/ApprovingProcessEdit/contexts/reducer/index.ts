@@ -28,6 +28,7 @@ const initialState: InitialState = {
   notes: "",
   additionalTags: [],
   tagIds: [],
+  dpjpUserName: "",
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -67,6 +68,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         dpjpUserId: action.data.dpjpId,
+        dpjpUserName: action.data.dpjpName || "",
       };
     }
     case "set_is_exam": {
@@ -312,6 +314,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ...state,
         selectedASATags: action.data.asaTags,
         asaTagIds: action.data.tagIds,
+      };
+    }
+    case "set_dpjp_all": {
+      return {
+        ...state,
+        dpjpUserId: action.data.dpjpId,
+        dpjpUserName: action.data.dpjpUsername,
       };
     }
   }
