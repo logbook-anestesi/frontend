@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
@@ -7,6 +7,7 @@ import { colors } from "../../../../constants/colors";
 import Ticker from "../../../../components/Ticker";
 import ModalCategory from "../ModalCategory";
 import { OperationType } from "../../hooks/useGetCasesForm/types";
+import { OperationType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
 import ModalSubCategory from "../ModalSubCategory";
 import {
   useApprovalEditContext,
@@ -15,10 +16,11 @@ import {
 
 interface Props {
   formData?: OperationType[];
+  initialValue?: InitialTypes[];
 }
 
-const FormOperation = ({ formData }: Props) => {
-  const casesDispatch = useApprovalEditDispatch();
+const FormOperation = ({ formData, initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { selectedOperation } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -28,16 +30,38 @@ const FormOperation = ({ formData }: Props) => {
   } = useDisclosure();
   const [operation, setOperation] = useState<OperationType>();
 
+  useEffect(() => {
+    const normalizeOperation = initialValue?.map((operation) => {
+      return {
+        category: "lorem",
+        operation: operation?.operationTypeName,
+        id: operation?.operationTypeId,
+      };
+    });
+
+    const normalizeIds = initialValue?.map(
+      (operation) => operation.operationTypeId
+    );
+
+    approveEditDispatch({
+      type: "set_selected_operation_all",
+      data: {
+        operations: normalizeOperation || [],
+        operationIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
+
   const handleRemoveOperation = useCallback(
     (operationId: string) => {
-      casesDispatch({
+      approveEditDispatch({
         type: "remove_operation_type",
         data: {
           id: operationId,
         },
       });
     },
-    [casesDispatch]
+    [approveEditDispatch]
   );
 
   return (

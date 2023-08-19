@@ -330,6 +330,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         noraProcedureTypeIds: action.data.noraIds,
       };
     }
+    case "set_selected_operation_all": {
+      return {
+        ...state,
+        selectedOperation: action.data.operations,
+        operationTypeIds: action.data.operationIds,
+      };
+    }
   }
 }
 

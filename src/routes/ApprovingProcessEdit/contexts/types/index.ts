@@ -328,6 +328,22 @@ interface SetAllNoraProcedure {
   };
 }
 
+interface SetAllNoraProcedure {
+  type: "set_nora_procedure_type_all";
+  data: {
+    nora: Nora[];
+    noraIds: string[];
+  };
+}
+
+interface SetAllSelectedOperation {
+  type: "set_selected_operation_all";
+  data: {
+    operations: Operation[];
+    operationIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -365,6 +381,7 @@ type ACTION_TYPE =
   | RemoveNoraProcedure
   | SetAllASATags
   | SetDPJPAll
-  | SetAllNoraProcedure;
+  | SetAllNoraProcedure
+  | SetAllSelectedOperation;
 
 export type { ACTION_TYPE, InitialState };

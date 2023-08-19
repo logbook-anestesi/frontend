@@ -20,6 +20,7 @@ import FormASATags from "./components/FormASATags";
 import useGetCasesForm from "./hooks/useGetCasesForm";
 import FormDPJP from "./components/FormDPJP";
 import FormNoraTypeProcedure from "./components/FormNoraTypeProcedure";
+import FormOperation from "./components/FormOperation";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -68,6 +69,10 @@ const ApprovingProcessEdit = () => {
             <FormNoraTypeProcedure
               initialValue={caseData?.noraProcedureTypes}
               noraProcedureList={casesForm?.noraProcedureTypes}
+            />
+            <FormOperation
+              formData={casesForm?.operationTypes}
+              initialValue={caseData?.operationTypes}
             />
           </>
         )}
