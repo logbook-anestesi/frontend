@@ -43,12 +43,6 @@ const FormASATags = ({ tagList, initialValue }: Props) => {
       type: "set_asa_tags_all",
       data: {
         asaTags: normalizeTags || [],
-      },
-    });
-
-    approveEditDispatch({
-      type: "set_asa_tags_type_ids_all",
-      data: {
         tagIds: normalizeIds || [],
       },
     });

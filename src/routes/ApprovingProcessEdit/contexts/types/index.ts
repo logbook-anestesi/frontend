@@ -306,12 +306,6 @@ interface SetAllASATags {
   type: "set_asa_tags_all";
   data: {
     asaTags: ASATags[];
-  };
-}
-
-interface SetAllASATagsId {
-  type: "set_asa_tags_type_ids_all";
-  data: {
     tagIds: string[];
   };
 }
@@ -351,7 +345,6 @@ type ACTION_TYPE =
   | RemoveAsaTags
   | RemoveSupervisor
   | RemoveNoraProcedure
-  | SetAllASATags
-  | SetAllASATagsId;
+  | SetAllASATags;
 
 export type { ACTION_TYPE, InitialState };

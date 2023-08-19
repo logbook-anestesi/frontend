@@ -311,11 +311,6 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         selectedASATags: action.data.asaTags,
-      };
-    }
-    case "set_asa_tags_type_ids_all": {
-      return {
-        ...state,
         asaTagIds: action.data.tagIds,
       };
     }
