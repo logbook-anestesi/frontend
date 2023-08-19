@@ -1,14 +1,7 @@
-export interface PayloadAddApproval {
-  caseId?: string;
-  status?: string;
-  rate?: string;
-  notes?: string;
-  caseEditRequest?: CaseEditRequest;
-}
-
-export interface CaseEditRequest {
+export interface CreateCasePayload {
+  caseType?: string;
   date?: string;
-  userId?: string;
+  dpjpUserId?: string;
   isExam?: boolean;
   ageGroup?: string;
   priority?: string;
@@ -18,7 +11,6 @@ export interface CaseEditRequest {
   patientGender?: string;
   asaTier?: number;
   asaIsEmergency?: boolean;
-  numberOfPatient?: number;
   notes?: string;
   asaTagIds?: string[];
   tagIds?: string[];
@@ -26,5 +18,5 @@ export interface CaseEditRequest {
   anesthesiaTypeIds?: string[];
   procedureTypeIds?: string[];
   noraProcedureTypeIds?: string[];
-  superviseeIds?: string[];
+  supervisorIds?: string[];
 }

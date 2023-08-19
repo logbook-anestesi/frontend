@@ -20,6 +20,7 @@ import CaseDetails from "./CaseDetails";
 import StaseAllList from "./StaseAllList";
 import PendingApproval from "./PendingApproval";
 import ApprovingProcess from "./ApprovingProcess";
+import ApprovingProcessEdit from "./ApprovingProcessEdit";
 
 const MainRoutes = () => {
   return (
@@ -39,6 +40,7 @@ const MainRoutes = () => {
 
         <Route path="/review/cases" element={<CasesReviewDashboardPage />} />
         <Route path="/review/process" element={<ApprovingProcess />} />
+        <Route path="/review/process/edit" element={<ApprovingProcessEdit />} />
 
         <Route path="/dashboard/station" element={<StationDashboardPage />} />
 
