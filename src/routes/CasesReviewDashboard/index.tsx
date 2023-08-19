@@ -10,7 +10,7 @@ const CasesReviewDashboardPage = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title="Pending Cases Review" />
+      <Header pathBack="/" title="Pending Cases Review" />
 
       <Flex padding="30px" direction="column" gap="16px">
         <Button
