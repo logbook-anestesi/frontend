@@ -302,6 +302,20 @@ interface RemoveNoraProcedure {
   };
 }
 
+interface SetAllASATags {
+  type: "set_asa_tags_all";
+  data: {
+    asaTags: ASATags[];
+  };
+}
+
+interface SetAllASATagsId {
+  type: "set_asa_tags_type_ids_all";
+  data: {
+    tagIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -336,6 +350,8 @@ type ACTION_TYPE =
   | RemoveAnesthesiaType
   | RemoveAsaTags
   | RemoveSupervisor
-  | RemoveNoraProcedure;
+  | RemoveNoraProcedure
+  | SetAllASATags
+  | SetAllASATagsId;
 
 export type { ACTION_TYPE, InitialState };

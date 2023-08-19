@@ -2,7 +2,7 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Tag } from "../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ModalASATags from "../ModalASATags";
 import Ticker from "../../../../components/Ticker";
 import ModalAddOtherASAtags from "../ModalAddOtherASATags";
@@ -10,13 +10,15 @@ import {
   useApprovalEditContext,
   useApprovalEditDispatch,
 } from "../../contexts";
+import { AsaTag } from "../../../Cases/hooks/useGetCases/types";
 
 interface Props {
-  tagList: Tag[];
+  tagList?: Tag[];
+  initialValue?: AsaTag[];
 }
 
-const FormASATags = ({ tagList }: Props) => {
-  const casesDispatch = useApprovalEditDispatch();
+const FormASATags = ({ tagList, initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { selectedASATags } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -27,16 +29,41 @@ const FormASATags = ({ tagList }: Props) => {
 
   const [tag, setTag] = useState<Tag>();
 
+  useEffect(() => {
+    const normalizeTags = initialValue?.map((tag) => {
+      return {
+        title: tag.tagName,
+        id: tag.tagId,
+      };
+    });
+
+    const normalizeIds = initialValue?.map((tag) => tag.tagId);
+
+    approveEditDispatch({
+      type: "set_asa_tags_all",
+      data: {
+        asaTags: normalizeTags || [],
+      },
+    });
+
+    approveEditDispatch({
+      type: "set_asa_tags_type_ids_all",
+      data: {
+        tagIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
+
   const handleRemoveAsaTag = useCallback(
     (asaTagId: string) => {
-      casesDispatch({
+      approveEditDispatch({
         type: "remove_asa_tags",
         data: {
           id: asaTagId,
         },
       });
     },
-    [casesDispatch]
+    [approveEditDispatch]
   );
 
   return (
@@ -84,7 +111,7 @@ const FormASATags = ({ tagList }: Props) => {
       <ModalASATags
         closeModal={onClose}
         isOpen={isOpen}
-        tagList={tagList}
+        tagList={tagList || []}
         setTag={setTag}
         onOpenAddOther={onOpenAddOther}
       />

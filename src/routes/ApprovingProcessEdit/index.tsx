@@ -16,9 +16,12 @@ import FormNotes from "./components/FormNotes";
 import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
 import FormUsiaAndRM from "./components/FormUsiaAndRM";
 import FormDate from "./components/FormDate";
+import FormASATags from "./components/FormASATags";
+import useGetCasesForm from "./hooks/useGetCasesForm";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
+  const { casesForm } = useGetCasesForm();
   const { caseData, loading } = useGetDetailCases(location?.state?.caseId);
   const state = useApprovalEditContext();
 
@@ -52,6 +55,10 @@ const ApprovingProcessEdit = () => {
               initialUsia={caseData?.patientAge}
             />
             <FormDate initialValue={caseData?.date} />
+            <FormASATags
+              tagList={casesForm?.tags}
+              initialValue={caseData?.asaTags}
+            />
           </>
         )}
       </Flex>
