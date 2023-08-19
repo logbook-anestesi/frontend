@@ -360,6 +360,14 @@ interface SetAllAdditionalTag {
   };
 }
 
+interface SetAllSupervisor {
+  type: "set_supervisor_all";
+  data: {
+    supervisors: Supervisor[];
+    supervisorIds: string[];
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -400,6 +408,7 @@ type ACTION_TYPE =
   | SetAllNoraProcedure
   | SetAllSelectedOperation
   | SetAllAnesthesiaType
-  | SetAllAdditionalTag;
+  | SetAllAdditionalTag
+  | SetAllSupervisor;
 
 export type { ACTION_TYPE, InitialState };

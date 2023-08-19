@@ -1,7 +1,7 @@
 import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import profileIcon from "../../assets/profile.png";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Supervisor } from "../../hooks/useGetSupervisor/types";
 import ModalSupervisor from "../ModalSupervisor";
 import Ticker from "../../../../components/Ticker";
@@ -10,24 +10,47 @@ import {
   useApprovalEditContext,
   useApprovalEditDispatch,
 } from "../../contexts";
+import { Supervisor as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
 
-const FormSupervised = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialValue?: InitialTypes[];
+}
+const FormSupervised = ({ initialValue }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
   const { selectedSupervisor: supervisorList } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedSupervisor, setSelectedSupervisor] = useState<Supervisor>();
   const { profile } = useGetProfile();
 
+  useEffect(() => {
+    const normalizeSupervisor = initialValue?.map((supervisor) => {
+      return {
+        name: supervisor.userName,
+        id: supervisor.userId,
+      };
+    });
+
+    const normalizeIds = initialValue?.map((supervisor) => supervisor.userId);
+
+    approveEditDispatch({
+      type: "set_supervisor_all",
+      data: {
+        supervisors: normalizeSupervisor || [],
+        supervisorIds: normalizeIds || [],
+      },
+    });
+  }, [approveEditDispatch, initialValue]);
+
   const handleRemoveSupervisor = useCallback(
     (superVisorId: string) => {
-      casesDispatch({
+      approveEditDispatch({
         type: "remove_supervisor",
         data: {
           id: superVisorId,
         },
       });
     },
-    [casesDispatch]
+    [approveEditDispatch]
   );
 
   return (

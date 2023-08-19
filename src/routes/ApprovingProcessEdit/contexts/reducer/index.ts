@@ -351,6 +351,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         additionalTags: action.data.additionalTagIds,
       };
     }
+    case "set_supervisor_all": {
+      return {
+        ...state,
+        selectedSupervisor: action.data.supervisors,
+        supervisorIds: action.data.supervisorIds,
+      };
+    }
   }
 }
 
