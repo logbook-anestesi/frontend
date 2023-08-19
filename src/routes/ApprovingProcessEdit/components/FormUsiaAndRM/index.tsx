@@ -3,8 +3,13 @@ import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useApprovalEditDispatch } from "../../contexts";
 
-const FormUsiaAndRM = () => {
-  const casesDispatch = useApprovalEditDispatch();
+interface Props {
+  initialUsia?: number;
+  initialNoRm?: string;
+}
+
+const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
+  const approveEditDispatch = useApprovalEditDispatch();
 
   const [age, setAge] = useState(0);
   const [recordNumber, setRecordNumber] = useState("");
@@ -14,20 +19,28 @@ const FormUsiaAndRM = () => {
     setRecordNumber(event.target.value);
 
   useEffect(() => {
-    casesDispatch({
+    setAge(initialUsia || 0);
+  }, [initialUsia]);
+
+  useEffect(() => {
+    setRecordNumber(initialNoRm || "");
+  }, [initialNoRm]);
+
+  useEffect(() => {
+    approveEditDispatch({
       type: "set_patient_age",
       data: {
         age: age,
       },
     });
 
-    casesDispatch({
+    approveEditDispatch({
       type: "set_patient_rm",
       data: {
         rm: recordNumber,
       },
     });
-  }, [age, casesDispatch, recordNumber]);
+  }, [age, approveEditDispatch, recordNumber]);
 
   return (
     <Flex direction="row" justify="space-between" gap={2}>
@@ -36,7 +49,7 @@ const FormUsiaAndRM = () => {
           Usia Pasien
         </Text>
 
-        <Input placeholder="0" onChange={handleChangeAge} />
+        <Input placeholder="0" onChange={handleChangeAge} value={age} />
       </Flex>
 
       <Flex direction="column" flex={1}>
@@ -44,7 +57,11 @@ const FormUsiaAndRM = () => {
           No RM
         </Text>
 
-        <Input placeholder="XYZ123" onChange={handleChangeRm} />
+        <Input
+          placeholder="XYZ123"
+          onChange={handleChangeRm}
+          value={recordNumber}
+        />
       </Flex>
     </Flex>
   );

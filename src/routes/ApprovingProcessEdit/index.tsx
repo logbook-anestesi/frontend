@@ -1,17 +1,20 @@
 import { Flex } from "@chakra-ui/react";
-import Header from "../../components/Header";
 import { useLocation } from "react-router-dom";
+import { useApprovalEditContext } from "./contexts";
+
 import useGetDetailCases from "./hooks/useGetDetailCase";
+import { RADIO_EXAM } from "./constants";
+
+import Header from "../../components/Header";
 import LoaderCircle from "../../components/LoaderCircle";
 import FormRadioExam from "./components/FormRadioExam";
-import { RADIO_EXAM } from "./constants";
 import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
 import FormRadioPriority from "./components/FormRadioPriority";
 import FormRadioGender from "./components/FormRadioGender";
 import FormRadioLocation from "./components/FormRadioLocation";
 import FormNotes from "./components/FormNotes";
-import { useApprovalEditContext } from "./contexts";
 import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
+import FormUsiaAndRM from "./components/FormUsiaAndRM";
 
 const ApprovingProcessEdit = () => {
   const location = useLocation();
@@ -42,6 +45,10 @@ const ApprovingProcessEdit = () => {
             <FormTingkatAndEmergency
               initialValue={caseData?.asaTier}
               emergencyInitialValue={caseData?.asaIsEmergency}
+            />
+            <FormUsiaAndRM
+              initialNoRm={caseData?.patientRecordNumber}
+              initialUsia={caseData?.patientAge}
             />
           </>
         )}
