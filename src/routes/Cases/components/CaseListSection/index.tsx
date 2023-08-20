@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
-import TableCases from "../TableCases";
 import { CaseMenu } from "../../types";
 import { Case } from "../../hooks/useGetCases/types";
+import TableData from "../TableData";
 
 interface Props {
   caseList: Case[];
@@ -29,7 +29,7 @@ const CaseListSection = ({ caseList, selectedCase }: Props) => {
         </InputRightElement>
       </InputGroup> */}
 
-      <TableCases caseList={caseList} selectedCase={selectedCase} />
+      <TableData caseList={caseList} />
     </Flex>
   );
 };
