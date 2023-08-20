@@ -3,8 +3,8 @@ import Header from "../../components/Header";
 import StaseCard from "./components/StaseCard";
 import useGetStaseUser from "./hooks/useGetStaseUser";
 import TableTitle from "./components/TableTitle";
-import TableComponent from "./components/TableComponent";
 import RedStaseCard from "./components/RedStaseCard";
+import TableData from "./components/TableData";
 
 const StasePage = () => {
   const { currentStase, staseData, loading } = useGetStaseUser();
@@ -21,7 +21,7 @@ const StasePage = () => {
 
         <TableTitle />
 
-        <TableComponent staseData={staseData} loading={loading} />
+        <TableData loading={loading} stationList={staseData || []} />
       </Flex>
     </Flex>
   );

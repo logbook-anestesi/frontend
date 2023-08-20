@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import useGetAllStase from "./hooks/useGetAllStase";
-import TableAllStase from "./components/TableAllStase";
+import TableData from "./components/TableData";
 
 const StaseAllList = () => {
   const { loading, staseList } = useGetAllStase();
@@ -10,7 +10,7 @@ const StaseAllList = () => {
     <Flex flexDirection="column">
       <Header title="Stase" />
       <Flex padding="30px" direction="column" gap="16px">
-        <TableAllStase staseList={staseList} loading={loading} />
+        <TableData loading={loading} stationList={staseList || []} />
       </Flex>
     </Flex>
   );
