@@ -2,6 +2,7 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { Case } from "../../hooks/useGetCases/types";
 import { useMemo } from "react";
 import { formatDateMonthYear } from "../../../../helpers";
+import { useNavigate } from "react-router-dom";
 
 interface DataRow {
   idCase: string;
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const TableData = ({ caseList }: Props) => {
+  const navigate = useNavigate();
+
   const columns: TableColumn<DataRow>[] = [
     {
       name: "ID Case",
@@ -25,6 +28,18 @@ const TableData = ({ caseList }: Props) => {
         textDecoration: "underline",
         color: "#3498db",
       },
+      cell: (row) => (
+        <span
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            navigate("/cases/details", {
+              state: { caseId: row?.idCase },
+            })
+          }
+        >
+          {row.idCase}
+        </span>
+      ),
     },
     {
       name: "Tanggal",
