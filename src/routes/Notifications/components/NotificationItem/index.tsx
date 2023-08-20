@@ -1,4 +1,4 @@
-import { Divider, Flex, Text, useToast } from "@chakra-ui/react";
+import { Circle, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import { Notification } from "../../hooks/useGetAllNotifications/types";
 import { convertDateForNotification } from "../../../../helpers";
 import { useMemo } from "react";
@@ -54,8 +54,7 @@ const NotificationItem = ({ notification }: Props) => {
         {convertDateForNotification(notification?.created)}
       </Text>
 
-      {/* Temporary disable, waiting for BE API */}
-      {/* {!notification?.isRead && <Circle size="10px" bg="tomato" />} */}
+      {!notification?.isRead && <Circle size="10px" bg="tomato" mb={2} />}
 
       <Text as="b" fontSize="sm">
         {notification?.title}
