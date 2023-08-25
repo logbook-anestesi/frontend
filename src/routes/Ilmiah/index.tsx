@@ -2,9 +2,12 @@ import { Flex, useDisclosure } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import ButtonAdd from "./components/ButtonAdd";
 import ModalAddIlmiah from "./components/ModalAddIlmiah";
+import { useState } from "react";
+import useCreateIlmiah from "./hooks/useCreateIlmiah";
 
 const IlmiahPage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+
   return (
     <Flex direction="column">
       <Header title="Ilmiah" />

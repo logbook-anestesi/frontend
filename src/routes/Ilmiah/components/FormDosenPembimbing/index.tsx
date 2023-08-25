@@ -1,7 +1,11 @@
 import { Flex, Select, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 
-const FormDosenPembimbing = () => {
+interface Props {
+  setApprovalUserIds: (userId: string[]) => void;
+}
+
+const FormDosenPembimbing = ({ setApprovalUserIds }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
