@@ -21,6 +21,7 @@ import StaseAllList from "./StaseAllList";
 import PendingApproval from "./PendingApproval";
 import ApprovingProcess from "./ApprovingProcess";
 import ApprovingProcessEdit from "./ApprovingProcessEdit";
+import IlmiahPage from "./Ilmiah";
 
 const MainRoutes = () => {
   return (
@@ -50,6 +51,8 @@ const MainRoutes = () => {
         <Route path="/cases/add/nora" element={<AddCaseNora />} />
         <Route path="/cases/details" element={<CaseDetails />} />
         <Route path="/approval" element={<PendingApproval />} />
+
+        <Route path="/ilmiah" element={<IlmiahPage />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
