@@ -1,26 +1,67 @@
-import { Flex, Select, Text } from "@chakra-ui/react";
+import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
+import ModalPembimbing from "../ModalPembimbing";
+import { PembimbingData } from "../ModalAddIlmiah";
 
 interface Props {
-  setApprovalUserIds: (userId: string[]) => void;
+  setApprovalUser: (user: PembimbingData) => void;
+  listPembimbing: PembimbingData[];
 }
 
-const FormDosenPembimbing = ({ setApprovalUserIds }: Props) => {
+const FormDosenPembimbing = ({ setApprovalUser, listPembimbing }: Props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Pembimbing
       </Text>
 
-      <Select placeholder="Pilih pembimbing">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </Select>
+      <Flex
+        justify="space-between"
+        align="center"
+        borderWidth={1}
+        borderColor={colors.lightGrey}
+        padding="10px 15px"
+        borderRadius={10}
+        onClick={onOpen}
+        mb={1}
+      >
+        <Text>Pilih Pembimbing</Text>
+      </Flex>
 
-      <Text fontSize="sm" color={colors.primaryPurple} as="b" pl={2} pt={2}>
+      <Text
+        fontSize="sm"
+        color={colors.primaryPurple}
+        as="b"
+        pl={2}
+        pt={2}
+        onClick={onOpen}
+        mb={3}
+      >
         + Tambah Pembimbing
       </Text>
+
+      <Flex direction="column" gap={3}>
+        {listPembimbing?.map((pembimbing) => (
+          <Text
+            backgroundColor={colors.lightGrey}
+            py={2}
+            px={4}
+            borderRadius={10}
+          >
+            {pembimbing?.name}
+          </Text>
+        ))}
+      </Flex>
+
+      {/* Modal Section */}
+      <ModalPembimbing
+        closeModal={onClose}
+        isOpen={isOpen}
+        setPembimbing={setApprovalUser}
+        listPembimbing={listPembimbing}
+      />
     </Flex>
   );
 };

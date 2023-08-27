@@ -21,26 +21,30 @@ interface Props {
   closeModal: () => void;
 }
 
+export interface PembimbingData {
+  name: string;
+  id: string;
+}
+
 const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
   const toast = useToast();
   const { createIlmiah, loading } = useCreateIlmiah();
 
   const [scientificType, setScientificType] = useState("");
   const [title, setTitle] = useState("");
-  const [approvalUserIds, setApprovalUserIds] = useState<string[]>([]);
+  const [approvalUser, setApprovalUser] = useState<PembimbingData[]>([]);
+
+  const setPembimbing = (user: PembimbingData) => {
+    setApprovalUser((prev) => [...prev, user]);
+  };
 
   useEffect(() => {
-    console.log(
-      "999 ini adalah useffect",
-      scientificType,
-      title,
-      approvalUserIds
-    );
-  }, [approvalUserIds, scientificType, title]);
+    console.log("999 ini adalah useffect", scientificType, title, approvalUser);
+  }, [approvalUser, scientificType, title]);
 
   const handleClickSubmit = async () => {
     const response = await createIlmiah({
-      approvalUserIds: approvalUserIds,
+      approvalUserIds: approvalUser?.map((user) => user.id),
       scientificType: scientificType,
       title: title,
     });
@@ -79,7 +83,10 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
 
         <Flex w="full" direction="column" gap={4}>
           <FormTipeIlmiah setScientificType={setScientificType} />
-          <FormDosenPembimbing setApprovalUserIds={setApprovalUserIds} />
+          <FormDosenPembimbing
+            setApprovalUser={setPembimbing}
+            listPembimbing={approvalUser}
+          />
           <FormJudul setTitle={setTitle} />
           <Information />
 
