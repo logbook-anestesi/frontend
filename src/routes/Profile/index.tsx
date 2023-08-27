@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import { colors } from "../../constants/colors";
 import LoaderCircle from "../../components/LoaderCircle";
 import useAuth from "../../hooks/useAuth";
+import { useMemo } from "react";
 
 const ProfilePage = () => {
   const { loading, profile } = useGetProfile();
@@ -36,7 +37,38 @@ const ProfilePage = () => {
       label: "Level Kompetensi",
       value: profile?.role,
     },
+    {
+      label: "Stase",
+      value: profile?.stationName,
+    },
   ];
+
+  const konsulenProfileData = [
+    {
+      label: "Nama",
+      value: profile?.name,
+    },
+    {
+      label: "NPM",
+      value: profile?.npm,
+    },
+    {
+      label: "Email",
+      value: profile?.email,
+    },
+    {
+      label: "No. Handphone",
+      value: profile?.phoneNumber,
+    },
+    {
+      label: "Stase",
+      value: profile?.stationName,
+    },
+  ];
+
+  const isKonsulen = useMemo(() => {
+    return profile?.role === "KONSULEN";
+  }, [profile?.role]);
 
   if (loading) {
     return (
@@ -64,18 +96,40 @@ const ProfilePage = () => {
           </Text>
         </Flex>
 
-        <Flex direction="column" gap="24px">
-          {selectedProfileData.map((data) => (
-            <Flex direction="column">
-              <Text color={colors.darkGrey} fontSize="sm">
-                {data.label}
-              </Text>
-              <Text as="b" fontSize="sm">
-                {data.value}
-              </Text>
-            </Flex>
-          ))}
-        </Flex>
+        {!isKonsulen && (
+          <Flex direction="column" gap="24px">
+            {selectedProfileData.map((data) => {
+              return (
+                <Flex direction="column">
+                  <Text color={colors.darkGrey} fontSize="sm">
+                    {data.label}
+                  </Text>
+                  <Text as="b" fontSize="sm">
+                    {data.value}
+                  </Text>
+                </Flex>
+              );
+            })}
+          </Flex>
+        )}
+
+        {isKonsulen && (
+          <Flex direction="column" gap="24px">
+            {konsulenProfileData.map((data) => {
+              return (
+                <Flex direction="column">
+                  <Text color={colors.darkGrey} fontSize="sm">
+                    {data.label}
+                  </Text>
+                  <Text as="b" fontSize="sm">
+                    {data.value}
+                  </Text>
+                </Flex>
+              );
+            })}
+          </Flex>
+        )}
+
         <Button
           color={colors.white}
           backgroundColor={colors.primaryPurple}
