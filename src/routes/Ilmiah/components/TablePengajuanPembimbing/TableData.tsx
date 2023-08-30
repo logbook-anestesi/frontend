@@ -85,7 +85,9 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       cell: (row) => (
         <Flex
           fontSize="xs"
-          bgColor={colors.primaryPurple}
+          bgColor={
+            row.status === "PENDING" ? colors.primaryRed : colors.primaryPurple
+          }
           color={colors.white}
           py={1}
           px={2}

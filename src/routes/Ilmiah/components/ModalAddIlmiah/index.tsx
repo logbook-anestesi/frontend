@@ -13,7 +13,7 @@ import FormDosenPembimbing from "../FormDosenPembimbing";
 import FormJudul from "../FormJudul";
 import Information from "../Information";
 import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useCreateIlmiah from "../../hooks/useCreateIlmiah";
 
 interface Props {
@@ -70,8 +70,16 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
     }
   };
 
+  const handleOnClose = () => {
+    setScientificType("");
+    setTitle("");
+    setApprovalUser([]);
+
+    closeModal();
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} isCentered>
+    <Modal isOpen={isOpen} onClose={handleOnClose} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <ModalHeader margin="auto">Tambah Ilmiah</ModalHeader>

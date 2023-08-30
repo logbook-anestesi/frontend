@@ -9,6 +9,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import AddCasesProvider from "./routes/AddCases/contexts";
 import ApprovingProcessProvider from "./routes/ApprovingProcess/contexts";
 import ApprovalEditProvider from "./routes/ApprovingProcessEdit/contexts";
+import IlmiahProvider from "./routes/Ilmiah/contexts";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -21,9 +22,11 @@ root.render(
           <AddCasesProvider>
             <ApprovalEditProvider>
               <ApprovingProcessProvider>
-                <ChakraProvider>
-                  <MainRoutes />
-                </ChakraProvider>
+                <IlmiahProvider>
+                  <ChakraProvider>
+                    <MainRoutes />
+                  </ChakraProvider>
+                </IlmiahProvider>
               </ApprovingProcessProvider>
             </ApprovalEditProvider>
           </AddCasesProvider>
