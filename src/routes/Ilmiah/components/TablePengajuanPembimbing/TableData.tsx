@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { PengajuanPembimbing } from "../../hooks/useGetPengajuanPembimbing/types";
 import { convertDateForIlmiah } from "../../../../helpers";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { useIlmiahDispatch } from "../../contexts";
 
@@ -46,6 +46,23 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
     });
 
     onOpenModal();
+  };
+
+  const statusBgColor = (value: string) => {
+    switch (value) {
+      case "PENDING": {
+        return colors.primaryYellow;
+      }
+      case "REJECTED": {
+        return colors.primaryRed;
+      }
+      case "SCIENTIFIC_APPROVED": {
+        return colors.primaryGreen;
+      }
+      case "GRADUATION_IN_PROGRESS": {
+        return colors.primaryPurple;
+      }
+    }
   };
 
   const columns: TableColumn<DataRow>[] = [
@@ -114,26 +131,32 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       name: "Status",
       selector: (row) => row.status,
       sortable: true,
-
-      width: "20%",
+      width: "30%",
       cell: (row) => (
-        <Flex
-          fontSize="xs"
-          bgColor={
-            row.status === "PENDING" ? colors.primaryRed : colors.primaryPurple
-          }
-          color={colors.white}
-          py={1}
-          px={2}
-          borderRadius={10}
-          onClick={() =>
-            handleClickStatus({
-              ilmiahId: row.id,
-              status: row.status,
-            })
-          }
-        >
-          {row.status}
+        <Flex direction="column" gap={3}>
+          {row.status === "GRADUATION_IN_PROGRESS" && (
+            <Text>Sudah bisa diajukan kelulusan</Text>
+          )}
+          <Flex
+            fontSize="xs"
+            bgColor={statusBgColor(row.status)}
+            color={colors.white}
+            py={1}
+            px={2}
+            borderRadius={10}
+            onClick={() =>
+              handleClickStatus({
+                ilmiahId: row.id,
+                status: row.status,
+              })
+            }
+            textAlign="center"
+            justify="center"
+          >
+            {row.status === "GRADUATION_IN_PROGRESS"
+              ? "Ajukan Kelulusan"
+              : row.status}
+          </Flex>
         </Flex>
       ),
     },
