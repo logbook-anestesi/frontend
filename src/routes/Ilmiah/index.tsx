@@ -4,9 +4,15 @@ import ButtonAdd from "./components/ButtonAdd";
 import ModalAddIlmiah from "./components/ModalAddIlmiah";
 import TablePengajuanBimbingan from "./components/TablePengajuanPembimbing";
 import TablePengajuanKelulusan from "./components/TablePengajuanKelulusan";
+import ModalAjukanKelulusan from "./components/ModalAjukanKelulusan";
 
 const IlmiahPage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenAjukanKelulusan,
+    onClose: onCloseAjukanKelulusan,
+    onOpen: onOpenAjukanKelulusan,
+  } = useDisclosure();
 
   return (
     <Flex direction="column">
@@ -15,12 +21,16 @@ const IlmiahPage = () => {
       <Flex padding="30px" direction="column" gap="16px">
         <ButtonAdd handleOnClick={onOpen} />
 
-        <TablePengajuanBimbingan />
+        <TablePengajuanBimbingan onOpenModal={onOpenAjukanKelulusan} />
         <TablePengajuanKelulusan />
       </Flex>
 
       {/* Modal Section */}
       <ModalAddIlmiah closeModal={onClose} isOpen={isOpen} />
+      <ModalAjukanKelulusan
+        closeModal={onCloseAjukanKelulusan}
+        isOpen={isOpenAjukanKelulusan}
+      />
     </Flex>
   );
 };

@@ -3,10 +3,12 @@ import useGetPengajuanPembimbing from "../../hooks/useGetPengajuanPembimbing";
 import TableData from "./TableData";
 import LoaderCircle from "../../../../components/LoaderCircle";
 
-const TablePengajuanBimbingan = () => {
-  const { loading, pengajuanList } = useGetPengajuanPembimbing();
+interface Props {
+  onOpenModal: () => void;
+}
 
-  console.log(pengajuanList);
+const TablePengajuanBimbingan = ({ onOpenModal }: Props) => {
+  const { loading, pengajuanList } = useGetPengajuanPembimbing();
 
   return (
     <Flex direction="column">
@@ -14,7 +16,11 @@ const TablePengajuanBimbingan = () => {
         Riwayat Pengajuan Bimbingan
       </Text>
 
-      {loading ? <LoaderCircle /> : <TableData pengajuanList={pengajuanList} />}
+      {loading ? (
+        <LoaderCircle />
+      ) : (
+        <TableData pengajuanList={pengajuanList} onOpenModal={onOpenModal} />
+      )}
     </Flex>
   );
 };

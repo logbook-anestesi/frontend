@@ -21,10 +21,6 @@ const RadioPenilaian = () => {
     });
   }, [approvingProcessDispatch, notes, rate, value]);
 
-  useEffect(() => {
-    console.log("999 ini data approving", { notes, rate });
-  }, [notes, rate]);
-
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>

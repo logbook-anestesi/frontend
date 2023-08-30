@@ -38,10 +38,6 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
     setApprovalUser((prev) => [...prev, user]);
   };
 
-  useEffect(() => {
-    console.log("999 ini adalah useffect", scientificType, title, approvalUser);
-  }, [approvalUser, scientificType, title]);
-
   const handleClickSubmit = async () => {
     const response = await createIlmiah({
       approvalUserIds: approvalUser?.map((user) => user.id),

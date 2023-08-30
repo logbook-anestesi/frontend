@@ -101,10 +101,6 @@ const AddCases = () => {
     });
   }, [casesDispatch]);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   return (
     <Flex flexDirection="column">
       <Header title="Tambah OK/Surgery" />

@@ -2,6 +2,8 @@ import { useMemo } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { PengajuanPembimbing } from "../../hooks/useGetPengajuanPembimbing/types";
 import { convertDateForIlmiah } from "../../../../helpers";
+import { Flex } from "@chakra-ui/react";
+import { colors } from "../../../../constants/colors";
 
 interface DataRow {
   id: string;
@@ -14,9 +16,10 @@ interface DataRow {
 
 interface Props {
   pengajuanList: PengajuanPembimbing[];
+  onOpenModal: () => void;
 }
 
-const TableData = ({ pengajuanList }: Props) => {
+const TableData = ({ pengajuanList, onOpenModal }: Props) => {
   const columns: TableColumn<DataRow>[] = [
     {
       name: "ID",
@@ -79,6 +82,19 @@ const TableData = ({ pengajuanList }: Props) => {
       selector: (row) => row.status,
       sortable: true,
       width: "30%",
+      cell: (row) => (
+        <Flex
+          fontSize="xs"
+          bgColor={colors.primaryPurple}
+          color={colors.white}
+          py={1}
+          px={2}
+          borderRadius={10}
+          onClick={onOpenModal}
+        >
+          {row.status}
+        </Flex>
+      ),
     },
   ];
 

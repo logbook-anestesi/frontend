@@ -15,7 +15,6 @@ const useAddApproval = () => {
       setLoading(false);
 
       if (data?.error) {
-        console.log("999 eror");
         return { success: false, message: data?.message[0] };
       }
 
