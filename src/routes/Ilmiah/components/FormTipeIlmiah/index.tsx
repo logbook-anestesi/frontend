@@ -20,7 +20,9 @@ const FormTipeIlmiah = ({ setScientificType }: Props) => {
 
       <Select placeholder="Pilih tipe ilmiah" onChange={handleChange}>
         {SCIENTIFIC_TYPE?.map((type) => (
-          <option value={type.value}>{type.title}</option>
+          <option value={type.value} key={`type-${type.title}`}>
+            {type.title}
+          </option>
         ))}
       </Select>
     </Flex>

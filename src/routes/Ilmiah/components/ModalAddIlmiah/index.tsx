@@ -13,8 +13,9 @@ import FormDosenPembimbing from "../FormDosenPembimbing";
 import FormJudul from "../FormJudul";
 import Information from "../Information";
 import { colors } from "../../../../constants/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCreateIlmiah from "../../hooks/useCreateIlmiah";
+import ListSPSKPS from "../ListSPSKPS";
 
 interface Props {
   isOpen: boolean;
@@ -32,10 +33,17 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
 
   const [scientificType, setScientificType] = useState("");
   const [title, setTitle] = useState("");
+  const [showSpsKps, setShowSpsKps] = useState(false);
   const [approvalUser, setApprovalUser] = useState<PembimbingData[]>([]);
 
   const setPembimbing = (user: PembimbingData) => {
-    setApprovalUser((prev) => [...prev, user]);
+    const exists = approvalUser.some(
+      (existingUser) => existingUser.id === user.id
+    );
+
+    if (!exists) {
+      setApprovalUser((prev) => [...prev, user]);
+    }
   };
 
   const handleClickSubmit = async () => {
@@ -78,6 +86,17 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
     closeModal();
   };
 
+  useEffect(() => {
+    if (scientificType === "TESIS") {
+      setShowSpsKps(true);
+      return;
+    }
+
+    setShowSpsKps(false);
+  }, [scientificType]);
+
+  console.log("999 scientific type", { scientificType });
+
   return (
     <Modal isOpen={isOpen} onClose={handleOnClose} isCentered>
       <ModalOverlay />
@@ -85,25 +104,36 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
         <ModalHeader margin="auto">Tambah Ilmiah</ModalHeader>
         <ModalCloseButton />
 
-        <Flex w="full" direction="column" gap={4}>
+        <Flex
+          w="full"
+          direction="column"
+          gap={4}
+          maxHeight={500}
+          overflowY="scroll"
+        >
           <FormTipeIlmiah setScientificType={setScientificType} />
           <FormDosenPembimbing
             setApprovalUser={setPembimbing}
             listPembimbing={approvalUser}
           />
-          <FormJudul setTitle={setTitle} />
-          <Information />
 
-          <Button
-            colorScheme="teal"
-            backgroundColor={colors.primaryPurple}
-            color={colors.white}
-            onClick={handleClickSubmit}
-            isLoading={loading}
-          >
-            Submit
-          </Button>
+          {showSpsKps && <ListSPSKPS />}
+
+          <FormJudul setTitle={setTitle} />
+
+          <Information />
         </Flex>
+
+        <Button
+          colorScheme="teal"
+          backgroundColor={colors.primaryPurple}
+          color={colors.white}
+          onClick={handleClickSubmit}
+          isLoading={loading}
+          my={5}
+        >
+          Submit
+        </Button>
       </ModalContent>
     </Modal>
   );

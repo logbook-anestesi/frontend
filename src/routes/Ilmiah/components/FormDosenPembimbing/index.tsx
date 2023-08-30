@@ -49,6 +49,7 @@ const FormDosenPembimbing = ({ setApprovalUser, listPembimbing }: Props) => {
             py={2}
             px={4}
             borderRadius={10}
+            key={pembimbing.id}
           >
             {pembimbing?.name}
           </Text>
