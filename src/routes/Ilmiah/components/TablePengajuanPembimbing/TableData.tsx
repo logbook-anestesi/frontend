@@ -4,6 +4,7 @@ import { PengajuanPembimbing } from "../../hooks/useGetPengajuanPembimbing/types
 import { convertDateForIlmiah } from "../../../../helpers";
 import { Flex } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
+import { useIlmiahDispatch } from "../../contexts";
 
 interface DataRow {
   id: string;
@@ -20,6 +21,23 @@ interface Props {
 }
 
 const TableData = ({ pengajuanList, onOpenModal }: Props) => {
+  const ilmiahDispatch = useIlmiahDispatch();
+
+  const handleClickStatus = (ilmiahId: string) => {
+    const dataIlmiah = pengajuanList.find((data) => data.id === ilmiahId);
+    const approvals = dataIlmiah?.approvals.map((approval) => approval.name);
+
+    ilmiahDispatch({
+      type: "set_pengajuan_kelulusan",
+      data: {
+        id: dataIlmiah?.id || "",
+        approvals: approvals || [],
+      },
+    });
+
+    onOpenModal();
+  };
+
   const columns: TableColumn<DataRow>[] = [
     {
       name: "ID",
@@ -92,7 +110,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
           py={1}
           px={2}
           borderRadius={10}
-          onClick={onOpenModal}
+          onClick={() => handleClickStatus(row.id)}
         >
           {row.status}
         </Flex>
