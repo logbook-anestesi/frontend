@@ -30,7 +30,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
     status: string;
     ilmiahId: string;
   }) => {
-    if (status !== "GRADUATION_IN_PROGRESS") {
+    if (status !== "SCIENTIFIC_APPROVED") {
       return;
     }
 
@@ -58,10 +58,10 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
         return colors.primaryRed;
       }
       case "SCIENTIFIC_APPROVED": {
-        return colors.primaryGreen;
+        return colors.primaryPurple;
       }
       case "GRADUATION_IN_PROGRESS": {
-        return colors.primaryPurple;
+        return colors.primaryGreen;
       }
     }
   };
@@ -135,7 +135,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       width: "30%",
       cell: (row) => (
         <Flex direction="column" gap={3}>
-          {row.status === "GRADUATION_IN_PROGRESS" && (
+          {row.status === "SCIENTIFIC_APPROVED" && (
             <Text>Sudah bisa diajukan kelulusan</Text>
           )}
           <Flex
@@ -154,7 +154,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
             textAlign="center"
             justify="center"
           >
-            {row.status === "GRADUATION_IN_PROGRESS"
+            {row.status === "SCIENTIFIC_APPROVED"
               ? "Ajukan Kelulusan"
               : row.status}
           </Flex>
