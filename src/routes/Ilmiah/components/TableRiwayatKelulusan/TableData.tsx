@@ -1,12 +1,12 @@
 import DataTable, { TableColumn } from "react-data-table-component";
 import { RiwayatKelulusan } from "../../hooks/useGetRiwayatKelulusan/types";
-import { Flex, Text } from "@chakra-ui/react";
 import { useMemo } from "react";
 import { convertDateForIlmiah } from "../../../../helpers";
+import { colors } from "../../../../constants/colors";
+import { Flex } from "@chakra-ui/react";
 
 interface Props {
   riwayatKelulusan: RiwayatKelulusan[];
-  onOpenModal: () => void;
 }
 
 interface DataRow {
@@ -18,7 +18,22 @@ interface DataRow {
   approvals: string;
   status: string;
 }
-const TableData = ({ riwayatKelulusan, onOpenModal }: Props) => {
+
+const TableData = ({ riwayatKelulusan }: Props) => {
+  const statusBgColor = (value: string) => {
+    switch (value) {
+      case "PENDING": {
+        return colors.primaryYellow;
+      }
+      case "REJECTED": {
+        return colors.primaryRed;
+      }
+      case "APPROVED": {
+        return colors.primaryGreen;
+      }
+    }
+  };
+
   const columns: TableColumn<DataRow>[] = [
     {
       name: "ID",
@@ -28,9 +43,11 @@ const TableData = ({ riwayatKelulusan, onOpenModal }: Props) => {
         <span
           style={{
             whiteSpace: "pre-wrap",
+            paddingTop: "10px",
+            paddingBottom: "10px",
           }}
         >
-          {row.id}
+          {row.id.substring(0, 4)}
         </span>
       ),
     },
@@ -86,6 +103,20 @@ const TableData = ({ riwayatKelulusan, onOpenModal }: Props) => {
       selector: (row) => row.status,
       sortable: true,
       width: "30%",
+      cell: (row) => (
+        <Flex
+          bgColor={statusBgColor(row.status)}
+          color={colors.white}
+          py={1}
+          px={2}
+          borderRadius={10}
+          fontSize="xs"
+          textAlign="center"
+          justify="center"
+        >
+          {row.status}
+        </Flex>
+      ),
     },
   ];
 
@@ -109,3 +140,5 @@ const TableData = ({ riwayatKelulusan, onOpenModal }: Props) => {
 
   return <DataTable columns={columns} data={data} pagination />;
 };
+
+export default TableData;

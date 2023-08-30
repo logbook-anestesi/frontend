@@ -85,6 +85,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       name: "Tipe Ilmiah",
       selector: (row) => row.type,
       sortable: true,
+      wrap: true,
       width: "20%",
     },
     {
