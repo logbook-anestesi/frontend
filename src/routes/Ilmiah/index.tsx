@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import ButtonAdd from "./components/ButtonAdd";
 import ModalAddIlmiah from "./components/ModalAddIlmiah";
 import TablePengajuanBimbingan from "./components/TablePengajuanPembimbing";
-import TablePengajuanKelulusan from "./components/TableRiwayatKelulusan";
 import ModalAjukanKelulusan from "./components/ModalAjukanKelulusan";
 import TableRiwayatKelulusan from "./components/TableRiwayatKelulusan";
 
