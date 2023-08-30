@@ -10,7 +10,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import FormLink from "../FormLink";
 import Information from "../Information";
 import { useIlmiahContext } from "../../contexts";

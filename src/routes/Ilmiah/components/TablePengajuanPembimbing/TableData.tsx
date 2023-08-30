@@ -23,7 +23,17 @@ interface Props {
 const TableData = ({ pengajuanList, onOpenModal }: Props) => {
   const ilmiahDispatch = useIlmiahDispatch();
 
-  const handleClickStatus = (ilmiahId: string) => {
+  const handleClickStatus = ({
+    status,
+    ilmiahId,
+  }: {
+    status: string;
+    ilmiahId: string;
+  }) => {
+    if (status !== "GRADUATION_IN_PROGRESS") {
+      return;
+    }
+
     const dataIlmiah = pengajuanList.find((data) => data.id === ilmiahId);
     const approvals = dataIlmiah?.approvals.map((approval) => approval.name);
 
@@ -57,15 +67,19 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       name: "Tipe Ilmiah",
       selector: (row) => row.type,
       sortable: true,
+      width: "20%",
     },
     {
       name: "Judul",
       selector: (row) => row.title,
       sortable: true,
+      wrap: true,
+      width: "20%",
       cell: (row) => (
         <span
           style={{
             whiteSpace: "pre-wrap",
+            padding: "10px",
           }}
         >
           {row.title}
@@ -93,13 +107,15 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       name: "Daftar Pembimbing",
       selector: (row) => row.approvals,
       sortable: true,
-      width: "30%",
+      width: "20%",
+      wrap: true,
     },
     {
       name: "Status",
       selector: (row) => row.status,
       sortable: true,
-      width: "30%",
+
+      width: "20%",
       cell: (row) => (
         <Flex
           fontSize="xs"
@@ -110,7 +126,12 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
           py={1}
           px={2}
           borderRadius={10}
-          onClick={() => handleClickStatus(row.id)}
+          onClick={() =>
+            handleClickStatus({
+              ilmiahId: row.id,
+              status: row.status,
+            })
+          }
         >
           {row.status}
         </Flex>

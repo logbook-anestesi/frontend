@@ -3,8 +3,9 @@ import Header from "../../components/Header";
 import ButtonAdd from "./components/ButtonAdd";
 import ModalAddIlmiah from "./components/ModalAddIlmiah";
 import TablePengajuanBimbingan from "./components/TablePengajuanPembimbing";
-import TablePengajuanKelulusan from "./components/TablePengajuanKelulusan";
+import TablePengajuanKelulusan from "./components/TableRiwayatKelulusan";
 import ModalAjukanKelulusan from "./components/ModalAjukanKelulusan";
+import TableRiwayatKelulusan from "./components/TableRiwayatKelulusan";
 
 const IlmiahPage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -22,7 +23,7 @@ const IlmiahPage = () => {
         <ButtonAdd handleOnClick={onOpen} />
 
         <TablePengajuanBimbingan onOpenModal={onOpenAjukanKelulusan} />
-        <TablePengajuanKelulusan />
+        <TableRiwayatKelulusan />
       </Flex>
 
       {/* Modal Section */}
