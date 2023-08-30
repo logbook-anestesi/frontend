@@ -33,6 +33,8 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
   const { pengajuanKelulusan } = useIlmiahContext();
   const { createPengajuanKelulusan, loading } = useAddPengajuanKelulusan();
 
+  console.log("999 INI DATA KELULUSAN", { pengajuanKelulusan });
+
   const handleSubmit = async () => {
     const response = await createPengajuanKelulusan({
       documentLink: linkDocument,
@@ -77,10 +79,22 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
 
         <Flex direction="column" gap={5} mb={5}>
           <Flex direction="column" gap={1}>
-            {pengajuanKelulusan?.approvals.map((user) => (
-              <Text as="b">{user}</Text>
+            {pengajuanKelulusan?.approvals.map((user, index) => (
+              <Text as="b" key={`user-${index}`}>
+                {user}
+              </Text>
             ))}
           </Flex>
+
+          {pengajuanKelulusan?.type === "TESIS" && (
+            <Flex direction={"column"}>
+              <Text mb={2}>Penentu Kelulusan</Text>
+              <Text as="b" mb={2}>
+                dr. Budi Haris (Ketua SPS)
+              </Text>
+              <Text as="b">dr. Arya Sakti (Ketua SPS)</Text>
+            </Flex>
+          )}
 
           <FormLink setLink={setLinkDocument} />
 

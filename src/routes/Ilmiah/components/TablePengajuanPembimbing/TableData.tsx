@@ -42,6 +42,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       data: {
         id: dataIlmiah?.id || "",
         approvals: approvals || [],
+        type: dataIlmiah?.type || "",
       },
     });
 

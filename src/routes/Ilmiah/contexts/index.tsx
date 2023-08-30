@@ -6,6 +6,7 @@ const IlmiahContext = createContext<InitialState>({
   pengajuanKelulusan: {
     id: "",
     approvals: [],
+    type: "",
   },
 });
 

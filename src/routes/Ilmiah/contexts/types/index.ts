@@ -2,6 +2,7 @@ interface InitialState {
   pengajuanKelulusan: {
     id: string;
     approvals: string[];
+    type: string;
   };
 }
 
@@ -10,6 +11,7 @@ interface SetPengajuanKelulusanData {
   data: {
     id: string;
     approvals: string[];
+    type: string;
   };
 }
 
