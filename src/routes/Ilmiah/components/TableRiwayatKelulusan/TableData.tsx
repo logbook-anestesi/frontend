@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { convertDateForIlmiah } from "../../../../helpers";
 import { colors } from "../../../../constants/colors";
 import { Flex } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   riwayatKelulusan: RiwayatKelulusan[];
@@ -20,6 +21,8 @@ interface DataRow {
 }
 
 const TableData = ({ riwayatKelulusan }: Props) => {
+  const navigate = useNavigate();
+
   const statusBgColor = (value: string) => {
     switch (value) {
       case "PENDING": {
@@ -38,6 +41,14 @@ const TableData = ({ riwayatKelulusan }: Props) => {
     window.open(url, "_blank");
   };
 
+  const handleRedirectDetail = (id: string) => {
+    navigate("/ilmiah/details", {
+      state: {
+        ilmiahId: id,
+      },
+    });
+  };
+
   const columns: TableColumn<DataRow>[] = [
     {
       name: "ID",
@@ -49,7 +60,9 @@ const TableData = ({ riwayatKelulusan }: Props) => {
             whiteSpace: "pre-wrap",
             paddingTop: "10px",
             paddingBottom: "10px",
+            color: "blue",
           }}
+          onClick={() => handleRedirectDetail(row.id)}
         >
           {row.id.substring(0, 4)}
         </span>
