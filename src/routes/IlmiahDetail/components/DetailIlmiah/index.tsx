@@ -5,8 +5,13 @@ import { colors } from "../../../../constants/colors";
 interface Props {
   detailIlmiah?: DetailRiwayatKelulusan;
   onOpenAddRiwayatDiskusi: () => void;
+  onOpenListRiwayat: () => void;
 }
-const DetailIlmiah = ({ detailIlmiah, onOpenAddRiwayatDiskusi }: Props) => {
+const DetailIlmiah = ({
+  detailIlmiah,
+  onOpenAddRiwayatDiskusi,
+  onOpenListRiwayat,
+}: Props) => {
   const isThesis = detailIlmiah?.scientificType === "TESIS";
 
   return (
@@ -19,7 +24,12 @@ const DetailIlmiah = ({ detailIlmiah, onOpenAddRiwayatDiskusi }: Props) => {
       <Flex direction="column" gap={2}>
         <Flex justify="space-between" align="center">
           <Text color={colors.darkGrey}>Pengajuan Pembimbing</Text>
-          <Text fontSize="xs" color={colors.primaryPurple} as="b">
+          <Text
+            fontSize="xs"
+            color={colors.primaryPurple}
+            as="b"
+            onClick={onOpenListRiwayat}
+          >
             Lihat Riwayat
           </Text>
         </Flex>
@@ -39,9 +49,6 @@ const DetailIlmiah = ({ detailIlmiah, onOpenAddRiwayatDiskusi }: Props) => {
         <Flex direction="column" gap={2}>
           <Flex justify="space-between" align="center">
             <Text color={colors.darkGrey}>Pengajuan Kelulusan</Text>
-            <Text fontSize="xs" color={colors.primaryPurple} as="b">
-              Lihat Riwayat
-            </Text>
           </Flex>
 
           <Text as="b">dr. Rachel Amanda</Text>

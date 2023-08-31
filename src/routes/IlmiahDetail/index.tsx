@@ -5,6 +5,7 @@ import useGetDetailKelulusan from "./hooks/useGetDetailKelulusan";
 import DetailIlmiah from "./components/DetailIlmiah";
 import ModalAddRiwayatDiskusi from "./components/ModalAddRiwayatDiskusi";
 import RiwayatDiskusi from "./components/RiwayatDiskusi";
+import ModalRiwayat from "./components/ModalRiwayat";
 
 const IlmiahDetail = () => {
   const location = useLocation();
@@ -13,6 +14,11 @@ const IlmiahDetail = () => {
     state?.ilmiahId || ""
   );
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenListRiwayat,
+    onClose: onCloseListRiwayat,
+    onOpen: onOpenListRiwayat,
+  } = useDisclosure();
 
   console.log(detailRiwayatKelulusan);
 
@@ -24,6 +30,7 @@ const IlmiahDetail = () => {
         <DetailIlmiah
           detailIlmiah={detailRiwayatKelulusan}
           onOpenAddRiwayatDiskusi={onOpen}
+          onOpenListRiwayat={onOpenListRiwayat}
         />
 
         <RiwayatDiskusi
@@ -36,6 +43,11 @@ const IlmiahDetail = () => {
         closeModal={onClose}
         isOpen={isOpen}
         detailIlmiah={detailRiwayatKelulusan}
+      />
+      <ModalRiwayat
+        isOpen={isOpenListRiwayat}
+        closeModal={onCloseListRiwayat}
+        riwayat={detailRiwayatKelulusan?.scientificLogs || []}
       />
     </Flex>
   );
