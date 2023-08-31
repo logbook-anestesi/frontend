@@ -8,7 +8,7 @@ export interface DetailRiwayatKelulusan {
   scientificDocumentLink: string;
   scientificLogs: ScientificLog[];
   approvals: Approval[];
-  discussionHistories: any;
+  discussionHistories: Diskusi[];
 }
 
 export interface ScientificLog {
@@ -20,4 +20,21 @@ export interface Approval {
   id: string;
   name: string;
   role: string;
+}
+
+export interface Diskusi {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  approvalUserName: string;
+  userId: string;
+  scientificGraduationId: string;
+  discussionDate: string;
+  scientificLogs: ScientificLog[];
+}
+
+export interface ScientificLog {
+  created: string;
+  changes: string;
 }

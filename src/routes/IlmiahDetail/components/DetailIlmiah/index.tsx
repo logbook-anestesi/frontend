@@ -4,8 +4,9 @@ import { colors } from "../../../../constants/colors";
 
 interface Props {
   detailIlmiah?: DetailRiwayatKelulusan;
+  onOpenAddRiwayatDiskusi: () => void;
 }
-const DetailIlmiah = ({ detailIlmiah }: Props) => {
+const DetailIlmiah = ({ detailIlmiah, onOpenAddRiwayatDiskusi }: Props) => {
   const isThesis = detailIlmiah?.scientificType === "TESIS";
 
   return (
@@ -27,7 +28,9 @@ const DetailIlmiah = ({ detailIlmiah }: Props) => {
           <Text as="b"> - </Text>
         ) : (
           detailIlmiah?.approvals.map((approval) => (
-            <Text as="b">{approval?.name}</Text>
+            <Text as="b" key={approval.id}>
+              {approval?.name}
+            </Text>
           ))
         )}
       </Flex>
@@ -56,7 +59,7 @@ const DetailIlmiah = ({ detailIlmiah }: Props) => {
         borderColor={colors.primaryPurple}
         color={colors.primaryPurple}
         borderRadius={10}
-        // onClick={handleOnClick}
+        onClick={onOpenAddRiwayatDiskusi}
         mb={3}
       >
         + Tambah Riwayat Diskusi
