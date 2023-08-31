@@ -34,6 +34,10 @@ const TableData = ({ riwayatKelulusan }: Props) => {
     }
   };
 
+  const handleRedirectDocument = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   const columns: TableColumn<DataRow>[] = [
     {
       name: "ID",
@@ -71,6 +75,18 @@ const TableData = ({ riwayatKelulusan }: Props) => {
           }}
         >
           {row.title}
+        </span>
+      ),
+    },
+    {
+      name: "Link Dokumen",
+      selector: (row) => row.linkDocument,
+      cell: (row) => (
+        <span
+          style={{ color: "blue" }}
+          onClick={() => handleRedirectDocument(row.linkDocument)}
+        >
+          {row.linkDocument}
         </span>
       ),
     },
