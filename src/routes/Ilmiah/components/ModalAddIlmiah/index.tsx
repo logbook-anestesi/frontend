@@ -64,6 +64,8 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
       });
 
       closeModal();
+
+      window.location.reload();
     }
 
     if (!response?.success) {

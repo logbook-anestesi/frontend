@@ -67,6 +67,8 @@ const ModalAddRiwayatDiskusi = ({
       });
 
       closeModal();
+
+      window.location.reload();
     }
 
     if (!response?.success) {
