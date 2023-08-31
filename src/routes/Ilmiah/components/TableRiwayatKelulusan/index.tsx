@@ -11,7 +11,7 @@ const TableRiwayatKelulusan = () => {
   const { loading, riwayatKelulusan } = useGetRiwayatKelulusan();
   return (
     <Flex direction="column">
-      <Text fontSize="md" as="b">
+      <Text fontSize="md" as="b" mb={5}>
         Riwayat Pengajuan Kelulusan
       </Text>
 
