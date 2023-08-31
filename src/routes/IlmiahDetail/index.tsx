@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import useGetDetailKelulusan from "./hooks/useGetDetailKelulusan";
 import DetailIlmiah from "./components/DetailIlmiah";
 import ModalAddRiwayatDiskusi from "./components/ModalAddRiwayatDiskusi";
+import RiwayatDiskusi from "./components/RiwayatDiskusi";
 
 const IlmiahDetail = () => {
   const location = useLocation();
@@ -23,6 +24,10 @@ const IlmiahDetail = () => {
         <DetailIlmiah
           detailIlmiah={detailRiwayatKelulusan}
           onOpenAddRiwayatDiskusi={onOpen}
+        />
+
+        <RiwayatDiskusi
+          riwayatDiskusi={detailRiwayatKelulusan?.discussionHistories || []}
         />
       </Flex>
 

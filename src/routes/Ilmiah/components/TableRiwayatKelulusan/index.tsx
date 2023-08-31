@@ -3,10 +3,6 @@ import TableData from "./TableData";
 import useGetRiwayatKelulusan from "../../hooks/useGetRiwayatKelulusan";
 import LoaderCircle from "../../../../components/LoaderCircle";
 
-// interface Props {
-//   onOpenModal: () => void;
-// }
-
 const TableRiwayatKelulusan = () => {
   const { loading, riwayatKelulusan } = useGetRiwayatKelulusan();
   return (
