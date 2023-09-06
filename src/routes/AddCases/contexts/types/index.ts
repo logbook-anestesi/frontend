@@ -29,6 +29,11 @@ interface Nora {
   id: string;
 }
 
+interface Diagnose {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
@@ -36,6 +41,7 @@ interface InitialState {
   selectedNoraProcedure: Nora[];
   selectedASATags: ASATags[];
   selectedSupervisor: Supervisor[];
+  selectedDiagnose: Diagnose[];
   date: string;
   dpjpUserId: string;
   isExam: boolean;
@@ -44,6 +50,7 @@ interface InitialState {
   anesthesiaTypeIds: string[];
   procedureTypeIds: string[];
   supervisorIds: string[];
+  diagnoseIds: string[];
   asaTagIds: string[];
   noraProcedureTypeIds: string[];
   ageGroup: string;
@@ -302,6 +309,28 @@ interface RemoveNoraProcedure {
   };
 }
 
+interface SetDiagnose {
+  type: "set_diagnose";
+  data: {
+    diagnoseName: string;
+    diagnoseId: string;
+  };
+}
+
+interface SetDiagnoseIds {
+  type: "set_diagnose_ids";
+  data: {
+    diagnoseId: string;
+  };
+}
+
+interface RemoveDiagnose {
+  type: "remove_diagnose";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -336,6 +365,9 @@ type ACTION_TYPE =
   | RemoveAnesthesiaType
   | RemoveAsaTags
   | RemoveSupervisor
-  | RemoveNoraProcedure;
+  | RemoveNoraProcedure
+  | SetDiagnose
+  | SetDiagnoseIds
+  | RemoveDiagnose;
 
 export type { ACTION_TYPE, InitialState };

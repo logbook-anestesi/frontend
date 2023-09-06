@@ -4,6 +4,7 @@ export interface CasesForm {
   anesthesiaTypes: AnesthesiaType[];
   procedureTypes: ProcedureType[];
   noraProcedureTypes: NoraProcedureType[];
+  diagnoses: Diagnose[];
 }
 
 export interface Tag {
@@ -55,6 +56,15 @@ export interface ProcedureType {
 }
 
 export interface NoraProcedureType {
+  id: string;
+  created: string;
+  createBy: string;
+  lastUpdated: string;
+  lastUpdateBy: string;
+  name: string;
+}
+
+export interface Diagnose {
   id: string;
   created: string;
   createBy: string;

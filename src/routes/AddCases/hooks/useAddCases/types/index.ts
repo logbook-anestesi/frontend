@@ -19,4 +19,5 @@ export interface CreateCasePayload {
   procedureTypeIds?: string[];
   noraProcedureTypeIds?: string[];
   supervisorIds?: string[];
+  diagnoseIds?: string[];
 }

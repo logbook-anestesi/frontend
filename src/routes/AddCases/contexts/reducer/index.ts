@@ -5,6 +5,7 @@ const initialState: InitialState = {
   selectedAnesthesia: [],
   selectedASATags: [],
   selectedSupervisor: [],
+  selectedDiagnose: [],
   date: new Date().toJSON(),
   dpjpUserId: "",
   isExam: false,
@@ -14,6 +15,7 @@ const initialState: InitialState = {
   selectedProcedure: [],
   procedureTypeIds: [],
   supervisorIds: [],
+  diagnoseIds: [],
   asaTagIds: [],
   selectedNoraProcedure: [],
   noraProcedureTypeIds: [],
@@ -305,6 +307,33 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         noraProcedureTypeIds: state.noraProcedureTypeIds.filter(
           (id) => id !== action.data.id
         ),
+      };
+    }
+    case "set_diagnose": {
+      return {
+        ...state,
+        selectedDiagnose: [
+          ...state.selectedDiagnose,
+          {
+            title: action.data.diagnoseName,
+            id: action.data.diagnoseId,
+          },
+        ],
+      };
+    }
+    case "set_diagnose_ids": {
+      return {
+        ...state,
+        diagnoseIds: [...state.diagnoseIds, action.data.diagnoseId],
+      };
+    }
+    case "remove_diagnose": {
+      return {
+        ...state,
+        selectedDiagnose: state.selectedDiagnose.filter(
+          (diagnose) => diagnose.id !== action.data.id
+        ),
+        diagnoseIds: state.diagnoseIds.filter((id) => id !== action.data.id),
       };
     }
   }
