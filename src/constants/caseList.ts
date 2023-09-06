@@ -11,4 +11,8 @@ export const CASE_LIST = [
     title: "NORA",
     value: "NORA",
   },
+  {
+    title: "ICU",
+    value: "ICU",
+  },
 ];

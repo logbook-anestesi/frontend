@@ -23,6 +23,7 @@ import ApprovingProcess from "./ApprovingProcess";
 import ApprovingProcessEdit from "./ApprovingProcessEdit";
 import IlmiahPage from "./Ilmiah";
 import IlmiahDetail from "./IlmiahDetail";
+import AddCaseICU from "./AddCasesICU";
 
 const MainRoutes = () => {
   return (
@@ -50,6 +51,7 @@ const MainRoutes = () => {
         <Route path="/cases/add/ok" element={<AddCasesPage />} />
         <Route path="/cases/add/pacu" element={<AddCasePacu />} />
         <Route path="/cases/add/nora" element={<AddCaseNora />} />
+        <Route path="/cases/add/icu" element={<AddCaseICU />} />
         <Route path="/cases/details" element={<CaseDetails />} />
         <Route path="/approval" element={<PendingApproval />} />
 
