@@ -19,4 +19,8 @@ export const CASE_LIST = [
     title: "Resus",
     value: "RESUS",
   },
+  {
+    title: "Procedure Consultation",
+    value: "PROCEDURE_CONSULTATION",
+  },
 ];

@@ -25,6 +25,7 @@ import IlmiahPage from "./Ilmiah";
 import IlmiahDetail from "./IlmiahDetail";
 import AddCaseICU from "./AddCasesICU";
 import AddCaseResus from "./AddCaseResus";
+import AddCaseProcedureConsultation from "./AddCaseProcedureConsultation";
 
 const MainRoutes = () => {
   return (
@@ -54,6 +55,10 @@ const MainRoutes = () => {
         <Route path="/cases/add/nora" element={<AddCaseNora />} />
         <Route path="/cases/add/icu" element={<AddCaseICU />} />
         <Route path="/cases/add/resus" element={<AddCaseResus />} />
+        <Route
+          path="/cases/add/procedure-consultation"
+          element={<AddCaseProcedureConsultation />}
+        />
         <Route path="/cases/details" element={<CaseDetails />} />
         <Route path="/approval" element={<PendingApproval />} />
 

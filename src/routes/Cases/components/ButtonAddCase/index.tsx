@@ -39,6 +39,10 @@ const ButtonAddCase = ({ caseName }: Props) => {
         navigate("/cases/add/resus");
         return;
       }
+      case CASE_LIST[5].title: {
+        navigate("/cases/add/procedure-consultation");
+        return;
+      }
     }
   };
 

@@ -39,6 +39,10 @@ const ModalSelectCases = ({ isOpen, closeModal }: Props) => {
         navigate("/cases/add/resus");
         return;
       }
+      case "PROCEDURE_CONSULTATION": {
+        navigate("/cases/add/procedure-consultation");
+        return;
+      }
       default: {
         return;
       }
