@@ -20,4 +20,5 @@ export interface CreateCasePayload {
   noraProcedureTypeIds?: string[];
   supervisorIds?: string[];
   diagnoseIds?: string[];
+  numberOfPatient?: number;
 }

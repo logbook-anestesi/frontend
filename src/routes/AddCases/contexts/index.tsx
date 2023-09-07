@@ -34,6 +34,7 @@ const AddCasesContext = createContext<InitialState>({
   additionalTags: [],
   tagIds: [],
   isShowLocationLainnya: false,
+  numberOfPatient: 0,
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});

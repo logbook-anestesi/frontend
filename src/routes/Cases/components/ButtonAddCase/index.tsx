@@ -43,6 +43,10 @@ const ButtonAddCase = ({ caseName }: Props) => {
         navigate("/cases/add/procedure-consultation");
         return;
       }
+      case CASE_LIST[6].title: {
+        navigate("/cases/add/poli-perioperative");
+        return;
+      }
     }
   };
 

@@ -31,6 +31,7 @@ const initialState: InitialState = {
   additionalTags: [],
   tagIds: [],
   isShowLocationLainnya: false,
+  numberOfPatient: 0,
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -341,6 +342,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         isShowLocationLainnya: action.data.isShow,
+      };
+    }
+    case "set_number_patient": {
+      return {
+        ...state,
+        numberOfPatient: action.data.numberPatient,
       };
     }
   }

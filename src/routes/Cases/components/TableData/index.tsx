@@ -27,6 +27,7 @@ const TableData = ({ caseList }: Props) => {
       style: {
         textDecoration: "underline",
         color: "#3498db",
+        padding: "10px",
       },
       cell: (row) => (
         <span

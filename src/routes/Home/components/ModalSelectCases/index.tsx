@@ -43,6 +43,10 @@ const ModalSelectCases = ({ isOpen, closeModal }: Props) => {
         navigate("/cases/add/procedure-consultation");
         return;
       }
+      case "POLI_PERIOPERATIVE": {
+        navigate("/cases/add/poli-perioperative");
+        return;
+      }
       default: {
         return;
       }

@@ -65,6 +65,7 @@ interface InitialState {
   additionalTags: string[];
   tagIds: string[];
   isShowLocationLainnya: boolean;
+  numberOfPatient: number;
 }
 
 interface SetSelectedOperation {
@@ -339,6 +340,13 @@ interface SetIsShowLocationLainnya {
   };
 }
 
+interface SetNumberOfPatient {
+  type: "set_number_patient";
+  data: {
+    numberPatient: number;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -377,6 +385,7 @@ type ACTION_TYPE =
   | SetDiagnose
   | SetDiagnoseIds
   | RemoveDiagnose
-  | SetIsShowLocationLainnya;
+  | SetIsShowLocationLainnya
+  | SetNumberOfPatient;
 
 export type { ACTION_TYPE, InitialState };
