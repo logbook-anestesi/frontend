@@ -15,4 +15,8 @@ export const CASE_LIST = [
     title: "ICU",
     value: "ICU",
   },
+  {
+    title: "Resus",
+    value: "RESUS",
+  },
 ];

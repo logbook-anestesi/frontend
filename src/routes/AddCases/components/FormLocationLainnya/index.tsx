@@ -1,7 +1,7 @@
 import { Flex, Input, Text } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../../AddCases/contexts";
+import { useAddCasesDispatch } from "../../contexts";
 
 const FormLocationLainnya = () => {
   const casesDispatch = useAddCasesDispatch();
