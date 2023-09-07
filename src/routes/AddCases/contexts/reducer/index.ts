@@ -30,6 +30,7 @@ const initialState: InitialState = {
   notes: "",
   additionalTags: [],
   tagIds: [],
+  isShowLocationLainnya: false,
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -334,6 +335,12 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (diagnose) => diagnose.id !== action.data.id
         ),
         diagnoseIds: state.diagnoseIds.filter((id) => id !== action.data.id),
+      };
+    }
+    case "set_show_location_lainnya": {
+      return {
+        ...state,
+        isShowLocationLainnya: action.data.isShow,
       };
     }
   }

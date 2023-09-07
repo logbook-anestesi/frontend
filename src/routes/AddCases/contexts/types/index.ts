@@ -64,6 +64,7 @@ interface InitialState {
   notes: string;
   additionalTags: string[];
   tagIds: string[];
+  isShowLocationLainnya: boolean;
 }
 
 interface SetSelectedOperation {
@@ -331,6 +332,13 @@ interface RemoveDiagnose {
   };
 }
 
+interface SetIsShowLocationLainnya {
+  type: "set_show_location_lainnya";
+  data: {
+    isShow: boolean;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -368,6 +376,7 @@ type ACTION_TYPE =
   | RemoveNoraProcedure
   | SetDiagnose
   | SetDiagnoseIds
-  | RemoveDiagnose;
+  | RemoveDiagnose
+  | SetIsShowLocationLainnya;
 
 export type { ACTION_TYPE, InitialState };

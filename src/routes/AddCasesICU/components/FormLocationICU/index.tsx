@@ -15,6 +15,25 @@ const FormRadioLocationICU = () => {
         location: value,
       },
     });
+
+    if (value === "Lainnya") {
+      casesDispatch({
+        type: "set_show_location_lainnya",
+        data: {
+          isShow: true,
+        },
+      });
+
+      return;
+    }
+
+    // close input lainnya when user click another option after click lainnya option
+    casesDispatch({
+      type: "set_show_location_lainnya",
+      data: {
+        isShow: false,
+      },
+    });
   }, [casesDispatch, value]);
 
   return (
@@ -35,7 +54,12 @@ const FormRadioLocationICU = () => {
       >
         <Stack direction="row" gap={3}>
           {RADIO_LOCATION.map((option) => (
-            <Radio value={option.value} colorScheme="purple" key={option.value}>
+            <Radio
+              value={option.value}
+              colorScheme="purple"
+              key={option.value}
+              minWidth="fit-content"
+            >
               {option.title}
             </Radio>
           ))}

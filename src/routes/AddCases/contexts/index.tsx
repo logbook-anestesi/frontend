@@ -33,6 +33,7 @@ const AddCasesContext = createContext<InitialState>({
   notes: "",
   additionalTags: [],
   tagIds: [],
+  isShowLocationLainnya: false,
 });
 
 const AddCasesContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});

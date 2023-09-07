@@ -14,6 +14,7 @@ import FormAdditionalTags from "../AddCases/components/FormAdditionalTags";
 import FormRadioLocationICU from "./components/FormLocationICU";
 import { useNavigate } from "react-router-dom";
 import FormDiagnoses from "./components/FormDiagnoses";
+import FormLocationLainnya from "./components/FormLocationLainnya";
 
 const AddCaseICU = () => {
   const toast = useToast();
@@ -89,6 +90,9 @@ const AddCaseICU = () => {
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
         <FormRadioLocationICU />
+
+        {state.isShowLocationLainnya && <FormLocationLainnya />}
+
         <FormDiagnoses diagnoseList={casesForm?.diagnoses || []} />
         <FormNotes />
         <FormDPJP />

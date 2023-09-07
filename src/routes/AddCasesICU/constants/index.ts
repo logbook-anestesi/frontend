@@ -15,4 +15,8 @@ export const RADIO_LOCATION = [
     title: "HCU",
     value: "HCU",
   },
+  {
+    title: "Lainnya",
+    value: "Lainnya",
+  },
 ];
