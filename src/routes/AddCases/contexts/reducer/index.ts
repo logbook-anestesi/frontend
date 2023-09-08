@@ -14,9 +14,11 @@ const initialState: InitialState = {
   anesthesiaTypeIds: [],
   selectedProcedure: [],
   procedureTypeIds: [],
+  selectedTypePainService: [],
   supervisorIds: [],
   diagnoseIds: [],
   asaTagIds: [],
+  typePainServiceIds: [],
   selectedNoraProcedure: [],
   noraProcedureTypeIds: [],
   ageGroup: "",
@@ -348,6 +350,38 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         numberOfPatient: action.data.numberPatient,
+      };
+    }
+    case "set_type_pain_service": {
+      return {
+        ...state,
+        selectedTypePainService: [
+          ...state.selectedTypePainService,
+          {
+            title: action.data.typePainName,
+            id: action.data.typePainId,
+          },
+        ],
+      };
+    }
+    case "set_type_pain_ids": {
+      return {
+        ...state,
+        typePainServiceIds: [
+          ...state.typePainServiceIds,
+          action.data.typePainId,
+        ],
+      };
+    }
+    case "remove_type_pain_service": {
+      return {
+        ...state,
+        selectedTypePainService: state.selectedTypePainService.filter(
+          (typePain) => typePain.id !== action.data.id
+        ),
+        typePainServiceIds: state.typePainServiceIds.filter(
+          (id) => id !== action.data.id
+        ),
       };
     }
   }

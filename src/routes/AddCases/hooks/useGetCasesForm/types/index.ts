@@ -5,6 +5,7 @@ export interface CasesForm {
   procedureTypes: ProcedureType[];
   noraProcedureTypes: NoraProcedureType[];
   diagnoses: Diagnose[];
+  painServiceTypes: PainServiceType[];
 }
 
 export interface Tag {
@@ -65,6 +66,15 @@ export interface NoraProcedureType {
 }
 
 export interface Diagnose {
+  id: string;
+  created: string;
+  createBy: string;
+  lastUpdated: string;
+  lastUpdateBy: string;
+  name: string;
+}
+
+export interface PainServiceType {
   id: string;
   created: string;
   createBy: string;

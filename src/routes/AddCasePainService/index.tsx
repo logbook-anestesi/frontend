@@ -7,11 +7,13 @@ import useAddCases from "../AddCases/hooks/useAddCases";
 import { useNavigate } from "react-router-dom";
 import FormDate from "../AddCases/components/FormDate";
 import FormLocationLainnya from "../AddCases/components/FormLocationLainnya";
+import FormTypePainService from "./components/FormTypePainService";
+import useGetCasesForm from "../AddCases/hooks/useGetCasesForm";
 
 const AddCasePainService = () => {
   const toast = useToast();
   const navigate = useNavigate();
-  // const { casesForm } = useGetCasesForm();
+  const { casesForm } = useGetCasesForm();
   const casesDispatch = useAddCasesDispatch();
   const { createCases, loading } = useAddCases();
 
@@ -78,6 +80,9 @@ const AddCasePainService = () => {
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
         <FormLocationLainnya />
+        <FormTypePainService
+          painServiceTypes={casesForm?.painServiceTypes || []}
+        />
 
         <Button
           colorScheme="teal"

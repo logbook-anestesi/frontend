@@ -34,6 +34,11 @@ interface Diagnose {
   id: string;
 }
 
+interface PainServiceType {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
@@ -42,6 +47,7 @@ interface InitialState {
   selectedASATags: ASATags[];
   selectedSupervisor: Supervisor[];
   selectedDiagnose: Diagnose[];
+  selectedTypePainService: PainServiceType[];
   date: string;
   dpjpUserId: string;
   isExam: boolean;
@@ -51,6 +57,7 @@ interface InitialState {
   procedureTypeIds: string[];
   supervisorIds: string[];
   diagnoseIds: string[];
+  typePainServiceIds: string[];
   asaTagIds: string[];
   noraProcedureTypeIds: string[];
   ageGroup: string;
@@ -347,6 +354,28 @@ interface SetNumberOfPatient {
   };
 }
 
+interface SetTypePainService {
+  type: "set_type_pain_service";
+  data: {
+    typePainName: string;
+    typePainId: string;
+  };
+}
+
+interface SetTypePainServiceIds {
+  type: "set_type_pain_ids";
+  data: {
+    typePainId: string;
+  };
+}
+
+interface RemoveTypePainService {
+  type: "remove_type_pain_service";
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -386,6 +415,9 @@ type ACTION_TYPE =
   | SetDiagnoseIds
   | RemoveDiagnose
   | SetIsShowLocationLainnya
-  | SetNumberOfPatient;
+  | SetNumberOfPatient
+  | SetTypePainService
+  | SetTypePainServiceIds
+  | RemoveTypePainService;
 
 export type { ACTION_TYPE, InitialState };
