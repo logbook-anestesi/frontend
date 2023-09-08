@@ -9,6 +9,8 @@ import FormDate from "../AddCases/components/FormDate";
 import FormLocationLainnya from "../AddCases/components/FormLocationLainnya";
 import FormTypePainService from "./components/FormTypePainService";
 import useGetCasesForm from "../AddCases/hooks/useGetCasesForm";
+import FormProcedurePainService from "./components/FormProcedurePainService";
+import FormDPJP from "../AddCases/components/FormDPJP";
 
 const AddCasePainService = () => {
   const toast = useToast();
@@ -25,10 +27,11 @@ const AddCasePainService = () => {
       caseType: state.caseType,
       dpjpUserId: state.dpjpUserId,
       ...(state?.location !== "" ? { location: state.location } : {}),
-      ...(state?.tagIds.length !== 0 ? { tagIds: state.tagIds } : {}),
-      ...(state?.notes !== "" ? { notes: state.notes } : {}),
-      ...(state?.procedureTypeIds.length !== 0
-        ? { procedureTypeIds: state.procedureTypeIds }
+      ...(state?.procedurePainServiceIds.length !== 0
+        ? { painServiceProcedureIds: state.procedurePainServiceIds }
+        : {}),
+      ...(state?.typePainServiceIds.length !== 0
+        ? { painServiceTypeIds: state.typePainServiceIds }
         : {}),
     });
 
@@ -80,8 +83,12 @@ const AddCasePainService = () => {
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
         <FormLocationLainnya />
+        <FormDPJP />
         <FormTypePainService
           painServiceTypes={casesForm?.painServiceTypes || []}
+        />
+        <FormProcedurePainService
+          painServiceProcedure={casesForm?.painServiceProcedures || []}
         />
 
         <Button

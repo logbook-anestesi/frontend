@@ -15,12 +15,14 @@ const initialState: InitialState = {
   selectedProcedure: [],
   procedureTypeIds: [],
   selectedTypePainService: [],
+  selectedProcedurePainService: [],
   supervisorIds: [],
   diagnoseIds: [],
   asaTagIds: [],
   typePainServiceIds: [],
   selectedNoraProcedure: [],
   noraProcedureTypeIds: [],
+  procedurePainServiceIds: [],
   ageGroup: "",
   location: "",
   priority: "",
@@ -380,6 +382,38 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (typePain) => typePain.id !== action.data.id
         ),
         typePainServiceIds: state.typePainServiceIds.filter(
+          (id) => id !== action.data.id
+        ),
+      };
+    }
+    case "set_procedure_pain_service": {
+      return {
+        ...state,
+        selectedProcedurePainService: [
+          ...state.selectedProcedurePainService,
+          {
+            title: action.data.procedurePainName,
+            id: action.data.procedurePainId,
+          },
+        ],
+      };
+    }
+    case "set_procedure_pain_ids": {
+      return {
+        ...state,
+        procedurePainServiceIds: [
+          ...state.procedurePainServiceIds,
+          action.data.procedurePainId,
+        ],
+      };
+    }
+    case "remove_procedure_pain_service": {
+      return {
+        ...state,
+        selectedProcedurePainService: state.selectedProcedurePainService.filter(
+          (procedurePain) => procedurePain.id !== action.data.id
+        ),
+        procedurePainServiceIds: state.procedurePainServiceIds.filter(
           (id) => id !== action.data.id
         ),
       };

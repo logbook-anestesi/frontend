@@ -21,4 +21,6 @@ export interface CreateCasePayload {
   supervisorIds?: string[];
   diagnoseIds?: string[];
   numberOfPatient?: number;
+  painServiceTypeIds?: string[];
+  painServiceProcedureIds?: string[];
 }
