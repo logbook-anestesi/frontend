@@ -27,6 +27,7 @@ import AddCaseICU from "./AddCasesICU";
 import AddCaseResus from "./AddCaseResus";
 import AddCaseProcedureConsultation from "./AddCaseProcedureConsultation";
 import AddCasePoliPerioperative from "./AddCasePoliPerioperative";
+import AddCasePainService from "./AddCasePainService";
 
 const MainRoutes = () => {
   return (
@@ -63,6 +64,10 @@ const MainRoutes = () => {
         <Route
           path="/cases/add/poli-perioperative"
           element={<AddCasePoliPerioperative />}
+        />
+        <Route
+          path="/cases/add/pain-service"
+          element={<AddCasePainService />}
         />
         <Route path="/cases/details" element={<CaseDetails />} />
         <Route path="/approval" element={<PendingApproval />} />

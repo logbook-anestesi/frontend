@@ -27,4 +27,8 @@ export const CASE_LIST = [
     title: "Poli Perioperative",
     value: "POLI_PERIOPERATIVE",
   },
+  {
+    title: "Pain Service",
+    value: "PAIN_SERVICE",
+  },
 ];

@@ -47,6 +47,10 @@ const ModalSelectCases = ({ isOpen, closeModal }: Props) => {
         navigate("/cases/add/poli-perioperative");
         return;
       }
+      case "PAIN_SERVICE": {
+        navigate("/cases/add/pain-service");
+        return;
+      }
       default: {
         return;
       }
