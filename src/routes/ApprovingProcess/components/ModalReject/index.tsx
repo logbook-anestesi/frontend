@@ -14,19 +14,15 @@ interface Props {
   caseId: string;
 }
 
-const ModalApprove = ({ closeModal, isOpen, caseId }: Props) => {
+const ModalReject = ({ closeModal, isOpen, caseId }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" textAlign="center">
-          <Text as="b">Anda akan menyetujui</Text>
+          <Text as="b">Anda akan menolak</Text>
           <Text as="b" mb={4}>
             {caseId}
-          </Text>
-
-          <Text fontSize="sm" px={4} as="b" mb={4}>
-            Apakah Anda ingin menambahkan case ini ke dashboard Anda?
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
@@ -48,4 +44,4 @@ const ModalApprove = ({ closeModal, isOpen, caseId }: Props) => {
   );
 };
 
-export default ModalApprove;
+export default ModalReject;

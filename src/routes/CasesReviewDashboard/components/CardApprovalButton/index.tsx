@@ -6,9 +6,10 @@ import { ReviewItem } from "../../hooks/useGetPendingReview/types";
 
 interface Props {
   caseData: ReviewItem;
+  onClick: (caseId: string) => void;
 }
 
-const CardApprovalButton = ({ caseData }: Props) => {
+const CardApprovalButton = ({ caseData, onClick }: Props) => {
   const navigate = useNavigate();
 
   const handleClickReview = (isReject: boolean) => {
@@ -31,7 +32,7 @@ const CardApprovalButton = ({ caseData }: Props) => {
   };
 
   return (
-    <Flex justify="end" gap={4} onClick={handleOnClick}>
+    <Flex justify="end" gap={4}>
       <Button
         leftIcon={<EditIcon />}
         color={colors.primaryPurple}
@@ -39,6 +40,7 @@ const CardApprovalButton = ({ caseData }: Props) => {
         variant="outline"
         size="xs"
         py={4}
+        onClick={handleOnClick}
       >
         Edit & Approve
       </Button>
@@ -60,7 +62,7 @@ const CardApprovalButton = ({ caseData }: Props) => {
         variant="outline"
         size="xs"
         py={4}
-        onClick={() => handleClickReview(true)}
+        onClick={() => onClick(caseData?.id)}
       >
         Reject
       </Button>

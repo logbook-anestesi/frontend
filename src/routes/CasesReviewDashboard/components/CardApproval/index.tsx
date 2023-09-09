@@ -8,9 +8,10 @@ import { convertDateForNotification } from "../../../../helpers";
 
 interface Props {
   caseData: ReviewItem;
+  onClick: (caseId: string) => void;
 }
 
-const CardApproval = ({ caseData }: Props) => {
+const CardApproval = ({ caseData, onClick }: Props) => {
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
@@ -36,7 +37,7 @@ const CardApproval = ({ caseData }: Props) => {
         />
       </Flex>
 
-      <CardApprovalButton caseData={caseData} />
+      <CardApprovalButton caseData={caseData} onClick={onClick} />
 
       <Divider mt={5} />
     </Flex>

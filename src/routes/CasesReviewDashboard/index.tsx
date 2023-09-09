@@ -1,15 +1,19 @@
-import { Button, Flex, useToast } from "@chakra-ui/react";
+import { Button, Flex, useDisclosure, useToast } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import useGetPendingReview from "./hooks/useGetPendingReview";
 import { colors } from "../../constants/colors";
 import CardApproval from "./components/CardApproval";
 import LoaderCircle from "../../components/LoaderCircle";
 import useApproveAll from "./hooks/useApproveAll";
+import ModalReject from "./components/ModalReject";
+import { useState } from "react";
 
 const CasesReviewDashboardPage = () => {
   const toast = useToast();
   const { reviewData, loading } = useGetPendingReview();
   const { approveAll, loading: loadingApprovalAll } = useApproveAll();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [caseId, setCaseId] = useState("");
 
   const handleApproveAll = async () => {
     const response = await approveAll("APPROVED");
@@ -40,6 +44,11 @@ const CasesReviewDashboardPage = () => {
     }
   };
 
+  const handleClickCard = (caseId: string) => {
+    setCaseId(caseId);
+    onOpen();
+  };
+
   return (
     <Flex flexDirection="column">
       <Header pathBack="/" title="Pending Cases Review" />
@@ -59,10 +68,17 @@ const CasesReviewDashboardPage = () => {
           <LoaderCircle />
         ) : (
           reviewData?.map((review) => (
-            <CardApproval caseData={review} key={review.id} />
+            <CardApproval
+              caseData={review}
+              key={review.id}
+              onClick={handleClickCard}
+            />
           ))
         )}
       </Flex>
+
+      {/* Modal Section */}
+      <ModalReject caseId={caseId} closeModal={onClose} isOpen={isOpen} />
     </Flex>
   );
 };

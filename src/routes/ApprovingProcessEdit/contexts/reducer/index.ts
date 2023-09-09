@@ -347,8 +347,8 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case "set_additional_tags_all": {
       return {
         ...state,
-        tagIds: action.data.additionalTags,
-        additionalTags: action.data.additionalTagIds,
+        tagIds: action.data.additionalTagIds,
+        additionalTags: action.data.additionalTags,
       };
     }
     case "set_supervisor_all": {
