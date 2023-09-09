@@ -3,7 +3,7 @@ import { colors } from "../../../../constants/colors";
 
 interface Props {
   label?: string;
-  value?: string | number;
+  value?: string | number | null | boolean;
 }
 
 const FieldText = ({ label, value }: Props) => {

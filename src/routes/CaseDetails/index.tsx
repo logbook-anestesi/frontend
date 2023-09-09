@@ -17,6 +17,9 @@ const CaseDetails = () => {
     operationTypes,
     procedureTypes,
     tags,
+    diagnoses,
+    painServiceProcedures,
+    painServiceTypes,
   } = useGetDetailCases(location?.state?.caseId || "");
 
   return (
@@ -32,7 +35,7 @@ const CaseDetails = () => {
             <FieldText label="DPJP" value={caseData?.dpjpUserName} />
             <FieldText
               label="Merupakan Exam"
-              value={caseData?.isExam ? "Ya" : "Tidak"}
+              value={caseData?.isExam ? caseData?.isExam : null}
             />
 
             <Flex gap={20}>
@@ -50,11 +53,14 @@ const CaseDetails = () => {
               listValue={noraProcedureTypes}
             />
 
-            <Divider />
-
-            <Text as="b" fontSize="xl">
-              Data Pasien
-            </Text>
+            {caseData?.patientAge && (
+              <>
+                <Divider />
+                <Text as="b" fontSize="xl">
+                  Data Pasien
+                </Text>
+              </>
+            )}
 
             <Flex gap={20}>
               <FieldText label="Usia Pasien" value={caseData?.patientAge} />
@@ -63,11 +69,14 @@ const CaseDetails = () => {
 
             <FieldText label="Jenis Kelamin" value={caseData?.patientGender} />
 
-            <Divider />
-
-            <Text as="b" fontSize="xl">
-              ASA
-            </Text>
+            {caseData?.asaTier && (
+              <>
+                <Divider />
+                <Text as="b" fontSize="xl">
+                  ASA
+                </Text>
+              </>
+            )}
 
             <Flex gap={20}>
               <FieldText label="Tingkat" value={caseData?.asaTier} />
@@ -81,7 +90,6 @@ const CaseDetails = () => {
 
             <Divider />
 
-            {/* <FieldText label="Supervised By" value="Dr. Nurhasanah" /> */}
             <FieldTicker
               label="Supervised By"
               listValue={caseData?.supervisors.map((senior) => senior.userName)}
@@ -93,8 +101,20 @@ const CaseDetails = () => {
                 .map((junior) => junior.userName)
                 .filter((junior) => junior !== caseData?.userName)}
             />
-            <FieldText label="Notes" value={caseData?.notes || " "} />
+            <FieldText label="Notes" value={caseData?.notes} />
             <FieldTicker label="Additional Tags " listValue={tags} />
+
+            <FieldTicker label="Diagnosa" listValue={diagnoses} />
+
+            <FieldTicker
+              label="Procedure Pain Service"
+              listValue={painServiceProcedures}
+            />
+
+            <FieldTicker
+              label="Type Pain Service"
+              listValue={painServiceTypes}
+            />
 
             {/* <Divider />
 

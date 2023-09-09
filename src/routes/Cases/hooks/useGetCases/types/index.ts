@@ -30,6 +30,9 @@ export interface Case {
   noraProcedureTypes: Nora[];
   supervisors: Supervisor[];
   supervisees: Supervisee[];
+  diagnoses: Diagnoses[];
+  painServiceTypes: PainServiceTypes[];
+  painServiceProcedures: PainServiceProcedures[];
 }
 
 export interface AsaTag {
@@ -79,4 +82,22 @@ export interface Nora {
   noraProcedureTypeName: string;
   caseId: string;
   noraProcedureTypeId: string;
+}
+
+export interface Diagnoses {
+  diagnoseId: string;
+  diagnoseName: string;
+  caseId: string;
+}
+
+export interface PainServiceTypes {
+  painServiceTypeId: string;
+  painServiceTypeName: string;
+  caseId: string;
+}
+
+export interface PainServiceProcedures {
+  painServiceProcedureId: string;
+  painServiceProcedureName: string;
+  caseId: string;
 }

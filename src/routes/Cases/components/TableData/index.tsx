@@ -11,6 +11,7 @@ interface DataRow {
   caseType: string;
   status: string;
   supervising: string;
+  idCaseFull: string;
 }
 
 interface Props {
@@ -34,7 +35,7 @@ const TableData = ({ caseList }: Props) => {
           style={{ cursor: "pointer" }}
           onClick={() =>
             navigate("/cases/details", {
-              state: { caseId: row?.idCase },
+              state: { caseId: row?.idCaseFull },
             })
           }
         >
@@ -76,6 +77,7 @@ const TableData = ({ caseList }: Props) => {
           0,
           4
         )}`,
+        idCaseFull: singleCase?.id,
         dpjp: singleCase.dpjpUserName,
         date: formatDateMonthYear(new Date(singleCase?.date)),
         caseType: singleCase.caseType,
