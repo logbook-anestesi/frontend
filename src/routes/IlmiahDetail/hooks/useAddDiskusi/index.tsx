@@ -6,7 +6,7 @@ interface PayloadType {
   title: string;
   description: string;
   discussionDate: string;
-  approvalUserId: string;
+  approvalUserIds: string[];
 }
 
 const useAddDiskusi = () => {

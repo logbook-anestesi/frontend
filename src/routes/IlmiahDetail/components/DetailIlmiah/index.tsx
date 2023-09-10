@@ -14,6 +14,10 @@ const DetailIlmiah = ({
 }: Props) => {
   const isThesis = detailIlmiah?.scientificType === "TESIS";
 
+  const handleRedirectLinkDocument = () => {
+    window.open(detailIlmiah?.scientificDocumentLink, "_blank");
+  };
+
   return (
     <Flex direction="column" gap={5}>
       <Flex direction="column" gap={1}>
@@ -57,7 +61,9 @@ const DetailIlmiah = ({
       )}
 
       <Flex direction="column" gap={1}>
-        <Text color={colors.darkGrey}>Link Tugas</Text>
+        <Text color={colors.darkGrey} onClick={handleRedirectLinkDocument}>
+          Link Tugas
+        </Text>
         <Text color="blue">{detailIlmiah?.scientificDocumentLink}</Text>
       </Flex>
 

@@ -49,7 +49,7 @@ const ModalAddRiwayatDiskusi = ({
 
   const handleSubmitForm = async () => {
     const response = await createRiwayatDiskusi({
-      approvalUserId: selectedOptions[0],
+      approvalUserIds: selectedOptions,
       description: deskripsi,
       discussionDate: selectedDate.toJSON(),
       scientificGraduationId: detailIlmiah?.id || "",

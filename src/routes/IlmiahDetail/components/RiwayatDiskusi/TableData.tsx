@@ -3,7 +3,10 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { colors } from "../../../../constants/colors";
 import { Flex } from "@chakra-ui/react";
 import { Diskusi } from "../../hooks/useGetDetailKelulusan/types";
-import { convertDateForIlmiah } from "../../../../helpers";
+import {
+  convertDateForIlmiah,
+  convertDateForNotification,
+} from "../../../../helpers";
 
 interface Props {
   riwayatDiskusi: Diskusi[];
@@ -43,6 +46,7 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       selector: (row) => row.tanggal,
       sortable: true,
       width: "20%",
+      cell: (row) => <span>{convertDateForNotification(row?.tanggal)}</span>,
     },
     {
       name: "Judul",
