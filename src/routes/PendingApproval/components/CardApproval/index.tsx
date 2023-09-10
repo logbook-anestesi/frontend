@@ -2,15 +2,25 @@ import { Divider, Flex, Image, Text } from "@chakra-ui/react";
 import profileIcon from "../../assets/profileIcon.png";
 import { colors } from "../../../../constants/colors";
 import ButtonFile from "../ButtonFile";
-import CardApprovalButton from "../CardApprovalButton";
 import { ReviewItem } from "../../hooks/useGetAllApprovals/types";
 import { useNavigate } from "react-router-dom";
+import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 
 interface Props {
   scientificData: ReviewItem;
+  onOpenModal: () => void;
+  onCloseModal: () => void;
+  setSelectedIlmiahId: React.Dispatch<React.SetStateAction<string>>;
+  setStatusApprove: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const CardApproval = ({ scientificData }: Props) => {
+const CardApproval = ({
+  scientificData,
+  onCloseModal,
+  onOpenModal,
+  setSelectedIlmiahId,
+  setStatusApprove,
+}: Props) => {
   const navigate = useNavigate();
 
   const handleClickToDetail = () => {
@@ -54,7 +64,36 @@ const CardApproval = ({ scientificData }: Props) => {
         />
       </Flex>
 
-      <CardApprovalButton />
+      <Flex
+        justify="end"
+        gap={4}
+        onClick={() => setSelectedIlmiahId(scientificData?.id)}
+      >
+        <Flex
+          border="2px"
+          borderColor={colors.primaryGreen}
+          borderRadius={8}
+          padding={1.5}
+          onClick={() => {
+            setStatusApprove("APPROVED");
+            onOpenModal();
+          }}
+        >
+          <CheckIcon color={colors.primaryGreen} />
+        </Flex>
+        <Flex
+          border="2px"
+          borderColor={colors.primaryRed}
+          borderRadius={8}
+          padding={1.5}
+          onClick={() => {
+            setStatusApprove("REJECTED");
+            onOpenModal();
+          }}
+        >
+          <CloseIcon color={colors.primaryRed} />
+        </Flex>
+      </Flex>
 
       <Divider mt={5} />
     </Flex>
