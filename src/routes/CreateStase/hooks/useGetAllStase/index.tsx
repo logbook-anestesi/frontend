@@ -12,6 +12,7 @@ const useGetAllStase = () => {
 
   const [status, setStatus] = useState("idle");
 
+  // TODO: check need useeffect or not
   useEffect(() => {
     if (isLoading) {
       setStatus("loading");
