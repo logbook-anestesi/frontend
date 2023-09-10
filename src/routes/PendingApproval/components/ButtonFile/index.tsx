@@ -4,8 +4,10 @@ import { colors } from "../../../../constants/colors";
 
 interface Props {
   title: string;
+  handleClick: () => void;
 }
-const ButtonFile = ({ title }: Props) => {
+
+const ButtonFile = ({ title, handleClick }: Props) => {
   return (
     <Button
       textAlign="center"
@@ -15,6 +17,7 @@ const ButtonFile = ({ title }: Props) => {
       width="fit-content"
       backgroundColor="transparent"
       h={8}
+      onClick={handleClick}
     >
       <Image src={fileIcon} alt="" width={3} height={4} />
       <Text fontSize="xs" color={colors.primaryPurple}>

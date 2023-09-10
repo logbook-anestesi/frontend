@@ -75,6 +75,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
         <span
           style={{
             whiteSpace: "pre-wrap",
+            padding: "10px 0px",
           }}
         >
           {row.id}
@@ -175,7 +176,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
             (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`
           )
           .join("\n"),
-        approvals: singleIlmiah.approvals.map((item) => item.name).join("\n"),
+        approvals: singleIlmiah?.approvals?.map((item) => item.name).join("\n"),
         status: singleIlmiah?.scientificStatus,
       };
     });
