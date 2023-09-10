@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
 import { CasesForm } from "./types";
 import axiosClient from "../../../../networks/apiClient";
+import useSWR from "swr";
 
-const useGetCasesForm = () => {
-  const [loading, setLoading] = useState(false);
-  const [casesForm, setCasesForm] = useState<CasesForm>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const response = await axiosClient.get("/cases/form/");
-      const data = await response.data.data;
-
-      setLoading(false);
-      setCasesForm(data);
-    };
-
-    fetchData();
-  }, []);
+export const useGetCasesForm = () => {
+  const { data: casesForm, isLoading: loading } = useSWR('/cases/form/', async (): Promise<CasesForm> => {
+    const response = await axiosClient.get('/cases/form/');
+    return response.data.data ?? [];
+  })
 
   return { loading, casesForm };
 };
-
-export default useGetCasesForm;
