@@ -98,9 +98,9 @@ const ProfilePage = () => {
 
         {!isKonsulen && (
           <Flex direction="column" gap="24px">
-            {selectedProfileData.map((data) => {
+            {selectedProfileData.map((data, idx) => {
               return (
-                <Flex direction="column">
+                <Flex direction="column" key={`residen-data-${idx}`}>
                   <Text color={colors.darkGrey} fontSize="sm">
                     {data.label}
                   </Text>
@@ -115,9 +115,9 @@ const ProfilePage = () => {
 
         {isKonsulen && (
           <Flex direction="column" gap="24px">
-            {konsulenProfileData.map((data) => {
+            {konsulenProfileData.map((data, idx) => {
               return (
-                <Flex direction="column">
+                <Flex direction="column" key={`konsulen-data-${idx}`}>
                   <Text color={colors.darkGrey} fontSize="sm">
                     {data.label}
                   </Text>

@@ -19,6 +19,12 @@ const CardApproval = ({ scientificData }: Props) => {
     });
   };
 
+  const handleClickProfile = () => {
+    navigate("/profile/other-user", {
+      state: { userId: scientificData?.userId },
+    });
+  };
+
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
@@ -26,13 +32,17 @@ const CardApproval = ({ scientificData }: Props) => {
       </Text>
 
       <Flex direction="column" gap={3} mb={1}>
-        <Flex direction="column">
+        <Flex direction="column" gap={1}>
           <Text as="b">
             {scientificData?.type}: {scientificData?.title}
           </Text>
-          <Flex align="center" gap={1}>
+          <Flex align="center" gap={3}>
             <Image src={profileIcon} alt="" width={3} height={4} />
-            <Text color={colors.darkGrey} fontSize="sm">
+            <Text
+              color={colors.darkGrey}
+              fontSize="sm"
+              onClick={handleClickProfile}
+            >
               {scientificData?.userName}
             </Text>
           </Flex>

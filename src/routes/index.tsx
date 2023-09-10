@@ -28,6 +28,7 @@ import AddCaseResus from "./AddCaseResus";
 import AddCaseProcedureConsultation from "./AddCaseProcedureConsultation";
 import AddCasePoliPerioperative from "./AddCasePoliPerioperative";
 import AddCasePainService from "./AddCasePainService";
+import ProfilePageOtherUser from "./ProfilePageOtherUser";
 
 const MainRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const MainRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/other-user" element={<ProfilePageOtherUser />} />
         <Route path="/notifications" element={<NotificationsPage />} />
 
         <Route path="/stase" element={<StasePage />} />
