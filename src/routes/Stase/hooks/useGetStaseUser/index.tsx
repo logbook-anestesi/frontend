@@ -1,26 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import axiosClient from "../../../../networks/apiClient";
 import { StaseUser } from "./types";
 import { getMonthYearString } from "../../../../helpers";
+import useSWR from "swr";
 
+// TODO: mutate mechanism
 const useGetStaseUser = () => {
-  const [loading, setLoading] = useState(false);
-  const [staseData, setStaseData] = useState<StaseUser[]>();
+  const { data: staseData, isLoading: loading } = useSWR('/station/entry', async (): Promise<StaseUser[]> => {
+    const response = await axiosClient.get("/station/entry");
+    return response.data.data;
+  })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const response = await axiosClient.get("/station/entry");
-      const data = await response.data.data;
-
-      setStaseData(data);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
+  // TODO: check need useeffect or not
   const currentStase = useMemo(() => {
     return staseData?.find(
       (stase) => stase.periodMmYyyy === getMonthYearString()
