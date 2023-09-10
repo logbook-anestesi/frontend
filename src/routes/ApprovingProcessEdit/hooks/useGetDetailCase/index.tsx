@@ -4,6 +4,7 @@ import { Case } from "../../../Cases/hooks/useGetCases/types";
 import useSWR from "swr";
 
 const useGetDetailCases = (caseId: string) => {
+  // TODO: mutate mechanism
   const { data: caseData, isLoading: loading } = useSWR(`/cases/?id=${caseId}`, async (): Promise<Case> => {
     const response = await axiosClient.get(`/cases/?id=${caseId}`);
     return response.data.data;
