@@ -29,6 +29,7 @@ import AddCaseProcedureConsultation from "./AddCaseProcedureConsultation";
 import AddCasePoliPerioperative from "./AddCasePoliPerioperative";
 import AddCasePainService from "./AddCasePainService";
 import ProfilePageOtherUser from "./ProfilePageOtherUser";
+import UploadImageToStorage from "./UploadImage";
 
 const MainRoutes = () => {
   return (
@@ -80,6 +81,9 @@ const MainRoutes = () => {
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+
+      {/* TODO: adjust here */}
+      <Route path="/upload-test" element={<UploadImageToStorage />} />
     </Routes>
   );
 };
