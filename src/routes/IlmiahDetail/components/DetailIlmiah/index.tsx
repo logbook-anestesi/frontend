@@ -18,6 +18,20 @@ const DetailIlmiah = ({
     window.open(detailIlmiah?.scientificDocumentLink, "_blank");
   };
 
+  const statusBgColor = (value: string) => {
+    switch (value) {
+      case "PENDING": {
+        return colors.primaryYellow;
+      }
+      case "REJECTED": {
+        return colors.primaryRed;
+      }
+      case "APPROVED": {
+        return colors.primaryGreen;
+      }
+    }
+  };
+
   return (
     <Flex direction="column" gap={5}>
       <Flex direction="column" gap={1}>
@@ -42,9 +56,21 @@ const DetailIlmiah = ({
           <Text as="b"> - </Text>
         ) : (
           detailIlmiah?.approvals.map((approval) => (
-            <Text as="b" key={approval.id}>
-              {approval?.name}
-            </Text>
+            <Flex gap={4} align="center">
+              <Text as="b" key={approval.id}>
+                {approval?.name}
+              </Text>
+              <Text
+                fontSize="xs"
+                color={colors.white}
+                py={1}
+                px={2}
+                borderRadius={10}
+                bgColor={statusBgColor(approval?.status)}
+              >
+                Pending
+              </Text>
+            </Flex>
           ))
         )}
       </Flex>

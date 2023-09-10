@@ -51,7 +51,7 @@ const LevelCardContainer = ({ profile }: Props) => {
         <LevelCardWithLogo
           title="Ilmiah & Exam"
           type="Pending Review"
-          path="/stase"
+          path="/approval"
           icon={cases}
           cardNumber={1}
         />

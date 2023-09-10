@@ -20,6 +20,7 @@ export interface Approval {
   id: string;
   name: string;
   role: string;
+  status: string;
 }
 
 export interface Diskusi {
