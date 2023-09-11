@@ -12,7 +12,6 @@ interface Props {
 
 const LevelCardContainer = ({ profile }: Props) => {
   const { competenceData, loading } = useGetCompetenceUser();
-  console.log(competenceData);
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true
   );

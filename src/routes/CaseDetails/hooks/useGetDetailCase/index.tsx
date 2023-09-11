@@ -20,8 +20,6 @@ const useGetDetailCases = (caseId: string) => {
     fetchData();
   }, [caseId]);
 
-  console.log(caseData);
-
   const asaTags = useMemo(() => {
     return caseData?.asaTags.map((asaTag) => asaTag.tagName);
   }, [caseData?.asaTags]);
