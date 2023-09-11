@@ -33,8 +33,6 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
   const { pengajuanKelulusan } = useIlmiahContext();
   const { createPengajuanKelulusan, loading } = useAddPengajuanKelulusan();
 
-  console.log("999 INI DATA KELULUSAN", { pengajuanKelulusan });
-
   const handleSubmit = async () => {
     const response = await createPengajuanKelulusan({
       documentLink: linkDocument,

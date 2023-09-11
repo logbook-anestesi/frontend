@@ -81,14 +81,6 @@ const ModalAddRiwayatDiskusi = ({
         isClosable: true,
       });
     }
-
-    console.log(
-      "999 ini data",
-      judul,
-      deskripsi,
-      selectedDate.toJSON(),
-      selectedOptions
-    );
   };
 
   return (
