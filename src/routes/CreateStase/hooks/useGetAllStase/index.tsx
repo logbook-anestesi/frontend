@@ -22,7 +22,7 @@ const useGetAllStase = () => {
   }, [isLoading]);
 
   return {
-    listStase,
+    listStase: listStase ? listStase : [],
     status,
   };
 };

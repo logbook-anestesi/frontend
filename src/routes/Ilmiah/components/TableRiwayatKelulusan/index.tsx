@@ -11,7 +11,7 @@ const TableRiwayatKelulusan = () => {
         Riwayat Pengajuan Kelulusan
       </Text>
 
-      {loading ? (
+      {loading || !riwayatKelulusan ? (
         <LoaderCircle />
       ) : (
         <TableData riwayatKelulusan={riwayatKelulusan} />
