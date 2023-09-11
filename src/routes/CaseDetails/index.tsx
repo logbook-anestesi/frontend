@@ -3,8 +3,8 @@ import Header from "../../components/Header";
 import FieldText from "./components/FieldText";
 import FieldTicker from "./components/FieldTicker";
 import { useLocation } from "react-router-dom";
-import useGetDetailCases from "./hooks/useGetDetailCase";
 import LoaderCircle from "../../components/LoaderCircle";
+import useGetDetailCases from "../../hooks/useGetDetailCase";
 
 const CaseDetails = () => {
   const location = useLocation();

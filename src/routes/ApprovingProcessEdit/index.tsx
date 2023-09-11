@@ -2,7 +2,6 @@ import { Button, Divider, Flex, Text, useToast } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useApprovalEditContext } from "./contexts";
 
-import useGetDetailCases from "./hooks/useGetDetailCase";
 import { RADIO_EXAM } from "./constants";
 
 import Header from "../../components/Header";
@@ -28,6 +27,7 @@ import { colors } from "../../constants/colors";
 import useAddApproval from "../ApprovingProcess/hooks/useAddApproval";
 import useAuth from "../../hooks/useAuth";
 import useGetCasesForm from "../../hooks/useGetCasesForm";
+import useGetDetailCases from "../../hooks/useGetDetailCase";
 
 const ApprovingProcessEdit = () => {
   const { accountData } = useAuth();
