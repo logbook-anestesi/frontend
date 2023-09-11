@@ -1,6 +1,6 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
-import { PainServiceType } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { PainServiceType } from "../../../../hooks/useGetCasesForm/types";
 import { useAddCasesDispatch } from "../../../AddCases/contexts";
 
 interface Props {

@@ -1,5 +1,5 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Tag } from "../../hooks/useGetCasesForm/types";
+import { Tag } from "../../../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
 import { useApprovalEditDispatch } from "../../contexts";
 

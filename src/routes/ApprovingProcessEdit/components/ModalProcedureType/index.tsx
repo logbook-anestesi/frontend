@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   Text,
 } from "@chakra-ui/react";
-import { ProcedureType } from "../../hooks/useGetCasesForm/types";
+import { ProcedureType } from "../../../../hooks/useGetCasesForm/types";
 import {
   ChangeEvent,
   Dispatch,

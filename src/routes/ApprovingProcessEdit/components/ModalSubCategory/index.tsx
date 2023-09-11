@@ -7,7 +7,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
-import { OperationCategory } from "../../hooks/useGetCasesForm/types";
+import { OperationCategory } from "../../../../hooks/useGetCasesForm/types";
 import CardSubCategory from "./CardSubCategory";
 import EmptyData from "./EmptyData";
 

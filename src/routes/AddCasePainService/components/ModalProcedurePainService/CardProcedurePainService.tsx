@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import {
   PainServiceProcedure,
   PainServiceType,
-} from "../../../AddCases/hooks/useGetCasesForm/types";
+} from "../../../../hooks/useGetCasesForm/types";
 import { useAddCasesDispatch } from "../../../AddCases/contexts";
 
 interface Props {

@@ -18,7 +18,7 @@ import {
   useState,
 } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
-import { Diagnose } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { Diagnose } from "../../../../hooks/useGetCasesForm/types";
 import CardDiagnose from "./CardDiagnose";
 import { useAddCasesContext } from "../../../AddCases/contexts";
 

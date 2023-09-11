@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import CardCategory from "./CardCategory";
 import { Dispatch, SetStateAction } from "react";
-import { OperationType } from "../../hooks/useGetCasesForm/types";
+import { OperationType } from "../../../../hooks/useGetCasesForm/types";
 
 export interface Category {
   name: string;

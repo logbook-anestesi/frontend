@@ -7,7 +7,7 @@ import { colors } from "../../../../constants/colors";
 import Ticker from "../../../../components/Ticker";
 import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
 import ModalCategory from "../ModalCategory";
-import { OperationType } from "../../hooks/useGetCasesForm/types";
+import { OperationType } from "../../../../hooks/useGetCasesForm/types";
 import ModalSubCategory from "../ModalSubCategory";
 
 interface Props {

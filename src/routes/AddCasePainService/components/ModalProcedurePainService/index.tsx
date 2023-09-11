@@ -18,12 +18,10 @@ import {
   useState,
 } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
-import {
-  PainServiceProcedure,
-  PainServiceType,
-} from "../../../AddCases/hooks/useGetCasesForm/types";
+
 import { useAddCasesContext } from "../../../AddCases/contexts";
 import CardTypePainService from "./CardProcedurePainService";
+import { PainServiceProcedure, PainServiceType } from "../../../../hooks/useGetCasesForm/types";
 
 interface Props {
   isOpen: boolean;

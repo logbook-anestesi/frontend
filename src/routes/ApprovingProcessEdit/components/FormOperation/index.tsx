@@ -6,7 +6,7 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import Ticker from "../../../../components/Ticker";
 import ModalCategory from "../ModalCategory";
-import { OperationType } from "../../hooks/useGetCasesForm/types";
+import { OperationType } from "../../../../hooks/useGetCasesForm/types";
 import { OperationType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
 import ModalSubCategory from "../ModalSubCategory";
 import {

@@ -1,5 +1,5 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { OperationCategory } from "../../hooks/useGetCasesForm/types";
+import { OperationCategory } from "../../../../hooks/useGetCasesForm/types";
 import { useApprovalEditDispatch } from "../../contexts";
 
 interface Props {

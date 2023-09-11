@@ -1,6 +1,6 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { useAddCasesDispatch } from "../../contexts";
-import { OperationCategory } from "../../hooks/useGetCasesForm/types";
+import { OperationCategory } from "../../../../hooks/useGetCasesForm/types";
 
 interface Props {
   subCategory: OperationCategory;

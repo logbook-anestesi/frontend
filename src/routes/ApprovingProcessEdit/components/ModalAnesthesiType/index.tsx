@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   Text,
 } from "@chakra-ui/react";
-import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
+import { AnesthesiaType } from "../../../../hooks/useGetCasesForm/types";
 import {
   ChangeEvent,
   Dispatch,

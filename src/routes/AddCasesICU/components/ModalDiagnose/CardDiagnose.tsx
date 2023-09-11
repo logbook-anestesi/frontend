@@ -1,6 +1,6 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
-import { Diagnose } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { Diagnose } from "../../../../hooks/useGetCasesForm/types";
 import { useAddCasesDispatch } from "../../../AddCases/contexts";
 
 interface Props {
