@@ -1,14 +1,24 @@
-import { useMemo } from "react";
-import useSWR from "swr";
-import axiosClient from "../../networks/apiClient";
+import { useEffect, useMemo, useState } from "react";
 import { Case } from "../../routes/Cases/hooks/useGetCases/types";
+import axiosClient from "../../networks/apiClient";
 
 const useGetDetailCases = (caseId: string) => {
-  // TODO: mutate mechanism
-  const { data: caseData, isLoading: loading } = useSWR(`/cases/?id=${caseId}`, async (): Promise<Case> => {
-    const response = await axiosClient.get(`/cases/?id=${caseId}`);
-    return response.data.data;
-  })
+  const [loading, setLoading] = useState(false);
+  const [caseData, setCaseData] = useState<Case>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+
+      const response = await axiosClient.get(`/cases/?id=${caseId}`);
+      const data = await response.data.data;
+
+      setLoading(false);
+      setCaseData(data);
+    };
+
+    fetchData();
+  }, [caseId]);
 
   const asaTags = useMemo(() => {
     return caseData?.asaTags.map((asaTag) => asaTag.tagName);
