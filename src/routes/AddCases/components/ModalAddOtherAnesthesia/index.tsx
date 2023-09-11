@@ -13,6 +13,7 @@ import { colors } from "../../../../constants/colors";
 import useAddAnesthesia from "../../hooks/useAddAnesthesia";
 import { ChangeEvent, useState } from "react";
 import { useAddCasesDispatch } from "../../contexts";
+import useGetCasesForm from "../../../../hooks/useGetCasesForm";
 
 interface Props {
   isOpen: boolean;
@@ -23,6 +24,7 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createAnesthesia, loading } = useAddAnesthesia();
   const [anesthesia, setAnesthesia] = useState("");
+  const {mutate} = useGetCasesForm();
 
   const handleCreateAnesthesia = async () => {
     const response = await createAnesthesia({ name: anesthesia });
@@ -42,6 +44,7 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
       },
     });
 
+    mutate()
     closeModal();
   };
 
