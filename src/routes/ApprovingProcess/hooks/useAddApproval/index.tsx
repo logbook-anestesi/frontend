@@ -32,7 +32,7 @@ const useAddApproval = () => {
       console.log("[Error Approve Case]", e);
       return { success: false, message: e?.response?.data?.message };
     }
-  }, []);
+  }, [mutate]);
 
   return {
     loading,

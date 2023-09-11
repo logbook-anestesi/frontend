@@ -21,7 +21,7 @@ const useGetScientificApprovals = () => {
     };
 
     fetchData();
-  }, []);
+  }, [mutate]);
 
   return {
     reviewData,

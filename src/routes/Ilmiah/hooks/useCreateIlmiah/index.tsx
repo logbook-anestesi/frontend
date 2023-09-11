@@ -37,7 +37,7 @@ const useCreateIlmiah = () => {
       setLoading(false);
       console.log("[Error Create Ilmiah]", e);
     }
-  }, []);
+  }, [mutate]);
 
   return {
     createIlmiah,

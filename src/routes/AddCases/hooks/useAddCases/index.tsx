@@ -36,7 +36,7 @@ const useAddCases = () => {
 
       return { success: false, message: errorMessage };
     }
-  }, []);
+  }, [mutate]);
 
   return {
     createCases,

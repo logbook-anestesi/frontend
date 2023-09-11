@@ -39,7 +39,7 @@ const useAddPengajuanKelulusan = () => {
       setLoading(false);
       console.log("[Error Mengajukan Kelulusan]", e);
     }
-  }, []);
+  }, [mutate]);
 
   return {
     createPengajuanKelulusan,

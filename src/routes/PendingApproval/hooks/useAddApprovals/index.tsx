@@ -32,7 +32,7 @@ const useAddApproval = () => {
       console.log("[Error Approve Ilmiah]", e);
       return { success: false, message: e?.response?.data?.message };
     }
-  }, []);
+  }, [mutate]);
 
   return {
     loading,

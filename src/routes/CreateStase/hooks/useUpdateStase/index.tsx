@@ -33,7 +33,7 @@ const useUpdateStase = () => {
         console.log("[Error Update Stase]", e);
       }
     },
-    []
+    [mutate]
   );
 
   return { postData, loading };
