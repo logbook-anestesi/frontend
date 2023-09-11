@@ -11,11 +11,11 @@ const useGetScientificApprovals = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      mutate();
 
       const response = await axiosClient.get("/scientific/approval/");
       const data = await response.data.data;
 
+      mutate();
       setLoading(false);
       setReviewData(data);
     };

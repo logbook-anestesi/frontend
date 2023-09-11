@@ -9,11 +9,10 @@ interface PayloadType {
 
 const useAddPengajuanKelulusan = () => {
   const [loading, setLoading] = useState(false);
-  const {mutate} = useGetRiwayatKelulusan();
+  const { mutate } = useGetRiwayatKelulusan();
 
   const createPengajuanKelulusan = useCallback(async (payload: PayloadType) => {
     setLoading(true);
-    mutate();
 
     try {
       const response = await axiosClient.post(
@@ -22,6 +21,7 @@ const useAddPengajuanKelulusan = () => {
       );
       const data = response.data;
 
+      mutate();
       setLoading(false);
 
       if (data.error) {
@@ -36,6 +36,7 @@ const useAddPengajuanKelulusan = () => {
         };
       }
     } catch (e) {
+      mutate();
       setLoading(false);
       console.log("[Error Mengajukan Kelulusan]", e);
     }

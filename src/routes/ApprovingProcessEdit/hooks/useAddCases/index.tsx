@@ -9,12 +9,12 @@ const useAddCases = () => {
 
   const createCases = useCallback(async (payload: CreateCasePayload) => {
     setLoading(true);
-    mutate()
 
     try {
       const response = await axiosClient.post("/cases/", payload);
       const data = response.data;
 
+      mutate()
       setLoading(false);
 
       if (data.error) {
@@ -28,6 +28,7 @@ const useAddCases = () => {
         };
       }
     } catch (e: any) {
+      mutate()
       setLoading(false);
       const errorMessage =
         e?.response?.data?.message?.[0] || "An error occurred.";

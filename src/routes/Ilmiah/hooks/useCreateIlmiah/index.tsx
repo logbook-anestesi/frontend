@@ -10,16 +10,16 @@ interface PayloadType {
 
 const useCreateIlmiah = () => {
   const [loading, setLoading] = useState(false);
-  const {mutate} = useGetPengajuanPembimbing();
+  const { mutate } = useGetPengajuanPembimbing();
 
   const createIlmiah = useCallback(async (payload: PayloadType) => {
     setLoading(true);
-    mutate();
 
     try {
       const response = await axiosClient.post("/scientific", payload);
       const data = response.data;
 
+      mutate();
       setLoading(false);
 
       if (data.error) {
@@ -34,6 +34,7 @@ const useCreateIlmiah = () => {
         };
       }
     } catch (e) {
+      mutate();
       setLoading(false);
       console.log("[Error Create Ilmiah]", e);
     }

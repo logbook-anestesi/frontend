@@ -4,7 +4,7 @@ import useGetStaseUser from "../../../Stase/hooks/useGetStaseUser";
 
 const useUpdateStase = () => {
   const [loading, setLoading] = useState(false);
-  const {mutate} = useGetStaseUser();
+  const { mutate } = useGetStaseUser();
 
   const postData = useCallback(
     async (payload: {
@@ -13,12 +13,12 @@ const useUpdateStase = () => {
       periodMmYyyy: string;
     }) => {
       setLoading(true);
-      mutate();
 
       try {
         const response = await axiosClient.post("/station/entry", payload);
         const data = response.data;
 
+        mutate();
         setLoading(false);
 
         if (data.error) {
@@ -29,6 +29,7 @@ const useUpdateStase = () => {
           return { success: true, message: "Berhasil Update Stase" };
         }
       } catch (e) {
+        mutate();
         setLoading(false);
         console.log("[Error Update Stase]", e);
       }

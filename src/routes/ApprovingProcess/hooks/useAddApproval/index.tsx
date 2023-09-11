@@ -9,12 +9,12 @@ const useAddApproval = () => {
 
   const createApproval = useCallback(async (payload: PayloadAddApproval) => {
     setLoading(true);
-    mutate()
 
     try {
       const response = await axiosClient.post("/cases/approval", payload);
       const data = response.data;
 
+      mutate()
       setLoading(false);
 
       if (data?.error) {
@@ -28,6 +28,7 @@ const useAddApproval = () => {
         };
       }
     } catch (e: any) {
+      mutate()
       setLoading(false);
       console.log("[Error Approve Case]", e);
       return { success: false, message: e?.response?.data?.message };
