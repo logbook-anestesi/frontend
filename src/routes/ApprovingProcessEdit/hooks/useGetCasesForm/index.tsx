@@ -6,7 +6,7 @@ import useSWR from "swr";
 const useGetCasesForm = () => {
   const { data: casesForm, isLoading: loading } = useSWR('/cases/form/', async (): Promise<CasesForm> => {
     const response = await axiosClient.get('/cases/form/');
-    return response.data.data ?? [];
+    return response.data.data;
   })
 
   return { loading, casesForm };

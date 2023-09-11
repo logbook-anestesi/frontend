@@ -7,7 +7,7 @@ import useSWR from "swr";
 const useGetAllStase = () => {
   const { data: listStase, isLoading } = useSWR('/station', async (): Promise<Stase[]> => {
     const response = await axiosClient.get("/station");
-    return response.data.data;
+    return response.data.data ?? [];
   })
 
   const [status, setStatus] = useState("idle");

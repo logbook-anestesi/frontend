@@ -8,7 +8,7 @@ import useSWR from "swr";
 const useGetStaseUser = () => {
   const { data: staseData, isLoading: loading } = useSWR('/station/entry', async (): Promise<StaseUser[]> => {
     const response = await axiosClient.get("/station/entry");
-    return response.data.data;
+    return response.data.data ?? [];
   })
 
   // TODO: check need useeffect or not
