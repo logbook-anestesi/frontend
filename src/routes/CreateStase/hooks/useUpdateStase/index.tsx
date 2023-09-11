@@ -1,8 +1,10 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
+import useGetStaseUser from "../../../Stase/hooks/useGetStaseUser";
 
 const useUpdateStase = () => {
   const [loading, setLoading] = useState(false);
+  const {mutate} = useGetStaseUser();
 
   const postData = useCallback(
     async (payload: {
@@ -11,6 +13,7 @@ const useUpdateStase = () => {
       periodMmYyyy: string;
     }) => {
       setLoading(true);
+      mutate();
 
       try {
         const response = await axiosClient.post("/station/entry", payload);
