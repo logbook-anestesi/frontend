@@ -1,24 +1,13 @@
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import axiosClient from "../../../../networks/apiClient";
 import { PengajuanPembimbing } from "./types";
 
+// TODO: mutate mechanism
 const useGetPengajuanPembimbing = () => {
-  const [loading, setLoading] = useState(false);
-  const [pengajuanList, setPengajuanList] = useState<PengajuanPembimbing[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const response = await axiosClient.get("/scientific");
-      const data = await response.data.data;
-
-      setLoading(false);
-      setPengajuanList(data);
-    };
-
-    fetchData();
-  }, []);
+  const { data: pengajuanList, isLoading: loading } = useSWR('/scientific', async (): Promise<PengajuanPembimbing[]> => {
+    const response = await axiosClient.get("/scientific");
+    return response.data.data ?? [];
+  })
 
   return {
     pengajuanList,
