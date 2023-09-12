@@ -16,7 +16,7 @@ const TablePengajuanBimbingan = ({ onOpenModal }: Props) => {
         Riwayat Pengajuan Bimbingan
       </Text>
 
-      {loading ? (
+      {loading || !pengajuanList ? (
         <LoaderCircle />
       ) : (
         <TableData pengajuanList={pengajuanList} onOpenModal={onOpenModal} />

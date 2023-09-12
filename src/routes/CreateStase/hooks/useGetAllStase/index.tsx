@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
 import { Stase } from "./types";
+import useSWR from "swr";
 
+// TODO: mutate mechanism
 const useGetAllStase = () => {
+  const { data: listStase, isLoading } = useSWR('/station', async (): Promise<Stase[]> => {
+    const response = await axiosClient.get("/station");
+    return response.data.data ?? [];
+  })
+
   const [status, setStatus] = useState("idle");
-  const [listStase, setListStase] = useState<Stase[]>([]);
 
+  // TODO: check need useeffect or not
   useEffect(() => {
-    const fetchData = async () => {
+    if (isLoading) {
       setStatus("loading");
-
-      const responses = await axiosClient.get("/station");
-      const data = await responses.data.data;
-
-      setListStase(data);
+    } else {
       setStatus("finish");
-    };
-
-    fetchData();
-  }, []);
+    }
+  }, [isLoading]);
 
   return {
-    listStase,
+    listStase: listStase ? listStase : [],
     status,
   };
 };

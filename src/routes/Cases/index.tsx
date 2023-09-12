@@ -34,7 +34,7 @@ const Cases = () => {
           />
 
           <ButtonAddCase caseName={selectedCase.title} />
-          {loading ? (
+          {loading || !caseList ? (
             <LoaderCircle />
           ) : (
             <CaseListSection caseList={caseList} selectedCase={selectedCase} />
