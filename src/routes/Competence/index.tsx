@@ -49,7 +49,7 @@ const CompetencePage = () => {
   // }, [currentCompetence?.userId, currentCompetence?.userId]);
 
   const handleSubmitData = async () => {
-    await postData(finalData).then((response) => {
+    await postData(finalData).then(() => {
       toast({
         position: 'top',
         status: 'success',

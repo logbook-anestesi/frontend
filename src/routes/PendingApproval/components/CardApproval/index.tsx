@@ -16,7 +16,6 @@ interface Props {
 
 const CardApproval = ({
   scientificData,
-  onCloseModal,
   onOpenModal,
   setSelectedIlmiahId,
   setStatusApprove,

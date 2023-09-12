@@ -13,7 +13,7 @@ interface Props {
   loading: boolean;
 }
 
-const TableData = ({ stationList, loading }: Props) => {
+const TableData = ({ stationList }: Props) => {
   const columns: TableColumn<DataRow>[] = [
     {
       name: 'Nomor',

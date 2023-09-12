@@ -259,7 +259,7 @@ interface SetAdditionalTagIds {
 
 interface ResetState {
   type: 'reset_state';
-  data: {};
+  data: Record<any, any>;
 }
 
 interface RemoveProcedureType {
