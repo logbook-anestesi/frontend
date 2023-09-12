@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
 import { Stase } from "./types";

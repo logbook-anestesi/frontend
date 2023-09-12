@@ -1,3 +1,4 @@
+'use client'
 import axiosClient from "../../../../networks/apiClient";
 import { Stase } from "./types";
 import useSWR from "swr";

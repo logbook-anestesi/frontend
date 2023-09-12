@@ -5,16 +5,16 @@ import useGetPengajuanPembimbing from "../../../Ilmiah/hooks/useGetPengajuanPemb
 
 const useAddApproval = () => {
   const [loading, setLoading] = useState(false);
-  const {mutate} = useGetPengajuanPembimbing();
+  const { mutate } = useGetPengajuanPembimbing();
 
   const createApproval = useCallback(async (payload: PayloadAddApproval) => {
     setLoading(true);
-    mutate();
 
     try {
       const response = await axiosClient.post("/scientific/approval", payload);
       const data = response.data;
 
+      mutate();
       setLoading(false);
 
       if (data?.error) {
@@ -28,11 +28,12 @@ const useAddApproval = () => {
         };
       }
     } catch (e: any) {
+      mutate();
       setLoading(false);
       console.log("[Error Approve Ilmiah]", e);
       return { success: false, message: e?.response?.data?.message };
     }
-  }, []);
+  }, [mutate]);
 
   return {
     loading,
