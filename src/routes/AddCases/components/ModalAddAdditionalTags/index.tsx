@@ -13,6 +13,7 @@ import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useState } from "react";
 import { useAddCasesDispatch } from "../../contexts";
 import useAddTags from "../../hooks/useAddTags";
+import useGetCasesForm from "../../../../hooks/useGetCasesForm";
 
 interface Props {
   isOpen: boolean;
@@ -23,6 +24,7 @@ const ModalAddAdditionalTags = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createTag, loading } = useAddTags();
   const [additionalTag, setAdditionalTag] = useState("");
+  const {mutate} = useGetCasesForm();
 
   const handleCreateAdditionalTag = async () => {
     const response = await createTag({ name: additionalTag });
@@ -41,6 +43,7 @@ const ModalAddAdditionalTags = ({ isOpen, closeModal }: Props) => {
       },
     });
 
+    mutate()
     closeModal();
   };
 

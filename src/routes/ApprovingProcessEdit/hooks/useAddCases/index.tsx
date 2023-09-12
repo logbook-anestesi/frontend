@@ -1,12 +1,15 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
 import { CreateCasePayload } from "./types";
+import useGetCases from "../../../Cases/hooks/useGetCases";
 
 const useAddCases = () => {
   const [loading, setLoading] = useState(false);
+  const { mutate } = useGetCases();
 
   const createCases = useCallback(async (payload: CreateCasePayload) => {
     setLoading(true);
+    mutate()
 
     try {
       const response = await axiosClient.post("/cases/", payload);

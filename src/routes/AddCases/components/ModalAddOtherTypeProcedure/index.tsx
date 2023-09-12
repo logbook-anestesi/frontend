@@ -13,6 +13,7 @@ import { colors } from "../../../../constants/colors";
 import { ChangeEvent, useState } from "react";
 import { useAddCasesDispatch } from "../../contexts";
 import useAddProcedureType from "../../hooks/useAddProcedureType";
+import useGetCasesForm from "../../../../hooks/useGetCasesForm";
 
 interface Props {
   isOpen: boolean;
@@ -23,6 +24,7 @@ const ModalAddOtherTypeProcedure = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createProcedureType, loading } = useAddProcedureType();
   const [procedureType, setProcedureType] = useState("");
+  const {mutate} = useGetCasesForm();
 
   const handleCreateProcedureType = async () => {
     const response = await createProcedureType({ name: procedureType });
@@ -42,6 +44,7 @@ const ModalAddOtherTypeProcedure = ({ isOpen, closeModal }: Props) => {
       },
     });
 
+    mutate()
     closeModal();
   };
 

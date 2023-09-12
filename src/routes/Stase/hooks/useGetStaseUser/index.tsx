@@ -4,9 +4,8 @@ import { StaseUser } from "./types";
 import { getMonthYearString } from "../../../../helpers";
 import useSWR from "swr";
 
-// TODO: mutate mechanism
 const useGetStaseUser = () => {
-  const { data: staseData, isLoading: loading } = useSWR('/station/entry', async (): Promise<StaseUser[]> => {
+  const { data: staseData, isLoading: loading, mutate } = useSWR('/station/entry', async (): Promise<StaseUser[]> => {
     const response = await axiosClient.get("/station/entry");
     return response.data.data ?? [];
   })
@@ -22,6 +21,7 @@ const useGetStaseUser = () => {
     staseData,
     currentStase,
     loading,
+    mutate
   };
 };
 

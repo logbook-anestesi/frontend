@@ -1,12 +1,15 @@
 import { useCallback, useState } from "react";
 import { PayloadAddApproval } from "./types";
 import axiosClient from "../../../../networks/apiClient";
+import useGetCases from "../../../Cases/hooks/useGetCases";
 
 const useAddApproval = () => {
   const [loading, setLoading] = useState(false);
+  const { mutate } = useGetCases();
 
   const createApproval = useCallback(async (payload: PayloadAddApproval) => {
     setLoading(true);
+    mutate()
 
     try {
       const response = await axiosClient.post("/cases/approval", payload);

@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
+import useGetRiwayatKelulusan from "../useGetRiwayatKelulusan";
 
 interface PayloadType {
   scientificId: string;
@@ -8,9 +9,11 @@ interface PayloadType {
 
 const useAddPengajuanKelulusan = () => {
   const [loading, setLoading] = useState(false);
+  const {mutate} = useGetRiwayatKelulusan();
 
   const createPengajuanKelulusan = useCallback(async (payload: PayloadType) => {
     setLoading(true);
+    mutate();
 
     try {
       const response = await axiosClient.post(

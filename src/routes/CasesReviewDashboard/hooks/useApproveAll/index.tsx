@@ -1,11 +1,14 @@
 import { useCallback, useState } from "react";
 import axiosClient from "../../../../networks/apiClient";
+import useGetCases from "../../../Cases/hooks/useGetCases";
 
 const useApproveAll = () => {
   const [loading, setLoading] = useState(false);
+  const { mutate } = useGetCases();
 
   const approveAll = useCallback(async (status: string) => {
     setLoading(true);
+    mutate();
 
     try {
       const response = await axiosClient.post("/cases/approval/bulk", {
