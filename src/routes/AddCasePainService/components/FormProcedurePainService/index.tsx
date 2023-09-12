@@ -7,7 +7,7 @@ import {
   useAddCasesDispatch,
 } from "../../../AddCases/contexts";
 import Ticker from "../../../../components/Ticker";
-import { PainServiceProcedure } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { PainServiceProcedure } from "../../../../hooks/useGetCasesForm/types";
 import ModalProcedurePainService from "../ModalProcedurePainService";
 
 interface Props {

@@ -1,7 +1,7 @@
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Tag } from "../../hooks/useGetCasesForm/types";
+import { Tag } from "../../../../hooks/useGetCasesForm/types";
 import { useCallback, useState } from "react";
 import ModalASATags from "../ModalASATags";
 import Ticker from "../../../../components/Ticker";

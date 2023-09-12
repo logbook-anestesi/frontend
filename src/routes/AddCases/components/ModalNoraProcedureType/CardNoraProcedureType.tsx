@@ -1,5 +1,5 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
-import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
+import { NoraProcedureType } from "../../../../hooks/useGetCasesForm/types";
 import { Dispatch, SetStateAction } from "react";
 import { useAddCasesDispatch } from "../../contexts";
 

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import { Case } from "../../../Cases/hooks/useGetCases/types";
 import useSWR from "swr";
+import axiosClient from "../../networks/apiClient";
+import { Case } from "../../routes/Cases/hooks/useGetCases/types";
 
 const useGetDetailCases = (caseId: string) => {
   // TODO: mutate mechanism
@@ -42,6 +42,22 @@ const useGetDetailCases = (caseId: string) => {
     return caseData?.tags.map((tag) => tag.tagName);
   }, [caseData?.tags]);
 
+  const diagnoses = useMemo(() => {
+    return caseData?.diagnoses.map((diagnose) => diagnose.diagnoseName);
+  }, [caseData?.diagnoses]);
+
+  const painServiceTypes = useMemo(() => {
+    return caseData?.painServiceTypes.map(
+      (painServiceType) => painServiceType.painServiceTypeName
+    );
+  }, [caseData?.painServiceTypes]);
+
+  const painServiceProcedures = useMemo(() => {
+    return caseData?.painServiceProcedures.map(
+      (painServiceProcedure) => painServiceProcedure.painServiceProcedureName
+    );
+  }, [caseData?.painServiceProcedures]);
+
   return {
     asaTags,
     procedureTypes,
@@ -51,6 +67,9 @@ const useGetDetailCases = (caseId: string) => {
     tags,
     caseData,
     loading,
+    diagnoses,
+    painServiceTypes,
+    painServiceProcedures,
   };
 };
 

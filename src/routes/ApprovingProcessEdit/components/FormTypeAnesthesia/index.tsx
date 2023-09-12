@@ -2,7 +2,7 @@ import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import ModalAnesthesiType from "../ModalAnesthesiType";
-import { AnesthesiaType } from "../../hooks/useGetCasesForm/types";
+import { AnesthesiaType } from "../../../../hooks/useGetCasesForm/types";
 import { AnesthesiaType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
 import { useCallback, useEffect, useState } from "react";
 import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";

@@ -1,7 +1,7 @@
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { NoraProcedureType } from "../../hooks/useGetCasesForm/types";
+import { NoraProcedureType } from "../../../../hooks/useGetCasesForm/types";
 import { useCallback, useState } from "react";
 import ModalNoraProcedureType from "../ModalNoraProcedureType";
 import Ticker from "../../../../components/Ticker";

@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   Text,
 } from "@chakra-ui/react";
-import { Tag } from "../../hooks/useGetCasesForm/types";
+import { Tag } from "../../../../hooks/useGetCasesForm/types";
 import {
   ChangeEvent,
   Dispatch,

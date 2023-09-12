@@ -18,7 +18,7 @@ import {
   useState,
 } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
-import { PainServiceType } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { PainServiceType } from "../../../../hooks/useGetCasesForm/types";
 import { useAddCasesContext } from "../../../AddCases/contexts";
 import CardTypePainService from "./CardTypePainService";
 

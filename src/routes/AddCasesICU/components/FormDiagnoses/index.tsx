@@ -1,7 +1,7 @@
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { colors } from "../../../../constants/colors";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Diagnose } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { Diagnose } from "../../../../hooks/useGetCasesForm/types";
 import ModalDignose from "../ModalDiagnose";
 import { useCallback, useState } from "react";
 import {

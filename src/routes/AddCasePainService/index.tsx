@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import FormDate from "../AddCases/components/FormDate";
 import FormLocationLainnya from "../AddCases/components/FormLocationLainnya";
 import FormTypePainService from "./components/FormTypePainService";
-import useGetCasesForm from "../AddCases/hooks/useGetCasesForm";
+import useGetCasesForm from "../../hooks/useGetCasesForm";
 import FormProcedurePainService from "./components/FormProcedurePainService";
 import FormDPJP from "../AddCases/components/FormDPJP";
 

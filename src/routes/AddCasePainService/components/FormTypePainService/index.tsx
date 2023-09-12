@@ -8,7 +8,7 @@ import {
 } from "../../../AddCases/contexts";
 import ModalTypePainService from "../ModalTypePainService";
 import Ticker from "../../../../components/Ticker";
-import { PainServiceType } from "../../../AddCases/hooks/useGetCasesForm/types";
+import { PainServiceType } from "../../../../hooks/useGetCasesForm/types";
 
 interface Props {
   painServiceTypes: PainServiceType[];

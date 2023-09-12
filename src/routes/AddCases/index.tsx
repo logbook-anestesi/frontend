@@ -6,7 +6,6 @@ import FormRadioExam from "./components/FormRadioExam";
 import { RADIO_EXAM } from "./constants";
 import FormOperation from "./components/FormOperation";
 import { useAddCasesContext, useAddCasesDispatch } from "./contexts";
-import useGetCasesForm from "./hooks/useGetCasesForm";
 import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
 import { colors } from "../../constants/colors";
 import FormTypeProcedure from "./components/FormTypeProcedure";
@@ -23,6 +22,7 @@ import FormAdditionalTags from "./components/FormAdditionalTags";
 import useAddCases from "./hooks/useAddCases";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import useGetCasesForm from "../../hooks/useGetCasesForm";
 
 const AddCases = () => {
   const state = useAddCasesContext();
