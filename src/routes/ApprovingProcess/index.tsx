@@ -1,12 +1,12 @@
-import { Button, Flex, useToast } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import RadioPenilaian from "./components/RadioPenilaian";
-import TextPenilaian from "./components/TextPenilaian";
-import { colors } from "../../constants/colors";
-import { useLocation, useNavigate } from "react-router-dom";
-import useAddApproval from "./hooks/useAddApproval";
-import { useApprovingProcess, useApprovingProcessDispatch } from "./contexts";
-import { useEffect } from "react";
+import { Button, Flex, useToast } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import RadioPenilaian from './components/RadioPenilaian';
+import TextPenilaian from './components/TextPenilaian';
+import { colors } from '../../constants/colors';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAddApproval from './hooks/useAddApproval';
+import { useApprovingProcess, useApprovingProcessDispatch } from './contexts';
+import { useEffect } from 'react';
 
 const ApprovingProcess = () => {
   const toast = useToast();
@@ -22,29 +22,29 @@ const ApprovingProcess = () => {
       caseId: caseData?.id,
       notes: notes,
       ...(isReject ? {} : { rate: rate }),
-      status: isReject ? "REJECTED" : "APPROVED",
+      status: isReject ? 'REJECTED' : 'APPROVED',
     });
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: `Berhasil ${isReject ? "Reject" : "Approve"} Case`,
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: `Berhasil ${isReject ? 'Reject' : 'Approve'} Case`,
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
 
-      navigate("/review/cases");
+      navigate('/review/cases');
       return;
     }
 
     if (!response?.success) {
       toast({
-        title: `Failed ${isReject ? "Reject" : "Approve"} Case`,
+        title: `Failed ${isReject ? 'Reject' : 'Approve'} Case`,
         description: response?.message[0],
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 9000,
         isClosable: true,
       });
@@ -53,16 +53,16 @@ const ApprovingProcess = () => {
 
   useEffect(() => {
     approvingProcessDispatch({
-      type: "reset",
+      type: 'reset',
     });
   }, [approvingProcessDispatch]);
 
   return (
     <Flex flexDirection="column">
       <Header
-        title={`${isReject ? "Reject" : "Approve"} ${
-          caseData?.caseType
-        } - ${caseData?.id.substring(0, 4)}`}
+        title={`${
+          isReject ? 'Reject' : 'Approve'
+        } ${caseData?.caseType} - ${caseData?.id.substring(0, 4)}`}
       />
 
       <Flex padding="30px" direction="column" gap="16px">
@@ -77,7 +77,7 @@ const ApprovingProcess = () => {
           onClick={handleSubmitForm}
           isLoading={loading}
         >
-          {isReject ? "Reject" : "Approve"}
+          {isReject ? 'Reject' : 'Approve'}
         </Button>
       </Flex>
     </Flex>

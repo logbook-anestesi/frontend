@@ -1,8 +1,8 @@
-import { Flex, Image } from "@chakra-ui/react";
-import logbookIcon from "../../../assets/logbook-icon.svg";
-import { icon } from "./styles";
-import Footer from "./components/Footer";
-import EmailPasswordInput from "./components/EmailPasswordInput";
+import { Flex, Image } from '@chakra-ui/react';
+import logbookIcon from '../../../assets/logbook-icon.svg';
+import { icon } from './styles';
+import Footer from './components/Footer';
+import EmailPasswordInput from './components/EmailPasswordInput';
 
 const Login = () => {
   return (

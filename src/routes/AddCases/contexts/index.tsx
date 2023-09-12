@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useReducer } from "react";
-import type { Dispatch } from "react";
-import { ACTION_TYPE, InitialState } from "./types";
-import { initialState, reducer } from "./reducer";
+import React, { createContext, useContext, useReducer } from 'react';
+import type { Dispatch } from 'react';
+import { ACTION_TYPE, InitialState } from './types';
+import { initialState, reducer } from './reducer';
 
 const AddCasesContext = createContext<InitialState>({
   selectedOperation: [],
@@ -13,9 +13,9 @@ const AddCasesContext = createContext<InitialState>({
   selectedTypePainService: [],
   selectedProcedurePainService: [],
   date: new Date().toJSON(),
-  dpjpUserId: "",
+  dpjpUserId: '',
   isExam: false,
-  caseType: "OK",
+  caseType: 'OK',
   operationTypeIds: [],
   anesthesiaTypeIds: [],
   selectedProcedure: [],
@@ -26,15 +26,15 @@ const AddCasesContext = createContext<InitialState>({
   asaTagIds: [],
   noraProcedureTypeIds: [],
   procedurePainServiceIds: [],
-  ageGroup: "",
-  location: "",
-  priority: "",
+  ageGroup: '',
+  location: '',
+  priority: '',
   patientAge: 0,
-  patientRecordNumber: "",
-  patientGender: "MALE",
+  patientRecordNumber: '',
+  patientGender: 'MALE',
   asaIsEmergency: false,
   asaTier: 0,
-  notes: "",
+  notes: '',
   additionalTags: [],
   tagIds: [],
   isShowLocationLainnya: false,

@@ -1,25 +1,25 @@
-import { ACTION_TYPE, InitialState } from "../types";
+import { ACTION_TYPE, InitialState } from '../types';
 
 const initialState: InitialState = {
-  notes: "",
-  rate: "",
+  notes: '',
+  rate: '',
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
   switch (action.type) {
-    case "set_notes": {
+    case 'set_notes': {
       return {
         ...state,
         notes: action.data.notes,
       };
     }
-    case "set_rate": {
+    case 'set_rate': {
       return {
         ...state,
         rate: action.data.rate,
       };
     }
-    case "reset": {
+    case 'reset': {
       return {
         ...initialState,
       };

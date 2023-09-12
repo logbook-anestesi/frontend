@@ -5,11 +5,11 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { OperationCategory } from "../../../../hooks/useGetCasesForm/types";
-import CardSubCategory from "./CardSubCategory";
-import EmptyData from "./EmptyData";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { OperationCategory } from '../../../../hooks/useGetCasesForm/types';
+import CardSubCategory from './CardSubCategory';
+import EmptyData from './EmptyData';
 
 export interface SubCategory {
   name: string;
@@ -34,7 +34,7 @@ const ModalSubCategory = ({
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <ModalHeader pl={2} py={4} pr={7}>
-          Pilih subkategori dari operasi{" "}
+          Pilih subkategori dari operasi{' '}
           <Text color={colors.primaryPurple} as="b">
             {operationName}
           </Text>

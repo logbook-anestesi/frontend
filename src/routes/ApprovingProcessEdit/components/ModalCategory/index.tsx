@@ -5,10 +5,10 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import CardCategory from "./CardCategory";
-import { Dispatch, SetStateAction } from "react";
-import { OperationType } from "../../../../hooks/useGetCasesForm/types";
+} from '@chakra-ui/react';
+import CardCategory from './CardCategory';
+import { Dispatch, SetStateAction } from 'react';
+import { OperationType } from '../../../../hooks/useGetCasesForm/types';
 
 export interface Category {
   name: string;

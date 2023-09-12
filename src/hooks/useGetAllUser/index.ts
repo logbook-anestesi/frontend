@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../../networks/apiClient";
+import { useEffect, useState } from 'react';
+import axiosClient from '../../networks/apiClient';
 
 const useGetAllUser = () => {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState('idle');
   const [listUser, setListUser] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setStatus("loading");
-      const responses = await axiosClient.get("/users/");
+      setStatus('loading');
+      const responses = await axiosClient.get('/users/');
       const data = await responses.data;
       setListUser(data);
-      setStatus("finish");
+      setStatus('finish');
     };
 
     fetchData();

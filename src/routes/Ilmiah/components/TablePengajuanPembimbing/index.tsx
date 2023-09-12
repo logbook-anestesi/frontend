@@ -1,7 +1,7 @@
-import { Flex, Text } from "@chakra-ui/react";
-import useGetPengajuanPembimbing from "../../hooks/useGetPengajuanPembimbing";
-import TableData from "./TableData";
-import LoaderCircle from "../../../../components/LoaderCircle";
+import { Flex, Text } from '@chakra-ui/react';
+import useGetPengajuanPembimbing from '../../hooks/useGetPengajuanPembimbing';
+import TableData from './TableData';
+import LoaderCircle from '../../../../components/LoaderCircle';
 
 interface Props {
   onOpenModal: () => void;

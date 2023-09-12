@@ -1,7 +1,7 @@
-import { Button, Image, Text } from "@chakra-ui/react";
-import fileIcon from "../../assets/fileIcon.png";
-import { colors } from "../../../../constants/colors";
-import { useNavigate } from "react-router-dom";
+import { Button, Image, Text } from '@chakra-ui/react';
+import fileIcon from '../../assets/fileIcon.png';
+import { colors } from '../../../../constants/colors';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ const ButtonFile = ({ title, caseId }: Props) => {
       backgroundColor="transparent"
       h={8}
       onClick={() =>
-        navigate("/cases/details", {
+        navigate('/cases/details', {
           state: { caseId: caseId },
         })
       }

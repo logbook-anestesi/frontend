@@ -1,10 +1,10 @@
-import { Divider, Flex, Image, Text } from "@chakra-ui/react";
-import profileIcon from "../../assets/profileIcon.png";
-import { colors } from "../../../../constants/colors";
-import ButtonFile from "../ButtonFile";
-import { ReviewItem } from "../../hooks/useGetAllApprovals/types";
-import { useNavigate } from "react-router-dom";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
+import { Divider, Flex, Image, Text } from '@chakra-ui/react';
+import profileIcon from '../../assets/profileIcon.png';
+import { colors } from '../../../../constants/colors';
+import ButtonFile from '../ButtonFile';
+import { ReviewItem } from '../../hooks/useGetAllApprovals/types';
+import { useNavigate } from 'react-router-dom';
+import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 interface Props {
   scientificData: ReviewItem;
@@ -16,7 +16,6 @@ interface Props {
 
 const CardApproval = ({
   scientificData,
-  onCloseModal,
   onOpenModal,
   setSelectedIlmiahId,
   setStatusApprove,
@@ -24,13 +23,13 @@ const CardApproval = ({
   const navigate = useNavigate();
 
   const handleClickToDetail = () => {
-    navigate("/cases/details", {
+    navigate('/cases/details', {
       state: { caseId: scientificData?.id },
     });
   };
 
   const handleClickProfile = () => {
-    navigate("/profile/other-user", {
+    navigate('/profile/other-user', {
       state: { userId: scientificData?.userId },
     });
   };
@@ -75,7 +74,7 @@ const CardApproval = ({
           borderRadius={8}
           padding={1.5}
           onClick={() => {
-            setStatusApprove("APPROVED");
+            setStatusApprove('APPROVED');
             onOpenModal();
           }}
         >
@@ -87,7 +86,7 @@ const CardApproval = ({
           borderRadius={8}
           padding={1.5}
           onClick={() => {
-            setStatusApprove("REJECTED");
+            setStatusApprove('REJECTED');
             onOpenModal();
           }}
         >

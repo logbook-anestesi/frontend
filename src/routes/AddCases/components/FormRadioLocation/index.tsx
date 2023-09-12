@@ -1,16 +1,16 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import { RADIO_LOCATION } from "../../constants";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import { RADIO_LOCATION } from '../../constants';
 
 const FormRadioLocation = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_location",
+      type: 'set_location',
       data: {
         location: value,
       },
@@ -28,8 +28,8 @@ const FormRadioLocation = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

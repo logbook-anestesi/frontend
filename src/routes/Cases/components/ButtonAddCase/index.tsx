@@ -1,8 +1,8 @@
-import { Button, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useNavigate } from "react-router-dom";
-import { CASE_LIST } from "../../../../constants/caseList";
-import { useMemo } from "react";
+import { Button, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useNavigate } from 'react-router-dom';
+import { CASE_LIST } from '../../../../constants/caseList';
+import { useMemo } from 'react';
 
 interface Props {
   caseName: string;
@@ -12,7 +12,7 @@ const ButtonAddCase = ({ caseName }: Props) => {
   const navigate = useNavigate();
 
   const notSelectYet = useMemo(() => {
-    return caseName === "Select Type Case";
+    return caseName === 'Select Type Case';
   }, [caseName]);
 
   const handleOnClick = () => {
@@ -20,35 +20,35 @@ const ButtonAddCase = ({ caseName }: Props) => {
 
     switch (caseName) {
       case CASE_LIST[0].title: {
-        navigate("/cases/add/ok");
+        navigate('/cases/add/ok');
         return;
       }
       case CASE_LIST[1].title: {
-        navigate("/cases/add/pacu");
+        navigate('/cases/add/pacu');
         return;
       }
       case CASE_LIST[2].title: {
-        navigate("/cases/add/nora");
+        navigate('/cases/add/nora');
         return;
       }
       case CASE_LIST[3].title: {
-        navigate("/cases/add/icu");
+        navigate('/cases/add/icu');
         return;
       }
       case CASE_LIST[4].title: {
-        navigate("/cases/add/resus");
+        navigate('/cases/add/resus');
         return;
       }
       case CASE_LIST[5].title: {
-        navigate("/cases/add/procedure-consultation");
+        navigate('/cases/add/procedure-consultation');
         return;
       }
       case CASE_LIST[6].title: {
-        navigate("/cases/add/poli-perioperative");
+        navigate('/cases/add/poli-perioperative');
         return;
       }
       case CASE_LIST[7].title: {
-        navigate("/cases/add/pain-service");
+        navigate('/cases/add/pain-service');
         return;
       }
     }

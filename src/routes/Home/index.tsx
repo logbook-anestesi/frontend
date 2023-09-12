@@ -1,12 +1,12 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
-import HeaderHome from "./components/HeaderHome";
-import Profile from "./components/Profile";
-import doctorIcon from "../../assets/doctor.png";
-import ButtonTambah from "../../components/ButtonTambah";
-import useGetProfile from "../../hooks/useGetProfile";
-import ModalSelectCases from "./components/ModalSelectCases";
-import LevelCardContainer from "./components/LevelCardContainer";
-import ReportCardContainer from "./components/ReportCardContainer";
+import { Flex, useDisclosure } from '@chakra-ui/react';
+import HeaderHome from './components/HeaderHome';
+import Profile from './components/Profile';
+import doctorIcon from '../../assets/doctor.png';
+import ButtonTambah from '../../components/ButtonTambah';
+import useGetProfile from '../../hooks/useGetProfile';
+import ModalSelectCases from './components/ModalSelectCases';
+import LevelCardContainer from './components/LevelCardContainer';
+import ReportCardContainer from './components/ReportCardContainer';
 // import InfoBoxContainer from "./components/InfoBoxContainer";
 
 const Home = () => {
@@ -18,8 +18,8 @@ const Home = () => {
       <HeaderHome />
       <Profile
         image={profile?.imageUrl || doctorIcon}
-        name={profile?.name || "-"}
-        term={profile?.joinTerm || "-"}
+        name={profile?.name || '-'}
+        term={profile?.joinTerm || '-'}
       />
 
       {/* <InfoBoxContainer /> */}

@@ -8,12 +8,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import useAddProcedureType from "../../hooks/useAddProcedureType";
-import useGetCasesForm from "../../../../hooks/useGetCasesForm";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import useAddProcedureType from '../../hooks/useAddProcedureType';
+import useGetCasesForm from '../../../../hooks/useGetCasesForm';
 
 interface Props {
   isOpen: boolean;
@@ -23,14 +23,14 @@ interface Props {
 const ModalAddOtherTypeProcedure = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createProcedureType, loading } = useAddProcedureType();
-  const [procedureType, setProcedureType] = useState("");
-  const {mutate} = useGetCasesForm();
+  const [procedureType, setProcedureType] = useState('');
+  const { mutate } = useGetCasesForm();
 
   const handleCreateProcedureType = async () => {
     const response = await createProcedureType({ name: procedureType });
 
     casesDispatch({
-      type: "set_procedure_type",
+      type: 'set_procedure_type',
       data: {
         procedureType: procedureType,
         procedureId: response?.procedureTypeId,
@@ -38,13 +38,13 @@ const ModalAddOtherTypeProcedure = ({ isOpen, closeModal }: Props) => {
     });
 
     casesDispatch({
-      type: "set_procedure_type_ids",
+      type: 'set_procedure_type_ids',
       data: {
         procedureId: response?.procedureTypeId,
       },
     });
 
-    mutate()
+    mutate();
     closeModal();
   };
 

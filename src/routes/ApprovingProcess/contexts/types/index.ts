@@ -4,21 +4,21 @@ interface InitialState {
 }
 
 interface SetRates {
-  type: "set_rate";
+  type: 'set_rate';
   data: {
     rate: string;
   };
 }
 
 interface SetNotes {
-  type: "set_notes";
+  type: 'set_notes';
   data: {
     notes: string;
   };
 }
 
 interface ResetState {
-  type: "reset";
+  type: 'reset';
 }
 
 type ACTION_TYPE = SetRates | SetNotes | ResetState;

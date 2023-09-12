@@ -1,12 +1,12 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useNavigate } from "react-router-dom";
+import { Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useNavigate } from 'react-router-dom';
 
 const TableTitle = () => {
   const navigate = useNavigate();
 
   const navigateToListStase = () => {
-    navigate("/stase/all");
+    navigate('/stase/all');
   };
   return (
     <Flex direction="column" gap="10px">

@@ -1,15 +1,15 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { NoraProcedureType } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useEffect, useState } from "react";
-import ModalNoraProcedureType from "../ModalNoraProcedureType";
-import Ticker from "../../../../components/Ticker";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { NoraProcedureType } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useEffect, useState } from 'react';
+import ModalNoraProcedureType from '../ModalNoraProcedureType';
+import Ticker from '../../../../components/Ticker';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
-import { Nora } from "../../../Cases/hooks/useGetCases/types";
+} from '../../contexts';
+import { Nora } from '../../../Cases/hooks/useGetCases/types';
 
 interface Props {
   noraProcedureList?: NoraProcedureType[];
@@ -39,7 +39,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
     const normalizeIds = initialValue?.map((nora) => nora.noraProcedureTypeId);
 
     approveEditDispatch({
-      type: "set_nora_procedure_type_all",
+      type: 'set_nora_procedure_type_all',
       data: {
         nora: normalizeNora || [],
         noraIds: normalizeIds || [],
@@ -50,13 +50,13 @@ const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
   const handleRemoveAsaTag = useCallback(
     (noraId: string) => {
       approveEditDispatch({
-        type: "remove_nora_procedure",
+        type: 'remove_nora_procedure',
         data: {
           id: noraId,
         },
       });
     },
-    [approveEditDispatch]
+    [approveEditDispatch],
   );
 
   return (
@@ -75,7 +75,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{noraProcedure?.name || "Masukkan nama prosedur ..."}</Text>
+        <Text>{noraProcedure?.name || 'Masukkan nama prosedur ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -85,8 +85,8 @@ const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

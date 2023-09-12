@@ -1,14 +1,14 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { useCallback, useState } from "react";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { useCallback, useState } from 'react';
 import {
   useAddCasesContext,
   useAddCasesDispatch,
-} from "../../../AddCases/contexts";
-import Ticker from "../../../../components/Ticker";
-import { PainServiceProcedure } from "../../../../hooks/useGetCasesForm/types";
-import ModalProcedurePainService from "../ModalProcedurePainService";
+} from '../../../AddCases/contexts';
+import Ticker from '../../../../components/Ticker';
+import { PainServiceProcedure } from '../../../../hooks/useGetCasesForm/types';
+import ModalProcedurePainService from '../ModalProcedurePainService';
 
 interface Props {
   painServiceProcedure: PainServiceProcedure[];
@@ -25,13 +25,13 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
   const handleRemoveProcedurePainService = useCallback(
     (procedurePainId: string) => {
       casesDispatch({
-        type: "remove_procedure_pain_service",
+        type: 'remove_procedure_pain_service',
         data: {
           id: procedurePainId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -51,7 +51,7 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
         mb={1}
       >
         <Text>
-          {procedurePainService?.name || "Masukkan Procedure Pain Service ..."}
+          {procedurePainService?.name || 'Masukkan Procedure Pain Service ...'}
         </Text>
 
         <ChevronRightIcon boxSize={7} />
@@ -62,8 +62,8 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

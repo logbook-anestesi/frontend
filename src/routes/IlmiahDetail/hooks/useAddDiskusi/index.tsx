@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
 
 interface PayloadType {
   scientificGraduationId: string;
@@ -17,8 +17,8 @@ const useAddDiskusi = () => {
 
     try {
       const response = await axiosClient.post(
-        "/scientific/discussion-history",
-        payload
+        '/scientific/discussion-history',
+        payload,
       );
       const data = response.data;
 
@@ -31,13 +31,13 @@ const useAddDiskusi = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Menambahkan Diskusi",
+          message: 'Berhasil Menambahkan Diskusi',
           anesthesiaId: data.data.id,
         };
       }
     } catch (e) {
       setLoading(false);
-      console.log("[Error Menambahkan Diskusi]", e);
+      console.log('[Error Menambahkan Diskusi]', e);
     }
   }, []);
 

@@ -1,12 +1,12 @@
-import { useMemo } from "react";
-import DataTable, { TableColumn } from "react-data-table-component";
-import { colors } from "../../../../constants/colors";
-import { Flex } from "@chakra-ui/react";
-import { Diskusi } from "../../hooks/useGetDetailKelulusan/types";
+import { useMemo } from 'react';
+import DataTable, { TableColumn } from 'react-data-table-component';
+import { colors } from '../../../../constants/colors';
+import { Flex } from '@chakra-ui/react';
+import { Diskusi } from '../../hooks/useGetDetailKelulusan/types';
 import {
   convertDateForIlmiah,
   convertDateForNotification,
-} from "../../../../helpers";
+} from '../../../../helpers';
 
 interface Props {
   riwayatDiskusi: Diskusi[];
@@ -24,41 +24,41 @@ interface DataRow {
 const TableData = ({ riwayatDiskusi }: Props) => {
   const statusBgColor = (value: string) => {
     switch (value) {
-      case "PENDING": {
+      case 'PENDING': {
         return colors.primaryYellow;
       }
-      case "REJECTED": {
+      case 'REJECTED': {
         return colors.primaryRed;
       }
-      case "APPROVED": {
+      case 'APPROVED': {
         return colors.primaryGreen;
       }
     }
   };
 
   const handleRedirectDocument = (url: string) => {
-    window.open(url, "_blank");
+    window.open(url, '_blank');
   };
 
   const columns: TableColumn<DataRow>[] = [
     {
-      name: "Tanggal",
+      name: 'Tanggal',
       selector: (row) => row.tanggal,
       sortable: true,
-      width: "20%",
+      width: '20%',
       cell: (row) => <span>{convertDateForNotification(row?.tanggal)}</span>,
     },
     {
-      name: "Judul",
+      name: 'Judul',
       selector: (row) => row.title,
       sortable: true,
       wrap: true,
-      width: "20%",
+      width: '20%',
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            padding: "10px",
+            whiteSpace: 'pre-wrap',
+            padding: '10px',
           }}
         >
           {row.title}
@@ -66,11 +66,11 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       ),
     },
     {
-      name: "Deskripsi Diskusi",
+      name: 'Deskripsi Diskusi',
       selector: (row) => row.deskripsi,
       cell: (row) => (
         <span
-          style={{ color: "blue" }}
+          style={{ color: 'blue' }}
           onClick={() => handleRedirectDocument(row.deskripsi)}
         >
           {row.deskripsi}
@@ -78,34 +78,34 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       ),
     },
     {
-      name: "Pembimbing",
+      name: 'Pembimbing',
       selector: (row) => row.approvals,
       sortable: true,
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            paddingTop: "20px",
-            paddingBottom: "20px",
+            whiteSpace: 'pre-wrap',
+            paddingTop: '20px',
+            paddingBottom: '20px',
           }}
         >
           {row.approvals}
         </span>
       ),
-      width: "30%",
+      width: '30%',
     },
     {
-      name: "Riwayat",
+      name: 'Riwayat',
       selector: (row) => row.history,
       sortable: true,
-      width: "20%",
+      width: '20%',
       wrap: true,
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            paddingTop: "20px",
-            paddingBottom: "20px",
+            whiteSpace: 'pre-wrap',
+            paddingTop: '20px',
+            paddingBottom: '20px',
           }}
         >
           {row.history}
@@ -113,10 +113,10 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       ),
     },
     {
-      name: "Status",
+      name: 'Status',
       selector: (row) => row.status,
       sortable: true,
-      width: "30%",
+      width: '30%',
       cell: (row) => (
         <Flex
           bgColor={statusBgColor(row.status)}
@@ -143,9 +143,9 @@ const TableData = ({ riwayatDiskusi }: Props) => {
         approvals: diskusi.approvalUserName,
         history: diskusi.scientificLogs
           .map(
-            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`
+            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
           )
-          .join("\n"),
+          .join('\n'),
         status: diskusi.status,
       };
     });

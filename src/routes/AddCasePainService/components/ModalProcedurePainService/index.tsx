@@ -9,19 +9,22 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
 
-import { useAddCasesContext } from "../../../AddCases/contexts";
-import CardTypePainService from "./CardProcedurePainService";
-import { PainServiceProcedure, PainServiceType } from "../../../../hooks/useGetCasesForm/types";
+import { useAddCasesContext } from '../../../AddCases/contexts';
+import CardTypePainService from './CardProcedurePainService';
+import {
+  PainServiceProcedure,
+  PainServiceType,
+} from '../../../../hooks/useGetCasesForm/types';
 
 interface Props {
   isOpen: boolean;
@@ -46,8 +49,8 @@ const ModalProcedurePainService = ({
     const filtered = procedurePainService.filter(
       (procedurePainService) =>
         !selectedProcedurePainService.some(
-          (item) => item.title === procedurePainService?.name
-        )
+          (item) => item.title === procedurePainService?.name,
+        ),
     );
 
     setFilteredProcedurePain(filtered);
@@ -56,7 +59,7 @@ const ModalProcedurePainService = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = procedurePainService.filter((procedurePainService) =>
-      procedurePainService.name.toLowerCase().includes(loweredFilter)
+      procedurePainService.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredProcedurePain(filtered);

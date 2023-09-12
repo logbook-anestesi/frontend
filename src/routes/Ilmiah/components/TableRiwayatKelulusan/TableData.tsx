@@ -1,10 +1,10 @@
-import DataTable, { TableColumn } from "react-data-table-component";
-import { RiwayatKelulusan } from "../../hooks/useGetRiwayatKelulusan/types";
-import { useMemo } from "react";
-import { convertDateForIlmiah } from "../../../../helpers";
-import { colors } from "../../../../constants/colors";
-import { Flex } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import DataTable, { TableColumn } from 'react-data-table-component';
+import { RiwayatKelulusan } from '../../hooks/useGetRiwayatKelulusan/types';
+import { useMemo } from 'react';
+import { convertDateForIlmiah } from '../../../../helpers';
+import { colors } from '../../../../constants/colors';
+import { Flex } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   riwayatKelulusan: RiwayatKelulusan[];
@@ -25,24 +25,24 @@ const TableData = ({ riwayatKelulusan }: Props) => {
 
   const statusBgColor = (value: string) => {
     switch (value) {
-      case "PENDING": {
+      case 'PENDING': {
         return colors.primaryYellow;
       }
-      case "REJECTED": {
+      case 'REJECTED': {
         return colors.primaryRed;
       }
-      case "APPROVED": {
+      case 'APPROVED': {
         return colors.primaryGreen;
       }
     }
   };
 
   const handleRedirectDocument = (url: string) => {
-    window.open(url, "_blank");
+    window.open(url, '_blank');
   };
 
   const handleRedirectDetail = (id: string) => {
-    navigate("/ilmiah/details", {
+    navigate('/ilmiah/details', {
       state: {
         ilmiahId: id,
       },
@@ -51,16 +51,16 @@ const TableData = ({ riwayatKelulusan }: Props) => {
 
   const columns: TableColumn<DataRow>[] = [
     {
-      name: "ID",
+      name: 'ID',
       selector: (row) => row.id,
       sortable: true,
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            color: "blue",
+            whiteSpace: 'pre-wrap',
+            paddingTop: '10px',
+            paddingBottom: '10px',
+            color: 'blue',
           }}
           onClick={() => handleRedirectDetail(row.id)}
         >
@@ -69,22 +69,22 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       ),
     },
     {
-      name: "Tipe Ilmiah",
+      name: 'Tipe Ilmiah',
       selector: (row) => row.type,
       sortable: true,
-      width: "20%",
+      width: '20%',
     },
     {
-      name: "Judul",
+      name: 'Judul',
       selector: (row) => row.title,
       sortable: true,
       wrap: true,
-      width: "20%",
+      width: '20%',
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            padding: "10px",
+            whiteSpace: 'pre-wrap',
+            padding: '10px',
           }}
         >
           {row.title}
@@ -92,11 +92,11 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       ),
     },
     {
-      name: "Link Dokumen",
+      name: 'Link Dokumen',
       selector: (row) => row.linkDocument,
       cell: (row) => (
         <span
-          style={{ color: "blue" }}
+          style={{ color: 'blue' }}
           onClick={() => handleRedirectDocument(row.linkDocument)}
         >
           {row.linkDocument}
@@ -104,34 +104,34 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       ),
     },
     {
-      name: "Riwayat",
+      name: 'Riwayat',
       selector: (row) => row.history,
       sortable: true,
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            paddingTop: "20px",
-            paddingBottom: "20px",
+            whiteSpace: 'pre-wrap',
+            paddingTop: '20px',
+            paddingBottom: '20px',
           }}
         >
           {row.history}
         </span>
       ),
-      width: "30%",
+      width: '30%',
     },
     {
-      name: "Daftar Pembimbing",
+      name: 'Daftar Pembimbing',
       selector: (row) => row.approvals,
       sortable: true,
-      width: "20%",
+      width: '20%',
       wrap: true,
     },
     {
-      name: "Status",
+      name: 'Status',
       selector: (row) => row.status,
       sortable: true,
-      width: "30%",
+      width: '30%',
       cell: (row) => (
         <Flex
           bgColor={statusBgColor(row.status)}
@@ -158,10 +158,10 @@ const TableData = ({ riwayatKelulusan }: Props) => {
         linkDocument: singleRiwayat.scientificDocumentLink,
         history: singleRiwayat.scientificLogs
           .map(
-            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`
+            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
           )
-          .join("\n"),
-        approvals: singleRiwayat.approvals.map((item) => item.name).join("\n"),
+          .join('\n'),
+        approvals: singleRiwayat.approvals.map((item) => item.name).join('\n'),
         status: singleRiwayat?.scientificGraduationStatus,
       };
     });

@@ -1,8 +1,8 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
-import { headers } from "./styles";
-import { colors } from "../../constants/colors";
-import { useNavigate } from "react-router-dom";
+import { Flex, Text } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { headers } from './styles';
+import { colors } from '../../constants/colors';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderInterface {
   title: string;

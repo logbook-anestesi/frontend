@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
 
 const useReadNotifications = () => {
   const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ const useReadNotifications = () => {
 
     try {
       const response = await axiosClient.post(
-        `/notification/read/${notificationId}`
+        `/notification/read/${notificationId}`,
       );
       const data = response.data;
 
@@ -22,12 +22,12 @@ const useReadNotifications = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Success Read Notification",
+          message: 'Success Read Notification',
         };
       }
     } catch (e: any) {
       setLoading(false);
-      console.log("[Error Approve Case]", e);
+      console.log('[Error Approve Case]', e);
       return { success: false, message: e?.response?.data?.message };
     }
   }, []);

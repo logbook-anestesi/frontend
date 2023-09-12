@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Tag } from "../../../../hooks/useGetCasesForm/types";
-import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Tag } from '../../../../hooks/useGetCasesForm/types';
+import { Dispatch, SetStateAction } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
 
 interface Props {
   tag: Tag;
@@ -14,7 +14,7 @@ const CardASATags = ({ tag, closeModal, setTag }: Props) => {
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_asa_tags",
+      type: 'set_asa_tags',
       data: {
         id: tag.id,
         tag: tag.name,
@@ -22,7 +22,7 @@ const CardASATags = ({ tag, closeModal, setTag }: Props) => {
     });
 
     casesDispatch({
-      type: "set_asa_tags_type_ids",
+      type: 'set_asa_tags_type_ids',
       data: {
         tagId: tag.id,
       },

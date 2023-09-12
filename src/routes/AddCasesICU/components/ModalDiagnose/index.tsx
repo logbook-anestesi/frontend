@@ -9,18 +9,18 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { Diagnose } from "../../../../hooks/useGetCasesForm/types";
-import CardDiagnose from "./CardDiagnose";
-import { useAddCasesContext } from "../../../AddCases/contexts";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
+import { Diagnose } from '../../../../hooks/useGetCasesForm/types';
+import CardDiagnose from './CardDiagnose';
+import { useAddCasesContext } from '../../../AddCases/contexts';
 
 interface Props {
   isOpen: boolean;
@@ -41,7 +41,7 @@ const ModalDignose = ({
   useEffect(() => {
     const filtered = diagnoseList.filter(
       (diagnose) =>
-        !selectedDiagnose.some((item) => item.title === diagnose?.name)
+        !selectedDiagnose.some((item) => item.title === diagnose?.name),
     );
 
     setFilteredDiagnose(filtered);
@@ -50,7 +50,7 @@ const ModalDignose = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = diagnoseList.filter((diagnose) =>
-      diagnose.name.toLowerCase().includes(loweredFilter)
+      diagnose.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredDiagnose(filtered);

@@ -10,14 +10,14 @@ import {
   Text,
   VStack,
   useToast,
-} from "@chakra-ui/react";
-import { DetailRiwayatKelulusan } from "../../hooks/useGetDetailKelulusan/types";
-import { useState } from "react";
-import FormJudul from "../FormJudul";
-import FormDeskripsi from "../FormDeskripsi";
-import FormDate from "../FormDate";
-import { colors } from "../../../../constants/colors";
-import useAddDiskusi from "../../hooks/useAddDiskusi";
+} from '@chakra-ui/react';
+import { DetailRiwayatKelulusan } from '../../hooks/useGetDetailKelulusan/types';
+import { useState } from 'react';
+import FormJudul from '../FormJudul';
+import FormDeskripsi from '../FormDeskripsi';
+import FormDate from '../FormDate';
+import { colors } from '../../../../constants/colors';
+import useAddDiskusi from '../../hooks/useAddDiskusi';
 
 interface Props {
   isOpen: boolean;
@@ -34,8 +34,8 @@ const ModalAddRiwayatDiskusi = ({
 
   const { createRiwayatDiskusi, loading } = useAddDiskusi();
 
-  const [judul, setJudul] = useState("");
-  const [deskripsi, setDeskripsi] = useState("");
+  const [judul, setJudul] = useState('');
+  const [deskripsi, setDeskripsi] = useState('');
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
@@ -52,16 +52,16 @@ const ModalAddRiwayatDiskusi = ({
       approvalUserIds: selectedOptions,
       description: deskripsi,
       discussionDate: selectedDate.toJSON(),
-      scientificGraduationId: detailIlmiah?.id || "",
+      scientificGraduationId: detailIlmiah?.id || '',
       title: judul,
     });
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Diskusi berhasil dibuat",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Diskusi berhasil dibuat',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -73,10 +73,10 @@ const ModalAddRiwayatDiskusi = ({
 
     if (!response?.success) {
       toast({
-        title: "Failed membuat diskusi",
+        title: 'Failed membuat diskusi',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });

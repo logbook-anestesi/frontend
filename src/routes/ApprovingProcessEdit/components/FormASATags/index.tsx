@@ -1,16 +1,16 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Tag } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useEffect, useState } from "react";
-import ModalASATags from "../ModalASATags";
-import Ticker from "../../../../components/Ticker";
-import ModalAddOtherASAtags from "../ModalAddOtherASATags";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Tag } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useEffect, useState } from 'react';
+import ModalASATags from '../ModalASATags';
+import Ticker from '../../../../components/Ticker';
+import ModalAddOtherASAtags from '../ModalAddOtherASATags';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
-import { AsaTag } from "../../../Cases/hooks/useGetCases/types";
+} from '../../contexts';
+import { AsaTag } from '../../../Cases/hooks/useGetCases/types';
 
 interface Props {
   tagList?: Tag[];
@@ -40,7 +40,7 @@ const FormASATags = ({ tagList, initialValue }: Props) => {
     const normalizeIds = initialValue?.map((tag) => tag.tagId);
 
     approveEditDispatch({
-      type: "set_asa_tags_all",
+      type: 'set_asa_tags_all',
       data: {
         asaTags: normalizeTags || [],
         tagIds: normalizeIds || [],
@@ -51,13 +51,13 @@ const FormASATags = ({ tagList, initialValue }: Props) => {
   const handleRemoveAsaTag = useCallback(
     (asaTagId: string) => {
       approveEditDispatch({
-        type: "remove_asa_tags",
+        type: 'remove_asa_tags',
         data: {
           id: asaTagId,
         },
       });
     },
-    [approveEditDispatch]
+    [approveEditDispatch],
   );
 
   return (
@@ -76,7 +76,7 @@ const FormASATags = ({ tagList, initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{tag?.name || "Masukkan tags ..."}</Text>
+        <Text>{tag?.name || 'Masukkan tags ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -86,8 +86,8 @@ const FormASATags = ({ tagList, initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

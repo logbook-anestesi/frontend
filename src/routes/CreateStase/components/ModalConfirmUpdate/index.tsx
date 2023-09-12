@@ -5,9 +5,9 @@ import {
   ModalContent,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { getCurrentMonth } from "../../../../helpers";
-import { colors } from "../../../../constants/colors";
+} from '@chakra-ui/react';
+import { getCurrentMonth } from '../../../../helpers';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;
@@ -28,7 +28,7 @@ const ModalConfirmUpdate = ({
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" gap={5} textAlign="center">
           <Text px={2} as="b">
-            Anda akan mengambil stase {selectedStase} pada bulan{" "}
+            Anda akan mengambil stase {selectedStase} pada bulan{' '}
             {getCurrentMonth()}
           </Text>
 

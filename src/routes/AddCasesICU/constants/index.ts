@@ -1,22 +1,22 @@
 export const RADIO_LOCATION = [
   {
-    title: "ICU Dewasa",
-    value: "ICU Dewasa",
+    title: 'ICU Dewasa',
+    value: 'ICU Dewasa',
   },
   {
-    title: "ICU IGD",
-    value: "ICU IGD",
+    title: 'ICU IGD',
+    value: 'ICU IGD',
   },
   {
-    title: "ICU RS Lain",
-    value: "ICU RS Lain",
+    title: 'ICU RS Lain',
+    value: 'ICU RS Lain',
   },
   {
-    title: "HCU",
-    value: "HCU",
+    title: 'HCU',
+    value: 'HCU',
   },
   {
-    title: "Lainnya",
-    value: "Lainnya",
+    title: 'Lainnya',
+    value: 'Lainnya',
   },
 ];

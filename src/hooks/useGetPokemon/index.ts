@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../../networks/apiClient";
+import { useEffect, useState } from 'react';
+import axiosClient from '../../networks/apiClient';
 
 /**
  * This is for REST API custom hooks
@@ -9,16 +9,16 @@ import axiosClient from "../../networks/apiClient";
  */
 
 const useGetPokemon = (url: string) => {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState('idle');
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setStatus("loading");
+      setStatus('loading');
       const response = await axiosClient.get(url);
       const data = await response.data;
       setData(data);
-      setStatus("finish");
+      setStatus('finish');
     };
 
     fetchData();

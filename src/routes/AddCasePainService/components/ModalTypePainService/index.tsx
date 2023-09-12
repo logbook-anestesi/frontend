@@ -9,18 +9,18 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { PainServiceType } from "../../../../hooks/useGetCasesForm/types";
-import { useAddCasesContext } from "../../../AddCases/contexts";
-import CardTypePainService from "./CardTypePainService";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
+import { PainServiceType } from '../../../../hooks/useGetCasesForm/types';
+import { useAddCasesContext } from '../../../AddCases/contexts';
+import CardTypePainService from './CardTypePainService';
 
 interface Props {
   isOpen: boolean;
@@ -42,8 +42,8 @@ const ModalTypePainService = ({
     const filtered = painServiceTypes.filter(
       (typePainService) =>
         !selectedTypePainService.some(
-          (item) => item.title === typePainService?.name
-        )
+          (item) => item.title === typePainService?.name,
+        ),
     );
 
     setFilteredTypePain(filtered);
@@ -52,7 +52,7 @@ const ModalTypePainService = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = painServiceTypes.filter((typePainService) =>
-      typePainService.name.toLowerCase().includes(loweredFilter)
+      typePainService.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredTypePain(filtered);

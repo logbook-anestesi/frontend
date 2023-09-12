@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
-import { PayloadUploadPhoto } from "./types";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import { PayloadUploadPhoto } from './types';
+import axiosClient from '../../../../networks/apiClient';
 
 const useUploadProfilePhoto = () => {
   const [loading, setLoading] = useState(false);
@@ -10,8 +10,8 @@ const useUploadProfilePhoto = () => {
 
     try {
       const response = await axiosClient.post(
-        "/auth/update-profile-photo",
-        payload
+        '/auth/update-profile-photo',
+        payload,
       );
       const data = response.data;
 
@@ -24,12 +24,12 @@ const useUploadProfilePhoto = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Succes Upload Photo",
+          message: 'Succes Upload Photo',
         };
       }
     } catch (e: any) {
       setLoading(false);
-      console.log("[Error Upload Photo]", e);
+      console.log('[Error Upload Photo]', e);
       return { success: false, message: e?.response?.data?.message };
     }
   }, []);

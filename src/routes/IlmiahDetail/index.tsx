@@ -1,17 +1,17 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import { useLocation } from "react-router-dom";
-import useGetDetailKelulusan from "./hooks/useGetDetailKelulusan";
-import DetailIlmiah from "./components/DetailIlmiah";
-import ModalAddRiwayatDiskusi from "./components/ModalAddRiwayatDiskusi";
-import RiwayatDiskusi from "./components/RiwayatDiskusi";
-import ModalRiwayat from "./components/ModalRiwayat";
+import { Flex, useDisclosure } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import { useLocation } from 'react-router-dom';
+import useGetDetailKelulusan from './hooks/useGetDetailKelulusan';
+import DetailIlmiah from './components/DetailIlmiah';
+import ModalAddRiwayatDiskusi from './components/ModalAddRiwayatDiskusi';
+import RiwayatDiskusi from './components/RiwayatDiskusi';
+import ModalRiwayat from './components/ModalRiwayat';
 
 const IlmiahDetail = () => {
   const location = useLocation();
   const state = location.state;
   const { detailRiwayatKelulusan } = useGetDetailKelulusan(
-    state?.ilmiahId || ""
+    state?.ilmiahId || '',
   );
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
@@ -22,7 +22,7 @@ const IlmiahDetail = () => {
 
   return (
     <Flex direction="column">
-      <Header title={detailRiwayatKelulusan?.scientificTitle || "-"} />
+      <Header title={detailRiwayatKelulusan?.scientificTitle || '-'} />
 
       <Flex padding="30px" direction="column" gap="16px">
         <DetailIlmiah

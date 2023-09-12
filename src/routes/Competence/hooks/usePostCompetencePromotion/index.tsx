@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
 
 const usePostCompetencePromotion = () => {
   const [loading, setLoading] = useState(false);
@@ -14,8 +14,8 @@ const usePostCompetencePromotion = () => {
 
       try {
         const response = await axiosClient.post(
-          "/competence/promotion",
-          payload
+          '/competence/promotion',
+          payload,
         );
         const data = response.data;
 
@@ -28,15 +28,15 @@ const usePostCompetencePromotion = () => {
         if (!data.error) {
           return {
             success: true,
-            message: "Berhasil Kirim Request Kenaikan Kompetensi",
+            message: 'Berhasil Kirim Request Kenaikan Kompetensi',
           };
         }
       } catch (e) {
         setLoading(false);
-        console.log("[Error Kirim Request Kenaikan Kompetensi]", e);
+        console.log('[Error Kirim Request Kenaikan Kompetensi]', e);
       }
     },
-    []
+    [],
   );
 
   return { postData, loading };

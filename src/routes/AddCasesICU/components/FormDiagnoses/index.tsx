@@ -1,14 +1,14 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Diagnose } from "../../../../hooks/useGetCasesForm/types";
-import ModalDignose from "../ModalDiagnose";
-import { useCallback, useState } from "react";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Diagnose } from '../../../../hooks/useGetCasesForm/types';
+import ModalDignose from '../ModalDiagnose';
+import { useCallback, useState } from 'react';
 import {
   useAddCasesContext,
   useAddCasesDispatch,
-} from "../../../AddCases/contexts";
-import Ticker from "../../../../components/Ticker";
+} from '../../../AddCases/contexts';
+import Ticker from '../../../../components/Ticker';
 // import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
@@ -25,13 +25,13 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
   const handleRemoveDiagnose = useCallback(
     (diagnoseId: string) => {
       casesDispatch({
-        type: "remove_diagnose",
+        type: 'remove_diagnose',
         data: {
           id: diagnoseId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -50,7 +50,7 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{diagnose?.name || "Masukkan nama Diagnose ..."}</Text>
+        <Text>{diagnose?.name || 'Masukkan nama Diagnose ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -60,8 +60,8 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

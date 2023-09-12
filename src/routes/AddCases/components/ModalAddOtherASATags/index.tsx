@@ -8,12 +8,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import useAddTags from "../../hooks/useAddTags";
-import useGetCasesForm from "../../../../hooks/useGetCasesForm";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import useAddTags from '../../hooks/useAddTags';
+import useGetCasesForm from '../../../../hooks/useGetCasesForm';
 
 interface Props {
   isOpen: boolean;
@@ -23,13 +23,13 @@ interface Props {
 const ModalAddOtherASAtags = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createTag, loading } = useAddTags();
-  const [tag, setTag] = useState("");
-  const {mutate} = useGetCasesForm();
+  const [tag, setTag] = useState('');
+  const { mutate } = useGetCasesForm();
 
   const handleCreateTag = async () => {
     const response = await createTag({ name: tag });
     casesDispatch({
-      type: "set_asa_tags",
+      type: 'set_asa_tags',
       data: {
         id: response?.tagId,
         tag: tag,
@@ -37,13 +37,13 @@ const ModalAddOtherASAtags = ({ isOpen, closeModal }: Props) => {
     });
 
     casesDispatch({
-      type: "set_asa_tags_type_ids",
+      type: 'set_asa_tags_type_ids',
       data: {
         tagId: response?.tagId,
       },
     });
 
-    mutate()
+    mutate();
     closeModal();
   };
 

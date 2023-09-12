@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import { ReviewItem } from "./types";
+import { useEffect, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import { ReviewItem } from './types';
 
 const useGetPendingReview = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useGetPendingReview = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      const response = await axiosClient.get("/cases/approval/");
+      const response = await axiosClient.get('/cases/approval/');
       const data = await response.data.data;
 
       setLoading(false);

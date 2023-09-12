@@ -1,4 +1,4 @@
-import { Search2Icon } from "@chakra-ui/icons";
+import { Search2Icon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -9,8 +9,8 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import CardName from "./CardName";
+} from '@chakra-ui/react';
+import CardName from './CardName';
 import {
   ChangeEvent,
   Dispatch,
@@ -18,10 +18,10 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react";
-import { Supervisor } from "../../hooks/useGetSupervisor/types";
-import useGetSupervisor from "../../hooks/useGetSupervisor";
-import { useAddCasesContext } from "../../contexts";
+} from 'react';
+import { Supervisor } from '../../hooks/useGetSupervisor/types';
+import useGetSupervisor from '../../hooks/useGetSupervisor';
+import { useAddCasesContext } from '../../contexts';
 
 interface Props {
   isOpen: boolean;
@@ -37,7 +37,7 @@ const ModalSupervisor = ({ isOpen, closeModal, setSupervisor }: Props) => {
   useEffect(() => {
     const filtered = supervisors.filter(
       (supervisor) =>
-        !supervisorList.some((item) => item.name === supervisor?.name)
+        !supervisorList.some((item) => item.name === supervisor?.name),
     );
 
     setFilteredASupervisor(filtered);
@@ -46,7 +46,7 @@ const ModalSupervisor = ({ isOpen, closeModal, setSupervisor }: Props) => {
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = supervisors.filter((supervisor) =>
-      supervisor.name.toLocaleLowerCase().includes(loweredFilter)
+      supervisor.name.toLocaleLowerCase().includes(loweredFilter),
     );
 
     setFilteredASupervisor(filtered);

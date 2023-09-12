@@ -1,12 +1,12 @@
-import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import profileIcon from "../../assets/profile.png";
-import { useCallback, useState } from "react";
-import { Supervisor } from "../../hooks/useGetSupervisor/types";
-import ModalSupervisor from "../ModalSupervisor";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
-import Ticker from "../../../../components/Ticker";
-import useGetProfile from "../../../../hooks/useGetProfile";
+import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import profileIcon from '../../assets/profile.png';
+import { useCallback, useState } from 'react';
+import { Supervisor } from '../../hooks/useGetSupervisor/types';
+import ModalSupervisor from '../ModalSupervisor';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
+import Ticker from '../../../../components/Ticker';
+import useGetProfile from '../../../../hooks/useGetProfile';
 
 const FormSupervised = () => {
   const casesDispatch = useAddCasesDispatch();
@@ -18,18 +18,18 @@ const FormSupervised = () => {
   const handleRemoveSupervisor = useCallback(
     (superVisorId: string) => {
       casesDispatch({
-        type: "remove_supervisor",
+        type: 'remove_supervisor',
         data: {
           id: superVisorId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
     <Flex direction="column" gap={1}>
-      {profile?.competenceName === "PEMBEKALAN" ? (
+      {profile?.competenceName === 'PEMBEKALAN' ? (
         <Text fontSize="sm" color={colors.darkGrey}>
           Supervised By
         </Text>
@@ -49,7 +49,7 @@ const FormSupervised = () => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{selectedSupervisor?.name || "Masukkan Supervisor"}</Text>
+        <Text>{selectedSupervisor?.name || 'Masukkan Supervisor'}</Text>
 
         <Image src={profileIcon} width={5} alt="" />
       </Flex>
@@ -59,8 +59,8 @@ const FormSupervised = () => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

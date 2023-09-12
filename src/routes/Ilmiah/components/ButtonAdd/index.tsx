@@ -1,5 +1,5 @@
-import { Button } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
+import { Button } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   handleOnClick: () => void;

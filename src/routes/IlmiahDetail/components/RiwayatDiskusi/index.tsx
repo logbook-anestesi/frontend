@@ -1,6 +1,6 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { Diskusi } from "../../hooks/useGetDetailKelulusan/types";
-import TableData from "./TableData";
+import { Flex, Text } from '@chakra-ui/react';
+import { Diskusi } from '../../hooks/useGetDetailKelulusan/types';
+import TableData from './TableData';
 
 interface Props {
   riwayatDiskusi: Diskusi[];

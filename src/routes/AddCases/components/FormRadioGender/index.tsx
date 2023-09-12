@@ -1,16 +1,16 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import { RADIO_GENDER } from "../../constants";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import { RADIO_GENDER } from '../../constants';
 
 const FormRadioGender = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_patient_gender",
+      type: 'set_patient_gender',
       data: {
         gender: value,
       },
@@ -28,8 +28,8 @@ const FormRadioGender = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

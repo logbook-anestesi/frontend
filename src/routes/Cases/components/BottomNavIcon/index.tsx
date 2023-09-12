@@ -1,5 +1,5 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
+import { Flex, Image, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   image: string;
@@ -13,7 +13,7 @@ const BottomNavIcon = ({ image, title, isActive }: Props) => {
       <Image width={7} height={7} src={image} />
       <Text
         fontSize="sm"
-        as={isActive ? "b" : "p"}
+        as={isActive ? 'b' : 'p'}
         color={isActive ? colors.primaryPurple : colors.darkGrey}
       >
         {title}

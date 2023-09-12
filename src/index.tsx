@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import MainRoutes from "./routes";
-import AuthProvider from "./contexts/AuthContext";
-import { AppContainer } from "./styles";
-import { ChakraProvider } from "@chakra-ui/react";
-import AddCasesProvider from "./routes/AddCases/contexts";
-import ApprovingProcessProvider from "./routes/ApprovingProcess/contexts";
-import ApprovalEditProvider from "./routes/ApprovingProcessEdit/contexts";
-import IlmiahProvider from "./routes/Ilmiah/contexts";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import MainRoutes from './routes';
+import AuthProvider from './contexts/AuthContext';
+import { AppContainer } from './styles';
+import { ChakraProvider } from '@chakra-ui/react';
+import AddCasesProvider from './routes/AddCases/contexts';
+import ApprovingProcessProvider from './routes/ApprovingProcess/contexts';
+import ApprovalEditProvider from './routes/ApprovingProcessEdit/contexts';
+import IlmiahProvider from './routes/Ilmiah/contexts';
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
@@ -33,7 +33,7 @@ root.render(
         </AppContainer>
       </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,6 +1,6 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { useAddCasesDispatch } from "../../contexts";
-import { OperationCategory } from "../../../../hooks/useGetCasesForm/types";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { useAddCasesDispatch } from '../../contexts';
+import { OperationCategory } from '../../../../hooks/useGetCasesForm/types';
 
 interface Props {
   subCategory: OperationCategory;
@@ -20,7 +20,7 @@ const CardSubCategory = ({
   const handleClickCard = () => {
     closeModal();
     casesDispatch({
-      type: "set_selected_operation",
+      type: 'set_selected_operation',
       data: {
         category: operationName,
         id: id,
@@ -29,7 +29,7 @@ const CardSubCategory = ({
     });
 
     casesDispatch({
-      type: "set_operation_type_ids",
+      type: 'set_operation_type_ids',
       data: {
         operationId: subCategory.id,
       },

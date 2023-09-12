@@ -1,17 +1,17 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
 
 const FormLocationLainnya = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [location, setLocation] = useState("Lainnya");
+  const [location, setLocation] = useState('Lainnya');
   const handleChangeNotes = (event: ChangeEvent<HTMLInputElement>) =>
     setLocation(event.target.value);
 
   useEffect(() => {
     casesDispatch({
-      type: "set_location",
+      type: 'set_location',
       data: {
         location: location,
       },

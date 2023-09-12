@@ -1,10 +1,10 @@
-import { Flex, Text } from "@chakra-ui/react";
-import Ticker from "../../../../components/Ticker";
-import { colors, getCompetenceColor } from "../../../../constants/colors";
-import { formatDateMonthYear } from "../../../../helpers";
+import { Flex, Text } from '@chakra-ui/react';
+import Ticker from '../../../../components/Ticker';
+import { colors, getCompetenceColor } from '../../../../constants/colors';
+import { formatDateMonthYear } from '../../../../helpers';
 
 interface CompetenceCardInterface {
-  competenceNumber: Number;
+  competenceNumber: number;
   competenceLevel: string;
   startDate: string | null | undefined;
   endDate: string | null | undefined;

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import { CompetenceUser } from "./types";
+import { useEffect, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import { CompetenceUser } from './types';
 
 const useGetCompetenceUser = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useGetCompetenceUser = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      const response = await axiosClient.get("/competence/all");
+      const response = await axiosClient.get('/competence/all');
       const data = await response.data.data;
 
       setCompetenceData(data);
@@ -21,8 +21,11 @@ const useGetCompetenceUser = () => {
   }, []);
 
   const competenceData = rawCompetenceData?.map((competence) => ({
-    ...competence, 
-    lastUpdated: (competence.created === competence.lastUpdated) ? undefined : competence.lastUpdated
+    ...competence,
+    lastUpdated:
+      competence.created === competence.lastUpdated
+        ? undefined
+        : competence.lastUpdated,
   }));
 
   return {

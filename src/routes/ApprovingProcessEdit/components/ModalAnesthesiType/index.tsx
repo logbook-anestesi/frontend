@@ -10,19 +10,19 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { AnesthesiaType } from "../../../../hooks/useGetCasesForm/types";
+} from '@chakra-ui/react';
+import { AnesthesiaType } from '../../../../hooks/useGetCasesForm/types';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { colors } from "../../../../constants/colors";
-import CardAnesthesiType from "./CardAnesthesiType";
-import { useApprovalEditContext } from "../../contexts";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
+import { colors } from '../../../../constants/colors';
+import CardAnesthesiType from './CardAnesthesiType';
+import { useApprovalEditContext } from '../../contexts';
 
 interface Props {
   isOpen: boolean;
@@ -45,7 +45,7 @@ const ModalAnesthesiType = ({
   useEffect(() => {
     const filtered = anesthesiaList.filter(
       (anesthesia) =>
-        !selectedAnesthesia.some((item) => item.title === anesthesia?.name)
+        !selectedAnesthesia.some((item) => item.title === anesthesia?.name),
     );
 
     setFilteredAnesthesi(filtered);
@@ -54,7 +54,7 @@ const ModalAnesthesiType = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = anesthesiaList.filter((anesthesia) =>
-      anesthesia.name.toLowerCase().includes(loweredFilter)
+      anesthesia.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredAnesthesi(filtered);

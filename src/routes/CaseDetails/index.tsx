@@ -1,10 +1,10 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import FieldText from "./components/FieldText";
-import FieldTicker from "./components/FieldTicker";
-import { useLocation } from "react-router-dom";
-import LoaderCircle from "../../components/LoaderCircle";
-import useGetDetailCases from "../../hooks/useGetDetailCase";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import FieldText from './components/FieldText';
+import FieldTicker from './components/FieldTicker';
+import { useLocation } from 'react-router-dom';
+import LoaderCircle from '../../components/LoaderCircle';
+import useGetDetailCases from '../../hooks/useGetDetailCase';
 
 const CaseDetails = () => {
   const location = useLocation();
@@ -20,7 +20,7 @@ const CaseDetails = () => {
     diagnoses,
     painServiceProcedures,
     painServiceTypes,
-  } = useGetDetailCases(location?.state?.caseId || "");
+  } = useGetDetailCases(location?.state?.caseId || '');
 
   return (
     <Flex flexDirection="column">
@@ -82,7 +82,7 @@ const CaseDetails = () => {
               <FieldText label="Tingkat" value={caseData?.asaTier} />
               <FieldText
                 label="Emergensi"
-                value={caseData?.asaIsEmergency ? "YA" : "TIDAK"}
+                value={caseData?.asaIsEmergency ? 'YA' : 'TIDAK'}
               />
             </Flex>
 

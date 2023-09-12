@@ -1,11 +1,11 @@
-import { Flex, useDisclosure, useToast } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import CompetenceCard from "./components/CompetenceCard";
-import ButtonTambah from "../../components/ButtonTambah";
-import useGetCompetenceUser from "./hooks/useGetCompetenceUser";
-import LoaderCircle from "../../components/LoaderCircle";
-import ModalPromote from "./components/ModalPromote";
-import usePostCompetencePromotion from "./hooks/usePostCompetencePromotion";
+import { Flex, useDisclosure, useToast } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import CompetenceCard from './components/CompetenceCard';
+import ButtonTambah from '../../components/ButtonTambah';
+import useGetCompetenceUser from './hooks/useGetCompetenceUser';
+import LoaderCircle from '../../components/LoaderCircle';
+import ModalPromote from './components/ModalPromote';
+import usePostCompetencePromotion from './hooks/usePostCompetencePromotion';
 // import { useMemo } from "react";
 // import { useNavigate } from "react-router-dom";
 
@@ -23,20 +23,20 @@ const CompetencePage = () => {
   if (loading) return <LoaderCircle />;
 
   const currentCompetence = competenceData?.find(
-    (item) => item.recordFlag === true
+    (item) => item.recordFlag === true,
   );
 
-  let promoteTo = "";
+  let promoteTo = '';
 
-  if (currentCompetence?.level === "PEMBEKALAN") {
-    promoteTo = "MAGANG";
+  if (currentCompetence?.level === 'PEMBEKALAN') {
+    promoteTo = 'MAGANG';
   } else {
-    promoteTo = "MANDIRI";
+    promoteTo = 'MANDIRI';
   }
 
   const finalData = {
-    createBy: currentCompetence?.userId || "",
-    userId: currentCompetence?.userId || "",
+    createBy: currentCompetence?.userId || '',
+    userId: currentCompetence?.userId || '',
     promoteTo: promoteTo,
   };
 
@@ -49,13 +49,13 @@ const CompetencePage = () => {
   // }, [currentCompetence?.userId, currentCompetence?.userId]);
 
   const handleSubmitData = async () => {
-    await postData(finalData).then((response) => {
+    await postData(finalData).then(() => {
       toast({
-        position: "top",
-        status: "success",
+        position: 'top',
+        status: 'success',
         duration: 2000,
         isClosable: true,
-        title: "Berhasil Kirim Request Kenaikan Kompetensi",
+        title: 'Berhasil Kirim Request Kenaikan Kompetensi',
       });
     });
     onCloseConfirm();

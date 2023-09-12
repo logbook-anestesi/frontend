@@ -1,10 +1,10 @@
 export const RADIO_LOCATION = [
   {
-    title: "ER Ruangan",
-    value: "ER Ruangan",
+    title: 'ER Ruangan',
+    value: 'ER Ruangan',
   },
   {
-    title: "Lainnya",
-    value: "Lainnya",
+    title: 'Lainnya',
+    value: 'Lainnya',
   },
 ];

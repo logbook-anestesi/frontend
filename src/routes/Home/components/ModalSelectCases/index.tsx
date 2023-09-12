@@ -7,11 +7,11 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { CASE_LIST } from "../../../../constants/caseList";
-import { colors } from "../../../../constants/colors";
-import { Case } from "../../types";
-import { useNavigate } from "react-router-dom";
+} from '@chakra-ui/react';
+import { CASE_LIST } from '../../../../constants/caseList';
+import { colors } from '../../../../constants/colors';
+import { Case } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   isOpen: boolean;
@@ -23,32 +23,32 @@ const ModalSelectCases = ({ isOpen, closeModal }: Props) => {
 
   const handleClickCase = (dataCase: Case) => {
     switch (dataCase?.value) {
-      case "OK": {
-        navigate("/cases/add/ok");
+      case 'OK': {
+        navigate('/cases/add/ok');
         return;
       }
-      case "PACU": {
-        navigate("/cases/add/pacu");
+      case 'PACU': {
+        navigate('/cases/add/pacu');
         return;
       }
-      case "NORA": {
-        navigate("/cases/add/nora");
+      case 'NORA': {
+        navigate('/cases/add/nora');
         return;
       }
-      case "RESUS": {
-        navigate("/cases/add/resus");
+      case 'RESUS': {
+        navigate('/cases/add/resus');
         return;
       }
-      case "PROCEDURE_CONSULTATION": {
-        navigate("/cases/add/procedure-consultation");
+      case 'PROCEDURE_CONSULTATION': {
+        navigate('/cases/add/procedure-consultation');
         return;
       }
-      case "POLI_PERIOPERATIVE": {
-        navigate("/cases/add/poli-perioperative");
+      case 'POLI_PERIOPERATIVE': {
+        navigate('/cases/add/poli-perioperative');
         return;
       }
-      case "PAIN_SERVICE": {
-        navigate("/cases/add/pain-service");
+      case 'PAIN_SERVICE': {
+        navigate('/cases/add/pain-service');
         return;
       }
       default: {

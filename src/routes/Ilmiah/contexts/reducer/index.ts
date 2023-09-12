@@ -1,16 +1,16 @@
-import { ACTION_TYPE, InitialState } from "../types";
+import { ACTION_TYPE, InitialState } from '../types';
 
 const initialState: InitialState = {
   pengajuanKelulusan: {
-    id: "",
+    id: '',
     approvals: [],
-    type: "",
+    type: '',
   },
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
   switch (action.type) {
-    case "set_pengajuan_kelulusan": {
+    case 'set_pengajuan_kelulusan': {
       return {
         ...state,
         pengajuanKelulusan: {

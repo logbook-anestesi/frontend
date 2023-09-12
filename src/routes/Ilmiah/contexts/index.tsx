@@ -1,12 +1,12 @@
-import { Dispatch, createContext, useContext, useReducer } from "react";
-import { ACTION_TYPE, InitialState } from "./types";
-import { initialState, reducer } from "./reducer";
+import { Dispatch, createContext, useContext, useReducer } from 'react';
+import { ACTION_TYPE, InitialState } from './types';
+import { initialState, reducer } from './reducer';
 
 const IlmiahContext = createContext<InitialState>({
   pengajuanKelulusan: {
-    id: "",
+    id: '',
     approvals: [],
-    type: "",
+    type: '',
   },
 });
 

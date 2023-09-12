@@ -1,15 +1,15 @@
-import { Card, Flex, Text, Image } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { colors, getCompetenceColor } from "../../../../constants/colors";
-import { useNavigate } from "react-router-dom";
-import Ticker from "../../../../components/Ticker";
+import { Card, Flex, Text, Image } from '@chakra-ui/react';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { colors, getCompetenceColor } from '../../../../constants/colors';
+import { useNavigate } from 'react-router-dom';
+import Ticker from '../../../../components/Ticker';
 
 interface LevelCardWithLogoInterface {
   type: string;
   title: string;
   path: string;
   icon: string;
-  cardNumber: Number;
+  cardNumber: number;
 }
 
 const LevelCardWithLogo = ({
@@ -25,7 +25,7 @@ const LevelCardWithLogo = ({
     <Card
       variant="outline"
       padding="16px"
-      direction={{ base: "row", sm: "row" }}
+      direction={{ base: 'row', sm: 'row' }}
       justify="space-between"
       align="center"
       onClick={() => navigate(path)}

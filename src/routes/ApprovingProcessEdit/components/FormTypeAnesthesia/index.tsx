@@ -1,16 +1,16 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import ModalAnesthesiType from "../ModalAnesthesiType";
-import { AnesthesiaType } from "../../../../hooks/useGetCasesForm/types";
-import { AnesthesiaType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
-import { useCallback, useEffect, useState } from "react";
-import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
-import Ticker from "../../../../components/Ticker";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import ModalAnesthesiType from '../ModalAnesthesiType';
+import { AnesthesiaType } from '../../../../hooks/useGetCasesForm/types';
+import { AnesthesiaType as InitialTypes } from '../../../Cases/hooks/useGetCases/types';
+import { useCallback, useEffect, useState } from 'react';
+import ModalAddOtherAnesthesia from '../ModalAddOtherAnesthesia';
+import Ticker from '../../../../components/Ticker';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
+} from '../../contexts';
 
 interface Props {
   anesthesiaList?: AnesthesiaType[];
@@ -38,11 +38,11 @@ const FormTypeAnesthesia = ({ anesthesiaList, initialValue }: Props) => {
     });
 
     const normalizeIds = initialValue?.map(
-      (anesthesia) => anesthesia.anesthesiaTypeId
+      (anesthesia) => anesthesia.anesthesiaTypeId,
     );
 
     approveEditDispatch({
-      type: "set_anesthesia_type_all",
+      type: 'set_anesthesia_type_all',
       data: {
         anesthesia: normalizedAnesthesia || [],
         anesthesiaIds: normalizeIds || [],
@@ -53,13 +53,13 @@ const FormTypeAnesthesia = ({ anesthesiaList, initialValue }: Props) => {
   const handleRemoveAnesthesia = useCallback(
     (anesthesiaId: string) => {
       approveEditDispatch({
-        type: "remove_anesthesia_type",
+        type: 'remove_anesthesia_type',
         data: {
           id: anesthesiaId,
         },
       });
     },
-    [approveEditDispatch]
+    [approveEditDispatch],
   );
 
   return (
@@ -78,7 +78,7 @@ const FormTypeAnesthesia = ({ anesthesiaList, initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{anesthesia?.name || "Masukkan tipe anastesi ..."}</Text>
+        <Text>{anesthesia?.name || 'Masukkan tipe anastesi ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -88,8 +88,8 @@ const FormTypeAnesthesia = ({ anesthesiaList, initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

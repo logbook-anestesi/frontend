@@ -1,6 +1,6 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../constants/colors";
-import { CloseIcon } from "@chakra-ui/icons";
+import { Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../constants/colors';
+import { CloseIcon } from '@chakra-ui/icons';
 
 interface TickerInterface {
   text: string;

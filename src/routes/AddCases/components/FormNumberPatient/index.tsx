@@ -1,7 +1,7 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
 
 const FormNumberPatient = () => {
   const casesDispatch = useAddCasesDispatch();
@@ -11,7 +11,7 @@ const FormNumberPatient = () => {
 
   useEffect(() => {
     casesDispatch({
-      type: "set_number_patient",
+      type: 'set_number_patient',
       data: {
         numberPatient: numberPatient,
       },

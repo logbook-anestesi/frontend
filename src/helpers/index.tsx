@@ -1,15 +1,15 @@
 export const getCurrentMonth = (): string => {
   const date = new Date();
   const options: Intl.DateTimeFormatOptions = {
-    month: "long",
-    year: "numeric",
+    month: 'long',
+    year: 'numeric',
   };
-  return date.toLocaleString("id-ID", options);
+  return date.toLocaleString('id-ID', options);
 };
 
 export const getMonthYearString = (): string => {
   const date = new Date();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = String(date.getFullYear());
 
   const monthYearString = month + year;
@@ -20,7 +20,7 @@ export const getMonthYearString = (): string => {
 export const formatMonthYear = (inputString: string) => {
   // Ensure the input string is exactly 6 characters
   if (inputString.length !== 6) {
-    throw new Error("Invalid input string. It should be exactly 6 characters.");
+    throw new Error('Invalid input string. It should be exactly 6 characters.');
   }
 
   // Extract the month and year from the input string
@@ -29,18 +29,18 @@ export const formatMonthYear = (inputString: string) => {
 
   // Convert the month number to a month name
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   const monthName = monthNames[parseInt(month, 10) - 1];
 
@@ -51,30 +51,30 @@ export const formatMonthYear = (inputString: string) => {
 };
 
 export const formatDateMonthYear = (date: Date) => {
-  return date.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
   });
 };
 
 export const convertDateForNotification = (dateString: string) => {
   const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
 
   return `${day}/${month} ${hours}:${minutes}`;
 };
 
 export const convertDateForIlmiah = (dateString: string) => {
   const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
 
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 };

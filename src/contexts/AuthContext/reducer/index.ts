@@ -1,16 +1,16 @@
-import { ACTION_TYPE, InitialState } from "../types";
+import { ACTION_TYPE, InitialState } from '../types';
 
 const initialState: InitialState = {
-  email: "",
-  id: "",
-  image_url: "",
-  name: "",
-  phone_number: "",
+  email: '',
+  id: '',
+  image_url: '',
+  name: '',
+  phone_number: '',
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
   switch (action.type) {
-    case "set_user_data": {
+    case 'set_user_data': {
       return {
         ...state,
         email: action.data.email,

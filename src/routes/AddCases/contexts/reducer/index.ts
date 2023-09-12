@@ -1,4 +1,4 @@
-import { ACTION_TYPE, InitialState } from "../types";
+import { ACTION_TYPE, InitialState } from '../types';
 
 const initialState: InitialState = {
   selectedOperation: [],
@@ -7,9 +7,9 @@ const initialState: InitialState = {
   selectedSupervisor: [],
   selectedDiagnose: [],
   date: new Date().toJSON(),
-  dpjpUserId: "",
+  dpjpUserId: '',
   isExam: false,
-  caseType: "OK",
+  caseType: 'OK',
   operationTypeIds: [],
   anesthesiaTypeIds: [],
   selectedProcedure: [],
@@ -23,15 +23,15 @@ const initialState: InitialState = {
   selectedNoraProcedure: [],
   noraProcedureTypeIds: [],
   procedurePainServiceIds: [],
-  ageGroup: "",
-  location: "",
-  priority: "",
+  ageGroup: '',
+  location: '',
+  priority: '',
   patientAge: 0,
-  patientRecordNumber: "",
-  patientGender: "MALE",
+  patientRecordNumber: '',
+  patientGender: 'MALE',
   asaIsEmergency: false,
   asaTier: 0,
-  notes: "",
+  notes: '',
   additionalTags: [],
   tagIds: [],
   isShowLocationLainnya: false,
@@ -40,7 +40,7 @@ const initialState: InitialState = {
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
   switch (action.type) {
-    case "set_selected_operation": {
+    case 'set_selected_operation': {
       return {
         ...state,
         selectedOperation: [
@@ -53,7 +53,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_selected_anesthesia": {
+    case 'set_selected_anesthesia': {
       return {
         ...state,
         selectedAnesthesia: [
@@ -65,37 +65,37 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_date": {
+    case 'set_date': {
       return {
         ...state,
         date: action.data.date,
       };
     }
-    case "set_dpjp": {
+    case 'set_dpjp': {
       return {
         ...state,
         dpjpUserId: action.data.dpjpId,
       };
     }
-    case "set_is_exam": {
+    case 'set_is_exam': {
       return {
         ...state,
         isExam: action.data.isExam,
       };
     }
-    case "set_case_type": {
+    case 'set_case_type': {
       return {
         ...state,
         caseType: action.data.caseType,
       };
     }
-    case "set_operation_type_ids": {
+    case 'set_operation_type_ids': {
       return {
         ...state,
         operationTypeIds: [...state.operationTypeIds, action.data.operationId],
       };
     }
-    case "set_anethesia_type_ids": {
+    case 'set_anethesia_type_ids': {
       return {
         ...state,
         anesthesiaTypeIds: [
@@ -104,7 +104,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_procedure_type": {
+    case 'set_procedure_type': {
       return {
         ...state,
         selectedProcedure: [
@@ -116,14 +116,14 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_procedure_type_ids": {
+    case 'set_procedure_type_ids': {
       return {
         ...state,
         procedureTypeIds: [...state.procedureTypeIds, action.data.procedureId],
       };
     }
 
-    case "set_nora_procedure_type": {
+    case 'set_nora_procedure_type': {
       return {
         ...state,
         selectedNoraProcedure: [
@@ -135,7 +135,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_nora_procedure_type_ids": {
+    case 'set_nora_procedure_type_ids': {
       return {
         ...state,
         noraProcedureTypeIds: [
@@ -144,55 +144,55 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_age_group": {
+    case 'set_age_group': {
       return {
         ...state,
         ageGroup: action.data.ageGroup,
       };
     }
-    case "set_location": {
+    case 'set_location': {
       return {
         ...state,
         location: action.data.location,
       };
     }
-    case "set_priority": {
+    case 'set_priority': {
       return {
         ...state,
         priority: action.data.priority,
       };
     }
-    case "set_patient_age": {
+    case 'set_patient_age': {
       return {
         ...state,
         patientAge: action.data.age,
       };
     }
-    case "set_patient_rm": {
+    case 'set_patient_rm': {
       return {
         ...state,
         patientRecordNumber: action.data.rm,
       };
     }
-    case "set_patient_gender": {
+    case 'set_patient_gender': {
       return {
         ...state,
         patientGender: action.data.gender,
       };
     }
-    case "set_emergency": {
+    case 'set_emergency': {
       return {
         ...state,
         asaIsEmergency: action.data.isEmergency,
       };
     }
-    case "set_tier": {
+    case 'set_tier': {
       return {
         ...state,
         asaTier: action.data.tier,
       };
     }
-    case "set_asa_tags": {
+    case 'set_asa_tags': {
       return {
         ...state,
         selectedASATags: [
@@ -204,13 +204,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_asa_tags_type_ids": {
+    case 'set_asa_tags_type_ids': {
       return {
         ...state,
         asaTagIds: [...state.asaTagIds, action.data.tagId],
       };
     }
-    case "set_supervisor": {
+    case 'set_supervisor': {
       return {
         ...state,
         selectedSupervisor: [
@@ -222,100 +222,100 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_supervisor_ids": {
+    case 'set_supervisor_ids': {
       return {
         ...state,
         supervisorIds: [...state.supervisorIds, action.data.supervisorId],
       };
     }
-    case "set_note": {
+    case 'set_note': {
       return {
         ...state,
         notes: action.data.note,
       };
     }
-    case "set_additional_tags": {
+    case 'set_additional_tags': {
       return {
         ...state,
         additionalTags: [...state.additionalTags, action.data.tag],
       };
     }
-    case "set_additional_tag_ids": {
+    case 'set_additional_tag_ids': {
       return {
         ...state,
         tagIds: [...state.tagIds, action.data.tagId],
       };
     }
-    case "reset_state": {
+    case 'reset_state': {
       return {
         ...initialState,
       };
     }
-    case "remove_procedure_type": {
+    case 'remove_procedure_type': {
       return {
         ...state,
         selectedProcedure: state.selectedProcedure.filter(
-          (procedure) => procedure.id !== action.data.id
+          (procedure) => procedure.id !== action.data.id,
         ),
         procedureTypeIds: state.procedureTypeIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }
-    case "remove_operation_type": {
+    case 'remove_operation_type': {
       return {
         ...state,
         selectedOperation: state.selectedOperation.filter(
-          (operation) => operation.id !== action.data.id
+          (operation) => operation.id !== action.data.id,
         ),
         operationTypeIds: state.operationTypeIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }
-    case "remove_anesthesia_type": {
+    case 'remove_anesthesia_type': {
       return {
         ...state,
         selectedAnesthesia: state.selectedAnesthesia.filter(
-          (anesthesia) => anesthesia.id !== action.data.id
+          (anesthesia) => anesthesia.id !== action.data.id,
         ),
         anesthesiaTypeIds: state.anesthesiaTypeIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }
-    case "remove_asa_tags": {
+    case 'remove_asa_tags': {
       return {
         ...state,
         selectedASATags: state.selectedASATags.filter(
-          (asaTags) => asaTags.id !== action.data.id
+          (asaTags) => asaTags.id !== action.data.id,
         ),
         asaTagIds: state.asaTagIds.filter((id) => id !== action.data.id),
       };
     }
-    case "remove_supervisor": {
+    case 'remove_supervisor': {
       return {
         ...state,
         selectedSupervisor: state.selectedSupervisor.filter(
-          (supervisor) => supervisor.id !== action.data.id
+          (supervisor) => supervisor.id !== action.data.id,
         ),
         supervisorIds: state.supervisorIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }
-    case "remove_nora_procedure": {
+    case 'remove_nora_procedure': {
       return {
         ...state,
         selectedNoraProcedure: state.selectedNoraProcedure.filter(
-          (noraProcedure) => noraProcedure.id !== action.data.id
+          (noraProcedure) => noraProcedure.id !== action.data.id,
         ),
         noraProcedureTypeIds: state.noraProcedureTypeIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }
-    case "set_diagnose": {
+    case 'set_diagnose': {
       return {
         ...state,
         selectedDiagnose: [
@@ -327,34 +327,34 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_diagnose_ids": {
+    case 'set_diagnose_ids': {
       return {
         ...state,
         diagnoseIds: [...state.diagnoseIds, action.data.diagnoseId],
       };
     }
-    case "remove_diagnose": {
+    case 'remove_diagnose': {
       return {
         ...state,
         selectedDiagnose: state.selectedDiagnose.filter(
-          (diagnose) => diagnose.id !== action.data.id
+          (diagnose) => diagnose.id !== action.data.id,
         ),
         diagnoseIds: state.diagnoseIds.filter((id) => id !== action.data.id),
       };
     }
-    case "set_show_location_lainnya": {
+    case 'set_show_location_lainnya': {
       return {
         ...state,
         isShowLocationLainnya: action.data.isShow,
       };
     }
-    case "set_number_patient": {
+    case 'set_number_patient': {
       return {
         ...state,
         numberOfPatient: action.data.numberPatient,
       };
     }
-    case "set_type_pain_service": {
+    case 'set_type_pain_service': {
       return {
         ...state,
         selectedTypePainService: [
@@ -366,7 +366,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_type_pain_ids": {
+    case 'set_type_pain_ids': {
       return {
         ...state,
         typePainServiceIds: [
@@ -375,18 +375,18 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "remove_type_pain_service": {
+    case 'remove_type_pain_service': {
       return {
         ...state,
         selectedTypePainService: state.selectedTypePainService.filter(
-          (typePain) => typePain.id !== action.data.id
+          (typePain) => typePain.id !== action.data.id,
         ),
         typePainServiceIds: state.typePainServiceIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }
-    case "set_procedure_pain_service": {
+    case 'set_procedure_pain_service': {
       return {
         ...state,
         selectedProcedurePainService: [
@@ -398,7 +398,7 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "set_procedure_pain_ids": {
+    case 'set_procedure_pain_ids': {
       return {
         ...state,
         procedurePainServiceIds: [
@@ -407,14 +407,14 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         ],
       };
     }
-    case "remove_procedure_pain_service": {
+    case 'remove_procedure_pain_service': {
       return {
         ...state,
         selectedProcedurePainService: state.selectedProcedurePainService.filter(
-          (procedurePain) => procedurePain.id !== action.data.id
+          (procedurePain) => procedurePain.id !== action.data.id,
         ),
         procedurePainServiceIds: state.procedurePainServiceIds.filter(
-          (id) => id !== action.data.id
+          (id) => id !== action.data.id,
         ),
       };
     }

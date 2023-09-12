@@ -1,18 +1,18 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import CasesDropdown from "./components/CasesDrodown";
-import ModalSelectCases from "./components/ModalSelectCases";
-import { useState } from "react";
-import { CaseMenu } from "./types";
-import ButtonAddCase from "./components/ButtonAddCase";
-import CaseListSection from "./components/CaseListSection";
-import BottomNav from "./components/BottomNav";
-import useGetCases from "./hooks/useGetCases";
-import LoaderCircle from "../../components/LoaderCircle";
+import { Flex, useDisclosure } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import CasesDropdown from './components/CasesDrodown';
+import ModalSelectCases from './components/ModalSelectCases';
+import { useState } from 'react';
+import { CaseMenu } from './types';
+import ButtonAddCase from './components/ButtonAddCase';
+import CaseListSection from './components/CaseListSection';
+import BottomNav from './components/BottomNav';
+import useGetCases from './hooks/useGetCases';
+import LoaderCircle from '../../components/LoaderCircle';
 
 const DEFAULT_CASE_MENU = {
-  title: "Select Type Case",
-  value: "-",
+  title: 'Select Type Case',
+  value: '-',
 };
 
 const Cases = () => {

@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
+import { useCallback, useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import jwt_decode from 'jwt-decode';
 
-import axiosClient from "../../networks/apiClient";
-import { Profile } from "./types";
-import { DecodedJwt } from "./types";
+import axiosClient from '../../networks/apiClient';
+import { Profile } from './types';
+import { DecodedJwt } from './types';
 
 const useGetProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -22,8 +22,8 @@ const useGetProfile = () => {
       setProfile(data);
     };
 
-    const jwtToken = Cookies.get("jwt_token");
-    const decodedToken = jwt_decode<DecodedJwt>(jwtToken || "");
+    const jwtToken = Cookies.get('jwt_token');
+    const decodedToken = jwt_decode<DecodedJwt>(jwtToken || '');
 
     fetchData(decodedToken?.id);
   }, []);
@@ -39,7 +39,7 @@ const useGetProfile = () => {
       setProfileById(data);
     } catch (err) {
       setLoading(false);
-      console.log("[Error Kirim Request Kenaikan Kompetensi]", err);
+      console.log('[Error Kirim Request Kenaikan Kompetensi]', err);
     }
   }, []);
 

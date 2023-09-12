@@ -1,8 +1,8 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import FormRadioEmergency from "../FormRadioEmergency";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import FormRadioEmergency from '../FormRadioEmergency';
 
 const FormTingkatAndEmergency = () => {
   const casesDispatch = useAddCasesDispatch();
@@ -13,7 +13,7 @@ const FormTingkatAndEmergency = () => {
 
   useEffect(() => {
     casesDispatch({
-      type: "set_tier",
+      type: 'set_tier',
       data: {
         tier: tier,
       },

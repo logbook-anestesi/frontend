@@ -5,8 +5,8 @@ import {
   ModalContent,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;

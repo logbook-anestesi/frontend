@@ -10,19 +10,19 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { NoraProcedureType } from "../../../../hooks/useGetCasesForm/types";
+} from '@chakra-ui/react';
+import { NoraProcedureType } from '../../../../hooks/useGetCasesForm/types';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { colors } from "../../../../constants/colors";
-import CardNoraProcedureType from "./CardNoraProcedureType";
-import { useAddCasesContext } from "../../contexts";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
+import { colors } from '../../../../constants/colors';
+import CardNoraProcedureType from './CardNoraProcedureType';
+import { useAddCasesContext } from '../../contexts';
 
 interface Props {
   isOpen: boolean;
@@ -47,8 +47,8 @@ const ModalNoraProcedureType = ({
     const filtered = noraProcedureList.filter(
       (nora) =>
         !selectedNoraProcedure.some(
-          (noraProcedure) => noraProcedure.title === nora?.name
-        )
+          (noraProcedure) => noraProcedure.title === nora?.name,
+        ),
     );
 
     setFilteredNoraProcedure(filtered);
@@ -57,7 +57,7 @@ const ModalNoraProcedureType = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = noraProcedureList.filter((noraProcedure) =>
-      noraProcedure.name.toLowerCase().includes(loweredFilter)
+      noraProcedure.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredNoraProcedure(filtered);

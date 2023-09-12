@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import { Supervisor } from "../../hooks/useGetSupervisor/types";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Dispatch, SetStateAction } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import { Supervisor } from '../../hooks/useGetSupervisor/types';
 
 interface Props {
   supervisor: Supervisor;
@@ -14,7 +14,7 @@ const CardName = ({ setSupervisor, supervisor, closeModal }: Props) => {
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_supervisor",
+      type: 'set_supervisor',
       data: {
         supervisor: supervisor.name,
         id: supervisor.id,
@@ -22,7 +22,7 @@ const CardName = ({ setSupervisor, supervisor, closeModal }: Props) => {
     });
 
     casesDispatch({
-      type: "set_supervisor_ids",
+      type: 'set_supervisor_ids',
       data: {
         supervisorId: supervisor.id,
       },

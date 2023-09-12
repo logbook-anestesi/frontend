@@ -1,12 +1,12 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import ModalAnesthesiType from "../ModalAnesthesiType";
-import { AnesthesiaType } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
-import ModalAddOtherAnesthesia from "../ModalAddOtherAnesthesia";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
-import Ticker from "../../../../components/Ticker";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import ModalAnesthesiType from '../ModalAnesthesiType';
+import { AnesthesiaType } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useState } from 'react';
+import ModalAddOtherAnesthesia from '../ModalAddOtherAnesthesia';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
+import Ticker from '../../../../components/Ticker';
 
 interface Props {
   anesthesiaList: AnesthesiaType[];
@@ -27,13 +27,13 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
   const handleRemoveAnesthesia = useCallback(
     (anesthesiaId: string) => {
       casesDispatch({
-        type: "remove_anesthesia_type",
+        type: 'remove_anesthesia_type',
         data: {
           id: anesthesiaId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -52,7 +52,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{anesthesia?.name || "Masukkan tipe anastesi ..."}</Text>
+        <Text>{anesthesia?.name || 'Masukkan tipe anastesi ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -62,8 +62,8 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

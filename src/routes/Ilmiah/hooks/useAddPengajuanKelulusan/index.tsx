@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import useGetRiwayatKelulusan from "../useGetRiwayatKelulusan";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import useGetRiwayatKelulusan from '../useGetRiwayatKelulusan';
 
 interface PayloadType {
   scientificId: string;
@@ -11,36 +11,39 @@ const useAddPengajuanKelulusan = () => {
   const [loading, setLoading] = useState(false);
   const { mutate } = useGetRiwayatKelulusan();
 
-  const createPengajuanKelulusan = useCallback(async (payload: PayloadType) => {
-    setLoading(true);
+  const createPengajuanKelulusan = useCallback(
+    async (payload: PayloadType) => {
+      setLoading(true);
 
-    try {
-      const response = await axiosClient.post(
-        "/scientific/graduation",
-        payload
-      );
-      const data = response.data;
+      try {
+        const response = await axiosClient.post(
+          '/scientific/graduation',
+          payload,
+        );
+        const data = response.data;
 
-      mutate();
-      setLoading(false);
+        mutate();
+        setLoading(false);
 
-      if (data.error) {
-        return { success: false, message: data?.message[0] };
+        if (data.error) {
+          return { success: false, message: data?.message[0] };
+        }
+
+        if (!data.error) {
+          return {
+            success: true,
+            message: 'Berhasil Mengajukan Kelulusan',
+            anesthesiaId: data.data.id,
+          };
+        }
+      } catch (e) {
+        mutate();
+        setLoading(false);
+        console.log('[Error Mengajukan Kelulusan]', e);
       }
-
-      if (!data.error) {
-        return {
-          success: true,
-          message: "Berhasil Mengajukan Kelulusan",
-          anesthesiaId: data.data.id,
-        };
-      }
-    } catch (e) {
-      mutate();
-      setLoading(false);
-      console.log("[Error Mengajukan Kelulusan]", e);
-    }
-  }, [mutate]);
+    },
+    [mutate],
+  );
 
   return {
     createPengajuanKelulusan,

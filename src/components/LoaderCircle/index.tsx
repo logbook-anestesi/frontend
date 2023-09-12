@@ -1,4 +1,4 @@
-import { Flex, Spinner } from "@chakra-ui/react";
+import { Flex, Spinner } from '@chakra-ui/react';
 
 const LoaderCircle = () => {
   return (

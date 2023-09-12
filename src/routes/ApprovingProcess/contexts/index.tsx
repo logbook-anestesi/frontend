@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useReducer } from "react";
-import type { Dispatch } from "react";
-import { ACTION_TYPE, InitialState } from "./types";
-import { reducer } from "./reducer";
+import React, { createContext, useContext, useReducer } from 'react';
+import type { Dispatch } from 'react';
+import { ACTION_TYPE, InitialState } from './types';
+import { reducer } from './reducer';
 
 const ApprovingProcessContext = createContext<InitialState>({
-  notes: "",
-  rate: "",
+  notes: '',
+  rate: '',
 });
 
 const ApprovingProcessDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
@@ -16,8 +16,8 @@ interface Props {
 
 const ApprovingProcessProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, {
-    notes: "",
-    rate: "",
+    notes: '',
+    rate: '',
   });
 
   return (

@@ -1,16 +1,16 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import { RADIO_PRIORITY } from "../../constants";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import { RADIO_PRIORITY } from '../../constants';
 
 const FormRadioPriority = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_priority",
+      type: 'set_priority',
       data: {
         priority: value,
       },
@@ -28,8 +28,8 @@ const FormRadioPriority = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

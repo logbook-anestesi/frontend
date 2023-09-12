@@ -1,6 +1,6 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
-import { DetailRiwayatKelulusan } from "../../hooks/useGetDetailKelulusan/types";
-import { colors } from "../../../../constants/colors";
+import { Button, Flex, Text } from '@chakra-ui/react';
+import { DetailRiwayatKelulusan } from '../../hooks/useGetDetailKelulusan/types';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   detailIlmiah?: DetailRiwayatKelulusan;
@@ -12,21 +12,21 @@ const DetailIlmiah = ({
   onOpenAddRiwayatDiskusi,
   onOpenListRiwayat,
 }: Props) => {
-  const isThesis = detailIlmiah?.scientificType === "TESIS";
+  const isThesis = detailIlmiah?.scientificType === 'TESIS';
 
   const handleRedirectLinkDocument = () => {
-    window.open(detailIlmiah?.scientificDocumentLink, "_blank");
+    window.open(detailIlmiah?.scientificDocumentLink, '_blank');
   };
 
   const statusBgColor = (value: string) => {
     switch (value) {
-      case "PENDING": {
+      case 'PENDING': {
         return colors.primaryYellow;
       }
-      case "REJECTED": {
+      case 'REJECTED': {
         return colors.primaryRed;
       }
-      case "APPROVED": {
+      case 'APPROVED': {
         return colors.primaryGreen;
       }
     }

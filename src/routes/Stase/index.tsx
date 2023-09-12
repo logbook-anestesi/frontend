@@ -1,10 +1,10 @@
-import { Flex } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import StaseCard from "./components/StaseCard";
-import useGetStaseUser from "./hooks/useGetStaseUser";
-import TableTitle from "./components/TableTitle";
-import RedStaseCard from "./components/RedStaseCard";
-import TableData from "./components/TableData";
+import { Flex } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import StaseCard from './components/StaseCard';
+import useGetStaseUser from './hooks/useGetStaseUser';
+import TableTitle from './components/TableTitle';
+import RedStaseCard from './components/RedStaseCard';
+import TableData from './components/TableData';
 
 const StasePage = () => {
   const { currentStase, staseData, loading } = useGetStaseUser();

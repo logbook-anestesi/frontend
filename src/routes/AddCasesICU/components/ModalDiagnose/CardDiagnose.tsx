@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
-import { Diagnose } from "../../../../hooks/useGetCasesForm/types";
-import { useAddCasesDispatch } from "../../../AddCases/contexts";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Dispatch, SetStateAction } from 'react';
+import { Diagnose } from '../../../../hooks/useGetCasesForm/types';
+import { useAddCasesDispatch } from '../../../AddCases/contexts';
 
 interface Props {
   diagnose: Diagnose;
@@ -14,7 +14,7 @@ const CardDiagnose = ({ diagnose, closeModal, setDiagnose }: Props) => {
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_diagnose",
+      type: 'set_diagnose',
       data: {
         diagnoseName: diagnose.name,
         diagnoseId: diagnose.id,
@@ -22,7 +22,7 @@ const CardDiagnose = ({ diagnose, closeModal, setDiagnose }: Props) => {
     });
 
     casesDispatch({
-      type: "set_diagnose_ids",
+      type: 'set_diagnose_ids',
       data: {
         diagnoseId: diagnose.id,
       },

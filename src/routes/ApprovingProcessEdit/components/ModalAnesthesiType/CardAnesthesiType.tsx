@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { AnesthesiaType } from "../../../../hooks/useGetCasesForm/types";
-import { Dispatch, SetStateAction } from "react";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { AnesthesiaType } from '../../../../hooks/useGetCasesForm/types';
+import { Dispatch, SetStateAction } from 'react';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   anesthesia: AnesthesiaType;
@@ -20,7 +20,7 @@ const CardAnesthesiType = ({
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_selected_anesthesia",
+      type: 'set_selected_anesthesia',
       data: {
         id: id,
         title: anesthesia.name,
@@ -28,7 +28,7 @@ const CardAnesthesiType = ({
     });
 
     casesDispatch({
-      type: "set_anethesia_type_ids",
+      type: 'set_anethesia_type_ids',
       data: {
         anesthesiaId: anesthesia.id,
       },

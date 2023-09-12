@@ -1,15 +1,15 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import Ticker from "../../../../components/Ticker";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import Ticker from '../../../../components/Ticker';
 
-import ModalAddAdditionalTags from "../ModalAddAdditionalTags";
+import ModalAddAdditionalTags from '../ModalAddAdditionalTags';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
-import { Tag } from "../../../Cases/hooks/useGetCases/types";
-import { useEffect } from "react";
+} from '../../contexts';
+import { Tag } from '../../../Cases/hooks/useGetCases/types';
+import { useEffect } from 'react';
 
 interface Props {
   initialValue?: Tag[];
@@ -30,7 +30,7 @@ const FormAdditionalTags = ({ initialValue }: Props) => {
     const normalizeIds = initialValue?.map((tag) => tag.tagId);
 
     approveEditDispatch({
-      type: "set_additional_tags_all",
+      type: 'set_additional_tags_all',
       data: {
         additionalTags: normalizeTags || [],
         additionalTagIds: normalizeIds || [],
@@ -64,8 +64,8 @@ const FormAdditionalTags = ({ initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

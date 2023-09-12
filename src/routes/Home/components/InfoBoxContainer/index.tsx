@@ -1,5 +1,5 @@
-import { Flex } from "@chakra-ui/react";
-import InfoBox from "../../../../components/InfoBox";
+import { Flex } from '@chakra-ui/react';
+import InfoBox from '../../../../components/InfoBox';
 
 const InfoBoxContainer = () => {
   return (

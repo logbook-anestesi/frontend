@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import useGetStaseUser from "../../../Stase/hooks/useGetStaseUser";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import useGetStaseUser from '../../../Stase/hooks/useGetStaseUser';
 
 const useUpdateStase = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ const useUpdateStase = () => {
       setLoading(true);
 
       try {
-        const response = await axiosClient.post("/station/entry", payload);
+        const response = await axiosClient.post('/station/entry', payload);
         const data = response.data;
 
         mutate();
@@ -26,15 +26,15 @@ const useUpdateStase = () => {
         }
 
         if (!data.error) {
-          return { success: true, message: "Berhasil Update Stase" };
+          return { success: true, message: 'Berhasil Update Stase' };
         }
       } catch (e) {
         mutate();
         setLoading(false);
-        console.log("[Error Update Stase]", e);
+        console.log('[Error Update Stase]', e);
       }
     },
-    [mutate]
+    [mutate],
   );
 
   return { postData, loading };

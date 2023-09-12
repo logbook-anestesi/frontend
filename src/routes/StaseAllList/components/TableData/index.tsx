@@ -1,6 +1,6 @@
-import DataTable, { TableColumn } from "react-data-table-component";
-import { useMemo } from "react";
-import { Stase } from "../../hooks/useGetAllStase/types";
+import DataTable, { TableColumn } from 'react-data-table-component';
+import { useMemo } from 'react';
+import { Stase } from '../../hooks/useGetAllStase/types';
 
 interface DataRow {
   index: number;
@@ -13,21 +13,21 @@ interface Props {
   loading: boolean;
 }
 
-const TableData = ({ stationList, loading }: Props) => {
+const TableData = ({ stationList }: Props) => {
   const columns: TableColumn<DataRow>[] = [
     {
-      name: "Nomor",
+      name: 'Nomor',
       selector: (row) => row.index,
       sortable: true,
-      maxWidth: "5px",
+      maxWidth: '5px',
     },
     {
-      name: "Nama Stase",
+      name: 'Nama Stase',
       selector: (row) => row.stationName,
       sortable: true,
     },
     {
-      name: "Ketua Modul",
+      name: 'Ketua Modul',
       selector: (row) => row.leaderName,
       sortable: true,
     },

@@ -1,8 +1,8 @@
-import DataTable, { TableColumn } from "react-data-table-component";
-import { Case } from "../../hooks/useGetCases/types";
-import { useMemo } from "react";
-import { formatDateMonthYear } from "../../../../helpers";
-import { useNavigate } from "react-router-dom";
+import DataTable, { TableColumn } from 'react-data-table-component';
+import { Case } from '../../hooks/useGetCases/types';
+import { useMemo } from 'react';
+import { formatDateMonthYear } from '../../../../helpers';
+import { useNavigate } from 'react-router-dom';
 
 interface DataRow {
   idCase: string;
@@ -23,18 +23,18 @@ const TableData = ({ caseList }: Props) => {
 
   const columns: TableColumn<DataRow>[] = [
     {
-      name: "ID Case",
+      name: 'ID Case',
       selector: (row) => row.idCase,
       style: {
-        textDecoration: "underline",
-        color: "#3498db",
-        padding: "10px",
+        textDecoration: 'underline',
+        color: '#3498db',
+        padding: '10px',
       },
       cell: (row) => (
         <span
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
           onClick={() =>
-            navigate("/cases/details", {
+            navigate('/cases/details', {
               state: { caseId: row?.idCaseFull },
             })
           }
@@ -44,27 +44,27 @@ const TableData = ({ caseList }: Props) => {
       ),
     },
     {
-      name: "Tanggal",
+      name: 'Tanggal',
       selector: (row) => row.date,
       sortable: true,
     },
     {
-      name: "DPJP",
+      name: 'DPJP',
       selector: (row) => row.dpjp,
       sortable: true,
     },
     {
-      name: "Jenis",
+      name: 'Jenis',
       selector: (row) => row.caseType,
       sortable: true,
     },
     {
-      name: "Status",
+      name: 'Status',
       selector: (row) => row.status,
       sortable: true,
     },
     {
-      name: "Supervising",
+      name: 'Supervising',
       selector: (row) => row.supervising,
       sortable: true,
     },
@@ -73,9 +73,9 @@ const TableData = ({ caseList }: Props) => {
   const data = useMemo(() => {
     return caseList.map((singleCase) => {
       return {
-        idCase: `${singleCase?.caseType || ""} - ${singleCase?.id.substring(
+        idCase: `${singleCase?.caseType || ''} - ${singleCase?.id.substring(
           0,
-          4
+          4,
         )}`,
         idCaseFull: singleCase?.id,
         dpjp: singleCase.dpjpUserName,

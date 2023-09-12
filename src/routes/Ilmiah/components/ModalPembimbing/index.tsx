@@ -1,4 +1,4 @@
-import { Search2Icon } from "@chakra-ui/icons";
+import { Search2Icon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -9,12 +9,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import CardName from "./CardName";
-import { ChangeEvent, useMemo, useState } from "react";
-import useGetPembimbing from "../../hooks/useGetPembimbing";
-import LoaderCircle from "../../../../components/LoaderCircle";
-import { PembimbingData } from "../ModalAddIlmiah";
+} from '@chakra-ui/react';
+import CardName from './CardName';
+import { ChangeEvent, useMemo, useState } from 'react';
+import useGetPembimbing from '../../hooks/useGetPembimbing';
+import LoaderCircle from '../../../../components/LoaderCircle';
+import { PembimbingData } from '../ModalAddIlmiah';
 
 interface Props {
   isOpen: boolean;
@@ -30,7 +30,7 @@ const ModalPembimbing = ({ isOpen, closeModal, setPembimbing }: Props) => {
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = pembimbingList.filter((pembimbing) =>
-      pembimbing.name.toLocaleLowerCase().includes(loweredFilter)
+      pembimbing.name.toLocaleLowerCase().includes(loweredFilter),
     );
 
     setFilteredPembimbing(filtered);

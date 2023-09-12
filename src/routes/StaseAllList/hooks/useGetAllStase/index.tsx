@@ -1,13 +1,16 @@
-'use client'
-import axiosClient from "../../../../networks/apiClient";
-import { Stase } from "./types";
-import useSWR from "swr";
+'use client';
+import axiosClient from '../../../../networks/apiClient';
+import { Stase } from './types';
+import useSWR from 'swr';
 
 const useGetAllStase = () => {
-  const { data: staseList, isLoading: loading } = useSWR('/station', async (): Promise<Stase[]> => {
-    const response = await axiosClient.get("/station");
-    return response.data.data ?? [];
-  })
+  const { data: staseList, isLoading: loading } = useSWR(
+    '/station',
+    async (): Promise<Stase[]> => {
+      const response = await axiosClient.get('/station');
+      return response.data.data ?? [];
+    },
+  );
 
   return {
     staseList,

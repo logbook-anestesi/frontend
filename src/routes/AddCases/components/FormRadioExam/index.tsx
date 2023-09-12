@@ -1,7 +1,7 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
 
 interface Option {
   title: string;
@@ -15,13 +15,13 @@ interface Props {
 
 const FormRadioExam = ({ title, listOptions }: Props) => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState('1');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_is_exam",
+      type: 'set_is_exam',
       data: {
-        isExam: value === "Ya",
+        isExam: value === 'Ya',
       },
     });
   }, [casesDispatch, value]);
@@ -37,8 +37,8 @@ const FormRadioExam = ({ title, listOptions }: Props) => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

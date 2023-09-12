@@ -1,6 +1,6 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Pembimbing } from "../../hooks/useGetPembimbing/types";
-import { PembimbingData } from "../ModalAddIlmiah";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Pembimbing } from '../../hooks/useGetPembimbing/types';
+import { PembimbingData } from '../ModalAddIlmiah';
 
 interface Props {
   pembimbing: Pembimbing;

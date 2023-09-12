@@ -1,7 +1,7 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialValue?: string;
@@ -9,17 +9,17 @@ interface Props {
 
 const FormNotes = ({ initialValue }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
-  const [notes, setNotes] = useState("");
+  const [notes, setNotes] = useState('');
   const handleChangeNotes = (event: ChangeEvent<HTMLInputElement>) =>
     setNotes(event.target.value);
 
   useEffect(() => {
-    setNotes(initialValue || "");
+    setNotes(initialValue || '');
   }, [initialValue]);
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_note",
+      type: 'set_note',
       data: {
         note: notes,
       },

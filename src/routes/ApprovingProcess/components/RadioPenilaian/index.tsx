@@ -1,20 +1,20 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { RADIO_PENILAIAN_GROUP } from "../../constants";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { RADIO_PENILAIAN_GROUP } from '../../constants';
 import {
   useApprovingProcess,
   useApprovingProcessDispatch,
-} from "../../contexts";
-import { useEffect, useState } from "react";
+} from '../../contexts';
+import { useEffect, useState } from 'react';
 
 const RadioPenilaian = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const { notes, rate } = useApprovingProcess();
   const approvingProcessDispatch = useApprovingProcessDispatch();
 
   useEffect(() => {
     approvingProcessDispatch({
-      type: "set_rate",
+      type: 'set_rate',
       data: {
         rate: value,
       },
@@ -32,8 +32,8 @@ const RadioPenilaian = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >
