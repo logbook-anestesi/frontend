@@ -12,8 +12,6 @@ const ProfilePageOtherUser = () => {
   const location = useLocation();
   const { getProfileById, profileById, loading } = useGetProfile();
 
-  console.log("999 profilebyid", profileById);
-
   useEffect(() => {
     getProfileById(location.state.userId);
   }, [getProfileById, location.state.userId]);

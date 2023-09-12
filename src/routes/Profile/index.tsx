@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Input,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Input, Text } from "@chakra-ui/react";
 
 import doctorIcon from "../../assets/doctor.png";
 import useGetProfile from "../../hooks/useGetProfile";
@@ -14,15 +6,13 @@ import Header from "../../components/Header";
 import { colors } from "../../constants/colors";
 import LoaderCircle from "../../components/LoaderCircle";
 import useAuth from "../../hooks/useAuth";
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import useUploadProfilePhoto from "./hooks/useUploadProfilePhoto";
+import { useMemo, useState } from "react";
+import UploadPhoto from "./components/UploadPhoto";
 
 const ProfilePage = () => {
-  const toast = useToast();
   const { loading, profile } = useGetProfile();
   const { logoutAccount } = useAuth();
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
-  const { uploadPhoto } = useUploadProfilePhoto();
+  const [temporaryImage, setTemporaryImage] = useState("");
 
   const selectedProfileData = [
     {
@@ -82,62 +72,13 @@ const ProfilePage = () => {
     return profile?.role === "KONSULEN";
   }, [profile?.role]);
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setSelectedPhoto(event.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setSelectedPhoto(null);
-    }
-  };
-
-  const handleSubmitPhotoProfile = async () => {
-    const response = await uploadPhoto({
-      imageUrl: selectedPhoto || "",
-    });
-
-    if (response?.success) {
-      toast({
-        title: "Success",
-        description: "Success Upload Photo",
-        status: "success",
-        position: "top",
-        duration: 5000,
-        isClosable: true,
-      });
-
-      setSelectedPhoto(null);
-      return;
-    }
-
-    if (!response?.success) {
-      toast({
-        title: "Failed Upload Photo",
-        description: response?.message,
-        status: "error",
-        position: "top",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  };
-
   const profileImage = () => {
-    if (selectedPhoto === null) {
+    if (temporaryImage === "") {
       return profile?.imageUrl || doctorIcon;
     }
 
-    return selectedPhoto;
+    return temporaryImage;
   };
-
-  useEffect(() => {
-    console.log("999 selected photo", selectedPhoto);
-  }, [selectedPhoto]);
 
   if (loading) {
     return (
@@ -156,29 +97,13 @@ const ProfilePage = () => {
         <Flex direction="column" align="center" gap="8px">
           <Image src={profileImage()} width="80px" height="80px" mb={3} />
 
-          <label htmlFor="file-input">
-            <Text as="b" fontSize="xs" color={colors.primaryPurple}>
-              Ganti Foto
-            </Text>
-          </label>
-
-          {selectedPhoto !== null && (
-            <Button
-              color={colors.white}
-              fontSize="xs"
-              py={0}
-              bgColor={colors.primaryPurple}
-              onClick={handleSubmitPhotoProfile}
-            >
-              Ganti
-            </Button>
-          )}
+          <UploadPhoto setTemporaryImage={setTemporaryImage} />
 
           <Input
             type="file"
             display="none"
             id="file-input"
-            onChange={handleFileChange}
+            // onChange={handleFileChange}
           />
         </Flex>
 

@@ -78,3 +78,8 @@ export const convertDateForIlmiah = (dateString: string) => {
 
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 };
+
+export const bytesToMb = (bytes: number) => {
+  const megabytes = bytes / (1024 * 1024);
+  return megabytes.toFixed(2);
+};

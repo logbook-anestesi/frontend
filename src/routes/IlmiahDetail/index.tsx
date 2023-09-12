@@ -20,8 +20,6 @@ const IlmiahDetail = () => {
     onOpen: onOpenListRiwayat,
   } = useDisclosure();
 
-  console.log(detailRiwayatKelulusan);
-
   return (
     <Flex direction="column">
       <Header title={detailRiwayatKelulusan?.scientificTitle || "-"} />
