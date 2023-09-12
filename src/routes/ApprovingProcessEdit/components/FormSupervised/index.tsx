@@ -1,16 +1,16 @@
-import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import profileIcon from "../../assets/profile.png";
-import { useCallback, useEffect, useState } from "react";
-import { Supervisor } from "../../hooks/useGetSupervisor/types";
-import ModalSupervisor from "../ModalSupervisor";
-import Ticker from "../../../../components/Ticker";
-import useGetProfile from "../../../../hooks/useGetProfile";
+import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import profileIcon from '../../assets/profile.png';
+import { useCallback, useEffect, useState } from 'react';
+import { Supervisor } from '../../hooks/useGetSupervisor/types';
+import ModalSupervisor from '../ModalSupervisor';
+import Ticker from '../../../../components/Ticker';
+import useGetProfile from '../../../../hooks/useGetProfile';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
-import { Supervisor as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
+} from '../../contexts';
+import { Supervisor as InitialTypes } from '../../../Cases/hooks/useGetCases/types';
 
 interface Props {
   initialValue?: InitialTypes[];
@@ -33,7 +33,7 @@ const FormSupervised = ({ initialValue }: Props) => {
     const normalizeIds = initialValue?.map((supervisor) => supervisor.userId);
 
     approveEditDispatch({
-      type: "set_supervisor_all",
+      type: 'set_supervisor_all',
       data: {
         supervisors: normalizeSupervisor || [],
         supervisorIds: normalizeIds || [],
@@ -44,18 +44,18 @@ const FormSupervised = ({ initialValue }: Props) => {
   const handleRemoveSupervisor = useCallback(
     (superVisorId: string) => {
       approveEditDispatch({
-        type: "remove_supervisor",
+        type: 'remove_supervisor',
         data: {
           id: superVisorId,
         },
       });
     },
-    [approveEditDispatch]
+    [approveEditDispatch],
   );
 
   return (
     <Flex direction="column" gap={1}>
-      {profile?.competenceName === "PEMBEKALAN" ? (
+      {profile?.competenceName === 'PEMBEKALAN' ? (
         <Text fontSize="sm" color={colors.darkGrey}>
           Supervised By
         </Text>
@@ -75,7 +75,7 @@ const FormSupervised = ({ initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{selectedSupervisor?.name || "Masukkan Supervisor"}</Text>
+        <Text>{selectedSupervisor?.name || 'Masukkan Supervisor'}</Text>
 
         <Image src={profileIcon} width={5} alt="" />
       </Flex>
@@ -85,8 +85,8 @@ const FormSupervised = ({ initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

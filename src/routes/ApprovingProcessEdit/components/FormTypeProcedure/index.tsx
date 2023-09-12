@@ -1,16 +1,16 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { ProcedureType } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useEffect, useState } from "react";
-import ModalProcedureType from "../ModalProcedureType";
-import Ticker from "../../../../components/Ticker";
-import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ProcedureType } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useEffect, useState } from 'react';
+import ModalProcedureType from '../ModalProcedureType';
+import Ticker from '../../../../components/Ticker';
+import ModalAddOtherTypeProcedure from '../ModalAddOtherTypeProcedure';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
-import { ProcedureType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
+} from '../../contexts';
+import { ProcedureType as InitialTypes } from '../../../Cases/hooks/useGetCases/types';
 
 interface Props {
   procedureList?: ProcedureType[];
@@ -38,11 +38,11 @@ const FormTypeProcedure = ({ procedureList, initialValue }: Props) => {
     });
 
     const normalizeIds = initialValue?.map(
-      (procedure) => procedure.procedureTypeId
+      (procedure) => procedure.procedureTypeId,
     );
 
     approveEditDispatch({
-      type: "set_procedure_type_all",
+      type: 'set_procedure_type_all',
       data: {
         procedures: normalizeProcedure || [],
         procedureIds: normalizeIds || [],
@@ -53,13 +53,13 @@ const FormTypeProcedure = ({ procedureList, initialValue }: Props) => {
   const removeProcedure = useCallback(
     (procedureId: string) => {
       approveEditDispatch({
-        type: "remove_procedure_type",
+        type: 'remove_procedure_type',
         data: {
           id: procedureId,
         },
       });
     },
-    [approveEditDispatch]
+    [approveEditDispatch],
   );
 
   return (
@@ -78,7 +78,7 @@ const FormTypeProcedure = ({ procedureList, initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{procedure?.name || "Masukkan nama prosedur ..."}</Text>
+        <Text>{procedure?.name || 'Masukkan nama prosedur ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -88,8 +88,8 @@ const FormTypeProcedure = ({ procedureList, initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

@@ -1,8 +1,8 @@
-import { Button, Divider, Typography } from "antd";
-import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import { Button, Divider, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
-import { ButtonContainer, HomeContainer } from "./styles";
+import { ButtonContainer, HomeContainer } from './styles';
 
 const { Title, Text } = Typography;
 
@@ -29,10 +29,10 @@ const Home = () => {
 
         {!isAuthenticated && (
           <>
-            <Button type="primary" onClick={() => handleNavigate("/login")}>
+            <Button type="primary" onClick={() => handleNavigate('/login')}>
               Login
             </Button>
-            <Button type="primary" onClick={() => handleNavigate("/register")}>
+            <Button type="primary" onClick={() => handleNavigate('/register')}>
               Register
             </Button>
           </>
@@ -40,10 +40,10 @@ const Home = () => {
       </ButtonContainer>
       <Divider />
 
-      <Button type="link" onClick={() => handleNavigate("/about")}>
+      <Button type="link" onClick={() => handleNavigate('/about')}>
         About
       </Button>
-      <Button type="link" onClick={() => handleNavigate("/users")}>
+      <Button type="link" onClick={() => handleNavigate('/users')}>
         List User (Private)
       </Button>
     </HomeContainer>

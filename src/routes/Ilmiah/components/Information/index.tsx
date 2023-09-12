@@ -1,5 +1,5 @@
-import { Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
+import { Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
 
 const Information = () => {
   return (

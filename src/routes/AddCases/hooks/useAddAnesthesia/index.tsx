@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
 
 const useAddAnesthesia = () => {
   const [loading, setLoading] = useState(false);
@@ -9,8 +9,8 @@ const useAddAnesthesia = () => {
 
     try {
       const response = await axiosClient.post(
-        "/cases/anesthesia-type/",
-        payload
+        '/cases/anesthesia-type/',
+        payload,
       );
       const data = response.data;
 
@@ -23,13 +23,13 @@ const useAddAnesthesia = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Update Stase",
+          message: 'Berhasil Update Stase',
           anesthesiaId: data.data.id,
         };
       }
     } catch (e) {
       setLoading(false);
-      console.log("[Error Update Stase]", e);
+      console.log('[Error Update Stase]', e);
     }
   }, []);
 

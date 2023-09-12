@@ -10,19 +10,19 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { ProcedureType } from "../../../../hooks/useGetCasesForm/types";
+} from '@chakra-ui/react';
+import { ProcedureType } from '../../../../hooks/useGetCasesForm/types';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { colors } from "../../../../constants/colors";
-import CardProcedureType from "./CardProcedureType";
-import { useAddCasesContext } from "../../contexts";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
+import { colors } from '../../../../constants/colors';
+import CardProcedureType from './CardProcedureType';
+import { useAddCasesContext } from '../../contexts';
 
 interface Props {
   isOpen: boolean;
@@ -45,7 +45,7 @@ const ModalProcedureType = ({
   useEffect(() => {
     const filtered = procedureList.filter(
       (procedure) =>
-        !selectedProcedure.some((item) => item.title === procedure?.name)
+        !selectedProcedure.some((item) => item.title === procedure?.name),
     );
 
     setFilteredProcedure(filtered);
@@ -54,7 +54,7 @@ const ModalProcedureType = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = procedureList.filter((procedure) =>
-      procedure.name.toLowerCase().includes(loweredFilter)
+      procedure.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredProcedure(filtered);

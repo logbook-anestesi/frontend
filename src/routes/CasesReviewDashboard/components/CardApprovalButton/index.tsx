@@ -1,8 +1,8 @@
-import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
-import { Button, Flex } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useNavigate } from "react-router-dom";
-import { ReviewItem } from "../../hooks/useGetPendingReview/types";
+import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
+import { Button, Flex } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useNavigate } from 'react-router-dom';
+import { ReviewItem } from '../../hooks/useGetPendingReview/types';
 
 interface Props {
   caseData: ReviewItem;
@@ -18,13 +18,13 @@ const CardApprovalButton = ({ caseData, onClick }: Props) => {
       caseData: caseData,
     };
 
-    navigate("/review/process", {
+    navigate('/review/process', {
       state: state,
     });
   };
 
   const handleOnClick = () => {
-    navigate("/review/process/edit", {
+    navigate('/review/process/edit', {
       state: {
         caseId: caseData?.id,
       },

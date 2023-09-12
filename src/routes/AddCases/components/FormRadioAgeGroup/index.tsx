@@ -1,16 +1,16 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { RADIO_AGE_GROUP } from "../../constants";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { RADIO_AGE_GROUP } from '../../constants';
+import { useAddCasesDispatch } from '../../contexts';
 
 const FormRadioAgeGroup = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_age_group",
+      type: 'set_age_group',
       data: {
         ageGroup: value,
       },
@@ -28,8 +28,8 @@ const FormRadioAgeGroup = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

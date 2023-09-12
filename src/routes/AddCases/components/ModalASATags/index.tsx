@@ -10,19 +10,19 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { Tag } from "../../../../hooks/useGetCasesForm/types";
+} from '@chakra-ui/react';
+import { Tag } from '../../../../hooks/useGetCasesForm/types';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import { Search2Icon } from "@chakra-ui/icons";
-import { colors } from "../../../../constants/colors";
-import CardASATags from "./CardASATags";
-import { useAddCasesContext } from "../../contexts";
+} from 'react';
+import { Search2Icon } from '@chakra-ui/icons';
+import { colors } from '../../../../constants/colors';
+import CardASATags from './CardASATags';
+import { useAddCasesContext } from '../../contexts';
 
 interface Props {
   isOpen: boolean;
@@ -45,7 +45,7 @@ const ModalASATags = ({
   useEffect(() => {
     const filtered = tagList.filter(
       (tag) =>
-        !selectedASATags.some((selectedTag) => selectedTag.title === tag?.name)
+        !selectedASATags.some((selectedTag) => selectedTag.title === tag?.name),
     );
 
     setFilteredTags(filtered);
@@ -54,7 +54,7 @@ const ModalASATags = ({
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = tagList.filter((tag) =>
-      tag.name.toLowerCase().includes(loweredFilter)
+      tag.name.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredTags(filtered);

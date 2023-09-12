@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Button, Form, Input, message, Typography } from "antd";
-import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import { SubmitLoginContainer } from "./styles";
+import React, { useEffect } from 'react';
+import { Button, Form, Input, message, Typography } from 'antd';
+import useAuth from '../../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { SubmitLoginContainer } from './styles';
 
 const { Item } = Form;
 const { Password } = Input;
@@ -18,14 +18,14 @@ const Register = () => {
 
   useEffect(() => {
     if (registerResponses && registerResponses.error === null) {
-      navigate("/");
+      navigate('/');
     }
   }, [navigate, registerResponses]);
 
   useEffect(() => {
     if (registerResponses) {
       if (registerResponses?.error === null) {
-        message.success("Success Register, Please Login");
+        message.success('Success Register, Please Login');
         return;
       }
 
@@ -45,7 +45,7 @@ const Register = () => {
         <Item
           label="Username"
           name="name"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input />
         </Item>
@@ -53,7 +53,7 @@ const Register = () => {
         <Item
           label="Email"
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input />
         </Item>
@@ -61,7 +61,7 @@ const Register = () => {
         <Item
           label="Password"
           name="password"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Password />
         </Item>

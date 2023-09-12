@@ -1,7 +1,7 @@
-import { Flex, Text } from "@chakra-ui/react";
-import Ticker from "../../../../components/Ticker";
-import { colors } from "../../../../constants/colors";
-import { getCurrentMonth } from "../../../../helpers";
+import { Flex, Text } from '@chakra-ui/react';
+import Ticker from '../../../../components/Ticker';
+import { colors } from '../../../../constants/colors';
+import { getCurrentMonth } from '../../../../helpers';
 
 interface Props {
   staseName?: string;
@@ -20,7 +20,7 @@ const StaseCard = ({ staseName }: Props) => {
     >
       <Text fontSize="xs">Stase saat ini</Text>
       <Text as="b" color={colors.primaryPurple}>
-        {staseName || "-"}
+        {staseName || '-'}
       </Text>
       <Flex alignSelf="flex-end">
         <Ticker text={getCurrentMonth()} isShowClose={false} />

@@ -1,28 +1,28 @@
-import { Button, Divider, Flex, Text, useToast } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import FormDate from "./components/FormDate";
-import FormDPJP from "./components/FormDPJP";
-import FormRadioExam from "./components/FormRadioExam";
-import { RADIO_EXAM } from "./constants";
-import FormOperation from "./components/FormOperation";
-import { useAddCasesContext, useAddCasesDispatch } from "./contexts";
-import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
-import { colors } from "../../constants/colors";
-import FormTypeProcedure from "./components/FormTypeProcedure";
-import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
-import FormRadioLocation from "./components/FormRadioLocation";
-import FormRadioPriority from "./components/FormRadioPriority";
-import FormUsiaAndRM from "./components/FormUsiaAndRM";
-import FormRadioGender from "./components/FormRadioGender";
-import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
-import FormASATags from "./components/FormASATags";
-import FormSupervised from "./components/FormSupervised";
-import FormNotes from "./components/FormNotes";
-import FormAdditionalTags from "./components/FormAdditionalTags";
-import useAddCases from "./hooks/useAddCases";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import useGetCasesForm from "../../hooks/useGetCasesForm";
+import { Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import FormDate from './components/FormDate';
+import FormDPJP from './components/FormDPJP';
+import FormRadioExam from './components/FormRadioExam';
+import { RADIO_EXAM } from './constants';
+import FormOperation from './components/FormOperation';
+import { useAddCasesContext, useAddCasesDispatch } from './contexts';
+import FormTypeAnesthesia from './components/FormTypeAnesthesia';
+import { colors } from '../../constants/colors';
+import FormTypeProcedure from './components/FormTypeProcedure';
+import FormRadioAgeGroup from './components/FormRadioAgeGroup';
+import FormRadioLocation from './components/FormRadioLocation';
+import FormRadioPriority from './components/FormRadioPriority';
+import FormUsiaAndRM from './components/FormUsiaAndRM';
+import FormRadioGender from './components/FormRadioGender';
+import FormTingkatAndEmergency from './components/FormTingkatAndEmergency';
+import FormASATags from './components/FormASATags';
+import FormSupervised from './components/FormSupervised';
+import FormNotes from './components/FormNotes';
+import FormAdditionalTags from './components/FormAdditionalTags';
+import useAddCases from './hooks/useAddCases';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import useGetCasesForm from '../../hooks/useGetCasesForm';
 
 const AddCases = () => {
   const state = useAddCasesContext();
@@ -42,11 +42,11 @@ const AddCases = () => {
       caseType: state.caseType,
       dpjpUserId: state.dpjpUserId,
       ...(state?.asaTier !== 0 ? { asaTier: state.asaTier } : {}),
-      ...(state?.ageGroup !== "" ? { ageGroup: state.ageGroup } : {}),
-      ...(state?.location !== "" ? { location: state.location } : {}),
-      ...(state?.priority !== "" ? { priority: state.priority } : {}),
+      ...(state?.ageGroup !== '' ? { ageGroup: state.ageGroup } : {}),
+      ...(state?.location !== '' ? { location: state.location } : {}),
+      ...(state?.priority !== '' ? { priority: state.priority } : {}),
       ...(state?.tagIds.length !== 0 ? { tagIds: state.tagIds } : {}),
-      ...(state?.notes !== "" ? { notes: state.notes } : {}),
+      ...(state?.notes !== '' ? { notes: state.notes } : {}),
       ...(state?.anesthesiaTypeIds.length !== 0
         ? { anesthesiaTypeIds: state.anesthesiaTypeIds }
         : {}),
@@ -57,7 +57,7 @@ const AddCases = () => {
       ...(state?.operationTypeIds.length !== 0
         ? { operationTypeIds: state.operationTypeIds }
         : {}),
-      ...(state?.patientRecordNumber !== ""
+      ...(state?.patientRecordNumber !== ''
         ? { patientRecordNumber: state.patientRecordNumber }
         : {}),
       ...(state?.procedureTypeIds.length !== 0
@@ -70,24 +70,24 @@ const AddCases = () => {
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Case Berhasil Dibuat",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Case Berhasil Dibuat',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
 
-      navigate("/cases");
+      navigate('/cases');
       return;
     }
 
     if (!response?.success) {
       toast({
-        title: "Failed Add Cases",
+        title: 'Failed Add Cases',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 9000,
         isClosable: true,
       });
@@ -96,7 +96,7 @@ const AddCases = () => {
 
   useEffect(() => {
     casesDispatch({
-      type: "reset_state",
+      type: 'reset_state',
       data: {},
     });
   }, [casesDispatch]);

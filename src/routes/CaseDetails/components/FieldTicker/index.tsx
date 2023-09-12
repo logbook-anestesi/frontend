@@ -1,6 +1,6 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import Ticker from "../../../../components/Ticker";
+import { Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import Ticker from '../../../../components/Ticker';
 
 interface Props {
   label: string;
@@ -21,8 +21,8 @@ const FieldTicker = ({ label, listValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

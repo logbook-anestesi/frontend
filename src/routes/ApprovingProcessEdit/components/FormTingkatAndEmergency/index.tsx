@@ -1,8 +1,8 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import FormRadioEmergency from "../FormRadioEmergency";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import FormRadioEmergency from '../FormRadioEmergency';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialValue?: number;
@@ -25,7 +25,7 @@ const FormTingkatAndEmergency = ({
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_tier",
+      type: 'set_tier',
       data: {
         tier: tier,
       },

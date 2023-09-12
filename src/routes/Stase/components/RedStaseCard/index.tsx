@@ -1,14 +1,14 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { getCurrentMonth } from "../../../../helpers";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { getCurrentMonth } from '../../../../helpers';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 const RedStaseCard = () => {
   const navigate = useNavigate();
 
   const handleClickCard = () => {
-    navigate("/stase/create");
+    navigate('/stase/create');
   };
 
   return (

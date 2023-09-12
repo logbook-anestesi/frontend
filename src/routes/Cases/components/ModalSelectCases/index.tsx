@@ -7,11 +7,11 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { CASE_LIST } from "../../../../constants/caseList";
-import { colors } from "../../../../constants/colors";
-import { Dispatch, SetStateAction } from "react";
-import { CaseMenu } from "../../types";
+} from '@chakra-ui/react';
+import { CASE_LIST } from '../../../../constants/caseList';
+import { colors } from '../../../../constants/colors';
+import { Dispatch, SetStateAction } from 'react';
+import { CaseMenu } from '../../types';
 
 interface Props {
   isOpen: boolean;

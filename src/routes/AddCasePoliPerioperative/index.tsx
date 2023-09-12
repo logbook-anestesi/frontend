@@ -1,13 +1,13 @@
-import { Button, Flex, useToast } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import { colors } from "../../constants/colors";
-import { useAddCasesContext, useAddCasesDispatch } from "../AddCases/contexts";
-import { useEffect } from "react";
-import useAddCases from "../AddCases/hooks/useAddCases";
-import FormDate from "../AddCases/components/FormDate";
-import FormDPJP from "../AddCases/components/FormDPJP";
-import { useNavigate } from "react-router-dom";
-import FormNumberPatient from "../AddCases/components/FormNumberPatient";
+import { Button, Flex, useToast } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import { colors } from '../../constants/colors';
+import { useAddCasesContext, useAddCasesDispatch } from '../AddCases/contexts';
+import { useEffect } from 'react';
+import useAddCases from '../AddCases/hooks/useAddCases';
+import FormDate from '../AddCases/components/FormDate';
+import FormDPJP from '../AddCases/components/FormDPJP';
+import { useNavigate } from 'react-router-dom';
+import FormNumberPatient from '../AddCases/components/FormNumberPatient';
 
 const AddCasePoliPerioperative = () => {
   const toast = useToast();
@@ -27,24 +27,24 @@ const AddCasePoliPerioperative = () => {
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Case Berhasil Dibuat",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Case Berhasil Dibuat',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
 
-      navigate("/cases");
+      navigate('/cases');
       return;
     }
 
     if (!response?.success) {
       toast({
-        title: "Failed Add Cases",
+        title: 'Failed Add Cases',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 9000,
         isClosable: true,
       });
@@ -54,14 +54,14 @@ const AddCasePoliPerioperative = () => {
   // reset state and change case type when first render page
   useEffect(() => {
     casesDispatch({
-      type: "reset_state",
+      type: 'reset_state',
       data: {},
     });
 
     casesDispatch({
-      type: "set_case_type",
+      type: 'set_case_type',
       data: {
-        caseType: "POLI_PERIOPERATIVE",
+        caseType: 'POLI_PERIOPERATIVE',
       },
     });
   }, [casesDispatch]);

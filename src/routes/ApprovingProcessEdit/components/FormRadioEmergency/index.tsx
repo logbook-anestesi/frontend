@@ -1,8 +1,8 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { RADIO_EMERGENCY } from "../../constants";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { RADIO_EMERGENCY } from '../../constants';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialValue?: boolean;
@@ -10,17 +10,17 @@ interface Props {
 
 const FormRadioEmergency = ({ initialValue }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
-  const [value, setValue] = useState("ya");
+  const [value, setValue] = useState('ya');
 
   useEffect(() => {
-    setValue(initialValue ? "ya" : "tidak");
+    setValue(initialValue ? 'ya' : 'tidak');
   }, [initialValue]);
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_emergency",
+      type: 'set_emergency',
       data: {
-        isEmergency: value === "ya",
+        isEmergency: value === 'ya',
       },
     });
   }, [approveEditDispatch, value]);
@@ -36,8 +36,8 @@ const FormRadioEmergency = ({ initialValue }: Props) => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

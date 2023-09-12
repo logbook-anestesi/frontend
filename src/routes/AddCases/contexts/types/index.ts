@@ -83,7 +83,7 @@ interface InitialState {
 }
 
 interface SetSelectedOperation {
-  type: "set_selected_operation";
+  type: 'set_selected_operation';
   data: {
     category: string;
     operation: string;
@@ -92,7 +92,7 @@ interface SetSelectedOperation {
 }
 
 interface SetSelectedAnesthesia {
-  type: "set_selected_anesthesia";
+  type: 'set_selected_anesthesia';
   data: {
     title: string;
     id: string;
@@ -100,49 +100,49 @@ interface SetSelectedAnesthesia {
 }
 
 interface SetDate {
-  type: "set_date";
+  type: 'set_date';
   data: {
     date: string;
   };
 }
 
 interface SetDPJP {
-  type: "set_dpjp";
+  type: 'set_dpjp';
   data: {
     dpjpId: string;
   };
 }
 
 interface SetIsExam {
-  type: "set_is_exam";
+  type: 'set_is_exam';
   data: {
     isExam: boolean;
   };
 }
 
 interface SetCaseType {
-  type: "set_case_type";
+  type: 'set_case_type';
   data: {
     caseType: string;
   };
 }
 
 interface SetOperationTypeIds {
-  type: "set_operation_type_ids";
+  type: 'set_operation_type_ids';
   data: {
     operationId: string;
   };
 }
 
 interface SetAnesthesiaTypeIds {
-  type: "set_anethesia_type_ids";
+  type: 'set_anethesia_type_ids';
   data: {
     anesthesiaId: string;
   };
 }
 
 interface SetProcedureType {
-  type: "set_procedure_type";
+  type: 'set_procedure_type';
   data: {
     procedureType: string;
     procedureId: string;
@@ -150,7 +150,7 @@ interface SetProcedureType {
 }
 
 interface SetNoraProcedureType {
-  type: "set_nora_procedure_type";
+  type: 'set_nora_procedure_type';
   data: {
     noraProcedureType: string;
     id: string;
@@ -158,77 +158,77 @@ interface SetNoraProcedureType {
 }
 
 interface SetProcedureTypeIds {
-  type: "set_procedure_type_ids";
+  type: 'set_procedure_type_ids';
   data: {
     procedureId: string;
   };
 }
 
 interface SetNoraProcedureTypeIds {
-  type: "set_nora_procedure_type_ids";
+  type: 'set_nora_procedure_type_ids';
   data: {
     noraProcedureId: string;
   };
 }
 
 interface SetAgeGroup {
-  type: "set_age_group";
+  type: 'set_age_group';
   data: {
     ageGroup: string;
   };
 }
 
 interface SetLocation {
-  type: "set_location";
+  type: 'set_location';
   data: {
     location: string;
   };
 }
 
 interface SetPriority {
-  type: "set_priority";
+  type: 'set_priority';
   data: {
     priority: string;
   };
 }
 
 interface SetPatientAge {
-  type: "set_patient_age";
+  type: 'set_patient_age';
   data: {
     age: number;
   };
 }
 
 interface SetPatientRecordNumber {
-  type: "set_patient_rm";
+  type: 'set_patient_rm';
   data: {
     rm: string;
   };
 }
 
 interface SetPatientGender {
-  type: "set_patient_gender";
+  type: 'set_patient_gender';
   data: {
     gender: string;
   };
 }
 
 interface SetTier {
-  type: "set_tier";
+  type: 'set_tier';
   data: {
     tier: number;
   };
 }
 
 interface SetAsIsEmergency {
-  type: "set_emergency";
+  type: 'set_emergency';
   data: {
     isEmergency: boolean;
   };
 }
 
 interface SetASATags {
-  type: "set_asa_tags";
+  type: 'set_asa_tags';
   data: {
     tag: string;
     id: string;
@@ -236,14 +236,14 @@ interface SetASATags {
 }
 
 interface SetASATagsId {
-  type: "set_asa_tags_type_ids";
+  type: 'set_asa_tags_type_ids';
   data: {
     tagId: string;
   };
 }
 
 interface SetSupervisor {
-  type: "set_supervisor";
+  type: 'set_supervisor';
   data: {
     supervisor: string;
     id: string;
@@ -251,82 +251,82 @@ interface SetSupervisor {
 }
 
 interface SetSupervisorIds {
-  type: "set_supervisor_ids";
+  type: 'set_supervisor_ids';
   data: {
     supervisorId: string;
   };
 }
 
 interface SetNote {
-  type: "set_note";
+  type: 'set_note';
   data: {
     note: string;
   };
 }
 
 interface SetAdditionalTags {
-  type: "set_additional_tags";
+  type: 'set_additional_tags';
   data: {
     tag: string;
   };
 }
 
 interface SetAdditionalTagIds {
-  type: "set_additional_tag_ids";
+  type: 'set_additional_tag_ids';
   data: {
     tagId: string;
   };
 }
 
 interface ResetState {
-  type: "reset_state";
+  type: 'reset_state';
   data: {};
 }
 
 interface RemoveProcedureType {
-  type: "remove_procedure_type";
+  type: 'remove_procedure_type';
   data: {
     id: string;
   };
 }
 
 interface RemoveOperationType {
-  type: "remove_operation_type";
+  type: 'remove_operation_type';
   data: {
     id: string;
   };
 }
 
 interface RemoveAnesthesiaType {
-  type: "remove_anesthesia_type";
+  type: 'remove_anesthesia_type';
   data: {
     id: string;
   };
 }
 
 interface RemoveAsaTags {
-  type: "remove_asa_tags";
+  type: 'remove_asa_tags';
   data: {
     id: string;
   };
 }
 
 interface RemoveSupervisor {
-  type: "remove_supervisor";
+  type: 'remove_supervisor';
   data: {
     id: string;
   };
 }
 
 interface RemoveNoraProcedure {
-  type: "remove_nora_procedure";
+  type: 'remove_nora_procedure';
   data: {
     id: string;
   };
 }
 
 interface SetDiagnose {
-  type: "set_diagnose";
+  type: 'set_diagnose';
   data: {
     diagnoseName: string;
     diagnoseId: string;
@@ -334,35 +334,35 @@ interface SetDiagnose {
 }
 
 interface SetDiagnoseIds {
-  type: "set_diagnose_ids";
+  type: 'set_diagnose_ids';
   data: {
     diagnoseId: string;
   };
 }
 
 interface RemoveDiagnose {
-  type: "remove_diagnose";
+  type: 'remove_diagnose';
   data: {
     id: string;
   };
 }
 
 interface SetIsShowLocationLainnya {
-  type: "set_show_location_lainnya";
+  type: 'set_show_location_lainnya';
   data: {
     isShow: boolean;
   };
 }
 
 interface SetNumberOfPatient {
-  type: "set_number_patient";
+  type: 'set_number_patient';
   data: {
     numberPatient: number;
   };
 }
 
 interface SetTypePainService {
-  type: "set_type_pain_service";
+  type: 'set_type_pain_service';
   data: {
     typePainName: string;
     typePainId: string;
@@ -370,21 +370,21 @@ interface SetTypePainService {
 }
 
 interface SetTypePainServiceIds {
-  type: "set_type_pain_ids";
+  type: 'set_type_pain_ids';
   data: {
     typePainId: string;
   };
 }
 
 interface RemoveTypePainService {
-  type: "remove_type_pain_service";
+  type: 'remove_type_pain_service';
   data: {
     id: string;
   };
 }
 
 interface SetProcedurePainService {
-  type: "set_procedure_pain_service";
+  type: 'set_procedure_pain_service';
   data: {
     procedurePainName: string;
     procedurePainId: string;
@@ -392,14 +392,14 @@ interface SetProcedurePainService {
 }
 
 interface SetProcedurePainServiceIds {
-  type: "set_procedure_pain_ids";
+  type: 'set_procedure_pain_ids';
   data: {
     procedurePainId: string;
   };
 }
 
 interface RemoveProcedurePainService {
-  type: "remove_procedure_pain_service";
+  type: 'remove_procedure_pain_service';
   data: {
     id: string;
   };

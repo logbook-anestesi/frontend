@@ -1,13 +1,13 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
 
 const FormUsiaAndRM = () => {
   const casesDispatch = useAddCasesDispatch();
 
   const [age, setAge] = useState(0);
-  const [recordNumber, setRecordNumber] = useState("");
+  const [recordNumber, setRecordNumber] = useState('');
   const handleChangeAge = (event: ChangeEvent<HTMLInputElement>) =>
     setAge(Number(event.target.value));
   const handleChangeRm = (event: ChangeEvent<HTMLInputElement>) =>
@@ -15,14 +15,14 @@ const FormUsiaAndRM = () => {
 
   useEffect(() => {
     casesDispatch({
-      type: "set_patient_age",
+      type: 'set_patient_age',
       data: {
         age: age,
       },
     });
 
     casesDispatch({
-      type: "set_patient_rm",
+      type: 'set_patient_rm',
       data: {
         rm: recordNumber,
       },

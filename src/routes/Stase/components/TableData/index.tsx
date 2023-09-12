@@ -1,7 +1,7 @@
-import DataTable, { TableColumn } from "react-data-table-component";
-import { useMemo } from "react";
-import { formatMonthYear } from "../../../../helpers";
-import { StaseUser } from "../../hooks/useGetStaseUser/types";
+import DataTable, { TableColumn } from 'react-data-table-component';
+import { useMemo } from 'react';
+import { formatMonthYear } from '../../../../helpers';
+import { StaseUser } from '../../hooks/useGetStaseUser/types';
 
 interface DataRow {
   index: number;
@@ -18,23 +18,23 @@ interface Props {
 const TableData = ({ stationList }: Props) => {
   const columns: TableColumn<DataRow>[] = [
     {
-      name: "No",
+      name: 'No',
       selector: (row) => row.index,
       sortable: true,
-      maxWidth: "2px",
+      maxWidth: '2px',
     },
     {
-      name: "Nama",
+      name: 'Nama',
       selector: (row) => row.stationName,
       sortable: true,
     },
     {
-      name: "Tanggal",
+      name: 'Tanggal',
       selector: (row) => row.date,
       sortable: true,
     },
     {
-      name: "Status",
+      name: 'Status',
       selector: (row) => row.status,
       sortable: true,
     },
@@ -46,7 +46,7 @@ const TableData = ({ stationList }: Props) => {
         index: idx + 1,
         stationName: singleStation.stationName,
         date: formatMonthYear(singleStation.periodMmYyyy),
-        status: "Lulus",
+        status: 'Lulus',
       };
     });
   }, [stationList]);

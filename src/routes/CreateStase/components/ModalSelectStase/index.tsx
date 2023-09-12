@@ -1,4 +1,4 @@
-import { Search2Icon } from "@chakra-ui/icons";
+import { Search2Icon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -8,17 +8,17 @@ import {
   Modal,
   ModalContent,
   ModalOverlay,
-} from "@chakra-ui/react";
-import CardStase from "../CardStase";
-import useGetAllStase from "../../hooks/useGetAllStase";
+} from '@chakra-ui/react';
+import CardStase from '../CardStase';
+import useGetAllStase from '../../hooks/useGetAllStase';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useMemo,
   useState,
-} from "react";
-import { Stase } from "../../hooks/useGetAllStase/types";
+} from 'react';
+import { Stase } from '../../hooks/useGetAllStase/types';
 
 interface Props {
   isOpen: boolean;
@@ -33,7 +33,7 @@ const ModalSelectStase = ({ isOpen, closeModal, setStase }: Props) => {
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = listStase.filter((stase) =>
-      stase.stationName.toLowerCase().includes(loweredFilter)
+      stase.stationName.toLowerCase().includes(loweredFilter),
     );
 
     setFilteredStase(filtered);

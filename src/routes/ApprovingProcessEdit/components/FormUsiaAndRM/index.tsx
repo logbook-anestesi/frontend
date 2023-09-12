@@ -1,7 +1,7 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialUsia?: number;
@@ -12,7 +12,7 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
 
   const [age, setAge] = useState(0);
-  const [recordNumber, setRecordNumber] = useState("");
+  const [recordNumber, setRecordNumber] = useState('');
   const handleChangeAge = (event: ChangeEvent<HTMLInputElement>) =>
     setAge(Number(event.target.value));
   const handleChangeRm = (event: ChangeEvent<HTMLInputElement>) =>
@@ -23,19 +23,19 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
   }, [initialUsia]);
 
   useEffect(() => {
-    setRecordNumber(initialNoRm || "");
+    setRecordNumber(initialNoRm || '');
   }, [initialNoRm]);
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_patient_age",
+      type: 'set_patient_age',
       data: {
         age: age,
       },
     });
 
     approveEditDispatch({
-      type: "set_patient_rm",
+      type: 'set_patient_rm',
       data: {
         rm: recordNumber,
       },

@@ -1,9 +1,9 @@
-import { CalendarIcon } from "@chakra-ui/icons";
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-import { colors } from "../../../../constants/colors";
-import { formatDateMonthYear } from "../../../../helpers";
+import { CalendarIcon } from '@chakra-ui/icons';
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import { colors } from '../../../../constants/colors';
+import { formatDateMonthYear } from '../../../../helpers';
 
 interface Props {
   selectedDate: Date;

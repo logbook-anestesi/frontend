@@ -1,7 +1,7 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import ModalPembimbing from "../ModalPembimbing";
-import { PembimbingData } from "../ModalAddIlmiah";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import ModalPembimbing from '../ModalPembimbing';
+import { PembimbingData } from '../ModalAddIlmiah';
 
 interface Props {
   setApprovalUser: (user: PembimbingData) => void;

@@ -8,13 +8,13 @@ import {
   ModalOverlay,
   Text,
   useToast,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useState } from "react";
-import FormLink from "../FormLink";
-import Information from "../Information";
-import { useIlmiahContext } from "../../contexts";
-import useAddPengajuanKelulusan from "../../hooks/useAddPengajuanKelulusan";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useState } from 'react';
+import FormLink from '../FormLink';
+import Information from '../Information';
+import { useIlmiahContext } from '../../contexts';
+import useAddPengajuanKelulusan from '../../hooks/useAddPengajuanKelulusan';
 
 interface Props {
   isOpen: boolean;
@@ -28,7 +28,7 @@ export interface PembimbingData {
 
 const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
   const toast = useToast();
-  const [linkDocument, setLinkDocument] = useState("");
+  const [linkDocument, setLinkDocument] = useState('');
 
   const { pengajuanKelulusan } = useIlmiahContext();
   const { createPengajuanKelulusan, loading } = useAddPengajuanKelulusan();
@@ -41,10 +41,10 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Pengajuan Kelulusan berhasil dibuat",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Pengajuan Kelulusan berhasil dibuat',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -54,10 +54,10 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
 
     if (!response?.success) {
       toast({
-        title: "Failed membuat Pengajuan Kelulusan",
+        title: 'Failed membuat Pengajuan Kelulusan',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -84,8 +84,8 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
             ))}
           </Flex>
 
-          {pengajuanKelulusan?.type === "TESIS" && (
-            <Flex direction={"column"}>
+          {pengajuanKelulusan?.type === 'TESIS' && (
+            <Flex direction={'column'}>
               <Text mb={2}>Penentu Kelulusan</Text>
               <Text as="b" mb={2}>
                 dr. Budi Haris (Ketua SPS)

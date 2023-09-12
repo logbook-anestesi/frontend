@@ -1,12 +1,12 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
-import doctorIcon from "../../assets/doctor.png";
-import useGetProfile from "../../hooks/useGetProfile";
-import Header from "../../components/Header";
-import { colors } from "../../constants/colors";
-import LoaderCircle from "../../components/LoaderCircle";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import doctorIcon from '../../assets/doctor.png';
+import useGetProfile from '../../hooks/useGetProfile';
+import Header from '../../components/Header';
+import { colors } from '../../constants/colors';
+import LoaderCircle from '../../components/LoaderCircle';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ProfilePageOtherUser = () => {
   const location = useLocation();
@@ -18,31 +18,31 @@ const ProfilePageOtherUser = () => {
 
   const selectedProfileData = [
     {
-      label: "Nama",
+      label: 'Nama',
       value: profileById?.name,
     },
     {
-      label: "NPM",
+      label: 'NPM',
       value: profileById?.npm,
     },
     {
-      label: "Email",
+      label: 'Email',
       value: profileById?.email,
     },
     {
-      label: "No. Handphone",
+      label: 'No. Handphone',
       value: profileById?.phoneNumber,
     },
     {
-      label: "Term",
+      label: 'Term',
       value: profileById?.joinTerm,
     },
     {
-      label: "Level Kompetensi",
+      label: 'Level Kompetensi',
       value: profileById?.role,
     },
     {
-      label: "Stase",
+      label: 'Stase',
       value: profileById?.stationName,
     },
   ];

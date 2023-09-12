@@ -7,15 +7,15 @@ import {
   ModalHeader,
   ModalOverlay,
   useToast,
-} from "@chakra-ui/react";
-import FormTipeIlmiah from "../FormTipeIlmiah";
-import FormDosenPembimbing from "../FormDosenPembimbing";
-import FormJudul from "../FormJudul";
-import Information from "../Information";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import useCreateIlmiah from "../../hooks/useCreateIlmiah";
-import ListSPSKPS from "../ListSPSKPS";
+} from '@chakra-ui/react';
+import FormTipeIlmiah from '../FormTipeIlmiah';
+import FormDosenPembimbing from '../FormDosenPembimbing';
+import FormJudul from '../FormJudul';
+import Information from '../Information';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import useCreateIlmiah from '../../hooks/useCreateIlmiah';
+import ListSPSKPS from '../ListSPSKPS';
 
 interface Props {
   isOpen: boolean;
@@ -31,14 +31,14 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
   const toast = useToast();
   const { createIlmiah, loading } = useCreateIlmiah();
 
-  const [scientificType, setScientificType] = useState("");
-  const [title, setTitle] = useState("");
+  const [scientificType, setScientificType] = useState('');
+  const [title, setTitle] = useState('');
   const [showSpsKps, setShowSpsKps] = useState(false);
   const [approvalUser, setApprovalUser] = useState<PembimbingData[]>([]);
 
   const setPembimbing = (user: PembimbingData) => {
     const exists = approvalUser.some(
-      (existingUser) => existingUser.id === user.id
+      (existingUser) => existingUser.id === user.id,
     );
 
     if (!exists) {
@@ -55,10 +55,10 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Ilmiah berhasil dibuat",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Ilmiah berhasil dibuat',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -70,10 +70,10 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
 
     if (!response?.success) {
       toast({
-        title: "Failed membuat ilmiah",
+        title: 'Failed membuat ilmiah',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 7000,
         isClosable: true,
       });
@@ -81,15 +81,15 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
   };
 
   const handleOnClose = () => {
-    setScientificType("");
-    setTitle("");
+    setScientificType('');
+    setTitle('');
     setApprovalUser([]);
 
     closeModal();
   };
 
   useEffect(() => {
-    if (scientificType === "TESIS") {
+    if (scientificType === 'TESIS') {
       setShowSpsKps(true);
       return;
     }
@@ -97,7 +97,7 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
     setShowSpsKps(false);
   }, [scientificType]);
 
-  console.log("999 scientific type", { scientificType });
+  console.log('999 scientific type', { scientificType });
 
   return (
     <Modal isOpen={isOpen} onClose={handleOnClose} isCentered>

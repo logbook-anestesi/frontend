@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { Case } from "../../routes/Cases/hooks/useGetCases/types";
-import axiosClient from "../../networks/apiClient";
+import { useEffect, useMemo, useState } from 'react';
+import { Case } from '../../routes/Cases/hooks/useGetCases/types';
+import axiosClient from '../../networks/apiClient';
 
 const useGetDetailCases = (caseId: string) => {
   const [loading, setLoading] = useState(false);
@@ -26,25 +26,25 @@ const useGetDetailCases = (caseId: string) => {
 
   const procedureTypes = useMemo(() => {
     return caseData?.procedureTypes.map(
-      (procedureType) => procedureType.procedureTypeName
+      (procedureType) => procedureType.procedureTypeName,
     );
   }, [caseData?.procedureTypes]);
 
   const anesthesiaTypes = useMemo(() => {
     return caseData?.anesthesiaTypes.map(
-      (anesthesiaType) => anesthesiaType.anesthesiaTypeName
+      (anesthesiaType) => anesthesiaType.anesthesiaTypeName,
     );
   }, [caseData?.anesthesiaTypes]);
 
   const noraProcedureTypes = useMemo(() => {
     return caseData?.noraProcedureTypes.map(
-      (noraProcedureType) => noraProcedureType.noraProcedureTypeName
+      (noraProcedureType) => noraProcedureType.noraProcedureTypeName,
     );
   }, [caseData?.noraProcedureTypes]);
 
   const operationTypes = useMemo(() => {
     return caseData?.operationTypes.map(
-      (operationType) => operationType.operationTypeName
+      (operationType) => operationType.operationTypeName,
     );
   }, [caseData?.operationTypes]);
 
@@ -58,13 +58,13 @@ const useGetDetailCases = (caseId: string) => {
 
   const painServiceTypes = useMemo(() => {
     return caseData?.painServiceTypes.map(
-      (painServiceType) => painServiceType.painServiceTypeName
+      (painServiceType) => painServiceType.painServiceTypeName,
     );
   }, [caseData?.painServiceTypes]);
 
   const painServiceProcedures = useMemo(() => {
     return caseData?.painServiceProcedures.map(
-      (painServiceProcedure) => painServiceProcedure.painServiceProcedureName
+      (painServiceProcedure) => painServiceProcedure.painServiceProcedureName,
     );
   }, [caseData?.painServiceProcedures]);
 

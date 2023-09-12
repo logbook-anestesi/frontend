@@ -1,10 +1,10 @@
-import { useMemo } from "react";
-import DataTable, { TableColumn } from "react-data-table-component";
-import { PengajuanPembimbing } from "../../hooks/useGetPengajuanPembimbing/types";
-import { convertDateForIlmiah } from "../../../../helpers";
-import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useIlmiahDispatch } from "../../contexts";
+import { useMemo } from 'react';
+import DataTable, { TableColumn } from 'react-data-table-component';
+import { PengajuanPembimbing } from '../../hooks/useGetPengajuanPembimbing/types';
+import { convertDateForIlmiah } from '../../../../helpers';
+import { Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useIlmiahDispatch } from '../../contexts';
 
 interface DataRow {
   id: string;
@@ -30,7 +30,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
     status: string;
     ilmiahId: string;
   }) => {
-    if (status !== "SCIENTIFIC_APPROVED") {
+    if (status !== 'SCIENTIFIC_APPROVED') {
       return;
     }
 
@@ -38,11 +38,11 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
     const approvals = dataIlmiah?.approvals.map((approval) => approval.name);
 
     ilmiahDispatch({
-      type: "set_pengajuan_kelulusan",
+      type: 'set_pengajuan_kelulusan',
       data: {
-        id: dataIlmiah?.id || "",
+        id: dataIlmiah?.id || '',
         approvals: approvals || [],
-        type: dataIlmiah?.type || "",
+        type: dataIlmiah?.type || '',
       },
     });
 
@@ -51,16 +51,16 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
 
   const statusBgColor = (value: string) => {
     switch (value) {
-      case "PENDING": {
+      case 'PENDING': {
         return colors.primaryYellow;
       }
-      case "REJECTED": {
+      case 'REJECTED': {
         return colors.primaryRed;
       }
-      case "SCIENTIFIC_APPROVED": {
+      case 'SCIENTIFIC_APPROVED': {
         return colors.primaryPurple;
       }
-      case "GRADUATION_IN_PROGRESS": {
+      case 'GRADUATION_IN_PROGRESS': {
         return colors.primaryGreen;
       }
     }
@@ -68,14 +68,14 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
 
   const columns: TableColumn<DataRow>[] = [
     {
-      name: "ID",
+      name: 'ID',
       selector: (row) => row.id,
       sortable: true,
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            padding: "10px 0px",
+            whiteSpace: 'pre-wrap',
+            padding: '10px 0px',
           }}
         >
           {row.id}
@@ -83,23 +83,23 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       ),
     },
     {
-      name: "Tipe Ilmiah",
+      name: 'Tipe Ilmiah',
       selector: (row) => row.type,
       sortable: true,
       wrap: true,
-      width: "20%",
+      width: '20%',
     },
     {
-      name: "Judul",
+      name: 'Judul',
       selector: (row) => row.title,
       sortable: true,
       wrap: true,
-      width: "20%",
+      width: '20%',
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            padding: "10px",
+            whiteSpace: 'pre-wrap',
+            padding: '10px',
           }}
         >
           {row.title}
@@ -107,37 +107,37 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       ),
     },
     {
-      name: "Riwayat",
+      name: 'Riwayat',
       selector: (row) => row.history,
       sortable: true,
       cell: (row) => (
         <span
           style={{
-            whiteSpace: "pre-wrap",
-            paddingTop: "20px",
-            paddingBottom: "20px",
+            whiteSpace: 'pre-wrap',
+            paddingTop: '20px',
+            paddingBottom: '20px',
           }}
         >
           {row.history}
         </span>
       ),
-      width: "30%",
+      width: '30%',
     },
     {
-      name: "Daftar Pembimbing",
+      name: 'Daftar Pembimbing',
       selector: (row) => row.approvals,
       sortable: true,
-      width: "20%",
+      width: '20%',
       wrap: true,
     },
     {
-      name: "Status",
+      name: 'Status',
       selector: (row) => row.status,
       sortable: true,
-      width: "30%",
+      width: '30%',
       cell: (row) => (
         <Flex direction="column" gap={3}>
-          {row.status === "SCIENTIFIC_APPROVED" && (
+          {row.status === 'SCIENTIFIC_APPROVED' && (
             <Text>Sudah bisa diajukan kelulusan</Text>
           )}
           <Flex
@@ -156,8 +156,8 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
             textAlign="center"
             justify="center"
           >
-            {row.status === "SCIENTIFIC_APPROVED"
-              ? "Ajukan Kelulusan"
+            {row.status === 'SCIENTIFIC_APPROVED'
+              ? 'Ajukan Kelulusan'
               : row.status}
           </Flex>
         </Flex>
@@ -173,10 +173,10 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
         title: singleIlmiah.title,
         history: singleIlmiah.scientificLogs
           .map(
-            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`
+            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
           )
-          .join("\n"),
-        approvals: singleIlmiah?.approvals?.map((item) => item.name).join("\n"),
+          .join('\n'),
+        approvals: singleIlmiah?.approvals?.map((item) => item.name).join('\n'),
         status: singleIlmiah?.scientificStatus,
       };
     });

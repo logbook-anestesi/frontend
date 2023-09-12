@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
-import { DPJP } from "../../hooks/useGetDPJP/types";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Dispatch, SetStateAction } from 'react';
+import { DPJP } from '../../hooks/useGetDPJP/types';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   dpjp: DPJP;
@@ -14,7 +14,7 @@ const CardName = ({ dpjp, setDPJP, closeModal }: Props) => {
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_dpjp",
+      type: 'set_dpjp',
       data: {
         dpjpId: dpjp.id,
         dpjpName: dpjp.name,

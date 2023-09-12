@@ -8,12 +8,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import useAddAnesthesia from "../../hooks/useAddAnesthesia";
-import { ChangeEvent, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
-import useGetCasesForm from "../../../../hooks/useGetCasesForm";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import useAddAnesthesia from '../../hooks/useAddAnesthesia';
+import { ChangeEvent, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
+import useGetCasesForm from '../../../../hooks/useGetCasesForm';
 
 interface Props {
   isOpen: boolean;
@@ -23,14 +23,14 @@ interface Props {
 const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { createAnesthesia, loading } = useAddAnesthesia();
-  const [anesthesia, setAnesthesia] = useState("");
-  const {mutate} = useGetCasesForm();
+  const [anesthesia, setAnesthesia] = useState('');
+  const { mutate } = useGetCasesForm();
 
   const handleCreateAnesthesia = async () => {
     const response = await createAnesthesia({ name: anesthesia });
 
     casesDispatch({
-      type: "set_selected_anesthesia",
+      type: 'set_selected_anesthesia',
       data: {
         title: anesthesia,
         id: response?.anesthesiaId,
@@ -38,13 +38,13 @@ const ModalAddOtherAnesthesia = ({ isOpen, closeModal }: Props) => {
     });
 
     casesDispatch({
-      type: "set_anethesia_type_ids",
+      type: 'set_anethesia_type_ids',
       data: {
         anesthesiaId: response?.anesthesiaId,
       },
     });
 
-    mutate()
+    mutate();
     closeModal();
   };
 

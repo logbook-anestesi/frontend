@@ -1,6 +1,6 @@
-import { Card, Flex, Image, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useNavigate } from "react-router-dom";
+import { Card, Flex, Image, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useNavigate } from 'react-router-dom';
 
 interface ReportCardInterface {
   icon: string;

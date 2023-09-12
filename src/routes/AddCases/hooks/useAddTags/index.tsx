@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
 
 const useAddTags = () => {
   const [loading, setLoading] = useState(false);
@@ -8,7 +8,7 @@ const useAddTags = () => {
     setLoading(true);
 
     try {
-      const response = await axiosClient.post("/cases/tag/", payload);
+      const response = await axiosClient.post('/cases/tag/', payload);
       const data = response.data;
 
       setLoading(false);
@@ -20,13 +20,13 @@ const useAddTags = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Update Stase",
+          message: 'Berhasil Update Stase',
           tagId: data?.data?.id,
         };
       }
     } catch (e) {
       setLoading(false);
-      console.log("[Error Update Stase]", e);
+      console.log('[Error Update Stase]', e);
     }
   }, []);
 

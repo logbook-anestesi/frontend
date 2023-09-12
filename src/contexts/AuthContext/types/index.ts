@@ -7,7 +7,7 @@ interface InitialState {
 }
 
 interface SetUserData {
-  type: "set_user_data";
+  type: 'set_user_data';
   data: {
     email: string;
     id: string;

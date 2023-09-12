@@ -1,7 +1,7 @@
-import { Flex } from "@chakra-ui/react";
-import useGetAllNotifications from "../../hooks/useGetAllNotifications";
-import LoaderCircle from "../../../../components/LoaderCircle";
-import NotificationItem from "../NotificationItem";
+import { Flex } from '@chakra-ui/react';
+import useGetAllNotifications from '../../hooks/useGetAllNotifications';
+import LoaderCircle from '../../../../components/LoaderCircle';
+import NotificationItem from '../NotificationItem';
 
 const ListNotifications = () => {
   const { notifications, loading } = useGetAllNotifications();

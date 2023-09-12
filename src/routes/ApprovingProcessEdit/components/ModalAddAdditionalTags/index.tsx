@@ -8,11 +8,11 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useState } from "react";
-import useAddTags from "../../hooks/useAddTags";
-import { useApprovalEditDispatch } from "../../contexts";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useState } from 'react';
+import useAddTags from '../../hooks/useAddTags';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   isOpen: boolean;
@@ -22,20 +22,20 @@ interface Props {
 const ModalAddAdditionalTags = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useApprovalEditDispatch();
   const { createTag, loading } = useAddTags();
-  const [additionalTag, setAdditionalTag] = useState("");
+  const [additionalTag, setAdditionalTag] = useState('');
 
   const handleCreateAdditionalTag = async () => {
     const response = await createTag({ name: additionalTag });
 
     casesDispatch({
-      type: "set_additional_tags",
+      type: 'set_additional_tags',
       data: {
         tag: additionalTag,
       },
     });
 
     casesDispatch({
-      type: "set_additional_tag_ids",
+      type: 'set_additional_tag_ids',
       data: {
         tagId: response?.tagId,
       },

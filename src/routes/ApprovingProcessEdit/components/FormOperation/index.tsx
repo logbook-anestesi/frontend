@@ -1,18 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
 
-import { colors } from "../../../../constants/colors";
-import Ticker from "../../../../components/Ticker";
-import ModalCategory from "../ModalCategory";
-import { OperationType } from "../../../../hooks/useGetCasesForm/types";
-import { OperationType as InitialTypes } from "../../../Cases/hooks/useGetCases/types";
-import ModalSubCategory from "../ModalSubCategory";
+import { colors } from '../../../../constants/colors';
+import Ticker from '../../../../components/Ticker';
+import ModalCategory from '../ModalCategory';
+import { OperationType } from '../../../../hooks/useGetCasesForm/types';
+import { OperationType as InitialTypes } from '../../../Cases/hooks/useGetCases/types';
+import ModalSubCategory from '../ModalSubCategory';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
-} from "../../contexts";
+} from '../../contexts';
 
 interface Props {
   formData?: OperationType[];
@@ -33,18 +33,18 @@ const FormOperation = ({ formData, initialValue }: Props) => {
   useEffect(() => {
     const normalizeOperation = initialValue?.map((operation) => {
       return {
-        category: "lorem",
+        category: 'lorem',
         operation: operation?.operationTypeName,
         id: operation?.operationTypeId,
       };
     });
 
     const normalizeIds = initialValue?.map(
-      (operation) => operation.operationTypeId
+      (operation) => operation.operationTypeId,
     );
 
     approveEditDispatch({
-      type: "set_selected_operation_all",
+      type: 'set_selected_operation_all',
       data: {
         operations: normalizeOperation || [],
         operationIds: normalizeIds || [],
@@ -55,13 +55,13 @@ const FormOperation = ({ formData, initialValue }: Props) => {
   const handleRemoveOperation = useCallback(
     (operationId: string) => {
       approveEditDispatch({
-        type: "remove_operation_type",
+        type: 'remove_operation_type',
         data: {
           id: operationId,
         },
       });
     },
-    [approveEditDispatch]
+    [approveEditDispatch],
   );
 
   return (
@@ -80,7 +80,7 @@ const FormOperation = ({ formData, initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{operation?.name || "Tambah Tipe Operasi"}</Text>
+        <Text>{operation?.name || 'Tambah Tipe Operasi'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -90,8 +90,8 @@ const FormOperation = ({ formData, initialValue }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >
@@ -117,7 +117,7 @@ const FormOperation = ({ formData, initialValue }: Props) => {
       <ModalSubCategory
         closeModal={onCloseSub}
         isOpen={isOpenSub}
-        operationName={operation?.name || "-"}
+        operationName={operation?.name || '-'}
         subCategoryOperation={operation?.children || []}
       />
     </Flex>

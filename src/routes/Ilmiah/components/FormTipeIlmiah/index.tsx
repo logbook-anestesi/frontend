@@ -1,7 +1,7 @@
-import { Flex, Select, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { SCIENTIFIC_TYPE } from "../../constants";
-import { ChangeEvent } from "react";
+import { Flex, Select, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { SCIENTIFIC_TYPE } from '../../constants';
+import { ChangeEvent } from 'react';
 
 interface Props {
   setScientificType: (type: string) => void;

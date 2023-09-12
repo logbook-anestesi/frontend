@@ -1,18 +1,18 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { RADIO_EMERGENCY } from "../../constants";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { RADIO_EMERGENCY } from '../../constants';
+import { useAddCasesDispatch } from '../../contexts';
 
 const FormRadioEmergency = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("ya");
+  const [value, setValue] = useState('ya');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_emergency",
+      type: 'set_emergency',
       data: {
-        isEmergency: value === "ya",
+        isEmergency: value === 'ya',
       },
     });
   }, [casesDispatch, value]);
@@ -28,8 +28,8 @@ const FormRadioEmergency = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

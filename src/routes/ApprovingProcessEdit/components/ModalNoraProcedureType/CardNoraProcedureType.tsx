@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { NoraProcedureType } from "../../../../hooks/useGetCasesForm/types";
-import { Dispatch, SetStateAction } from "react";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { NoraProcedureType } from '../../../../hooks/useGetCasesForm/types';
+import { Dispatch, SetStateAction } from 'react';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   noraProcedure: NoraProcedureType;
@@ -18,7 +18,7 @@ const CardNoraProcedureType = ({
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_nora_procedure_type",
+      type: 'set_nora_procedure_type',
       data: {
         noraProcedureType: noraProcedure.name,
         id: noraProcedure.id,
@@ -26,7 +26,7 @@ const CardNoraProcedureType = ({
     });
 
     casesDispatch({
-      type: "set_nora_procedure_type_ids",
+      type: 'set_nora_procedure_type_ids',
       data: {
         noraProcedureId: noraProcedure.id,
       },

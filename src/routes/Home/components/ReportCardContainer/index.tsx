@@ -1,8 +1,8 @@
-import { Flex } from "@chakra-ui/react";
-import ReportCard from "../ReportCard";
-import cases from "../../assets/cases.png";
-import exam from "../../assets/exam.png";
-import ilmiah from "../../assets/ilmiah.png";
+import { Flex } from '@chakra-ui/react';
+import ReportCard from '../ReportCard';
+import cases from '../../assets/cases.png';
+import exam from '../../assets/exam.png';
+import ilmiah from '../../assets/ilmiah.png';
 
 const ReportCardContainer = () => {
   return (

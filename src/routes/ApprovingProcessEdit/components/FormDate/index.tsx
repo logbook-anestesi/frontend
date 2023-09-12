@@ -1,10 +1,10 @@
-import { CalendarIcon } from "@chakra-ui/icons";
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import { colors } from "../../../../constants/colors";
-import { formatDateMonthYear } from "../../../../helpers";
-import { useApprovalEditDispatch } from "../../contexts";
+import { CalendarIcon } from '@chakra-ui/icons';
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import { colors } from '../../../../constants/colors';
+import { formatDateMonthYear } from '../../../../helpers';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialValue?: string;
@@ -33,7 +33,7 @@ const FormDate = ({ initialValue }: Props) => {
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_date",
+      type: 'set_date',
       data: {
         date: selectedDate?.toJSON(),
       },

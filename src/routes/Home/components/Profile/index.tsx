@@ -1,7 +1,7 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import Ticker from "../../../../components/Ticker";
-import { colors } from "../../../../constants/colors";
+import { Flex, Image, Text } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import Ticker from '../../../../components/Ticker';
+import { colors } from '../../../../constants/colors';
 
 interface ProfileInterface {
   image: string;
@@ -13,7 +13,7 @@ const Profile = ({ image, name, term }: ProfileInterface) => {
   const navigate = useNavigate();
 
   const redirectProfile = () => {
-    navigate("/profile");
+    navigate('/profile');
   };
 
   return (

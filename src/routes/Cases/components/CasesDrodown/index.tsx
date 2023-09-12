@@ -1,6 +1,6 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Flex, Text } from "@chakra-ui/react";
-import { CaseMenu } from "../../types";
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { Flex, Text } from '@chakra-ui/react';
+import { CaseMenu } from '../../types';
 
 interface Props {
   onClick: () => void;

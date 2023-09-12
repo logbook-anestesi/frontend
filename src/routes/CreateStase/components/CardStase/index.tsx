@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { Stase } from "../../hooks/useGetAllStase/types";
+import { Dispatch, SetStateAction } from 'react';
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { Stase } from '../../hooks/useGetAllStase/types';
 
 interface Props {
   stase: Stase;

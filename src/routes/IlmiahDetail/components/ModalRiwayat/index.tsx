@@ -6,9 +6,9 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { ScientificLog } from "../../hooks/useGetDetailKelulusan/types";
-import { convertDateForIlmiah } from "../../../../helpers";
+} from '@chakra-ui/react';
+import { ScientificLog } from '../../hooks/useGetDetailKelulusan/types';
+import { convertDateForIlmiah } from '../../../../helpers';
 
 interface Props {
   isOpen: boolean;

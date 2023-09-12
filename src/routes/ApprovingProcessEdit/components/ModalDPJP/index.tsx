@@ -1,4 +1,4 @@
-import { Search2Icon } from "@chakra-ui/icons";
+import { Search2Icon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -9,17 +9,17 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/react";
-import CardName from "./CardName";
+} from '@chakra-ui/react';
+import CardName from './CardName';
 import {
   ChangeEvent,
   Dispatch,
   SetStateAction,
   useMemo,
   useState,
-} from "react";
-import useGetDPJP from "../../hooks/useGetDPJP";
-import { DPJP } from "../../hooks/useGetDPJP/types";
+} from 'react';
+import useGetDPJP from '../../hooks/useGetDPJP';
+import { DPJP } from '../../hooks/useGetDPJP/types';
 
 interface Props {
   isOpen: boolean;
@@ -34,7 +34,7 @@ const ModalDPJP = ({ isOpen, closeModal, setDPJP }: Props) => {
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const loweredFilter = event.target.value.toLowerCase();
     const filtered = dpjpList.filter((dpjp) =>
-      dpjp.name.toLocaleLowerCase().includes(loweredFilter)
+      dpjp.name.toLocaleLowerCase().includes(loweredFilter),
     );
 
     setFilteredDPJP(filtered);

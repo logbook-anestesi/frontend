@@ -1,6 +1,6 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
-import { OperationType } from "../../../../hooks/useGetCasesForm/types";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Dispatch, SetStateAction } from 'react';
+import { OperationType } from '../../../../hooks/useGetCasesForm/types';
 
 interface Props {
   operation: OperationType;

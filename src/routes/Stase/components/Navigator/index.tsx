@@ -1,5 +1,5 @@
-import { Flex } from "@chakra-ui/react";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { Flex } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
 
 const Navigator = () => {
   return (

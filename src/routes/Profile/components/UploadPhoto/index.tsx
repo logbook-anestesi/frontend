@@ -1,6 +1,6 @@
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import React, { useState } from "react";
-import { storage } from "../../../../firebaseConfig";
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import React, { useState } from 'react';
+import { storage } from '../../../../firebaseConfig';
 import {
   Button,
   Card,
@@ -10,10 +10,10 @@ import {
   Progress,
   Text,
   useToast,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { bytesToMb } from "../../../../helpers";
-import useUploadProfilePhoto from "../../hooks/useUploadProfilePhoto";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { bytesToMb } from '../../../../helpers';
+import useUploadProfilePhoto from '../../hooks/useUploadProfilePhoto';
 
 interface Props {
   setTemporaryImage: React.Dispatch<React.SetStateAction<string>>;
@@ -33,10 +33,10 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Success Upload Photo",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Success Upload Photo',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -50,10 +50,10 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
 
     if (!response?.success) {
       toast({
-        title: "Failed Upload Photo",
+        title: 'Failed Upload Photo',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -71,9 +71,9 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
       reader.readAsDataURL(files[0]);
     } else {
       toast({
-        title: "File too Large",
-        status: "error",
-        position: "top",
+        title: 'File too Large',
+        status: 'error',
+        position: 'top',
         duration: 4000,
         isClosable: true,
       });
@@ -88,7 +88,7 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
       const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
       uploadTask.on(
-        "state_changed",
+        'state_changed',
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -96,19 +96,19 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
           setProgressUpload(progress); // to show progress upload
 
           switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
+            case 'paused':
+              console.log('Upload is paused');
               break;
-            case "running":
-              console.log("Upload is running");
+            case 'running':
+              console.log('Upload is running');
               break;
           }
         },
         (error) => {
           toast({
             title: `Upload error: ${error}`,
-            status: "error",
-            position: "top",
+            status: 'error',
+            position: 'top',
             duration: 4000,
             isClosable: true,
           });
@@ -117,13 +117,13 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             handleSubmitPhotoProfile(url);
           });
-        }
+        },
       );
     } else {
       toast({
-        title: "File not found",
-        status: "error",
-        position: "top",
+        title: 'File not found',
+        status: 'error',
+        position: 'top',
         duration: 4000,
         isClosable: true,
       });
@@ -133,7 +133,7 @@ const UploadPhoto = ({ setTemporaryImage }: Props) => {
 
   const handleRemoveFile = () => {
     setImageFile(undefined);
-    setTemporaryImage("");
+    setTemporaryImage('');
   };
 
   return (

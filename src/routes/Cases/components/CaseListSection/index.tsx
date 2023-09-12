@@ -1,7 +1,7 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { CaseMenu } from "../../types";
-import { Case } from "../../hooks/useGetCases/types";
-import TableData from "../TableData";
+import { Flex, Text } from '@chakra-ui/react';
+import { CaseMenu } from '../../types';
+import { Case } from '../../hooks/useGetCases/types';
+import TableData from '../TableData';
 
 interface Props {
   caseList: Case[];
@@ -11,7 +11,7 @@ interface Props {
 const CaseListSection = ({ caseList, selectedCase }: Props) => {
   return (
     <Flex direction="column" mt={5} gap={3}>
-      {selectedCase.value === "-" ? (
+      {selectedCase.value === '-' ? (
         <Text as="b" fontSize="xl" mb={3}>
           Daftar Seluruh Cases
         </Text>

@@ -1,33 +1,33 @@
-import { Button, Divider, Flex, Text, useToast } from "@chakra-ui/react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useApprovalEditContext } from "./contexts";
+import { Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useApprovalEditContext } from './contexts';
 
-import { RADIO_EXAM } from "./constants";
+import { RADIO_EXAM } from './constants';
 
-import Header from "../../components/Header";
-import LoaderCircle from "../../components/LoaderCircle";
-import FormRadioExam from "./components/FormRadioExam";
-import FormRadioAgeGroup from "./components/FormRadioAgeGroup";
-import FormRadioPriority from "./components/FormRadioPriority";
-import FormRadioGender from "./components/FormRadioGender";
-import FormRadioLocation from "./components/FormRadioLocation";
-import FormNotes from "./components/FormNotes";
-import FormTingkatAndEmergency from "./components/FormTingkatAndEmergency";
-import FormUsiaAndRM from "./components/FormUsiaAndRM";
-import FormDate from "./components/FormDate";
-import FormASATags from "./components/FormASATags";
-import FormDPJP from "./components/FormDPJP";
-import FormNoraTypeProcedure from "./components/FormNoraTypeProcedure";
-import FormOperation from "./components/FormOperation";
-import FormTypeAnesthesia from "./components/FormTypeAnesthesia";
-import FormAdditionalTags from "./components/FormAdditionalTags";
-import FormSupervised from "./components/FormSupervised";
-import FormTypeProcedure from "./components/FormTypeProcedure";
-import { colors } from "../../constants/colors";
-import useAddApproval from "../ApprovingProcess/hooks/useAddApproval";
-import useAuth from "../../hooks/useAuth";
-import useGetCasesForm from "../../hooks/useGetCasesForm";
-import useGetDetailCases from "../../hooks/useGetDetailCase";
+import Header from '../../components/Header';
+import LoaderCircle from '../../components/LoaderCircle';
+import FormRadioExam from './components/FormRadioExam';
+import FormRadioAgeGroup from './components/FormRadioAgeGroup';
+import FormRadioPriority from './components/FormRadioPriority';
+import FormRadioGender from './components/FormRadioGender';
+import FormRadioLocation from './components/FormRadioLocation';
+import FormNotes from './components/FormNotes';
+import FormTingkatAndEmergency from './components/FormTingkatAndEmergency';
+import FormUsiaAndRM from './components/FormUsiaAndRM';
+import FormDate from './components/FormDate';
+import FormASATags from './components/FormASATags';
+import FormDPJP from './components/FormDPJP';
+import FormNoraTypeProcedure from './components/FormNoraTypeProcedure';
+import FormOperation from './components/FormOperation';
+import FormTypeAnesthesia from './components/FormTypeAnesthesia';
+import FormAdditionalTags from './components/FormAdditionalTags';
+import FormSupervised from './components/FormSupervised';
+import FormTypeProcedure from './components/FormTypeProcedure';
+import { colors } from '../../constants/colors';
+import useAddApproval from '../ApprovingProcess/hooks/useAddApproval';
+import useAuth from '../../hooks/useAuth';
+import useGetCasesForm from '../../hooks/useGetCasesForm';
+import useGetDetailCases from '../../hooks/useGetDetailCase';
 
 const ApprovingProcessEdit = () => {
   const { accountData } = useAuth();
@@ -42,7 +42,7 @@ const ApprovingProcessEdit = () => {
   const handleSubmitForm = async () => {
     const response = await createApproval({
       caseId: caseData?.id,
-      status: "APPROVED",
+      status: 'APPROVED',
       caseEditRequest: {
         asaIsEmergency: state.asaIsEmergency,
         asaTier: state.asaTier,
@@ -51,11 +51,11 @@ const ApprovingProcessEdit = () => {
         patientAge: state.patientAge,
         patientGender: state.patientGender,
         userId: accountData.id,
-        ...(state?.ageGroup !== "" ? { ageGroup: state.ageGroup } : {}),
-        ...(state?.location !== "" ? { location: state.location } : {}),
-        ...(state?.priority !== "" ? { priority: state.priority } : {}),
+        ...(state?.ageGroup !== '' ? { ageGroup: state.ageGroup } : {}),
+        ...(state?.location !== '' ? { location: state.location } : {}),
+        ...(state?.priority !== '' ? { priority: state.priority } : {}),
         ...(state?.tagIds.length !== 0 ? { tagIds: state.tagIds } : {}),
-        ...(state?.notes !== "" ? { notes: state.notes } : {}),
+        ...(state?.notes !== '' ? { notes: state.notes } : {}),
         ...(state?.anesthesiaTypeIds.length !== 0
           ? { anesthesiaTypeIds: state.anesthesiaTypeIds }
           : {}),
@@ -68,7 +68,7 @@ const ApprovingProcessEdit = () => {
         ...(state?.operationTypeIds.length !== 0
           ? { operationTypeIds: state.operationTypeIds }
           : {}),
-        ...(state?.patientRecordNumber !== ""
+        ...(state?.patientRecordNumber !== ''
           ? { patientRecordNumber: state.patientRecordNumber }
           : {}),
         ...(state?.procedureTypeIds.length !== 0
@@ -82,24 +82,24 @@ const ApprovingProcessEdit = () => {
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Berhasil Approve Case",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Berhasil Approve Case',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
 
-      navigate("/review/cases");
+      navigate('/review/cases');
       return;
     }
 
     if (!response?.success) {
       toast({
-        title: "Failed Approve Case",
+        title: 'Failed Approve Case',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 6000,
         isClosable: true,
       });
@@ -110,8 +110,8 @@ const ApprovingProcessEdit = () => {
     <Flex flexDirection="column">
       <Header
         pathBack="/review/cases"
-        title={`Approve ${caseData?.caseType || ""} - ${
-          caseData?.id.substring(0, 4) || ""
+        title={`Approve ${caseData?.caseType || ''} - ${
+          caseData?.id.substring(0, 4) || ''
         }`}
       />
 

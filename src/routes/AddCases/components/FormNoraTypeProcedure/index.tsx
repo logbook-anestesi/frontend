@@ -1,11 +1,11 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { NoraProcedureType } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
-import ModalNoraProcedureType from "../ModalNoraProcedureType";
-import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { NoraProcedureType } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useState } from 'react';
+import ModalNoraProcedureType from '../ModalNoraProcedureType';
+import Ticker from '../../../../components/Ticker';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
 // import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
@@ -27,13 +27,13 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
   const handleRemoveAsaTag = useCallback(
     (noraId: string) => {
       casesDispatch({
-        type: "remove_nora_procedure",
+        type: 'remove_nora_procedure',
         data: {
           id: noraId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -52,7 +52,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{noraProcedure?.name || "Masukkan nama prosedur ..."}</Text>
+        <Text>{noraProcedure?.name || 'Masukkan nama prosedur ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -62,8 +62,8 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

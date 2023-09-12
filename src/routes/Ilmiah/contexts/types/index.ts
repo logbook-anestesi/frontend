@@ -7,7 +7,7 @@ interface InitialState {
 }
 
 interface SetPengajuanKelulusanData {
-  type: "set_pengajuan_kelulusan";
+  type: 'set_pengajuan_kelulusan';
   data: {
     id: string;
     approvals: string[];

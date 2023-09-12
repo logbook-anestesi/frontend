@@ -1,79 +1,79 @@
-import { Box, Button, Flex, Image, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Input, Text } from '@chakra-ui/react';
 
-import doctorIcon from "../../assets/doctor.png";
-import useGetProfile from "../../hooks/useGetProfile";
-import Header from "../../components/Header";
-import { colors } from "../../constants/colors";
-import LoaderCircle from "../../components/LoaderCircle";
-import useAuth from "../../hooks/useAuth";
-import { useMemo, useState } from "react";
-import UploadPhoto from "./components/UploadPhoto";
+import doctorIcon from '../../assets/doctor.png';
+import useGetProfile from '../../hooks/useGetProfile';
+import Header from '../../components/Header';
+import { colors } from '../../constants/colors';
+import LoaderCircle from '../../components/LoaderCircle';
+import useAuth from '../../hooks/useAuth';
+import { useMemo, useState } from 'react';
+import UploadPhoto from './components/UploadPhoto';
 
 const ProfilePage = () => {
   const { loading, profile } = useGetProfile();
   const { logoutAccount } = useAuth();
-  const [temporaryImage, setTemporaryImage] = useState("");
+  const [temporaryImage, setTemporaryImage] = useState('');
 
   const selectedProfileData = [
     {
-      label: "Nama",
+      label: 'Nama',
       value: profile?.name,
     },
     {
-      label: "NPM",
+      label: 'NPM',
       value: profile?.npm,
     },
     {
-      label: "Email",
+      label: 'Email',
       value: profile?.email,
     },
     {
-      label: "No. Handphone",
+      label: 'No. Handphone',
       value: profile?.phoneNumber,
     },
     {
-      label: "Term",
+      label: 'Term',
       value: profile?.joinTerm,
     },
     {
-      label: "Level Kompetensi",
+      label: 'Level Kompetensi',
       value: profile?.role,
     },
     {
-      label: "Stase",
+      label: 'Stase',
       value: profile?.stationName,
     },
   ];
 
   const konsulenProfileData = [
     {
-      label: "Nama",
+      label: 'Nama',
       value: profile?.name,
     },
     {
-      label: "NPM",
+      label: 'NPM',
       value: profile?.npm,
     },
     {
-      label: "Email",
+      label: 'Email',
       value: profile?.email,
     },
     {
-      label: "No. Handphone",
+      label: 'No. Handphone',
       value: profile?.phoneNumber,
     },
     {
-      label: "Stase",
+      label: 'Stase',
       value: profile?.stationName,
     },
   ];
 
   const isKonsulen = useMemo(() => {
-    return profile?.role === "KONSULEN";
+    return profile?.role === 'KONSULEN';
   }, [profile?.role]);
 
   const profileImage = () => {
-    if (temporaryImage === "") {
+    if (temporaryImage === '') {
       return profile?.imageUrl || doctorIcon;
     }
 

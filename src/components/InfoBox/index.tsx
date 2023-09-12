@@ -1,9 +1,9 @@
-import { EmailIcon, WarningTwoIcon } from "@chakra-ui/icons";
-import { Flex, Text } from "@chakra-ui/react";
-import { colors } from "../../constants/colors";
+import { EmailIcon, WarningTwoIcon } from '@chakra-ui/icons';
+import { Flex, Text } from '@chakra-ui/react';
+import { colors } from '../../constants/colors';
 
 interface InfoBoxInterface {
-  type: "warning" | "alert";
+  type: 'warning' | 'alert';
   message: string;
 }
 
@@ -15,12 +15,12 @@ const InfoBox = ({ type, message }: InfoBoxInterface) => {
       gap="8px"
       borderRadius="8px"
       backgroundColor={
-        type === "warning" ? colors.lightYellow : colors.lightRed
+        type === 'warning' ? colors.lightYellow : colors.lightRed
       }
       width="100%"
       padding="8px 0"
     >
-      {type === "warning" ? <WarningTwoIcon /> : <EmailIcon />}
+      {type === 'warning' ? <WarningTwoIcon /> : <EmailIcon />}
       <Text fontSize="xs">{message}</Text>
     </Flex>
   );

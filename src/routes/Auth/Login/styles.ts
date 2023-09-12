@@ -1,5 +1,5 @@
-import { css } from "@emotion/css";
-import styled from "styled-components";
+import { css } from '@emotion/css';
+import styled from 'styled-components';
 
 export const LoginRegisterContainer = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const icon = css`
 `;
 
 export const buttonSubmit = css`
-  color: "white";
+  color: 'white';
   width: 328px;
   margin-top: 32px;
 `;

@@ -1,10 +1,10 @@
-import { Divider, Flex, Image, Text } from "@chakra-ui/react";
-import profileIcon from "../../assets/profileIcon.png";
-import { colors } from "../../../../constants/colors";
-import ButtonFile from "../ButtonFile";
-import CardApprovalButton from "../CardApprovalButton";
-import { ReviewItem } from "../../hooks/useGetPendingReview/types";
-import { convertDateForNotification } from "../../../../helpers";
+import { Divider, Flex, Image, Text } from '@chakra-ui/react';
+import profileIcon from '../../assets/profileIcon.png';
+import { colors } from '../../../../constants/colors';
+import ButtonFile from '../ButtonFile';
+import CardApprovalButton from '../CardApprovalButton';
+import { ReviewItem } from '../../hooks/useGetPendingReview/types';
+import { convertDateForNotification } from '../../../../helpers';
 
 interface Props {
   caseData: ReviewItem;

@@ -1,5 +1,5 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import { buttonSubmit } from "../styles";
+import { ChangeEvent, useEffect, useState } from 'react';
+import { buttonSubmit } from '../styles';
 import {
   Flex,
   Input,
@@ -7,16 +7,16 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import useAuth from "../../../../hooks/useAuth";
-import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { colors } from "../../../../constants/colors";
-import LoaderCircle from "../../../../components/LoaderCircle";
+} from '@chakra-ui/react';
+import useAuth from '../../../../hooks/useAuth';
+import { useToast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { colors } from '../../../../constants/colors';
+import LoaderCircle from '../../../../components/LoaderCircle';
 
 const EmailPasswordInput = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isError, setIsError] = useState(false);
 
   const toast = useToast();
@@ -32,7 +32,7 @@ const EmailPasswordInput = () => {
   const handleSubmit = async () => {
     setIsError(false);
 
-    if (email === "" || password === "") {
+    if (email === '' || password === '') {
       setIsError(true);
       return;
     }
@@ -44,23 +44,23 @@ const EmailPasswordInput = () => {
     if (loginResponse) {
       if (loginResponse.error === null) {
         toast({
-          position: "top",
-          status: "success",
+          position: 'top',
+          status: 'success',
           duration: 2000,
           isClosable: false,
-          title: "Login berhasil!",
+          title: 'Login berhasil!',
         });
 
-        navigate("/");
+        navigate('/');
         return;
       }
 
       toast({
-        position: "top",
-        status: "error",
+        position: 'top',
+        status: 'error',
         duration: 3000,
         isClosable: true,
-        title: "Login gagal",
+        title: 'Login gagal',
         description: loginResponse.error[0],
       });
     }
@@ -108,7 +108,7 @@ const EmailPasswordInput = () => {
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? <LoaderCircle /> : "Masuk"}
+          {loading ? <LoaderCircle /> : 'Masuk'}
         </Button>
       </Flex>
     </FormControl>

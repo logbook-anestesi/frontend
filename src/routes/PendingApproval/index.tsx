@@ -1,16 +1,16 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import CardApproval from "./components/CardApproval";
-import useGetScientificApprovals from "./hooks/useGetAllApprovals";
-import LoaderCircle from "../../components/LoaderCircle";
-import ModalApprove from "./components/ModalApprove";
-import { useState } from "react";
+import { Flex, useDisclosure } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import CardApproval from './components/CardApproval';
+import useGetScientificApprovals from './hooks/useGetAllApprovals';
+import LoaderCircle from '../../components/LoaderCircle';
+import ModalApprove from './components/ModalApprove';
+import { useState } from 'react';
 
 const PendingApproval = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, reviewData } = useGetScientificApprovals();
-  const [selectedIlmiahId, setSelectedIlmiahId] = useState("");
-  const [statusApprove, setStatusApprove] = useState("");
+  const [selectedIlmiahId, setSelectedIlmiahId] = useState('');
+  const [statusApprove, setStatusApprove] = useState('');
 
   return (
     <Flex flexDirection="column">

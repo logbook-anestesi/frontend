@@ -6,9 +6,9 @@ import {
   ModalOverlay,
   Text,
   useToast,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import useAddApproval from "../../hooks/useAddApprovals";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import useAddApproval from '../../hooks/useAddApprovals';
 
 interface Props {
   isOpen: boolean;
@@ -34,10 +34,10 @@ const ModalApprove = ({
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Success Approve Ilmiah",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Success Approve Ilmiah',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -48,10 +48,10 @@ const ModalApprove = ({
 
     if (!response?.success) {
       toast({
-        title: "Failed Approve Ilmiah",
+        title: 'Failed Approve Ilmiah',
         description: response?.message,
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 9000,
         isClosable: true,
       });
@@ -63,7 +63,7 @@ const ModalApprove = ({
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b">
-            Anda akan {statusApprove === "APPROVED" ? "Menyetujui" : "Menolak"}
+            Anda akan {statusApprove === 'APPROVED' ? 'Menyetujui' : 'Menolak'}
           </Text>
           <Text as="b" mb={4}>
             {ilmiahId}

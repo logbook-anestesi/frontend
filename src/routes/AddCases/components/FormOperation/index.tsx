@@ -1,14 +1,14 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
 
-import { colors } from "../../../../constants/colors";
-import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
-import ModalCategory from "../ModalCategory";
-import { OperationType } from "../../../../hooks/useGetCasesForm/types";
-import ModalSubCategory from "../ModalSubCategory";
+import { colors } from '../../../../constants/colors';
+import Ticker from '../../../../components/Ticker';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
+import ModalCategory from '../ModalCategory';
+import { OperationType } from '../../../../hooks/useGetCasesForm/types';
+import ModalSubCategory from '../ModalSubCategory';
 
 interface Props {
   formData?: OperationType[];
@@ -28,13 +28,13 @@ const FormOperation = ({ formData }: Props) => {
   const handleRemoveOperation = useCallback(
     (operationId: string) => {
       casesDispatch({
-        type: "remove_operation_type",
+        type: 'remove_operation_type',
         data: {
           id: operationId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -53,7 +53,7 @@ const FormOperation = ({ formData }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{operation?.name || "Tambah Tipe Operasi"}</Text>
+        <Text>{operation?.name || 'Tambah Tipe Operasi'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -63,8 +63,8 @@ const FormOperation = ({ formData }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >
@@ -90,7 +90,7 @@ const FormOperation = ({ formData }: Props) => {
       <ModalSubCategory
         closeModal={onCloseSub}
         isOpen={isOpenSub}
-        operationName={operation?.name || "-"}
+        operationName={operation?.name || '-'}
         subCategoryOperation={operation?.children || []}
       />
     </Flex>

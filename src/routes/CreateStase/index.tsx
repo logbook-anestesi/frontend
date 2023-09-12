@@ -1,17 +1,17 @@
-import { Button, Flex, useDisclosure, useToast } from "@chakra-ui/react";
-import { colors } from "../../constants/colors";
+import { Button, Flex, useDisclosure, useToast } from '@chakra-ui/react';
+import { colors } from '../../constants/colors';
 
-import Header from "../../components/Header";
-import CardPeriod from "./components/CardPeriod";
-import ModalSelectStase from "./components/ModalSelectStase";
-import { useMemo, useState } from "react";
-import { getCurrentMonth, getMonthYearString } from "../../helpers";
-import useAuth from "../../hooks/useAuth";
-import useUpdateStase from "./hooks/useUpdateStase";
-import { useNavigate } from "react-router-dom";
-import ModalConfirmUpdate from "./components/ModalConfirmUpdate";
-import StaseDropdown from "./components/StaseDropdown";
-import { Stase } from "./hooks/useGetAllStase/types";
+import Header from '../../components/Header';
+import CardPeriod from './components/CardPeriod';
+import ModalSelectStase from './components/ModalSelectStase';
+import { useMemo, useState } from 'react';
+import { getCurrentMonth, getMonthYearString } from '../../helpers';
+import useAuth from '../../hooks/useAuth';
+import useUpdateStase from './hooks/useUpdateStase';
+import { useNavigate } from 'react-router-dom';
+import ModalConfirmUpdate from './components/ModalConfirmUpdate';
+import StaseDropdown from './components/StaseDropdown';
+import { Stase } from './hooks/useGetAllStase/types';
 
 export interface SelectedStase {
   name: string;
@@ -34,7 +34,7 @@ const CreateStase = () => {
 
   const finalData = useMemo(() => {
     return {
-      stationId: selectedStase?.id || "",
+      stationId: selectedStase?.id || '',
       userId: accountData.id,
       periodMmYyyy: getMonthYearString(),
     };
@@ -44,21 +44,21 @@ const CreateStase = () => {
     await postData(finalData).then((response) => {
       if (response?.success) {
         toast({
-          position: "top",
-          status: "success",
+          position: 'top',
+          status: 'success',
           duration: 2000,
           isClosable: true,
-          title: "Berhasil Update Stase",
+          title: 'Berhasil Update Stase',
         });
 
-        navigate("/stase");
+        navigate('/stase');
       } else {
         toast({
-          position: "top",
-          status: "error",
+          position: 'top',
+          status: 'error',
           duration: 2000,
           isClosable: true,
-          title: "Gagal Update Stase",
+          title: 'Gagal Update Stase',
           description: response?.message,
         });
       }

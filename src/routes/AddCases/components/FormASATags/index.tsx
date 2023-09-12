@@ -1,12 +1,12 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Tag } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
-import ModalASATags from "../ModalASATags";
-import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
-import ModalAddOtherASAtags from "../ModalAddOtherASATags";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Tag } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useState } from 'react';
+import ModalASATags from '../ModalASATags';
+import Ticker from '../../../../components/Ticker';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
+import ModalAddOtherASAtags from '../ModalAddOtherASATags';
 
 interface Props {
   tagList: Tag[];
@@ -27,13 +27,13 @@ const FormASATags = ({ tagList }: Props) => {
   const handleRemoveAsaTag = useCallback(
     (asaTagId: string) => {
       casesDispatch({
-        type: "remove_asa_tags",
+        type: 'remove_asa_tags',
         data: {
           id: asaTagId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -52,7 +52,7 @@ const FormASATags = ({ tagList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{tag?.name || "Masukkan tags ..."}</Text>
+        <Text>{tag?.name || 'Masukkan tags ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -62,8 +62,8 @@ const FormASATags = ({ tagList }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

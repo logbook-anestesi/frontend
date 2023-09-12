@@ -1,10 +1,10 @@
-import { Flex, Image, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import profileIcon from "../../assets/profile.png";
-import ModalDPJP from "../ModalDPJP";
-import { useEffect, useState } from "react";
-import { DPJP } from "../../hooks/useGetDPJP/types";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import profileIcon from '../../assets/profile.png';
+import ModalDPJP from '../ModalDPJP';
+import { useEffect, useState } from 'react';
+import { DPJP } from '../../hooks/useGetDPJP/types';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialDpjpName?: string;
@@ -18,10 +18,10 @@ const FormDPJP = ({ initialDpjpId, initialDpjpName }: Props) => {
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_dpjp",
+      type: 'set_dpjp',
       data: {
-        dpjpId: selectedDPJP?.id || initialDpjpId || "",
-        dpjpName: selectedDPJP?.name || initialDpjpName || "",
+        dpjpId: selectedDPJP?.id || initialDpjpId || '',
+        dpjpName: selectedDPJP?.name || initialDpjpName || '',
       },
     });
   }, [
@@ -48,7 +48,7 @@ const FormDPJP = ({ initialDpjpId, initialDpjpName }: Props) => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>{selectedDPJP?.name || initialDpjpName || "Pilih DPJP"}</Text>
+        <Text>{selectedDPJP?.name || initialDpjpName || 'Pilih DPJP'}</Text>
 
         <Image src={profileIcon} width={5} alt="" />
       </Flex>

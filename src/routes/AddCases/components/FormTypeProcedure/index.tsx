@@ -1,12 +1,12 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { ProcedureType } from "../../../../hooks/useGetCasesForm/types";
-import { useCallback, useState } from "react";
-import ModalProcedureType from "../ModalProcedureType";
-import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext, useAddCasesDispatch } from "../../contexts";
-import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ProcedureType } from '../../../../hooks/useGetCasesForm/types';
+import { useCallback, useState } from 'react';
+import ModalProcedureType from '../ModalProcedureType';
+import Ticker from '../../../../components/Ticker';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
+import ModalAddOtherTypeProcedure from '../ModalAddOtherTypeProcedure';
 
 interface Props {
   procedureList: ProcedureType[];
@@ -27,13 +27,13 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
   const removeProcedure = useCallback(
     (procedureId: string) => {
       casesDispatch({
-        type: "remove_procedure_type",
+        type: 'remove_procedure_type',
         data: {
           id: procedureId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -52,7 +52,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{procedure?.name || "Masukkan nama prosedur ..."}</Text>
+        <Text>{procedure?.name || 'Masukkan nama prosedur ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -62,8 +62,8 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

@@ -1,7 +1,7 @@
-import { Flex } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import useGetAllStase from "./hooks/useGetAllStase";
-import TableData from "./components/TableData";
+import { Flex } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import useGetAllStase from './hooks/useGetAllStase';
+import TableData from './components/TableData';
 
 const StaseAllList = () => {
   const { loading, staseList } = useGetAllStase();

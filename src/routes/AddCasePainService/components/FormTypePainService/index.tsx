@@ -1,14 +1,14 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import { useCallback, useState } from "react";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import { useCallback, useState } from 'react';
 import {
   useAddCasesContext,
   useAddCasesDispatch,
-} from "../../../AddCases/contexts";
-import ModalTypePainService from "../ModalTypePainService";
-import Ticker from "../../../../components/Ticker";
-import { PainServiceType } from "../../../../hooks/useGetCasesForm/types";
+} from '../../../AddCases/contexts';
+import ModalTypePainService from '../ModalTypePainService';
+import Ticker from '../../../../components/Ticker';
+import { PainServiceType } from '../../../../hooks/useGetCasesForm/types';
 
 interface Props {
   painServiceTypes: PainServiceType[];
@@ -24,13 +24,13 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
   const handleRemoveTypePainService = useCallback(
     (typePainId: string) => {
       casesDispatch({
-        type: "remove_type_pain_service",
+        type: 'remove_type_pain_service',
         data: {
           id: typePainId,
         },
       });
     },
-    [casesDispatch]
+    [casesDispatch],
   );
 
   return (
@@ -49,7 +49,7 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{typePainService?.name || "Masukkan Tipe Pain Service ..."}</Text>
+        <Text>{typePainService?.name || 'Masukkan Tipe Pain Service ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
@@ -59,8 +59,8 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import { CreateCasePayload } from "./types";
-import useGetCases from "../../../Cases/hooks/useGetCases";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import { CreateCasePayload } from './types';
+import useGetCases from '../../../Cases/hooks/useGetCases';
 
 const useAddCases = () => {
   const [loading, setLoading] = useState(false);
@@ -11,10 +11,10 @@ const useAddCases = () => {
     setLoading(true);
 
     try {
-      const response = await axiosClient.post("/cases/", payload);
+      const response = await axiosClient.post('/cases/', payload);
       const data = response.data;
 
-      mutate()
+      mutate();
       setLoading(false);
 
       if (data.error) {
@@ -24,16 +24,16 @@ const useAddCases = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Create Stase",
+          message: 'Berhasil Create Stase',
         };
       }
     } catch (e: any) {
-      mutate()
+      mutate();
       setLoading(false);
       const errorMessage =
-        e?.response?.data?.message?.[0] || "An error occurred.";
+        e?.response?.data?.message?.[0] || 'An error occurred.';
 
-      console.log("[Error Update Stase]", e);
+      console.log('[Error Update Stase]', e);
 
       return { success: false, message: errorMessage };
     }

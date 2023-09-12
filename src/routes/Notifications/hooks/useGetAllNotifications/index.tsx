@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import { Notification } from "./types";
+import { useEffect, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import { Notification } from './types';
 
 const useGetAllNotifications = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useGetAllNotifications = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      const response = await axiosClient.get("/notification");
+      const response = await axiosClient.get('/notification');
       const data = await response.data.data;
 
       setNotifications(data);

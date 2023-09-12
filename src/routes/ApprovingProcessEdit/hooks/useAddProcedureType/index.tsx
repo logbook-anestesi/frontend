@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
+import { useCallback, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
 
 const useAddProcedureType = () => {
   const [loading, setLoading] = useState(false);
@@ -9,8 +9,8 @@ const useAddProcedureType = () => {
 
     try {
       const response = await axiosClient.post(
-        "/cases/procedure-type/",
-        payload
+        '/cases/procedure-type/',
+        payload,
       );
       const data = response.data;
 
@@ -23,13 +23,13 @@ const useAddProcedureType = () => {
       if (!data.error) {
         return {
           success: true,
-          message: "Berhasil Update Procedure",
+          message: 'Berhasil Update Procedure',
           procedureTypeId: data.data.id,
         };
       }
     } catch (e) {
       setLoading(false);
-      console.log("[Error Update Stase]", e);
+      console.log('[Error Update Stase]', e);
     }
   }, []);
 

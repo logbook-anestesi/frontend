@@ -1,6 +1,6 @@
-import { Flex } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import ListNotifications from "./components/ListNotifications";
+import { Flex } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import ListNotifications from './components/ListNotifications';
 
 const NotificationsPage = () => {
   return (

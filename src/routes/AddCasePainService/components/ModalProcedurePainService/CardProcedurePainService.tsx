@@ -1,10 +1,10 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Dispatch, SetStateAction } from 'react';
 import {
   PainServiceProcedure,
   PainServiceType,
-} from "../../../../hooks/useGetCasesForm/types";
-import { useAddCasesDispatch } from "../../../AddCases/contexts";
+} from '../../../../hooks/useGetCasesForm/types';
+import { useAddCasesDispatch } from '../../../AddCases/contexts';
 
 interface Props {
   procedurePainService: PainServiceProcedure;
@@ -23,7 +23,7 @@ const CardProcedurePainService = ({
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_procedure_pain_service",
+      type: 'set_procedure_pain_service',
       data: {
         procedurePainName: procedurePainService.name,
         procedurePainId: procedurePainService.id,
@@ -31,7 +31,7 @@ const CardProcedurePainService = ({
     });
 
     casesDispatch({
-      type: "set_procedure_pain_ids",
+      type: 'set_procedure_pain_ids',
       data: {
         procedurePainId: procedurePainService.id,
       },

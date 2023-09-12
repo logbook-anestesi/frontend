@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useReducer } from "react";
-import type { Dispatch } from "react";
-import { ACTION_TYPE, InitialState } from "./types";
-import { reducer } from "./reducer";
+import React, { createContext, useContext, useReducer } from 'react';
+import type { Dispatch } from 'react';
+import { ACTION_TYPE, InitialState } from './types';
+import { reducer } from './reducer';
 
 const ApprovalEditContext = createContext<InitialState>({
   selectedOperation: [],
@@ -10,9 +10,9 @@ const ApprovalEditContext = createContext<InitialState>({
   selectedSupervisor: [],
   selectedNoraProcedure: [],
   date: new Date().toJSON(),
-  dpjpUserId: "",
+  dpjpUserId: '',
   isExam: false,
-  caseType: "OK",
+  caseType: 'OK',
   operationTypeIds: [],
   anesthesiaTypeIds: [],
   selectedProcedure: [],
@@ -20,22 +20,22 @@ const ApprovalEditContext = createContext<InitialState>({
   supervisorIds: [],
   asaTagIds: [],
   noraProcedureTypeIds: [],
-  ageGroup: "",
-  location: "",
-  priority: "",
+  ageGroup: '',
+  location: '',
+  priority: '',
   patientAge: 0,
-  patientRecordNumber: "",
-  patientGender: "MALE",
+  patientRecordNumber: '',
+  patientGender: 'MALE',
   asaIsEmergency: false,
   asaTier: 0,
-  notes: "",
+  notes: '',
   additionalTags: [],
   tagIds: [],
-  dpjpUserName: "",
+  dpjpUserName: '',
 });
 
 const ApprovalEditContextDispatch = createContext<Dispatch<ACTION_TYPE>>(
-  () => {}
+  () => {},
 );
 
 interface Props {
@@ -49,9 +49,9 @@ const ApprovalEditProvider = ({ children }: Props) => {
     selectedASATags: [],
     selectedSupervisor: [],
     date: new Date().toJSON(),
-    dpjpUserId: "",
+    dpjpUserId: '',
     isExam: false,
-    caseType: "OK",
+    caseType: 'OK',
     operationTypeIds: [],
     anesthesiaTypeIds: [],
     selectedProcedure: [],
@@ -60,18 +60,18 @@ const ApprovalEditProvider = ({ children }: Props) => {
     asaTagIds: [],
     selectedNoraProcedure: [],
     noraProcedureTypeIds: [],
-    ageGroup: "",
-    location: "",
-    priority: "",
+    ageGroup: '',
+    location: '',
+    priority: '',
     patientAge: 0,
-    patientRecordNumber: "",
-    patientGender: "MALE",
+    patientRecordNumber: '',
+    patientGender: 'MALE',
     asaIsEmergency: false,
     asaTier: 0,
-    notes: "",
+    notes: '',
     additionalTags: [],
     tagIds: [],
-    dpjpUserName: "",
+    dpjpUserName: '',
   });
 
   return (

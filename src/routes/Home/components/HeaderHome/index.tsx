@@ -1,19 +1,19 @@
-import { Flex, Image } from "@chakra-ui/react";
-import { BellIcon } from "@chakra-ui/icons";
-import { colors } from "../../../../constants/colors";
-import logbookIcon from "../../../../assets/logbook-icon.svg";
-import profileIcon from "../../assets/profile.png";
-import { useNavigate } from "react-router-dom";
+import { Flex, Image } from '@chakra-ui/react';
+import { BellIcon } from '@chakra-ui/icons';
+import { colors } from '../../../../constants/colors';
+import logbookIcon from '../../../../assets/logbook-icon.svg';
+import profileIcon from '../../assets/profile.png';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderHome = () => {
   const navigate = useNavigate();
 
   const handleNotification = () => {
-    navigate("/notifications");
+    navigate('/notifications');
   };
 
   const handleRedirectProfile = () => {
-    navigate("/profile");
+    navigate('/profile');
   };
 
   return (

@@ -1,17 +1,17 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useAddCasesDispatch } from "../../contexts";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAddCasesDispatch } from '../../contexts';
 
 const FormNotes = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [notes, setNotes] = useState("");
+  const [notes, setNotes] = useState('');
   const handleChangeNotes = (event: ChangeEvent<HTMLInputElement>) =>
     setNotes(event.target.value);
 
   useEffect(() => {
     casesDispatch({
-      type: "set_note",
+      type: 'set_note',
       data: {
         note: notes,
       },

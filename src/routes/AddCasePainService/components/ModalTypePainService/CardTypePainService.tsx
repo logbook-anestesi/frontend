@@ -1,7 +1,7 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
-import { PainServiceType } from "../../../../hooks/useGetCasesForm/types";
-import { useAddCasesDispatch } from "../../../AddCases/contexts";
+import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Dispatch, SetStateAction } from 'react';
+import { PainServiceType } from '../../../../hooks/useGetCasesForm/types';
+import { useAddCasesDispatch } from '../../../AddCases/contexts';
 
 interface Props {
   typePainService: PainServiceType;
@@ -18,7 +18,7 @@ const CardTypePainService = ({
 
   const handleClickCard = () => {
     casesDispatch({
-      type: "set_type_pain_service",
+      type: 'set_type_pain_service',
       data: {
         typePainName: typePainService.name,
         typePainId: typePainService.id,
@@ -26,7 +26,7 @@ const CardTypePainService = ({
     });
 
     casesDispatch({
-      type: "set_type_pain_ids",
+      type: 'set_type_pain_ids',
       data: {
         typePainId: typePainService.id,
       },

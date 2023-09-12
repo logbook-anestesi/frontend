@@ -1,9 +1,9 @@
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-import Ticker from "../../../../components/Ticker";
-import { useAddCasesContext } from "../../contexts";
-import ModalAddAdditionalTags from "../ModalAddAdditionalTags";
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChevronRightIcon } from '@chakra-ui/icons';
+import Ticker from '../../../../components/Ticker';
+import { useAddCasesContext } from '../../contexts';
+import ModalAddAdditionalTags from '../ModalAddAdditionalTags';
 
 const FormAdditionalTags = () => {
   const { additionalTags } = useAddCasesContext();
@@ -39,8 +39,8 @@ const FormAdditionalTags = () => {
         gap={2}
         overflowX="auto"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

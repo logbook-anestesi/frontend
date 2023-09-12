@@ -6,9 +6,9 @@ import {
   ModalOverlay,
   Text,
   useToast,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import useAddApproval from "../../../ApprovingProcess/hooks/useAddApproval";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import useAddApproval from '../../../ApprovingProcess/hooks/useAddApproval';
 
 interface Props {
   isOpen: boolean;
@@ -23,15 +23,15 @@ const ModalReject = ({ closeModal, isOpen, caseId }: Props) => {
   const handleSubmitForm = async () => {
     const response = await createApproval({
       caseId: caseId,
-      status: "REJECTED",
+      status: 'REJECTED',
     });
 
     if (response?.success) {
       toast({
-        title: "Success",
-        description: "Berhasil Reject Case",
-        status: "success",
-        position: "top",
+        title: 'Success',
+        description: 'Berhasil Reject Case',
+        status: 'success',
+        position: 'top',
         duration: 5000,
         isClosable: true,
       });
@@ -43,10 +43,10 @@ const ModalReject = ({ closeModal, isOpen, caseId }: Props) => {
 
     if (!response?.success) {
       toast({
-        title: "Failed Reject Case",
+        title: 'Failed Reject Case',
         description: response?.message[0],
-        status: "error",
-        position: "top",
+        status: 'error',
+        position: 'top',
         duration: 9000,
         isClosable: true,
       });

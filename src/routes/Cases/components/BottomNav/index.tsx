@@ -1,7 +1,7 @@
-import { Box, Divider, Flex } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import BottomNavIcon from "../BottomNavIcon";
-import iconCase from "../../assets/case.png";
+import { Box, Divider, Flex } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import BottomNavIcon from '../BottomNavIcon';
+import iconCase from '../../assets/case.png';
 // import summary from "../../assets/summary.png";
 
 const BottomNav = () => {

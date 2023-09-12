@@ -1,8 +1,8 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { RADIO_AGE_GROUP } from "../../constants";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { RADIO_AGE_GROUP } from '../../constants';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialValue?: string;
@@ -10,15 +10,15 @@ interface Props {
 
 const FormRadioAgeGroup = ({ initialValue }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
-    setValue(initialValue || "");
+    setValue(initialValue || '');
   }, [initialValue]);
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_age_group",
+      type: 'set_age_group',
       data: {
         ageGroup: value,
       },
@@ -36,8 +36,8 @@ const FormRadioAgeGroup = ({ initialValue }: Props) => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

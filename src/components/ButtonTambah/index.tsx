@@ -1,6 +1,6 @@
-import { Button, Stack } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
-import { colors } from "../../constants/colors";
+import { Button, Stack } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
+import { colors } from '../../constants/colors';
 
 interface ButtonTambahInterface {
   buttonTitle: string;

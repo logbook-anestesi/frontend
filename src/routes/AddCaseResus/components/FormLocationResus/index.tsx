@@ -1,24 +1,24 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { RADIO_LOCATION } from "../../constants";
-import { useAddCasesDispatch } from "../../../AddCases/contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { RADIO_LOCATION } from '../../constants';
+import { useAddCasesDispatch } from '../../../AddCases/contexts';
 
 const FormRadioLocationResus = () => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     casesDispatch({
-      type: "set_location",
+      type: 'set_location',
       data: {
         location: value,
       },
     });
 
-    if (value === "Lainnya") {
+    if (value === 'Lainnya') {
       casesDispatch({
-        type: "set_show_location_lainnya",
+        type: 'set_show_location_lainnya',
         data: {
           isShow: true,
         },
@@ -29,7 +29,7 @@ const FormRadioLocationResus = () => {
 
     // close input lainnya when user click another option after click lainnya option
     casesDispatch({
-      type: "set_show_location_lainnya",
+      type: 'set_show_location_lainnya',
       data: {
         isShow: false,
       },
@@ -47,8 +47,8 @@ const FormRadioLocationResus = () => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >

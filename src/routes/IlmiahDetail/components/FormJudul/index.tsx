@@ -1,6 +1,6 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { ChangeEvent } from "react";
+import { Flex, Input, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { ChangeEvent } from 'react';
 
 interface Props {
   setJudul: (title: string) => void;

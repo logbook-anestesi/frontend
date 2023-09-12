@@ -6,11 +6,11 @@ import {
   Th,
   Thead,
   Tr,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { StaseUser } from "../../hooks/useGetStaseUser/types";
-import { formatMonthYear } from "../../../../helpers";
-import LoaderCircle from "../../../../components/LoaderCircle";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { StaseUser } from '../../hooks/useGetStaseUser/types';
+import { formatMonthYear } from '../../../../helpers';
+import LoaderCircle from '../../../../components/LoaderCircle';
 
 interface Props {
   staseData?: StaseUser[];

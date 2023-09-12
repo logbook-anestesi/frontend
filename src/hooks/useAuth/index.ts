@@ -1,8 +1,8 @@
-import { message } from "antd";
-import Cookies from "js-cookie";
-import { useCallback, useMemo, useState } from "react";
-import jwtDecode from "jwt-decode";
-import axiosClient from "../../networks/apiClient";
+import { message } from 'antd';
+import Cookies from 'js-cookie';
+import { useCallback, useMemo, useState } from 'react';
+import jwtDecode from 'jwt-decode';
+import axiosClient from '../../networks/apiClient';
 import {
   AuthStateInterface,
   LoginDataInterface,
@@ -10,9 +10,9 @@ import {
   RegisterDataInterface,
   RegisterResponse,
   UserDataInterface,
-} from "./types";
-import { useAuthDispatch } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+} from './types';
+import { useAuthDispatch } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const useAuth = () => {
   const authDispatch = useAuthDispatch();
 
   const [authState, setAuthState] = useState<AuthStateInterface>({
-    isAuthenticated: !!Cookies.get("jwt_token"),
+    isAuthenticated: !!Cookies.get('jwt_token'),
   });
 
   const registerAccount = useCallback(
@@ -36,13 +36,13 @@ const useAuth = () => {
           password: password,
         };
 
-        const response = await axiosClient.post("/auth/register", registerData);
+        const response = await axiosClient.post('/auth/register', registerData);
         setRegisterResponses(response.data);
       } catch (err) {
-        console.log("[Register Account]", err);
+        console.log('[Register Account]', err);
       }
     },
-    []
+    [],
   );
 
   const loginAccount = useCallback(
@@ -55,18 +55,18 @@ const useAuth = () => {
           password: password,
         };
 
-        const responseLogin = await axiosClient.post("/auth/login", loginData);
+        const responseLogin = await axiosClient.post('/auth/login', loginData);
 
         if (responseLogin.data.error === null) {
           const token = responseLogin.data.data.token;
-          Cookies.set("jwt_token", token);
+          Cookies.set('jwt_token', token);
 
           const data_user = jwtDecode(token) as { [key: string]: any };
 
-          console.log("[User Data]", data_user);
+          console.log('[User Data]', data_user);
 
           authDispatch({
-            type: "set_user_data",
+            type: 'set_user_data',
             data: {
               email: data_user.email,
               id: data_user.id,
@@ -82,24 +82,24 @@ const useAuth = () => {
         setLoginResponse(responseLogin.data);
         setLoading(false);
       } catch (err) {
-        console.log("[Login Account]", err);
+        console.log('[Login Account]', err);
         setLoading(false);
       }
     },
-    [authDispatch]
+    [authDispatch],
   );
 
   const logoutAccount = useCallback(() => {
-    Cookies.remove("jwt_token");
-    message.success("Logout Success");
+    Cookies.remove('jwt_token');
+    message.success('Logout Success');
 
     setAuthState({ isAuthenticated: false });
 
-    navigate("/login");
+    navigate('/login');
   }, [navigate]);
 
   const accountData = useMemo<UserDataInterface>(() => {
-    const jwtToken = Cookies.get("jwt_token") || "";
+    const jwtToken = Cookies.get('jwt_token') || '';
 
     if (jwtToken) {
       const data_user = jwtDecode(jwtToken) as { [key: string]: any };

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../../../../networks/apiClient";
-import { DPJP } from "./types";
+import { useEffect, useState } from 'react';
+import axiosClient from '../../../../networks/apiClient';
+import { DPJP } from './types';
 
 const useGetDPJP = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useGetDPJP = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      const response = await axiosClient.get("/users/?role=KONSULEN");
+      const response = await axiosClient.get('/users/?role=KONSULEN');
       const data = await response.data.data;
 
       setLoading(false);

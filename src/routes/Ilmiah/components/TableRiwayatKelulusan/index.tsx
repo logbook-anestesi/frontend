@@ -1,7 +1,7 @@
-import { Flex, Text } from "@chakra-ui/react";
-import TableData from "./TableData";
-import useGetRiwayatKelulusan from "../../hooks/useGetRiwayatKelulusan";
-import LoaderCircle from "../../../../components/LoaderCircle";
+import { Flex, Text } from '@chakra-ui/react';
+import TableData from './TableData';
+import useGetRiwayatKelulusan from '../../hooks/useGetRiwayatKelulusan';
+import LoaderCircle from '../../../../components/LoaderCircle';
 
 const TableRiwayatKelulusan = () => {
   const { loading, riwayatKelulusan } = useGetRiwayatKelulusan();

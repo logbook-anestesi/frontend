@@ -1,10 +1,10 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
-import Header from "../../components/Header";
-import ButtonAdd from "./components/ButtonAdd";
-import ModalAddIlmiah from "./components/ModalAddIlmiah";
-import TablePengajuanBimbingan from "./components/TablePengajuanPembimbing";
-import ModalAjukanKelulusan from "./components/ModalAjukanKelulusan";
-import TableRiwayatKelulusan from "./components/TableRiwayatKelulusan";
+import { Flex, useDisclosure } from '@chakra-ui/react';
+import Header from '../../components/Header';
+import ButtonAdd from './components/ButtonAdd';
+import ModalAddIlmiah from './components/ModalAddIlmiah';
+import TablePengajuanBimbingan from './components/TablePengajuanPembimbing';
+import ModalAjukanKelulusan from './components/ModalAjukanKelulusan';
+import TableRiwayatKelulusan from './components/TableRiwayatKelulusan';
 
 const IlmiahPage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();

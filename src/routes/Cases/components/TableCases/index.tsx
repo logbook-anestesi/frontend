@@ -6,13 +6,13 @@ import {
   Th,
   Thead,
   Tr,
-} from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { Case } from "../../hooks/useGetCases/types";
-import { formatDateMonthYear } from "../../../../helpers";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { CaseMenu } from "../../types";
+} from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { Case } from '../../hooks/useGetCases/types';
+import { formatDateMonthYear } from '../../../../helpers';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { CaseMenu } from '../../types';
 
 interface Props {
   caseList: Case[];
@@ -24,12 +24,12 @@ const TableCases = ({ caseList, selectedCase }: Props) => {
   const [finalData, setFinalData] = useState<Case[]>(caseList);
 
   useEffect(() => {
-    if (selectedCase?.value === "-") {
+    if (selectedCase?.value === '-') {
       return;
     }
 
     const filteredData = caseList?.filter(
-      (caseData) => caseData.caseType === selectedCase.value
+      (caseData) => caseData.caseType === selectedCase.value,
     );
 
     setFinalData(filteredData);
@@ -56,7 +56,7 @@ const TableCases = ({ caseList, selectedCase }: Props) => {
                   textDecoration="underline"
                   color="#3498db"
                   onClick={() =>
-                    navigate("/cases/details", {
+                    navigate('/cases/details', {
                       state: { caseId: caseData?.id },
                     })
                   }

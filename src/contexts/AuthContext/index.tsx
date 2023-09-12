@@ -1,24 +1,24 @@
-import React, { createContext, Dispatch, useContext, useReducer } from "react";
-import { reducer } from "./reducer";
-import { ACTION_TYPE } from "./types";
+import React, { createContext, Dispatch, useContext, useReducer } from 'react';
+import { reducer } from './reducer';
+import { ACTION_TYPE } from './types';
 
 const AuthContext = createContext({
-  email: "",
-  id: "",
-  image_url: "",
-  name: "",
-  phone_number: "",
+  email: '',
+  id: '',
+  image_url: '',
+  name: '',
+  phone_number: '',
 });
 
 const AuthContextDispatch = createContext<Dispatch<ACTION_TYPE>>(() => {});
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, {
-    email: "",
-    id: "",
-    image_url: "",
-    name: "",
-    phone_number: "",
+    email: '',
+    id: '',
+    image_url: '',
+    name: '',
+    phone_number: '',
   });
 
   return (

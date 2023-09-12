@@ -1,6 +1,6 @@
-import { Button, Image, Text } from "@chakra-ui/react";
-import fileIcon from "../../assets/fileIcon.png";
-import { colors } from "../../../../constants/colors";
+import { Button, Image, Text } from '@chakra-ui/react';
+import fileIcon from '../../assets/fileIcon.png';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   title: string;

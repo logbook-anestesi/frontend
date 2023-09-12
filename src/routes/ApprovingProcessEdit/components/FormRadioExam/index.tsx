@@ -1,7 +1,7 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../../../../constants/colors";
-import { useEffect, useState } from "react";
-import { useApprovalEditDispatch } from "../../contexts";
+import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { colors } from '../../../../constants/colors';
+import { useEffect, useState } from 'react';
+import { useApprovalEditDispatch } from '../../contexts';
 
 interface Option {
   title: string;
@@ -16,17 +16,17 @@ interface Props {
 
 const FormRadioExam = ({ title, listOptions, initialValue }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState('1');
 
   useEffect(() => {
-    setValue(initialValue ? "Ya" : "Tidak");
+    setValue(initialValue ? 'Ya' : 'Tidak');
   }, [initialValue]);
 
   useEffect(() => {
     approveEditDispatch({
-      type: "set_is_exam",
+      type: 'set_is_exam',
       data: {
-        isExam: value === "Ya",
+        isExam: value === 'Ya',
       },
     });
   }, [approveEditDispatch, value]);
@@ -42,8 +42,8 @@ const FormRadioExam = ({ title, listOptions, initialValue }: Props) => {
         value={value}
         overflowX="scroll"
         css={{
-          "&::-webkit-scrollbar": {
-            display: "none",
+          '&::-webkit-scrollbar': {
+            display: 'none',
           },
         }}
       >
