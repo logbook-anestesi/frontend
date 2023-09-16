@@ -30,6 +30,7 @@ import AddCasePoliPerioperative from './AddCasePoliPerioperative';
 import AddCasePainService from './AddCasePainService';
 import ProfilePageOtherUser from './ProfilePageOtherUser';
 import UploadImageToStorage from './UploadImage';
+import ExamPage from './Exam';
 
 const MainRoutes = () => {
   return (
@@ -77,6 +78,8 @@ const MainRoutes = () => {
 
         <Route path="/ilmiah" element={<IlmiahPage />} />
         <Route path="/ilmiah/details" element={<IlmiahDetail />} />
+
+        <Route path="/exam" element={<ExamPage />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
