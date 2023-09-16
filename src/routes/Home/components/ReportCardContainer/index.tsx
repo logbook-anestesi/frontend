@@ -9,7 +9,7 @@ const ReportCardContainer = () => {
     <Flex justify="space-between" gap={2}>
       <ReportCard icon={cases} title="Cases" path="/cases" />
       <ReportCard icon={ilmiah} title="Ilmiah" path="/ilmiah" />
-      <ReportCard icon={exam} title="Exam" path="/" />
+      <ReportCard icon={exam} title="Exam" path="/exam" />
     </Flex>
   );
 };
