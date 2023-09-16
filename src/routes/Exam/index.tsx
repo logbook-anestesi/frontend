@@ -3,14 +3,17 @@ import Header from '../../components/Header';
 import ButtonAdd from './components/ButtonAdd';
 import TableTitle from './components/TableTitle';
 import { useNavigate } from 'react-router-dom';
+import TableData from './components/TableData';
+import useGetAllExam from './hooks/useGetAllExam';
+import LoaderCircle from '../../components/LoaderCircle';
 
 const ExamPage = () => {
+  const { loading, examList } = useGetAllExam();
   const navigate = useNavigate();
 
   const handleOnClick = () => {
     navigate('/exam/add');
   };
-
   return (
     <Flex direction="column">
       <Header title="Exam" />
@@ -19,6 +22,7 @@ const ExamPage = () => {
         <ButtonAdd handleOnClick={handleOnClick} />
 
         <TableTitle />
+        {loading ? <LoaderCircle /> : <TableData examList={examList || []} />}
       </Flex>
 
       {/* Modal Section */}
