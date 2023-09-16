@@ -3,7 +3,7 @@ import { DPJP } from '../../../AddCases/hooks/useGetDPJP/types';
 
 interface Props {
   penguji: DPJP;
-  setPenguji: (dpjp: DPJP) => void;
+  setPenguji: React.Dispatch<React.SetStateAction<DPJP | undefined>>;
   closeModal: () => void;
 }
 

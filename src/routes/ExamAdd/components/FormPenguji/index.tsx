@@ -1,22 +1,21 @@
 import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import profileIcon from '../../../../assets/profile-white.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DPJP } from '../../../AddCases/hooks/useGetDPJP/types';
 import ModalPenguji from '../ModalPenguji';
 
 interface Props {
-  setPengujiId: React.Dispatch<React.SetStateAction<string>>;
+  setPenguji: React.Dispatch<React.SetStateAction<DPJP | undefined>>;
 }
 
-const FormPenguji = ({ setPengujiId }: Props) => {
+const FormPenguji = ({ setPenguji }: Props) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedPenguji, setSelectedPenguji] = useState<DPJP>();
 
-  const handleSetPenguji = (dpjp: DPJP) => {
-    setPengujiId(dpjp.id);
-    setSelectedPenguji(dpjp);
-  };
+  useEffect(() => {
+    setPenguji(selectedPenguji);
+  }, [selectedPenguji]);
 
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
@@ -41,7 +40,7 @@ const FormPenguji = ({ setPengujiId }: Props) => {
       <ModalPenguji
         isOpen={isOpen}
         closeModal={onClose}
-        setPenguji={handleSetPenguji}
+        setPenguji={setSelectedPenguji}
       />
     </Flex>
   );

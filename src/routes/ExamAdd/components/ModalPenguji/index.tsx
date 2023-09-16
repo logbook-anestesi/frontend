@@ -18,7 +18,7 @@ import { DPJP } from '../../../AddCases/hooks/useGetDPJP/types';
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  setPenguji: (dpjp: DPJP) => void;
+  setPenguji: React.Dispatch<React.SetStateAction<DPJP | undefined>>;
 }
 
 const ModalPenguji = ({ isOpen, closeModal, setPenguji }: Props) => {
