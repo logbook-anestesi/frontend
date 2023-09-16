@@ -16,6 +16,7 @@ interface Props {
   exam: string;
   examType: string;
   penguji: DPJP | undefined;
+  handleSubmit: () => Promise<void>;
 }
 
 const ModalSubmit = ({
@@ -24,6 +25,7 @@ const ModalSubmit = ({
   exam,
   examType,
   penguji,
+  handleSubmit,
 }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
@@ -68,7 +70,11 @@ const ModalSubmit = ({
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
-            <Button colorScheme="teal" backgroundColor={colors.primaryPurple}>
+            <Button
+              colorScheme="teal"
+              backgroundColor={colors.primaryPurple}
+              onClick={handleSubmit}
+            >
               Ya
             </Button>
             <Button
