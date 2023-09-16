@@ -7,10 +7,11 @@ import useGetProfile from '../../hooks/useGetProfile';
 import ModalSelectCases from './components/ModalSelectCases';
 import LevelCardContainer from './components/LevelCardContainer';
 import ReportCardContainer from './components/ReportCardContainer';
+import NotificationCenter from './components/NotificationCenter';
 // import InfoBoxContainer from "./components/InfoBoxContainer";
 
 const Home = () => {
-  const { profile } = useGetProfile();
+  const { profile, isResiden } = useGetProfile();
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
@@ -22,9 +23,11 @@ const Home = () => {
         term={profile?.joinTerm || '-'}
       />
 
-      {/* <InfoBoxContainer /> */}
+      <NotificationCenter />
       <LevelCardContainer profile={profile} />
-      <ReportCardContainer />
+
+      {isResiden && <ReportCardContainer />}
+
       <ButtonTambah buttonTitle="Tambah Cases" onClick={onOpen} />
 
       {/* Modal Section */}

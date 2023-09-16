@@ -43,11 +43,18 @@ const useGetProfile = () => {
     }
   }, []);
 
+  const isKonsulen = profile?.role === 'KONSULEN';
+  const isKSPSPS = profile?.role === 'KPS_SPS';
+  const isResiden = profile?.role === 'RESIDEN';
+
   return {
     profile,
     loading,
     getProfileById,
     profileById,
+    isKonsulen,
+    isKSPSPS,
+    isResiden,
   };
 };
 
