@@ -32,6 +32,7 @@ import ProfilePageOtherUser from './ProfilePageOtherUser';
 import UploadImageToStorage from './UploadImage';
 import ExamPage from './Exam';
 import ExamAdd from './ExamAdd';
+import ExamList from './ExamList';
 
 const MainRoutes = () => {
   return (
@@ -82,6 +83,7 @@ const MainRoutes = () => {
 
         <Route path="/exam" element={<ExamPage />} />
         <Route path="/exam/add" element={<ExamAdd />} />
+        <Route path="/exam/all" element={<ExamList />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

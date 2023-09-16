@@ -55,8 +55,6 @@ const ExamAdd = () => {
     }
   };
 
-  console.log('999 hasil perubahan', { exam, examType, penguji });
-
   return (
     <Flex direction="column">
       <Header title="Buat Exam" />

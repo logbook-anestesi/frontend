@@ -14,6 +14,7 @@ const ExamPage = () => {
   const handleOnClick = () => {
     navigate('/exam/add');
   };
+
   return (
     <Flex direction="column">
       <Header title="Exam" />
