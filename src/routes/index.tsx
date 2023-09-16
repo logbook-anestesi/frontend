@@ -31,6 +31,7 @@ import AddCasePainService from './AddCasePainService';
 import ProfilePageOtherUser from './ProfilePageOtherUser';
 import UploadImageToStorage from './UploadImage';
 import ExamPage from './Exam';
+import ExamAdd from './ExamAdd';
 
 const MainRoutes = () => {
   return (
@@ -80,6 +81,7 @@ const MainRoutes = () => {
         <Route path="/ilmiah/details" element={<IlmiahDetail />} />
 
         <Route path="/exam" element={<ExamPage />} />
+        <Route path="/exam/add" element={<ExamAdd />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
