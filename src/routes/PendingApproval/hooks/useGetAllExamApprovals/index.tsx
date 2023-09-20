@@ -1,28 +1,21 @@
-import { useEffect, useState } from 'react';
 import axiosClient from '../../../../networks/apiClient';
 import { ExamApproval } from './types';
+import useSWR from 'swr';
 
 const useGetAllExamApprovals = () => {
-  const [loading, setLoading] = useState(false);
-  const [examApprovals, setExamApprovals] = useState<ExamApproval[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const response = await axiosClient.get('/exam/approval/');
-      const data = await response.data.data;
-
-      setLoading(false);
-      setExamApprovals(data);
-    };
-
-    fetchData();
-  }, []);
+  const {
+    data: examApprovals,
+    isLoading: loading,
+    mutate,
+  } = useSWR('/exam/approval/', async (): Promise<ExamApproval[]> => {
+    const response = await axiosClient.get('/exam/approval/');
+    return response.data.data;
+  });
 
   return {
     examApprovals,
     loading,
+    mutate,
   };
 };
 

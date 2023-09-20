@@ -10,6 +10,8 @@ import {
 import { colors } from '../../../../constants/colors';
 import useAddApproval from '../../hooks/useAddApprovals';
 import useAddApprovalExam from '../../hooks/useAddApprovalsExam';
+import useGetAllExamApprovals from '../../hooks/useGetAllExamApprovals';
+import useGetScientificApprovals from '../../hooks/useGetAllApprovals';
 
 interface Props {
   isOpen: boolean;
@@ -29,6 +31,8 @@ const ModalApprove = ({
   const toast = useToast();
   const { createApproval, loading } = useAddApproval();
   const { createApprovalExam, loading: loadingExam } = useAddApprovalExam();
+  const { mutate: mutateExam } = useGetAllExamApprovals();
+  const { mutate: mutateScientific } = useGetScientificApprovals();
 
   const handleApproval = async (type: string) => {
     if (typeItem === 'ilmiah') {
@@ -40,26 +44,33 @@ const ModalApprove = ({
       if (response?.success) {
         toast({
           title: 'Success',
-          description: 'Success Approve Ilmiah',
+          description: `Success ${
+            statusApprove === 'APPROVED' ? 'Approve' : 'Reject'
+          } Ilmiah`,
           status: 'success',
           position: 'top',
           duration: 5000,
           isClosable: true,
         });
 
-        window.location.reload();
+        mutateScientific();
+        closeModal();
         return;
       }
 
       if (!response?.success) {
         toast({
-          title: 'Failed Approve Ilmiah',
+          title: `Failed ${
+            statusApprove === 'APPROVED' ? 'Approve' : 'Reject'
+          } Ilmiah`,
           description: response?.message,
           status: 'error',
           position: 'top',
           duration: 9000,
           isClosable: true,
         });
+
+        closeModal();
       }
 
       return;
@@ -74,26 +85,33 @@ const ModalApprove = ({
       if (response?.success) {
         toast({
           title: 'Success',
-          description: 'Success Approve Ilmiah',
+          description: `Success ${
+            statusApprove === 'APPROVED' ? 'Approve' : 'Reject'
+          } Exam`,
           status: 'success',
           position: 'top',
           duration: 5000,
           isClosable: true,
         });
 
-        window.location.reload();
+        mutateExam();
+        closeModal();
         return;
       }
 
       if (!response?.success) {
         toast({
-          title: 'Failed Approve Ilmiah',
+          title: `Failed ${
+            statusApprove === 'APPROVED' ? 'Approve' : 'Reject'
+          } Exam`,
           description: response?.message,
           status: 'error',
           position: 'top',
           duration: 9000,
           isClosable: true,
         });
+
+        closeModal();
       }
 
       return;

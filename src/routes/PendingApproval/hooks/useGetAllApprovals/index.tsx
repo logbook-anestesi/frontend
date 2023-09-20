@@ -1,28 +1,21 @@
-import { useEffect, useState } from 'react';
 import axiosClient from '../../../../networks/apiClient';
 import { ReviewItem } from './types';
+import useSWR from 'swr';
 
 const useGetScientificApprovals = () => {
-  const [loading, setLoading] = useState(false);
-  const [reviewData, setReviewData] = useState<ReviewItem[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const response = await axiosClient.get('/scientific/approval/');
-      const data = await response.data.data;
-
-      setLoading(false);
-      setReviewData(data);
-    };
-
-    fetchData();
-  }, []);
+  const {
+    data: reviewData,
+    isLoading: loading,
+    mutate,
+  } = useSWR('/scientific/approval/', async (): Promise<ReviewItem[]> => {
+    const response = await axiosClient.get('/scientific/approval/');
+    return response.data.data;
+  });
 
   return {
     reviewData,
     loading,
+    mutate,
   };
 };
 

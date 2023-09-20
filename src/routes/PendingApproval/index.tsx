@@ -1,4 +1,4 @@
-import { Flex, useDisclosure } from '@chakra-ui/react';
+import { Flex, Text, useDisclosure } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import CardApproval from './components/CardApproval';
 import useGetScientificApprovals from './hooks/useGetAllApprovals';
@@ -37,7 +37,7 @@ const PendingApproval = () => {
           ))
         )}
 
-        {examApprovals.map((examApproval) => (
+        {examApprovals?.map((examApproval) => (
           <CardApprovalExam
             examData={examApproval}
             onCloseModal={onClose}
@@ -49,6 +49,13 @@ const PendingApproval = () => {
           />
         ))}
       </Flex>
+
+      {/* If there are no data */}
+      {[...(examApprovals || []), ...(reviewData || [])].length === 0 && (
+        <Flex justify="center">
+          <Text>Belum ada data approval</Text>
+        </Flex>
+      )}
 
       {/* Modal Section */}
       <ModalApprove
