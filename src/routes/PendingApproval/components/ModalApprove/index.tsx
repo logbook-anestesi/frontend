@@ -15,6 +15,7 @@ interface Props {
   closeModal: () => void;
   ilmiahId: string;
   statusApprove: string;
+  typeItem: string;
 }
 
 const ModalApprove = ({
@@ -22,6 +23,7 @@ const ModalApprove = ({
   isOpen,
   ilmiahId,
   statusApprove,
+  typeItem,
 }: Props) => {
   const toast = useToast();
   const { createApproval, loading } = useAddApproval();
@@ -63,7 +65,7 @@ const ModalApprove = ({
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b">
-            Anda akan {statusApprove === 'APPROVED' ? 'Menyetujui' : 'Menolak'}
+            Anda akan {statusApprove === 'APPROVED' ? 'Menyetujui' : 'Menolak'}{' '}
           </Text>
           <Text as="b" mb={4}>
             {ilmiahId}

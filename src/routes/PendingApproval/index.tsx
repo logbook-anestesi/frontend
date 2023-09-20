@@ -5,19 +5,23 @@ import useGetScientificApprovals from './hooks/useGetAllApprovals';
 import LoaderCircle from '../../components/LoaderCircle';
 import ModalApprove from './components/ModalApprove';
 import { useState } from 'react';
+import useGetAllExamApprovals from './hooks/useGetAllExamApprovals';
+import CardApprovalExam from './components/CardApprovalExam';
 
 const PendingApproval = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, reviewData } = useGetScientificApprovals();
-  const [selectedIlmiahId, setSelectedIlmiahId] = useState('');
+  const { examApprovals, loading: examLoading } = useGetAllExamApprovals();
+  const [selectedItemId, setSelectedItemId] = useState('');
   const [statusApprove, setStatusApprove] = useState('');
+  const [typeItem, setTypeItem] = useState<'ilmiah' | 'exam'>('ilmiah');
 
   return (
     <Flex flexDirection="column">
       <Header title="Pending Approval" />
 
       <Flex padding="30px" direction="column" gap="16px">
-        {loading ? (
+        {loading || examLoading ? (
           <LoaderCircle />
         ) : (
           reviewData?.map((scientificApproval) => (
@@ -26,19 +30,32 @@ const PendingApproval = () => {
               key={scientificApproval?.id}
               onOpenModal={onOpen}
               onCloseModal={onClose}
-              setSelectedIlmiahId={setSelectedIlmiahId}
+              setSelectedItemId={setSelectedItemId}
               setStatusApprove={setStatusApprove}
+              setTypeItem={setTypeItem}
             />
           ))
         )}
+
+        {examApprovals.map((examApproval) => (
+          <CardApprovalExam
+            examData={examApproval}
+            onCloseModal={onClose}
+            onOpenModal={onOpen}
+            setSelectedItemId={setSelectedItemId}
+            setStatusApprove={setStatusApprove}
+            setTypeItem={setTypeItem}
+          />
+        ))}
       </Flex>
 
       {/* Modal Section */}
       <ModalApprove
         closeModal={onClose}
-        ilmiahId={selectedIlmiahId}
+        ilmiahId={selectedItemId}
         isOpen={isOpen}
         statusApprove={statusApprove}
+        typeItem={typeItem}
       />
     </Flex>
   );
