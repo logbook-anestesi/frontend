@@ -1,11 +1,9 @@
 import { useCallback, useState } from 'react';
 import { PayloadAddApprovalExam } from './types';
 import axiosClient from '../../../../networks/apiClient';
-import useGetPengajuanPembimbing from '../../../Ilmiah/hooks/useGetPengajuanPembimbing';
 
 const useAddApprovalExam = () => {
   const [loading, setLoading] = useState(false);
-  const { mutate } = useGetPengajuanPembimbing();
 
   const createApprovalExam = useCallback(
     async (payload: PayloadAddApprovalExam) => {
@@ -15,7 +13,6 @@ const useAddApprovalExam = () => {
         const response = await axiosClient.post('/exam/approval', payload);
         const data = response.data;
 
-        mutate();
         setLoading(false);
 
         if (data?.error) {
@@ -25,17 +22,16 @@ const useAddApprovalExam = () => {
         if (!data.error) {
           return {
             success: true,
-            message: 'Berhasil Approve Ilmiah',
+            message: 'Berhasil Approve Exam',
           };
         }
       } catch (e: any) {
-        mutate();
         setLoading(false);
-        console.log('[Error Approve Ilmiah]', e);
+        console.log('[Error Approve Exam]', e);
         return { success: false, message: e?.response?.data?.message };
       }
     },
-    [mutate],
+    [],
   );
 
   return {

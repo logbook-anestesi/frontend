@@ -45,6 +45,7 @@ const PendingApproval = () => {
             setSelectedItemId={setSelectedItemId}
             setStatusApprove={setStatusApprove}
             setTypeItem={setTypeItem}
+            key={examApproval.id}
           />
         ))}
       </Flex>
@@ -52,7 +53,7 @@ const PendingApproval = () => {
       {/* Modal Section */}
       <ModalApprove
         closeModal={onClose}
-        ilmiahId={selectedItemId}
+        itemId={selectedItemId}
         isOpen={isOpen}
         statusApprove={statusApprove}
         typeItem={typeItem}

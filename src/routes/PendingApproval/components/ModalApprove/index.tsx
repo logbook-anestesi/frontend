@@ -9,11 +9,12 @@ import {
 } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import useAddApproval from '../../hooks/useAddApprovals';
+import useAddApprovalExam from '../../hooks/useAddApprovalsExam';
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
-  ilmiahId: string;
+  itemId: string;
   statusApprove: string;
   typeItem: string;
 }
@@ -21,42 +22,81 @@ interface Props {
 const ModalApprove = ({
   closeModal,
   isOpen,
-  ilmiahId,
+  itemId,
   statusApprove,
   typeItem,
 }: Props) => {
   const toast = useToast();
   const { createApproval, loading } = useAddApproval();
+  const { createApprovalExam, loading: loadingExam } = useAddApprovalExam();
 
   const handleApproval = async (type: string) => {
-    const response = await createApproval({
-      productId: ilmiahId,
-      status: type,
-    });
-
-    if (response?.success) {
-      toast({
-        title: 'Success',
-        description: 'Success Approve Ilmiah',
-        status: 'success',
-        position: 'top',
-        duration: 5000,
-        isClosable: true,
+    if (typeItem === 'ilmiah') {
+      const response = await createApproval({
+        productId: itemId,
+        status: type,
       });
 
-      window.location.reload();
+      if (response?.success) {
+        toast({
+          title: 'Success',
+          description: 'Success Approve Ilmiah',
+          status: 'success',
+          position: 'top',
+          duration: 5000,
+          isClosable: true,
+        });
+
+        window.location.reload();
+        return;
+      }
+
+      if (!response?.success) {
+        toast({
+          title: 'Failed Approve Ilmiah',
+          description: response?.message,
+          status: 'error',
+          position: 'top',
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+
       return;
     }
 
-    if (!response?.success) {
-      toast({
-        title: 'Failed Approve Ilmiah',
-        description: response?.message,
-        status: 'error',
-        position: 'top',
-        duration: 9000,
-        isClosable: true,
+    if (typeItem === 'exam') {
+      const response = await createApprovalExam({
+        productId: itemId,
+        status: type,
       });
+
+      if (response?.success) {
+        toast({
+          title: 'Success',
+          description: 'Success Approve Ilmiah',
+          status: 'success',
+          position: 'top',
+          duration: 5000,
+          isClosable: true,
+        });
+
+        window.location.reload();
+        return;
+      }
+
+      if (!response?.success) {
+        toast({
+          title: 'Failed Approve Ilmiah',
+          description: response?.message,
+          status: 'error',
+          position: 'top',
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+
+      return;
     }
   };
   return (
@@ -68,7 +108,7 @@ const ModalApprove = ({
             Anda akan {statusApprove === 'APPROVED' ? 'Menyetujui' : 'Menolak'}{' '}
           </Text>
           <Text as="b" mb={4}>
-            {ilmiahId}
+            {itemId}
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
@@ -76,7 +116,7 @@ const ModalApprove = ({
               colorScheme="teal"
               backgroundColor={colors.primaryPurple}
               onClick={() => handleApproval(statusApprove)}
-              isLoading={loading}
+              isLoading={loading || loadingExam}
             >
               Ya
             </Button>
