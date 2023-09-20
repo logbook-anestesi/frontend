@@ -15,6 +15,7 @@ import FormLink from '../FormLink';
 import Information from '../Information';
 import { useIlmiahContext } from '../../contexts';
 import useAddPengajuanKelulusan from '../../hooks/useAddPengajuanKelulusan';
+import useGetPengajuanPembimbing from '../../hooks/useGetPengajuanPembimbing';
 
 interface Props {
   isOpen: boolean;
@@ -32,6 +33,7 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
 
   const { pengajuanKelulusan } = useIlmiahContext();
   const { createPengajuanKelulusan, loading } = useAddPengajuanKelulusan();
+  const { mutate } = useGetPengajuanPembimbing();
 
   const handleSubmit = async () => {
     const response = await createPengajuanKelulusan({
@@ -49,6 +51,7 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
         isClosable: true,
       });
 
+      mutate();
       closeModal();
     }
 
