@@ -33,6 +33,7 @@ import UploadImageToStorage from './UploadImage';
 import ExamPage from './Exam';
 import ExamAdd from './ExamAdd';
 import ExamList from './ExamList';
+import StaseApproval from './StaseApproval';
 
 const MainRoutes = () => {
   return (
@@ -48,6 +49,7 @@ const MainRoutes = () => {
         <Route path="/stase" element={<StasePage />} />
         <Route path="/stase/create" element={<CreateStase />} />
         <Route path="/stase/all" element={<StaseAllList />} />
+        <Route path="/stase/approval" element={<StaseApproval />} />
 
         <Route path="/competence" element={<CompetencePage />} />
 
