@@ -16,6 +16,7 @@ const useGetAllExamApprovals = () => {
     examApprovals,
     loading,
     mutate,
+    notif: examApprovals?.length || 0,
   };
 };
 

@@ -50,7 +50,7 @@ const LevelCardWithLogo = ({
       </Flex>
 
       <Flex direction="row" gap="10px">
-        <Ticker text={String(cardNumber)} isShowClose={false} />
+        <Ticker text={`${String(cardNumber)} review`} isShowClose={false} />
         <ChevronRightIcon boxSize="35px" color={colors.darkGrey} />
       </Flex>
     </Card>

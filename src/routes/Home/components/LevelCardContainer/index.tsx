@@ -5,12 +5,18 @@ import cases from '../../assets/cases.png';
 import { Profile } from '../../../../hooks/useGetProfile/types';
 import useGetCompetenceUser from '../../../Competence/hooks/useGetCompetenceUser';
 import LoaderCircle from '../../../../components/LoaderCircle';
+import useGetAllExamApprovals from '../../../PendingApproval/hooks/useGetAllExamApprovals';
+import useGetScientificApprovals from '../../../PendingApproval/hooks/useGetAllApprovals';
+import useGetPendingReview from '../../../CasesReviewDashboard/hooks/useGetPendingReview';
 
 interface Props {
   profile?: Profile;
 }
 
 const LevelCardContainer = ({ profile }: Props) => {
+  const { notif: notifCases } = useGetPendingReview();
+  const { notif: notifExam } = useGetAllExamApprovals();
+  const { notif: notifScientific } = useGetScientificApprovals();
   const { competenceData, loading } = useGetCompetenceUser();
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
@@ -42,7 +48,7 @@ const LevelCardContainer = ({ profile }: Props) => {
           type="Pending Review"
           path="/review/cases"
           icon={cases}
-          cardNumber={1}
+          cardNumber={notifCases}
         />
       ) : null}
 
@@ -52,7 +58,7 @@ const LevelCardContainer = ({ profile }: Props) => {
           type="Pending Review"
           path="/approval"
           icon={cases}
-          cardNumber={1}
+          cardNumber={notifExam + notifScientific}
         />
       ) : null}
 

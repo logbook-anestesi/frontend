@@ -16,6 +16,8 @@ import { colors } from '../../../../constants/colors';
 import { useEffect, useState } from 'react';
 import useCreateIlmiah from '../../hooks/useCreateIlmiah';
 import ListSPSKPS from '../ListSPSKPS';
+import useGetPengajuanPembimbing from '../../hooks/useGetPengajuanPembimbing';
+import useGetRiwayatKelulusan from '../../hooks/useGetRiwayatKelulusan';
 
 interface Props {
   isOpen: boolean;
@@ -30,6 +32,8 @@ export interface PembimbingData {
 const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
   const toast = useToast();
   const { createIlmiah, loading } = useCreateIlmiah();
+  const { mutate: mutateRiwayatPengajuan } = useGetPengajuanPembimbing();
+  const { mutate: mutateRiwayatKelulusan } = useGetRiwayatKelulusan();
 
   const [scientificType, setScientificType] = useState('');
   const [title, setTitle] = useState('');
@@ -63,9 +67,10 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
         isClosable: true,
       });
 
-      closeModal();
+      mutateRiwayatKelulusan();
+      mutateRiwayatPengajuan();
 
-      window.location.reload();
+      closeModal();
     }
 
     if (!response?.success) {

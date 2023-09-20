@@ -16,6 +16,7 @@ const useGetScientificApprovals = () => {
     reviewData,
     loading,
     mutate,
+    notif: reviewData?.length || 0,
   };
 };
 
