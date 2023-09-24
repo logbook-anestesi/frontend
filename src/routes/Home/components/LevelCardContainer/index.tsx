@@ -2,6 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import LevelCard from '../LevelCard';
 import LevelCardWithLogo from '../LevelCardWithLogo';
 import cases from '../../assets/cases.png';
+import module from '../../assets/module.png';
 import { Profile } from '../../../../hooks/useGetProfile/types';
 import useGetCompetenceUser from '../../../Competence/hooks/useGetCompetenceUser';
 import LoaderCircle from '../../../../components/LoaderCircle';
@@ -62,13 +63,14 @@ const LevelCardContainer = ({ profile }: Props) => {
         />
       ) : null}
 
-      {profile?.role === 'KETUA_STASE' ? (
+      {/* KONSULEN or KETUA MODULE ?? */}
+      {profile?.role === 'KONSULEN' ? (
         <LevelCardWithLogo
-          title="Uro-Gimul"
+          title="Stase Name [BE]"
           type="Dashboard Stase"
-          path="/dashboard/station"
-          icon={cases}
-          cardNumber={1}
+          path="/stase/approval"
+          icon={module}
+          cardNumber={0}
         />
       ) : null}
     </Flex>
