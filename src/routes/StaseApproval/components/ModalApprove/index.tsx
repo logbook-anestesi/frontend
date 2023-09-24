@@ -5,8 +5,13 @@ import {
   ModalContent,
   ModalOverlay,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
+import FormNotes from '../FormNotes';
+import { useState } from 'react';
+import useAddApprovalStase from '../../hooks/useAddApprovalStase';
+import useGetStaseApprovalList from '../../hooks/useGetStaseApprovalList';
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +21,49 @@ interface Props {
 }
 
 const ModalApprove = ({ closeModal, isOpen, staseId, status }: Props) => {
+  const toast = useToast();
+  const [notes, setNotes] = useState('');
+  const { mutate } = useGetStaseApprovalList();
+  const { createApprovalStase } = useAddApprovalStase();
+
+  const handleApprove = async () => {
+    const response = await createApprovalStase({
+      notes: notes,
+      productId: staseId,
+      status: status === 'APPROVED' ? 'PASSED' : 'FAILED',
+    });
+
+    if (response?.success) {
+      toast({
+        title: 'Success',
+        description: `Berhasil ${
+          status === 'APPROVED' ? 'Approve' : 'Reject'
+        } Stase`,
+        status: 'success',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      mutate();
+      closeModal();
+      return;
+    }
+
+    if (!response?.success) {
+      toast({
+        title: `Failed ${status === 'APPROVED' ? 'Approve' : 'Reject'} Stase`,
+        description: response?.message,
+        status: 'error',
+        position: 'top',
+        duration: 9000,
+        isClosable: true,
+      });
+
+      closeModal();
+    }
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -28,13 +76,15 @@ const ModalApprove = ({ closeModal, isOpen, staseId, status }: Props) => {
             {staseId}
           </Text>
 
-          <Text fontSize="sm" px={4} as="b" mb={4}>
-            Apakah Anda ingin menambahkan case ini ke dashboard Anda?
-          </Text>
+          <FormNotes setNotes={setNotes} />
 
           <Flex direction="column" gap={2} width="100%">
-            <Button colorScheme="teal" backgroundColor={colors.primaryPurple}>
-              Ya
+            <Button
+              colorScheme="teal"
+              backgroundColor={colors.primaryPurple}
+              onClick={handleApprove}
+            >
+              {status === 'APPROVED' ? 'Approve' : 'Reject'}
             </Button>
             <Button
               backgroundColor={colors.white}
@@ -42,7 +92,7 @@ const ModalApprove = ({ closeModal, isOpen, staseId, status }: Props) => {
               borderColor={colors.primaryPurple}
               onClick={closeModal}
             >
-              Tidak
+              Batal
             </Button>
           </Flex>
         </Flex>

@@ -2,6 +2,7 @@ import { Divider, Flex, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { StaseApproval } from '../../hooks/useGetStaseApprovalList/types';
+import { convertDateForNotification } from '../../../../helpers';
 
 interface Props {
   approvalData: StaseApproval;
@@ -18,15 +19,42 @@ const CardApproval = ({
   onOpenModal,
   setStatus,
 }: Props) => {
+  const colorCardProgress = (status: string) => {
+    if (status === 'IN_PROGRESS') {
+      return colors.primaryPurple;
+    }
+    if (status === 'PASSED') {
+      return colors.primaryGreen;
+    }
+    if (status === 'FAILED') {
+      return colors.primaryRed;
+    }
+
+    return colors.primaryPurple;
+  };
+
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
-        30/03 17.00
+        {convertDateForNotification(approvalData.lastUpdated)}
       </Text>
 
-      <Flex direction="column" gap={3} mb={1}>
-        <Text as="b">Dr Ari Angga Nugraha</Text>
-      </Flex>
+      <Text as="b">{approvalData.userName}</Text>
+
+      <Text
+        as="b"
+        fontSize="sm"
+        borderColor={colorCardProgress(approvalData.status)}
+        borderWidth={2}
+        color={colorCardProgress(approvalData.status)}
+        width="fit-content"
+        px={2}
+        py={1}
+        borderRadius={6}
+        mt={2}
+      >
+        {approvalData.status}
+      </Text>
 
       <Flex justify="end" gap={4}>
         <Flex
