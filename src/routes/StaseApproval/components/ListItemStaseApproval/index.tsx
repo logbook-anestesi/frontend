@@ -7,6 +7,7 @@ interface Props {
   approvalList: StaseApproval[];
   setSelectedStaseId: React.Dispatch<React.SetStateAction<string>>;
   onOpenModal: () => void;
+  onOpenModalAll: () => void;
   setStatus: React.Dispatch<
     React.SetStateAction<'APPROVED' | 'REJECTED' | undefined>
   >;
@@ -17,6 +18,7 @@ const ListItemStaseApproval = ({
   setSelectedStaseId,
   onOpenModal,
   setStatus,
+  onOpenModalAll,
 }: Props) => {
   return (
     <Flex direction="column">
@@ -25,6 +27,7 @@ const ListItemStaseApproval = ({
         backgroundColor={colors.primaryPurple}
         color={colors.white}
         my={5}
+        onClick={onOpenModalAll}
       >
         Approve All
       </Button>

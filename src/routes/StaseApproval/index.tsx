@@ -14,6 +14,7 @@ import { Search2Icon } from '@chakra-ui/icons';
 import ListItemStaseApproval from './components/ListItemStaseApproval';
 import ModalApprove from './components/ModalApprove';
 import { StaseApproval as StaseApprovalType } from './hooks/useGetStaseApprovalList/types';
+import ModalApproveAll from './components/ModalApproveAll';
 
 const StaseApproval = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -25,6 +26,11 @@ const StaseApproval = () => {
 
   const { approvalList } = useGetStaseApprovalList();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenAll,
+    onClose: onCloseAll,
+    onOpen: onOpenAll,
+  } = useDisclosure();
 
   const handleChangeFilterName = (event: ChangeEvent<HTMLInputElement>) =>
     setFilterName(event.target.value);
@@ -40,7 +46,7 @@ const StaseApproval = () => {
     );
 
     setFinalApprovalData(filteredItem);
-  }, [filterName]);
+  }, [filterName, approvalList]);
 
   return (
     <Flex flexDirection="column">
@@ -71,6 +77,7 @@ const StaseApproval = () => {
             setSelectedStaseId={setSelectedStaseId}
             onOpenModal={onOpen}
             setStatus={setStatus}
+            onOpenModalAll={onOpenAll}
           />
         </Flex>
       </Flex>
@@ -82,6 +89,8 @@ const StaseApproval = () => {
         staseId={selectedStaseId}
         status={status || 'APPROVED'}
       />
+
+      <ModalApproveAll closeModal={onCloseAll} isOpen={isOpenAll} />
     </Flex>
   );
 };

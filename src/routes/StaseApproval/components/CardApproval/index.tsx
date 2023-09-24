@@ -3,6 +3,7 @@ import { colors } from '../../../../constants/colors';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { StaseApproval } from '../../hooks/useGetStaseApprovalList/types';
 import { convertDateForNotification } from '../../../../helpers';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   approvalData: StaseApproval;
@@ -19,6 +20,8 @@ const CardApproval = ({
   onOpenModal,
   setStatus,
 }: Props) => {
+  const navigate = useNavigate();
+
   const colorCardProgress = (status: string) => {
     if (status === 'IN_PROGRESS') {
       return colors.primaryPurple;
@@ -33,13 +36,21 @@ const CardApproval = ({
     return colors.primaryPurple;
   };
 
+  const handleClickProfile = () => {
+    navigate('/profile/other-user', {
+      state: { userId: approvalData.userId },
+    });
+  };
+
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
         {convertDateForNotification(approvalData.lastUpdated)}
       </Text>
 
-      <Text as="b">{approvalData.userName}</Text>
+      <Text as="b" onClick={handleClickProfile} textDecor="underline">
+        {approvalData.userName}
+      </Text>
 
       <Text
         as="b"
