@@ -7,19 +7,40 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import Header from '../../components/Header';
-import { useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import TopNavbar from './components/TopNavBar';
 import useGetStaseApprovalList from './hooks/useGetStaseApprovalList';
 import { Search2Icon } from '@chakra-ui/icons';
 import ListItemStaseApproval from './components/ListItemStaseApproval';
 import ModalApprove from './components/ModalApprove';
+import { StaseApproval as StaseApprovalType } from './hooks/useGetStaseApprovalList/types';
 
 const StaseApproval = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
-  const { approvalList } = useGetStaseApprovalList();
   const [selectedStaseId, setSelectedStaseId] = useState('');
+  const [filterName, setFilterName] = useState('');
   const [status, setStatus] = useState<'APPROVED' | 'REJECTED'>();
+  const [finalApprovalData, setFinalApprovalData] =
+    useState<StaseApprovalType[]>();
+
+  const { approvalList } = useGetStaseApprovalList();
   const { isOpen, onClose, onOpen } = useDisclosure();
+
+  const handleChangeFilterName = (event: ChangeEvent<HTMLInputElement>) =>
+    setFilterName(event.target.value);
+
+  useEffect(() => {
+    if (filterName === '') {
+      setFinalApprovalData(approvalList);
+      return;
+    }
+
+    const filteredItem = approvalList?.filter((approval) =>
+      approval.userName.toLowerCase().includes(filterName.toLowerCase()),
+    );
+
+    setFinalApprovalData(filteredItem);
+  }, [filterName]);
 
   return (
     <Flex flexDirection="column">
@@ -36,14 +57,17 @@ const StaseApproval = () => {
           </Text>
 
           <InputGroup>
-            <Input placeholder="Cari residen" />
+            <Input
+              placeholder="Cari residen"
+              onChange={handleChangeFilterName}
+            />
             <InputRightElement>
               <Search2Icon />
             </InputRightElement>
           </InputGroup>
 
           <ListItemStaseApproval
-            approvalList={approvalList || []}
+            approvalList={finalApprovalData || []}
             setSelectedStaseId={setSelectedStaseId}
             onOpenModal={onOpen}
             setStatus={setStatus}
