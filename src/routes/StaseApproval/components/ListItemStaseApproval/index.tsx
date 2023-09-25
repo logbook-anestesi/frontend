@@ -11,6 +11,7 @@ interface Props {
   setStatus: React.Dispatch<
     React.SetStateAction<'APPROVED' | 'REJECTED' | undefined>
   >;
+  setStatusBulk: React.Dispatch<React.SetStateAction<'PASSED' | 'FAILED'>>;
 }
 
 const ListItemStaseApproval = ({
@@ -19,6 +20,7 @@ const ListItemStaseApproval = ({
   onOpenModal,
   setStatus,
   onOpenModalAll,
+  setStatusBulk,
 }: Props) => {
   return (
     <Flex direction="column">
@@ -27,9 +29,25 @@ const ListItemStaseApproval = ({
         backgroundColor={colors.primaryPurple}
         color={colors.white}
         my={5}
-        onClick={onOpenModalAll}
+        onClick={() => {
+          setStatusBulk('PASSED');
+          onOpenModalAll();
+        }}
       >
         Approve All
+      </Button>
+
+      <Button
+        variant="outline"
+        borderColor={colors.primaryPurple}
+        color={colors.primaryPurple}
+        mb={5}
+        onClick={() => {
+          setStatusBulk('FAILED');
+          onOpenModalAll();
+        }}
+      >
+        Reject All
       </Button>
 
       {approvalList.map((approval, idx) => (

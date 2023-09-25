@@ -21,6 +21,7 @@ const StaseApproval = () => {
   const [selectedStaseId, setSelectedStaseId] = useState('');
   const [filterName, setFilterName] = useState('');
   const [status, setStatus] = useState<'APPROVED' | 'REJECTED'>();
+  const [statusBulk, setStatusBulk] = useState<'PASSED' | 'FAILED'>('PASSED');
   const [finalApprovalData, setFinalApprovalData] =
     useState<StaseApprovalType[]>();
 
@@ -77,6 +78,7 @@ const StaseApproval = () => {
             setSelectedStaseId={setSelectedStaseId}
             onOpenModal={onOpen}
             setStatus={setStatus}
+            setStatusBulk={setStatusBulk}
             onOpenModalAll={onOpenAll}
           />
         </Flex>
@@ -90,7 +92,11 @@ const StaseApproval = () => {
         status={status || 'APPROVED'}
       />
 
-      <ModalApproveAll closeModal={onCloseAll} isOpen={isOpenAll} />
+      <ModalApproveAll
+        closeModal={onCloseAll}
+        isOpen={isOpenAll}
+        typeBulk={statusBulk}
+      />
     </Flex>
   );
 };

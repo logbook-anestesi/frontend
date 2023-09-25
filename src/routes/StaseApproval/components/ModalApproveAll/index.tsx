@@ -14,22 +14,25 @@ import useAddApprovalStaseBulk from '../../hooks/useAddApprovalStaseBulk';
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  typeBulk: 'PASSED' | 'FAILED';
 }
 
-const ModalApproveAll = ({ closeModal, isOpen }: Props) => {
+const ModalApproveAll = ({ closeModal, isOpen, typeBulk }: Props) => {
   const toast = useToast();
   const { mutate } = useGetStaseApprovalList();
   const { createApprovalStaseBulk } = useAddApprovalStaseBulk();
 
   const handleApprove = async () => {
     const response = await createApprovalStaseBulk({
-      status: 'PASSED',
+      status: typeBulk,
     });
 
     if (response?.success) {
       toast({
         title: 'Success',
-        description: 'Berhasil Approve Stase',
+        description: `Berhasil ${
+          typeBulk === 'PASSED' ? 'Approve' : 'Reject'
+        } Stase`,
         status: 'success',
         position: 'top',
         duration: 5000,
@@ -43,7 +46,7 @@ const ModalApproveAll = ({ closeModal, isOpen }: Props) => {
 
     if (!response?.success) {
       toast({
-        title: 'Failed Approve Stase',
+        title: `Failed  ${typeBulk === 'PASSED' ? 'Approve' : 'Reject'} Stase`,
         description: response?.message,
         status: 'error',
         position: 'top',
@@ -61,7 +64,8 @@ const ModalApproveAll = ({ closeModal, isOpen }: Props) => {
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b" mb={6}>
-            Anda akan Menyetujui semua residen?
+            Anda akan {typeBulk === 'PASSED' ? 'Menyetujui' : ' Menolak'} semua
+            residen?
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
