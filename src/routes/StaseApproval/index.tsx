@@ -53,10 +53,10 @@ const StaseApproval = () => {
     <Flex flexDirection="column">
       <Header title="Modul ..." pathBack="/" />
       <Flex padding="30px" direction="column" gap="16px">
-        <TopNavbar
+        {/* <TopNavbar
           selectedMenu={selectedMenu}
           setSelectedMenu={setSelectedMenu}
-        />
+        /> */}
 
         <Flex direction="column" gap={2}>
           <Text fontSize="xl" as="b">
