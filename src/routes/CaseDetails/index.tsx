@@ -69,6 +69,8 @@ const CaseDetails = () => {
 
             <FieldText label="Jenis Kelamin" value={caseData?.patientGender} />
 
+            <FieldText label="Total Pasien" value={caseData?.numberOfPatient} />
+
             {caseData?.asaTier && (
               <>
                 <Divider />
@@ -80,10 +82,7 @@ const CaseDetails = () => {
 
             <Flex gap={20}>
               <FieldText label="Tingkat" value={caseData?.asaTier} />
-              <FieldText
-                label="Emergensi"
-                value={caseData?.asaIsEmergency ? 'YA' : 'TIDAK'}
-              />
+              <FieldText label="Emergensi" value={caseData?.asaIsEmergency} />
             </Flex>
 
             <FieldTicker label="Tags" listValue={asaTags} />

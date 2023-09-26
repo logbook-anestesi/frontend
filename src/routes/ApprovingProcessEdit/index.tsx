@@ -106,6 +106,16 @@ const ApprovingProcessEdit = () => {
     }
   };
 
+  const isHavePatientData =
+    caseData?.patientRecordNumber !== null ||
+    caseData.patientAge !== null ||
+    caseData.patientGender !== null;
+
+  const isHaveAsaData =
+    caseData?.asaTier !== null ||
+    caseData?.asaIsEmergency !== null ||
+    (caseData.asaTags.length || 0) > 0;
+
   return (
     <Flex flexDirection="column">
       <Header
@@ -154,11 +164,14 @@ const ApprovingProcessEdit = () => {
               noraProcedureList={casesForm?.noraProcedureTypes}
             />
 
-            <Divider />
-
-            <Text as="b" fontSize="xl">
-              Data Pasien
-            </Text>
+            {isHavePatientData && (
+              <>
+                <Divider />
+                <Text as="b" fontSize="xl">
+                  Data Pasien
+                </Text>
+              </>
+            )}
 
             <FormUsiaAndRM
               initialNoRm={caseData?.patientRecordNumber}
@@ -167,11 +180,15 @@ const ApprovingProcessEdit = () => {
 
             <FormRadioGender initialValue={caseData?.patientGender} />
 
-            <Divider />
+            {isHaveAsaData && (
+              <>
+                <Divider />
 
-            <Text as="b" fontSize="xl">
-              ASA
-            </Text>
+                <Text as="b" fontSize="xl">
+                  ASA
+                </Text>
+              </>
+            )}
 
             <FormTingkatAndEmergency
               initialValue={caseData?.asaTier}

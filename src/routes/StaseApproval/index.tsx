@@ -8,7 +8,6 @@ import {
 } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import { ChangeEvent, useEffect, useState } from 'react';
-import TopNavbar from './components/TopNavBar';
 import useGetStaseApprovalList from './hooks/useGetStaseApprovalList';
 import { Search2Icon } from '@chakra-ui/icons';
 import ListItemStaseApproval from './components/ListItemStaseApproval';
@@ -17,7 +16,6 @@ import { StaseApproval as StaseApprovalType } from './hooks/useGetStaseApprovalL
 import ModalApproveAll from './components/ModalApproveAll';
 
 const StaseApproval = () => {
-  const [selectedMenu, setSelectedMenu] = useState(0);
   const [selectedStaseId, setSelectedStaseId] = useState('');
   const [filterName, setFilterName] = useState('');
   const [status, setStatus] = useState<'APPROVED' | 'REJECTED'>();

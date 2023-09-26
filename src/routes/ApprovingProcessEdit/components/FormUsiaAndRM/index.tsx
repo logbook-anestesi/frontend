@@ -44,25 +44,29 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
 
   return (
     <Flex direction="row" justify="space-between" gap={2}>
-      <Flex direction="column" flex={1}>
-        <Text fontSize="sm" color={colors.darkGrey}>
-          Usia Pasien
-        </Text>
+      {initialUsia !== null && (
+        <Flex direction="column" flex={1}>
+          <Text fontSize="sm" color={colors.darkGrey}>
+            Usia Pasien
+          </Text>
 
-        <Input placeholder="0" onChange={handleChangeAge} value={age} />
-      </Flex>
+          <Input placeholder="0" onChange={handleChangeAge} value={age} />
+        </Flex>
+      )}
 
-      <Flex direction="column" flex={1}>
-        <Text fontSize="sm" color={colors.darkGrey}>
-          No RM
-        </Text>
+      {initialNoRm !== null && (
+        <Flex direction="column" flex={1}>
+          <Text fontSize="sm" color={colors.darkGrey}>
+            No RM
+          </Text>
 
-        <Input
-          placeholder="XYZ123"
-          onChange={handleChangeRm}
-          value={recordNumber}
-        />
-      </Flex>
+          <Input
+            placeholder="XYZ123"
+            onChange={handleChangeRm}
+            value={recordNumber}
+          />
+        </Flex>
+      )}
     </Flex>
   );
 };

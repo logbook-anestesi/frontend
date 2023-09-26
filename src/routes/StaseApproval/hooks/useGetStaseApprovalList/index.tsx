@@ -21,6 +21,7 @@ const useGetStaseApprovalList = () => {
     approvalList,
     loading,
     mutate,
+    notif: approvalList?.length || 0,
   };
 };
 

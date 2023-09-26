@@ -31,6 +31,10 @@ const FormRadioExam = ({ title, listOptions, initialValue }: Props) => {
     });
   }, [approveEditDispatch, value]);
 
+  if (initialValue === null) {
+    return null;
+  }
+
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>

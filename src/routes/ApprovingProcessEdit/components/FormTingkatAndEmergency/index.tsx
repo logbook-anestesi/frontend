@@ -34,17 +34,21 @@ const FormTingkatAndEmergency = ({
 
   return (
     <Flex direction="row" justify="space-between" gap={2}>
-      <Flex direction="column" flex={1}>
-        <Text fontSize="sm" color={colors.darkGrey}>
-          Tingkat
-        </Text>
+      {initialValue !== null && (
+        <Flex direction="column" flex={1}>
+          <Text fontSize="sm" color={colors.darkGrey}>
+            Tingkat
+          </Text>
 
-        <Input placeholder="1" onChange={handleChangeTingkat} value={tier} />
-      </Flex>
+          <Input placeholder="1" onChange={handleChangeTingkat} value={tier} />
+        </Flex>
+      )}
 
-      <Flex direction="column" flex={1} justify="center" align="center">
-        <FormRadioEmergency initialValue={emergencyInitialValue} />
-      </Flex>
+      {emergencyInitialValue !== null && (
+        <Flex direction="column" flex={1} justify="center" align="center">
+          <FormRadioEmergency initialValue={emergencyInitialValue} />
+        </Flex>
+      )}
     </Flex>
   );
 };

@@ -38,6 +38,10 @@ const FormAdditionalTags = ({ initialValue }: Props) => {
     });
   }, [approveEditDispatch, initialValue]);
 
+  if (initialValue?.length === 0) {
+    return null;
+  }
+
   return (
     <Flex direction="column" gap={1} onClick={onOpenAddOther}>
       <Text fontSize="sm" color={colors.darkGrey}>

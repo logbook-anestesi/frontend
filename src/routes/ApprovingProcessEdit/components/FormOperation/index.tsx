@@ -52,6 +52,10 @@ const FormOperation = ({ formData, initialValue }: Props) => {
     });
   }, [approveEditDispatch, initialValue]);
 
+  if (initialValue?.length === 0) {
+    return null;
+  }
+
   const handleRemoveOperation = useCallback(
     (operationId: string) => {
       approveEditDispatch({

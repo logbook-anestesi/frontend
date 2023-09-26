@@ -25,6 +25,10 @@ const FormRadioLocation = ({ initialValue }: Props) => {
     });
   }, [approveEditDispatch, value]);
 
+  if (initialValue === null) {
+    return null;
+  }
+
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
@@ -47,6 +51,11 @@ const FormRadioLocation = ({ initialValue }: Props) => {
               {option.title}
             </Radio>
           ))}
+          {initialValue !== null && (
+            <Radio value={initialValue} colorScheme="purple" key={initialValue}>
+              {initialValue}
+            </Radio>
+          )}
         </Stack>
       </RadioGroup>
     </Flex>

@@ -9,6 +9,7 @@ import LoaderCircle from '../../../../components/LoaderCircle';
 import useGetAllExamApprovals from '../../../PendingApproval/hooks/useGetAllExamApprovals';
 import useGetScientificApprovals from '../../../PendingApproval/hooks/useGetAllApprovals';
 import useGetPendingReview from '../../../CasesReviewDashboard/hooks/useGetPendingReview';
+import useGetStaseApprovalList from '../../../StaseApproval/hooks/useGetStaseApprovalList';
 
 interface Props {
   profile?: Profile;
@@ -19,6 +20,7 @@ const LevelCardContainer = ({ profile }: Props) => {
   const { notif: notifExam } = useGetAllExamApprovals();
   const { notif: notifScientific } = useGetScientificApprovals();
   const { competenceData, loading } = useGetCompetenceUser();
+  const { notif: notifStase } = useGetStaseApprovalList();
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
   );
@@ -70,7 +72,7 @@ const LevelCardContainer = ({ profile }: Props) => {
           type="Dashboard Stase"
           path="/stase/approval"
           icon={module}
-          cardNumber={0}
+          cardNumber={notifStase}
         />
       ) : null}
     </Flex>
