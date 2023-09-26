@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import type { Dispatch } from 'react';
 import { ACTION_TYPE, InitialState } from './types';
-import { reducer } from './reducer';
+import { initialState, reducer } from './reducer';
 
 const ApprovalEditContext = createContext<InitialState>({
   selectedOperation: [],
@@ -9,6 +9,7 @@ const ApprovalEditContext = createContext<InitialState>({
   selectedASATags: [],
   selectedSupervisor: [],
   selectedNoraProcedure: [],
+  selectedDiagnose: [],
   date: new Date().toJSON(),
   dpjpUserId: '',
   isExam: false,
@@ -19,6 +20,7 @@ const ApprovalEditContext = createContext<InitialState>({
   procedureTypeIds: [],
   supervisorIds: [],
   asaTagIds: [],
+  diagnoseIds: [],
   noraProcedureTypeIds: [],
   ageGroup: '',
   location: '',
@@ -32,6 +34,7 @@ const ApprovalEditContext = createContext<InitialState>({
   additionalTags: [],
   tagIds: [],
   dpjpUserName: '',
+  numberOfPatient: 0,
 });
 
 const ApprovalEditContextDispatch = createContext<Dispatch<ACTION_TYPE>>(
@@ -43,36 +46,7 @@ interface Props {
 }
 
 const ApprovalEditProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(reducer, {
-    selectedOperation: [],
-    selectedAnesthesia: [],
-    selectedASATags: [],
-    selectedSupervisor: [],
-    date: new Date().toJSON(),
-    dpjpUserId: '',
-    isExam: false,
-    caseType: 'OK',
-    operationTypeIds: [],
-    anesthesiaTypeIds: [],
-    selectedProcedure: [],
-    procedureTypeIds: [],
-    supervisorIds: [],
-    asaTagIds: [],
-    selectedNoraProcedure: [],
-    noraProcedureTypeIds: [],
-    ageGroup: '',
-    location: '',
-    priority: '',
-    patientAge: 0,
-    patientRecordNumber: '',
-    patientGender: 'MALE',
-    asaIsEmergency: false,
-    asaTier: 0,
-    notes: '',
-    additionalTags: [],
-    tagIds: [],
-    dpjpUserName: '',
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <ApprovalEditContextDispatch.Provider value={dispatch}>

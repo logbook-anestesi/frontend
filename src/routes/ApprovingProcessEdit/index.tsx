@@ -28,6 +28,8 @@ import useAddApproval from '../ApprovingProcess/hooks/useAddApproval';
 import useAuth from '../../hooks/useAuth';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
 import useGetDetailCases from '../../hooks/useGetDetailCase';
+import FormTypeDiagnose from './components/FormTypeDiagnose';
+import FormTotalPatient from './components/FormTotalPatient';
 
 const ApprovingProcessEdit = () => {
   const { accountData } = useAuth();
@@ -164,6 +166,11 @@ const ApprovingProcessEdit = () => {
               noraProcedureList={casesForm?.noraProcedureTypes}
             />
 
+            <FormTypeDiagnose
+              diagnoseList={casesForm?.diagnoses}
+              initialValue={caseData?.diagnoses}
+            />
+
             {isHavePatientData && (
               <>
                 <Divider />
@@ -179,6 +186,10 @@ const ApprovingProcessEdit = () => {
             />
 
             <FormRadioGender initialValue={caseData?.patientGender} />
+
+            <FormTotalPatient
+              initialNumberOfPatient={caseData?.numberOfPatient}
+            />
 
             {isHaveAsaData && (
               <>
