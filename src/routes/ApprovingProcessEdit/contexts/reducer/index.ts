@@ -6,6 +6,8 @@ const initialState: InitialState = {
   selectedASATags: [],
   selectedSupervisor: [],
   selectedDiagnose: [],
+  selectedTypePainService: [],
+  selectedProcedurePainService: [],
   date: new Date().toJSON(),
   dpjpUserId: '',
   isExam: false,
@@ -17,6 +19,8 @@ const initialState: InitialState = {
   supervisorIds: [],
   asaTagIds: [],
   diagnoseIds: [],
+  procedurePainServiceIds: [],
+  typePainServiceIds: [],
   selectedNoraProcedure: [],
   noraProcedureTypeIds: [],
   ageGroup: '',
@@ -375,6 +379,20 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         diagnoseIds: action.data.diagnoseIds,
       };
     }
+    case 'set_type_pain_service_all': {
+      return {
+        ...state,
+        selectedTypePainService: action.data.painServiceTypes,
+        typePainServiceIds: action.data.painServiceTypeIds,
+      };
+    }
+    case 'set_procedure_pain_service_all': {
+      return {
+        ...state,
+        selectedProcedurePainService: action.data.painServiceProcedures,
+        procedurePainServiceIds: action.data.painServiceProcedureIds,
+      };
+    }
     case 'set_diagnose': {
       return {
         ...state,
@@ -406,6 +424,70 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
       return {
         ...state,
         numberOfPatient: action.data.numberOfPatient,
+      };
+    }
+    case 'set_type_pain_service': {
+      return {
+        ...state,
+        selectedTypePainService: [
+          ...state.selectedTypePainService,
+          {
+            title: action.data.typePainName,
+            id: action.data.typePainId,
+          },
+        ],
+      };
+    }
+    case 'set_type_pain_ids': {
+      return {
+        ...state,
+        typePainServiceIds: [
+          ...state.typePainServiceIds,
+          action.data.typePainId,
+        ],
+      };
+    }
+    case 'remove_type_pain_service': {
+      return {
+        ...state,
+        selectedTypePainService: state.selectedTypePainService.filter(
+          (typePain) => typePain.id !== action.data.id,
+        ),
+        typePainServiceIds: state.typePainServiceIds.filter(
+          (id) => id !== action.data.id,
+        ),
+      };
+    }
+    case 'set_procedure_pain_service': {
+      return {
+        ...state,
+        selectedProcedurePainService: [
+          ...state.selectedProcedurePainService,
+          {
+            title: action.data.procedurePainName,
+            id: action.data.procedurePainId,
+          },
+        ],
+      };
+    }
+    case 'set_procedure_pain_ids': {
+      return {
+        ...state,
+        procedurePainServiceIds: [
+          ...state.procedurePainServiceIds,
+          action.data.procedurePainId,
+        ],
+      };
+    }
+    case 'remove_procedure_pain_service': {
+      return {
+        ...state,
+        selectedProcedurePainService: state.selectedProcedurePainService.filter(
+          (procedurePain) => procedurePain.id !== action.data.id,
+        ),
+        procedurePainServiceIds: state.procedurePainServiceIds.filter(
+          (id) => id !== action.data.id,
+        ),
       };
     }
   }

@@ -30,6 +30,8 @@ import useGetCasesForm from '../../hooks/useGetCasesForm';
 import useGetDetailCases from '../../hooks/useGetDetailCase';
 import FormTypeDiagnose from './components/FormTypeDiagnose';
 import FormTotalPatient from './components/FormTotalPatient';
+import FormTypePainService from './components/FormTypePainService';
+import FormProcedurePainService from './components/FormProcedurePainService';
 
 const ApprovingProcessEdit = () => {
   const { accountData } = useAuth();
@@ -169,6 +171,16 @@ const ApprovingProcessEdit = () => {
             <FormTypeDiagnose
               diagnoseList={casesForm?.diagnoses}
               initialValue={caseData?.diagnoses}
+            />
+
+            <FormTypePainService
+              typePainServices={casesForm?.painServiceTypes}
+              initialValue={caseData?.painServiceTypes}
+            />
+
+            <FormProcedurePainService
+              procedurePainServices={casesForm?.painServiceProcedures}
+              initialValue={caseData?.painServiceProcedures}
             />
 
             {isHavePatientData && (

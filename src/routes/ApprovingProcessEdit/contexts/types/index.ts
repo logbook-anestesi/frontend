@@ -34,6 +34,16 @@ interface Diagnose {
   id: string;
 }
 
+interface PainServiceType {
+  title: string;
+  id: string;
+}
+
+interface PainServiceProcedure {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
@@ -42,6 +52,8 @@ interface InitialState {
   selectedASATags: ASATags[];
   selectedSupervisor: Supervisor[];
   selectedDiagnose: Diagnose[];
+  selectedTypePainService: PainServiceType[];
+  selectedProcedurePainService: PainServiceProcedure[];
   date: string;
   dpjpUserId: string;
   dpjpUserName: string;
@@ -52,6 +64,8 @@ interface InitialState {
   procedureTypeIds: string[];
   supervisorIds: string[];
   diagnoseIds: string[];
+  typePainServiceIds: string[];
+  procedurePainServiceIds: string[];
   asaTagIds: string[];
   noraProcedureTypeIds: string[];
   ageGroup: string;
@@ -421,6 +435,66 @@ interface SetNumberOfPatient {
   };
 }
 
+interface SetAllTypePainService {
+  type: 'set_type_pain_service_all';
+  data: {
+    painServiceTypes: PainServiceType[];
+    painServiceTypeIds: string[];
+  };
+}
+
+interface SetAllProcedurePainService {
+  type: 'set_procedure_pain_service_all';
+  data: {
+    painServiceProcedures: PainServiceProcedure[];
+    painServiceProcedureIds: string[];
+  };
+}
+
+interface SetTypePainService {
+  type: 'set_type_pain_service';
+  data: {
+    typePainName: string;
+    typePainId: string;
+  };
+}
+
+interface SetTypePainServiceIds {
+  type: 'set_type_pain_ids';
+  data: {
+    typePainId: string;
+  };
+}
+
+interface RemoveTypePainService {
+  type: 'remove_type_pain_service';
+  data: {
+    id: string;
+  };
+}
+
+interface SetProcedurePainService {
+  type: 'set_procedure_pain_service';
+  data: {
+    procedurePainName: string;
+    procedurePainId: string;
+  };
+}
+
+interface SetProcedurePainServiceIds {
+  type: 'set_procedure_pain_ids';
+  data: {
+    procedurePainId: string;
+  };
+}
+
+interface RemoveProcedurePainService {
+  type: 'remove_procedure_pain_service';
+  data: {
+    id: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -468,6 +542,14 @@ type ACTION_TYPE =
   | SetDiagnoseIds
   | RemoveDiagnose
   | SetAllDiagnose
-  | SetNumberOfPatient;
+  | SetNumberOfPatient
+  | SetAllTypePainService
+  | SetAllProcedurePainService
+  | SetTypePainService
+  | SetTypePainServiceIds
+  | RemoveTypePainService
+  | SetProcedurePainService
+  | SetProcedurePainServiceIds
+  | RemoveProcedurePainService;
 
 export type { ACTION_TYPE, InitialState };
