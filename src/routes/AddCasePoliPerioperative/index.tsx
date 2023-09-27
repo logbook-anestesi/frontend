@@ -68,12 +68,12 @@ const AddCasePoliPerioperative = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title="Tambah Procedure Consultation" />
+      <Header title="Tambah Poli Perioperative" />
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
-        <FormNumberPatient />
         <FormDPJP />
+        <FormNumberPatient />
 
         <Button
           colorScheme="teal"

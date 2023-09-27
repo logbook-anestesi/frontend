@@ -87,16 +87,17 @@ const AddCaseResus = () => {
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
+        <FormDPJP />
+
         <FormRadioLocationResus />
 
         {state.isShowLocationLainnya && <FormLocationLainnya />}
 
         <FormRadioAgeGroup />
-        <FormNotes />
-        <FormDPJP />
         <FormDiagnoses diagnoseList={casesForm?.diagnoses || []} />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
         <FormAdditionalTags />
+        <FormNotes />
 
         <Button
           colorScheme="teal"

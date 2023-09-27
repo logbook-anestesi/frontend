@@ -89,16 +89,16 @@ const AddCaseICU = () => {
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
+        <FormDPJP />
         <FormRadioLocationICU />
 
         {state.isShowLocationLainnya && <FormLocationLainnya />}
 
         <FormDiagnoses diagnoseList={casesForm?.diagnoses || []} />
-        <FormNotes />
-        <FormDPJP />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
         <FormSupervised />
         <FormAdditionalTags />
+        <FormNotes />
 
         <Button
           colorScheme="teal"

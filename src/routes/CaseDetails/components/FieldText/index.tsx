@@ -7,14 +7,24 @@ interface Props {
 }
 
 const FieldText = ({ label, value }: Props) => {
+  if (value === null) {
+    return null;
+  }
+
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         {label}
       </Text>
-      <Text as="b" fontSize="sm">
-        {value}
-      </Text>
+      {typeof value === 'boolean' ? (
+        <Text as="b" fontSize="sm">
+          {value ? 'Ya' : 'Tidak'}
+        </Text>
+      ) : (
+        <Text as="b" fontSize="sm">
+          {value}
+        </Text>
+      )}
     </Flex>
   );
 };

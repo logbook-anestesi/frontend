@@ -33,12 +33,7 @@ const CaseDetails = () => {
           <>
             <FieldText label="Residen" value={caseData?.userName} />
             <FieldText label="DPJP" value={caseData?.dpjpUserName} />
-            <FieldText
-              label="Merupakan Exam"
-              value={
-                caseData?.isExam !== null && (caseData?.isExam ? 'Ya' : 'Tidak')
-              }
-            />
+            <FieldText label="Merupakan Exam" value={caseData?.isExam} />
 
             <Flex gap={20}>
               <FieldText label="Age Group" value={caseData?.ageGroup} />
@@ -50,6 +45,17 @@ const CaseDetails = () => {
             <FieldTicker label="Tipe Operasi" listValue={operationTypes} />
             <FieldTicker label="Tipe Anesthesi" listValue={anesthesiaTypes} />
             <FieldTicker label="Procedure Done" listValue={procedureTypes} />
+            <FieldTicker label="Diagnosa" listValue={diagnoses} />
+            <FieldTicker
+              label="Procedure Pain Service"
+              listValue={painServiceProcedures}
+            />
+
+            <FieldTicker
+              label="Type Pain Service"
+              listValue={painServiceTypes}
+            />
+
             <FieldTicker
               label="NORA Procedure"
               listValue={noraProcedureTypes}
@@ -104,18 +110,6 @@ const CaseDetails = () => {
             />
             <FieldText label="Notes" value={caseData?.notes} />
             <FieldTicker label="Additional Tags " listValue={tags} />
-
-            <FieldTicker label="Diagnosa" listValue={diagnoses} />
-
-            <FieldTicker
-              label="Procedure Pain Service"
-              listValue={painServiceProcedures}
-            />
-
-            <FieldTicker
-              label="Type Pain Service"
-              listValue={painServiceTypes}
-            />
 
             {/* <Divider />
 
