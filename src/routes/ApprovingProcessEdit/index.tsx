@@ -48,18 +48,25 @@ const ApprovingProcessEdit = () => {
       caseId: caseData?.id,
       status: 'APPROVED',
       caseEditRequest: {
-        asaIsEmergency: state.asaIsEmergency,
-        asaTier: state.asaTier,
-        date: state.date,
-        isExam: state.isExam,
-        patientAge: state.patientAge,
-        patientGender: state.patientGender,
         userId: accountData.id,
+        date: state.date,
+        ...(state?.asaIsEmergency !== null
+          ? { asaIsEmergency: state.asaIsEmergency }
+          : {}),
+        ...(state?.asaTier !== 0 ? { asaTier: state.asaTier } : {}),
+        ...(state?.isExam !== null ? { isExam: state.isExam } : {}),
+        ...(state?.patientAge !== 0 ? { patientAge: state.patientAge } : {}),
+        ...(state?.patientGender !== ''
+          ? { patientGender: state.patientGender }
+          : {}),
         ...(state?.ageGroup !== '' ? { ageGroup: state.ageGroup } : {}),
         ...(state?.location !== '' ? { location: state.location } : {}),
         ...(state?.priority !== '' ? { priority: state.priority } : {}),
         ...(state?.tagIds.length !== 0 ? { tagIds: state.tagIds } : {}),
         ...(state?.notes !== '' ? { notes: state.notes } : {}),
+        ...(state?.numberOfPatient !== 0
+          ? { numberOfPatient: state.numberOfPatient }
+          : {}),
         ...(state?.anesthesiaTypeIds.length !== 0
           ? { anesthesiaTypeIds: state.anesthesiaTypeIds }
           : {}),
@@ -80,6 +87,15 @@ const ApprovingProcessEdit = () => {
           : {}),
         ...(state?.supervisorIds.length !== 0
           ? { superviseeIds: state.supervisorIds }
+          : {}),
+        ...(state?.diagnoseIds.length !== 0
+          ? { diagnoseIds: state.diagnoseIds }
+          : {}),
+        ...(state?.typePainServiceIds.length !== 0
+          ? { painServiceTypeIds: state.typePainServiceIds }
+          : {}),
+        ...(state?.procedurePainServiceIds.length !== 0
+          ? { painServiceProcedureIds: state.procedurePainServiceIds }
           : {}),
       },
     });
