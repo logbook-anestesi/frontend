@@ -35,7 +35,9 @@ const CaseDetails = () => {
             <FieldText label="DPJP" value={caseData?.dpjpUserName} />
             <FieldText
               label="Merupakan Exam"
-              value={caseData?.isExam ? caseData?.isExam : null}
+              value={
+                caseData?.isExam !== null && (caseData?.isExam ? 'Ya' : 'Tidak')
+              }
             />
 
             <Flex gap={20}>

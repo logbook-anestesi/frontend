@@ -7,10 +7,6 @@ interface Props {
 }
 
 const FieldText = ({ label, value }: Props) => {
-  if (!value) {
-    return null;
-  }
-
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
