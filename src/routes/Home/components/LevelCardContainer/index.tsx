@@ -2,14 +2,13 @@ import { Flex } from '@chakra-ui/react';
 import LevelCard from '../LevelCard';
 import LevelCardWithLogo from '../LevelCardWithLogo';
 import cases from '../../assets/cases.png';
-import module from '../../assets/module.png';
 import { Profile } from '../../../../hooks/useGetProfile/types';
 import useGetCompetenceUser from '../../../Competence/hooks/useGetCompetenceUser';
 import LoaderCircle from '../../../../components/LoaderCircle';
 import useGetAllExamApprovals from '../../../PendingApproval/hooks/useGetAllExamApprovals';
 import useGetScientificApprovals from '../../../PendingApproval/hooks/useGetAllApprovals';
 import useGetPendingReview from '../../../CasesReviewDashboard/hooks/useGetPendingReview';
-import useGetStaseApprovalList from '../../../StaseApproval/hooks/useGetStaseApprovalList';
+import LevelCardStaseReview from '../LevelCardStaseReview';
 
 interface Props {
   profile?: Profile;
@@ -20,7 +19,6 @@ const LevelCardContainer = ({ profile }: Props) => {
   const { notif: notifExam } = useGetAllExamApprovals();
   const { notif: notifScientific } = useGetScientificApprovals();
   const { competenceData, loading } = useGetCompetenceUser();
-  const { notif: notifStase } = useGetStaseApprovalList();
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
   );
@@ -66,15 +64,7 @@ const LevelCardContainer = ({ profile }: Props) => {
       ) : null}
 
       {/* KONSULEN or KETUA MODULE ?? */}
-      {profile?.role === 'KONSULEN' ? (
-        <LevelCardWithLogo
-          title="Stase Name [BE]"
-          type="Dashboard Stase"
-          path="/stase/approval"
-          icon={module}
-          cardNumber={notifStase}
-        />
-      ) : null}
+      {profile?.role === 'KONSULEN' ? <LevelCardStaseReview /> : null}
     </Flex>
   );
 };
