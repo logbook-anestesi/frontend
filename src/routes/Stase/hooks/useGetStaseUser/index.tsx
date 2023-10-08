@@ -10,8 +10,8 @@ const useGetStaseUser = () => {
     data: staseData,
     isLoading: loading,
     mutate,
-  } = useSWR('/station/entry', async (): Promise<StaseUser[]> => {
-    const response = await axiosClient.get('/station/entry');
+  } = useSWR('/station/entry/user', async (): Promise<StaseUser[]> => {
+    const response = await axiosClient.get('/station/entry/user');
     return response.data.data ?? [];
   });
 
