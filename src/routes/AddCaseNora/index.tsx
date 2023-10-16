@@ -34,10 +34,12 @@ const AddCaseNora = () => {
       asaIsEmergency: state.asaIsEmergency,
       date: state.date,
       isExam: state.isExam,
-      patientAge: state.patientAge,
-      patientGender: state.patientGender,
       caseType: state.caseType,
       dpjpUserId: state.dpjpUserId,
+      ...(state?.patientAge !== 0 ? { patientAge: state.patientAge } : {}),
+      ...(state?.patientGender !== ''
+        ? { patientGender: state.patientGender }
+        : {}),
       ...(state?.asaTier !== 0 ? { asaTier: state.asaTier } : {}),
       ...(state?.ageGroup !== '' ? { ageGroup: state.ageGroup } : {}),
       ...(state?.location !== '' ? { location: state.location } : {}),
