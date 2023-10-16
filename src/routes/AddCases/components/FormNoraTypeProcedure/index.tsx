@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import ModalNoraProcedureType from '../ModalNoraProcedureType';
 import Ticker from '../../../../components/Ticker';
 import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
-// import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
+import ModalAddOtherNoraType from '../ModalAddOtherNoraType';
 
 interface Props {
   noraProcedureList: NoraProcedureType[];
@@ -17,8 +17,8 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
   const { selectedNoraProcedure } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const {
-    // isOpen: isOpenAddOther,
-    // onClose: onCloseAddOther,
+    isOpen: isOpenAddOther,
+    onClose: onCloseAddOther,
     onOpen: onOpenAddOther,
   } = useDisclosure();
 
@@ -86,10 +86,10 @@ const FormNoraTypeProcedure = ({ noraProcedureList }: Props) => {
         onOpenAddOther={onOpenAddOther}
       />
 
-      {/* <ModalAddOtherTypeProcedure
+      <ModalAddOtherNoraType
         isOpen={isOpenAddOther}
         closeModal={onCloseAddOther}
-      /> */}
+      />
     </Flex>
   );
 };
