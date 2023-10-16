@@ -3,6 +3,7 @@ import { Case } from '../../hooks/useGetCases/types';
 import { useMemo } from 'react';
 import { formatDateMonthYear } from '../../../../helpers';
 import { useNavigate } from 'react-router-dom';
+import { Badge } from '@chakra-ui/react';
 
 interface DataRow {
   idCase: string;
@@ -20,6 +21,18 @@ interface Props {
 
 const TableData = ({ caseList }: Props) => {
   const navigate = useNavigate();
+
+  const getColorScheme = (type: string) => {
+    if (type === 'APPROVED') {
+      return 'green';
+    }
+    if (type === 'REJECTED') {
+      return 'red';
+    }
+    if (type === 'PENDING') {
+      return 'purple';
+    }
+  };
 
   const columns: TableColumn<DataRow>[] = [
     {
@@ -62,6 +75,9 @@ const TableData = ({ caseList }: Props) => {
       name: 'Status',
       selector: (row) => row.status,
       sortable: true,
+      cell: (row) => (
+        <Badge colorScheme={getColorScheme(row.status)}>{row.status}</Badge>
+      ),
     },
     {
       name: 'Supervising',
@@ -72,6 +88,7 @@ const TableData = ({ caseList }: Props) => {
 
   const data = useMemo(() => {
     return caseList.map((singleCase) => {
+      console.log('999 INI CASE', singleCase);
       return {
         idCase: `${singleCase?.caseType || ''} - ${singleCase?.id.substring(
           0,
@@ -81,7 +98,7 @@ const TableData = ({ caseList }: Props) => {
         dpjp: singleCase.dpjpUserName,
         date: formatDateMonthYear(new Date(singleCase?.date)),
         caseType: singleCase.caseType,
-        status: singleCase.notes,
+        status: singleCase.status,
         supervising: singleCase?.supervisees[0]?.userName,
       };
     });

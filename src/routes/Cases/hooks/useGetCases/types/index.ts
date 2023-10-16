@@ -22,6 +22,7 @@ export interface Case {
   asaIsEmergency: boolean;
   numberOfPatient: any;
   notes: string;
+  status: string;
   asaTags: AsaTag[];
   tags: Tag[];
   operationTypes: OperationType[];
