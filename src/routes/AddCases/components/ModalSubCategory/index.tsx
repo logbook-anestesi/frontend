@@ -1,4 +1,5 @@
 import {
+  Flex,
   Modal,
   ModalCloseButton,
   ModalContent,
@@ -62,18 +63,20 @@ const ModalSubCategory = ({
 
         {subCategoryOperation?.length === 0 && <EmptyData />}
 
-        {subCategoryOperation?.length > 0 &&
-          subCategoryOperation?.map((subCategory) => {
-            return (
-              <CardSubCategory
-                key={subCategory.id}
-                subCategory={subCategory}
-                closeModal={closeModal}
-                operationName={operationName}
-                id={subCategory.id}
-              />
-            );
-          })}
+        <Flex direction="column" maxH={300} overflowY="scroll">
+          {subCategoryOperation?.length > 0 &&
+            subCategoryOperation?.map((subCategory) => {
+              return (
+                <CardSubCategory
+                  key={subCategory.id}
+                  subCategory={subCategory}
+                  closeModal={closeModal}
+                  operationName={operationName}
+                  id={subCategory.id}
+                />
+              );
+            })}
+        </Flex>
       </ModalContent>
     </Modal>
   );

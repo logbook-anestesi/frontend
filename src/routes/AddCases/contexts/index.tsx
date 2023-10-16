@@ -31,7 +31,7 @@ const AddCasesContext = createContext<InitialState>({
   priority: '',
   patientAge: 0,
   patientRecordNumber: '',
-  patientGender: 'MALE',
+  patientGender: '',
   asaIsEmergency: false,
   asaTier: 0,
   notes: '',
