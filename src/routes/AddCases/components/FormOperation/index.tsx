@@ -9,6 +9,7 @@ import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
 import ModalCategory from '../ModalCategory';
 import { OperationType } from '../../../../hooks/useGetCasesForm/types';
 import ModalSubCategory from '../ModalSubCategory';
+import ModalAddOtherSubCategoryOp from '../ModalAddOtherSubCategoryOp';
 
 interface Props {
   formData?: OperationType[];
@@ -22,6 +23,11 @@ const FormOperation = ({ formData }: Props) => {
     isOpen: isOpenSub,
     onClose: onCloseSub,
     onOpen: onOpenSub,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenAddSub,
+    onClose: onCloseAddSub,
+    onOpen: onOpenAddSub,
   } = useDisclosure();
   const [operation, setOperation] = useState<OperationType>();
 
@@ -92,6 +98,14 @@ const FormOperation = ({ formData }: Props) => {
         isOpen={isOpenSub}
         operationName={operation?.name || '-'}
         subCategoryOperation={operation?.children || []}
+        onOpenAddSub={onOpenAddSub}
+      />
+
+      <ModalAddOtherSubCategoryOp
+        closeModal={onCloseAddSub}
+        isOpen={isOpenAddSub}
+        operationId={operation?.id || ''}
+        operationName={operation?.name || ''}
       />
     </Flex>
   );

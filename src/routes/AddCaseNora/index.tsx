@@ -17,6 +17,8 @@ import FormTypeProcedure from '../AddCases/components/FormTypeProcedure';
 import FormTypeAnesthesia from '../AddCases/components/FormTypeAnesthesia';
 import FormNoraTypeProcedure from '../AddCases/components/FormNoraTypeProcedure';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
+import FormSupervised from '../AddCases/components/FormSupervised';
+import FormAdditionalTags from '../AddCases/components/FormAdditionalTags';
 
 const AddCaseNora = () => {
   const toast = useToast();
@@ -139,6 +141,8 @@ const AddCaseNora = () => {
 
         <Divider />
 
+        <FormSupervised />
+        <FormAdditionalTags />
         <FormNotes />
 
         <Button

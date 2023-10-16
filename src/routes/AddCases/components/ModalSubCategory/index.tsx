@@ -21,6 +21,7 @@ interface Props {
   closeModal: () => void;
   operationName: string;
   subCategoryOperation: OperationCategory[];
+  onOpenAddSub: () => void;
 }
 
 const ModalSubCategory = ({
@@ -28,7 +29,13 @@ const ModalSubCategory = ({
   closeModal,
   operationName,
   subCategoryOperation,
+  onOpenAddSub,
 }: Props) => {
+  const handleClickAddOther = () => {
+    onOpenAddSub();
+    closeModal();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -39,6 +46,17 @@ const ModalSubCategory = ({
             {operationName}
           </Text>
         </ModalHeader>
+
+        <Text
+          as="u"
+          alignSelf="center"
+          fontSize="sm"
+          color={colors.primaryPurple}
+          mb={5}
+          onClick={handleClickAddOther}
+        >
+          Tipe tidak ada di daftar
+        </Text>
 
         <ModalCloseButton />
 

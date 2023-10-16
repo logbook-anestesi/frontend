@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Modal,
   ModalCloseButton,
   ModalContent,
@@ -39,17 +40,19 @@ const ModalCategory = ({
 
         <Box height={3} />
 
-        {operationType?.map((operation) => {
-          return (
-            <CardCategory
-              key={operation.id}
-              operation={operation}
-              closeModal={closeModal}
-              setOperation={setOperation}
-              onOpenSub={onOpenSub}
-            />
-          );
-        })}
+        <Flex direction="column" maxH={300} overflowY="scroll">
+          {operationType?.map((operation) => {
+            return (
+              <CardCategory
+                key={operation.id}
+                operation={operation}
+                closeModal={closeModal}
+                setOperation={setOperation}
+                onOpenSub={onOpenSub}
+              />
+            );
+          })}
+        </Flex>
       </ModalContent>
     </Modal>
   );
