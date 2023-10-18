@@ -2,7 +2,7 @@ import { Flex, Text } from '@chakra-ui/react';
 import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { headers } from './styles';
 import { colors } from '../../constants/colors';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface HeaderInterface {
   title: string;
@@ -11,11 +11,23 @@ interface HeaderInterface {
 
 const Header = ({ title, pathBack }: HeaderInterface) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBack = () => {
     if (pathBack) {
       navigate(pathBack);
       return;
+    }
+
+    // if dont have key, it means this page is the first page
+    if (location.key === 'default') {
+      const isFromWebview =
+        window.navigator.userAgent.includes('LogbookMobileApp');
+      if (isFromWebview) {
+        // go back from app level
+        (window as any).WEBVIEW_BACK.postMessage('back');
+        return;
+      }
     }
 
     navigate(-1);
