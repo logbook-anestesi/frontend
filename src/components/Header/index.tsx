@@ -14,11 +14,6 @@ const Header = ({ title, pathBack }: HeaderInterface) => {
   const location = useLocation();
 
   const handleBack = () => {
-    if (pathBack) {
-      navigate(pathBack);
-      return;
-    }
-
     // if dont have key, it means this page is the first page
     if (location.key === 'default') {
       const isFromWebview =
@@ -28,6 +23,11 @@ const Header = ({ title, pathBack }: HeaderInterface) => {
         (window as any).WEBVIEW_BACK.postMessage('back');
         return;
       }
+    }
+
+    if (pathBack) {
+      navigate(pathBack);
+      return;
     }
 
     navigate(-1);
