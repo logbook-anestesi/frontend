@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { buttonSubmit } from '../styles';
 import {
   Flex,
@@ -40,6 +40,12 @@ const EmailPasswordInput = () => {
     await loginAccount({ email: email, password: password });
   };
 
+  const handleOnKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   useEffect(() => {
     if (loginResponse) {
       if (loginResponse.error === null) {
@@ -61,13 +67,13 @@ const EmailPasswordInput = () => {
         duration: 3000,
         isClosable: true,
         title: 'Login gagal',
-        description: loginResponse.error[0],
+        description: loginResponse.message[0],
       });
     }
   }, [loginResponse, navigate, toast]);
 
   return (
-    <FormControl isInvalid={isError}>
+    <FormControl isInvalid={isError} onKeyDown={handleOnKeyDown}>
       <Flex direction="column" gap={4} align="center">
         <Flex direction="column" gap={2}>
           <Text fontSize="md" color={colors.darkGrey}>

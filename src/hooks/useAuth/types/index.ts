@@ -21,6 +21,7 @@ interface RegisterResponse {
 interface LoginResponse {
   status: number;
   error: string[];
+  message: string[];
   data: {
     token: string;
   };
