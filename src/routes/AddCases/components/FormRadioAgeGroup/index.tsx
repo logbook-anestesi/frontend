@@ -1,10 +1,14 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { useEffect, useState } from 'react';
 import { RADIO_AGE_GROUP } from '../../constants';
 import { useAddCasesDispatch } from '../../contexts';
 
-const FormRadioAgeGroup = () => {
+interface Props {
+  isMondatory?: boolean;
+}
+
+const FormRadioAgeGroup = ({ isMondatory }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const [value, setValue] = useState('');
 
@@ -21,6 +25,7 @@ const FormRadioAgeGroup = () => {
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Age Group
+        {isMondatory && <Box as="span">*</Box>}
       </Text>
 
       <RadioGroup

@@ -1,10 +1,14 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAddCasesDispatch } from '../../contexts';
 import FormRadioEmergency from '../FormRadioEmergency';
 
-const FormTingkatAndEmergency = () => {
+interface Props {
+  isMondatory?: boolean;
+}
+
+const FormTingkatAndEmergency = ({ isMondatory }: Props) => {
   const casesDispatch = useAddCasesDispatch();
 
   const [tier, setTier] = useState(0);
@@ -25,6 +29,7 @@ const FormTingkatAndEmergency = () => {
       <Flex direction="column" flex={1}>
         <Text fontSize="sm" color={colors.darkGrey}>
           Tingkat
+          {isMondatory && <Box as="span">*</Box>}
         </Text>
 
         <Input placeholder="1" onChange={handleChangeTingkat} />

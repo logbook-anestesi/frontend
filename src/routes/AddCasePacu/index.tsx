@@ -111,7 +111,7 @@ const AddCasePacu = () => {
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
-        <FormRadioAgeGroup />
+        <FormRadioAgeGroup isMondatory />
         <FormOperation formData={casesForm?.operationTypes || []} />
 
         <Divider />
@@ -129,7 +129,7 @@ const AddCasePacu = () => {
           ASA
         </Text>
 
-        <FormTingkatAndEmergency />
+        <FormTingkatAndEmergency isMondatory />
         <FormASATags tagList={casesForm?.tags || []} />
 
         <Divider />

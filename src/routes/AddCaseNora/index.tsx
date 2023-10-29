@@ -138,7 +138,7 @@ const AddCaseNora = () => {
           ASA
         </Text>
 
-        <FormTingkatAndEmergency />
+        <FormTingkatAndEmergency isMondatory />
         <FormASATags tagList={casesForm?.tags || []} />
 
         <Divider />
