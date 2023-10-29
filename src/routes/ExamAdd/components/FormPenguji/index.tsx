@@ -1,4 +1,4 @@
-import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import profileIcon from '../../../../assets/profile-white.png';
 import { useEffect, useState } from 'react';
@@ -20,7 +20,10 @@ const FormPenguji = ({ setPenguji }: Props) => {
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Penguji*
+        Penguji
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex

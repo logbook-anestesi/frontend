@@ -102,3 +102,7 @@ export const capitalizeFirstLetter = (inputString: string) => {
     return '';
   }
 };
+
+export const convertUnderscoresToSpaces = (inputText: string) => {
+  return inputText.replace(/_/g, ' ');
+};

@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { Exam } from '../../hooks/useGetAllExam/types';
-import { customStyles } from '../../../../constants/tableFormat';
 import { colors } from '../../../../constants/colors';
 import { convertDateForExam } from '../../../../helpers';
 import { Badge } from '@chakra-ui/react';
@@ -45,6 +44,7 @@ const TableData = ({ examList }: Props) => {
       name: 'Exam',
       selector: (row) => row.type,
       sortable: true,
+      wrap: true,
     },
     {
       name: 'Tipe',
@@ -94,7 +94,7 @@ const TableData = ({ examList }: Props) => {
     },
     rows: {
       style: {
-        width: '700px',
+        width: '800px',
       },
     },
   };
