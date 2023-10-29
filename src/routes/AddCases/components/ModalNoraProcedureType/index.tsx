@@ -98,15 +98,6 @@ const ModalNoraProcedureType = ({
           Prosedur tidak ada di daftar
         </Text>
 
-        <Text
-          as="u"
-          alignSelf="center"
-          fontSize="sm"
-          color={colors.primaryPurple}
-          mb={5}
-          onClick={handleClickAddOther}
-        ></Text>
-
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredNoraProcedure?.map((noraProcedure) => {
             return (

@@ -9,6 +9,7 @@ import {
   useAddCasesDispatch,
 } from '../../../AddCases/contexts';
 import Ticker from '../../../../components/Ticker';
+import ModalAddOtherDiagnose from '../ModalAddOtherDiagnose';
 // import ModalAddOtherTypeProcedure from "../ModalAddOtherTypeProcedure";
 
 interface Props {
@@ -19,6 +20,11 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { selectedDiagnose } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenAddOther,
+    onClose: onCloseAddOther,
+    onOpen: onOpenAddOther,
+  } = useDisclosure();
 
   const [diagnose, setDiagnose] = useState<Diagnose>();
 
@@ -81,6 +87,12 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
         isOpen={isOpen}
         diagnoseList={diagnoseList}
         setDiagnose={setDiagnose}
+        onOpenAddOther={onOpenAddOther}
+      />
+
+      <ModalAddOtherDiagnose
+        closeModal={onCloseAddOther}
+        isOpen={isOpenAddOther}
       />
     </Flex>
   );
