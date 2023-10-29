@@ -29,7 +29,7 @@ const LevelCardContainer = ({ profile }: Props) => {
     <Flex direction="column" gap="10px">
       {profile?.role === 'RESIDEN' ? (
         <LevelCard
-          title={currentCompetence?.level || 'test'}
+          title={currentCompetence?.level || '-'}
           type="Level Kompetensi"
           path="/competence"
         />
