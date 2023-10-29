@@ -2,9 +2,9 @@ import { useCallback, useState } from 'react';
 import axiosClient from '../../../../networks/apiClient';
 
 interface PayloadType {
-  type: string;
-  examinerId: string;
-  isTheory: boolean;
+  type?: string;
+  examinerId?: string;
+  isTheory?: boolean;
 }
 
 const useAddExam = () => {

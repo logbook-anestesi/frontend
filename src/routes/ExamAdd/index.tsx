@@ -23,7 +23,7 @@ const ExamAdd = () => {
   const handleClickSubmit = async () => {
     const response = await createExam({
       examinerId: penguji?.id || '',
-      isTheory: examType === 'TEORI',
+      ...(examType !== '' ? { isTheory: examType === 'TEORI' } : {}),
       type: exam,
     });
 
