@@ -2,10 +2,12 @@ import { Flex, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Ticker from '../../../../components/Ticker';
-import { useAddCasesContext } from '../../contexts';
+import { useAddCasesContext, useAddCasesDispatch } from '../../contexts';
 import ModalAddAdditionalTags from '../ModalAddAdditionalTags';
+import { useCallback } from 'react';
 
 const FormAdditionalTags = () => {
+  const casesDispatch = useAddCasesDispatch();
   const { additionalTags } = useAddCasesContext();
   const {
     isOpen: isOpenAddOther,
@@ -13,8 +15,20 @@ const FormAdditionalTags = () => {
     onOpen: onOpenAddOther,
   } = useDisclosure();
 
+  const handleRemoveTag = useCallback(
+    (tagId: string) => {
+      casesDispatch({
+        type: 'remove_additional_tags',
+        data: {
+          id: tagId,
+        },
+      });
+    },
+    [casesDispatch],
+  );
+
   return (
-    <Flex direction="column" gap={1} onClick={onOpenAddOther}>
+    <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Additional Tags
       </Text>
@@ -26,7 +40,7 @@ const FormAdditionalTags = () => {
         borderColor={colors.lightGrey}
         padding="10px 15px"
         borderRadius={10}
-        // onClick={handleButtonClick}
+        onClick={onOpenAddOther}
         mb={1}
       >
         <Text>Masukkan tags ...</Text>
@@ -45,7 +59,12 @@ const FormAdditionalTags = () => {
         }}
       >
         {additionalTags.map((tag, idx) => (
-          <Ticker text={tag} key={idx} isShowClose />
+          <Ticker
+            text={tag.title}
+            key={idx}
+            isShowClose
+            onClick={() => handleRemoveTag(tag.id)}
+          />
         ))}
       </Flex>
 

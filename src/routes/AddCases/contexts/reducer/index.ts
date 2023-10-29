@@ -237,7 +237,13 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
     case 'set_additional_tags': {
       return {
         ...state,
-        additionalTags: [...state.additionalTags, action.data.tag],
+        additionalTags: [
+          ...state.additionalTags,
+          {
+            id: action.data.id,
+            title: action.data.tag,
+          },
+        ],
       };
     }
     case 'set_additional_tag_ids': {
@@ -291,6 +297,15 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
           (asaTags) => asaTags.id !== action.data.id,
         ),
         asaTagIds: state.asaTagIds.filter((id) => id !== action.data.id),
+      };
+    }
+    case 'remove_additional_tags': {
+      return {
+        ...state,
+        additionalTags: state.additionalTags.filter(
+          (tag) => tag.id !== action.data.id,
+        ),
+        tagIds: state.tagIds.filter((id) => id !== action.data.id),
       };
     }
     case 'remove_supervisor': {

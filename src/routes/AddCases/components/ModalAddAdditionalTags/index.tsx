@@ -33,6 +33,7 @@ const ModalAddAdditionalTags = ({ isOpen, closeModal }: Props) => {
       type: 'set_additional_tags',
       data: {
         tag: additionalTag,
+        id: response?.tagId,
       },
     });
 

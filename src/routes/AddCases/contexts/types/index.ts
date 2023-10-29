@@ -44,6 +44,11 @@ interface PainServiceProcedure {
   id: string;
 }
 
+interface AdditionalTag {
+  title: string;
+  id: string;
+}
+
 interface InitialState {
   selectedOperation: Operation[];
   selectedAnesthesia: Anesthesia[];
@@ -76,7 +81,7 @@ interface InitialState {
   asaTier: number;
   asaIsEmergency: boolean;
   notes: string;
-  additionalTags: string[];
+  additionalTags: AdditionalTag[];
   tagIds: string[];
   isShowLocationLainnya: boolean;
   numberOfPatient: number;
@@ -268,6 +273,7 @@ interface SetAdditionalTags {
   type: 'set_additional_tags';
   data: {
     tag: string;
+    id: string;
   };
 }
 
@@ -306,6 +312,13 @@ interface RemoveAnesthesiaType {
 
 interface RemoveAsaTags {
   type: 'remove_asa_tags';
+  data: {
+    id: string;
+  };
+}
+
+interface RemoveAdditionalTags {
+  type: 'remove_additional_tags';
   data: {
     id: string;
   };
@@ -450,6 +463,7 @@ type ACTION_TYPE =
   | RemoveTypePainService
   | SetProcedurePainService
   | SetProcedurePainServiceIds
-  | RemoveProcedurePainService;
+  | RemoveProcedurePainService
+  | RemoveAdditionalTags;
 
 export type { ACTION_TYPE, InitialState };
