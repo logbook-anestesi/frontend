@@ -1,6 +1,7 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { useMemo } from 'react';
 import { Stase } from '../../hooks/useGetAllStase/types';
+import { colors } from '../../../../constants/colors';
 
 interface DataRow {
   index: number;
@@ -16,10 +17,10 @@ interface Props {
 const TableData = ({ stationList }: Props) => {
   const columns: TableColumn<DataRow>[] = [
     {
-      name: 'Nomor',
+      name: 'No',
       selector: (row) => row.index,
       sortable: true,
-      maxWidth: '5px',
+      width: '70px',
     },
     {
       name: 'Nama Stase',
@@ -30,8 +31,18 @@ const TableData = ({ stationList }: Props) => {
       name: 'Ketua Modul',
       selector: (row) => row.leaderName,
       sortable: true,
+      style: {},
     },
   ];
+
+  const customStyles = {
+    headCells: {
+      style: {
+        color: colors.primaryPurple,
+        fontWeight: 'bold',
+      },
+    },
+  };
 
   const data = useMemo(() => {
     return stationList.map((singleStation, idx) => {
@@ -43,7 +54,14 @@ const TableData = ({ stationList }: Props) => {
     });
   }, [stationList]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pagination
+      customStyles={customStyles}
+    />
+  );
 };
 
 export default TableData;
