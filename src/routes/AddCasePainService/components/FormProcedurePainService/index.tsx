@@ -1,4 +1,4 @@
-import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { useCallback, useState } from 'react';
@@ -38,6 +38,7 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Procedure Pain Service
+        <Box as="span">*</Box>
       </Text>
 
       <Flex

@@ -82,7 +82,7 @@ const AddCasePainService = () => {
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
-        <FormLocationLainnya />
+        <FormLocationLainnya isMondatory />
         <FormDPJP />
         <FormTypePainService
           painServiceTypes={casesForm?.painServiceTypes || []}
