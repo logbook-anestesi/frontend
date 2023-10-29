@@ -88,7 +88,6 @@ const TableData = ({ caseList }: Props) => {
 
   const data = useMemo(() => {
     return caseList.map((singleCase) => {
-      console.log('999 INI CASE', singleCase);
       return {
         idCase: `${singleCase?.caseType || ''} - ${singleCase?.id.substring(
           0,

@@ -11,7 +11,7 @@ import useGetCases from './hooks/useGetCases';
 import LoaderCircle from '../../components/LoaderCircle';
 
 const DEFAULT_CASE_MENU = {
-  title: 'Select Type Case',
+  title: 'Pilih Tipe Case',
   value: '-',
 };
 
