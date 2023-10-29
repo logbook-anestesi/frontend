@@ -83,6 +83,7 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       name: 'Tipe Ilmiah',
       selector: (row) => row.type,
       sortable: true,
+      width: '150px',
     },
     {
       name: 'Judul',
