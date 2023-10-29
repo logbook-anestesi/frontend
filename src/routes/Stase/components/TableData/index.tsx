@@ -24,12 +24,11 @@ const TableData = ({ stationList }: Props) => {
     if (status === 'PASSED') {
       return 'Lulus';
     }
-    // TODO
-    // if (status === '') {
-    //   return 'Tidak lulus';
-    // }
+    if (status === 'FAILED') {
+      return 'Tidak lulus';
+    }
 
-    return 'Tidak Lulus';
+    return '-';
   };
 
   const columns: TableColumn<DataRow>[] = [
