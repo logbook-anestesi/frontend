@@ -5,9 +5,11 @@ import { colors } from '../../constants/colors';
 interface InfoBoxInterface {
   type: 'warning' | 'alert';
   message: string;
+  isStase?: boolean;
+  staseDate?: string;
 }
 
-const InfoBox = ({ type, message }: InfoBoxInterface) => {
+const InfoBox = ({ type, message, isStase, staseDate }: InfoBoxInterface) => {
   return (
     <Flex
       align="center"
@@ -21,7 +23,18 @@ const InfoBox = ({ type, message }: InfoBoxInterface) => {
       padding="8px 0"
     >
       {type === 'warning' ? <WarningTwoIcon /> : <EmailIcon />}
-      <Text fontSize="xs">{message}</Text>
+      <Flex gap={1}>
+        {isStase ? (
+          <>
+            <Text fontSize="xs">{message}</Text>
+            <Text fontSize="xs" fontWeight="bold">
+              {staseDate}
+            </Text>
+          </>
+        ) : (
+          <Text fontSize="xs">{message}</Text>
+        )}
+      </Flex>
     </Flex>
   );
 };

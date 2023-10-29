@@ -9,6 +9,7 @@ import useGetAllExamApprovals from '../../../PendingApproval/hooks/useGetAllExam
 import useGetScientificApprovals from '../../../PendingApproval/hooks/useGetAllApprovals';
 import useGetPendingReview from '../../../CasesReviewDashboard/hooks/useGetPendingReview';
 import LevelCardStaseReview from '../LevelCardStaseReview';
+import { capitalizeFirstLetter } from '../../../../helpers';
 
 interface Props {
   profile?: Profile;
@@ -29,7 +30,11 @@ const LevelCardContainer = ({ profile }: Props) => {
     <Flex direction="column" gap="10px">
       {profile?.role === 'RESIDEN' ? (
         <LevelCard
-          title={currentCompetence?.level || '-'}
+          title={
+            currentCompetence?.level
+              ? `Residen ${capitalizeFirstLetter(currentCompetence.level)}`
+              : '-'
+          }
           type="Level Kompetensi"
           path="/competence"
         />

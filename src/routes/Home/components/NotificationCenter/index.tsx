@@ -12,7 +12,9 @@ const NotificationCenter = () => {
         {profile?.stationName === null && (
           <InfoBox
             type="alert"
-            message={`Anda belum memperbarui stase ${getCurrentMonth()}`}
+            isStase
+            staseDate={getCurrentMonth()}
+            message="Anda belum memperbarui stase"
           />
         )}
       </Flex>

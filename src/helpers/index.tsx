@@ -83,3 +83,13 @@ export const bytesToMb = (bytes: number) => {
   const megabytes = bytes / (1024 * 1024);
   return megabytes.toFixed(2);
 };
+
+export const capitalizeFirstLetter = (inputString: string) => {
+  if (inputString.length > 0) {
+    return (
+      inputString.charAt(0).toUpperCase() + inputString.slice(1).toLowerCase()
+    );
+  } else {
+    return '';
+  }
+};

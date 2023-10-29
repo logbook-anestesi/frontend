@@ -13,10 +13,22 @@ interface LevelCardInterface {
 const LevelCard = ({ type, title, path }: LevelCardInterface) => {
   const navigate = useNavigate();
 
+  const isNotHaveStase = useMemo(() => {
+    return type === 'Stase' && title === '';
+  }, []);
+
   const finalTitle = useMemo(() => {
-    if (type === 'Stase' && title === '') return 'Belum memilih Stase';
+    if (isNotHaveStase) return 'Belum Memilih Stase';
     return title === '' ? 'Belum ada data' : title;
   }, [title, type]);
+
+  const getColorTitle = (title: string) => {
+    if (isNotHaveStase) {
+      return colors.primaryRed;
+    }
+
+    return getCompetenceColor(title);
+  };
 
   return (
     <Card
@@ -31,7 +43,7 @@ const LevelCard = ({ type, title, path }: LevelCardInterface) => {
         <Text fontSize="sm" color={colors.darkGrey}>
           {type}
         </Text>
-        <Text fontSize="md" as="b" color={getCompetenceColor(title)}>
+        <Text fontSize="md" as="b" color={getColorTitle(title)}>
           {finalTitle}
         </Text>
       </Flex>
