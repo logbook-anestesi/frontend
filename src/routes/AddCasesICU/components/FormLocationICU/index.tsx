@@ -1,4 +1,4 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { Flex, Radio, RadioGroup, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { useEffect, useState } from 'react';
 import { RADIO_LOCATION } from '../../constants';
@@ -45,14 +45,14 @@ const FormRadioLocationICU = () => {
       <RadioGroup
         onChange={setValue}
         value={value}
-        overflowX="scroll"
+        overflowX="revert"
         css={{
           '&::-webkit-scrollbar': {
             display: 'none',
           },
         }}
       >
-        <Stack direction="row" gap={3}>
+        <Flex direction="column" gap={3}>
           {RADIO_LOCATION.map((option) => (
             <Radio
               value={option.value}
@@ -63,7 +63,7 @@ const FormRadioLocationICU = () => {
               {option.title}
             </Radio>
           ))}
-        </Stack>
+        </Flex>
       </RadioGroup>
     </Flex>
   );
