@@ -35,10 +35,8 @@ const CaseDetails = () => {
             <FieldText label="DPJP" value={caseData?.dpjpUserName} />
             <FieldText label="Merupakan Exam" value={caseData?.isExam} />
 
-            <Flex gap={20}>
-              <FieldText label="Age Group" value={caseData?.ageGroup} />
-              <FieldText label="Priority" value={caseData?.priority} />
-            </Flex>
+            <FieldText label="Age Group" value={caseData?.ageGroup} />
+            <FieldText label="Priority" value={caseData?.priority} />
 
             <FieldText label="Lokasi" value={caseData?.location} />
 
@@ -70,12 +68,8 @@ const CaseDetails = () => {
               </>
             )}
 
-            <Flex gap={20}>
-              <FieldText label="Usia Pasien" value={caseData?.patientAge} />
-              <FieldText label="No. RM" value={caseData?.patientRecordNumber} />
-            </Flex>
-
-            <FieldText label="Jenis Kelamin" value={caseData?.patientGender} />
+            <FieldText label="Usia Pasien" value={caseData?.patientAge} />
+            <FieldText label="No. RM" value={caseData?.patientRecordNumber} />
 
             <FieldText label="Total Pasien" value={caseData?.numberOfPatient} />
 
