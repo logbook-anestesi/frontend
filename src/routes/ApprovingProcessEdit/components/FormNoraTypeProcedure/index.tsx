@@ -66,7 +66,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Nora Procedure Type
+        Nora Procedure Type*
       </Text>
 
       <Flex
