@@ -38,6 +38,7 @@ const ModalConfirmUpdate = ({
             backgroundColor="rgba(102, 45, 145, 0.1)"
             borderRadius={10}
             as="b"
+            color={colors.lightPurple}
           >
             {selectedStase} - {getCurrentMonth()}
           </Flex>
@@ -60,7 +61,7 @@ const ModalConfirmUpdate = ({
               borderColor={colors.primaryPurple}
               onClick={closeModal}
             >
-              Tidak
+              Batal
             </Button>
           </Flex>
         </Flex>
