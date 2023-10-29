@@ -17,7 +17,16 @@ const HeaderHome = () => {
   };
 
   return (
-    <Flex justify="space-between" width="100%" marginBottom="32px">
+    <Flex
+      justify="space-between"
+      width="100%"
+      marginBottom="32px"
+      position="sticky"
+      top={0}
+      paddingTop="8"
+      paddingBottom="2"
+      backgroundColor="white"
+    >
       <Image
         width={33}
         height={33}
