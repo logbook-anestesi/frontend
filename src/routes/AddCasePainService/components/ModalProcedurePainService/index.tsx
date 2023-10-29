@@ -9,6 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Text,
 } from '@chakra-ui/react';
 import {
   ChangeEvent,
@@ -25,6 +26,7 @@ import {
   PainServiceProcedure,
   PainServiceType,
 } from '../../../../hooks/useGetCasesForm/types';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;
@@ -33,6 +35,7 @@ interface Props {
   setProcedurePainService: Dispatch<
     SetStateAction<PainServiceType | undefined>
   >;
+  onOpenAddOther: () => void;
 }
 
 const ModalProcedurePainService = ({
@@ -40,6 +43,7 @@ const ModalProcedurePainService = ({
   closeModal,
   procedurePainService,
   setProcedurePainService,
+  onOpenAddOther,
 }: Props) => {
   const { selectedProcedurePainService } = useAddCasesContext();
   const [filteredProcedurePain, setFilteredProcedurePain] =
@@ -65,6 +69,11 @@ const ModalProcedurePainService = ({
     setFilteredProcedurePain(filtered);
   };
 
+  const handleClickAddOther = () => {
+    onOpenAddOther();
+    closeModal();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -83,6 +92,17 @@ const ModalProcedurePainService = ({
         </InputGroup>
 
         <Box height={3} />
+
+        <Text
+          as="u"
+          alignSelf="center"
+          fontSize="sm"
+          color={colors.primaryPurple}
+          mb={5}
+          onClick={handleClickAddOther}
+        >
+          Prosedur tidak ada di daftar
+        </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredProcedurePain?.map((procedurePainService) => {

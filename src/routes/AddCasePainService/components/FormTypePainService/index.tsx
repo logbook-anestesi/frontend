@@ -9,6 +9,7 @@ import {
 import ModalTypePainService from '../ModalTypePainService';
 import Ticker from '../../../../components/Ticker';
 import { PainServiceType } from '../../../../hooks/useGetCasesForm/types';
+import ModalAddOtherPainType from '../ModalAddOtherPainType';
 
 interface Props {
   painServiceTypes: PainServiceType[];
@@ -18,6 +19,11 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { selectedTypePainService } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenAddOther,
+    onClose: onCloseAddOther,
+    onOpen: onOpenAddOther,
+  } = useDisclosure();
 
   const [typePainService, setTypePainService] = useState<PainServiceType>();
 
@@ -81,6 +87,12 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
         isOpen={isOpen}
         painServiceTypes={painServiceTypes}
         setTypePainService={setTypePainService}
+        onOpenAddOther={onOpenAddOther}
+      />
+
+      <ModalAddOtherPainType
+        isOpen={isOpenAddOther}
+        closeModal={onCloseAddOther}
       />
     </Flex>
   );

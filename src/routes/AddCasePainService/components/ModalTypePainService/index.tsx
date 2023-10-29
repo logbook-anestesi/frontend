@@ -9,6 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Text,
 } from '@chakra-ui/react';
 import {
   ChangeEvent,
@@ -21,12 +22,14 @@ import { Search2Icon } from '@chakra-ui/icons';
 import { PainServiceType } from '../../../../hooks/useGetCasesForm/types';
 import { useAddCasesContext } from '../../../AddCases/contexts';
 import CardTypePainService from './CardTypePainService';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
   painServiceTypes: PainServiceType[];
   setTypePainService: Dispatch<SetStateAction<PainServiceType | undefined>>;
+  onOpenAddOther: () => void;
 }
 
 const ModalTypePainService = ({
@@ -34,6 +37,7 @@ const ModalTypePainService = ({
   closeModal,
   painServiceTypes,
   setTypePainService,
+  onOpenAddOther,
 }: Props) => {
   const { selectedTypePainService } = useAddCasesContext();
   const [filteredTypePain, setFilteredTypePain] = useState(painServiceTypes);
@@ -58,6 +62,11 @@ const ModalTypePainService = ({
     setFilteredTypePain(filtered);
   };
 
+  const handleClickAddOther = () => {
+    onOpenAddOther();
+    closeModal();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
@@ -76,6 +85,17 @@ const ModalTypePainService = ({
         </InputGroup>
 
         <Box height={3} />
+
+        <Text
+          as="u"
+          alignSelf="center"
+          fontSize="sm"
+          color={colors.primaryPurple}
+          mb={5}
+          onClick={handleClickAddOther}
+        >
+          Tipe tidak ada di daftar
+        </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredTypePain?.map((typePainService) => {

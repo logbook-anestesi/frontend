@@ -9,6 +9,7 @@ import {
 import Ticker from '../../../../components/Ticker';
 import { PainServiceProcedure } from '../../../../hooks/useGetCasesForm/types';
 import ModalProcedurePainService from '../ModalProcedurePainService';
+import ModalAddOtherPainProcedure from '../ModalAddOtherPainProcedure';
 
 interface Props {
   painServiceProcedure: PainServiceProcedure[];
@@ -18,6 +19,11 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
   const casesDispatch = useAddCasesDispatch();
   const { selectedProcedurePainService } = useAddCasesContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isOpenAddOther,
+    onClose: onCloseAddOther,
+    onOpen: onOpenAddOther,
+  } = useDisclosure();
 
   const [procedurePainService, setProcedurePainService] =
     useState<PainServiceProcedure>();
@@ -86,6 +92,12 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
         isOpen={isOpen}
         procedurePainService={painServiceProcedure}
         setProcedurePainService={setProcedurePainService}
+        onOpenAddOther={onOpenAddOther}
+      />
+
+      <ModalAddOtherPainProcedure
+        isOpen={isOpenAddOther}
+        closeModal={onCloseAddOther}
       />
     </Flex>
   );
