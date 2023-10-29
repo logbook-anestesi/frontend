@@ -103,6 +103,8 @@ const TableData = ({ riwayatKelulusan }: Props) => {
     {
       name: 'Link Dokumen',
       selector: (row) => row.linkDocument,
+      wrap: true,
+      width: '170px',
       cell: (row) => (
         <span
           style={{ color: 'blue' }}

@@ -7,12 +7,14 @@ import {
   convertDateForIlmiah,
   convertDateForNotification,
 } from '../../../../helpers';
+import { customStyles } from '../../../../constants/tableFormat';
 
 interface Props {
   riwayatDiskusi: Diskusi[];
 }
 
 interface DataRow {
+  idx: number;
   tanggal: string;
   title: string;
   deskripsi: string;
@@ -42,10 +44,13 @@ const TableData = ({ riwayatDiskusi }: Props) => {
 
   const columns: TableColumn<DataRow>[] = [
     {
+      name: 'No',
+      selector: (row) => row.idx,
+    },
+    {
       name: 'Tanggal',
       selector: (row) => row.tanggal,
       sortable: true,
-      width: '20%',
       cell: (row) => <span>{convertDateForNotification(row?.tanggal)}</span>,
     },
     {
@@ -53,7 +58,6 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       selector: (row) => row.title,
       sortable: true,
       wrap: true,
-      width: '20%',
       cell: (row) => (
         <span
           style={{
@@ -68,6 +72,7 @@ const TableData = ({ riwayatDiskusi }: Props) => {
     {
       name: 'Deskripsi Diskusi',
       selector: (row) => row.deskripsi,
+      width: '170px',
       cell: (row) => (
         <span
           style={{ color: 'blue' }}
@@ -81,6 +86,7 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       name: 'Pembimbing',
       selector: (row) => row.approvals,
       sortable: true,
+      width: '170px',
       cell: (row) => (
         <span
           style={{
@@ -92,13 +98,11 @@ const TableData = ({ riwayatDiskusi }: Props) => {
           {row.approvals}
         </span>
       ),
-      width: '30%',
     },
     {
       name: 'Riwayat',
       selector: (row) => row.history,
       sortable: true,
-      width: '20%',
       wrap: true,
       cell: (row) => (
         <span
@@ -116,7 +120,6 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       name: 'Status',
       selector: (row) => row.status,
       sortable: true,
-      width: '30%',
       cell: (row) => (
         <Flex
           bgColor={statusBgColor(row.status)}
@@ -135,8 +138,10 @@ const TableData = ({ riwayatDiskusi }: Props) => {
   ];
 
   const data = useMemo(() => {
-    return riwayatDiskusi?.map((diskusi) => {
+    return riwayatDiskusi?.map((diskusi, idx) => {
+      console.log({ riwayatDiskusi });
       return {
+        idx: idx + 1,
         tanggal: diskusi.discussionDate,
         title: diskusi.title,
         deskripsi: diskusi.description,
@@ -147,11 +152,19 @@ const TableData = ({ riwayatDiskusi }: Props) => {
           )
           .join('\n'),
         status: diskusi.status,
+        key: `diskusi-${idx}`,
       };
     });
   }, [riwayatDiskusi]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pagination
+      customStyles={customStyles}
+    />
+  );
 };
 
 export default TableData;
