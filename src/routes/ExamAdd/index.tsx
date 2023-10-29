@@ -55,6 +55,19 @@ const ExamAdd = () => {
     }
   };
 
+  const handleSubmit = () => {
+    if (exam === '' || examType === '' || !penguji) {
+      toast({
+        title: 'Harap isi semua field',
+        status: 'error',
+        position: 'top',
+        duration: 2000,
+      });
+    } else {
+      onOpen();
+    }
+  };
+
   return (
     <Flex direction="column">
       <Header title="Buat Exam" />
@@ -68,7 +81,7 @@ const ExamAdd = () => {
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}
           color={colors.white}
-          onClick={onOpen}
+          onClick={handleSubmit}
           isLoading={loading}
         >
           Submit
