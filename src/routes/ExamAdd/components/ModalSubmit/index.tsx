@@ -66,7 +66,7 @@ const ModalSubmit = ({
           </Flex>
 
           <Text color={colors.darkGrey} fontSize="sm" px={5} my={5}>
-            Mohon pastikan Anda telah memilih stase yang Benar
+            Mohon pastikan Anda memasukkan data yang benar
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
