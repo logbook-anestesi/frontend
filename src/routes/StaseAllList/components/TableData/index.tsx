@@ -1,7 +1,7 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { useMemo } from 'react';
 import { Stase } from '../../hooks/useGetAllStase/types';
-import { colors } from '../../../../constants/colors';
+import { customStyles } from '../../../../constants/tableFormat';
 
 interface DataRow {
   index: number;
@@ -34,15 +34,6 @@ const TableData = ({ stationList }: Props) => {
       style: {},
     },
   ];
-
-  const customStyles = {
-    headCells: {
-      style: {
-        color: colors.primaryPurple,
-        fontWeight: 'bold',
-      },
-    },
-  };
 
   const data = useMemo(() => {
     return stationList.map((singleStation, idx) => {

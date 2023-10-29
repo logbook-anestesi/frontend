@@ -1,10 +1,13 @@
 export interface StaseUser {
   id: string;
   created: string;
-  createBy: string;
+  status: string;
+  userName: string;
+  stationLeaderUserName: string;
   lastUpdated: string;
-  lastUpdateBy: string;
-  stationName: string;
+  stationId: string;
   userId: string;
   periodMmYyyy: string;
+  stationName: string;
+  stationLeaderUserId: string;
 }

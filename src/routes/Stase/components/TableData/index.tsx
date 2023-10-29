@@ -2,6 +2,7 @@ import DataTable, { TableColumn } from 'react-data-table-component';
 import { useMemo } from 'react';
 import { formatMonthYear } from '../../../../helpers';
 import { StaseUser } from '../../hooks/useGetStaseUser/types';
+import { colors } from '../../../../constants/colors';
 
 interface DataRow {
   index: number;
@@ -16,17 +17,33 @@ interface Props {
 }
 
 const TableData = ({ stationList }: Props) => {
+  const normalizeStatus = (status: string) => {
+    if (status === 'IN_PROGRESS') {
+      return 'In Progress';
+    }
+    if (status === 'PASSED') {
+      return 'Lulus';
+    }
+    // TODO
+    // if (status === '') {
+    //   return 'Tidak lulus';
+    // }
+
+    return 'Tidak Lulus';
+  };
+
   const columns: TableColumn<DataRow>[] = [
     {
       name: 'No',
       selector: (row) => row.index,
       sortable: true,
-      maxWidth: '2px',
+      width: '65px',
     },
     {
       name: 'Nama',
       selector: (row) => row.stationName,
       sortable: true,
+      width: '',
     },
     {
       name: 'Tanggal',
@@ -46,12 +63,34 @@ const TableData = ({ stationList }: Props) => {
         index: idx + 1,
         stationName: singleStation.stationName,
         date: formatMonthYear(singleStation.periodMmYyyy),
-        status: 'Lulus',
+        status: normalizeStatus(singleStation.status),
       };
     });
   }, [stationList]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  const customStyles = {
+    headCells: {
+      style: {
+        color: colors.primaryPurple,
+        fontWeight: 'bold',
+      },
+    },
+    rows: {
+      style: {
+        minHeight: '72px',
+        width: '500px',
+      },
+    },
+  };
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pagination
+      customStyles={customStyles}
+    />
+  );
 };
 
 export default TableData;
