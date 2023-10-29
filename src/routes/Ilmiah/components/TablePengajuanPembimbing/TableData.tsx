@@ -5,8 +5,11 @@ import { convertDateForIlmiah } from '../../../../helpers';
 import { Flex, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { useIlmiahDispatch } from '../../contexts';
+import { customStyles } from '../../../../constants/tableFormat';
+import { convertUnderscoresToSpaces } from '../../../../helpers';
 
 interface DataRow {
+  idx: number;
   id: string;
   type: string;
   title: string;
@@ -68,6 +71,12 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
 
   const columns: TableColumn<DataRow>[] = [
     {
+      name: 'No',
+      selector: (row) => row.idx,
+      sortable: true,
+      width: '65px',
+    },
+    {
       name: 'ID',
       selector: (row) => row.id,
       sortable: true,
@@ -87,14 +96,12 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       selector: (row) => row.type,
       sortable: true,
       wrap: true,
-      width: '20%',
     },
     {
       name: 'Judul',
       selector: (row) => row.title,
       sortable: true,
       wrap: true,
-      width: '20%',
       cell: (row) => (
         <span
           style={{
@@ -121,20 +128,19 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
           {row.history}
         </span>
       ),
-      width: '30%',
     },
     {
       name: 'Daftar Pembimbing',
       selector: (row) => row.approvals,
       sortable: true,
-      width: '20%',
       wrap: true,
+      width: '170px',
     },
     {
       name: 'Status',
       selector: (row) => row.status,
       sortable: true,
-      width: '30%',
+      width: '150px',
       cell: (row) => (
         <Flex direction="column" gap={3}>
           {row.status === 'SCIENTIFIC_APPROVED' && (
@@ -158,7 +164,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
           >
             {row.status === 'SCIENTIFIC_APPROVED'
               ? 'Ajukan Kelulusan'
-              : row.status}
+              : convertUnderscoresToSpaces(row.status)}
           </Flex>
         </Flex>
       ),
@@ -166,8 +172,9 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
   ];
 
   const data = useMemo(() => {
-    return pengajuanList.map((singleIlmiah) => {
+    return pengajuanList.map((singleIlmiah, idx) => {
       return {
+        idx: idx + 1,
         id: singleIlmiah.id,
         type: singleIlmiah.type,
         title: singleIlmiah.title,
@@ -182,7 +189,14 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
     });
   }, [pengajuanList]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pagination
+      customStyles={customStyles}
+    />
+  );
 };
 
 export default TableData;

@@ -1,16 +1,21 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { RiwayatKelulusan } from '../../hooks/useGetRiwayatKelulusan/types';
 import { useMemo } from 'react';
-import { convertDateForIlmiah } from '../../../../helpers';
+import {
+  convertDateForIlmiah,
+  convertUnderscoresToSpaces,
+} from '../../../../helpers';
 import { colors } from '../../../../constants/colors';
 import { Flex } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import { customStyles } from '../../../../constants/tableFormat';
 
 interface Props {
   riwayatKelulusan: RiwayatKelulusan[];
 }
 
 interface DataRow {
+  idx: number;
   id: string;
   type: string;
   title: string;
@@ -51,6 +56,12 @@ const TableData = ({ riwayatKelulusan }: Props) => {
 
   const columns: TableColumn<DataRow>[] = [
     {
+      name: 'No',
+      selector: (row) => row.idx,
+      sortable: true,
+      width: '65px',
+    },
+    {
       name: 'ID',
       selector: (row) => row.id,
       sortable: true,
@@ -72,14 +83,12 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       name: 'Tipe Ilmiah',
       selector: (row) => row.type,
       sortable: true,
-      width: '20%',
     },
     {
       name: 'Judul',
       selector: (row) => row.title,
       sortable: true,
       wrap: true,
-      width: '20%',
       cell: (row) => (
         <span
           style={{
@@ -118,20 +127,18 @@ const TableData = ({ riwayatKelulusan }: Props) => {
           {row.history}
         </span>
       ),
-      width: '30%',
     },
     {
       name: 'Daftar Pembimbing',
       selector: (row) => row.approvals,
       sortable: true,
-      width: '20%',
       wrap: true,
+      width: '170px',
     },
     {
       name: 'Status',
       selector: (row) => row.status,
       sortable: true,
-      width: '30%',
       cell: (row) => (
         <Flex
           bgColor={statusBgColor(row.status)}
@@ -143,15 +150,16 @@ const TableData = ({ riwayatKelulusan }: Props) => {
           textAlign="center"
           justify="center"
         >
-          {row.status}
+          {convertUnderscoresToSpaces(row.status)}
         </Flex>
       ),
     },
   ];
 
   const data = useMemo(() => {
-    return riwayatKelulusan?.map((singleRiwayat) => {
+    return riwayatKelulusan?.map((singleRiwayat, idx) => {
       return {
+        idx: idx + 1,
         id: singleRiwayat.id,
         type: singleRiwayat.scientificType,
         title: singleRiwayat.scientificTitle,
@@ -167,7 +175,14 @@ const TableData = ({ riwayatKelulusan }: Props) => {
     });
   }, [riwayatKelulusan]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      pagination
+      customStyles={customStyles}
+    />
+  );
 };
 
 export default TableData;
