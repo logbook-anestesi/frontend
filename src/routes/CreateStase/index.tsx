@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import ModalConfirmUpdate from './components/ModalConfirmUpdate';
 import StaseDropdown from './components/StaseDropdown';
 import { Stase } from './hooks/useGetAllStase/types';
+import ModalSuccess from './components/ModalSuccess';
 
 export interface SelectedStase {
   name: string;
@@ -30,6 +31,11 @@ const CreateStase = () => {
     onClose: onCloseConfirm,
     onOpen: onOpenConfirm,
   } = useDisclosure();
+  const {
+    isOpen: isOpenSuccess,
+    onClose: onCloseSuccess,
+    onOpen: onOpenSuccess,
+  } = useDisclosure();
   const [selectedStase, setSelectedStase] = useState<Stase>();
 
   const finalData = useMemo(() => {
@@ -43,15 +49,8 @@ const CreateStase = () => {
   const handleSubmitData = async () => {
     await postData(finalData).then((response) => {
       if (response?.success) {
-        toast({
-          position: 'top',
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-          title: 'Berhasil Update Stase',
-        });
-
-        navigate('/stase');
+        onCloseConfirm();
+        onOpenSuccess();
       } else {
         toast({
           position: 'top',
@@ -63,6 +62,10 @@ const CreateStase = () => {
         });
       }
     });
+  };
+
+  const handleCloseSuccess = () => {
+    navigate('/stase');
   };
 
   return (
@@ -97,6 +100,13 @@ const CreateStase = () => {
         closeModal={onCloseConfirm}
         selectedStase={selectedStase?.stationName}
         onSubmit={handleSubmitData}
+      />
+
+      <ModalSuccess
+        closeModal={onCloseSuccess}
+        isOpen={isOpenSuccess}
+        onSubmit={handleCloseSuccess}
+        selectedStase={selectedStase?.stationName}
       />
     </Flex>
   );
