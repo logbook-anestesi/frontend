@@ -6,11 +6,11 @@ import { useEffect } from 'react';
 import useAddCases from '../AddCases/hooks/useAddCases';
 import { useNavigate } from 'react-router-dom';
 import FormDate from '../AddCases/components/FormDate';
-import FormLocationLainnya from '../AddCases/components/FormLocationLainnya';
 import FormTypePainService from './components/FormTypePainService';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
 import FormProcedurePainService from './components/FormProcedurePainService';
 import FormDPJP from '../AddCases/components/FormDPJP';
+import FormRadioLocationPain from './components/FormLocationPainService';
 
 const AddCasePainService = () => {
   const toast = useToast();
@@ -82,7 +82,7 @@ const AddCasePainService = () => {
 
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
-        <FormLocationLainnya isMondatory />
+        <FormRadioLocationPain />
         <FormDPJP />
         <FormTypePainService
           painServiceTypes={casesForm?.painServiceTypes || []}
