@@ -83,7 +83,7 @@ const AddCaseProcedureConsultation = () => {
       <Flex padding="30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
-        <FormLocationLainnya />
+        <FormLocationLainnya isMondatory />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
         <FormAdditionalTags />
         <FormNotes />
