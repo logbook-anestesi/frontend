@@ -8,6 +8,7 @@ import LoaderCircle from '../../components/LoaderCircle';
 import useAuth from '../../hooks/useAuth';
 import { useMemo, useState } from 'react';
 import UploadPhoto from './components/UploadPhoto';
+import CutiSection from './components/CutiSection';
 
 const ProfilePage = () => {
   const { loading, profile } = useGetProfile();
@@ -140,6 +141,8 @@ const ProfilePage = () => {
             })}
           </Flex>
         )}
+
+        <CutiSection />
 
         <Button
           color={colors.white}

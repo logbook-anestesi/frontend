@@ -106,3 +106,16 @@ export const capitalizeFirstLetter = (inputString: string) => {
 export const convertUnderscoresToSpaces = (inputText: string) => {
   return inputText.replace(/_/g, ' ');
 };
+
+export const convertDateFormatIndonesia = (inputDate: string): string => {
+  const date = new Date(inputDate);
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  const locale = 'id-ID'; // Use 'id-ID' for Indonesian locale
+
+  return date.toLocaleDateString(locale, options);
+};
