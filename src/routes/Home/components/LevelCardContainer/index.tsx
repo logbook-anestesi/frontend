@@ -40,7 +40,7 @@ const LevelCardContainer = ({ profile }: Props) => {
         />
       ) : null}
 
-      {profile?.role === 'RESIDEN' ? (
+      {profile?.role === 'RESIDEN' && profile.stationName !== null ? (
         <LevelCard
           title={profile?.stationName || ''}
           type="Stase"
@@ -69,7 +69,9 @@ const LevelCardContainer = ({ profile }: Props) => {
       ) : null}
 
       {/* KONSULEN or KETUA MODULE ?? */}
-      {profile?.role === 'KONSULEN' ? <LevelCardStaseReview /> : null}
+      {profile?.role === 'KONSULEN' && profile.stationName ? (
+        <LevelCardStaseReview />
+      ) : null}
     </Flex>
   );
 };
