@@ -5,20 +5,16 @@ import cases from '../../assets/cases.png';
 import { Profile } from '../../../../hooks/useGetProfile/types';
 import useGetCompetenceUser from '../../../Competence/hooks/useGetCompetenceUser';
 import LoaderCircle from '../../../../components/LoaderCircle';
-import useGetAllExamApprovals from '../../../PendingApproval/hooks/useGetAllExamApprovals';
-import useGetScientificApprovals from '../../../PendingApproval/hooks/useGetAllApprovals';
-import useGetPendingReview from '../../../CasesReviewDashboard/hooks/useGetPendingReview';
 import LevelCardStaseReview from '../LevelCardStaseReview';
 import { capitalizeFirstLetter } from '../../../../helpers';
+import usetGetCounterNotificationKonsulen from '../../hooks/useReadNotifications';
 
 interface Props {
   profile?: Profile;
 }
 
 const LevelCardContainer = ({ profile }: Props) => {
-  const { notif: notifCases } = useGetPendingReview();
-  const { notif: notifExam } = useGetAllExamApprovals();
-  const { notif: notifScientific } = useGetScientificApprovals();
+  const { notificationCounter } = usetGetCounterNotificationKonsulen();
   const { competenceData, loading } = useGetCompetenceUser();
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
@@ -54,7 +50,7 @@ const LevelCardContainer = ({ profile }: Props) => {
           type="Pending Review"
           path="/review/cases"
           icon={cases}
-          cardNumber={notifCases}
+          cardNumber={notificationCounter?.totalPendingCasesApproval || 0}
         />
       ) : null}
 
@@ -64,13 +60,15 @@ const LevelCardContainer = ({ profile }: Props) => {
           type="Pending Review"
           path="/approval"
           icon={cases}
-          cardNumber={notifExam + notifScientific}
+          cardNumber={
+            notificationCounter?.totalPendingScientificExamApproval || 0
+          }
         />
       ) : null}
 
       {/* KONSULEN or KETUA MODULE ?? */}
       {profile?.role === 'KONSULEN' && profile.stationName ? (
-        <LevelCardStaseReview />
+        <LevelCardStaseReview staseName={profile.stationName} />
       ) : null}
     </Flex>
   );

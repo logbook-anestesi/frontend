@@ -6,7 +6,11 @@ import Ticker from '../../../../components/Ticker';
 import module from '../../assets/module.png';
 import useGetStaseApprovalList from '../../../StaseApproval/hooks/useGetStaseApprovalList';
 
-const LevelCardStaseReview = () => {
+interface Props {
+  staseName: string;
+}
+
+const LevelCardStaseReview = ({ staseName }: Props) => {
   const navigate = useNavigate();
   const { notif: notifStase } = useGetStaseApprovalList();
 
@@ -37,7 +41,7 @@ const LevelCardStaseReview = () => {
             as="b"
             color={getCompetenceColor('Stase Name [BE]')}
           >
-            Stase Name [BE]
+            {staseName}
           </Text>
         </Flex>
       </Flex>
