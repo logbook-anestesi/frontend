@@ -108,7 +108,7 @@ const AddCasePacu = () => {
     <Flex flexDirection="column">
       <Header title="Tambah PACU" />
 
-      <Flex padding="30px" direction="column" gap={4}>
+      <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
         <FormRadioAgeGroup isMondatory />

@@ -20,7 +20,7 @@ const PendingApproval = () => {
     <Flex flexDirection="column">
       <Header title="Pending Approval" />
 
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         {loading || examLoading ? (
           <LoaderCircle />
         ) : (

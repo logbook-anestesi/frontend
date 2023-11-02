@@ -6,7 +6,7 @@ const NotificationsPage = () => {
   return (
     <Flex direction="column">
       <Header title="Notifikasi" />
-      <Flex direction="column" padding="30px" gap="8px">
+      <Flex direction="column" padding="10px 30px" gap="8px">
         <ListNotifications />
       </Flex>
     </Flex>

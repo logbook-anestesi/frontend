@@ -64,7 +64,7 @@ const CompetencePage = () => {
   return (
     <Flex flexDirection="column">
       <Header title="Level Kompetensi" />
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         {competenceData?.map((item, index) => (
           <CompetenceCard
             competenceNumber={index + 1}

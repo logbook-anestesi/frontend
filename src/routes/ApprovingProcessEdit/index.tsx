@@ -145,7 +145,7 @@ const ApprovingProcessEdit = () => {
         }`}
       />
 
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         {loading ? (
           <LoaderCircle />
         ) : (

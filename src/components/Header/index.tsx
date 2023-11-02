@@ -34,7 +34,16 @@ const Header = ({ title, pathBack }: HeaderInterface) => {
   };
 
   return (
-    <Flex className={headers} alignItems="center" gap={5}>
+    <Flex
+      className={headers}
+      alignItems="center"
+      gap={5}
+      position="sticky"
+      top={0}
+      backgroundColor={colors.white}
+      zIndex={100}
+      paddingBottom={4}
+    >
       <ChevronLeftIcon
         width={33}
         height={33}

@@ -25,7 +25,7 @@ const Cases = () => {
       <Header title="Cases" />
 
       <Flex direction="column" justify="space-between" height="100%">
-        <Flex padding="30px" direction="column" gap="16px">
+        <Flex padding="10px 30px" direction="column" gap="16px">
           <CasesDropdown onClick={onOpen} selectedCase={selectedCase} />
           <ModalSelectCases
             isOpen={isOpen}

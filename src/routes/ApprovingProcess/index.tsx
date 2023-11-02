@@ -65,7 +65,7 @@ const ApprovingProcess = () => {
         } ${caseData?.caseType} - ${caseData?.id.substring(0, 4)}`}
       />
 
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         {!isReject && <RadioPenilaian />}
         <TextPenilaian />
 

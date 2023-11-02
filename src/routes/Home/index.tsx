@@ -18,7 +18,7 @@ const Home = () => {
     <Flex direction="column">
       <Flex
         direction="column"
-        padding="30px"
+        padding="10px 30px"
         paddingTop="-8"
         gap="25px"
         className="justify-between"

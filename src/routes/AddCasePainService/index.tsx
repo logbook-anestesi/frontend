@@ -80,7 +80,7 @@ const AddCasePainService = () => {
     <Flex flexDirection="column">
       <Header title="Tambah Pain Service" />
 
-      <Flex padding="30px" direction="column" gap={4}>
+      <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormRadioLocationPain />
         <FormDPJP />

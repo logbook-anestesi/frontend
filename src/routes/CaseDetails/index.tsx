@@ -26,7 +26,7 @@ const CaseDetails = () => {
     <Flex flexDirection="column">
       <Header title="Case Detail" />
 
-      <Flex padding="30px" direction="column" gap={4}>
+      <Flex padding="10px 30px" direction="column" gap={4}>
         {loading && <LoaderCircle />}
 
         {!loading && (

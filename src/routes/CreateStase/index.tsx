@@ -72,7 +72,7 @@ const CreateStase = () => {
     <Flex flexDirection="column">
       <Header title="Pembaruan Stase" />
 
-      <Flex padding="30px" direction="column" gap={10}>
+      <Flex padding="10px 30px" direction="column" gap={10}>
         <CardPeriod monthValue={getCurrentMonth()} />
 
         <StaseDropdown onOpen={onOpen} selectedStase={selectedStase} />

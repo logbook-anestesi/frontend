@@ -24,7 +24,7 @@ const IlmiahDetail = () => {
     <Flex direction="column">
       <Header title={detailRiwayatKelulusan?.scientificTitle || '-'} />
 
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         <DetailIlmiah
           detailIlmiah={detailRiwayatKelulusan}
           onOpenAddRiwayatDiskusi={onOpen}

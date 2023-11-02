@@ -112,7 +112,7 @@ const AddCaseNora = () => {
     <Flex flexDirection="column">
       <Header title="Tambah NORA" />
 
-      <Flex padding="30px" direction="column" gap={4}>
+      <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
         <FormRadioAgeGroup />

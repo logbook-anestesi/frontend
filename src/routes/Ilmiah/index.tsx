@@ -18,7 +18,7 @@ const IlmiahPage = () => {
     <Flex direction="column">
       <Header title="Ilmiah" />
 
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         <ButtonAdd handleOnClick={onOpen} />
 
         <TablePengajuanBimbingan onOpenModal={onOpenAjukanKelulusan} />

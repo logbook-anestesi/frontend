@@ -53,7 +53,7 @@ const CasesReviewDashboardPage = () => {
     <Flex flexDirection="column">
       <Header title="Pending Cases Review" />
 
-      <Flex padding="30px" direction="column" gap="16px">
+      <Flex padding="10px 30px" direction="column" gap="16px">
         <Button
           colorScheme="teal"
           backgroundColor={colors.primaryPurple}

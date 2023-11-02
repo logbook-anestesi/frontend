@@ -60,7 +60,7 @@ const ProfilePageOtherUser = () => {
   return (
     <Flex direction="column">
       <Header title="Profile Residen" />
-      <Flex direction="column" gap="38px" padding="30px">
+      <Flex direction="column" gap="38px" padding="10px 30px">
         <Flex direction="column" align="center" gap="8px">
           <Image
             src={profileById?.imageUrl || doctorIcon}

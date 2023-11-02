@@ -107,7 +107,7 @@ const AddCases = () => {
     <Flex flexDirection="column">
       <Header title="Tambah OK/Surgery" />
 
-      <Flex padding="30px" direction="column" gap={4}>
+      <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
         <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
