@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react';
 import axiosClient from '../../../../networks/apiClient';
 import { Leave } from './types';
+import useSWR from 'swr';
 
 const useGetAllLeave = () => {
-  const [loading, setLoading] = useState(false);
-  const [leaves, setLeaves] = useState<Leave[]>();
+  const {
+    data: leaves,
+    isLoading: loading,
+    mutate,
+  } = useSWR('/leave', async (): Promise<Leave[]> => {
+    const response = await axiosClient.get('/leave');
+    return response.data.data;
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const response = await axiosClient.get('/leave');
-      const data = await response.data.data;
-
-      setLeaves(data);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  return {
-    leaves,
-    loading,
-  };
+  return { loading, leaves, mutate };
 };
 
 export default useGetAllLeave;
