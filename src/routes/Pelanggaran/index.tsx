@@ -1,4 +1,4 @@
-import { Flex, useDisclosure } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import ButtonAdd from './components/ButtonAdd';
 import TableListPelanggaran from './components/TableListPelanggaran';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PelanggaranPage = () => {
   const navigate = useNavigate();
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  // const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
     <Flex direction="column">
