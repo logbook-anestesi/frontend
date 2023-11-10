@@ -86,7 +86,7 @@ const CompetencePage = () => {
       <ModalPromote
         isOpen={isOpenConfirm}
         closeModal={onCloseConfirm}
-        promoteTo={promoteTo}
+        level={competenceData?.length}
         onSubmit={handleSubmitData}
       />
     </Flex>
