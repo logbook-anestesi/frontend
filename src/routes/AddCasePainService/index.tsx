@@ -11,6 +11,7 @@ import useGetCasesForm from '../../hooks/useGetCasesForm';
 import FormProcedurePainService from './components/FormProcedurePainService';
 import FormDPJP from '../AddCases/components/FormDPJP';
 import FormRadioLocationPain from './components/FormLocationPainService';
+import FormLocationLainnya from '../AddCases/components/FormLocationLainnya';
 
 const AddCasePainService = () => {
   const toast = useToast();
@@ -83,6 +84,8 @@ const AddCasePainService = () => {
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormRadioLocationPain />
+        {state.isShowLocationLainnya && <FormLocationLainnya />}
+
         <FormDPJP />
         <FormTypePainService
           painServiceTypes={casesForm?.painServiceTypes || []}
