@@ -1,4 +1,4 @@
-import { Flex, useDisclosure, useToast } from '@chakra-ui/react';
+import { Flex, useDisclosure } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import ButtonTambah from '../../components/ButtonTambah';
 import useGetCompetenceUser from './hooks/useGetCompetenceUser';
@@ -24,7 +24,6 @@ const CompetencePage = () => {
   } = useDisclosure();
 
   const { postData } = usePostCompetencePromotion();
-  const toast = useToast();
 
   if (loading) return <LoaderCircle />;
 

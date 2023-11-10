@@ -38,7 +38,7 @@ const ProfilePage = () => {
     },
     {
       label: 'Level Kompetensi',
-      value: profile?.role,
+      value: profile?.competenceName,
     },
     {
       label: 'Stase',
