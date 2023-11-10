@@ -8,6 +8,7 @@ import usePostCompetencePromotion from './hooks/usePostCompetencePromotion';
 import CardPembekalan from './components/CardPembekalan';
 import CardMagang from './components/CardMagang';
 import CardMandiri from './components/CardMandiri';
+import ModalSuccessRequest from './components/ModalSuccessRequest';
 
 const CompetencePage = () => {
   const { competenceData, loading } = useGetCompetenceUser();
@@ -16,13 +17,16 @@ const CompetencePage = () => {
     onClose: onCloseConfirm,
     onOpen: onOpenConfirm,
   } = useDisclosure();
+  const {
+    isOpen: isOpenSuccess,
+    onClose: onCloseSuccess,
+    onOpen: onOpenSuccess,
+  } = useDisclosure();
 
   const { postData } = usePostCompetencePromotion();
   const toast = useToast();
 
   if (loading) return <LoaderCircle />;
-
-  console.log({ competenceData });
 
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
@@ -44,15 +48,9 @@ const CompetencePage = () => {
 
   const handleSubmitData = async () => {
     await postData(finalData).then(() => {
-      toast({
-        position: 'top',
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-        title: 'Berhasil Kirim Request Kenaikan Kompetensi',
-      });
+      onOpenSuccess();
+      onCloseConfirm();
     });
-    onCloseConfirm();
   };
 
   return (
@@ -89,6 +87,8 @@ const CompetencePage = () => {
         level={competenceData?.length}
         onSubmit={handleSubmitData}
       />
+
+      <ModalSuccessRequest isOpen={isOpenSuccess} closeModal={onCloseSuccess} />
     </Flex>
   );
 };
