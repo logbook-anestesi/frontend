@@ -36,7 +36,7 @@ const LevelCardContainer = ({ profile }: Props) => {
         />
       ) : null}
 
-      {profile?.role === 'RESIDEN' && profile.stationName !== null ? (
+      {profile?.role === 'RESIDEN' ? (
         <LevelCard
           title={profile?.stationName || ''}
           type="Stase"

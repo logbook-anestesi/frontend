@@ -1,13 +1,13 @@
 import { Flex, useDisclosure, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
-import CompetenceCard from './components/CompetenceCard';
 import ButtonTambah from '../../components/ButtonTambah';
 import useGetCompetenceUser from './hooks/useGetCompetenceUser';
 import LoaderCircle from '../../components/LoaderCircle';
 import ModalPromote from './components/ModalPromote';
 import usePostCompetencePromotion from './hooks/usePostCompetencePromotion';
-// import { useMemo } from "react";
-// import { useNavigate } from "react-router-dom";
+import CardPembekalan from './components/CardPembekalan';
+import CardMagang from './components/CardMagang';
+import CardMandiri from './components/CardMandiri';
 
 const CompetencePage = () => {
   const { competenceData, loading } = useGetCompetenceUser();
@@ -21,6 +21,8 @@ const CompetencePage = () => {
   const toast = useToast();
 
   if (loading) return <LoaderCircle />;
+
+  console.log({ competenceData });
 
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
@@ -40,14 +42,6 @@ const CompetencePage = () => {
     promoteTo: promoteTo,
   };
 
-  // const finalData = useMemo(() => {
-  //   return {
-  //     createBy: currentCompetence?.userId || "",
-  //     userId: currentCompetence?.userId || "",
-  //     promoteTo: promoteTo,
-  //   };
-  // }, [currentCompetence?.userId, currentCompetence?.userId]);
-
   const handleSubmitData = async () => {
     await postData(finalData).then(() => {
       toast({
@@ -65,18 +59,28 @@ const CompetencePage = () => {
     <Flex flexDirection="column">
       <Header title="Level Kompetensi" />
       <Flex padding="10px 30px" direction="column" gap="16px">
-        {competenceData?.map((item, index) => (
-          <CompetenceCard
-            competenceNumber={index + 1}
-            competenceLevel={item.level}
-            startDate={item.created}
-            endDate={item.lastUpdated}
-          />
-        ))}
-        <ButtonTambah
-          buttonTitle="Ajukan Kenaikan Kompetensi"
-          onClick={onOpenConfirm}
+        <CardPembekalan
+          startDate={competenceData?.[0]?.created || '-'}
+          isDisabled={competenceData?.length < 1}
+          isActive={competenceData?.length === 1}
         />
+        <CardMagang
+          startDate={competenceData?.[1]?.created || '-'}
+          isDisabled={competenceData?.length < 2}
+          isActive={competenceData?.length === 2}
+        />
+        <CardMandiri
+          startDate={competenceData?.[2]?.created || '-'}
+          isDisabled={competenceData?.length < 3}
+          isActive={competenceData?.length === 3}
+        />
+
+        {competenceData?.length < 3 && (
+          <ButtonTambah
+            buttonTitle="Ajukan Kenaikan Kompetensi"
+            onClick={onOpenConfirm}
+          />
+        )}
       </Flex>
 
       <ModalPromote

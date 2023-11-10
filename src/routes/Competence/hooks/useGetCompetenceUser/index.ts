@@ -4,7 +4,7 @@ import { CompetenceUser } from './types';
 
 const useGetCompetenceUser = () => {
   const [loading, setLoading] = useState(false);
-  const [rawCompetenceData, setCompetenceData] = useState<CompetenceUser[]>();
+  const [rawCompetenceData, setCompetenceData] = useState<CompetenceUser[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
