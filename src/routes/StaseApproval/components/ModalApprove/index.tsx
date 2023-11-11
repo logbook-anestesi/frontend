@@ -18,9 +18,16 @@ interface Props {
   closeModal: () => void;
   staseId: string;
   status: 'APPROVED' | 'REJECTED';
+  residenName: string;
 }
 
-const ModalApprove = ({ closeModal, isOpen, staseId, status }: Props) => {
+const ModalApprove = ({
+  closeModal,
+  isOpen,
+  staseId,
+  status,
+  residenName,
+}: Props) => {
   const toast = useToast();
   const [notes, setNotes] = useState('');
   const { mutate } = useGetStaseApprovalList();
@@ -73,7 +80,7 @@ const ModalApprove = ({ closeModal, isOpen, staseId, status }: Props) => {
             Anda akan {status === 'APPROVED' ? 'Menyetujui' : 'Menolak'}
           </Text>
           <Text as="b" mb={4}>
-            {staseId}
+            {residenName}
           </Text>
 
           <FormNotes setNotes={setNotes} />

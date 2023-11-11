@@ -90,6 +90,11 @@ const StaseApproval = () => {
         isOpen={isOpen}
         staseId={selectedStaseId}
         status={status || 'APPROVED'}
+        residenName={
+          finalApprovalData?.find(
+            (approvalData) => approvalData.id === selectedStaseId,
+          )?.userName || '-'
+        }
       />
 
       <ModalApproveAll
