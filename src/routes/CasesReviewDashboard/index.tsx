@@ -1,4 +1,4 @@
-import { Button, Flex, useDisclosure, useToast } from '@chakra-ui/react';
+import { Button, Flex, Text, useDisclosure, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import useGetPendingReview from './hooks/useGetPendingReview';
 import { colors } from '../../constants/colors';
@@ -54,15 +54,23 @@ const CasesReviewDashboardPage = () => {
       <Header title="Pending Cases Review" />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
-        <Button
-          colorScheme="teal"
-          backgroundColor={colors.primaryPurple}
-          color={colors.white}
-          isLoading={loadingApprovalAll}
-          onClick={handleApproveAll}
-        >
-          Approve All
-        </Button>
+        {(reviewData?.length || 0) > 0 && (
+          <Button
+            colorScheme="teal"
+            backgroundColor={colors.primaryPurple}
+            color={colors.white}
+            isLoading={loadingApprovalAll}
+            onClick={handleApproveAll}
+          >
+            Approve All
+          </Button>
+        )}
+
+        {reviewData?.length === 0 && (
+          <Text align="center" mt={10}>
+            Belum ada case untuk di review
+          </Text>
+        )}
 
         {loading ? (
           <LoaderCircle />
