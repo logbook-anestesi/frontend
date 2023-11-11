@@ -79,7 +79,10 @@ const TableData = ({ examList }: Props) => {
         type: exam.type,
         isTheory: exam.isTheory,
         examinerName: exam.examinerName,
-        approvalDate: convertDateForExam(exam.approvalConfirmDate),
+        approvalDate:
+          exam.approvalStatus === 'PENDING'
+            ? '-'
+            : convertDateForExam(exam.approvalConfirmDate),
         status: exam.approvalStatus,
       };
     });
