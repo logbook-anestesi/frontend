@@ -67,34 +67,36 @@ const CardApproval = ({
         {approvalData.status}
       </Text>
 
-      <Flex justify="end" gap={4}>
-        <Flex
-          border="2px"
-          borderColor={colors.primaryGreen}
-          borderRadius={8}
-          padding={1.5}
-          onClick={() => {
-            setStatus('APPROVED');
-            setSelectedStaseId(approvalData.id);
-            onOpenModal();
-          }}
-        >
-          <CheckIcon color={colors.primaryGreen} />
+      {approvalData.status === 'IN_PROGRESS' && (
+        <Flex justify="end" gap={4}>
+          <Flex
+            border="2px"
+            borderColor={colors.primaryGreen}
+            borderRadius={8}
+            padding={1.5}
+            onClick={() => {
+              setStatus('APPROVED');
+              setSelectedStaseId(approvalData.id);
+              onOpenModal();
+            }}
+          >
+            <CheckIcon color={colors.primaryGreen} />
+          </Flex>
+          <Flex
+            border="2px"
+            borderColor={colors.primaryRed}
+            borderRadius={8}
+            padding={1.5}
+            onClick={() => {
+              setStatus('REJECTED');
+              setSelectedStaseId(approvalData.id);
+              onOpenModal();
+            }}
+          >
+            <CloseIcon color={colors.primaryRed} />
+          </Flex>
         </Flex>
-        <Flex
-          border="2px"
-          borderColor={colors.primaryRed}
-          borderRadius={8}
-          padding={1.5}
-          onClick={() => {
-            setStatus('REJECTED');
-            setSelectedStaseId(approvalData.id);
-            onOpenModal();
-          }}
-        >
-          <CloseIcon color={colors.primaryRed} />
-        </Flex>
-      </Flex>
+      )}
 
       <Divider mt={5} />
     </Flex>
