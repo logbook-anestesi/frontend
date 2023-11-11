@@ -15,7 +15,7 @@ const FormTipeIlmiah = ({ setScientificType }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Ilmiah
+        Tipe Ilmiah*
       </Text>
 
       <Select placeholder="Pilih tipe ilmiah" onChange={handleChange}>

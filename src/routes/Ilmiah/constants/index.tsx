@@ -17,7 +17,7 @@ export const SCIENTIFIC_TYPE = [
   },
   {
     title: 'Critical Appraisal',
-    value: 'CRIRICAL_APPRAISAL',
+    value: 'CRITICAL_APPRAISAL',
   },
   {
     title: 'Proposal',

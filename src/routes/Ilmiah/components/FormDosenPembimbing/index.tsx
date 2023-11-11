@@ -14,7 +14,7 @@ const FormDosenPembimbing = ({ setApprovalUser, listPembimbing }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Pembimbing
+        Pembimbing*
       </Text>
 
       <Flex

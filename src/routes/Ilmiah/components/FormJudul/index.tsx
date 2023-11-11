@@ -13,7 +13,7 @@ const FormJudul = ({ setTitle }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Judul
+        Judul*
       </Text>
 
       <Input
