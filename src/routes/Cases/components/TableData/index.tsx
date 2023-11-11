@@ -11,7 +11,6 @@ interface DataRow {
   dpjp: string;
   caseType: string;
   status: string;
-  supervising: string;
   idCaseFull: string;
 }
 
@@ -79,11 +78,6 @@ const TableData = ({ caseList }: Props) => {
         <Badge colorScheme={getColorScheme(row.status)}>{row.status}</Badge>
       ),
     },
-    {
-      name: 'Supervising',
-      selector: (row) => row.supervising,
-      sortable: true,
-    },
   ];
 
   const data = useMemo(() => {
@@ -98,7 +92,6 @@ const TableData = ({ caseList }: Props) => {
         date: formatDateMonthYear(new Date(singleCase?.date)),
         caseType: singleCase.caseType,
         status: singleCase.status,
-        supervising: singleCase?.supervisees[0]?.userName,
       };
     });
   }, [caseList]);
