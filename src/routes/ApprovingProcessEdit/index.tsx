@@ -139,7 +139,6 @@ const ApprovingProcessEdit = () => {
   return (
     <Flex flexDirection="column">
       <Header
-        pathBack="/review/cases"
         title={`Approve ${caseData?.caseType || ''} - ${
           caseData?.id.substring(0, 4) || ''
         }`}
