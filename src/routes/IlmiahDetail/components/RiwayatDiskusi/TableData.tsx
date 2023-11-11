@@ -139,13 +139,12 @@ const TableData = ({ riwayatDiskusi }: Props) => {
 
   const data = useMemo(() => {
     return riwayatDiskusi?.map((diskusi, idx) => {
-      console.log({ riwayatDiskusi });
       return {
         idx: idx + 1,
         tanggal: diskusi.discussionDate,
         title: diskusi.title,
         deskripsi: diskusi.description,
-        approvals: diskusi.approvalUserName,
+        approvals: diskusi.approvals.map((approval) => approval.name).join(','),
         history: diskusi.scientificLogs
           .map(
             (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,

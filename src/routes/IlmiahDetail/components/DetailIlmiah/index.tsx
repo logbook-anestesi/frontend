@@ -55,8 +55,8 @@ const DetailIlmiah = ({
         {detailIlmiah?.approvals.length === 0 ? (
           <Text as="b"> - </Text>
         ) : (
-          detailIlmiah?.approvals.map((approval) => (
-            <Flex gap={4} align="center">
+          detailIlmiah?.approvals.map((approval, idx) => (
+            <Flex gap={4} align="center" key={`approval-${idx}`}>
               <Text as="b" key={approval.id}>
                 {approval?.name}
               </Text>

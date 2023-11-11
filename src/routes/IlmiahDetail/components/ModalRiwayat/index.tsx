@@ -25,10 +25,10 @@ const ModalRiwayat = ({ closeModal, isOpen, riwayat }: Props) => {
         <ModalCloseButton />
 
         <Flex direction="column" gap={4}>
-          {riwayat.map((item) => (
-            <Text>{`${convertDateForIlmiah(item.created)} - ${
-              item.changes
-            }`}</Text>
+          {riwayat.map((item, idx) => (
+            <Text key={`itemRiwayat ${idx}`}>{`${convertDateForIlmiah(
+              item.created,
+            )} - ${item.changes}`}</Text>
           ))}
         </Flex>
       </ModalContent>

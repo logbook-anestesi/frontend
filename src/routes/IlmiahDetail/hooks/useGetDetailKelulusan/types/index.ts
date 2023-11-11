@@ -28,7 +28,7 @@ export interface Diskusi {
   title: string;
   description: string;
   status: string;
-  approvalUserName: string;
+  approvals: Approval[];
   userId: string;
   scientificGraduationId: string;
   discussionDate: string;
