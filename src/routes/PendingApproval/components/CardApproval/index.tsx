@@ -15,6 +15,7 @@ interface Props {
   setTypeItem: React.Dispatch<
     React.SetStateAction<'ilmiah' | 'exam' | 'graduation'>
   >;
+  setResidenName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const CardApproval = ({
@@ -23,6 +24,7 @@ const CardApproval = ({
   setSelectedItemId,
   setStatusApprove,
   setTypeItem,
+  setResidenName,
 }: Props) => {
   const navigate = useNavigate();
 
@@ -80,6 +82,9 @@ const CardApproval = ({
           onClick={() => {
             setTypeItem('ilmiah');
             setStatusApprove('APPROVED');
+            setResidenName(
+              `${scientificData.type} - ${scientificData.title} - ${scientificData.userName}`,
+            );
             onOpenModal();
           }}
         >
@@ -93,6 +98,9 @@ const CardApproval = ({
           onClick={() => {
             setTypeItem('ilmiah');
             setStatusApprove('REJECTED');
+            setResidenName(
+              `${scientificData.type} - ${scientificData.title} - ${scientificData.userName}`,
+            );
             onOpenModal();
           }}
         >

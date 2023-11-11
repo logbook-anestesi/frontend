@@ -18,6 +18,7 @@ const PendingApproval = () => {
     useGetScientificGraduationApprovals();
   const [selectedItemId, setSelectedItemId] = useState('');
   const [statusApprove, setStatusApprove] = useState('');
+  const [residenName, setResidenName] = useState('');
   const [typeItem, setTypeItem] = useState<'ilmiah' | 'exam' | 'graduation'>(
     'ilmiah',
   );
@@ -39,6 +40,7 @@ const PendingApproval = () => {
               setSelectedItemId={setSelectedItemId}
               setStatusApprove={setStatusApprove}
               setTypeItem={setTypeItem}
+              setResidenName={setResidenName}
             />
           ))
         )}
@@ -52,6 +54,7 @@ const PendingApproval = () => {
             setStatusApprove={setStatusApprove}
             setTypeItem={setTypeItem}
             key={examApproval.id}
+            setResidenName={setResidenName}
           />
         ))}
 
@@ -64,6 +67,7 @@ const PendingApproval = () => {
             setStatusApprove={setStatusApprove}
             setTypeItem={setTypeItem}
             key={graduationApproval.id}
+            setResidenName={setResidenName}
           />
         ))}
       </Flex>
@@ -82,6 +86,7 @@ const PendingApproval = () => {
         isOpen={isOpen}
         statusApprove={statusApprove}
         typeItem={typeItem}
+        residenName={residenName}
       />
     </Flex>
   );

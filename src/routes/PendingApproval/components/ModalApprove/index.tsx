@@ -20,6 +20,7 @@ interface Props {
   itemId: string;
   statusApprove: string;
   typeItem: string;
+  residenName: string;
 }
 
 const ModalApprove = ({
@@ -28,6 +29,7 @@ const ModalApprove = ({
   itemId,
   statusApprove,
   typeItem,
+  residenName,
 }: Props) => {
   const toast = useToast();
   const { createApproval, loading } = useAddApproval();
@@ -170,7 +172,7 @@ const ModalApprove = ({
             Anda akan {statusApprove === 'APPROVED' ? 'Menyetujui' : 'Menolak'}{' '}
           </Text>
           <Text as="b" mb={4}>
-            {itemId}
+            {residenName || '-'}
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
