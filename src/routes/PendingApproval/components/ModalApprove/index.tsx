@@ -169,7 +169,7 @@ const ModalApprove = ({
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b">
-            Anda akan {statusApprove === 'APPROVED' ? 'Menyetujui' : 'Menolak'}{' '}
+            Anda akan {statusApprove === 'APPROVED' ? 'menyetujui' : 'menolak'}
           </Text>
           <Text as="b" mb={4}>
             {residenName || '-'}
