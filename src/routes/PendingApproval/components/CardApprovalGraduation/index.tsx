@@ -1,7 +1,6 @@
 import { Divider, Flex, Image, Text } from '@chakra-ui/react';
 import profileIcon from '../../assets/profileIcon.png';
 import { colors } from '../../../../constants/colors';
-import ButtonFile from '../ButtonFile';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { ScientificGraduation } from '../../hooks/useGetGraduationApproval/types';
@@ -28,11 +27,13 @@ const CardApprovalGraduation = ({
 }: Props) => {
   const navigate = useNavigate();
 
-  const handleClickToDetail = () => {
-    navigate('/cases/details', {
-      state: { caseId: scientificData?.id },
-    });
-  };
+  // const handleClickToDetail = () => {
+  //   navigate('/ilmiah/details', {
+  //     state: {
+  //       ilmiahId: scientificData.id,
+  //     },
+  //   });
+  // };
 
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
@@ -63,10 +64,10 @@ const CardApprovalGraduation = ({
           </Flex>
         </Flex>
 
-        <ButtonFile
+        {/* <ButtonFile
           title={scientificData?.scientificDocumentLink.substring(0, 10)}
           handleClick={handleClickToDetail}
-        />
+        /> */}
       </Flex>
 
       <Flex
