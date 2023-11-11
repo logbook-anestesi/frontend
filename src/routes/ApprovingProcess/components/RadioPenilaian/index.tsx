@@ -24,7 +24,7 @@ const RadioPenilaian = () => {
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Age Group
+        Penilaian
       </Text>
 
       <RadioGroup
