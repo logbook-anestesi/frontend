@@ -5,6 +5,7 @@ import ButtonFile from '../ButtonFile';
 import CardApprovalButton from '../CardApprovalButton';
 import { ReviewItem } from '../../hooks/useGetPendingReview/types';
 import { convertDateForNotification } from '../../../../helpers';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   caseData: ReviewItem;
@@ -12,6 +13,14 @@ interface Props {
 }
 
 const CardApproval = ({ caseData, onClick }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClickProfile = () => {
+    navigate('/profile/other-user', {
+      state: { userId: caseData.userId },
+    });
+  };
+
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
@@ -23,7 +32,7 @@ const CardApproval = ({ caseData, onClick }: Props) => {
           <Text as="b" mb={1}>
             Cases: {caseData.caseType}
           </Text>
-          <Flex align="center" gap={2}>
+          <Flex align="center" gap={2} onClick={handleClickProfile}>
             <Image src={profileIcon} alt="" width={3} height={4} />
             <Text color={colors.darkGrey} fontSize="sm">
               {caseData?.userName}
