@@ -12,7 +12,9 @@ interface Props {
   onCloseModal: () => void;
   setSelectedItemId: React.Dispatch<React.SetStateAction<string>>;
   setStatusApprove: React.Dispatch<React.SetStateAction<string>>;
-  setTypeItem: React.Dispatch<React.SetStateAction<'ilmiah' | 'exam'>>;
+  setTypeItem: React.Dispatch<
+    React.SetStateAction<'ilmiah' | 'exam' | 'graduation'>
+  >;
 }
 
 const CardApproval = ({

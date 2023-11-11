@@ -4,10 +4,10 @@ import { colors } from '../../../../constants/colors';
 import ButtonFile from '../ButtonFile';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
-import { ExamApproval } from '../../hooks/useGetAllExamApprovals/types';
+import { ScientificGraduation } from '../../hooks/useGetGraduationApproval/types';
 
 interface Props {
-  examData: ExamApproval;
+  scientificData: ScientificGraduation;
   onOpenModal: () => void;
   onCloseModal: () => void;
   setSelectedItemId: React.Dispatch<React.SetStateAction<string>>;
@@ -17,8 +17,8 @@ interface Props {
   >;
 }
 
-const CardApprovalExam = ({
-  examData,
+const CardApprovalGraduation = ({
+  scientificData,
   onOpenModal,
   setSelectedItemId,
   setStatusApprove,
@@ -28,13 +28,13 @@ const CardApprovalExam = ({
 
   const handleClickToDetail = () => {
     navigate('/cases/details', {
-      state: { caseId: examData?.id },
+      state: { caseId: scientificData?.id },
     });
   };
 
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
-      state: { userId: examData?.userId },
+      state: { userId: scientificData?.userId },
     });
   };
 
@@ -46,7 +46,9 @@ const CardApprovalExam = ({
 
       <Flex direction="column" gap={3} mb={1}>
         <Flex direction="column" gap={1}>
-          <Text as="b">{examData?.type}</Text>
+          <Text as="b">
+            {scientificData.scientificType} - {scientificData?.scientificTitle}
+          </Text>
           <Flex align="center" gap={3}>
             <Image src={profileIcon} alt="" width={3} height={4} />
             <Text
@@ -54,13 +56,13 @@ const CardApprovalExam = ({
               fontSize="sm"
               onClick={handleClickProfile}
             >
-              {examData?.userName}
+              {scientificData?.userName}
             </Text>
           </Flex>
         </Flex>
 
         <ButtonFile
-          title={examData?.id.substring(0, 10)}
+          title={scientificData?.scientificDocumentLink.substring(0, 10)}
           handleClick={handleClickToDetail}
         />
       </Flex>
@@ -68,7 +70,7 @@ const CardApprovalExam = ({
       <Flex
         justify="end"
         gap={4}
-        onClick={() => setSelectedItemId(examData?.id)}
+        onClick={() => setSelectedItemId(scientificData?.id)}
       >
         <Flex
           border="2px"
@@ -76,7 +78,7 @@ const CardApprovalExam = ({
           borderRadius={8}
           padding={1.5}
           onClick={() => {
-            setTypeItem('exam');
+            setTypeItem('graduation');
             setStatusApprove('APPROVED');
             onOpenModal();
           }}
@@ -89,7 +91,7 @@ const CardApprovalExam = ({
           borderRadius={8}
           padding={1.5}
           onClick={() => {
-            setTypeItem('exam');
+            setTypeItem('graduation');
             setStatusApprove('REJECTED');
             onOpenModal();
           }}
@@ -103,4 +105,4 @@ const CardApprovalExam = ({
   );
 };
 
-export default CardApprovalExam;
+export default CardApprovalGraduation;

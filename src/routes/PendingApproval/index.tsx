@@ -7,21 +7,27 @@ import ModalApprove from './components/ModalApprove';
 import { useState } from 'react';
 import useGetAllExamApprovals from './hooks/useGetAllExamApprovals';
 import CardApprovalExam from './components/CardApprovalExam';
+import useGetScientificGraduationApprovals from './hooks/useGetGraduationApproval';
+import CardApprovalGraduation from './components/CardApprovalGraduation';
 
 const PendingApproval = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, reviewData } = useGetScientificApprovals();
   const { examApprovals, loading: examLoading } = useGetAllExamApprovals();
+  const { loading: loadingGraduation, reviewData: graduationReviewData } =
+    useGetScientificGraduationApprovals();
   const [selectedItemId, setSelectedItemId] = useState('');
   const [statusApprove, setStatusApprove] = useState('');
-  const [typeItem, setTypeItem] = useState<'ilmiah' | 'exam'>('ilmiah');
+  const [typeItem, setTypeItem] = useState<'ilmiah' | 'exam' | 'graduation'>(
+    'ilmiah',
+  );
 
   return (
     <Flex flexDirection="column">
       <Header title="Pending Approval" />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
-        {loading || examLoading ? (
+        {loading || examLoading || loadingGraduation ? (
           <LoaderCircle />
         ) : (
           reviewData?.map((scientificApproval) => (
@@ -46,6 +52,18 @@ const PendingApproval = () => {
             setStatusApprove={setStatusApprove}
             setTypeItem={setTypeItem}
             key={examApproval.id}
+          />
+        ))}
+
+        {graduationReviewData?.map((graduationApproval) => (
+          <CardApprovalGraduation
+            onCloseModal={onClose}
+            onOpenModal={onOpen}
+            scientificData={graduationApproval}
+            setSelectedItemId={setSelectedItemId}
+            setStatusApprove={setStatusApprove}
+            setTypeItem={setTypeItem}
+            key={graduationApproval.id}
           />
         ))}
       </Flex>

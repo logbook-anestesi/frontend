@@ -12,6 +12,7 @@ import useAddApproval from '../../hooks/useAddApprovals';
 import useAddApprovalExam from '../../hooks/useAddApprovalsExam';
 import useGetAllExamApprovals from '../../hooks/useGetAllExamApprovals';
 import useGetScientificApprovals from '../../hooks/useGetAllApprovals';
+import useAddApprovalGraduation from '../../hooks/useAddApprovalGraduation';
 
 interface Props {
   isOpen: boolean;
@@ -31,6 +32,8 @@ const ModalApprove = ({
   const toast = useToast();
   const { createApproval, loading } = useAddApproval();
   const { createApprovalExam, loading: loadingExam } = useAddApprovalExam();
+  const { createApprovalGraduation, loading: loadingGraduation } =
+    useAddApprovalGraduation();
   const { mutate: mutateExam } = useGetAllExamApprovals();
   const { mutate: mutateScientific } = useGetScientificApprovals();
 
@@ -116,6 +119,47 @@ const ModalApprove = ({
 
       return;
     }
+
+    if (typeItem === 'graduation') {
+      const response = await createApprovalGraduation({
+        productId: itemId,
+        status: type,
+      });
+
+      if (response?.success) {
+        toast({
+          title: 'Success',
+          description: `Success ${
+            statusApprove === 'APPROVED' ? 'Approve' : 'Reject'
+          } Graduation`,
+          status: 'success',
+          position: 'top',
+          duration: 5000,
+          isClosable: true,
+        });
+
+        mutateExam();
+        closeModal();
+        return;
+      }
+
+      if (!response?.success) {
+        toast({
+          title: `Failed ${
+            statusApprove === 'APPROVED' ? 'Approve' : 'Reject'
+          } Graduation`,
+          description: response?.message,
+          status: 'error',
+          position: 'top',
+          duration: 9000,
+          isClosable: true,
+        });
+
+        closeModal();
+      }
+
+      return;
+    }
   };
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
@@ -134,7 +178,7 @@ const ModalApprove = ({
               colorScheme="teal"
               backgroundColor={colors.primaryPurple}
               onClick={() => handleApproval(statusApprove)}
-              isLoading={loading || loadingExam}
+              isLoading={loading || loadingExam || loadingGraduation}
             >
               Ya
             </Button>
