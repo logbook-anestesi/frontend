@@ -72,6 +72,16 @@ const LevelCardContainer = ({ profile }: Props) => {
         />
       ) : null}
 
+      {profile?.role === 'KONSULEN' && (
+        <LevelCardWithLogo
+          title="Pelanggaran"
+          type="Pending Review"
+          path="/pelanggaran"
+          icon={cases}
+          cardNumber={0}
+        />
+      )}
+
       {/* KONSULEN or KETUA MODULE ?? */}
       {profile?.role === 'KONSULEN' && profile.stationName ? (
         <LevelCardStaseReview staseName={profile.stationName} />
