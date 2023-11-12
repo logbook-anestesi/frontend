@@ -46,7 +46,7 @@ const ModalPromote = ({ isOpen, closeModal, onSubmit, level }: Props) => {
           </Flex>
 
           <Text color={colors.darkGrey} fontSize="sm" px={10}>
-            Mohon pastikan Anda telah memilih stase yang Benar
+            Permohonan Anda akan diajukan kepada SPS dan KPS
           </Text>
 
           <Flex direction="column" gap={2} width="100%">
