@@ -1,4 +1,3 @@
-'use client';
 import axiosClient from '../../networks/apiClient';
 import { CasesForm } from './types';
 import useSWR from 'swr';

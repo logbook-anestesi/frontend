@@ -8,12 +8,14 @@ import LoaderCircle from '../../../../components/LoaderCircle';
 import LevelCardStaseReview from '../LevelCardStaseReview';
 import { capitalizeFirstLetter } from '../../../../helpers';
 import usetGetCounterNotificationKonsulen from '../../hooks/useReadNotificationsKonsulen';
+import usetGetCounterNotificationResiden from '../../hooks/useReadNotificationsResiden';
 
 interface Props {
   profile?: Profile;
 }
 
 const LevelCardContainer = ({ profile }: Props) => {
+  const { notificationCounterResiden } = usetGetCounterNotificationResiden();
   const { notificationCounter } = usetGetCounterNotificationKonsulen();
   const { competenceData, loading } = useGetCompetenceUser();
   const currentCompetence = competenceData?.find(
@@ -38,7 +40,11 @@ const LevelCardContainer = ({ profile }: Props) => {
 
       {profile?.role === 'RESIDEN' ? (
         <LevelCard
-          title={profile?.stationName || ''}
+          title={
+            notificationCounterResiden?.isCurrentMonthStationEntryExist
+              ? profile?.stationName
+              : ''
+          }
           type="Stase"
           path="/stase"
         />

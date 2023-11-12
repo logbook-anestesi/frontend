@@ -65,7 +65,7 @@ const CreateStase = () => {
   };
 
   const handleCloseSuccess = () => {
-    navigate('/stase');
+    navigate(-1);
   };
 
   return (

@@ -9,7 +9,7 @@ const NotificationCenter = () => {
   const { notificationCounterResiden } = usetGetCounterNotificationResiden();
   const { isResiden } = useGetProfile();
 
-  if (isResiden) {
+  if (isResiden && notificationCounterResiden) {
     return (
       <Flex direction="column" gap={3}>
         {notificationCounterResiden?.totalPendingApproval > 0 && (
