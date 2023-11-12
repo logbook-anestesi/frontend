@@ -74,8 +74,8 @@ const LevelCardContainer = ({ profile }: Props) => {
 
       {profile?.role === 'KONSULEN' && (
         <LevelCardWithLogo
-          title="Pelanggaran"
-          type="Pending Review"
+          title="Daftar Pelanggaran"
+          type=""
           path="/pelanggaran"
           icon={cases}
           cardNumber={0}
