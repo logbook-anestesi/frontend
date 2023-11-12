@@ -7,11 +7,17 @@ import NotifPendingApproval from '../../../../components/NotifPendingApproval';
 
 const NotificationCenter = () => {
   const { notificationCounterResiden } = usetGetCounterNotificationResiden();
-  const { isKSPSPS, isKonsulen, isResiden } = useGetProfile();
+  const { isResiden } = useGetProfile();
 
   if (isResiden) {
     return (
       <Flex direction="column" gap={3}>
+        {notificationCounterResiden?.totalPendingApproval > 0 && (
+          <NotifPendingApproval
+            totalPending={notificationCounterResiden.totalPendingApproval}
+          />
+        )}
+
         {!notificationCounterResiden?.isCurrentMonthStationEntryExist && (
           <InfoBox
             type="alert"
@@ -20,22 +26,8 @@ const NotificationCenter = () => {
             message="Anda belum memperbarui stase"
           />
         )}
-
-        {notificationCounterResiden?.totalPendingApproval > 0 && (
-          <NotifPendingApproval
-            totalPending={notificationCounterResiden.totalPendingApproval}
-          />
-        )}
       </Flex>
     );
-  }
-
-  if (isKonsulen) {
-    return <Flex></Flex>;
-  }
-
-  if (isKSPSPS) {
-    return <Flex></Flex>;
   }
 
   return null;
