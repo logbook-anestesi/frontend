@@ -102,8 +102,6 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
     setShowSpsKps(false);
   }, [scientificType]);
 
-  console.log('999 scientific type', { scientificType });
-
   return (
     <Modal isOpen={isOpen} onClose={handleOnClose} isCentered>
       <ModalOverlay />
