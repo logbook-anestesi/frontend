@@ -1,9 +1,6 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { CaseProgressElement } from '../../hooks/useGetCaseProgress/types';
 import { useMemo } from 'react';
-import { formatDateMonthYear } from '../../../../helpers';
-import { useNavigate } from 'react-router-dom';
-import { Badge } from '@chakra-ui/react';
 
 interface DataRow {
   id: string;
@@ -20,8 +17,6 @@ interface Props {
 }
 
 const TableData = ({ caseProgressList }: Props) => {
-  const navigate = useNavigate();
-
   const columns: TableColumn<DataRow>[] = [
     {
       name: 'Nomor Elemen',

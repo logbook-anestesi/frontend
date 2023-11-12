@@ -1,6 +1,5 @@
-import { Flex, useDisclosure } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import Header from '../../components/Header';
-import { useState } from 'react';
 import useGetCaseProgress from './hooks/useGetCaseProgress';
 import LoaderCircle from '../../components/LoaderCircle';
 import TableData from './components/TableData';
@@ -8,7 +7,6 @@ import BottomNav from '../Cases/components/BottomNav';
 
 const CaseProgress = () => {
   const { caseProgressList, loading } = useGetCaseProgress();
-  const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
     <Flex flexDirection="column" height="100vh">
