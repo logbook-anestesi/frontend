@@ -7,7 +7,7 @@ import useGetCompetenceUser from '../../../Competence/hooks/useGetCompetenceUser
 import LoaderCircle from '../../../../components/LoaderCircle';
 import LevelCardStaseReview from '../LevelCardStaseReview';
 import { capitalizeFirstLetter } from '../../../../helpers';
-import usetGetCounterNotificationKonsulen from '../../hooks/useReadNotifications';
+import usetGetCounterNotificationKonsulen from '../../hooks/useReadNotificationsKonsulen';
 
 interface Props {
   profile?: Profile;
