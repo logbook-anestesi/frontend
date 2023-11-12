@@ -3,7 +3,6 @@ import axiosClient from '../../../../networks/apiClient';
 
 interface PayloadType {
   residenUserId: string;
-  konsulenUserId: string;
   severity: string;
   title: string;
   description: string;

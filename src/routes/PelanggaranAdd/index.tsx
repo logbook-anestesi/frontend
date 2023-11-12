@@ -54,7 +54,6 @@ const PelanggaranAddPage = () => {
       severity: severity,
       title: title,
       violationDate: severityDate,
-      konsulenUserId: '',
     });
 
     if (response?.success) {
