@@ -11,7 +11,7 @@ const FormRadioSeverity = ({ severity, setSeverity }: Props) => {
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Severity
+        Severity*
       </Text>
 
       <RadioGroup
