@@ -8,8 +8,8 @@ const Footer = () => {
       width="100%"
       align="center"
       padding={2}
-      position={'absolute'}
       bottom={0}
+      marginTop={10}
     >
       © Departemen Anestesi FKUI 2023
     </Text>
