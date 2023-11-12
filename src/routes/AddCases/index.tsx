@@ -80,7 +80,7 @@ const AddCases = () => {
         isClosable: true,
       });
 
-      navigate('/cases');
+      navigate(-1);
       return;
     }
 

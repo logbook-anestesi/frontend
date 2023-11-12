@@ -35,7 +35,7 @@ const AddCasePoliPerioperative = () => {
         isClosable: true,
       });
 
-      navigate('/cases');
+      navigate(-1);
       return;
     }
 
