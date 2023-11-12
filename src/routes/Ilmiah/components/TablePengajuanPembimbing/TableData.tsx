@@ -184,7 +184,7 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
             (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
           )
           .join('\n'),
-        approvals: singleIlmiah?.approvals?.map((item) => item.name).join('\n'),
+        approvals: singleIlmiah?.approvals?.map((item) => item.name).join(', '),
         status: singleIlmiah?.scientificStatus,
       };
     });

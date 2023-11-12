@@ -172,7 +172,7 @@ const TableData = ({ riwayatKelulusan }: Props) => {
             (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
           )
           .join('\n'),
-        approvals: singleRiwayat.approvals.map((item) => item.name).join('\n'),
+        approvals: singleRiwayat.approvals.map((item) => item.name).join(','),
         status: singleRiwayat?.scientificGraduationStatus,
       };
     });

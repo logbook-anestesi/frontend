@@ -51,6 +51,18 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
   };
 
   const handleClickSubmit = async () => {
+    if (scientificType === '' || title === '' || approvalUser.length === 0) {
+      toast({
+        title: 'Harap isi semua data',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+        isClosable: true,
+      });
+
+      return;
+    }
+
     const response = await createIlmiah({
       approvalUserIds: approvalUser?.map((user) => user.id),
       scientificType: scientificType,
@@ -70,7 +82,7 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
       mutateRiwayatKelulusan();
       mutateRiwayatPengajuan();
 
-      closeModal();
+      handleOnClose();
     }
 
     if (!response?.success) {
