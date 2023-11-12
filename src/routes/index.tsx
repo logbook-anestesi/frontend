@@ -10,6 +10,7 @@ import StasePage from './Stase';
 import UsersPage from './Users';
 import CreateStase from './CreateStase';
 import CasesPage from './Cases';
+import CaseProgressPage from './CaseProgress';
 import AddCasesPage from './AddCases';
 import CompetencePage from './Competence';
 import CasesReviewDashboardPage from './CasesReviewDashboard';
@@ -62,6 +63,7 @@ const MainRoutes = () => {
         <Route path="/dashboard/station" element={<StationDashboardPage />} />
 
         <Route path="/cases" element={<CasesPage />} />
+        <Route path="/cases/progress" element={<CaseProgressPage />} />
         <Route path="/cases/add/ok" element={<AddCasesPage />} />
         <Route path="/cases/add/pacu" element={<AddCasePacu />} />
         <Route path="/cases/add/nora" element={<AddCaseNora />} />

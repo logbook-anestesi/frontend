@@ -41,7 +41,7 @@ const Cases = () => {
           )}
         </Flex>
 
-        <BottomNav />
+        <BottomNav isProgressPage={false} />
       </Flex>
     </Flex>
   );
