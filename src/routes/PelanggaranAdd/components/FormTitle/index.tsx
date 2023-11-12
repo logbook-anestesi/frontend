@@ -13,7 +13,7 @@ const FormTitle = ({ setTitle }: Props) => {
   return (
     <Flex direction="column">
       <Text fontSize="sm" color={colors.darkGrey}>
-        Judul Peanggaran*
+        Judul Pelanggaran*
       </Text>
 
       <Input
