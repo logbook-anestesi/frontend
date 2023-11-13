@@ -17,7 +17,7 @@ const FormRadioExamType = ({ setExamType }: Props) => {
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Jenis Exam
+        Jenis Ujian
         <Box as="span" color={colors.primaryRed}>
           *
         </Box>

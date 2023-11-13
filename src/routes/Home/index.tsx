@@ -36,7 +36,7 @@ const Home = () => {
 
         {isResiden && <ReportCardContainer />}
 
-        <ButtonTambah buttonTitle="Tambah Cases" onClick={onOpen} />
+        <ButtonTambah buttonTitle="Tambah Kasus" onClick={onOpen} />
 
         {/* Modal Section */}
         <ModalSelectCases closeModal={onClose} isOpen={isOpen} />

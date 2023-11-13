@@ -12,7 +12,7 @@ const ButtonAddCase = ({ caseName }: Props) => {
   const navigate = useNavigate();
 
   const notSelectYet = useMemo(() => {
-    return caseName === 'Pilih Tipe Case';
+    return caseName === 'Pilih Tipe Kasus';
   }, [caseName]);
 
   const handleOnClick = () => {
@@ -64,7 +64,7 @@ const ButtonAddCase = ({ caseName }: Props) => {
       mb={3}
     >
       {notSelectYet ? (
-        <Text as="b">Pilih Tipe Cases</Text>
+        <Text as="b">Pilih Tipe Kasus</Text>
       ) : (
         <Text as="b">+ Tambah {caseName}</Text>
       )}

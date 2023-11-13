@@ -28,7 +28,7 @@ const ModalSuccessRequest = ({ isOpen, closeModal }: Props) => {
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" gap={5} textAlign="center">
           <Text px={2} as="b">
-            Permohonan Anda telah dikirim ke SPS dan KPD
+            Permohonan Anda telah dikirim ke SPS dan KPS
           </Text>
 
           <Text color={colors.darkGrey} fontSize="sm" px={10}>

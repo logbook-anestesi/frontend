@@ -17,7 +17,7 @@ const ExamPage = () => {
 
   return (
     <Flex direction="column">
-      <Header title="Exam" />
+      <Header title="Ujian" />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
         <ButtonAdd handleOnClick={handleOnClick} />

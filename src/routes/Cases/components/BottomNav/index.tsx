@@ -33,13 +33,13 @@ const BottomNav = ({ isProgressPage }: Props) => {
       <Flex height={50} justify="space-around">
         <BottomNavIcon
           image={iconCase}
-          title="Daftar Cases"
+          title="Daftar Kasus"
           isActive={!isProgressPage}
           onClick={handleOnClickList}
         />
         <BottomNavIcon
           image={summary}
-          title="Summary"
+          title="Pencapaian"
           isActive={isProgressPage}
           onClick={handleOnClickProgress}
         />

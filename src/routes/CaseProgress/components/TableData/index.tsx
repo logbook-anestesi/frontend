@@ -1,6 +1,7 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { CaseProgressElement } from '../../hooks/useGetCaseProgress/types';
 import { useMemo } from 'react';
+import { colors } from '../../../../constants/colors';
 
 interface DataRow {
   id: string;
@@ -22,31 +23,91 @@ const TableData = ({ caseProgressList }: Props) => {
       name: 'Nomor Elemen',
       selector: (row) => row.id,
       sortable: true,
+      cell: (row) => (
+        <span
+          style={{
+            whiteSpace: 'normal',
+            padding: '10px 0px',
+          }}
+        >
+          {row.id}
+        </span>
+      ),
     },
     {
       name: 'Kasus/Tindakan',
       selector: (row) => row.elementName,
       sortable: true,
+      cell: (row) => (
+        <span
+          style={{
+            whiteSpace: 'normal',
+            padding: '10px 0px',
+          }}
+        >
+          {row.elementName}
+        </span>
+      ),
     },
     {
       name: 'Target Kolegium',
       selector: (row) => row.targetKolegium,
       sortable: true,
+      cell: (row) => (
+        <span
+          style={{
+            whiteSpace: 'normal',
+            padding: '10px 0px',
+          }}
+        >
+          {row.targetKolegium}
+        </span>
+      ),
     },
     {
       name: 'Target Prodi',
       selector: (row) => row.targetProdi,
       sortable: true,
+      cell: (row) => (
+        <span
+          style={{
+            whiteSpace: 'normal',
+            padding: '10px 0px',
+          }}
+        >
+          {row.targetProdi}
+        </span>
+      ),
     },
     {
       name: 'Progress Target Kolegium',
       selector: (row) => row.pKolegium,
       sortable: true,
+      cell: (row) => (
+        <span
+          style={{
+            whiteSpace: 'normal',
+            padding: '10px 0px',
+          }}
+        >
+          {row.pKolegium}
+        </span>
+      ),
     },
     {
       name: 'Progress Target Prodi',
       selector: (row) => row.pProdi,
       sortable: true,
+      cell: (row) => (
+        <span
+          style={{
+            whiteSpace: 'normal',
+            padding: '10px 0px',
+          }}
+        >
+          {row.pProdi}
+        </span>
+      ),
     },
   ];
 
@@ -68,7 +129,26 @@ const TableData = ({ caseProgressList }: Props) => {
     });
   }, [caseProgressList]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  const customStyles = {
+    headCells: {
+      style: {
+        color: colors.primaryPurple,
+        fontWeight: 'bold',
+      },
+    },
+    rows: {
+      style: {},
+    },
+  };
+
+  return (
+    <DataTable
+      columns={columns}
+      data={data}
+      customStyles={customStyles}
+      pagination
+    />
+  );
 };
 
 export default TableData;

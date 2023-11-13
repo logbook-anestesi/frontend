@@ -14,7 +14,7 @@ const ButtonAdd = ({ handleOnClick }: Props) => {
       onClick={handleOnClick}
       mb={3}
     >
-      + Tambah Exam
+      + Tambah Ujian
     </Button>
   );
 };

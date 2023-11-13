@@ -11,7 +11,7 @@ import useGetCases from './hooks/useGetCases';
 import LoaderCircle from '../../components/LoaderCircle';
 
 const DEFAULT_CASE_MENU = {
-  title: 'Pilih Tipe Case',
+  title: 'Pilih Tipe Kasus',
   value: '-',
 };
 
@@ -31,7 +31,7 @@ const Cases = () => {
 
   return (
     <Flex flexDirection="column" height="100vh">
-      <Header title="Cases" />
+      <Header title="Kasus" />
 
       <Flex direction="column" justify="space-between" height="100%">
         <Flex padding="10px 30px" direction="column" gap="16px">

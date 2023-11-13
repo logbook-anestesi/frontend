@@ -41,7 +41,7 @@ const TableData = ({ examList }: Props) => {
       width: '65px',
     },
     {
-      name: 'Exam',
+      name: 'Ujian',
       selector: (row) => row.type,
       sortable: true,
       wrap: true,

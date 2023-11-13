@@ -10,7 +10,7 @@ const CaseProgress = () => {
 
   return (
     <Flex flexDirection="column" height="100vh">
-      <Header title="Cases Progress" />
+      <Header title="Pencapaian Kasus" />
 
       <Flex direction="column" justify="space-between" height="100%">
         <Flex padding="10px 30px" direction="column" gap="16px">

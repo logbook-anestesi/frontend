@@ -33,7 +33,7 @@ const CaseListSection = ({
       <Flex justify="space-between" align="center" alignItems="center">
         {selectedCase.value === '-' ? (
           <Text as="b" fontSize="xl">
-            Daftar Seluruh Cases
+            Daftar Seluruh Kasus
           </Text>
         ) : (
           <Text as="b" fontSize="xl" mb={3}>

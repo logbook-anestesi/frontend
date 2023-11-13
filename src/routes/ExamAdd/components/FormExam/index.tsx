@@ -16,7 +16,7 @@ const FormExam = ({ setExam }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Exam yang akan diambil
+        Ujian Yang Diambil
         <Box as="span" color={colors.primaryRed}>
           *
         </Box>

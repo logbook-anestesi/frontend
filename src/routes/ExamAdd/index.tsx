@@ -30,7 +30,7 @@ const ExamAdd = () => {
     if (response?.success) {
       toast({
         title: 'Success',
-        description: 'Exam berhasil dibuat',
+        description: 'Ujian berhasil dibuat',
         status: 'success',
         position: 'top',
         duration: 5000,
@@ -43,7 +43,7 @@ const ExamAdd = () => {
 
     if (!response?.success) {
       toast({
-        title: 'Failed membuat Exam',
+        title: 'Gagal membuat Ujian',
         description: response?.message,
         status: 'error',
         position: 'top',
@@ -70,7 +70,7 @@ const ExamAdd = () => {
 
   return (
     <Flex direction="column">
-      <Header title="Buat Exam" />
+      <Header title="Buat Ujian" />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
         <FormExam setExam={setExam} />

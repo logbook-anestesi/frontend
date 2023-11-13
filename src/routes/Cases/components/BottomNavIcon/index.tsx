@@ -18,11 +18,11 @@ const BottomNavIcon = ({ image, title, isActive, onClick }: Props) => {
         width={7}
         height={7}
         src={image}
-        style={isActive ? imageStyle : undefined}
+        style={isActive ? undefined : imageStyle}
       />
       <Text
         fontSize="sm"
-        as={isActive ? 'b' : 'p'}
+        as={isActive ? 'b' : 'b'}
         color={isActive ? colors.primaryPurple : colors.darkGrey}
       >
         {title}

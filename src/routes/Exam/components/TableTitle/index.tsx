@@ -12,7 +12,7 @@ const TableTitle = () => {
   return (
     <Flex direction="column" gap="10px">
       <Flex direction="row" justify="space-between" align="center">
-        <Text as="b">Riwayat Exam</Text>
+        <Text as="b">Riwayat Ujian</Text>
         <Text
           as="b"
           fontSize="x-small"
