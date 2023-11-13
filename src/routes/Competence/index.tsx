@@ -54,7 +54,7 @@ const CompetencePage = () => {
     <Flex flexDirection="column">
       <Header title="Level Kompetensi" />
       <Flex padding="10px 30px" direction="column" gap="16px">
-        {!loading ? (
+        {loading ? (
           <Flex justify="center" mt={10}>
             <LoaderCircle />
           </Flex>
