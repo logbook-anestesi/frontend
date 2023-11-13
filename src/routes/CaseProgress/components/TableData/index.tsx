@@ -80,7 +80,7 @@ const TableData = ({ caseProgressList }: Props) => {
       ),
     },
     {
-      name: 'Progress Target Kolegium',
+      name: '% Kolegium',
       selector: (row) => row.pKolegium,
       sortable: true,
       cell: (row) => (
@@ -95,7 +95,7 @@ const TableData = ({ caseProgressList }: Props) => {
       ),
     },
     {
-      name: 'Progress Target Prodi',
+      name: '% Prodi',
       selector: (row) => row.pProdi,
       sortable: true,
       cell: (row) => (
