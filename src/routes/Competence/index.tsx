@@ -25,8 +25,6 @@ const CompetencePage = () => {
 
   const { postData } = usePostCompetencePromotion();
 
-  if (loading) return <LoaderCircle />;
-
   const currentCompetence = competenceData?.find(
     (item) => item.recordFlag === true,
   );
@@ -56,27 +54,35 @@ const CompetencePage = () => {
     <Flex flexDirection="column">
       <Header title="Level Kompetensi" />
       <Flex padding="10px 30px" direction="column" gap="16px">
-        <CardPembekalan
-          startDate={competenceData?.[0]?.created || '-'}
-          isDisabled={competenceData?.length < 1}
-          isActive={competenceData?.length === 1}
-        />
-        <CardMagang
-          startDate={competenceData?.[1]?.created || '-'}
-          isDisabled={competenceData?.length < 2}
-          isActive={competenceData?.length === 2}
-        />
-        <CardMandiri
-          startDate={competenceData?.[2]?.created || '-'}
-          isDisabled={competenceData?.length < 3}
-          isActive={competenceData?.length === 3}
-        />
+        {!loading ? (
+          <Flex justify="center" mt={10}>
+            <LoaderCircle />
+          </Flex>
+        ) : (
+          <>
+            <CardPembekalan
+              startDate={competenceData?.[0]?.created || '-'}
+              isDisabled={competenceData?.length < 1}
+              isActive={competenceData?.length === 1}
+            />
+            <CardMagang
+              startDate={competenceData?.[1]?.created || '-'}
+              isDisabled={competenceData?.length < 2}
+              isActive={competenceData?.length === 2}
+            />
+            <CardMandiri
+              startDate={competenceData?.[2]?.created || '-'}
+              isDisabled={competenceData?.length < 3}
+              isActive={competenceData?.length === 3}
+            />
 
-        {competenceData?.length < 3 && (
-          <ButtonTambah
-            buttonTitle="Ajukan Kenaikan Kompetensi"
-            onClick={onOpenConfirm}
-          />
+            {competenceData?.length < 3 && (
+              <ButtonTambah
+                buttonTitle="Ajukan Kenaikan Kompetensi"
+                onClick={onOpenConfirm}
+              />
+            )}
+          </>
         )}
       </Flex>
 
