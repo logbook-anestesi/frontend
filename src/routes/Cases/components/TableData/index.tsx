@@ -15,7 +15,7 @@ interface DataRow {
 }
 
 interface Props {
-  caseList: Case[];
+  caseList: Case[] | undefined;
 }
 
 const TableData = ({ caseList }: Props) => {
@@ -81,7 +81,7 @@ const TableData = ({ caseList }: Props) => {
   ];
 
   const data = useMemo(() => {
-    return caseList.map((singleCase) => {
+    return caseList?.map((singleCase) => {
       return {
         idCase: `${singleCase?.caseType || ''} - ${singleCase?.id.substring(
           0,
@@ -96,7 +96,7 @@ const TableData = ({ caseList }: Props) => {
     });
   }, [caseList]);
 
-  return <DataTable columns={columns} data={data} pagination />;
+  return <DataTable columns={columns} data={data || []} pagination />;
 };
 
 export default TableData;

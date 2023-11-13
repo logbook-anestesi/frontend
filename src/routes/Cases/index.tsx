@@ -2,7 +2,7 @@ import { Flex, useDisclosure } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import CasesDropdown from './components/CasesDrodown';
 import ModalSelectCases from './components/ModalSelectCases';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CaseMenu } from './types';
 import ButtonAddCase from './components/ButtonAddCase';
 import CaseListSection from './components/CaseListSection';
@@ -19,6 +19,15 @@ const Cases = () => {
   const { caseList, loading } = useGetCases();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedCase, setSelectedCase] = useState<CaseMenu>(DEFAULT_CASE_MENU);
+  const [finalCaseList, setFinalCaseList] = useState(caseList);
+
+  useEffect(() => {
+    setFinalCaseList(caseList);
+  }, [caseList]);
+
+  const handleResetData = () => {
+    setFinalCaseList(caseList);
+  };
 
   return (
     <Flex flexDirection="column" height="100vh">
@@ -37,7 +46,12 @@ const Cases = () => {
           {loading || !caseList ? (
             <LoaderCircle />
           ) : (
-            <CaseListSection caseList={caseList} selectedCase={selectedCase} />
+            <CaseListSection
+              caseList={finalCaseList}
+              selectedCase={selectedCase}
+              setFinalCaseList={setFinalCaseList}
+              handleResetData={handleResetData}
+            />
           )}
         </Flex>
 

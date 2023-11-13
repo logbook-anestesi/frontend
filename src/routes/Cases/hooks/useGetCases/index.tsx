@@ -13,10 +13,28 @@ const useGetCases = () => {
     return response.data.data ?? [];
   });
 
+  const getCaseById = (tagType: string, keywordId: string) => {
+    const { data: caseList, isLoading: loading } = useSWR(
+      `/cases/?${tagType}/${keywordId}`,
+      async (): Promise<Case[]> => {
+        const response = await axiosClient.get(
+          `/cases/?${tagType}/${keywordId}`,
+        );
+        return response.data.data ?? [];
+      },
+    );
+
+    return {
+      caseList,
+      loading,
+    };
+  };
+
   return {
     caseList,
     loading,
     mutate,
+    getCaseById,
   };
 };
 

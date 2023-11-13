@@ -4,18 +4,33 @@ import { Case } from '../../hooks/useGetCases/types';
 import TableData from '../TableData';
 import filterIcon from '../../assets/filter.png';
 import ModalFilter from '../ModalFilter';
+import { colors } from '../../../../constants/colors';
+import { useState } from 'react';
 
 interface Props {
-  caseList: Case[];
+  caseList: Case[] | undefined;
   selectedCase: CaseMenu;
+  setFinalCaseList: React.Dispatch<React.SetStateAction<Case[] | undefined>>;
+  handleResetData: () => void;
 }
 
-const CaseListSection = ({ caseList, selectedCase }: Props) => {
+const CaseListSection = ({
+  caseList,
+  selectedCase,
+  setFinalCaseList,
+  handleResetData,
+}: Props) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [showResetFilter, setResetShowFilter] = useState(false);
+
+  const handleResetFilter = () => {
+    setResetShowFilter(false);
+    handleResetData();
+  };
 
   return (
     <Flex direction="column" mt={5} gap={3}>
-      <Flex justify="space-between" align="center" alignItems="center" mb={3}>
+      <Flex justify="space-between" align="center" alignItems="center">
         {selectedCase.value === '-' ? (
           <Text as="b" fontSize="xl">
             Daftar Seluruh Cases
@@ -40,11 +55,30 @@ const CaseListSection = ({ caseList, selectedCase }: Props) => {
         </InputRightElement>
       </InputGroup> */}
 
+      {showResetFilter && (
+        <Flex justify="end">
+          <Text
+            fontSize="sm"
+            align="center"
+            bgColor={colors.lightPurple}
+            color="white"
+            w="100px"
+            rounded="xl"
+            onClick={handleResetFilter}
+          >
+            Reset Filter
+          </Text>
+        </Flex>
+      )}
+
       <TableData caseList={caseList} />
+
       <ModalFilter
         closeModal={onClose}
         handleSubmit={async () => {}}
         isOpen={isOpen}
+        setFinalCaseList={setFinalCaseList}
+        setResetShowFilter={setResetShowFilter}
       />
     </Flex>
   );
