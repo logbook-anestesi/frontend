@@ -13,7 +13,7 @@ const TablePengajuanBimbingan = ({ onOpenModal }: Props) => {
   return (
     <Flex direction="column">
       <Text fontSize="md" as="b" mb={5}>
-        Riwayat Pengajuan Bimbingan
+        Riwayat Maju Ilmiah
       </Text>
 
       {loading || !pengajuanList ? (
