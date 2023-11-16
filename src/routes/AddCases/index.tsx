@@ -23,6 +23,7 @@ import useAddCases from './hooks/useAddCases';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
+import FormLocationLainnya from './components/FormLocationLainnya';
 
 const AddCases = () => {
   const state = useAddCasesContext();
@@ -113,6 +114,9 @@ const AddCases = () => {
         <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
         <FormRadioAgeGroup />
         <FormRadioLocation />
+
+        {state.isShowLocationLainnya && <FormLocationLainnya />}
+
         <FormRadioPriority />
         <FormOperation formData={casesForm?.operationTypes || []} />
         <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />

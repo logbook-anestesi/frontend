@@ -52,6 +52,10 @@ export const RADIO_LOCATION = [
     title: 'RS Jejaring',
     value: 'RS Jejaring',
   },
+  {
+    title: 'Lainnya',
+    value: 'Lainnya',
+  },
 ];
 
 export const RADIO_GENDER = [

@@ -15,12 +15,31 @@ const FormRadioLocation = () => {
         location: value,
       },
     });
+
+    if (value === 'Lainnya') {
+      casesDispatch({
+        type: 'set_show_location_lainnya',
+        data: {
+          isShow: true,
+        },
+      });
+
+      return;
+    }
+
+    // close input lainnya when user click another option after click lainnya option
+    casesDispatch({
+      type: 'set_show_location_lainnya',
+      data: {
+        isShow: false,
+      },
+    });
   }, [casesDispatch, value]);
 
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Lokasi
+        Lokasi*
       </Text>
 
       <RadioGroup
