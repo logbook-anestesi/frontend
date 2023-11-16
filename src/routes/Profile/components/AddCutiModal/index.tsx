@@ -28,7 +28,33 @@ const AddCutiModal = ({ isOpen, closeModal }: Props) => {
 
   const { createLeave, loading } = useCreateLeave();
 
+  const compareDates = (date1: string, date2: string) => {
+    const start = new Date(date1);
+    const end = new Date(date2);
+
+    if (start < end) {
+      return true;
+    }
+
+    return false;
+  };
+
   const handleSubmit = async () => {
+    const isDateValid = compareDates(startDate, endDate);
+
+    if (!isDateValid) {
+      toast({
+        title: 'Gagal Membuat Cuti',
+        description: 'Tanggal mulai harus lebih kecil dari tanggal berakhir',
+        status: 'error',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      return;
+    }
+
     const response = await createLeave({
       description: description,
       endDate: endDate,
@@ -37,8 +63,8 @@ const AddCutiModal = ({ isOpen, closeModal }: Props) => {
 
     if (response?.success) {
       toast({
-        title: 'Success',
-        description: 'Leave Berhasil Dibuat',
+        title: 'Sukses',
+        description: 'Berhasil membuat cuti',
         status: 'success',
         position: 'top',
         duration: 3000,
@@ -51,7 +77,7 @@ const AddCutiModal = ({ isOpen, closeModal }: Props) => {
 
     if (!response?.success) {
       toast({
-        title: 'Failed Add Leave',
+        title: 'Gagal menambah cuti',
         description: response?.message,
         status: 'error',
         position: 'top',
