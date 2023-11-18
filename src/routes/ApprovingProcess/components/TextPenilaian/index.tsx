@@ -24,7 +24,11 @@ const TextPenilaian = () => {
         Komentar
       </Text>
 
-      <Textarea placeholder="XYZ123" onChange={handleChangeNotes} />
+      <Textarea
+        placeholder="XYZ123"
+        onChange={handleChangeNotes}
+        fontSize="sm"
+      />
     </Flex>
   );
 };
