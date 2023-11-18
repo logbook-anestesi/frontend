@@ -36,6 +36,18 @@ const CardApproval = ({
     return colors.primaryPurple;
   };
 
+  const normalizeStatus = (status: string) => {
+    if (status === 'IN_PROGRESS') {
+      return 'PROGRESS';
+    }
+    if (status === 'PASSED') {
+      return 'PASSED';
+    }
+    if (status === 'FAILED') {
+      return 'FAILED';
+    }
+  };
+
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
       state: { userId: approvalData.userId },
@@ -64,7 +76,7 @@ const CardApproval = ({
         borderRadius={6}
         mt={2}
       >
-        {approvalData.status}
+        {normalizeStatus(approvalData.status)}
       </Text>
 
       {approvalData.status === 'IN_PROGRESS' && (
