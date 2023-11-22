@@ -3,10 +3,10 @@ import profileIcon from '../../assets/profileIcon.png';
 import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
-import { ScientificGraduation } from '../../hooks/useGetGraduationApproval/types';
+import { DiscussionHistory } from '../../hooks/useGetAllDiscussionHistory/types';
 
 interface Props {
-  scientificData: ScientificGraduation;
+  discussHistoryData: DiscussionHistory;
   onOpenModal: () => void;
   onCloseModal: () => void;
   setSelectedItemId: React.Dispatch<React.SetStateAction<string>>;
@@ -17,8 +17,8 @@ interface Props {
   setResidenName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const CardApprovalGraduation = ({
-  scientificData,
+const CardApprovalDiscussionHistory = ({
+  discussHistoryData,
   onOpenModal,
   setSelectedItemId,
   setStatusApprove,
@@ -28,16 +28,14 @@ const CardApprovalGraduation = ({
   const navigate = useNavigate();
 
   // const handleClickToDetail = () => {
-  //   navigate('/ilmiah/details', {
-  //     state: {
-  //       ilmiahId: scientificData.id,
-  //     },
+  //   navigate('/cases/details', {
+  //     state: { caseId: discussHistoryData?.id },
   //   });
   // };
 
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
-      state: { userId: scientificData?.userId },
+      state: { userId: discussHistoryData?.userId },
     });
   };
 
@@ -49,9 +47,7 @@ const CardApprovalGraduation = ({
 
       <Flex direction="column" gap={3} mb={1}>
         <Flex direction="column" gap={1}>
-          <Text as="b">
-            {scientificData.scientificType} - {scientificData?.scientificTitle}
-          </Text>
+          <Text as="b">{discussHistoryData?.title}</Text>
           <Flex align="center" gap={3}>
             <Image src={profileIcon} alt="" width={3} height={4} />
             <Text
@@ -59,13 +55,13 @@ const CardApprovalGraduation = ({
               fontSize="sm"
               onClick={handleClickProfile}
             >
-              {scientificData?.userName}
+              {discussHistoryData?.userName}
             </Text>
           </Flex>
         </Flex>
 
         {/* <ButtonFile
-          title={scientificData?.scientificDocumentLink.substring(0, 10)}
+          title={discussHistoryData?.id.substring(0, 10)}
           handleClick={handleClickToDetail}
         /> */}
       </Flex>
@@ -73,7 +69,7 @@ const CardApprovalGraduation = ({
       <Flex
         justify="end"
         gap={4}
-        onClick={() => setSelectedItemId(scientificData?.id)}
+        onClick={() => setSelectedItemId(discussHistoryData?.id)}
       >
         <Flex
           border="2px"
@@ -81,10 +77,10 @@ const CardApprovalGraduation = ({
           borderRadius={8}
           padding={1.5}
           onClick={() => {
-            setTypeItem('graduation');
+            setTypeItem('discussion');
             setStatusApprove('APPROVED');
             setResidenName(
-              `${scientificData.scientificTitle} - ${scientificData.userName}`,
+              `${discussHistoryData.title} - ${discussHistoryData.userName}`,
             );
             onOpenModal();
           }}
@@ -97,10 +93,10 @@ const CardApprovalGraduation = ({
           borderRadius={8}
           padding={1.5}
           onClick={() => {
-            setTypeItem('graduation');
+            setTypeItem('ilmiah');
             setStatusApprove('REJECTED');
             setResidenName(
-              `${scientificData.scientificType} - ${scientificData.scientificTitle} - ${scientificData.userName}`,
+              `${discussHistoryData.title} - ${discussHistoryData.userName}`,
             );
             onOpenModal();
           }}
@@ -114,4 +110,4 @@ const CardApprovalGraduation = ({
   );
 };
 
-export default CardApprovalGraduation;
+export default CardApprovalDiscussionHistory;

@@ -12,7 +12,7 @@ interface Props {
   setSelectedItemId: React.Dispatch<React.SetStateAction<string>>;
   setStatusApprove: React.Dispatch<React.SetStateAction<string>>;
   setTypeItem: React.Dispatch<
-    React.SetStateAction<'ilmiah' | 'exam' | 'graduation'>
+    React.SetStateAction<'ilmiah' | 'exam' | 'graduation' | 'discussion'>
   >;
   setResidenName: React.Dispatch<React.SetStateAction<string>>;
 }

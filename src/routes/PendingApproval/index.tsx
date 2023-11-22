@@ -9,26 +9,39 @@ import useGetAllExamApprovals from './hooks/useGetAllExamApprovals';
 import CardApprovalExam from './components/CardApprovalExam';
 import useGetScientificGraduationApprovals from './hooks/useGetGraduationApproval';
 import CardApprovalGraduation from './components/CardApprovalGraduation';
+import useGetAllDiscussionHistory from './hooks/useGetAllDiscussionHistory';
+import CardApprovalDiscussionHistory from './components/CardApprovalDiscussionHistory';
 
 const PendingApproval = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, reviewData } = useGetScientificApprovals();
   const { examApprovals, loading: examLoading } = useGetAllExamApprovals();
+  const { discussionHistory, loading: discussHistoryLoading } =
+    useGetAllDiscussionHistory();
   const { loading: loadingGraduation, reviewData: graduationReviewData } =
     useGetScientificGraduationApprovals();
   const [selectedItemId, setSelectedItemId] = useState('');
   const [statusApprove, setStatusApprove] = useState('');
   const [residenName, setResidenName] = useState('');
-  const [typeItem, setTypeItem] = useState<'ilmiah' | 'exam' | 'graduation'>(
-    'ilmiah',
-  );
+  const [typeItem, setTypeItem] = useState<
+    'ilmiah' | 'exam' | 'graduation' | 'discussion'
+  >('ilmiah');
 
+  console.log(
+    examApprovals?.length,
+    discussionHistory?.length,
+    graduationReviewData?.length,
+    reviewData?.length,
+  );
   return (
     <Flex flexDirection="column">
       <Header title="Pending Approval" />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
-        {loading || examLoading || loadingGraduation ? (
+        {loading ||
+        examLoading ||
+        loadingGraduation ||
+        discussHistoryLoading ? (
           <LoaderCircle />
         ) : (
           reviewData?.map((scientificApproval) => (
@@ -70,10 +83,28 @@ const PendingApproval = () => {
             setResidenName={setResidenName}
           />
         ))}
+
+        {discussionHistory?.map((discussion) => (
+          <CardApprovalDiscussionHistory
+            onCloseModal={onClose}
+            onOpenModal={onOpen}
+            discussHistoryData={discussion}
+            setResidenName={setResidenName}
+            setSelectedItemId={setSelectedItemId}
+            setStatusApprove={setStatusApprove}
+            key={discussion.id}
+            setTypeItem={setTypeItem}
+          />
+        ))}
       </Flex>
 
       {/* If there are no data */}
-      {[...(examApprovals || []), ...(reviewData || [])].length === 0 && (
+      {[
+        ...(examApprovals || []),
+        ...(reviewData || []),
+        ...(graduationReviewData || []),
+        ...(discussionHistory || []),
+      ].length === 0 && (
         <Flex justify="center">
           <Text>Belum ada data approval</Text>
         </Flex>
