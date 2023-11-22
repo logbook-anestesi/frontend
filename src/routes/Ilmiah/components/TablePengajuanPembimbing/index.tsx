@@ -2,12 +2,19 @@ import { Flex, Text } from '@chakra-ui/react';
 import useGetPengajuanPembimbing from '../../hooks/useGetPengajuanPembimbing';
 import TableData from './TableData';
 import LoaderCircle from '../../../../components/LoaderCircle';
+import { ScientificLog } from '../../hooks/useGetPengajuanPembimbing/types';
 
 interface Props {
   onOpenModal: () => void;
+  setSelectedHistory: React.Dispatch<React.SetStateAction<ScientificLog[]>>;
+  onOpenSeeMore: () => void;
 }
 
-const TablePengajuanBimbingan = ({ onOpenModal }: Props) => {
+const TablePengajuanBimbingan = ({
+  onOpenModal,
+  setSelectedHistory,
+  onOpenSeeMore,
+}: Props) => {
   const { loading, pengajuanList } = useGetPengajuanPembimbing();
 
   return (
@@ -19,7 +26,12 @@ const TablePengajuanBimbingan = ({ onOpenModal }: Props) => {
       {loading || !pengajuanList ? (
         <LoaderCircle />
       ) : (
-        <TableData pengajuanList={pengajuanList} onOpenModal={onOpenModal} />
+        <TableData
+          pengajuanList={pengajuanList}
+          onOpenModal={onOpenModal}
+          setSelectedHistory={setSelectedHistory}
+          onOpenSeeMore={onOpenSeeMore}
+        />
       )}
     </Flex>
   );

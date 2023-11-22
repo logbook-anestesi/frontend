@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
-import { PengajuanPembimbing } from '../../hooks/useGetPengajuanPembimbing/types';
+import {
+  PengajuanPembimbing,
+  ScientificLog,
+} from '../../hooks/useGetPengajuanPembimbing/types';
 import { convertDateForIlmiah } from '../../../../helpers';
 import { Flex, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
@@ -16,14 +19,22 @@ interface DataRow {
   history: string;
   approvals: string;
   status: string;
+  historyLength: number;
 }
 
 interface Props {
   pengajuanList: PengajuanPembimbing[];
   onOpenModal: () => void;
+  setSelectedHistory: React.Dispatch<React.SetStateAction<ScientificLog[]>>;
+  onOpenSeeMore: () => void;
 }
 
-const TableData = ({ pengajuanList, onOpenModal }: Props) => {
+const TableData = ({
+  pengajuanList,
+  onOpenModal,
+  setSelectedHistory,
+  onOpenSeeMore,
+}: Props) => {
   const ilmiahDispatch = useIlmiahDispatch();
 
   const handleClickStatus = ({
@@ -118,16 +129,27 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
       name: 'Riwayat',
       selector: (row) => row.history,
       sortable: true,
+      wrap: true,
+      width: '170px',
       cell: (row) => (
-        <span
-          style={{
-            whiteSpace: 'pre-wrap',
-            paddingTop: '20px',
-            paddingBottom: '20px',
-          }}
-        >
+        <Flex py={3} flexDirection="column">
           {row.history}
-        </span>
+          {row.historyLength > 1 && (
+            <Text
+              fontSize="xs"
+              mt={2}
+              color={colors.primaryPurple}
+              fontWeight="bold"
+              _hover={{ cursor: 'pointer' }}
+              onClick={() => {
+                setSelectedHistory(pengajuanList[row.idx - 1].scientificLogs);
+                onOpenSeeMore();
+              }}
+            >
+              See More
+            </Text>
+          )}
+        </Flex>
       ),
     },
     {
@@ -179,13 +201,13 @@ const TableData = ({ pengajuanList, onOpenModal }: Props) => {
         id: singleIlmiah.id,
         type: singleIlmiah.type,
         title: singleIlmiah.title,
-        history: singleIlmiah.scientificLogs
-          .map(
-            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
-          )
-          .join('\n'),
+        history: `${singleIlmiah.scientificLogs[0]
+          ?.changes} - ${convertDateForIlmiah(
+          singleIlmiah.scientificLogs[0]?.created,
+        )}`,
         approvals: singleIlmiah?.approvals?.map((item) => item.name).join(', '),
         status: singleIlmiah?.scientificStatus,
+        historyLength: singleIlmiah.scientificLogs.length,
       };
     });
   }, [pengajuanList]);
