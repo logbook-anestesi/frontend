@@ -1,17 +1,22 @@
 import { Flex, Text } from '@chakra-ui/react';
+import useGetAllPelanggaran from '../../hooks/useGetAllPelanggaran';
+import LoaderCircle from '../../../../components/LoaderCircle';
+import TableData from '../TableData';
 
 const TableListPelanggaran = () => {
+  const { loading, pelanggaranList } = useGetAllPelanggaran();
+
   return (
     <Flex direction="column">
       <Text fontSize="md" as="b" mb={5}>
         Daftar Laporan Pelanggaran
       </Text>
 
-      {/* {loading || !pengajuanList ? (
+      {loading || !pelanggaranList ? (
         <LoaderCircle />
       ) : (
-        <TableData pengajuanList={pengajuanList} onOpenModal={onOpenModal} />
-      )} */}
+        <TableData pelanggaranList={pelanggaranList} />
+      )}
     </Flex>
   );
 };
