@@ -133,7 +133,7 @@ const TableData = ({
       width: '170px',
       cell: (row) => (
         <Flex py={3} flexDirection="column">
-          {row.history}
+          {row.history.replace('RESIDEN', 'Residen')}
           {row.historyLength > 1 && (
             <Text
               fontSize="xs"
