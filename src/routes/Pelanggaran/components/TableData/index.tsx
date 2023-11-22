@@ -80,7 +80,7 @@ const TableData = ({ pelanggaranList }: Props) => {
         title: pelanggaran.title,
         description: pelanggaran.description,
         violationDate: convertDateForExam(pelanggaran.violationDate),
-        createdDate: 'Waiting BE',
+        createdDate: convertDateForExam(pelanggaran.created),
       };
     });
   }, [pelanggaranList]);

@@ -1,5 +1,6 @@
 export interface Pelanggaran {
   id: string;
+  created: string;
   severity: string;
   title: string;
   description: string;
