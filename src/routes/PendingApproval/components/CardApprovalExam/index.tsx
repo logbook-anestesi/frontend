@@ -4,6 +4,7 @@ import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { ExamApproval } from '../../hooks/useGetAllExamApprovals/types';
+import { convertDateForIlmiah } from '../../../../helpers';
 
 interface Props {
   examData: ExamApproval;
@@ -42,7 +43,7 @@ const CardApprovalExam = ({
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
-        30/03 17.00
+        {convertDateForIlmiah(examData.created)}
       </Text>
 
       <Flex direction="column" gap={3} mb={1}>

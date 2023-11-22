@@ -4,6 +4,7 @@ import { colors } from '../../../../constants/colors';
 import { ReviewItem } from '../../hooks/useGetAllApprovals/types';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { convertDateForIlmiah } from '../../../../helpers';
 
 interface Props {
   scientificData: ReviewItem;
@@ -42,7 +43,7 @@ const CardApproval = ({
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
-        30/03 17.00
+        {convertDateForIlmiah(scientificData.created)}
       </Text>
 
       <Flex direction="column" gap={3} mb={1}>

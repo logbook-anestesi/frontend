@@ -1,5 +1,6 @@
 export interface DiscussionHistory {
   id: string;
+  created: string;
   title: string;
   description: string;
   userName: string;

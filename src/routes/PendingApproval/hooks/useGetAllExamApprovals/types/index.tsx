@@ -1,5 +1,6 @@
 export interface ExamApproval {
   id: string;
+  created: string;
   type: string;
   userName: string;
   examinerName: string;

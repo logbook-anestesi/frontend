@@ -4,6 +4,7 @@ import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { ScientificGraduation } from '../../hooks/useGetGraduationApproval/types';
+import { convertDateForIlmiah } from '../../../../helpers';
 
 interface Props {
   scientificData: ScientificGraduation;
@@ -44,7 +45,7 @@ const CardApprovalGraduation = ({
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
-        30/03 17.00
+        {convertDateForIlmiah(scientificData.created)}
       </Text>
 
       <Flex direction="column" gap={3} mb={1}>

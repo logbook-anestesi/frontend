@@ -1,5 +1,6 @@
 export interface ScientificGraduation {
   id: string;
+  created: string;
   scientificGraduationStatus: string;
   scientificId: string;
   scientificType: string;
