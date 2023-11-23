@@ -38,7 +38,7 @@ const ExamAdd = () => {
       });
 
       onClose();
-      navigate('/exam');
+      navigate(-1);
     }
 
     if (!response?.success) {
