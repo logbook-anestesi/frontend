@@ -107,8 +107,8 @@ const AddCutiModal = ({ isOpen, closeModal }: Props) => {
             color={colors.darkGrey}
             mb={3}
           >
-            Mohon pastikan data yang Anda input sudah benar, dan cuti Anda sudah
-            disetujui di Scele
+            Mohon pastikan data yang Anda masukkan sudah benar, dan cuti Anda
+            sudah disetujui di Scele
           </Text>
 
           <Button
