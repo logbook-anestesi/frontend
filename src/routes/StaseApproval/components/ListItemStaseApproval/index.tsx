@@ -1,4 +1,4 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react';
 import { StaseApproval } from '../../hooks/useGetStaseApprovalList/types';
 import CardApproval from '../CardApproval';
 import { colors } from '../../../../constants/colors';
@@ -22,33 +22,45 @@ const ListItemStaseApproval = ({
   onOpenModalAll,
   setStatusBulk,
 }: Props) => {
-  return (
-    <Flex direction="column">
-      <Button
-        colorScheme="teal"
-        backgroundColor={colors.primaryPurple}
-        color={colors.white}
-        my={5}
-        onClick={() => {
-          setStatusBulk('PASSED');
-          onOpenModalAll();
-        }}
-      >
-        Approve All
-      </Button>
+  const isHaveOnProgresssApproval = () => {
+    const isHaveOnProgress = approvalList.filter(
+      (approval) => approval.status === 'IN_PROGRESS',
+    );
 
-      <Button
-        variant="outline"
-        borderColor={colors.primaryPurple}
-        color={colors.primaryPurple}
-        mb={5}
-        onClick={() => {
-          setStatusBulk('FAILED');
-          onOpenModalAll();
-        }}
-      >
-        Reject All
-      </Button>
+    return isHaveOnProgress.length > 0;
+  };
+
+  return (
+    <Flex direction="column" mt={1}>
+      {isHaveOnProgresssApproval() && (
+        <>
+          <Button
+            colorScheme="teal"
+            backgroundColor={colors.primaryPurple}
+            color={colors.white}
+            my={5}
+            onClick={() => {
+              setStatusBulk('PASSED');
+              onOpenModalAll();
+            }}
+          >
+            Approve All
+          </Button>
+
+          <Button
+            variant="outline"
+            borderColor={colors.primaryPurple}
+            color={colors.primaryPurple}
+            mb={5}
+            onClick={() => {
+              setStatusBulk('FAILED');
+              onOpenModalAll();
+            }}
+          >
+            Reject All
+          </Button>
+        </>
+      )}
 
       {approvalList.map((approval, idx) => (
         <CardApproval
