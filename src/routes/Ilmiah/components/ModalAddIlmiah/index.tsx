@@ -125,7 +125,7 @@ const ModalAddIlmiah = ({ closeModal, isOpen }: Props) => {
           w="full"
           direction="column"
           gap={4}
-          maxHeight={500}
+          maxHeight={400}
           overflowY="scroll"
         >
           <FormTipeIlmiah setScientificType={setScientificType} />

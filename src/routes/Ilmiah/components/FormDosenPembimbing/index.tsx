@@ -17,18 +17,20 @@ const FormDosenPembimbing = ({ setApprovalUser, listPembimbing }: Props) => {
         Pembimbing*
       </Text>
 
-      <Flex
-        justify="space-between"
-        align="center"
-        borderWidth={1}
-        borderColor={colors.lightGrey}
-        padding="10px 15px"
-        borderRadius={10}
-        onClick={onOpen}
-        mb={1}
-      >
-        <Text>Pilih Pembimbing</Text>
-      </Flex>
+      {listPembimbing.length < 1 && (
+        <Flex
+          justify="space-between"
+          align="center"
+          borderWidth={1}
+          borderColor={colors.lightGrey}
+          padding="10px 15px"
+          borderRadius={10}
+          onClick={onOpen}
+          mb={1}
+        >
+          <Text>Pilih Pembimbing</Text>
+        </Flex>
+      )}
 
       <Text
         fontSize="sm"
