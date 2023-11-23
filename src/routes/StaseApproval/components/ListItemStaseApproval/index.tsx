@@ -1,4 +1,4 @@
-import { Box, Button, Flex } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 import { StaseApproval } from '../../hooks/useGetStaseApprovalList/types';
 import CardApproval from '../CardApproval';
 import { colors } from '../../../../constants/colors';
