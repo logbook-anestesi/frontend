@@ -104,7 +104,11 @@ export const capitalizeFirstLetter = (inputString: string) => {
 };
 
 export const convertUnderscoresToSpaces = (inputText: string) => {
-  return inputText.replace(/_/g, ' ');
+  return inputText
+    .toLowerCase()
+    .split('_')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 };
 
 export const convertDateFormatIndonesia = (inputDate: string): string => {

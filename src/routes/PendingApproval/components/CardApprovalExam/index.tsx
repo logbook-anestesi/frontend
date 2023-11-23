@@ -4,7 +4,10 @@ import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { ExamApproval } from '../../hooks/useGetAllExamApprovals/types';
-import { convertDateForIlmiah } from '../../../../helpers';
+import {
+  convertDateForIlmiah,
+  convertUnderscoresToSpaces,
+} from '../../../../helpers';
 
 interface Props {
   examData: ExamApproval;
@@ -48,7 +51,7 @@ const CardApprovalExam = ({
 
       <Flex direction="column" gap={3} mb={1}>
         <Flex direction="column" gap={1}>
-          <Text as="b">Exam: {examData?.type}</Text>
+          <Text as="b">Exam: {convertUnderscoresToSpaces(examData?.type)}</Text>
           <Flex align="center" gap={3}>
             <Image src={profileIcon} alt="" width={3} height={4} />
             <Text
