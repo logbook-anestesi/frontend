@@ -77,7 +77,7 @@ const ModalApprove = ({
       <ModalContent margin="10px 20px" p={4}>
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b">
-            Anda akan {status === 'APPROVED' ? 'Menyetujui' : 'Menolak'}
+            Anda akan {status === 'APPROVED' ? 'menyetujui' : 'menolak'}
           </Text>
           <Text as="b" mb={4}>
             {residenName}
@@ -91,7 +91,7 @@ const ModalApprove = ({
               backgroundColor={colors.primaryPurple}
               onClick={handleApprove}
             >
-              {status === 'APPROVED' ? 'Approve' : 'Reject'}
+              Ya
             </Button>
             <Button
               backgroundColor={colors.white}
