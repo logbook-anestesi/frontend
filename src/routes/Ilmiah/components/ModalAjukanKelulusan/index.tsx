@@ -16,6 +16,7 @@ import Information from '../Information';
 import { useIlmiahContext } from '../../contexts';
 import useAddPengajuanKelulusan from '../../hooks/useAddPengajuanKelulusan';
 import useGetPengajuanPembimbing from '../../hooks/useGetPengajuanPembimbing';
+import { convertUnderscoresToSpaces } from '../../../../helpers';
 
 interface Props {
   isOpen: boolean;
@@ -72,7 +73,8 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
         <ModalHeader margin="auto" textAlign="center">
-          Ajukan Kelulusan {pengajuanKelulusan.id}
+          Ajukan Kelulusan <br />{' '}
+          {convertUnderscoresToSpaces(pengajuanKelulusan.id)}
         </ModalHeader>
         <ModalCloseButton />
 

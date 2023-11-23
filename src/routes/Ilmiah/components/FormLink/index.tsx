@@ -13,7 +13,7 @@ const FormLink = ({ setLink }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Link Dokumen
+        Link Dokumen*
       </Text>
 
       <Input
