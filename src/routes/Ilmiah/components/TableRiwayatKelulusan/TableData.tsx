@@ -84,6 +84,7 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       selector: (row) => row.type,
       sortable: true,
       width: '150px',
+      cell: (row) => <span>{convertUnderscoresToSpaces(row.type)}</span>,
     },
     {
       name: 'Judul',

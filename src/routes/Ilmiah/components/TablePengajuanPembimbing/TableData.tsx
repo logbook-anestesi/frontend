@@ -91,6 +91,7 @@ const TableData = ({
       name: 'ID',
       selector: (row) => row.id,
       sortable: true,
+      width: '170px',
       cell: (row) => (
         <span
           style={{
@@ -98,7 +99,7 @@ const TableData = ({
             padding: '10px 0px',
           }}
         >
-          {row.id}
+          {convertUnderscoresToSpaces(row.id)}
         </span>
       ),
     },
@@ -108,6 +109,7 @@ const TableData = ({
       sortable: true,
       wrap: true,
       width: '150px',
+      cell: (row) => <span>{convertUnderscoresToSpaces(row.type)}</span>,
     },
     {
       name: 'Judul',
