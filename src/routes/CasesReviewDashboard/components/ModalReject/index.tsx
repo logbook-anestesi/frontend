@@ -9,14 +9,17 @@ import {
 } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import useAddApproval from '../../../ApprovingProcess/hooks/useAddApproval';
+import useGetPendingReview from '../../hooks/useGetPendingReview';
 
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
   caseId: string;
+  caseType: string;
 }
 
-const ModalReject = ({ closeModal, isOpen, caseId }: Props) => {
+const ModalReject = ({ closeModal, isOpen, caseId, caseType }: Props) => {
+  const { mutate } = useGetPendingReview();
   const toast = useToast();
   const { createApproval } = useAddApproval();
 
@@ -37,7 +40,7 @@ const ModalReject = ({ closeModal, isOpen, caseId }: Props) => {
       });
 
       closeModal();
-      window.location.reload();
+      mutate();
       return;
     }
 
@@ -60,7 +63,7 @@ const ModalReject = ({ closeModal, isOpen, caseId }: Props) => {
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b">Anda akan menolak</Text>
           <Text as="b" mb={4}>
-            {caseId}
+            {caseType} - {caseId?.substring(0, 4)}
           </Text>
 
           <Flex direction="column" gap={2} width="100%">

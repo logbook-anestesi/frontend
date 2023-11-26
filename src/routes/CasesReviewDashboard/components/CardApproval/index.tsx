@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   caseData: ReviewItem;
-  onClick: (caseId: string) => void;
+  onClick: (caseId: string, caseType: string) => void;
 }
 
 const CardApproval = ({ caseData, onClick }: Props) => {

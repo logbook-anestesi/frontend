@@ -6,7 +6,7 @@ import { ReviewItem } from '../../hooks/useGetPendingReview/types';
 
 interface Props {
   caseData: ReviewItem;
-  onClick: (caseId: string) => void;
+  onClick: (caseId: string, caseType: string) => void;
 }
 
 const CardApprovalButton = ({ caseData, onClick }: Props) => {
@@ -62,7 +62,7 @@ const CardApprovalButton = ({ caseData, onClick }: Props) => {
         variant="outline"
         size="xs"
         py={4}
-        onClick={() => onClick(caseData?.id)}
+        onClick={() => onClick(caseData?.id, caseData?.caseType)}
       >
         Reject
       </Button>

@@ -14,6 +14,7 @@ const CasesReviewDashboardPage = () => {
   const { approveAll, loading: loadingApprovalAll } = useApproveAll();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [caseId, setCaseId] = useState('');
+  const [caseType, setCaseType] = useState('');
 
   const handleApproveAll = async () => {
     const response = await approveAll('APPROVED');
@@ -44,8 +45,9 @@ const CasesReviewDashboardPage = () => {
     }
   };
 
-  const handleClickCard = (caseId: string) => {
+  const handleClickCard = (caseId: string, caseType: string) => {
     setCaseId(caseId);
+    setCaseType(caseType);
     onOpen();
   };
 
@@ -86,7 +88,12 @@ const CasesReviewDashboardPage = () => {
       </Flex>
 
       {/* Modal Section */}
-      <ModalReject caseId={caseId} closeModal={onClose} isOpen={isOpen} />
+      <ModalReject
+        caseId={caseId}
+        closeModal={onClose}
+        isOpen={isOpen}
+        caseType={caseType}
+      />
     </Flex>
   );
 };
