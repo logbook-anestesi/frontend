@@ -25,7 +25,7 @@ const FormDate = ({ setSelectedDate, selectedDate }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tanggal
+        Tanggal*
       </Text>
 
       <Flex

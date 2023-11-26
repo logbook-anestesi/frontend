@@ -52,7 +52,29 @@ const ModalAddRiwayatDiskusi = ({
     }
   };
 
+  const validateInput = () => {
+    if (selectedOptions.length === 0 || judul === '' || deskripsi === '') {
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmitForm = async () => {
+    const isInputValid = validateInput();
+
+    if (!isInputValid) {
+      toast({
+        title: 'Harap lengkapi data form',
+        status: 'error',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      return;
+    }
+
     const response = await createRiwayatDiskusi({
       approvalUserIds: selectedOptions,
       description: deskripsi,
@@ -95,7 +117,7 @@ const ModalAddRiwayatDiskusi = ({
         <ModalCloseButton />
 
         <Flex direction="column" gap={2}>
-          <Text fontSize="sm">Pembimbing</Text>
+          <Text fontSize="sm">Pembimbing*</Text>
 
           <Flex mb={3}>
             <VStack spacing={2}>

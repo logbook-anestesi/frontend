@@ -12,7 +12,7 @@ const FormDeskripsi = ({ setDeskripsi }: Props) => {
   return (
     <Flex direction="column" gap={1} mb={4}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Deskripsi
+        Deskripsi*
       </Text>
 
       <Input
