@@ -47,7 +47,7 @@ const LevelCardStaseReview = ({ staseName }: Props) => {
       </Flex>
 
       <Flex direction="row" gap="10px">
-        <Ticker text={`${String(notifStase)} review`} isShowClose={false} />
+        <Ticker text={`${String(notifStase)}`} isShowClose={false} />
         <ChevronRightIcon boxSize="35px" color={colors.darkGrey} />
       </Flex>
     </Card>
