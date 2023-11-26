@@ -72,6 +72,10 @@ const ModalFilter = ({
         setKeywordList(casesForm?.tags);
         setSelectedTag('tagId');
         return;
+      case 'anesthesiaTypes':
+        setKeywordList(casesForm?.anesthesiaTypes);
+        setSelectedTag('anesthesiaTypeId');
+        return;
     }
   };
 
@@ -131,6 +135,7 @@ const ModalFilter = ({
               <option value="noraProcedureTypes">Tipe Prosedur NORA</option>
               <option value="diagnoses">Diagnosis</option>
               <option value="painServiceTypes">Tipe Pain Service</option>
+              <option value="anesthesiaTypes">Tipe Anesthesia</option>
               <option value="painServiceProcedures">
                 Tipe Prosedur Pain Service
               </option>
