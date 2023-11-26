@@ -234,7 +234,7 @@ const ApprovingProcessEdit = () => {
             />
 
             <FormASATags
-              tagList={casesForm?.tags}
+              tagList={casesForm?.asaTags}
               initialValue={caseData?.asaTags}
             />
 

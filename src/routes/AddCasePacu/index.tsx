@@ -130,7 +130,7 @@ const AddCasePacu = () => {
         </Text>
 
         <FormTingkatAndEmergency isMondatory />
-        <FormASATags tagList={casesForm?.tags || []} />
+        <FormASATags tagList={casesForm?.asaTags || []} />
 
         <Divider />
 

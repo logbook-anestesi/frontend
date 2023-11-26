@@ -41,7 +41,7 @@ const ModalFilter = ({
 
     switch (value) {
       case 'asaTags':
-        setKeywordList(casesForm?.tags);
+        setKeywordList(casesForm?.asaTags);
         setSelectedTag('asaTagId');
         return;
       case 'operationTypes':

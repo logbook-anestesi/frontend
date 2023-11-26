@@ -1,4 +1,5 @@
 export interface CasesForm {
+  asaTags: Tag[];
   tags: Tag[];
   operationTypes: OperationType[];
   anesthesiaTypes: AnesthesiaType[];

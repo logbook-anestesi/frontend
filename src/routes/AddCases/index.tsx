@@ -138,7 +138,7 @@ const AddCases = () => {
         </Text>
 
         <FormTingkatAndEmergency />
-        <FormASATags tagList={casesForm?.tags || []} />
+        <FormASATags tagList={casesForm?.asaTags || []} />
 
         <Divider />
 

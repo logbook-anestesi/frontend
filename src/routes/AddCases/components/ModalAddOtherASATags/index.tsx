@@ -12,8 +12,8 @@ import {
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent, useState } from 'react';
 import { useAddCasesDispatch } from '../../contexts';
-import useAddTags from '../../hooks/useAddTags';
 import useGetCasesForm from '../../../../hooks/useGetCasesForm';
+import useAddAsaTags from '../../hooks/useAddAsaTags';
 
 interface Props {
   isOpen: boolean;
@@ -22,12 +22,12 @@ interface Props {
 
 const ModalAddOtherASAtags = ({ isOpen, closeModal }: Props) => {
   const casesDispatch = useAddCasesDispatch();
-  const { createTag, loading } = useAddTags();
+  const { createAsaTag, loading } = useAddAsaTags();
   const [tag, setTag] = useState('');
   const { mutate } = useGetCasesForm();
 
   const handleCreateTag = async () => {
-    const response = await createTag({ name: tag });
+    const response = await createAsaTag({ name: tag });
     casesDispatch({
       type: 'set_asa_tags',
       data: {
