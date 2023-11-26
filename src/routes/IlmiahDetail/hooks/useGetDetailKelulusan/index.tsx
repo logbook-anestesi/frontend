@@ -1,32 +1,23 @@
-import { useEffect, useState } from 'react';
-import axiosClient from '../../../../networks/apiClient';
+import useSWR from 'swr';
 import { DetailRiwayatKelulusan } from './types';
+import axiosClient from '../../../../networks/apiClient';
 
 const useGetDetailKelulusan = (riwayatKelulusanId: string) => {
-  const [loading, setLoading] = useState(false);
-  const [detailRiwayatKelulusan, setDetailRiwayatKelulusan] =
-    useState<DetailRiwayatKelulusan>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
+  const {
+    data: detailRiwayatKelulusan,
+    isLoading: loading,
+    mutate,
+  } = useSWR(
+    `/scientific/graduation/?id=${riwayatKelulusanId}`,
+    async (): Promise<DetailRiwayatKelulusan> => {
       const response = await axiosClient.get(
         `/scientific/graduation/?id=${riwayatKelulusanId}`,
       );
-      const data = await response.data.data;
+      return response.data.data;
+    },
+  );
 
-      setLoading(false);
-      setDetailRiwayatKelulusan(data);
-    };
-
-    fetchData();
-  }, [riwayatKelulusanId]);
-
-  return {
-    detailRiwayatKelulusan,
-    loading,
-  };
+  return { loading, detailRiwayatKelulusan, mutate };
 };
 
 export default useGetDetailKelulusan;

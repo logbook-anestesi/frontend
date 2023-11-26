@@ -18,6 +18,8 @@ import FormDeskripsi from '../FormDeskripsi';
 import FormDate from '../FormDate';
 import { colors } from '../../../../constants/colors';
 import useAddDiskusi from '../../hooks/useAddDiskusi';
+import useGetDetailKelulusan from '../../hooks/useGetDetailKelulusan';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   isOpen: boolean;
@@ -33,6 +35,9 @@ const ModalAddRiwayatDiskusi = ({
   const toast = useToast();
 
   const { createRiwayatDiskusi, loading } = useAddDiskusi();
+  const location = useLocation();
+  const state = location.state;
+  const { mutate } = useGetDetailKelulusan(state?.ilmiahId || '');
 
   const [judul, setJudul] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
@@ -67,8 +72,7 @@ const ModalAddRiwayatDiskusi = ({
       });
 
       closeModal();
-
-      window.location.reload();
+      mutate();
     }
 
     if (!response?.success) {
