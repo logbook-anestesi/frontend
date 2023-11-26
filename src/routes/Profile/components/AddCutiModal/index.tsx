@@ -32,7 +32,7 @@ const AddCutiModal = ({ isOpen, closeModal }: Props) => {
     const start = new Date(date1);
     const end = new Date(date2);
 
-    if (start < end) {
+    if (start <= end) {
       return true;
     }
 
