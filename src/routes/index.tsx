@@ -37,6 +37,7 @@ import ExamList from './ExamList';
 import StaseApproval from './StaseApproval';
 import PelanggaranPage from './Pelanggaran';
 import PelanggaranAddPage from './PelanggaranAdd';
+import ForgotPasswordPage from './ForgotPassword';
 
 const MainRoutes = () => {
   return (
@@ -97,6 +98,7 @@ const MainRoutes = () => {
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
       {/* TODO: adjust here */}
       <Route path="/upload-test" element={<UploadImageToStorage />} />
