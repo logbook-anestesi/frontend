@@ -123,3 +123,13 @@ export const convertDateFormatIndonesia = (inputDate: string): string => {
 
   return date.toLocaleDateString(locale, options);
 };
+
+export const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    return false;
+  }
+
+  return true;
+};

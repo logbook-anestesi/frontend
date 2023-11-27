@@ -1,8 +1,65 @@
-import { Button, Flex, Input, Text } from '@chakra-ui/react';
+import { Button, Flex, Input, Text, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import { colors } from '../../constants/colors';
+import { useState } from 'react';
+import useGetOtp from './hooks/useGetOtp';
+import { validateEmail } from '../../helpers';
 
 const ForgotPasswordPage = () => {
+  const toast = useToast();
+  const [email, setEmail] = useState('');
+  const { loading, requestOTP } = useGetOtp();
+
+  const handleSubmit = async () => {
+    if (email === '') {
+      toast({
+        title: 'Email tidak boleh kosong',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+      });
+
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: 'Harap gunakan email yang sesuai',
+        status: 'error',
+        position: 'top',
+        duration: 3000,
+      });
+
+      return;
+    }
+
+    const response = await requestOTP({
+      email: email,
+    });
+
+    if (response?.success) {
+      toast({
+        title: 'Success',
+        description: 'OTP Berhasil Dikirim ke Email',
+        status: 'success',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+
+    if (!response?.success) {
+      toast({
+        title: 'OTP Gagal Dikirim',
+        description: response?.message,
+        status: 'error',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
+
   return (
     <Flex direction="column">
       <Header title="Lupa Password" />
@@ -14,8 +71,11 @@ const ForgotPasswordPage = () => {
           </Text>
           <Input
             borderRadius={10}
-            onChange={() => {}}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             placeholder="Masukkan email anda ..."
+            type="email"
           />
         </Flex>
 
@@ -34,6 +94,8 @@ const ForgotPasswordPage = () => {
           backgroundColor={colors.primaryPurple}
           color={colors.white}
           mt={20}
+          onClick={handleSubmit}
+          isLoading={loading}
         >
           Submit
         </Button>
