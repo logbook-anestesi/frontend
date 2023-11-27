@@ -4,9 +4,11 @@ import { colors } from '../../constants/colors';
 import { useState } from 'react';
 import useGetOtp from './hooks/useGetOtp';
 import { validateEmail } from '../../helpers';
+import { useNavigate } from 'react-router-dom';
 
 const ForgotPasswordPage = () => {
   const toast = useToast();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const { loading, requestOTP } = useGetOtp();
 
@@ -45,6 +47,12 @@ const ForgotPasswordPage = () => {
         position: 'top',
         duration: 5000,
         isClosable: true,
+      });
+
+      navigate('/forgot-password/set', {
+        state: {
+          email: email,
+        },
       });
     }
 
