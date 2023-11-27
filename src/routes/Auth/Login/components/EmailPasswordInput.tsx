@@ -103,6 +103,7 @@ const EmailPasswordInput = () => {
           color={colors.primaryPurple}
           marginTop={1}
           textDecoration="underline"
+          onClick={() => navigate('/forgot-password')}
         >
           Lupa Password?
         </Text>
