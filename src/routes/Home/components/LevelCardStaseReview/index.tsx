@@ -4,15 +4,14 @@ import { colors, getCompetenceColor } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 import Ticker from '../../../../components/Ticker';
 import module from '../../assets/module.png';
-import useGetStaseApprovalList from '../../../StaseApproval/hooks/useGetStaseApprovalList';
 
 interface Props {
   staseName: string;
+  cardNumber: number;
 }
 
-const LevelCardStaseReview = ({ staseName }: Props) => {
+const LevelCardStaseReview = ({ staseName, cardNumber }: Props) => {
   const navigate = useNavigate();
-  const { notif: notifStase } = useGetStaseApprovalList();
 
   return (
     <Card
@@ -47,7 +46,7 @@ const LevelCardStaseReview = ({ staseName }: Props) => {
       </Flex>
 
       <Flex direction="row" gap="10px">
-        <Ticker text={`${String(notifStase)}`} isShowClose={false} />
+        <Ticker text={`${String(cardNumber)}`} isShowClose={false} />
         <ChevronRightIcon boxSize="35px" color={colors.darkGrey} />
       </Flex>
     </Card>

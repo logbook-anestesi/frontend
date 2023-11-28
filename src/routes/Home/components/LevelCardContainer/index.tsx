@@ -84,7 +84,10 @@ const LevelCardContainer = ({ profile }: Props) => {
 
       {/* KONSULEN or KETUA MODULE ?? */}
       {profile?.role === 'KONSULEN' && profile.stationName ? (
-        <LevelCardStaseReview staseName={profile.stationName} />
+        <LevelCardStaseReview
+          staseName={profile.stationName}
+          cardNumber={notificationCounter?.totalPendingStationApproval || 0}
+        />
       ) : null}
     </Flex>
   );
