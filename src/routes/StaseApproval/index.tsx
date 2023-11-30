@@ -51,7 +51,8 @@ const StaseApproval = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title={`Modul ${profile?.stationName || '-'}`} />
+      {/* <Header title={`Modul ${profile?.stationName || '-'}`} /> */}
+      <Header title={'Dashboard Modul'} />
       <Flex padding="10px 30px" direction="column" gap="16px">
         {/* <TopNavbar
           selectedMenu={selectedMenu}

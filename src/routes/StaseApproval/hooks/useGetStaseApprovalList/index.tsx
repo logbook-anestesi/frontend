@@ -8,11 +8,9 @@ const useGetStaseApprovalList = () => {
     isLoading: loading,
     mutate,
   } = useSWR(
-    '/station/entry/c9f88426-f18d-4a36-907c-06c1652ed2b0',
+    '/station/entry/approval/pending',
     async (): Promise<StaseApproval[]> => {
-      const response = await axiosClient.get(
-        '/station/entry/c9f88426-f18d-4a36-907c-06c1652ed2b0',
-      );
+      const response = await axiosClient.get('/station/entry/approval/pending');
       return response.data.data ?? [];
     },
   );
