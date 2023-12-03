@@ -45,8 +45,40 @@ export const RADIO_LOCATION = [
     value: 'RSCM',
   },
   {
+    title: 'Dharmais',
+    value: 'Dharmais',
+  },
+  {
+    title: 'Harapan Kita',
+    value: 'Harapan Kita',
+  },
+  {
+    title: 'RSUD Tangerang',
+    value: 'RSUD Tangerang',
+  },
+  {
+    title: 'Ruteng',
+    value: 'Ruteng',
+  },
+  {
+    title: 'Natuna',
+    value: 'Natuna',
+  },
+  {
+    title: 'Fatmawati',
+    value: 'Fatmawati',
+  },
+  {
+    title: 'Persahabatan',
+    value: 'Persahabatan',
+  },
+  {
     title: 'RS Jejaring',
     value: 'RS Jejaring',
+  },
+  {
+    title: 'Lainnya',
+    value: 'Lainnya',
   },
 ];
 
