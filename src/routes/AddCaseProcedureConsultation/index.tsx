@@ -78,7 +78,7 @@ const AddCaseProcedureConsultation = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title="Tambah Procedure Consultation" />
+      <Header title="Tambah Konsul Prosedur" />
 
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />

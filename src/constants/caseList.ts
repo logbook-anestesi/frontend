@@ -20,7 +20,7 @@ export const CASE_LIST = [
     value: 'RESUS',
   },
   {
-    title: 'Procedure Consultation',
+    title: 'Konsul Prosedur',
     value: 'PROCEDURE_CONSULTATION',
   },
   {
