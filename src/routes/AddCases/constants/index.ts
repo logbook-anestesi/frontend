@@ -37,10 +37,6 @@ export const RADIO_PRIORITY = [
     title: 'Emergency',
     value: 'EMERGENCY',
   },
-  {
-    title: 'Urgent',
-    value: 'URGENT',
-  },
 ];
 
 export const RADIO_LOCATION = [
