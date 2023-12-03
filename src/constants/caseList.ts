@@ -1,6 +1,6 @@
 export const CASE_LIST = [
   {
-    title: 'OK / Surgery',
+    title: 'OK',
     value: 'OK',
   },
   {
