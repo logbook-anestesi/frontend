@@ -155,7 +155,7 @@ const ApprovingProcessEdit = () => {
               initialDpjpName={caseData?.dpjpUserName}
             />
             <FormRadioExam
-              title="Merupakan Exam*"
+              title="Merupakan Ujian*"
               listOptions={RADIO_EXAM}
               initialValue={caseData?.isExam}
             />

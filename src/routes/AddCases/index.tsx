@@ -111,7 +111,7 @@ const AddCases = () => {
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
-        <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
+        <FormRadioExam title="Merupakan Ujian*" listOptions={RADIO_EXAM} />
         <FormRadioAgeGroup />
         <FormRadioLocation />
 

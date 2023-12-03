@@ -33,7 +33,7 @@ const CaseDetails = () => {
           <>
             <FieldText label="Residen" value={caseData?.userName} />
             <FieldText label="DPJP" value={caseData?.dpjpUserName} />
-            <FieldText label="Merupakan Exam" value={caseData?.isExam} />
+            <FieldText label="Merupakan Ujian" value={caseData?.isExam} />
 
             <FieldText label="Age Group" value={caseData?.ageGroup} />
             <FieldText label="Priority" value={caseData?.priority} />
