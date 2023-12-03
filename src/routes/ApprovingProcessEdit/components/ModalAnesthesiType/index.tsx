@@ -91,6 +91,7 @@ const ModalAnesthesiType = ({
           color={colors.primaryPurple}
           mb={5}
           onClick={handleClickAddOther}
+          style={{ display: 'none' }}
         >
           Tipe tidak ada di daftar
         </Text>
