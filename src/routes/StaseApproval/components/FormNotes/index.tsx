@@ -20,7 +20,7 @@ const FormNotes = ({ setNotes }: Props) => {
       px={3}
     >
       <Text fontSize="sm" color={colors.darkGrey}>
-        Notes
+        Catatan
       </Text>
 
       <Textarea placeholder="Masukkan catatan" onChange={handleChangeNotes} />

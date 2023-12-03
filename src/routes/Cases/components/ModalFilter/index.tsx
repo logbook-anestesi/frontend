@@ -134,10 +134,10 @@ const ModalFilter = ({
               <option value="procedureTypes">Tipe Prosedur</option>
               <option value="noraProcedureTypes">Tipe Prosedur NORA</option>
               <option value="diagnoses">Diagnosis</option>
-              <option value="painServiceTypes">Tipe Pain Service</option>
+              <option value="painServiceTypes">Tipe Manajemen Nyeri</option>
               <option value="anesthesiaTypes">Tipe Anesthesia</option>
               <option value="painServiceProcedures">
-                Tipe Prosedur Pain Service
+                Tipe Prosedur Manajemen Nyeri
               </option>
               <option value="tags">Others</option>
             </Select>

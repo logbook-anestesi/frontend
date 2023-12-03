@@ -30,7 +30,7 @@ const FormAdditionalTags = () => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Additional Tags
+        Tags Lainnya
       </Text>
 
       <Flex
@@ -69,7 +69,7 @@ const FormAdditionalTags = () => {
       </Flex>
 
       <Text fontSize="3xs" color={colors.darkGrey}>
-        Gunakan aditional tags untuk mengelompokkan kasus - kasus tertentu
+        Gunakan 'tags lainnya' untuk mengelompokkan kasus - kasus tertentu
       </Text>
 
       {/* Modal Section */}

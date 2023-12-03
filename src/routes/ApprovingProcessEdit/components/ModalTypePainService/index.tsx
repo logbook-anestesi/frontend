@@ -63,12 +63,12 @@ const ModalTypePainService = ({
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
-        <ModalHeader pl={2}>Pilih Tipe Pain Service</ModalHeader>
+        <ModalHeader pl={2}>Pilih tipe manajemen nyeri</ModalHeader>
         <ModalCloseButton />
 
         <InputGroup>
           <Input
-            placeholder="Cari nama tipe pain service ..."
+            placeholder="Cari tipe manajemen nyeri ..."
             onChange={handleChangeSearch}
           />
           <InputRightElement>

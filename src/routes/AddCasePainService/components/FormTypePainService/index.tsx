@@ -42,7 +42,7 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Pain Service
+        Tipe Manajemen Nyeri
         <Box as="span">*</Box>
       </Text>
 
@@ -56,7 +56,9 @@ const FormTypePainService = ({ painServiceTypes }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{typePainService?.name || 'Masukkan Tipe Pain Service ...'}</Text>
+        <Text>
+          {typePainService?.name || 'Masukkan tipe manajemen nyeri ...'}
+        </Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>

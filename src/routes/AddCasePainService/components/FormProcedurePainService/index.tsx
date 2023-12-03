@@ -43,7 +43,7 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Procedure Pain Service
+        Prosedur Manajemen Nyeri
         <Box as="span">*</Box>
       </Text>
 
@@ -58,7 +58,8 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
         mb={1}
       >
         <Text>
-          {procedurePainService?.name || 'Masukkan Procedure Pain Service ...'}
+          {procedurePainService?.name ||
+            'Masukkan prosedur manajemen nyeri ...'}
         </Text>
 
         <ChevronRightIcon boxSize={7} />

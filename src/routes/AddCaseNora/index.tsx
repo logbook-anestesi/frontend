@@ -115,13 +115,13 @@ const AddCaseNora = () => {
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
-        <FormRadioAgeGroup />
-
-        <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
-        <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
+        <FormRadioAgeGroup isMondatory />
         <FormNoraTypeProcedure
           noraProcedureList={casesForm?.noraProcedureTypes || []}
         />
+
+        <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
+        <FormTypeAnesthesia anesthesiaList={casesForm?.anesthesiaTypes || []} />
 
         <Divider />
 

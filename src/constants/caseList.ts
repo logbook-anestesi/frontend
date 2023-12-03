@@ -28,7 +28,7 @@ export const CASE_LIST = [
     value: 'POLI_PERIOPERATIVE',
   },
   {
-    title: 'Pain Service',
+    title: 'Manajemen Nyeri',
     value: 'PAIN_SERVICE',
   },
 ];

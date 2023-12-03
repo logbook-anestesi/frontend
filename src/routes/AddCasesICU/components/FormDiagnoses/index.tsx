@@ -56,7 +56,7 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{diagnose?.name || 'Masukkan nama Diagnose ...'}</Text>
+        <Text>{diagnose?.name || 'Masukkan diagnosis ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>

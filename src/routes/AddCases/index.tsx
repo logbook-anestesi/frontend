@@ -112,7 +112,7 @@ const AddCases = () => {
         <FormDate />
         <FormDPJP />
         <FormRadioExam title="Merupakan Ujian*" listOptions={RADIO_EXAM} />
-        <FormRadioAgeGroup />
+        <FormRadioAgeGroup isMondatory />
         <FormRadioLocation />
 
         {state.isShowLocationLainnya && <FormLocationLainnya />}
@@ -137,7 +137,7 @@ const AddCases = () => {
           ASA
         </Text>
 
-        <FormTingkatAndEmergency />
+        <FormTingkatAndEmergency isMondatory />
         <FormASATags tagList={casesForm?.asaTags || []} />
 
         <Divider />

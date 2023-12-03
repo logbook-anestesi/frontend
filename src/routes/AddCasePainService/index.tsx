@@ -79,7 +79,7 @@ const AddCasePainService = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title="Tambah Pain Service" />
+      <Header title="Tambah Manajemen Nyeri" />
 
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />

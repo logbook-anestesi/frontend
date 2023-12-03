@@ -36,28 +36,28 @@ const CaseDetails = () => {
             <FieldText label="Merupakan Ujian" value={caseData?.isExam} />
 
             <FieldText label="Kelompok Umur" value={caseData?.ageGroup} />
-            <FieldText label="Priority" value={caseData?.priority} />
+            <FieldText label="Prioritas" value={caseData?.priority} />
 
             <FieldText label="Lokasi" value={caseData?.location} />
 
             <FieldTicker label="Tipe Operasi" listValue={operationTypes} />
-            <FieldTicker label="Tipe Anesthesi" listValue={anesthesiaTypes} />
-            <FieldTicker label="Procedure Done" listValue={procedureTypes} />
-            <FieldTicker label="Diagnosa" listValue={diagnoses} />
+            <FieldTicker label="Tipe Anestesi" listValue={anesthesiaTypes} />
             <FieldTicker
-              label="Procedure Pain Service"
+              label="Prosedur Yang Dilakukan"
+              listValue={procedureTypes}
+            />
+            <FieldTicker label="Diagnosis" listValue={diagnoses} />
+            <FieldTicker
+              label="Prosedur Manajemen Nyeri"
               listValue={painServiceProcedures}
             />
 
             <FieldTicker
-              label="Type Pain Service"
+              label="Tipe Manajemen Nyeri"
               listValue={painServiceTypes}
             />
 
-            <FieldTicker
-              label="NORA Procedure"
-              listValue={noraProcedureTypes}
-            />
+            <FieldTicker label="Prosedur NORA" listValue={noraProcedureTypes} />
 
             {caseData?.patientAge && (
               <>
@@ -83,8 +83,8 @@ const CaseDetails = () => {
             )}
 
             <Flex gap={20}>
-              <FieldText label="Tingkat" value={caseData?.asaTier} />
-              <FieldText label="Emergensi" value={caseData?.asaIsEmergency} />
+              <FieldText label="Tingkat*" value={caseData?.asaTier} />
+              <FieldText label="Emergensi*" value={caseData?.asaIsEmergency} />
             </Flex>
 
             <FieldTicker label="Tags" listValue={asaTags} />
@@ -92,7 +92,7 @@ const CaseDetails = () => {
             <Divider />
 
             <FieldTicker
-              label="Supervised By"
+              label="Disupervisi Oleh"
               listValue={caseData?.supervisors.map((senior) => senior.userName)}
             />
 
@@ -102,8 +102,8 @@ const CaseDetails = () => {
                 .map((junior) => junior.userName)
                 .filter((junior) => junior !== caseData?.userName)}
             />
-            <FieldText label="Notes" value={caseData?.notes} />
-            <FieldTicker label="Additional Tags " listValue={tags} />
+            <FieldText label="Catatan" value={caseData?.notes} />
+            <FieldTicker label="Tags Lainnya " listValue={tags} />
 
             {/* <Divider />
 

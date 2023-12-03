@@ -79,7 +79,7 @@ const FormAdditionalTags = ({ initialValue }: Props) => {
       </Flex>
 
       <Text fontSize="3xs" color={colors.darkGrey}>
-        Gunakan aditional tags untuk mengelompokkan kasus - kasus tertentu
+        Gunakan 'tags lainnya' untuk mengelompokkan kasus - kasus tertentu
       </Text>
 
       {/* Modal Section */}
