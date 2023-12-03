@@ -35,7 +35,7 @@ const CaseDetails = () => {
             <FieldText label="DPJP" value={caseData?.dpjpUserName} />
             <FieldText label="Merupakan Ujian" value={caseData?.isExam} />
 
-            <FieldText label="Age Group" value={caseData?.ageGroup} />
+            <FieldText label="Kelompok Umur" value={caseData?.ageGroup} />
             <FieldText label="Priority" value={caseData?.priority} />
 
             <FieldText label="Lokasi" value={caseData?.location} />

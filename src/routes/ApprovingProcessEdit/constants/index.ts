@@ -11,19 +11,19 @@ export const RADIO_EXAM = [
 
 export const RADIO_AGE_GROUP = [
   {
-    title: 'Neo',
+    title: 'Neonatus',
     value: 'NEO',
   },
   {
-    title: 'Peds',
+    title: 'Anak',
     value: 'PEDS',
   },
   {
-    title: 'Adult',
+    title: 'Dewasa',
     value: 'ADULT',
   },
   {
-    title: 'Geriatric',
+    title: 'Geriatri',
     value: 'GERIATRIC',
   },
 ];
