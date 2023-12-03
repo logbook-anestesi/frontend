@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Title level={3}>Logbook Anastesi</Title>
+      <Title level={3}>Logbook Anestesi</Title>
 
       {isAuthenticated && (
         <Text>

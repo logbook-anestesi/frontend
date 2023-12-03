@@ -106,13 +106,13 @@ const AddCases = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title="Tambah OK/Surgery" />
+      <Header title="Tambah OK" />
 
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
-        <FormRadioExam title="Merupakan Exam*" listOptions={RADIO_EXAM} />
-        <FormRadioAgeGroup />
+        <FormRadioExam title="Merupakan Ujian*" listOptions={RADIO_EXAM} />
+        <FormRadioAgeGroup isMondatory />
         <FormRadioLocation />
 
         {state.isShowLocationLainnya && <FormLocationLainnya />}
@@ -137,7 +137,7 @@ const AddCases = () => {
           ASA
         </Text>
 
-        <FormTingkatAndEmergency />
+        <FormTingkatAndEmergency isMondatory />
         <FormASATags tagList={casesForm?.asaTags || []} />
 
         <Divider />

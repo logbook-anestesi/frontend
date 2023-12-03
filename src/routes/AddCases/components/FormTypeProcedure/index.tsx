@@ -39,7 +39,7 @@ const FormTypeProcedure = ({ procedureList }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Procedure Done
+        Prosedur Yang Dilakukan
       </Text>
 
       <Flex

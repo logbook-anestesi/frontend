@@ -43,7 +43,7 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Diagnose*
+        Diagnosis*
       </Text>
 
       <Flex
@@ -56,7 +56,7 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{diagnose?.name || 'Masukkan nama Diagnose ...'}</Text>
+        <Text>{diagnose?.name || 'Masukkan diagnosis ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>

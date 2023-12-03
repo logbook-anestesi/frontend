@@ -39,7 +39,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Anastesi*
+        Tipe Anestesi*
       </Text>
 
       <Flex
@@ -52,7 +52,7 @@ const FormTypeAnesthesia = ({ anesthesiaList }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{anesthesia?.name || 'Masukkan tipe anastesi ...'}</Text>
+        <Text>{anesthesia?.name || 'Masukkan tipe anestesi ...'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>

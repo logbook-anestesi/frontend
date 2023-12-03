@@ -155,7 +155,7 @@ const ApprovingProcessEdit = () => {
               initialDpjpName={caseData?.dpjpUserName}
             />
             <FormRadioExam
-              title="Merupakan Exam*"
+              title="Merupakan Ujian*"
               listOptions={RADIO_EXAM}
               initialValue={caseData?.isExam}
             />
@@ -168,6 +168,11 @@ const ApprovingProcessEdit = () => {
               initialValue={caseData?.operationTypes}
             />
 
+            <FormNoraTypeProcedure
+              initialValue={caseData?.noraProcedureTypes}
+              noraProcedureList={casesForm?.noraProcedureTypes}
+            />
+
             <FormTypeAnesthesia
               anesthesiaList={casesForm?.anesthesiaTypes}
               initialValue={caseData?.anesthesiaTypes}
@@ -176,11 +181,6 @@ const ApprovingProcessEdit = () => {
             <FormTypeProcedure
               procedureList={casesForm?.procedureTypes}
               initialValue={caseData?.procedureTypes}
-            />
-
-            <FormNoraTypeProcedure
-              initialValue={caseData?.noraProcedureTypes}
-              noraProcedureList={casesForm?.noraProcedureTypes}
             />
 
             <FormTypeDiagnose

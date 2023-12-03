@@ -20,7 +20,7 @@ const FormRadioPriority = () => {
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Priority*
+        Prioritas*
       </Text>
 
       <RadioGroup

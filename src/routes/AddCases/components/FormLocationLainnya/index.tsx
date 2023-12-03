@@ -25,7 +25,7 @@ const FormLocationLainnya = ({ isMondatory }: Props) => {
   return (
     <Flex direction="column">
       <Text fontSize="sm" color={colors.darkGrey}>
-        Lokasi Lainnya
+        Lokasi
         {isMondatory && <Box as="span">*</Box>}
       </Text>
 

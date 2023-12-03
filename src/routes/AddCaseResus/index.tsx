@@ -93,7 +93,7 @@ const AddCaseResus = () => {
 
         {state.isShowLocationLainnya && <FormLocationLainnya />}
 
-        <FormRadioAgeGroup />
+        <FormRadioAgeGroup isMondatory />
         <FormDiagnoses diagnoseList={casesForm?.diagnoses || []} />
         <FormTypeProcedure procedureList={casesForm?.procedureTypes || []} />
         <FormAdditionalTags />

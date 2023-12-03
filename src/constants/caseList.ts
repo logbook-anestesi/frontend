@@ -1,6 +1,6 @@
 export const CASE_LIST = [
   {
-    title: 'OK / Surgery',
+    title: 'OK',
     value: 'OK',
   },
   {
@@ -20,7 +20,7 @@ export const CASE_LIST = [
     value: 'RESUS',
   },
   {
-    title: 'Procedure Consultation',
+    title: 'Konsul Prosedur',
     value: 'PROCEDURE_CONSULTATION',
   },
   {
@@ -28,7 +28,7 @@ export const CASE_LIST = [
     value: 'POLI_PERIOPERATIVE',
   },
   {
-    title: 'Pain Service',
+    title: 'Manajemen Nyeri',
     value: 'PAIN_SERVICE',
   },
 ];

@@ -11,35 +11,31 @@ export const RADIO_EXAM = [
 
 export const RADIO_AGE_GROUP = [
   {
-    title: 'Neo',
+    title: 'Neonatus',
     value: 'NEO',
   },
   {
-    title: 'Peds',
+    title: 'Anak',
     value: 'PEDS',
   },
   {
-    title: 'Adult',
+    title: 'Dewasa',
     value: 'ADULT',
   },
   {
-    title: 'Geriatric',
+    title: 'Geriatri',
     value: 'GERIATRIC',
   },
 ];
 
 export const RADIO_PRIORITY = [
   {
-    title: 'Elective',
+    title: 'Elektif',
     value: 'ELECTIVE',
   },
   {
-    title: 'Emergency',
+    title: 'Darurat',
     value: 'EMERGENCY',
-  },
-  {
-    title: 'Urgent',
-    value: 'URGENT',
   },
 ];
 
@@ -49,8 +45,40 @@ export const RADIO_LOCATION = [
     value: 'RSCM',
   },
   {
+    title: 'Dharmais',
+    value: 'Dharmais',
+  },
+  {
+    title: 'Harapan Kita',
+    value: 'Harapan Kita',
+  },
+  {
+    title: 'RSUD Tangerang',
+    value: 'RSUD Tangerang',
+  },
+  {
+    title: 'Ruteng',
+    value: 'Ruteng',
+  },
+  {
+    title: 'Natuna',
+    value: 'Natuna',
+  },
+  {
+    title: 'Fatmawati',
+    value: 'Fatmawati',
+  },
+  {
+    title: 'Persahabatan',
+    value: 'Persahabatan',
+  },
+  {
     title: 'RS Jejaring',
     value: 'RS Jejaring',
+  },
+  {
+    title: 'Lainnya',
+    value: 'Lainnya',
   },
 ];
 

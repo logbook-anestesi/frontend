@@ -31,7 +31,7 @@ const FormSupervised = () => {
     <Flex direction="column" gap={1}>
       {profile?.competenceName === 'PEMBEKALAN' ? (
         <Text fontSize="sm" color={colors.darkGrey}>
-          Supervised By
+          Disupervisi Oleh
         </Text>
       ) : (
         <Text fontSize="sm" color={colors.darkGrey}>

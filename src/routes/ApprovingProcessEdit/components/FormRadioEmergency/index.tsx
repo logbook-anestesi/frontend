@@ -28,7 +28,7 @@ const FormRadioEmergency = ({ initialValue }: Props) => {
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Emergency
+        Emergensi*
       </Text>
 
       <RadioGroup

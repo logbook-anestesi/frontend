@@ -5,7 +5,7 @@ export const RADIO_LOCATION = [
   },
   {
     title: 'Wards',
-    value: 'Wards',
+    value: 'Ruang Rawat',
   },
   {
     title: 'Lainnya',

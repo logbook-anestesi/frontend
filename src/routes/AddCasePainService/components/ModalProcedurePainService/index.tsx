@@ -78,12 +78,12 @@ const ModalProcedurePainService = ({
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={4}>
-        <ModalHeader pl={2}>Pilih Procedure Pain Service</ModalHeader>
+        <ModalHeader pl={2}>Pilih Prosedur Manajemen Nyeri</ModalHeader>
         <ModalCloseButton />
 
         <InputGroup>
           <Input
-            placeholder="Cari procedure pain service ..."
+            placeholder="Cari prosedur manajemen nyeri ..."
             onChange={handleChangeSearch}
           />
           <InputRightElement>
