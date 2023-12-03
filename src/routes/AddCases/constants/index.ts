@@ -30,11 +30,11 @@ export const RADIO_AGE_GROUP = [
 
 export const RADIO_PRIORITY = [
   {
-    title: 'Elective',
+    title: 'Elektif',
     value: 'ELECTIVE',
   },
   {
-    title: 'Emergency',
+    title: 'Darurat',
     value: 'EMERGENCY',
   },
 ];
