@@ -14,10 +14,8 @@ import ListItemStaseApproval from './components/ListItemStaseApproval';
 import ModalApprove from './components/ModalApprove';
 import { StaseApproval as StaseApprovalType } from './hooks/useGetStaseApprovalList/types';
 import ModalApproveAll from './components/ModalApproveAll';
-import useGetProfile from '../../hooks/useGetProfile';
 
 const StaseApproval = () => {
-  const { profile } = useGetProfile();
   const [selectedStaseId, setSelectedStaseId] = useState('');
   const [filterName, setFilterName] = useState('');
   const [status, setStatus] = useState<'APPROVED' | 'REJECTED'>();
