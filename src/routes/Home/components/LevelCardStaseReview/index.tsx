@@ -1,6 +1,6 @@
 import { Card, Flex, Text, Image } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { colors, getCompetenceColor } from '../../../../constants/colors';
+import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
 import Ticker from '../../../../components/Ticker';
 import module from '../../assets/module.png';
@@ -35,12 +35,15 @@ const LevelCardStaseReview = ({ staseName, cardNumber }: Props) => {
           <Text fontSize="sm" color={colors.darkGrey}>
             Dashboard Stase
           </Text>
-          <Text
-            fontSize="md"
-            as="b"
-            color={getCompetenceColor('Stase Name [BE]')}
-          >
-            {staseName}
+          <Text fontSize="md" as="b">
+            {staseName.includes(',')
+              ? staseName.split(',').map((value, index) => (
+                  <span key={index}>
+                    {value.trim()}{' '}
+                    {index < staseName.split(',').length - 1 && <br />}
+                  </span>
+                ))
+              : staseName}
           </Text>
         </Flex>
       </Flex>

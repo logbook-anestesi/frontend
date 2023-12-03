@@ -24,7 +24,7 @@ const CardApproval = ({
 
   const colorCardProgress = (status: string) => {
     if (status === 'IN_PROGRESS') {
-      return colors.primaryPurple;
+      return colors.primaryYellow;
     }
     if (status === 'PASSED') {
       return colors.primaryGreen;
@@ -38,13 +38,13 @@ const CardApproval = ({
 
   const normalizeStatus = (status: string) => {
     if (status === 'IN_PROGRESS') {
-      return 'PROGRESS';
+      return 'Menunggu Kelulusan';
     }
     if (status === 'PASSED') {
-      return 'PASSED';
+      return 'Lulus';
     }
     if (status === 'FAILED') {
-      return 'FAILED';
+      return 'Tidak Lulus';
     }
   };
 
@@ -60,21 +60,29 @@ const CardApproval = ({
         {convertDateForNotification(approvalData.lastUpdated)}
       </Text>
 
-      <Text as="b" onClick={handleClickProfile} textDecor="underline">
+      <Text
+        as="b"
+        onClick={handleClickProfile}
+        textDecor="underline"
+        color={colors.primaryPurple}
+        mb={2}
+      >
         {approvalData.userName}
       </Text>
+
+      <Text>{approvalData.stationName}</Text>
 
       <Text
         as="b"
         fontSize="sm"
-        borderColor={colorCardProgress(approvalData.status)}
-        borderWidth={2}
+        // borderColor={colorCardProgress(approvalData.status)}
+        // borderWidth={2}
         color={colorCardProgress(approvalData.status)}
         width="fit-content"
-        px={2}
+        // px={2}
         py={1}
         borderRadius={6}
-        mt={2}
+        mt={4}
       >
         {normalizeStatus(approvalData.status)}
       </Text>

@@ -14,10 +14,8 @@ import ListItemStaseApproval from './components/ListItemStaseApproval';
 import ModalApprove from './components/ModalApprove';
 import { StaseApproval as StaseApprovalType } from './hooks/useGetStaseApprovalList/types';
 import ModalApproveAll from './components/ModalApproveAll';
-import useGetProfile from '../../hooks/useGetProfile';
 
 const StaseApproval = () => {
-  const { profile } = useGetProfile();
   const [selectedStaseId, setSelectedStaseId] = useState('');
   const [filterName, setFilterName] = useState('');
   const [status, setStatus] = useState<'APPROVED' | 'REJECTED'>();
@@ -51,7 +49,8 @@ const StaseApproval = () => {
 
   return (
     <Flex flexDirection="column">
-      <Header title={`Modul ${profile?.stationName || '-'}`} />
+      {/* <Header title={`Modul ${profile?.stationName || '-'}`} /> */}
+      <Header title={'Dashboard Modul'} />
       <Flex padding="10px 30px" direction="column" gap="16px">
         {/* <TopNavbar
           selectedMenu={selectedMenu}
