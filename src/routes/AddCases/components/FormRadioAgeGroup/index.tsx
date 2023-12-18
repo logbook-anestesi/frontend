@@ -23,7 +23,7 @@ const FormRadioAgeGroup = ({ isMondatory }: Props) => {
 
   return (
     <Flex direction="column" gap={1} mb={2}>
-      <Text fontSize="sm" color={colors.darkGrey}>
+      <Text fontSize="sm" color={colors.darkGrey} mb={3}>
         Kelompok Umur
         {isMondatory && <Box as="span">*</Box>}
       </Text>
@@ -38,7 +38,7 @@ const FormRadioAgeGroup = ({ isMondatory }: Props) => {
           },
         }}
       >
-        <Stack direction="row" gap={3}>
+        <Stack gap={3}>
           {RADIO_AGE_GROUP.map((option) => (
             <Radio value={option.value} colorScheme="purple" key={option.value}>
               {option.title}

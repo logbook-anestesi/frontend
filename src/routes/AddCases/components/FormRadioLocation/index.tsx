@@ -38,7 +38,7 @@ const FormRadioLocation = () => {
 
   return (
     <Flex direction="column" gap={1} mb={2}>
-      <Text fontSize="sm" color={colors.darkGrey}>
+      <Text fontSize="sm" color={colors.darkGrey} mb={3}>
         Lokasi*
       </Text>
 
@@ -52,7 +52,7 @@ const FormRadioLocation = () => {
           },
         }}
       >
-        <Stack direction="row" gap={3}>
+        <Stack gap={3}>
           {RADIO_LOCATION.map((option) => (
             <Radio value={option.value} colorScheme="purple" key={option.value}>
               {option.title}
