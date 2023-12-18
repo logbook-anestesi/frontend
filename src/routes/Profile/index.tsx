@@ -9,8 +9,10 @@ import useAuth from '../../hooks/useAuth';
 import { useMemo, useState } from 'react';
 import UploadPhoto from './components/UploadPhoto';
 import CutiSection from './components/CutiSection';
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const { loading, profile } = useGetProfile();
   const { logoutAccount } = useAuth();
   const [temporaryImage, setTemporaryImage] = useState('');
@@ -144,14 +146,25 @@ const ProfilePage = () => {
 
         <CutiSection />
 
-        <Button
-          color={colors.white}
-          backgroundColor={colors.primaryPurple}
-          colorScheme={colors.lightPurple}
-          onClick={logoutAccount}
-        >
-          Logout
-        </Button>
+        <Flex direction="column" gap={3}>
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            color={colors.primaryPurple}
+            onClick={() => navigate('/forgot-password')}
+            isLoading={loading}
+          >
+            Ubah Password
+          </Button>
+          <Button
+            color={colors.white}
+            backgroundColor={colors.primaryPurple}
+            colorScheme={colors.lightPurple}
+            onClick={logoutAccount}
+          >
+            Logout
+          </Button>
+        </Flex>
       </Flex>
     </Flex>
   );
