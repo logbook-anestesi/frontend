@@ -83,7 +83,7 @@ const ForgotPasswordSetPage = () => {
             onChange={(e) => {
               setOtp(e.target.value);
             }}
-            placeholder="Masukkan OTP ..."
+            placeholder="Masukkan OTP"
             type="number"
           />
 
