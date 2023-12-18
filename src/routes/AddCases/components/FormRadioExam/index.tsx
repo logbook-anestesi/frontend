@@ -11,11 +11,12 @@ interface Option {
 interface Props {
   title: string;
   listOptions: Option[];
+  setIsExam?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const FormRadioExam = ({ title, listOptions }: Props) => {
+const FormRadioExam = ({ title, listOptions, setIsExam }: Props) => {
   const casesDispatch = useAddCasesDispatch();
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     casesDispatch({
@@ -24,6 +25,10 @@ const FormRadioExam = ({ title, listOptions }: Props) => {
         isExam: value === 'Ya',
       },
     });
+
+    if (setIsExam) {
+      setIsExam(value);
+    }
   }, [casesDispatch, value]);
 
   return (

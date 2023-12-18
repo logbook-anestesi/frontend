@@ -21,7 +21,7 @@ import FormNotes from './components/FormNotes';
 import FormAdditionalTags from './components/FormAdditionalTags';
 import useAddCases from './hooks/useAddCases';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
 import FormLocationLainnya from './components/FormLocationLainnya';
 
@@ -32,14 +32,15 @@ const AddCases = () => {
   const navigate = useNavigate();
   const { casesForm } = useGetCasesForm();
   const { createCases, loading } = useAddCases();
+  const [isExam, setIsExam] = useState('');
 
   const handleSubmitForm = async () => {
     const response = await createCases({
       asaIsEmergency: state.asaIsEmergency,
       date: state.date,
-      isExam: state.isExam,
       caseType: state.caseType,
       dpjpUserId: state.dpjpUserId,
+      ...(isExam !== '' ? { isExam: state.isExam } : {}),
       ...(state?.patientAge !== 0 ? { patientAge: state.patientAge } : {}),
       ...(state?.patientGender !== ''
         ? { patientGender: state.patientGender }
@@ -111,7 +112,11 @@ const AddCases = () => {
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
         <FormDPJP />
-        <FormRadioExam title="Merupakan Ujian*" listOptions={RADIO_EXAM} />
+        <FormRadioExam
+          title="Merupakan Ujian*"
+          listOptions={RADIO_EXAM}
+          setIsExam={setIsExam}
+        />
         <FormRadioAgeGroup isMondatory />
         <FormRadioLocation />
 
