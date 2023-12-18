@@ -120,7 +120,7 @@ const ModalAddRiwayatDiskusi = ({
           <Text fontSize="sm">Pembimbing*</Text>
 
           <Flex mb={3}>
-            <VStack spacing={2}>
+            <VStack spacing={2} align="start">
               {detailIlmiah?.approvals.map((approval) => (
                 <Checkbox
                   key={approval.id}
