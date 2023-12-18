@@ -39,7 +39,28 @@ const AddCutiModal = ({ isOpen, closeModal }: Props) => {
     return false;
   };
 
+  const isFormComplete = () => {
+    if (startDate && endDate && description) {
+      return true;
+    }
+
+    return false;
+  };
+
   const handleSubmit = async () => {
+    if (!isFormComplete()) {
+      toast({
+        title: 'Gagal Membuat Cuti',
+        description: 'Pastikan semua form sudah terisi',
+        status: 'error',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      return;
+    }
+
     const isDateValid = compareDates(startDate, endDate);
 
     if (!isDateValid) {
