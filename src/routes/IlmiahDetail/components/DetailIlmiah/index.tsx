@@ -68,7 +68,7 @@ const DetailIlmiah = ({
                 borderRadius={10}
                 bgColor={statusBgColor(approval?.status)}
               >
-                Pending
+                {approval.status}
               </Text>
             </Flex>
           ))
