@@ -27,12 +27,6 @@ const PendingApproval = () => {
     'ilmiah' | 'exam' | 'graduation' | 'discussion'
   >('ilmiah');
 
-  console.log(
-    examApprovals?.length,
-    discussionHistory?.length,
-    graduationReviewData?.length,
-    reviewData?.length,
-  );
   return (
     <Flex flexDirection="column">
       <Header title="Pending Approval" />
