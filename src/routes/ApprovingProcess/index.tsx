@@ -35,7 +35,7 @@ const ApprovingProcess = () => {
         isClosable: true,
       });
 
-      navigate('/review/cases');
+      navigate(-1);
       return;
     }
 
