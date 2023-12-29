@@ -73,19 +73,25 @@ const TableData = ({ examList }: Props) => {
   ];
 
   const data = useMemo(() => {
-    return examList?.map((exam, idx) => {
-      return {
-        idx: idx + 1,
-        type: exam.type,
-        isTheory: exam.isTheory,
-        examinerName: exam.examinerName,
-        approvalDate:
-          exam.approvalStatus === 'PENDING'
-            ? '-'
-            : convertDateForExam(exam.approvalConfirmDate),
-        status: exam.approvalStatus,
-      };
-    });
+    return examList
+      ?.sort(
+        (a, b) =>
+          new Date(b.approvalConfirmDate).getTime() -
+          new Date(a.approvalConfirmDate).getTime(),
+      )
+      ?.map((exam, idx) => {
+        return {
+          idx: idx + 1,
+          type: exam.type,
+          isTheory: exam.isTheory,
+          examinerName: exam.examinerName,
+          approvalDate:
+            exam.approvalStatus === 'PENDING'
+              ? '-'
+              : convertDateForExam(exam.approvalConfirmDate),
+          status: exam.approvalStatus,
+        };
+      });
   }, [examList]);
 
   const customStyles = {

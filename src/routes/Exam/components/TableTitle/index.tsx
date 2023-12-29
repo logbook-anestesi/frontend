@@ -20,7 +20,7 @@ const TableTitle = () => {
           color={colors.primaryPurple}
           onClick={navigateToListStase}
         >
-          Lihat Daftar Exam
+          Lihat Daftar Ujian
         </Text>
       </Flex>
     </Flex>
