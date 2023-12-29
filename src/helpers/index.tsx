@@ -112,16 +112,32 @@ export const convertUnderscoresToSpaces = (inputText: string) => {
 };
 
 export const convertDateFormatIndonesia = (inputDate: string): string => {
-  const date = new Date(inputDate);
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
+  const indonesianMonths = [
+    '',
+    'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember',
+  ];
 
-  const locale = 'id-ID'; // Use 'id-ID' for Indonesian locale
+  // Splitting the input date
+  const splitDateTime = inputDate.split('T')[0].split('-');
 
-  return date.toLocaleDateString(locale, options);
+  // Extracting day, month, and year
+  const day = parseInt(splitDateTime[2]);
+  const month = parseInt(splitDateTime[1]);
+  const year = parseInt(splitDateTime[0]);
+
+  // Formatted date
+  return `${day} ${indonesianMonths[month]} ${year}`;
 };
 
 export const validateEmail = (email: string): boolean => {
