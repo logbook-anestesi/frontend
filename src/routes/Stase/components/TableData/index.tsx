@@ -25,7 +25,7 @@ const TableData = ({ stationList }: Props) => {
       return 'Lulus';
     }
     if (status === 'FAILED') {
-      return 'Tidak lulus';
+      return 'Tidak Lulus';
     }
 
     return '-';
