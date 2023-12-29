@@ -21,7 +21,7 @@ const PelanggaranAddPage = () => {
 
   const [selectedResiden, setSelectedResiden] = useState<Residen>();
   const [severity, setSeverity] = useState('');
-  const [severityDate, setSeverityDate] = useState('');
+  const [severityDate, setSeverityDate] = useState(new Date().toISOString());
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -43,6 +43,8 @@ const PelanggaranAddPage = () => {
 
       return;
     }
+
+    console.log({ severityDate });
 
     onOpen();
   };
