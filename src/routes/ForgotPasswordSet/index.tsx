@@ -46,7 +46,7 @@ const ForgotPasswordSetPage = () => {
     if (response?.success) {
       toast({
         title: 'Success',
-        description: 'OTP Berhasil Dikirim ke Email',
+        description: 'Password Berhasil Diubah',
         status: 'success',
         position: 'top',
         duration: 5000,
