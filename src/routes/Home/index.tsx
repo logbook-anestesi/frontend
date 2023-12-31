@@ -28,7 +28,7 @@ const Home = () => {
         <Profile
           image={profile?.imageUrl || doctorIcon}
           name={profile?.name || '-'}
-          term={profile?.joinTerm || '-'}
+          term={profile?.currentTerm || '-'}
           role={profile?.role || '-'}
         />
 

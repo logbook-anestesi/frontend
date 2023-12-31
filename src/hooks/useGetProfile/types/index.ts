@@ -12,6 +12,7 @@ export interface Profile {
   role: string;
   joinYear: number;
   joinTerm: number;
+  currentTerm: number;
   stationName: string;
   competenceName: string;
 }
