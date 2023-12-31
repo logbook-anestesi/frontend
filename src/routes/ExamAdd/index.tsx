@@ -9,6 +9,7 @@ import ModalSubmit from './components/ModalSubmit';
 import { DPJP } from '../AddCases/hooks/useGetDPJP/types';
 import useAddExam from './hooks/useAddExam';
 import { useNavigate } from 'react-router-dom';
+import FormDate from './components/FormDate';
 
 const ExamAdd = () => {
   const toast = useToast();
@@ -17,14 +18,16 @@ const ExamAdd = () => {
   const [exam, setExam] = useState('');
   const [examType, setExamType] = useState('');
   const [penguji, setPenguji] = useState<DPJP>();
+  const [createdDate, setCreatedDate] = useState('');
 
   const { createExam, loading } = useAddExam();
 
   const handleClickSubmit = async () => {
     const response = await createExam({
+      created: createdDate,
       examinerId: penguji?.id || '',
-      ...(examType !== '' ? { isTheory: examType === 'TEORI' } : {}),
       type: exam,
+      ...(examType !== '' ? { isTheory: examType === 'TEORI' } : {}),
     });
 
     if (response?.success) {
@@ -73,6 +76,7 @@ const ExamAdd = () => {
       <Header title="Buat Ujian" />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
+        <FormDate setDate={setCreatedDate} />
         <FormExam setExam={setExam} />
         <FormRadioExamType setExamType={setExamType} />
         <FormPenguji setPenguji={setPenguji} />

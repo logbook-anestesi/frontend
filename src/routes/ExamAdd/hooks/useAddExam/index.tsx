@@ -5,6 +5,7 @@ interface PayloadType {
   type?: string;
   examinerId?: string;
   isTheory?: boolean;
+  created?: string;
 }
 
 const useAddExam = () => {
