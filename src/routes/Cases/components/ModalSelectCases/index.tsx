@@ -29,7 +29,7 @@ const ModalSelectCases = ({ isOpen, closeModal, setCase }: Props) => {
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent margin="10px 20px" p={2}>
-        <ModalHeader>Pilih Case</ModalHeader>
+        <ModalHeader>Pilih Tipe Kasus</ModalHeader>
         <ModalCloseButton />
         {CASE_LIST?.map((dataCase) => {
           return (
