@@ -1,4 +1,4 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent } from 'react';
 
@@ -12,7 +12,10 @@ const FormDeskripsi = ({ setDeskripsi }: Props) => {
   return (
     <Flex direction="column" gap={1} mb={4}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Deskripsi*
+        Deskripsi
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Input

@@ -1,4 +1,4 @@
-import { Flex, Select, Text } from '@chakra-ui/react';
+import { Box, Flex, Select, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { SCIENTIFIC_TYPE } from '../../constants';
 import { ChangeEvent } from 'react';
@@ -15,7 +15,10 @@ const FormTipeIlmiah = ({ setScientificType }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Ilmiah*
+        Tipe Ilmiah
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Select placeholder="Pilih tipe ilmiah" onChange={handleChange}>

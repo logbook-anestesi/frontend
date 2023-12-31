@@ -26,7 +26,11 @@ const FormLocationLainnya = ({ isMondatory }: Props) => {
     <Flex direction="column">
       <Text fontSize="sm" color={colors.darkGrey}>
         Lokasi
-        {isMondatory && <Box as="span">*</Box>}
+        {isMondatory && (
+          <Box as="span" color={colors.primaryRed}>
+            *
+          </Box>
+        )}
       </Text>
 
       <Input placeholder="Masukkan lokasi" onChange={handleChangeNotes} />

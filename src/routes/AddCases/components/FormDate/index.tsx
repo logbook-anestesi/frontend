@@ -33,7 +33,9 @@ const FormDate = () => {
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Tanggal
-        <Box as="span">*</Box>
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex

@@ -29,7 +29,11 @@ const FormTingkatAndEmergency = ({ isMondatory }: Props) => {
       <Flex direction="column" flex={1}>
         <Text fontSize="sm" color={colors.darkGrey}>
           Tingkat
-          {isMondatory && <Box as="span">*</Box>}
+          {isMondatory && (
+            <Box as="span" color={colors.primaryRed}>
+              *
+            </Box>
+          )}
         </Text>
 
         <Input placeholder="1" onChange={handleChangeTingkat} />

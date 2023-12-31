@@ -44,7 +44,9 @@ const FormProcedurePainService = ({ painServiceProcedure }: Props) => {
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
         Prosedur Manajemen Nyeri
-        <Box as="span">*</Box>
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex

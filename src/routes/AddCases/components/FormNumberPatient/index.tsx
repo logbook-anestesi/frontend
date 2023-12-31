@@ -1,4 +1,4 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAddCasesDispatch } from '../../contexts';
@@ -21,7 +21,10 @@ const FormNumberPatient = () => {
   return (
     <Flex direction="column">
       <Text fontSize="sm" color={colors.darkGrey}>
-        Jumlah Pasien*
+        Jumlah Pasien
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Input

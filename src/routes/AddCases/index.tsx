@@ -113,7 +113,7 @@ const AddCases = () => {
         <FormDate />
         <FormDPJP />
         <FormRadioExam
-          title="Merupakan Ujian*"
+          title="Merupakan Ujian"
           listOptions={RADIO_EXAM}
           setIsExam={setIsExam}
         />

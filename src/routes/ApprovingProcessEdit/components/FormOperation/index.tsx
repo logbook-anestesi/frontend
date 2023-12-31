@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Text, useDisclosure } from '@chakra-ui/react';
 
 import { colors } from '../../../../constants/colors';
 import Ticker from '../../../../components/Ticker';
@@ -71,7 +71,10 @@ const FormOperation = ({ formData, initialValue }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Operasi*
+        Tipe Operasi
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex

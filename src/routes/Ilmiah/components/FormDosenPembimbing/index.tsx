@@ -1,4 +1,4 @@
-import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import ModalPembimbing from '../ModalPembimbing';
 import { PembimbingData } from '../ModalAddIlmiah';
@@ -14,7 +14,10 @@ const FormDosenPembimbing = ({ setApprovalUser, listPembimbing }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Pembimbing*
+        Pembimbing
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       {listPembimbing.length < 1 && (

@@ -1,4 +1,4 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent } from 'react';
 
@@ -13,7 +13,10 @@ const FormLink = ({ setLink }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Link Dokumen*
+        Link Dokumen
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Input
