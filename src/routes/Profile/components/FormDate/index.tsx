@@ -1,5 +1,5 @@
 import { CalendarIcon } from '@chakra-ui/icons';
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { colors } from '../../../../constants/colors';
@@ -27,7 +27,10 @@ const FormDate = ({ title, setDate }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        {title}*
+        {title}
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex
