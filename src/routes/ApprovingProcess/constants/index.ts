@@ -1,10 +1,10 @@
 export const RADIO_PENILAIAN_GROUP = [
   {
-    title: 'Sangat Tidak Baik',
+    title: 'Kurang Baik',
     value: 'VERY_BAD',
   },
   {
-    title: 'Kurang Baik',
+    title: 'Cukup',
     value: 'NOT_GOOD',
   },
   {

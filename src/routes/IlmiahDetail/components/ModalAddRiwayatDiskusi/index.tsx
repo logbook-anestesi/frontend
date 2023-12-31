@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Checkbox,
   Flex,
@@ -117,7 +118,12 @@ const ModalAddRiwayatDiskusi = ({
         <ModalCloseButton />
 
         <Flex direction="column" gap={2}>
-          <Text fontSize="sm">Pembimbing*</Text>
+          <Text fontSize="sm" color={colors.darkGrey}>
+            Pembimbing
+            <Box as="span" color={colors.primaryRed}>
+              *
+            </Box>
+          </Text>
 
           <Flex mb={3}>
             <VStack spacing={2} align="start">

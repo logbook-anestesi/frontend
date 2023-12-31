@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Stase } from '../../hooks/useGetAllStase/types';
@@ -11,7 +11,10 @@ const StaseDropdown = ({ onOpen, selectedStase }: Props) => {
   return (
     <Flex gap={2} direction="column">
       <Text color={colors.darkGrey} fontSize="sm">
-        Stase yang akan diambil
+        Stase Yang Akan Diambil
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
       <Flex
         borderWidth="1px"

@@ -1,4 +1,4 @@
-import { Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { useEffect, useState } from 'react';
 import { useAddCasesDispatch } from '../../contexts';
@@ -35,6 +35,9 @@ const FormRadioExam = ({ title, listOptions, setIsExam }: Props) => {
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
         {title}
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <RadioGroup

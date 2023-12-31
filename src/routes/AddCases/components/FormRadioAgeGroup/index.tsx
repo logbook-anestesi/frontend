@@ -25,7 +25,11 @@ const FormRadioAgeGroup = ({ isMondatory }: Props) => {
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey} mb={3}>
         Kelompok Umur
-        {isMondatory && <Box as="span">*</Box>}
+        {isMondatory && (
+          <Box as="span" color={colors.primaryRed}>
+            *
+          </Box>
+        )}
       </Text>
 
       <RadioGroup

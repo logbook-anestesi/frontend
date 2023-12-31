@@ -1,4 +1,4 @@
-import { Flex, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Diagnose } from '../../../../hooks/useGetCasesForm/types';
@@ -43,7 +43,10 @@ const FormDiagnoses = ({ diagnoseList }: Props) => {
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Diagnosis*
+        Diagnosis
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex

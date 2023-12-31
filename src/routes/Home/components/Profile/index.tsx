@@ -7,9 +7,10 @@ interface ProfileInterface {
   image: string;
   name: string;
   term: string | number;
+  role: string;
 }
 
-const Profile = ({ image, name, term }: ProfileInterface) => {
+const Profile = ({ image, name, term, role }: ProfileInterface) => {
   const navigate = useNavigate();
 
   const redirectProfile = () => {
@@ -23,7 +24,9 @@ const Profile = ({ image, name, term }: ProfileInterface) => {
         <Text as="b">{name}</Text>
 
         <Flex justify="space-between">
-          <Ticker text={`Term ${term.toString()}`} isShowClose={false} />
+          {role === 'RESIDEN' && (
+            <Ticker text={`Term ${term.toString()}`} isShowClose={false} />
+          )}
           <Text
             as="b"
             fontSize="12px"

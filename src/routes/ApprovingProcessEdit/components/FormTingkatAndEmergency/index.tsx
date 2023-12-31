@@ -1,4 +1,4 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent, useEffect, useState } from 'react';
 import FormRadioEmergency from '../FormRadioEmergency';
@@ -38,6 +38,9 @@ const FormTingkatAndEmergency = ({
         <Flex direction="column" flex={1}>
           <Text fontSize="sm" color={colors.darkGrey}>
             Tingkat
+            <Box as="span" color={colors.primaryRed}>
+              *
+            </Box>
           </Text>
 
           <Input placeholder="1" onChange={handleChangeTingkat} value={tier} />

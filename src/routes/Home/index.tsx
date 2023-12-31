@@ -29,6 +29,7 @@ const Home = () => {
           image={profile?.imageUrl || doctorIcon}
           name={profile?.name || '-'}
           term={profile?.joinTerm || '-'}
+          role={profile?.role || '-'}
         />
 
         <NotificationCenter />

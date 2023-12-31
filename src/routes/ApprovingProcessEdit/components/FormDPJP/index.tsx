@@ -1,4 +1,4 @@
-import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import profileIcon from '../../assets/profile.png';
 import ModalDPJP from '../ModalDPJP';
@@ -35,7 +35,10 @@ const FormDPJP = ({ initialDpjpId, initialDpjpName }: Props) => {
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        DPJP*
+        DPJP
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex
