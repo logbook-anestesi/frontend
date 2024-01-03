@@ -1,6 +1,6 @@
 import { CalendarIcon } from '@chakra-ui/icons';
 import { Box, Flex, Input, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { colors } from '../../../../constants/colors';
 import { formatDateMonthYear } from '../../../../helpers';
@@ -22,6 +22,10 @@ const FormDate = ({ setDate }: Props) => {
   const handleButtonClick = () => {
     setShowDatePicker(!showDatePicker);
   };
+
+  useEffect(() => {
+    setDate(selectedDate.toJSON());
+  }, [selectedDate]);
 
   return (
     <Flex direction="column" gap={1}>
