@@ -39,6 +39,8 @@ const ApprovalEditContext = createContext<InitialState>({
   tagIds: [],
   dpjpUserName: '',
   numberOfPatient: 0,
+  rate: '',
+  rateNotes: '',
 });
 
 const ApprovalEditContextDispatch = createContext<Dispatch<ACTION_TYPE>>(
