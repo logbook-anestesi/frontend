@@ -23,6 +23,7 @@ const TableData = ({ caseProgressList }: Props) => {
       name: 'Nomor Elemen',
       selector: (row) => row.id,
       sortable: true,
+      width: '150px',
       cell: (row) => (
         <span
           style={{
@@ -38,6 +39,7 @@ const TableData = ({ caseProgressList }: Props) => {
       name: 'Kasus/Tindakan',
       selector: (row) => row.elementName,
       sortable: true,
+      width: '150px',
       cell: (row) => (
         <span
           style={{
@@ -53,6 +55,7 @@ const TableData = ({ caseProgressList }: Props) => {
       name: 'Target Kolegium',
       selector: (row) => row.targetKolegium,
       sortable: true,
+      width: '150px',
       cell: (row) => (
         <span
           style={{
@@ -68,6 +71,7 @@ const TableData = ({ caseProgressList }: Props) => {
       name: 'Target Prodi',
       selector: (row) => row.targetProdi,
       sortable: true,
+      width: '150px',
       cell: (row) => (
         <span
           style={{
@@ -83,6 +87,7 @@ const TableData = ({ caseProgressList }: Props) => {
       name: '% Kolegium',
       selector: (row) => row.pKolegium,
       sortable: true,
+      width: '150px',
       cell: (row) => (
         <span
           style={{
