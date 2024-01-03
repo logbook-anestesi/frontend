@@ -19,7 +19,7 @@ const FormJudul = ({ setJudul }: Props) => {
       </Text>
 
       <Input
-        placeholder="Masukkan judul diskusi..."
+        placeholder="Masukkan judul diskusi"
         onChange={handleChangeJudul}
       />
     </Flex>

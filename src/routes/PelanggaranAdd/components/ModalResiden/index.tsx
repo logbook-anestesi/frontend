@@ -56,10 +56,7 @@ const ModalResiden = ({ isOpen, closeModal, setResiden }: Props) => {
         <ModalHeader pl={2}>Pilih residen</ModalHeader>
 
         <InputGroup>
-          <Input
-            placeholder="Search Residen..."
-            onChange={handleChangeSearch}
-          />
+          <Input placeholder="Search Residen" onChange={handleChangeSearch} />
           <InputRightElement>
             <Search2Icon />
           </InputRightElement>

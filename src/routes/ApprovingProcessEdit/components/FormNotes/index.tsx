@@ -26,6 +26,8 @@ const FormNotes = ({ initialValue }: Props) => {
     });
   }, [approveEditDispatch, notes]);
 
+  if (notes === '') return null;
+
   return (
     <Flex direction="column">
       <Text fontSize="sm" color={colors.darkGrey}>

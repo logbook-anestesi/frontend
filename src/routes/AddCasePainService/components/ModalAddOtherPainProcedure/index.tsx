@@ -64,7 +64,7 @@ const ModalAddOtherPainProcedure = ({ isOpen, closeModal }: Props) => {
 
         <InputGroup>
           <Input
-            placeholder="Masukkan Pain Procedure ..."
+            placeholder="Masukkan Pain Procedure"
             onChange={handleChangeInput}
           />
         </InputGroup>

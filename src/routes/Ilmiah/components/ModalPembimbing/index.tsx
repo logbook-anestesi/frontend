@@ -52,7 +52,7 @@ const ModalPembimbing = ({ isOpen, closeModal, setPembimbing }: Props) => {
 
         <InputGroup>
           <Input
-            placeholder="Search Pembimbing..."
+            placeholder="Search Pembimbing"
             onChange={handleChangeSearch}
           />
           <InputRightElement>

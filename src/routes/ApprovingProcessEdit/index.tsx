@@ -160,7 +160,10 @@ const ApprovingProcessEdit = () => {
               initialValue={caseData?.isExam}
             />
             <FormRadioAgeGroup initialValue={caseData?.ageGroup} />
-            <FormRadioLocation initialValue={caseData?.location} />
+            <FormRadioLocation
+              initialValue={caseData?.location}
+              type={caseData?.caseType}
+            />
             <FormRadioPriority initialValue={caseData?.priority} />
 
             <FormOperation

@@ -19,7 +19,7 @@ const FormDeskripsi = ({ setDeskripsi }: Props) => {
       </Text>
 
       <Input
-        placeholder="Masukkan hal yang didiskusikan..."
+        placeholder="Masukkan hal yang didiskusikan"
         onChange={handleChangeDeskripsi}
       />
     </Flex>

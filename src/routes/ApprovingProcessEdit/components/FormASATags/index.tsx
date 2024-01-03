@@ -80,7 +80,7 @@ const FormASATags = ({ tagList, initialValue }: Props) => {
         onClick={onOpen}
         mb={1}
       >
-        <Text>{tag?.name || 'Masukkan tags ...'}</Text>
+        <Text>{tag?.name || 'Masukkan tags'}</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>

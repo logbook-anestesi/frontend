@@ -69,7 +69,7 @@ const FormProcedurePainService = ({
   return (
     <Flex direction="column" gap={1}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Tipe Manajemen Nyeri
+        Prosedur Manajemen Nyeri
         <Box as="span" color={colors.primaryRed}>
           *
         </Box>
@@ -86,7 +86,7 @@ const FormProcedurePainService = ({
         mb={1}
       >
         <Text>
-          {procedurePainService?.name || 'Masukkan tipe manajemen nyeri'}
+          {procedurePainService?.name || 'Masukkan prosedur manajemen nyeri'}
         </Text>
 
         <ChevronRightIcon boxSize={7} />
