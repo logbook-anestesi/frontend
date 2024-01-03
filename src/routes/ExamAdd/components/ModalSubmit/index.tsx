@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { DPJP } from '../../../AddCases/hooks/useGetDPJP/types';
-import { getCurrentMonth } from '../../../../helpers';
+import { convertDateFormatIndonesia } from '../../../../helpers';
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +16,7 @@ interface Props {
   exam: string;
   examType: string;
   penguji: DPJP | undefined;
+  createdDate: string;
   handleSubmit: () => Promise<void>;
 }
 
@@ -25,6 +26,7 @@ const ModalSubmit = ({
   exam,
   examType,
   penguji,
+  createdDate,
   handleSubmit,
 }: Props) => {
   return (
@@ -34,7 +36,7 @@ const ModalSubmit = ({
         <Flex direction="column" align="center" textAlign="center">
           <Text as="b">Anda akan mengambil exam</Text>
           <Text as="b">
-            {exam} pada bulan {getCurrentMonth()}
+            {exam} pada bulan {convertDateFormatIndonesia(createdDate)}
           </Text>
 
           <Flex direction="column" gap={3} my={5}>
