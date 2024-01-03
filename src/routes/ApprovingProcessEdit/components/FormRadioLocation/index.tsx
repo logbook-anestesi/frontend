@@ -35,8 +35,6 @@ const FormRadioLocation = ({ initialValue, type }: Props) => {
     return null;
   }
 
-  console.log('999 ini type case dari location', { type });
-
   return (
     <Flex direction="column" gap={1} mb={2}>
       <Text fontSize="sm" color={colors.darkGrey}>
