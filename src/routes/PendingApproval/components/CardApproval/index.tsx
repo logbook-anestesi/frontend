@@ -28,12 +28,6 @@ const CardApproval = ({
 }: Props) => {
   const navigate = useNavigate();
 
-  // const handleClickToDetail = () => {
-  //   navigate('/cases/details', {
-  //     state: { caseId: scientificData?.id },
-  //   });
-  // };
-
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
       state: { userId: scientificData?.userId },

@@ -104,6 +104,7 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       selector: (row) => row.history,
       sortable: true,
       wrap: true,
+      width: '200px',
       cell: (row) => (
         <span
           style={{
@@ -120,6 +121,7 @@ const TableData = ({ riwayatDiskusi }: Props) => {
       name: 'Status',
       selector: (row) => row.status,
       sortable: true,
+      width: '150px',
       cell: (row) => (
         <Flex
           bgColor={statusBgColor(row.status)}

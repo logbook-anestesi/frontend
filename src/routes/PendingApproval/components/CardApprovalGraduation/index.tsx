@@ -28,13 +28,13 @@ const CardApprovalGraduation = ({
 }: Props) => {
   const navigate = useNavigate();
 
-  // const handleClickToDetail = () => {
-  //   navigate('/ilmiah/details', {
-  //     state: {
-  //       ilmiahId: scientificData.id,
-  //     },
-  //   });
-  // };
+  const handleClickToDetail = () => {
+    navigate('/ilmiah/details', {
+      state: {
+        ilmiahId: scientificData.id,
+      },
+    });
+  };
 
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
@@ -50,7 +50,7 @@ const CardApprovalGraduation = ({
 
       <Flex direction="column" gap={3} mb={1}>
         <Flex direction="column" gap={1}>
-          <Text as="b">
+          <Text as="b" onClick={handleClickToDetail}>
             {scientificData.scientificType} - {scientificData?.scientificTitle}
           </Text>
           <Flex align="center" gap={3}>
@@ -64,11 +64,6 @@ const CardApprovalGraduation = ({
             </Text>
           </Flex>
         </Flex>
-
-        {/* <ButtonFile
-          title={scientificData?.scientificDocumentLink.substring(0, 10)}
-          handleClick={handleClickToDetail}
-        /> */}
       </Flex>
 
       <Flex
