@@ -27,17 +27,15 @@ const FormSupervised = () => {
     [casesDispatch],
   );
 
+  if (profile?.competenceName === 'MANDIRI') {
+    return null;
+  }
+
   return (
     <Flex direction="column" gap={1}>
-      {profile?.competenceName === 'PEMBEKALAN' ? (
-        <Text fontSize="sm" color={colors.darkGrey}>
-          Disupervisi Oleh
-        </Text>
-      ) : (
-        <Text fontSize="sm" color={colors.darkGrey}>
-          Supervising
-        </Text>
-      )}
+      <Text fontSize="sm" color={colors.darkGrey}>
+        Disupervisi Oleh
+      </Text>
 
       <Flex
         justify="space-between"
