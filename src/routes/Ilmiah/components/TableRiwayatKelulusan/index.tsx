@@ -2,8 +2,17 @@ import { Flex, Text } from '@chakra-ui/react';
 import TableData from './TableData';
 import useGetRiwayatKelulusan from '../../hooks/useGetRiwayatKelulusan';
 import LoaderCircle from '../../../../components/LoaderCircle';
+import { ScientificLog } from '../../hooks/useGetPengajuanPembimbing/types';
 
-const TableRiwayatKelulusan = () => {
+interface Props {
+  setSelectedHistory: React.Dispatch<React.SetStateAction<ScientificLog[]>>;
+  onOpenSeeMore: () => void;
+}
+
+const TableRiwayatKelulusan = ({
+  onOpenSeeMore,
+  setSelectedHistory,
+}: Props) => {
   const { loading, riwayatKelulusan } = useGetRiwayatKelulusan();
   return (
     <Flex direction="column">
@@ -14,7 +23,11 @@ const TableRiwayatKelulusan = () => {
       {loading || !riwayatKelulusan ? (
         <LoaderCircle />
       ) : (
-        <TableData riwayatKelulusan={riwayatKelulusan} />
+        <TableData
+          riwayatKelulusan={riwayatKelulusan}
+          onOpenSeeMore={onOpenSeeMore}
+          setSelectedHistory={setSelectedHistory}
+        />
       )}
     </Flex>
   );

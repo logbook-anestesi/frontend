@@ -48,7 +48,7 @@ const FormRadioAgeGroup = ({ initialValue }: Props) => {
           },
         }}
       >
-        <Stack direction="row" gap={3}>
+        <Stack gap={3}>
           {RADIO_AGE_GROUP.map((option) => (
             <Radio value={option.value} colorScheme="purple" key={option.value}>
               {option.title}

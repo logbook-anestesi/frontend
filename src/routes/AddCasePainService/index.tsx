@@ -83,10 +83,10 @@ const AddCasePainService = () => {
 
       <Flex padding="10px 30px" direction="column" gap={4}>
         <FormDate />
+        <FormDPJP />
         <FormRadioLocationPain />
         {state.isShowLocationLainnya && <FormLocationLainnya />}
 
-        <FormDPJP />
         <FormTypePainService
           painServiceTypes={casesForm?.painServiceTypes || []}
         />

@@ -80,6 +80,8 @@ interface InitialState {
   additionalTags: string[];
   tagIds: string[];
   numberOfPatient: number;
+  rate: string;
+  rateNotes: string;
 }
 
 interface SetSelectedOperation {
@@ -495,6 +497,20 @@ interface RemoveProcedurePainService {
   };
 }
 
+interface SetRate {
+  type: 'set_rate';
+  data: {
+    rate: string;
+  };
+}
+
+interface SetRateNotes {
+  type: 'set_rate_notes';
+  data: {
+    rateNotes: string;
+  };
+}
+
 type ACTION_TYPE =
   | SetSelectedOperation
   | SetSelectedAnesthesia
@@ -550,6 +566,8 @@ type ACTION_TYPE =
   | RemoveTypePainService
   | SetProcedurePainService
   | SetProcedurePainServiceIds
-  | RemoveProcedurePainService;
+  | RemoveProcedurePainService
+  | SetRate
+  | SetRateNotes;
 
 export type { ACTION_TYPE, InitialState };

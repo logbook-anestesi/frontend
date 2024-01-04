@@ -36,6 +36,8 @@ const initialState: InitialState = {
   tagIds: [],
   dpjpUserName: '',
   numberOfPatient: 0,
+  rate: '',
+  rateNotes: '',
 };
 
 function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
@@ -488,6 +490,18 @@ function reducer(state: InitialState, action: ACTION_TYPE): InitialState {
         procedurePainServiceIds: state.procedurePainServiceIds.filter(
           (id) => id !== action.data.id,
         ),
+      };
+    }
+    case 'set_rate': {
+      return {
+        ...state,
+        rate: action.data.rate,
+      };
+    }
+    case 'set_rate_notes': {
+      return {
+        ...state,
+        rateNotes: action.data.rateNotes,
       };
     }
   }

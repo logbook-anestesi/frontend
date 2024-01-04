@@ -36,7 +36,10 @@ const IlmiahPage = () => {
           setSelectedHistory={setSelectedHistory}
           onOpenSeeMore={onOpenSeeMore}
         />
-        <TableRiwayatKelulusan />
+        <TableRiwayatKelulusan
+          onOpenSeeMore={onOpenSeeMore}
+          setSelectedHistory={setSelectedHistory}
+        />
       </Flex>
 
       {/* Modal Section */}

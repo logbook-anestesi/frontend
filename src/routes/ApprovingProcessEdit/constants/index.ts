@@ -103,3 +103,75 @@ export const RADIO_EMERGENCY = [
     value: 'tidak',
   },
 ];
+
+export const RADIO_LOCATION_ICU = [
+  {
+    title: 'ICU Dewasa',
+    value: 'ICU Dewasa',
+  },
+  {
+    title: 'ICU IGD',
+    value: 'ICU IGD',
+  },
+  {
+    title: 'ICU RS Lain',
+    value: 'ICU RS Lain',
+  },
+  {
+    title: 'HCU',
+    value: 'HCU',
+  },
+  {
+    title: 'Lainnya',
+    value: 'Lainnya',
+  },
+];
+
+export const RADIO_LOCATION_RESUS = [
+  {
+    title: 'IGD',
+    value: 'IGD',
+  },
+  {
+    title: 'Ruang Rawat',
+    value: 'Ruang Rawat',
+  },
+  {
+    title: 'Lainnya',
+    value: 'Lainnya',
+  },
+];
+
+export const RADIO_LOCATION_PAIN = [
+  {
+    title: 'ICU',
+    value: 'ICU',
+  },
+  {
+    title: 'Wards',
+    value: 'Ruang Rawat',
+  },
+  {
+    title: 'Lainnya',
+    value: 'Lainnya',
+  },
+];
+
+export const RADIO_PENILAIAN_GROUP = [
+  {
+    title: 'Kurang Baik',
+    value: 'VERY_BAD',
+  },
+  {
+    title: 'Cukup',
+    value: 'NOT_GOOD',
+  },
+  {
+    title: 'Baik',
+    value: 'GOOD',
+  },
+  {
+    title: 'Sangat Baik',
+    value: 'VERY_GOOD',
+  },
+];

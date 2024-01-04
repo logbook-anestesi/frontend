@@ -10,7 +10,7 @@ const useGetSupervisor = () => {
     const fetchData = async () => {
       setLoading(true);
 
-      const response = await axiosClient.get('/users/?role=RESIDEN');
+      const response = await axiosClient.get('/users');
       const data = await response.data.data;
 
       setLoading(false);

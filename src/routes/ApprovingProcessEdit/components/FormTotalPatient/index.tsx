@@ -1,4 +1,4 @@
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Input, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useApprovalEditDispatch } from '../../contexts';
@@ -32,7 +32,10 @@ const FormTotalPatient = ({ initialNumberOfPatient }: Props) => {
       {initialNumberOfPatient !== null && (
         <Flex direction="column" flex={1}>
           <Text fontSize="sm" color={colors.darkGrey}>
-            Total Pasien
+            Jumlah Pasien
+            <Box as="span" color={colors.primaryRed}>
+              *
+            </Box>
           </Text>
 
           <Input

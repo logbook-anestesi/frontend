@@ -43,7 +43,7 @@ const FormAdditionalTags = () => {
         onClick={onOpenAddOther}
         mb={1}
       >
-        <Text>Masukkan tags ...</Text>
+        <Text>Masukkan tags</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>

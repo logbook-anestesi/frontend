@@ -59,7 +59,7 @@ const ModalAjukanKelulusan = ({ closeModal, isOpen }: Props) => {
     if (!response?.success) {
       toast({
         title: 'Failed membuat Pengajuan Kelulusan',
-        description: response?.message,
+        description: 'Pastikan link document sudah sesuai format',
         status: 'error',
         position: 'top',
         duration: 5000,

@@ -24,7 +24,7 @@ const CardApproval = ({ caseData, onClick }: Props) => {
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
-        {convertDateForNotification(caseData?.date)}
+        {convertDateForNotification(caseData?.created)}
       </Text>
 
       <Flex direction="column" gap={3} mb={8}>

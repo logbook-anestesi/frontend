@@ -99,6 +99,7 @@ const ExamAdd = () => {
         exam={exam}
         examType={examType}
         penguji={penguji}
+        createdDate={createdDate}
         handleSubmit={handleClickSubmit}
       />
     </Flex>

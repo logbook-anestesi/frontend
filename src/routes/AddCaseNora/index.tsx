@@ -33,7 +33,6 @@ const AddCaseNora = () => {
     const response = await createCases({
       asaIsEmergency: state.asaIsEmergency,
       date: state.date,
-      isExam: state.isExam,
       caseType: state.caseType,
       dpjpUserId: state.dpjpUserId,
       ...(state?.patientAge !== 0 ? { patientAge: state.patientAge } : {}),

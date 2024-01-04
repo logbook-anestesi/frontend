@@ -32,6 +32,8 @@ import FormTypeDiagnose from './components/FormTypeDiagnose';
 import FormTotalPatient from './components/FormTotalPatient';
 import FormTypePainService from './components/FormTypePainService';
 import FormProcedurePainService from './components/FormProcedurePainService';
+import RadioPenilaian from './components/RadioPenilaian';
+import TextPenilaian from './components/TextPenilaian';
 
 const ApprovingProcessEdit = () => {
   const { accountData } = useAuth();
@@ -47,6 +49,8 @@ const ApprovingProcessEdit = () => {
     const response = await createApproval({
       caseId: caseData?.id,
       status: 'APPROVED',
+      notes: state.rateNotes,
+      rate: state.rate,
       caseEditRequest: {
         userId: accountData.id,
         date: state.date,
@@ -160,7 +164,10 @@ const ApprovingProcessEdit = () => {
               initialValue={caseData?.isExam}
             />
             <FormRadioAgeGroup initialValue={caseData?.ageGroup} />
-            <FormRadioLocation initialValue={caseData?.location} />
+            <FormRadioLocation
+              initialValue={caseData?.location}
+              type={caseData?.caseType}
+            />
             <FormRadioPriority initialValue={caseData?.priority} />
 
             <FormOperation
@@ -243,6 +250,13 @@ const ApprovingProcessEdit = () => {
             <FormSupervised initialValue={caseData?.supervisors} />
             <FormNotes initialValue={caseData?.notes} />
             <FormAdditionalTags initialValue={caseData?.tags} />
+
+            <Text as="b" fontSize="xl">
+              Penilaian
+            </Text>
+
+            <RadioPenilaian />
+            <TextPenilaian />
 
             <Button
               colorScheme="teal"

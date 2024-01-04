@@ -6,12 +6,15 @@ import {
   convertUnderscoresToSpaces,
 } from '../../../../helpers';
 import { colors } from '../../../../constants/colors';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { customStyles } from '../../../../constants/tableFormat';
+import { ScientificLog } from '../../hooks/useGetPengajuanPembimbing/types';
 
 interface Props {
   riwayatKelulusan: RiwayatKelulusan[];
+  onOpenSeeMore: () => void;
+  setSelectedHistory: React.Dispatch<React.SetStateAction<ScientificLog[]>>;
 }
 
 interface DataRow {
@@ -25,7 +28,11 @@ interface DataRow {
   status: string;
 }
 
-const TableData = ({ riwayatKelulusan }: Props) => {
+const TableData = ({
+  riwayatKelulusan,
+  onOpenSeeMore,
+  setSelectedHistory,
+}: Props) => {
   const navigate = useNavigate();
 
   const statusBgColor = (value: string) => {
@@ -121,15 +128,22 @@ const TableData = ({ riwayatKelulusan }: Props) => {
       selector: (row) => row.history,
       sortable: true,
       cell: (row) => (
-        <span
-          style={{
-            whiteSpace: 'pre-wrap',
-            paddingTop: '20px',
-            paddingBottom: '20px',
-          }}
-        >
-          {row.history}
-        </span>
+        <Flex py={3} flexDirection="column">
+          {row.history.replace('RESIDEN', 'Residen')}
+          <Text
+            fontSize="xs"
+            mt={2}
+            color={colors.primaryPurple}
+            fontWeight="bold"
+            _hover={{ cursor: 'pointer' }}
+            onClick={() => {
+              setSelectedHistory(riwayatKelulusan[row.idx - 1].scientificLogs);
+              onOpenSeeMore();
+            }}
+          >
+            See More
+          </Text>
+        </Flex>
       ),
     },
     {
@@ -168,11 +182,10 @@ const TableData = ({ riwayatKelulusan }: Props) => {
         type: singleRiwayat.scientificType,
         title: singleRiwayat.scientificTitle,
         linkDocument: singleRiwayat.scientificDocumentLink,
-        history: singleRiwayat.scientificLogs
-          .map(
-            (item) => `${convertDateForIlmiah(item.created)} - ${item.changes}`,
-          )
-          .join('\n'),
+        history: `${singleRiwayat.scientificLogs[0]
+          ?.changes} - ${convertDateForIlmiah(
+          singleRiwayat.scientificLogs[0]?.created,
+        )}`,
         approvals: singleRiwayat.approvals.map((item) => item.name).join(','),
         status: singleRiwayat?.scientificGraduationStatus,
       };

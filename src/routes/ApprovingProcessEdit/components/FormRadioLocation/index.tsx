@@ -1,14 +1,20 @@
 import { Box, Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import { useEffect, useState } from 'react';
-import { RADIO_LOCATION } from '../../constants';
+import {
+  RADIO_LOCATION,
+  RADIO_LOCATION_ICU,
+  RADIO_LOCATION_PAIN,
+  RADIO_LOCATION_RESUS,
+} from '../../constants';
 import { useApprovalEditDispatch } from '../../contexts';
 
 interface Props {
   initialValue?: string;
+  type?: string;
 }
 
-const FormRadioLocation = ({ initialValue }: Props) => {
+const FormRadioLocation = ({ initialValue, type }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
   const [value, setValue] = useState('');
 
@@ -25,7 +31,7 @@ const FormRadioLocation = ({ initialValue }: Props) => {
     });
   }, [approveEditDispatch, value]);
 
-  if (initialValue === null) {
+  if (initialValue === null || type === 'PROCEDURE_CONSULTATION') {
     return null;
   }
 
@@ -48,17 +54,50 @@ const FormRadioLocation = ({ initialValue }: Props) => {
           },
         }}
       >
-        <Stack direction="row" gap={3}>
-          {RADIO_LOCATION.map((option) => (
-            <Radio value={option.value} colorScheme="purple" key={option.value}>
-              {option.title}
-            </Radio>
-          ))}
-          {initialValue !== null && (
-            <Radio value={initialValue} colorScheme="purple" key={initialValue}>
-              {initialValue}
-            </Radio>
-          )}
+        <Stack gap={3}>
+          {type === 'ICU' &&
+            RADIO_LOCATION_ICU.map((option) => (
+              <Radio
+                value={option.value}
+                colorScheme="purple"
+                key={option.value}
+              >
+                {option.title}
+              </Radio>
+            ))}
+
+          {type === 'OK' &&
+            RADIO_LOCATION.map((option) => (
+              <Radio
+                value={option.value}
+                colorScheme="purple"
+                key={option.value}
+              >
+                {option.title}
+              </Radio>
+            ))}
+
+          {type === 'RESUS' &&
+            RADIO_LOCATION_RESUS.map((option) => (
+              <Radio
+                value={option.value}
+                colorScheme="purple"
+                key={option.value}
+              >
+                {option.title}
+              </Radio>
+            ))}
+
+          {type === 'PAIN_SERVICE' &&
+            RADIO_LOCATION_PAIN.map((option) => (
+              <Radio
+                value={option.value}
+                colorScheme="purple"
+                key={option.value}
+              >
+                {option.title}
+              </Radio>
+            ))}
         </Stack>
       </RadioGroup>
     </Flex>

@@ -1,6 +1,7 @@
 import { Button, Flex, Text } from '@chakra-ui/react';
 import { DetailRiwayatKelulusan } from '../../hooks/useGetDetailKelulusan/types';
 import { colors } from '../../../../constants/colors';
+import useGetProfile from '../../../../hooks/useGetProfile';
 
 interface Props {
   detailIlmiah?: DetailRiwayatKelulusan;
@@ -12,6 +13,7 @@ const DetailIlmiah = ({
   onOpenAddRiwayatDiskusi,
   onOpenListRiwayat,
 }: Props) => {
+  const { isResiden } = useGetProfile();
   const isThesis = detailIlmiah?.scientificType === 'TESIS';
 
   const handleRedirectLinkDocument = () => {
@@ -93,16 +95,18 @@ const DetailIlmiah = ({
         <Text color="blue">{detailIlmiah?.scientificDocumentLink}</Text>
       </Flex>
 
-      <Button
-        variant="outline"
-        borderColor={colors.primaryPurple}
-        color={colors.primaryPurple}
-        borderRadius={10}
-        onClick={onOpenAddRiwayatDiskusi}
-        mb={3}
-      >
-        + Tambah Riwayat Diskusi
-      </Button>
+      {isResiden && (
+        <Button
+          variant="outline"
+          borderColor={colors.primaryPurple}
+          color={colors.primaryPurple}
+          borderRadius={10}
+          onClick={onOpenAddRiwayatDiskusi}
+          mb={3}
+        >
+          + Tambah Riwayat Diskusi
+        </Button>
+      )}
     </Flex>
   );
 };

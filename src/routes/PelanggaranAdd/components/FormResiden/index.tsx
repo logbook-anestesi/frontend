@@ -1,4 +1,4 @@
-import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
 import profileIcon from '../../../../assets/profile-white.png';
 import { Residen } from '../../hooks/useGetResiden/types';
@@ -15,7 +15,10 @@ const FormResiden = ({ residen, setResiden }: Props) => {
   return (
     <Flex direction="column" gap={1} onClick={onOpen}>
       <Text fontSize="sm" color={colors.darkGrey}>
-        Residen*
+        Residen
+        <Box as="span" color={colors.primaryRed}>
+          *
+        </Box>
       </Text>
 
       <Flex

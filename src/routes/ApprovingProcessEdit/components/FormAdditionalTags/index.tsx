@@ -58,7 +58,7 @@ const FormAdditionalTags = ({ initialValue }: Props) => {
         // onClick={handleButtonClick}
         mb={1}
       >
-        <Text>Masukkan tags ...</Text>
+        <Text>Masukkan tags</Text>
 
         <ChevronRightIcon boxSize={7} />
       </Flex>
