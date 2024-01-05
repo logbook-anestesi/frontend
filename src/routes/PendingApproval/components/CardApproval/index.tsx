@@ -28,6 +28,14 @@ const CardApproval = ({
 }: Props) => {
   const navigate = useNavigate();
 
+  const handleClickToDetail = () => {
+    navigate('/ilmiah/pending/details', {
+      state: {
+        ilmiahId: scientificData.id,
+      },
+    });
+  };
+
   const handleClickProfile = () => {
     navigate('/profile/other-user', {
       state: { userId: scientificData?.userId },
@@ -42,7 +50,7 @@ const CardApproval = ({
 
       <Flex direction="column" gap={3} mb={1}>
         <Flex direction="column" gap={1}>
-          <Text as="b">
+          <Text as="b" onClick={handleClickToDetail}>
             {scientificData?.type}: {scientificData?.title}
           </Text>
           <Flex align="center" gap={3}>
