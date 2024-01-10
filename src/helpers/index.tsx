@@ -50,12 +50,13 @@ export const formatMonthYear = (inputString: string) => {
   return formattedString;
 };
 
-export const formatDateMonthYear = (date: Date) => {
-  return date.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
+export const formatDateMonthYear = (dateString: Date) => {
+  const date = new Date(dateString);
+  const day = date.getUTCDate().toString().padStart(2, '0');
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0'); // Adding +1 as months are zero-indexed
+  const year = date.getUTCFullYear().toString();
+
+  return `${day}/${month}/${year}`;
 };
 
 export const convertDateForNotification = (dateString: string) => {
