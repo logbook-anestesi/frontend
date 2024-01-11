@@ -31,6 +31,10 @@ const ModalSelectCases = ({ isOpen, closeModal }: Props) => {
         navigate('/cases/add/pacu');
         return;
       }
+      case 'ICU': {
+        navigate('/cases/add/icu');
+        return;
+      }
       case 'NORA': {
         navigate('/cases/add/nora');
         return;

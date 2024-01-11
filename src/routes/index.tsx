@@ -39,6 +39,7 @@ import PelanggaranPage from './Pelanggaran';
 import PelanggaranAddPage from './PelanggaranAdd';
 import ForgotPasswordPage from './ForgotPassword';
 import ForgotPasswordSetPage from './ForgotPasswordSet';
+import IlmiahDetailPending from './IlmiahDetailPending';
 
 const MainRoutes = () => {
   return (
@@ -88,6 +89,10 @@ const MainRoutes = () => {
 
         <Route path="/ilmiah" element={<IlmiahPage />} />
         <Route path="/ilmiah/details" element={<IlmiahDetail />} />
+        <Route
+          path="/ilmiah/pending/details"
+          element={<IlmiahDetailPending />}
+        />
 
         <Route path="/exam" element={<ExamPage />} />
         <Route path="/exam/add" element={<ExamAdd />} />
