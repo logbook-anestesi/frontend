@@ -22,6 +22,15 @@ const CaseDetails = () => {
     painServiceTypes,
   } = useGetDetailCases(location?.state?.caseId || '');
 
+  const normalizeRate = (rate: string) => {
+    if (rate === 'VERY_BAD') return 'Kurang Baik';
+    if (rate === 'NOT_GOOD') return 'Cukup';
+    if (rate === 'GOOD') return 'Baik';
+    if (rate === 'VERY_GOOD') return 'Sangat Baik';
+
+    return '';
+  };
+
   return (
     <Flex flexDirection="column">
       <Header title="Case Detail" />
@@ -104,6 +113,17 @@ const CaseDetails = () => {
             />
             <FieldText label="Catatan" value={caseData?.notes} />
             <FieldTicker label="Tags Lainnya " listValue={tags} />
+
+            <Text as="b" fontSize="xl">
+              Penilaian
+            </Text>
+
+            <FieldText
+              label="Rating"
+              value={normalizeRate(caseData?.approvalRate || '')}
+            />
+
+            <FieldText label="Komentar" value={caseData?.approvalNotes} />
 
             {/* <Divider />
 

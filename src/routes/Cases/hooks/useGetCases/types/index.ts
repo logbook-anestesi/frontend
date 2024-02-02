@@ -34,6 +34,8 @@ export interface Case {
   diagnoses: Diagnoses[];
   painServiceTypes: PainServiceTypes[];
   painServiceProcedures: PainServiceProcedures[];
+  approvalNotes: string;
+  approvalRate: string;
 }
 
 export interface AsaTag {
