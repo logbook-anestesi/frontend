@@ -21,6 +21,14 @@ interface Props {
 const TableData = ({ caseList }: Props) => {
   const navigate = useNavigate();
 
+  const translateCaseNameIndonesia = (input: string) => {
+    if (input == 'PAIN_SERVICE') return 'MANAJEMEN NYERI';
+    if (input == 'PROCEDURE_CONSULTATION') return 'KONSUL PROSEDUR';
+    if (input == 'POLI_PERIOPERATIVE') return 'POLI PERIOPERATIVE';
+
+    return input;
+  };
+
   const getColorScheme = (type: string) => {
     if (type === 'APPROVED') {
       return 'green';
@@ -69,6 +77,8 @@ const TableData = ({ caseList }: Props) => {
       name: 'Jenis',
       selector: (row) => row.caseType,
       sortable: true,
+      width: '160px',
+      cell: (row) => <span>{translateCaseNameIndonesia(row.caseType)}</span>,
     },
     {
       name: 'Status',
