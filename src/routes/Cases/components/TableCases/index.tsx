@@ -45,7 +45,7 @@ const TableCases = ({ caseList, selectedCase }: Props) => {
             <Th>DPJP</Th>
             <Th>Jenis</Th>
             <Th>Status</Th>
-            <Th>Supervising</Th>
+            {/* <Th>Supervising</Th> */}
           </Tr>
         </Thead>
         <Tbody>
@@ -67,7 +67,7 @@ const TableCases = ({ caseList, selectedCase }: Props) => {
                 <Td>{caseData?.dpjpUserName}</Td>
                 <Td>{caseData?.caseType}</Td>
                 <Td>{caseData?.notes}</Td>
-                <Td>{caseData?.supervisees[0]?.userName}</Td>
+                {/* <Td>{caseData?.supervisees[0]?.userName}</Td> */}
               </Tr>
             );
           })}

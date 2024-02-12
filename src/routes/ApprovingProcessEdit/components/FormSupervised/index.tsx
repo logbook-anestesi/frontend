@@ -59,7 +59,10 @@ const FormSupervised = ({ initialValue }: Props) => {
 
   return (
     <Flex direction="column" gap={1}>
-      {profile?.competenceName === 'PEMBEKALAN' ? (
+      <Text fontSize="sm" color={colors.darkGrey}>
+        Supervised By
+      </Text>
+      {/* {profile?.competenceName === 'PEMBEKALAN' ? (
         <Text fontSize="sm" color={colors.darkGrey}>
           Supervised By
         </Text>
@@ -67,7 +70,7 @@ const FormSupervised = ({ initialValue }: Props) => {
         <Text fontSize="sm" color={colors.darkGrey}>
           Supervising
         </Text>
-      )}
+      )} */}
 
       <Flex
         justify="space-between"

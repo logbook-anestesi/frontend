@@ -105,12 +105,12 @@ const CaseDetails = () => {
               listValue={caseData?.supervisors.map((senior) => senior.userName)}
             />
 
-            <FieldTicker
+            {/* <FieldTicker
               label="Supervising"
               listValue={caseData?.supervisees
                 .map((junior) => junior.userName)
                 .filter((junior) => junior !== caseData?.userName)}
-            />
+            /> */}
             <FieldText label="Catatan" value={caseData?.notes} />
             <FieldTicker label="Tags Lainnya " listValue={tags} />
 
