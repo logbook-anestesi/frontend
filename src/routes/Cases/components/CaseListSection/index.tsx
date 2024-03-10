@@ -6,6 +6,7 @@ import filterIcon from '../../assets/filter.png';
 import ModalFilter from '../ModalFilter';
 import { colors } from '../../../../constants/colors';
 import { useState } from 'react';
+import useExportCases from '../../hooks/useExportCases';
 
 interface Props {
   caseList: Case[] | undefined;
@@ -22,10 +23,19 @@ const CaseListSection = ({
 }: Props) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [showResetFilter, setResetShowFilter] = useState(false);
+  const { exportCases } = useExportCases();
 
   const handleResetFilter = () => {
     setResetShowFilter(false);
     handleResetData();
+  };
+
+  const handleExportCase = async () => {
+    try {
+      await exportCases();
+    } catch (error) {
+      console.error('Error exporting case:', error);
+    }
   };
 
   return (
@@ -41,6 +51,9 @@ const CaseListSection = ({
           </Text>
         )}
 
+        <Flex align="center" gap={2} onClick={handleExportCase}>
+          <Text fontSize="sm">Export All</Text>
+        </Flex>
         <Flex align="center" gap={2} onClick={onOpen}>
           <Image src={filterIcon} w={3} h={3} />
           <Text fontSize="sm">Filter</Text>
