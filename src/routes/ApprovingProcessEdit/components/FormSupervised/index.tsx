@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { Supervisor } from '../../hooks/useGetSupervisor/types';
 import ModalSupervisor from '../ModalSupervisor';
 import Ticker from '../../../../components/Ticker';
-import useGetProfile from '../../../../hooks/useGetProfile';
 import {
   useApprovalEditContext,
   useApprovalEditDispatch,
@@ -20,7 +19,6 @@ const FormSupervised = ({ initialValue }: Props) => {
   const { selectedSupervisor: supervisorList } = useApprovalEditContext();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedSupervisor, setSelectedSupervisor] = useState<Supervisor>();
-  const { profile } = useGetProfile();
 
   useEffect(() => {
     const normalizeSupervisor = initialValue?.map((supervisor) => {
