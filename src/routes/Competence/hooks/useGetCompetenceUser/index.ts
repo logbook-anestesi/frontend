@@ -5,20 +5,16 @@ import { CompetenceUser } from './types';
 const useGetCompetenceUser = () => {
   const [loading, setLoading] = useState(false);
   const [rawCompetenceData, setCompetenceData] = useState<CompetenceUser[]>([]);
-  const [isAllowedToMakeNewRequest, setIsAllowedToMakeNewRequest] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
 
       const response = await axiosClient.get('/competence/all');
-      const responseData = await response.data.data;
-      const data = responseData.competences;
-      const allowedToMakeNewRequest = responseData.isAllowedToMakeNewRequest
+      const data = await response.data.data;
 
       setCompetenceData(data);
       setLoading(false);
-      setIsAllowedToMakeNewRequest(allowedToMakeNewRequest)
     };
 
     fetchData();
@@ -35,7 +31,6 @@ const useGetCompetenceUser = () => {
   return {
     competenceData,
     loading,
-    isAllowedToMakeNewRequest
   };
 };
 

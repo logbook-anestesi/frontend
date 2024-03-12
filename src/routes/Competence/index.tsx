@@ -11,8 +11,7 @@ import CardMandiri from './components/CardMandiri';
 import ModalSuccessRequest from './components/ModalSuccessRequest';
 
 const CompetencePage = () => {
-  const { competenceData, loading, isAllowedToMakeNewRequest } =
-    useGetCompetenceUser();
+  const { competenceData, loading } = useGetCompetenceUser();
   const {
     isOpen: isOpenConfirm,
     onClose: onCloseConfirm,
@@ -77,7 +76,7 @@ const CompetencePage = () => {
               isActive={competenceData?.length === 3}
             />
 
-            {competenceData?.length < 3 && isAllowedToMakeNewRequest && (
+            {competenceData?.length < 3 && (
               <ButtonTambah
                 buttonTitle="Ajukan Kenaikan Kompetensi"
                 onClick={onOpenConfirm}
