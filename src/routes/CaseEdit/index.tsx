@@ -24,6 +24,8 @@ import FormAdditionalTags from '../ApprovingProcessEdit/components/FormAdditiona
 import { colors } from '../../constants/colors';
 import FormNoraTypeProcedure from '../ApprovingProcessEdit/components/FormNoraTypeProcedure';
 import FormTypeDiagnose from '../ApprovingProcessEdit/components/FormTypeDiagnose';
+import FormTypePainService from '../ApprovingProcessEdit/components/FormTypePainService';
+import FormProcedurePainService from '../ApprovingProcessEdit/components/FormProcedurePainService';
 
 const CaseEdit = () => {
   const location = useLocation();
@@ -135,6 +137,16 @@ const CaseEdit = () => {
         />
 
         <Divider />
+
+        <FormTypePainService
+          initialValue={caseData?.painServiceTypes}
+          typePainServices={casesForm?.painServiceTypes}
+        />
+
+        <FormProcedurePainService
+          initialValue={caseData?.painServiceProcedures}
+          procedurePainServices={casesForm?.painServiceProcedures}
+        />
 
         <FormNotes initialValue={caseData?.notes} />
         <FormAdditionalTags initialValue={caseData?.tags} />
