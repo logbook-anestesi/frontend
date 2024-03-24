@@ -22,6 +22,7 @@ import FormASATags from '../ApprovingProcessEdit/components/FormASATags';
 import FormNotes from '../ApprovingProcessEdit/components/FormNotes';
 import FormAdditionalTags from '../ApprovingProcessEdit/components/FormAdditionalTags';
 import { colors } from '../../constants/colors';
+import FormNoraTypeProcedure from '../ApprovingProcessEdit/components/FormNoraTypeProcedure';
 
 const CaseEdit = () => {
   const location = useLocation();
@@ -63,6 +64,11 @@ const CaseEdit = () => {
 
         <FormRadioAgeGroup initialValue={caseData?.ageGroup} />
 
+        <FormNoraTypeProcedure
+          noraProcedureList={casesForm?.noraProcedureTypes}
+          initialValue={caseData?.noraProcedureTypes}
+        />
+
         <FormRadioLocation
           initialValue={caseData?.location}
           type={caseData?.caseType}
@@ -74,14 +80,14 @@ const CaseEdit = () => {
           initialValue={caseData?.operationTypes}
         />
 
-        <FormTypeAnesthesia
-          initialValue={caseData?.anesthesiaTypes}
-          anesthesiaList={casesForm?.anesthesiaTypes}
-        />
-
         <FormTypeProcedure
           initialValue={caseData?.procedureTypes}
           procedureList={casesForm?.procedureTypes}
+        />
+
+        <FormTypeAnesthesia
+          initialValue={caseData?.anesthesiaTypes}
+          anesthesiaList={casesForm?.anesthesiaTypes}
         />
 
         {isHavePatientData && (
