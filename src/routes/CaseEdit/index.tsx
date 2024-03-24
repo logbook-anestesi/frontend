@@ -23,6 +23,7 @@ import FormNotes from '../ApprovingProcessEdit/components/FormNotes';
 import FormAdditionalTags from '../ApprovingProcessEdit/components/FormAdditionalTags';
 import { colors } from '../../constants/colors';
 import FormNoraTypeProcedure from '../ApprovingProcessEdit/components/FormNoraTypeProcedure';
+import FormTypeDiagnose from '../ApprovingProcessEdit/components/FormTypeDiagnose';
 
 const CaseEdit = () => {
   const location = useLocation();
@@ -78,6 +79,11 @@ const CaseEdit = () => {
         <FormOperation
           formData={casesForm?.operationTypes}
           initialValue={caseData?.operationTypes}
+        />
+
+        <FormTypeDiagnose
+          diagnoseList={casesForm?.diagnoses}
+          initialValue={caseData?.diagnoses}
         />
 
         <FormTypeProcedure

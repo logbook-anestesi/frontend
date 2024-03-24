@@ -42,6 +42,10 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
     });
   }, [age, approveEditDispatch, recordNumber]);
 
+  if (!(initialNoRm && initialUsia)) {
+    return <></>;
+  }
+
   return (
     <Flex direction="row" justify="space-between" gap={2}>
       {initialUsia !== null && (

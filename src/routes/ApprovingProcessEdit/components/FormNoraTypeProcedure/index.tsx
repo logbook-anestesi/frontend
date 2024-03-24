@@ -60,7 +60,7 @@ const FormNoraTypeProcedure = ({ noraProcedureList, initialValue }: Props) => {
   );
 
   if (initialValue?.length === 0) {
-    return null;
+    return <></>;
   }
 
   return (

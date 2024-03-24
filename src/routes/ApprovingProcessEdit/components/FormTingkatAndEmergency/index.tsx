@@ -32,6 +32,10 @@ const FormTingkatAndEmergency = ({
     });
   }, [approveEditDispatch, tier]);
 
+  if (!initialValue) {
+    return <></>;
+  }
+
   return (
     <Flex direction="row" justify="space-between" gap={2}>
       {initialValue !== null && (
