@@ -124,7 +124,7 @@ const CaseEdit = () => {
 
         <Divider />
 
-        <FormNotes />
+        <FormNotes initialValue={caseData?.notes} />
         <FormAdditionalTags initialValue={caseData?.tags} />
 
         <Button
