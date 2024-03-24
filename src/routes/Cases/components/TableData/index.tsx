@@ -3,7 +3,7 @@ import { Case } from '../../hooks/useGetCases/types';
 import { useMemo } from 'react';
 import { formatDateMonthYear } from '../../../../helpers';
 import { useNavigate } from 'react-router-dom';
-import { Badge } from '@chakra-ui/react';
+import { Badge, Button } from '@chakra-ui/react';
 
 interface DataRow {
   idCase: string;
@@ -86,6 +86,23 @@ const TableData = ({ caseList }: Props) => {
       sortable: true,
       cell: (row) => (
         <Badge colorScheme={getColorScheme(row.status)}>{row.status}</Badge>
+      ),
+    },
+    {
+      name: 'Action',
+      cell: (row) => (
+        <Button
+          colorScheme="teal"
+          size="xs"
+          bgColor="purple"
+          onClick={() =>
+            navigate('/cases/edit', {
+              state: { caseId: row?.idCaseFull },
+            })
+          }
+        >
+          Edit
+        </Button>
       ),
     },
   ];

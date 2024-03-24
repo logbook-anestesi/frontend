@@ -60,14 +60,6 @@ const CaseListSection = ({
         </Flex>
       </Flex>
 
-      {/* temporary hide */}
-      {/* <InputGroup mb={3}>
-        <Input placeholder="Cari berdasarkan tags/atribut..." />
-        <InputRightElement>
-          <Search2Icon />
-        </InputRightElement>
-      </InputGroup> */}
-
       {showResetFilter && (
         <Flex justify="end">
           <Text

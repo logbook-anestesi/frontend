@@ -40,6 +40,7 @@ import PelanggaranAddPage from './PelanggaranAdd';
 import ForgotPasswordPage from './ForgotPassword';
 import ForgotPasswordSetPage from './ForgotPasswordSet';
 import IlmiahDetailPending from './IlmiahDetailPending';
+import CaseEdit from './CaseEdit';
 
 const MainRoutes = () => {
   return (
@@ -85,6 +86,7 @@ const MainRoutes = () => {
           element={<AddCasePainService />}
         />
         <Route path="/cases/details" element={<CaseDetails />} />
+        <Route path="/cases/edit" element={<CaseEdit />} />
         <Route path="/approval" element={<PendingApproval />} />
 
         <Route path="/ilmiah" element={<IlmiahPage />} />
