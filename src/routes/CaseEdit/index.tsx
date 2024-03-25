@@ -1,7 +1,7 @@
-import { Button, Divider, Flex, Text } from '@chakra-ui/react';
+import { Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
 import React from 'react';
 import Header from '../../components/Header';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useGetDetailCases from '../../hooks/useGetDetailCase';
 import FormDate from '../ApprovingProcessEdit/components/FormDate';
 import FormDPJP from '../ApprovingProcessEdit/components/FormDPJP';
@@ -26,10 +26,18 @@ import FormNoraTypeProcedure from '../ApprovingProcessEdit/components/FormNoraTy
 import FormTypeDiagnose from '../ApprovingProcessEdit/components/FormTypeDiagnose';
 import FormTypePainService from '../ApprovingProcessEdit/components/FormTypePainService';
 import FormProcedurePainService from '../ApprovingProcessEdit/components/FormProcedurePainService';
+import { useApprovalEditContext } from '../ApprovingProcessEdit/contexts';
+import useEditCase from './hooks/useEditCase';
+import useAuth from '../../hooks/useAuth';
 
 const CaseEdit = () => {
+  const toast = useToast();
+  const navigate = useNavigate();
+  const { accountData } = useAuth();
   const location = useLocation();
   const { casesForm } = useGetCasesForm();
+  const state = useApprovalEditContext();
+  const { editCase, loading: loadingEditCase } = useEditCase();
 
   const { caseData } = useGetDetailCases(location?.state?.caseId || '');
 
@@ -42,6 +50,89 @@ const CaseEdit = () => {
     caseData?.asaTier !== null ||
     caseData?.asaIsEmergency !== null ||
     (caseData.asaTags.length || 0) > 0;
+
+  const handleSubmitForm = async () => {
+    const response = await editCase(
+      {
+        notes: state.rateNotes,
+        userId: accountData.id,
+        date: state.date,
+        ...(state?.asaIsEmergency !== null
+          ? { asaIsEmergency: state.asaIsEmergency }
+          : {}),
+        ...(state?.asaTier !== 0 ? { asaTier: state.asaTier } : {}),
+        ...(state?.isExam !== null ? { isExam: state.isExam } : {}),
+        ...(state?.patientAge !== 0 ? { patientAge: state.patientAge } : {}),
+        ...(state?.patientGender !== ''
+          ? { patientGender: state.patientGender }
+          : {}),
+        ...(state?.ageGroup !== '' ? { ageGroup: state.ageGroup } : {}),
+        ...(state?.location !== '' ? { location: state.location } : {}),
+        ...(state?.priority !== '' ? { priority: state.priority } : {}),
+        ...(state?.tagIds.length !== 0 ? { tagIds: state.tagIds } : {}),
+        ...(state?.notes !== '' ? { notes: state.notes } : {}),
+        ...(state?.numberOfPatient !== 0
+          ? { numberOfPatient: state.numberOfPatient }
+          : {}),
+        ...(state?.anesthesiaTypeIds.length !== 0
+          ? { anesthesiaTypeIds: state.anesthesiaTypeIds }
+          : {}),
+        ...(state?.asaTagIds.length !== 0
+          ? { asaTagIds: state.asaTagIds }
+          : {}),
+        ...(state?.noraProcedureTypeIds.length !== 0
+          ? { noraProcedureTypeIds: state.noraProcedureTypeIds }
+          : {}),
+        ...(state?.operationTypeIds.length !== 0
+          ? { operationTypeIds: state.operationTypeIds }
+          : {}),
+        ...(state?.patientRecordNumber !== ''
+          ? { patientRecordNumber: state.patientRecordNumber }
+          : {}),
+        ...(state?.procedureTypeIds.length !== 0
+          ? { procedureTypeIds: state.procedureTypeIds }
+          : {}),
+        ...(state?.supervisorIds.length !== 0
+          ? { superviseeIds: state.supervisorIds }
+          : {}),
+        ...(state?.diagnoseIds.length !== 0
+          ? { diagnoseIds: state.diagnoseIds }
+          : {}),
+        ...(state?.typePainServiceIds.length !== 0
+          ? { painServiceTypeIds: state.typePainServiceIds }
+          : {}),
+        ...(state?.procedurePainServiceIds.length !== 0
+          ? { painServiceProcedureIds: state.procedurePainServiceIds }
+          : {}),
+      },
+      caseData?.id || '',
+    );
+
+    if (response?.success) {
+      toast({
+        title: 'Success',
+        description: 'Berhasil Approve Case',
+        status: 'success',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      navigate(-1);
+      return;
+    }
+
+    if (!response?.success) {
+      toast({
+        title: 'Failed Approve Case',
+        description: response?.message,
+        status: 'error',
+        position: 'top',
+        duration: 6000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Flex flexDirection="column">
@@ -156,8 +247,8 @@ const CaseEdit = () => {
           backgroundColor={colors.primaryPurple}
           color={colors.white}
           marginY={4}
-          // onClick={handleSubmitForm}
-          // isLoading={loadingApproval}
+          onClick={handleSubmitForm}
+          isLoading={loadingEditCase}
         >
           Submit
         </Button>
