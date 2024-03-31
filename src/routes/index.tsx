@@ -41,6 +41,9 @@ import ForgotPasswordPage from './ForgotPassword';
 import ForgotPasswordSetPage from './ForgotPasswordSet';
 import IlmiahDetailPending from './IlmiahDetailPending';
 import CaseEdit from './CaseEdit';
+import ExamAddDOPS from './ExamAddDOPS';
+import ExamAddAlman from './ExamAddAlman';
+import ExamAddAcex from './ExamAddAcex';
 
 const MainRoutes = () => {
   return (
@@ -99,6 +102,9 @@ const MainRoutes = () => {
         <Route path="/exam" element={<ExamPage />} />
         <Route path="/exam/add" element={<ExamAdd />} />
         <Route path="/exam/all" element={<ExamList />} />
+        <Route path="/exam/add/dops" element={<ExamAddDOPS />} />
+        <Route path="/exam/add/alman" element={<ExamAddAlman />} />
+        <Route path="/exam/add/acex" element={<ExamAddAcex />} />
 
         <Route path="/pelanggaran" element={<PelanggaranPage />} />
         <Route path="/pelanggaran/add" element={<PelanggaranAddPage />} />
