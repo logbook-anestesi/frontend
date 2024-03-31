@@ -1,5 +1,10 @@
 export const EXAM_LIST = [
   {
+    title: 'UJIAN',
+    value: 'UJIAN',
+    path: '/exam/add',
+  },
+  {
     title: 'ALMAN',
     value: 'ALMAN',
     path: '/exam/add/alman',
