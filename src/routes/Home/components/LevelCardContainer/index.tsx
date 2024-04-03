@@ -82,6 +82,16 @@ const LevelCardContainer = ({ profile }: Props) => {
         />
       )}
 
+      {profile?.role === 'KONSULEN' && (
+        <LevelCardWithLogo
+          title="Reviewed Cases"
+          type=""
+          path="/reviewed-case"
+          icon={cases}
+          cardNumber={0}
+        />
+      )}
+
       {/* KONSULEN or KETUA MODULE ?? */}
       {profile?.role === 'KONSULEN' && profile.stationName ? (
         <LevelCardStaseReview

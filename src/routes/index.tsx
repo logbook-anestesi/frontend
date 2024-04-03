@@ -44,6 +44,7 @@ import CaseEdit from './CaseEdit';
 import ExamAddDOPS from './ExamAddDOPS';
 import ExamAddAlman from './ExamAddAlman';
 import ExamAddAcex from './ExamAddAcex';
+import ReviewedCases from './ReviewedCases';
 
 const MainRoutes = () => {
   return (
@@ -108,6 +109,8 @@ const MainRoutes = () => {
 
         <Route path="/pelanggaran" element={<PelanggaranPage />} />
         <Route path="/pelanggaran/add" element={<PelanggaranAddPage />} />
+
+        <Route path="/reviewed-cases" element={<ReviewedCases />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
