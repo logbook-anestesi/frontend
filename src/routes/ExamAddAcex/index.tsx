@@ -10,6 +10,8 @@ import FormProcess from '../ExamAddDOPS/components/FormProcess';
 import FormReason from '../ExamAddDOPS/components/FormReason';
 import FormReflection from '../ExamAddDOPS/components/FormReflection';
 import { colors } from '../../constants/colors';
+import FormOperation from './components/FormOperation';
+import useGetCasesForm from '../../hooks/useGetCasesForm';
 
 const ExamAddAcex = () => {
   const [date, setDate] = useState('');
@@ -20,8 +22,18 @@ const ExamAddAcex = () => {
   const [reason, setReason] = useState('');
   const [reflection, setReflection] = useState('');
 
+  const { casesForm } = useGetCasesForm();
+
   const handleSubmit = () => {
-    console.log({ date, asesor, penilaian, isGood, reason, reflection });
+    console.log({
+      date,
+      asesor,
+      penilaian,
+      isGood,
+      reason,
+      reflection,
+      procedure,
+    });
   };
 
   return (
@@ -36,6 +48,7 @@ const ExamAddAcex = () => {
         <FormProcess setProcessValue={setIsGood} />
         <FormReason setReason={setReason} />
         <FormReflection setReflection={setReflection} />
+        <FormOperation formData={casesForm?.operationTypes} />
 
         <Button
           colorScheme="teal"
