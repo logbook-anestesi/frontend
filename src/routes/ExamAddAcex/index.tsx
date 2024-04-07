@@ -1,4 +1,4 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Button, Flex, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import FormDate from '../ExamAdd/components/FormDate';
 import { useState } from 'react';
@@ -13,6 +13,8 @@ import { colors } from '../../constants/colors';
 import FormOperation from './components/FormOperation';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
 import FormAdditionalTags from './components/FormAdditionalTags';
+import useAddExamPreparation from '../ExamAdd/hooks/useAddExamPreparation';
+import { useNavigate } from 'react-router-dom';
 
 const ExamAddAcex = () => {
   const [date, setDate] = useState('');
@@ -23,18 +25,46 @@ const ExamAddAcex = () => {
   const [reason, setReason] = useState('');
   const [reflection, setReflection] = useState('');
 
+  const toast = useToast();
+  const navigate = useNavigate();
+  const { createExamPreparation, loading } = useAddExamPreparation();
   const { casesForm } = useGetCasesForm();
 
-  const handleSubmit = () => {
-    console.log({
-      date,
-      asesor,
-      penilaian,
-      isGood,
-      reason,
-      reflection,
-      procedure,
+  const handleSubmit = async () => {
+    const response = await createExamPreparation({
+      type: 'ACEX',
+      preparationDate: date,
+      assessorUserId: asesor?.id || '',
+      procedure: procedure,
+      selfEvaluation: penilaian,
+      isGoingWell: isGood === 'Ya',
+      reason: reason,
+      selfReflection: reflection,
     });
+
+    if (response?.success) {
+      toast({
+        title: 'Success',
+        description: 'Ujian berhasil dibuat',
+        status: 'success',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      navigate(-1);
+    }
+
+    if (!response?.success) {
+      toast({
+        title: 'Gagal membuat Ujian',
+        description: response?.message,
+        status: 'error',
+        position: 'top',
+        duration: 7000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
