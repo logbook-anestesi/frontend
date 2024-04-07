@@ -12,6 +12,7 @@ import FormReflection from '../ExamAddDOPS/components/FormReflection';
 import { colors } from '../../constants/colors';
 import FormOperation from './components/FormOperation';
 import useGetCasesForm from '../../hooks/useGetCasesForm';
+import FormAdditionalTags from './components/FormAdditionalTags';
 
 const ExamAddAcex = () => {
   const [date, setDate] = useState('');
@@ -43,12 +44,13 @@ const ExamAddAcex = () => {
       <Flex padding="10px 30px" direction="column" gap="16px">
         <FormDate setDate={setDate} />
         <FormAsesor setAsesor={setAsesor} />
+        <FormOperation formData={casesForm?.operationTypes} />
         <FormProcedure setProcedure={setProcedure} />
+        <FormAdditionalTags />
         <FormPenilaianDiri setPenilaian={setPenilaian} />
         <FormProcess setProcessValue={setIsGood} />
         <FormReason setReason={setReason} />
         <FormReflection setReflection={setReflection} />
-        <FormOperation formData={casesForm?.operationTypes} />
 
         <Button
           colorScheme="teal"
