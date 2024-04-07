@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const axiosClient = axios.create({
   // Put your base URL here
-  baseURL: 'https://backend-prod-9keh.onrender.com',
+  baseURL: 'https://backend-dev-ruq1.onrender.com',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
