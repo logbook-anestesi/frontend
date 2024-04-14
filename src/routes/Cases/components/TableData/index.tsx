@@ -72,6 +72,8 @@ const TableData = ({ caseList }: Props) => {
       name: 'DPJP',
       selector: (row) => row.dpjp,
       sortable: true,
+      width: '170px',
+      wrap: true,
     },
     {
       name: 'Jenis',
@@ -90,20 +92,26 @@ const TableData = ({ caseList }: Props) => {
     },
     {
       name: 'Action',
-      cell: (row) => (
-        <Button
-          colorScheme="teal"
-          size="xs"
-          bgColor="purple"
-          onClick={() =>
-            navigate('/cases/edit', {
-              state: { caseId: row?.idCaseFull },
-            })
-          }
-        >
-          Edit
-        </Button>
-      ),
+      cell: (row) => {
+        if (row.status !== 'APPROVED') {
+          return (
+            <Button
+              colorScheme="teal"
+              size="xs"
+              bgColor="purple"
+              onClick={() =>
+                navigate('/cases/edit', {
+                  state: { caseId: row?.idCaseFull },
+                })
+              }
+            >
+              Edit
+            </Button>
+          );
+        }
+
+        return null;
+      },
     },
   ];
 

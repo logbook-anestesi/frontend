@@ -1,4 +1,4 @@
-import { Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { Button, Flex, Image, Text, useDisclosure } from '@chakra-ui/react';
 import { CaseMenu } from '../../types';
 import { Case } from '../../hooks/useGetCases/types';
 import TableData from '../TableData';
@@ -42,7 +42,7 @@ const CaseListSection = ({
     <Flex direction="column" mt={5} gap={3}>
       <Flex justify="space-between" align="center" alignItems="center">
         {selectedCase.value === '-' ? (
-          <Text as="b" fontSize="xl">
+          <Text as="b" fontSize="md">
             Daftar Seluruh Kasus
           </Text>
         ) : (
@@ -52,7 +52,9 @@ const CaseListSection = ({
         )}
 
         <Flex align="center" gap={2} onClick={handleExportCase}>
-          <Text fontSize="sm">Export All</Text>
+          <Button colorScheme="teal" size="xs">
+            Export All
+          </Button>
         </Flex>
         <Flex align="center" gap={2} onClick={onOpen}>
           <Image src={filterIcon} w={3} h={3} />
