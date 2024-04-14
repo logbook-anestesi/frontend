@@ -7,6 +7,7 @@ interface PayloadType {
   title: string;
   description: string;
   violationDate: string;
+  type: string;
 }
 
 const useAddPelanggaran = () => {

@@ -17,6 +17,7 @@ interface DataRow {
   description: string;
   violationDate: string;
   createdDate: string;
+  type: string;
 }
 
 const TableData = ({ pelanggaranList }: Props) => {
@@ -37,6 +38,13 @@ const TableData = ({ pelanggaranList }: Props) => {
       selector: (row) => row.severityLevel,
       sortable: true,
       wrap: true,
+    },
+    {
+      name: 'Tipe Pelanggaran',
+      selector: (row) => row.type,
+      sortable: true,
+      wrap: true,
+      width: '170px',
     },
     {
       name: 'Judul Laporan',
@@ -81,6 +89,7 @@ const TableData = ({ pelanggaranList }: Props) => {
         description: pelanggaran.description,
         violationDate: convertDateForExam(pelanggaran.violationDate),
         createdDate: convertDateForExam(pelanggaran.created),
+        type: pelanggaran.type,
       };
     });
   }, [pelanggaranList]);

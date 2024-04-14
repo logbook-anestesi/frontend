@@ -12,3 +12,18 @@ export const SEVERITY = [
     value: 'LOW',
   },
 ];
+
+export const VIOLATION_TYPE = [
+  {
+    title: 'Kognitif',
+    value: 'KOGNITIF',
+  },
+  {
+    title: 'Psikomotor',
+    value: 'PSIKOMOTOR',
+  },
+  {
+    title: 'Afektif',
+    value: 'AFEKTIF',
+  },
+];

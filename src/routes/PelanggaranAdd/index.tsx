@@ -11,6 +11,7 @@ import { colors } from '../../constants/colors';
 import useAddPelanggaran from './hooks/useAddPelanggaran';
 import { useNavigate } from 'react-router-dom';
 import ModalConfirmSubmit from './components/ModalConfirmSubmit';
+import FormRadioType from './components/FormType';
 
 const PelanggaranAddPage = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const PelanggaranAddPage = () => {
   const [severity, setSeverity] = useState('');
   const [severityDate, setSeverityDate] = useState(new Date().toISOString());
   const [title, setTitle] = useState('');
+  const [violationType, setViolationType] = useState('');
   const [description, setDescription] = useState('');
 
   const handleOpenModal = () => {
@@ -31,7 +33,7 @@ const PelanggaranAddPage = () => {
       severityDate === '' ||
       title === '' ||
       description === '' ||
-      selectedResiden === null
+      selectedResiden === undefined
     ) {
       toast({
         title: 'Harap lengkapi data terlebih dahulu',
@@ -44,8 +46,6 @@ const PelanggaranAddPage = () => {
       return;
     }
 
-    console.log({ severityDate });
-
     onOpen();
   };
 
@@ -56,6 +56,7 @@ const PelanggaranAddPage = () => {
       severity: severity,
       title: title,
       violationDate: severityDate,
+      type: violationType,
     });
 
     if (response?.success) {
@@ -94,6 +95,10 @@ const PelanggaranAddPage = () => {
           setResiden={setSelectedResiden}
         />
         <FormRadioSeverity severity={severity} setSeverity={setSeverity} />
+        <FormRadioType
+          setViolationType={setViolationType}
+          violationType={violationType}
+        />
         <FormDate setSeverityDate={setSeverityDate} />
         <FormTitle setTitle={setTitle} />
         <FormDescription setDescription={setDescription} />

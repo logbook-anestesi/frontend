@@ -9,4 +9,5 @@ export interface Pelanggaran {
   residenUserId: string;
   konsulenUserId: string;
   violationDate: string;
+  type: string;
 }
