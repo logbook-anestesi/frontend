@@ -12,7 +12,7 @@ const useEditCase = () => {
       setLoading(true);
 
       try {
-        const response = await axiosClient.put(`/cases/${caseId}/`);
+        const response = await axiosClient.put(`/cases/${caseId}/`, payload);
         const data = response.data;
 
         mutate();
