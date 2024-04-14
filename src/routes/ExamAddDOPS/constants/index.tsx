@@ -1,19 +1,19 @@
 export const PENILAIAN_DIRI = [
   {
     title: 'Perlu Perbaikan',
-    value: 'Perlu Perbaikan',
+    value: 'NEED_REMEDIAL',
   },
   {
     title: 'Cukup',
-    value: 'Cukup',
+    value: 'ADEQUATE',
   },
   {
     title: 'Baik',
-    value: 'Baik',
+    value: 'GOOD',
   },
   {
     title: 'Sangat Baik',
-    value: 'Sangat Baik',
+    value: 'VERY_GOOD',
   },
 ];
 

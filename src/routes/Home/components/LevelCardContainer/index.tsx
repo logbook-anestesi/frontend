@@ -86,7 +86,7 @@ const LevelCardContainer = ({ profile }: Props) => {
         <LevelCardWithLogo
           title="Reviewed Cases"
           type=""
-          path="/reviewed-case"
+          path="/reviewed-cases"
           icon={cases}
           cardNumber={0}
         />

@@ -111,7 +111,7 @@ const CaseEdit = () => {
     if (response?.success) {
       toast({
         title: 'Success',
-        description: 'Berhasil Approve Case',
+        description: 'Berhasil Edit Case',
         status: 'success',
         position: 'top',
         duration: 5000,
