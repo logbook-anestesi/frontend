@@ -1,8 +1,6 @@
 import { useMemo } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { colors } from '../../../../constants/colors';
-import { convertDateForExam } from '../../../../helpers';
-import { Badge } from '@chakra-ui/react';
 
 interface DataRow {
   id: string;

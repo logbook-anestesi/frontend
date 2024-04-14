@@ -87,7 +87,7 @@ const ExamAddAcex = () => {
           backgroundColor={colors.primaryPurple}
           color={colors.white}
           onClick={handleSubmit}
-          // isLoading={loading}
+          isLoading={loading}
         >
           Submit
         </Button>

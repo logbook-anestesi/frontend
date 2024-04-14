@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import FilterCases from './components/FilterCases';
 import TableDataReviewedCase from './components/TableData';
