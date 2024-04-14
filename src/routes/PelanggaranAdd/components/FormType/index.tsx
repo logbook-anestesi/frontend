@@ -1,6 +1,6 @@
 import { Box, Flex, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { colors } from '../../../../constants/colors';
-import { SEVERITY, VIOLATION_TYPE } from '../../constants';
+import { VIOLATION_TYPE } from '../../constants';
 
 interface Props {
   violationType: string;
