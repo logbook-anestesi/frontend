@@ -49,8 +49,8 @@ const ApprovingProcessEdit = () => {
     const response = await createApproval({
       caseId: caseData?.id,
       status: 'APPROVED',
-      notes: state.rateNotes,
-      rate: state.rate,
+      ...(state?.rateNotes !== '' ? { rate: state.rateNotes } : {}),
+      ...(state?.rate !== '' ? { rate: state.rate } : {}),
       caseEditRequest: {
         userId: accountData.id,
         date: state.date,
