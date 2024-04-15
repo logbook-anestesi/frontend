@@ -10,6 +10,9 @@ import { useState } from 'react';
 import { ExamMenu } from './types';
 import ExamDropdown from './components/ExamDropdown';
 import ModalSelectExam from './components/ModalSelectExam';
+import TableTitlePreparation from './components/TableTitlePreparation';
+import useGetAllExamPreparation from './hooks/useGetAllExamPreparation';
+import TableDataPreparation from './components/TableDataPreparation';
 
 const DEFAULT_EXAM_MENU = {
   title: 'Pilih Tipe Ujian',
@@ -19,6 +22,7 @@ const DEFAULT_EXAM_MENU = {
 
 const ExamPage = () => {
   const { loading, examList } = useGetAllExam();
+  const { loading: loadingExamPrep, examPrepList } = useGetAllExamPreparation();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectedExam, setSelectedExam] = useState<ExamMenu>(DEFAULT_EXAM_MENU);
   const navigate = useNavigate();
@@ -43,6 +47,13 @@ const ExamPage = () => {
 
         <TableTitle />
         {loading ? <LoaderCircle /> : <TableData examList={examList || []} />}
+
+        <TableTitlePreparation />
+        {loadingExamPrep ? (
+          <LoaderCircle />
+        ) : (
+          <TableDataPreparation examPrepList={examPrepList || []} />
+        )}
       </Flex>
 
       {/* Modal Section */}
