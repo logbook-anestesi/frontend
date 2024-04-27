@@ -20,8 +20,12 @@ const ApprovingProcess = () => {
   const handleSubmitForm = async () => {
     const response = await createApproval({
       caseId: caseData?.id,
-      notes: notes,
-      ...(isReject ? {} : { rate: rate }),
+      ...(notes === '' ? {} : { notes: notes }),
+      ...(isReject
+        ? {}
+        : {
+            ...(rate === '' ? {} : { rate: rate }),
+          }),
       status: isReject ? 'REJECTED' : 'APPROVED',
     });
 
