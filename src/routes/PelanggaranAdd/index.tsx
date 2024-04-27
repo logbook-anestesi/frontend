@@ -122,6 +122,7 @@ const PelanggaranAddPage = () => {
         onSubmit={handleSubmit}
         residenName={selectedResiden?.name || ''}
         violation={description}
+        violationType={violationType}
       />
     </Flex>
   );

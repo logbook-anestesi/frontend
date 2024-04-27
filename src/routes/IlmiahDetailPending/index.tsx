@@ -17,8 +17,6 @@ const IlmiahDetailPending = () => {
     onOpen: onOpenListRiwayat,
   } = useDisclosure();
 
-  console.log('999 detail pending', { detailIlmiahPending });
-
   return (
     <Flex direction="column">
       <Header title={detailIlmiahPending?.title || '-'} />
