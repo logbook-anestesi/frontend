@@ -11,11 +11,14 @@ import useGetScientificGraduationApprovals from './hooks/useGetGraduationApprova
 import CardApprovalGraduation from './components/CardApprovalGraduation';
 import useGetAllDiscussionHistory from './hooks/useGetAllDiscussionHistory';
 import CardApprovalDiscussionHistory from './components/CardApprovalDiscussionHistory';
+import useGetAllExamPreparation from '../Exam/hooks/useGetAllExamPreparation';
+import CardApprovalExamPrep from './components/CardApprovalExamPrep';
 
 const PendingApproval = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loading, reviewData } = useGetScientificApprovals();
   const { examApprovals, loading: examLoading } = useGetAllExamApprovals();
+  const { examPrepList, loading: examPrepLoading } = useGetAllExamPreparation();
   const { discussionHistory, loading: discussHistoryLoading } =
     useGetAllDiscussionHistory();
   const { loading: loadingGraduation, reviewData: graduationReviewData } =
@@ -35,7 +38,8 @@ const PendingApproval = () => {
         {loading ||
         examLoading ||
         loadingGraduation ||
-        discussHistoryLoading ? (
+        discussHistoryLoading ||
+        examPrepLoading ? (
           <LoaderCircle />
         ) : (
           reviewData?.map((scientificApproval) => (
@@ -61,6 +65,19 @@ const PendingApproval = () => {
             setStatusApprove={setStatusApprove}
             setTypeItem={setTypeItem}
             key={examApproval.id}
+            setResidenName={setResidenName}
+          />
+        ))}
+
+        {examPrepList?.map((examPrepApproval) => (
+          <CardApprovalExamPrep
+            examData={examPrepApproval}
+            onCloseModal={onClose}
+            onOpenModal={onOpen}
+            setSelectedItemId={setSelectedItemId}
+            setStatusApprove={setStatusApprove}
+            setTypeItem={setTypeItem}
+            key={examPrepApproval.id}
             setResidenName={setResidenName}
           />
         ))}
