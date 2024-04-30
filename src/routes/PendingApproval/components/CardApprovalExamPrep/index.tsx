@@ -1,4 +1,4 @@
-import { Divider, Flex, Image, Text } from '@chakra-ui/react';
+import { Button, Divider, Flex, Image, Text } from '@chakra-ui/react';
 import profileIcon from '../../assets/profileIcon.png';
 import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
@@ -70,29 +70,13 @@ const CardApprovalExamPrep = ({
         gap={4}
         onClick={() => setSelectedItemId(examData?.id)}
       >
-        <Flex
-          border="2px"
-          borderColor={colors.primaryGreen}
-          borderRadius={8}
-          padding={1.5}
+        <Button
+          colorScheme="teal"
+          size="sm"
           onClick={handleClickApproveProcess}
         >
-          <CheckIcon color={colors.primaryGreen} />
-        </Flex>
-        <Flex
-          border="2px"
-          borderColor={colors.primaryRed}
-          borderRadius={8}
-          padding={1.5}
-          onClick={() => {
-            setTypeItem('exam');
-            setStatusApprove('REJECTED');
-            setResidenName(`${examData.type} - ${examData.userName}`);
-            onOpenModal();
-          }}
-        >
-          <CloseIcon color={colors.primaryRed} />
-        </Flex>
+          Review
+        </Button>
       </Flex>
 
       <Divider mt={5} />
