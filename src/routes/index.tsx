@@ -45,6 +45,7 @@ import ExamAddDOPS from './ExamAddDOPS';
 import ExamAddAlman from './ExamAddAlman';
 import ExamAddAcex from './ExamAddAcex';
 import ReviewedCases from './ReviewedCases';
+import ApproveExamPrepDOPS from './ApproveExamPrepDOPS';
 
 const MainRoutes = () => {
   return (
@@ -106,6 +107,8 @@ const MainRoutes = () => {
         <Route path="/exam/add/dops" element={<ExamAddDOPS />} />
         <Route path="/exam/add/alman" element={<ExamAddAlman />} />
         <Route path="/exam/add/acex" element={<ExamAddAcex />} />
+
+        <Route path="/exam/approval/dops" element={<ApproveExamPrepDOPS />} />
 
         <Route path="/pelanggaran" element={<PelanggaranPage />} />
         <Route path="/pelanggaran/add" element={<PelanggaranAddPage />} />

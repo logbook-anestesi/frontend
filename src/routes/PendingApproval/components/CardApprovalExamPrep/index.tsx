@@ -37,6 +37,12 @@ const CardApprovalExamPrep = ({
     });
   };
 
+  const handleClickApproveProcess = () => {
+    navigate('/exam/approval/dops', {
+      state: { exam: examData },
+    });
+  };
+
   return (
     <Flex direction="column" mb={3}>
       <Text align="right" color={colors.darkGrey} fontSize="sm">
@@ -69,12 +75,7 @@ const CardApprovalExamPrep = ({
           borderColor={colors.primaryGreen}
           borderRadius={8}
           padding={1.5}
-          onClick={() => {
-            setTypeItem('exam');
-            setStatusApprove('APPROVED');
-            setResidenName(`${examData.type} - ${examData.userName}`);
-            onOpenModal();
-          }}
+          onClick={handleClickApproveProcess}
         >
           <CheckIcon color={colors.primaryGreen} />
         </Flex>
