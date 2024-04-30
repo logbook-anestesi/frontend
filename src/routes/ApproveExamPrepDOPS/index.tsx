@@ -1,7 +1,7 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Button, Flex, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import { colors } from '../../constants/colors';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import FormDate from './components/FormDate';
 import { useState } from 'react';
 import FormResiden from './components/FormResiden';
@@ -12,11 +12,16 @@ import FormLocation from './components/FormLocation';
 import FormSupervisi from './components/FormSupervisi';
 import FormGlobalRating from './components/FormGlobalRating';
 import FormFeedback from './components/FormFeedback';
+import useApproveExamPrep from './hooks/useApproveExamPrep';
+import FormKesulitan from './components/FormKesulitan';
 
 const ApproveExamPrepDOPS = () => {
+  const toast = useToast();
+  const navigate = useNavigate();
   const location = useLocation();
   const { examId } = location?.state as { examId: string };
   const { detailExam } = useGetExamPrepDetails(examId);
+  const { createApprovalExamPrep, loading } = useApproveExamPrep();
 
   console.log('999 ini exam', { detailExam });
 
@@ -26,16 +31,44 @@ const ApproveExamPrepDOPS = () => {
   const [supervisi, setSupervisi] = useState('');
   const [globalRating, setGlobalRating] = useState('');
   const [feedback, setFeedback] = useState(false);
+  const [kesulitan, setKesulitan] = useState('');
 
   const handleSubmit = async () => {
-    console.log('999 submit', {
-      date,
-      procedure,
-      locationApproval,
-      supervisi,
-      feedback,
-      globalRating,
+    console.log(date);
+    const response = await createApprovalExamPrep({
+      examPreparationId: detailExam?.id || '',
+      procedure: procedure,
+      location: locationApproval,
+      supervision: supervisi,
+      globalRating: globalRating,
+      feedbackGiven: feedback,
+      difficulty: kesulitan,
     });
+
+    if (response?.success) {
+      toast({
+        title: 'Success',
+        description: `Berhasil Approve Ujian`,
+        status: 'success',
+        position: 'top',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      navigate(-1);
+      return;
+    }
+
+    if (!response?.success) {
+      toast({
+        title: `Gagal Approve Ujian`,
+        description: response?.message[0],
+        status: 'error',
+        position: 'top',
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -56,6 +89,7 @@ const ApproveExamPrepDOPS = () => {
         />
         <FormSupervisi setSupervisi={setSupervisi} />
         <FormGlobalRating setGlobalRating={setGlobalRating} />
+        <FormKesulitan setKesulitan={setKesulitan} />
         <FormFeedback setFeedback={setFeedback} />
 
         <Button
@@ -63,7 +97,7 @@ const ApproveExamPrepDOPS = () => {
           backgroundColor={colors.primaryPurple}
           color={colors.white}
           onClick={handleSubmit}
-          // isLoading={loading}
+          isLoading={loading}
         >
           Submit
         </Button>

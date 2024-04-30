@@ -1,7 +1,7 @@
 export const SUPERVISI = [
   {
     title: 'Intens',
-    value: 'INTENSS',
+    value: 'INTENSE',
   },
   {
     title: 'Minimal',
@@ -9,29 +9,44 @@ export const SUPERVISI = [
   },
   {
     title: 'Sedang',
-    value: 'SEDANG',
+    value: 'MODERATE',
   },
   {
     title: 'Otonom',
-    value: 'OTOMON',
+    value: 'AUTONOMOUS',
   },
 ];
 
 export const GLOBAL_RATING = [
   {
     title: 'Perlu Perbaikan',
-    value: 'INTENSS',
+    value: 'NEED_REMEDIAL',
   },
   {
     title: 'Baik',
-    value: 'MINIMAL',
+    value: 'ADEQUATE',
   },
   {
     title: 'Cukup',
-    value: 'SEDANG',
+    value: 'GOOD',
   },
   {
     title: 'Sangat Baik',
-    value: 'OTOMON',
+    value: 'VERY_GOOD',
+  },
+];
+
+export const KESULITAN = [
+  {
+    title: 'Mudah',
+    value: 'EASY',
+  },
+  {
+    title: 'Intermediet',
+    value: 'INTERMEDIATE',
+  },
+  {
+    title: 'Sulit',
+    value: 'HARD',
   },
 ];
