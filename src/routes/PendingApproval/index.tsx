@@ -72,13 +72,8 @@ const PendingApproval = () => {
         {examPrepList?.map((examPrepApproval) => (
           <CardApprovalExamPrep
             examData={examPrepApproval}
-            onCloseModal={onClose}
-            onOpenModal={onOpen}
             setSelectedItemId={setSelectedItemId}
-            setStatusApprove={setStatusApprove}
-            setTypeItem={setTypeItem}
             key={examPrepApproval.id}
-            setResidenName={setResidenName}
           />
         ))}
 

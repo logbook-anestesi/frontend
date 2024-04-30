@@ -2,7 +2,6 @@ import { Button, Divider, Flex, Image, Text } from '@chakra-ui/react';
 import profileIcon from '../../assets/profileIcon.png';
 import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
-import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import {
   convertDateForIlmiah,
   convertUnderscoresToSpaces,
@@ -11,24 +10,10 @@ import { ExamPreparation } from '../../../Exam/hooks/useGetAllExamPreparation/ty
 
 interface Props {
   examData: ExamPreparation;
-  onOpenModal: () => void;
-  onCloseModal: () => void;
   setSelectedItemId: React.Dispatch<React.SetStateAction<string>>;
-  setStatusApprove: React.Dispatch<React.SetStateAction<string>>;
-  setTypeItem: React.Dispatch<
-    React.SetStateAction<'ilmiah' | 'exam' | 'graduation' | 'discussion'>
-  >;
-  setResidenName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const CardApprovalExamPrep = ({
-  examData,
-  onOpenModal,
-  setSelectedItemId,
-  setStatusApprove,
-  setTypeItem,
-  setResidenName,
-}: Props) => {
+const CardApprovalExamPrep = ({ examData, setSelectedItemId }: Props) => {
   const navigate = useNavigate();
 
   const handleClickProfile = () => {
@@ -37,10 +22,16 @@ const CardApprovalExamPrep = ({
     });
   };
 
-  const handleClickApproveProcess = () => {
-    navigate('/exam/approval/dops', {
-      state: { examId: examData.id },
-    });
+  const handleClickApproveProcess = (type: string) => {
+    switch (type) {
+      case 'DOPS':
+        navigate('/exam/approval/dops', {
+          state: { examId: examData.id },
+        });
+        break;
+      default:
+        console.log('999 belum di implementasi');
+    }
   };
 
   return (
@@ -73,7 +64,7 @@ const CardApprovalExamPrep = ({
         <Button
           colorScheme="teal"
           size="sm"
-          onClick={handleClickApproveProcess}
+          onClick={() => handleClickApproveProcess(examData.type)}
         >
           Review
         </Button>
