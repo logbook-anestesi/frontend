@@ -39,7 +39,7 @@ const CardApprovalExamPrep = ({
 
   const handleClickApproveProcess = () => {
     navigate('/exam/approval/dops', {
-      state: { exam: examData },
+      state: { examId: examData.id },
     });
   };
 
