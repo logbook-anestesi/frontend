@@ -1,6 +1,6 @@
 export interface PayloadApproveExamPrep {
   examPreparationId: string;
-  procedure: string;
+  procedure?: string;
   operationTypeIds?: string[];
   location: string;
   difficulty?: string;

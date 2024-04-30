@@ -19,11 +19,11 @@ const ApproveExamPrepDOPS = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const location = useLocation();
-  const { examId } = location?.state as { examId: string };
+  const { examId, type } = location?.state as { examId: string; type: string };
   const { detailExam } = useGetExamPrepDetails(examId);
   const { createApprovalExamPrep, loading } = useApproveExamPrep();
 
-  console.log('999 ini exam', { detailExam });
+  console.log('999 ini exam', { detailExam, type });
 
   const [date, setDate] = useState('');
   const [procedure, setProcedure] = useState('');
@@ -32,17 +32,19 @@ const ApproveExamPrepDOPS = () => {
   const [globalRating, setGlobalRating] = useState('');
   const [feedback, setFeedback] = useState(false);
   const [kesulitan, setKesulitan] = useState('');
+  const isAlman = type === 'alman';
 
   const handleSubmit = async () => {
     console.log(date);
     const response = await createApprovalExamPrep({
       examPreparationId: detailExam?.id || '',
-      procedure: procedure,
-      location: locationApproval,
       supervision: supervisi,
+      location: locationApproval,
       globalRating: globalRating,
       feedbackGiven: feedback,
       difficulty: kesulitan,
+      ...(!isAlman ? { procedure: procedure } : {}),
+      ...(!isAlman ? { procedure: procedure } : {}),
     });
 
     if (response?.success) {
@@ -71,18 +73,35 @@ const ApproveExamPrepDOPS = () => {
     }
   };
 
+  const getTitleHeader = () => {
+    switch (type) {
+      case 'dops':
+        return 'DOPS';
+      case 'alman':
+        return 'ALMAN';
+      case 'acex':
+        return 'ACEX';
+      default:
+        return '';
+    }
+  };
+
   return (
     <Flex direction="column">
-      <Header title={`Approve DOPS-${detailExam?.id.substring(0, 4)}`} />
+      <Header
+        title={`Approve ${getTitleHeader()}-${detailExam?.id.substring(0, 4)}`}
+      />
 
       <Flex padding="10px 30px" direction="column" gap="16px">
         <FormDate setDate={setDate} initialValue={detailExam?.createdDate} />
         <FormResiden initialValue={detailExam?.assessorName || ''} />
         <FormTahapan initialValue={detailExam?.userCurrentCompetence || ''} />
-        <FormProcedure
-          initialValue={detailExam?.procedure || ''}
-          setProcedure={setProcedure}
-        />
+        {!isAlman && (
+          <FormProcedure
+            initialValue={detailExam?.procedure || ''}
+            setProcedure={setProcedure}
+          />
+        )}
         <FormLocation
           initialValue={detailExam?.approvalLocation}
           setLocation={setLocation}

@@ -26,7 +26,12 @@ const CardApprovalExamPrep = ({ examData, setSelectedItemId }: Props) => {
     switch (type) {
       case 'DOPS':
         navigate('/exam/approval/dops', {
-          state: { examId: examData.id },
+          state: { examId: examData.id, type: 'dops' },
+        });
+        break;
+      case 'ALMAN':
+        navigate('/exam/approval/dops', {
+          state: { examId: examData.id, type: 'alman' },
         });
         break;
       default:
