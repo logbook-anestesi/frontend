@@ -14,6 +14,9 @@ import FormGlobalRating from './components/FormGlobalRating';
 import FormFeedback from './components/FormFeedback';
 import useApproveExamPrep from './hooks/useApproveExamPrep';
 import FormKesulitan from './components/FormKesulitan';
+import { useAddCasesContext } from '../AddCases/contexts';
+import FormOperation from './components/FormOperation';
+import useGetCasesForm from '../../hooks/useGetCasesForm';
 
 const ApproveExamPrepDOPS = () => {
   const toast = useToast();
@@ -22,8 +25,8 @@ const ApproveExamPrepDOPS = () => {
   const { examId, type } = location?.state as { examId: string; type: string };
   const { detailExam } = useGetExamPrepDetails(examId);
   const { createApprovalExamPrep, loading } = useApproveExamPrep();
-
-  console.log('999 ini exam', { detailExam, type });
+  const { selectedOperation } = useAddCasesContext();
+  const { casesForm } = useGetCasesForm();
 
   const [date, setDate] = useState('');
   const [procedure, setProcedure] = useState('');
@@ -33,9 +36,14 @@ const ApproveExamPrepDOPS = () => {
   const [feedback, setFeedback] = useState(false);
   const [kesulitan, setKesulitan] = useState('');
   const isAlman = type === 'alman';
+  const isAcex = type === 'acex';
 
   const handleSubmit = async () => {
     console.log(date);
+    const selectedOperationId = selectedOperation.map(
+      (operation) => operation.id,
+    );
+
     const response = await createApprovalExamPrep({
       examPreparationId: detailExam?.id || '',
       supervision: supervisi,
@@ -45,6 +53,7 @@ const ApproveExamPrepDOPS = () => {
       difficulty: kesulitan,
       ...(!isAlman ? { procedure: procedure } : {}),
       ...(!isAlman ? { procedure: procedure } : {}),
+      ...(isAcex ? { operationTypeIds: selectedOperationId } : {}),
     });
 
     if (response?.success) {
@@ -96,6 +105,8 @@ const ApproveExamPrepDOPS = () => {
         <FormDate setDate={setDate} initialValue={detailExam?.createdDate} />
         <FormResiden initialValue={detailExam?.assessorName || ''} />
         <FormTahapan initialValue={detailExam?.userCurrentCompetence || ''} />
+        {isAcex && <FormOperation formData={casesForm?.operationTypes} />}
+
         {!isAlman && (
           <FormProcedure
             initialValue={detailExam?.procedure || ''}

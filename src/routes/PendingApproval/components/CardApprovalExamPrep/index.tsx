@@ -34,6 +34,11 @@ const CardApprovalExamPrep = ({ examData, setSelectedItemId }: Props) => {
           state: { examId: examData.id, type: 'alman' },
         });
         break;
+      case 'ACEX':
+        navigate('/exam/approval/dops', {
+          state: { examId: examData.id, type: 'acex' },
+        });
+        break;
       default:
         console.log('999 belum di implementasi');
     }
