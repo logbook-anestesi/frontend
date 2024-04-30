@@ -7,6 +7,11 @@ import { useState } from 'react';
 import FormResiden from './components/FormResiden';
 import FormTahapan from './components/FormTahapan';
 import useGetExamPrepDetails from './hooks/useExamPrepDetails';
+import FormProcedure from './components/FormProcedure';
+import FormLocation from './components/FormLocation';
+import FormSupervisi from './components/FormSupervisi';
+import FormGlobalRating from './components/FormGlobalRating';
+import FormFeedback from './components/FormFeedback';
 
 const ApproveExamPrepDOPS = () => {
   const location = useLocation();
@@ -16,9 +21,21 @@ const ApproveExamPrepDOPS = () => {
   console.log('999 ini exam', { detailExam });
 
   const [date, setDate] = useState('');
+  const [procedure, setProcedure] = useState('');
+  const [locationApproval, setLocation] = useState('');
+  const [supervisi, setSupervisi] = useState('');
+  const [globalRating, setGlobalRating] = useState('');
+  const [feedback, setFeedback] = useState(false);
 
   const handleSubmit = async () => {
-    console.log('999 submit', { date });
+    console.log('999 submit', {
+      date,
+      procedure,
+      locationApproval,
+      supervisi,
+      feedback,
+      globalRating,
+    });
   };
 
   return (
@@ -29,6 +46,17 @@ const ApproveExamPrepDOPS = () => {
         <FormDate setDate={setDate} initialValue={detailExam?.createdDate} />
         <FormResiden initialValue={detailExam?.assessorName || ''} />
         <FormTahapan initialValue={detailExam?.userCurrentCompetence || ''} />
+        <FormProcedure
+          initialValue={detailExam?.procedure || ''}
+          setProcedure={setProcedure}
+        />
+        <FormLocation
+          initialValue={detailExam?.approvalLocation}
+          setLocation={setLocation}
+        />
+        <FormSupervisi setSupervisi={setSupervisi} />
+        <FormGlobalRating setGlobalRating={setGlobalRating} />
+        <FormFeedback setFeedback={setFeedback} />
 
         <Button
           colorScheme="teal"
