@@ -8,10 +8,15 @@ const useGetAllExamPreparation = () => {
     data: examPrepList,
     isLoading: loading,
     mutate,
-  } = useSWR('/exam-preparation', async (): Promise<ExamPreparation[]> => {
-    const response = await axiosClient.get('/exam-preparation');
-    return response.data.data ?? [];
-  });
+  } = useSWR(
+    '/exam-preparation?status=PENDING',
+    async (): Promise<ExamPreparation[]> => {
+      const response = await axiosClient.get(
+        '/exam-preparation?status=PENDING',
+      );
+      return response.data.data ?? [];
+    },
+  );
 
   return {
     examPrepList,
