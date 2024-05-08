@@ -2,9 +2,13 @@ import { useMemo } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { colors } from '../../../../constants/colors';
 import { Case } from '../../../Cases/hooks/useGetCases/types';
-import { convertDateForIlmiah } from '../../../../helpers';
+import {
+  convertDateForIlmiah,
+  convertUnderscoresToSpaces,
+} from '../../../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '@chakra-ui/react';
+import LoaderCircle from '../../../../components/LoaderCircle';
 
 interface DataRow {
   id: string;
@@ -16,9 +20,10 @@ interface DataRow {
 
 interface Props {
   caseList: Case[];
+  isLoading: boolean;
 }
 
-const TableDataReviewedCase = ({ caseList }: Props) => {
+const TableDataReviewedCase = ({ caseList, isLoading }: Props) => {
   const navigate = useNavigate();
 
   const getColorScheme = (type: string) => {
@@ -68,6 +73,7 @@ const TableDataReviewedCase = ({ caseList }: Props) => {
       selector: (row) => row.dpjpName,
       sortable: true,
       width: '200px',
+      wrap: true,
     },
     {
       name: 'Jenis',
@@ -75,6 +81,7 @@ const TableDataReviewedCase = ({ caseList }: Props) => {
       sortable: true,
       wrap: true,
       width: '150px',
+      cell: (row) => <span>{convertUnderscoresToSpaces(row.type)}</span>,
     },
     {
       name: 'Status',
@@ -106,6 +113,10 @@ const TableDataReviewedCase = ({ caseList }: Props) => {
       },
     },
   };
+
+  if (isLoading) {
+    return <LoaderCircle />;
+  }
 
   return (
     <DataTable
