@@ -100,7 +100,7 @@ const TableData = ({ caseList }: Props) => {
               size="xs"
               bgColor="purple"
               onClick={() =>
-                navigate('/cases/edit', {
+                navigate(`/cases/edit/${row.idCaseFull}`, {
                   state: { caseId: row?.idCaseFull },
                 })
               }

@@ -1,7 +1,6 @@
 import { Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
-import React from 'react';
 import Header from '../../components/Header';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useGetDetailCases from '../../hooks/useGetDetailCase';
 import FormDate from '../ApprovingProcessEdit/components/FormDate';
 import FormDPJP from '../ApprovingProcessEdit/components/FormDPJP';
@@ -34,12 +33,12 @@ const CaseEdit = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const { accountData } = useAuth();
-  const location = useLocation();
   const { casesForm } = useGetCasesForm();
   const state = useApprovalEditContext();
   const { editCase, loading: loadingEditCase } = useEditCase();
+  const { caseId } = useParams<{ caseId: string }>();
 
-  const { caseData } = useGetDetailCases(location?.state?.caseId || '');
+  const { caseData } = useGetDetailCases(caseId || '');
 
   const isHavePatientData =
     caseData?.patientRecordNumber !== null ||

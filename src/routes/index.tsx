@@ -91,7 +91,7 @@ const MainRoutes = () => {
           element={<AddCasePainService />}
         />
         <Route path="/cases/details" element={<CaseDetails />} />
-        <Route path="/cases/edit" element={<CaseEdit />} />
+        <Route path="/cases/edit/:caseId" element={<CaseEdit />} />
         <Route path="/approval" element={<PendingApproval />} />
 
         <Route path="/ilmiah" element={<IlmiahPage />} />
