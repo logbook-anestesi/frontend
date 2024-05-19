@@ -33,17 +33,31 @@ const FormPenilaianDiri = ({ setPenilaian }: Props) => {
           },
         }}
       >
-        <Flex direction="column" gap={3}>
-          {PENILAIAN_DIRI.map((option) => (
-            <Radio
-              value={option.value}
-              colorScheme="purple"
-              key={option.value}
-              minWidth="fit-content"
-            >
-              {option.title}
-            </Radio>
-          ))}
+        <Flex direction="row" gap={5}>
+          <Flex direction="column" gap={3}>
+            {PENILAIAN_DIRI.slice(0, 2).map((option) => (
+              <Radio
+                value={option.value}
+                colorScheme="purple"
+                key={option.value}
+                minWidth="fit-content"
+              >
+                {option.title}
+              </Radio>
+            ))}
+          </Flex>
+          <Flex direction="column" gap={3}>
+            {PENILAIAN_DIRI.slice(2, 4).map((option) => (
+              <Radio
+                value={option.value}
+                colorScheme="purple"
+                key={option.value}
+                minWidth="fit-content"
+              >
+                {option.title}
+              </Radio>
+            ))}
+          </Flex>
         </Flex>
       </RadioGroup>
     </Flex>
