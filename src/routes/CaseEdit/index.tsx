@@ -53,7 +53,6 @@ const CaseEdit = () => {
   const handleSubmitForm = async () => {
     const response = await editCase(
       {
-        notes: state.rateNotes,
         userId: accountData.id,
         date: state.date,
         ...(state?.asaIsEmergency !== null
@@ -65,6 +64,7 @@ const CaseEdit = () => {
         ...(state?.patientGender !== ''
           ? { patientGender: state.patientGender }
           : {}),
+        ...(state?.rateNotes !== '' ? { ageGroup: state.rateNotes } : {}),
         ...(state?.ageGroup !== '' ? { ageGroup: state.ageGroup } : {}),
         ...(state?.location !== '' ? { location: state.location } : {}),
         ...(state?.priority !== '' ? { priority: state.priority } : {}),
