@@ -54,7 +54,12 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
             Usia Pasien
           </Text>
 
-          <Input placeholder="0" onChange={handleChangeAge} value={age} />
+          <Input
+            placeholder="0"
+            onChange={handleChangeAge}
+            value={age}
+            type="number"
+          />
         </Flex>
       )}
 
