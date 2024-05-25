@@ -118,7 +118,6 @@ const CaseEdit = () => {
       });
 
       navigate(-1);
-      return;
     }
 
     if (!response?.success) {
