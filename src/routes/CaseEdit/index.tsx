@@ -130,7 +130,6 @@ const CaseEdit = () => {
           window.navigator.userAgent.includes('LogbookMobileApp');
 
         if (isFromWebview) {
-          await sleep(1000);
           (window as any).WEBVIEW_BACK.postMessage('back');
           return;
         }
