@@ -1,4 +1,4 @@
-import { Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
+import { Box, Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import { useNavigate, useParams } from 'react-router-dom';
 import useGetDetailCases from '../../hooks/useGetDetailCase';
@@ -28,6 +28,7 @@ import FormProcedurePainService from '../ApprovingProcessEdit/components/FormPro
 import { useApprovalEditContext } from '../ApprovingProcessEdit/contexts';
 import useEditCase from './hooks/useEditCase';
 import useAuth from '../../hooks/useAuth';
+import LoaderCircle from '../../components/LoaderCircle';
 
 const CaseEdit = () => {
   const toast = useToast();
@@ -38,7 +39,9 @@ const CaseEdit = () => {
   const { editCase, loading: loadingEditCase } = useEditCase();
   const { caseId } = useParams<{ caseId: string }>();
 
-  const { caseData } = useGetDetailCases(caseId || '');
+  const { caseData, loading: loadingGetDetailCase } = useGetDetailCases(
+    caseId || '',
+  );
 
   const isHavePatientData =
     caseData?.patientRecordNumber !== null ||
@@ -131,6 +134,17 @@ const CaseEdit = () => {
       });
     }
   };
+
+  if (loadingGetDetailCase) {
+    return (
+      <Flex flexDirection="column">
+        <Header title={'Edit Case -'} />
+
+        <Box height={100} />
+        <LoaderCircle />
+      </Flex>
+    );
+  }
 
   return (
     <Flex flexDirection="column">
