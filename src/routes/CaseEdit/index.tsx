@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Flex, Text, useToast } from '@chakra-ui/react';
 import Header from '../../components/Header';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import useGetDetailCases from '../../hooks/useGetDetailCase';
 import FormDate from '../ApprovingProcessEdit/components/FormDate';
 import FormDPJP from '../ApprovingProcessEdit/components/FormDPJP';
@@ -33,6 +33,7 @@ import LoaderCircle from '../../components/LoaderCircle';
 const CaseEdit = () => {
   const toast = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
   const { accountData } = useAuth();
   const { casesForm } = useGetCasesForm();
   const state = useApprovalEditContext();
@@ -120,7 +121,18 @@ const CaseEdit = () => {
         isClosable: true,
       });
 
+      if (location.key === 'default') {
+        const isFromWebview =
+          window.navigator.userAgent.includes('LogbookMobileApp');
+
+        if (isFromWebview) {
+          (window as any).WEBVIEW_BACK.postMessage('back');
+          return;
+        }
+      }
+
       navigate(-1);
+      return;
     }
 
     if (!response?.success) {
