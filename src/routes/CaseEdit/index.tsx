@@ -47,7 +47,7 @@ const CaseEdit = () => {
 
   const isHaveAsaData =
     caseData?.asaTier !== null ||
-    caseData?.asaIsEmergency !== null ||
+    (caseData?.asaIsEmergency !== null && caseData.asaIsEmergency === true) ||
     (caseData.asaTags.length || 0) > 0;
 
   const handleSubmitForm = async () => {
