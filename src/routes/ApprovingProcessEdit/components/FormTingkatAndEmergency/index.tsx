@@ -47,7 +47,12 @@ const FormTingkatAndEmergency = ({
             </Box>
           </Text>
 
-          <Input placeholder="1" onChange={handleChangeTingkat} value={tier} />
+          <Input
+            placeholder="1"
+            onChange={handleChangeTingkat}
+            value={tier}
+            type="number"
+          />
         </Flex>
       )}
 

@@ -42,6 +42,7 @@ const FormTotalPatient = ({ initialNumberOfPatient }: Props) => {
             placeholder="0"
             onChange={handleChangeNumberOfPatient}
             value={totalPatient}
+            type="number"
           />
         </Flex>
       )}
