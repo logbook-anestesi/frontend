@@ -54,6 +54,10 @@ const CaseEdit = () => {
     (caseData?.asaIsEmergency !== null && caseData.asaIsEmergency === true) ||
     (caseData.asaTags.length || 0) > 0;
 
+  const sleep = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
   const handleSubmitForm = async () => {
     const response = await editCase(
       {
@@ -126,6 +130,7 @@ const CaseEdit = () => {
           window.navigator.userAgent.includes('LogbookMobileApp');
 
         if (isFromWebview) {
+          await sleep(1000);
           (window as any).WEBVIEW_BACK.postMessage('back');
           return;
         }
