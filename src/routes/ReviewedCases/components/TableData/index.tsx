@@ -2,10 +2,7 @@ import { useMemo } from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { colors } from '../../../../constants/colors';
 import { Case } from '../../../Cases/hooks/useGetCases/types';
-import {
-  convertDateForIlmiah,
-  convertUnderscoresToSpaces,
-} from '../../../../helpers';
+import { convertDateForIlmiah } from '../../../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '@chakra-ui/react';
 import LoaderCircle from '../../../../components/LoaderCircle';
@@ -25,6 +22,14 @@ interface Props {
 
 const TableDataReviewedCase = ({ caseList, isLoading }: Props) => {
   const navigate = useNavigate();
+
+  const translateCaseNameIndonesia = (input: string) => {
+    if (input == 'PAIN_SERVICE') return 'MANAJEMEN NYERI';
+    if (input == 'PROCEDURE_CONSULTATION') return 'KONSUL PROSEDUR';
+    if (input == 'POLI_PERIOPERATIVE') return 'POLI PERIOPERATIVE';
+
+    return input;
+  };
 
   const getColorScheme = (type: string) => {
     if (type === 'APPROVED') {
@@ -81,7 +86,7 @@ const TableDataReviewedCase = ({ caseList, isLoading }: Props) => {
       sortable: true,
       wrap: true,
       width: '150px',
-      cell: (row) => <span>{convertUnderscoresToSpaces(row.type)}</span>,
+      cell: (row) => <span>{translateCaseNameIndonesia(row.type)}</span>,
     },
     {
       name: 'Status',
