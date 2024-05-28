@@ -77,8 +77,7 @@ const TableDataPreparation = ({ examPrepList }: Props) => {
     return examPrepList
       ?.sort(
         (a, b) =>
-          new Date(b.approvalConfirmDate).getTime() -
-          new Date(a.approvalConfirmDate).getTime(),
+          new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime(),
       )
       ?.map((exam, idx) => {
         return {
