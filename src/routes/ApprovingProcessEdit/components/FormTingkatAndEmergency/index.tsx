@@ -15,19 +15,19 @@ const FormTingkatAndEmergency = ({
 }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
 
-  const [tier, setTier] = useState(0);
+  const [tier, setTier] = useState('');
   const handleChangeTingkat = (event: ChangeEvent<HTMLInputElement>) =>
-    setTier(Number(event.target.value));
+    setTier(event.target.value);
 
   useEffect(() => {
-    setTier(initialValue || 0);
+    setTier(initialValue?.toString() || '0');
   }, [initialValue]);
 
   useEffect(() => {
     approveEditDispatch({
       type: 'set_tier',
       data: {
-        tier: tier,
+        tier: Number(tier),
       },
     });
   }, [approveEditDispatch, tier]);

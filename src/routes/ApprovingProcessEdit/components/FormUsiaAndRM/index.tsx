@@ -11,15 +11,15 @@ interface Props {
 const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
   const approveEditDispatch = useApprovalEditDispatch();
 
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState('');
   const [recordNumber, setRecordNumber] = useState('');
   const handleChangeAge = (event: ChangeEvent<HTMLInputElement>) =>
-    setAge(Number(event.target.value));
+    setAge(event.target.value);
   const handleChangeRm = (event: ChangeEvent<HTMLInputElement>) =>
     setRecordNumber(event.target.value);
 
   useEffect(() => {
-    setAge(initialUsia || 0);
+    setAge(initialUsia?.toString() || '0');
   }, [initialUsia]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
     approveEditDispatch({
       type: 'set_patient_age',
       data: {
-        age: age,
+        age: Number(age),
       },
     });
 
@@ -58,7 +58,8 @@ const FormUsiaAndRM = ({ initialNoRm, initialUsia }: Props) => {
             placeholder="0"
             onChange={handleChangeAge}
             value={age}
-            type="number"
+            type="text"
+            inputMode="numeric"
           />
         </Flex>
       )}
