@@ -54,10 +54,6 @@ const CaseEdit = () => {
     (caseData?.asaIsEmergency !== null && caseData.asaIsEmergency === true) ||
     (caseData.asaTags.length || 0) > 0;
 
-  const sleep = (ms: number) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
-
   const handleSubmitForm = async () => {
     const response = await editCase(
       {
