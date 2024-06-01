@@ -29,8 +29,10 @@ const ApproveExamPrepDOPS = () => {
   const { casesForm } = useGetCasesForm();
 
   const [date, setDate] = useState('');
-  const [procedure, setProcedure] = useState('');
-  const [locationApproval, setLocation] = useState('');
+  const [procedure, setProcedure] = useState(detailExam?.procedure || '');
+  const [locationApproval, setLocation] = useState(
+    detailExam?.approvalLocation,
+  );
   const [supervisi, setSupervisi] = useState('');
   const [globalRating, setGlobalRating] = useState('');
   const [feedback, setFeedback] = useState(false);
@@ -38,11 +40,29 @@ const ApproveExamPrepDOPS = () => {
   const isAlman = type === 'alman';
   const isAcex = type === 'acex';
 
+  const formNotValidate =
+    procedure === '' ||
+    locationApproval === '' ||
+    feedback === false ||
+    date === '';
+
   const handleSubmit = async () => {
-    console.log(date);
     const selectedOperationId = selectedOperation.map(
       (operation) => operation.id,
     );
+
+    if (formNotValidate) {
+      toast({
+        title: `Gagal Approve Ujian`,
+        description: 'Harap isi semua form',
+        status: 'error',
+        position: 'top',
+        duration: 9000,
+        isClosable: true,
+      });
+
+      return;
+    }
 
     const response = await createApprovalExamPrep({
       examPreparationId: detailExam?.id || '',
