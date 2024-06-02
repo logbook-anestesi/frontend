@@ -3,7 +3,7 @@ import Header from '../../components/Header';
 import { colors } from '../../constants/colors';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FormDate from './components/FormDate';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormResiden from './components/FormResiden';
 import FormTahapan from './components/FormTahapan';
 import useGetExamPrepDetails from './hooks/useExamPrepDetails';
@@ -29,10 +29,8 @@ const ApproveExamPrepDOPS = () => {
   const { casesForm } = useGetCasesForm();
 
   const [date, setDate] = useState('');
-  const [procedure, setProcedure] = useState(detailExam?.procedure || '');
-  const [locationApproval, setLocation] = useState(
-    detailExam?.approvalLocation,
-  );
+  const [procedure, setProcedure] = useState('');
+  const [locationApproval, setLocation] = useState('');
   const [supervisi, setSupervisi] = useState('');
   const [globalRating, setGlobalRating] = useState('');
   const [feedback, setFeedback] = useState(false);
@@ -51,6 +49,7 @@ const ApproveExamPrepDOPS = () => {
       (operation) => operation.id,
     );
 
+    console.log({ procedure, locationApproval, feedback, date });
     if (formNotValidate) {
       toast({
         title: `Gagal Approve Ujian`,
@@ -114,6 +113,14 @@ const ApproveExamPrepDOPS = () => {
         return '';
     }
   };
+
+  useEffect(() => {
+    if (detailExam) {
+      setProcedure(detailExam?.procedure || '');
+      setLocation(detailExam?.approvalLocation || '');
+      setDate(detailExam?.createdDate || '');
+    }
+  }, [detailExam]);
 
   return (
     <Flex direction="column">
