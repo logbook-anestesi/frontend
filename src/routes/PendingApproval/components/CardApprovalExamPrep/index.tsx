@@ -2,10 +2,7 @@ import { Button, Divider, Flex, Image, Text } from '@chakra-ui/react';
 import profileIcon from '../../assets/profileIcon.png';
 import { colors } from '../../../../constants/colors';
 import { useNavigate } from 'react-router-dom';
-import {
-  convertDateForIlmiah,
-  convertUnderscoresToSpaces,
-} from '../../../../helpers';
+import { convertDateForIlmiah } from '../../../../helpers';
 import { ExamPreparation } from '../../../Exam/hooks/useGetAllExamPreparation/types';
 
 interface Props {
@@ -52,7 +49,7 @@ const CardApprovalExamPrep = ({ examData, setSelectedItemId }: Props) => {
 
       <Flex direction="column" gap={3} mb={1}>
         <Flex direction="column" gap={1}>
-          <Text as="b">Exam: {convertUnderscoresToSpaces(examData?.type)}</Text>
+          <Text as="b">Exam: {examData?.type.toUpperCase()}</Text>
           <Flex align="center" gap={3}>
             <Image src={profileIcon} alt="" width={3} height={4} />
             <Text
