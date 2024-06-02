@@ -24,7 +24,23 @@ const ExamAddAlman = () => {
   const navigate = useNavigate();
   const { createExamPreparation, loading } = useAddExamPreparation();
 
+  const isFormValid =
+    isGood !== '' && reason !== '' && reflection !== '' && asesor !== undefined;
+
   const handleSubmit = async () => {
+    if (!isFormValid) {
+      toast({
+        title: 'Gagal membuat Ujian',
+        description: 'Harap Lengkapi Semua Data',
+        status: 'error',
+        position: 'top',
+        duration: 7000,
+        isClosable: true,
+      });
+
+      return;
+    }
+
     const response = await createExamPreparation({
       type: 'ALMAN',
       preparationDate: date,

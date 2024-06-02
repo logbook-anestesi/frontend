@@ -15,8 +15,10 @@ import useGetCasesForm from '../../hooks/useGetCasesForm';
 import FormAdditionalTags from './components/FormAdditionalTags';
 import useAddExamPreparation from '../ExamAdd/hooks/useAddExamPreparation';
 import { useNavigate } from 'react-router-dom';
+import { useAddCasesContext, useAddCasesDispatch } from '../AddCases/contexts';
 
 const ExamAddAcex = () => {
+  const casesDispatch = useAddCasesDispatch();
   const [date, setDate] = useState('');
   const [asesor, setAsesor] = useState<DPJP>();
   const [procedure, setProcedure] = useState('');
@@ -28,9 +30,32 @@ const ExamAddAcex = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const { createExamPreparation, loading } = useAddExamPreparation();
+  const { operationTypeIds, additionalTags } = useAddCasesContext();
   const { casesForm } = useGetCasesForm();
 
+  const isFormValid =
+    isGood !== '' &&
+    reason !== '' &&
+    reflection !== '' &&
+    asesor !== undefined &&
+    operationTypeIds.length > 0;
+
   const handleSubmit = async () => {
+    console.log({ operationTypeIds, additionalTags });
+
+    if (!isFormValid) {
+      toast({
+        title: 'Gagal membuat Ujian',
+        description: 'Harap Lengkapi Semua Data',
+        status: 'error',
+        position: 'top',
+        duration: 7000,
+        isClosable: true,
+      });
+
+      return;
+    }
+
     const response = await createExamPreparation({
       type: 'ACEX',
       preparationDate: date,
@@ -52,7 +77,13 @@ const ExamAddAcex = () => {
         isClosable: true,
       });
 
+      casesDispatch({
+        type: 'reset_state',
+        data: {},
+      });
+
       navigate(-1);
+      return;
     }
 
     if (!response?.success) {
