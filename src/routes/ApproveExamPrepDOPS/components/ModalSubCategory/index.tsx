@@ -32,10 +32,10 @@ const ModalSubCategory = ({
   subCategoryOperation,
   onOpenAddSub,
 }: Props) => {
-  const handleClickAddOther = () => {
-    onOpenAddSub();
-    closeModal();
-  };
+  // const handleClickAddOther = () => {
+  //   onOpenAddSub();
+  //   closeModal();
+  // };
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>

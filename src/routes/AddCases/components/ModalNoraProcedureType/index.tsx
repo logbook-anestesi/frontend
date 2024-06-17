@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Text,
+  // Text,
 } from '@chakra-ui/react';
 import { NoraProcedureType } from '../../../../hooks/useGetCasesForm/types';
 import {
@@ -20,7 +20,7 @@ import {
   useState,
 } from 'react';
 import { Search2Icon } from '@chakra-ui/icons';
-import { colors } from '../../../../constants/colors';
+// import { colors } from '../../../../constants/colors';
 import CardNoraProcedureType from './CardNoraProcedureType';
 import { useAddCasesContext } from '../../contexts';
 
@@ -63,10 +63,10 @@ const ModalNoraProcedureType = ({
     setFilteredNoraProcedure(filtered);
   };
 
-  const handleClickAddOther = () => {
-    onOpenAddOther();
-    closeModal();
-  };
+  // const handleClickAddOther = () => {
+  //   onOpenAddOther();
+  //   closeModal();
+  // };
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>

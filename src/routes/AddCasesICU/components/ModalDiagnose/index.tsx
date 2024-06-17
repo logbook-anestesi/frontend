@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Text,
+  // Text,
 } from '@chakra-ui/react';
 import {
   ChangeEvent,
@@ -22,7 +22,7 @@ import { Search2Icon } from '@chakra-ui/icons';
 import { Diagnose } from '../../../../hooks/useGetCasesForm/types';
 import CardDiagnose from './CardDiagnose';
 import { useAddCasesContext } from '../../../AddCases/contexts';
-import { colors } from '../../../../constants/colors';
+// import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;
@@ -60,10 +60,10 @@ const ModalDignose = ({
     setFilteredDiagnose(filtered);
   };
 
-  const handleClickAddOther = () => {
-    onOpenAddOther();
-    closeModal();
-  };
+  // const handleClickAddOther = () => {
+  //   onOpenAddOther();
+  //   closeModal();
+  // };
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>

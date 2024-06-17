@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Text,
+  // Text,
 } from '@chakra-ui/react';
 import {
   ChangeEvent,
@@ -26,7 +26,7 @@ import {
   PainServiceProcedure,
   PainServiceType,
 } from '../../../../hooks/useGetCasesForm/types';
-import { colors } from '../../../../constants/colors';
+// import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;
@@ -69,10 +69,10 @@ const ModalProcedurePainService = ({
     setFilteredProcedurePain(filtered);
   };
 
-  const handleClickAddOther = () => {
-    onOpenAddOther();
-    closeModal();
-  };
+  // const handleClickAddOther = () => {
+  //   onOpenAddOther();
+  //   closeModal();
+  // };
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
