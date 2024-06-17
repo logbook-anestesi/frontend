@@ -86,7 +86,7 @@ const ModalTypePainService = ({
 
         <Box height={3} />
 
-        <Text
+        {/* <Text
           as="u"
           alignSelf="center"
           fontSize="sm"
@@ -95,7 +95,7 @@ const ModalTypePainService = ({
           onClick={handleClickAddOther}
         >
           Tipe tidak ada di daftar
-        </Text>
+        </Text> */}
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredTypePain?.map((typePainService) => {

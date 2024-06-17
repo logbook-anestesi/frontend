@@ -84,7 +84,7 @@ const ModalDignose = ({
 
         <Box height={3} />
 
-        <Text
+        {/* <Text
           as="u"
           alignSelf="center"
           fontSize="sm"
@@ -93,7 +93,8 @@ const ModalDignose = ({
           onClick={handleClickAddOther}
         >
           Diagnose tidak ada di daftar
-        </Text>
+        </Text> */}
+
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredDiagnose?.map((diagnose) => {
             return (
