@@ -93,7 +93,7 @@ const ModalProcedurePainService = ({
 
         <Box height={3} />
 
-        {/* <Text
+        <Text
           as="u"
           alignSelf="center"
           fontSize="sm"
@@ -102,7 +102,7 @@ const ModalProcedurePainService = ({
           onClick={handleClickAddOther}
         >
           Prosedur tidak ada di daftar
-        </Text> */}
+        </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredProcedurePain?.map((procedurePainService) => {

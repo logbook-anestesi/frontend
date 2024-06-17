@@ -87,7 +87,7 @@ const ModalNoraProcedureType = ({
 
         <Box height={3} />
 
-        {/* <Text
+        <Text
           as="u"
           alignSelf="center"
           fontSize="sm"
@@ -96,7 +96,7 @@ const ModalNoraProcedureType = ({
           onClick={handleClickAddOther}
         >
           Prosedur tidak ada di daftar
-        </Text> */}
+        </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredNoraProcedure?.map((noraProcedure) => {

@@ -48,7 +48,7 @@ const ModalSubCategory = ({
           </Text>
         </ModalHeader>
 
-        {/* <Text
+        <Text
           as="u"
           alignSelf="center"
           fontSize="sm"
@@ -57,7 +57,7 @@ const ModalSubCategory = ({
           onClick={handleClickAddOther}
         >
           Tipe tidak ada di daftar
-        </Text> */}
+        </Text>
 
         <ModalCloseButton />
 

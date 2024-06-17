@@ -84,7 +84,7 @@ const ModalAnesthesiType = ({
 
         <Box height={3} />
 
-        {/* <Text
+        <Text
           as="u"
           alignSelf="center"
           fontSize="sm"
@@ -94,7 +94,7 @@ const ModalAnesthesiType = ({
           style={{ display: 'none' }}
         >
           Tipe tidak ada di daftar
-        </Text> */}
+        </Text>
 
         <Flex direction="column" maxH={300} overflowY="scroll">
           {filteredAnesthesi?.map((anesthesia, idx) => {
