@@ -91,6 +91,7 @@ const ModalProcedureType = ({
           color={colors.primaryPurple}
           mb={5}
           onClick={handleClickAddOther}
+          visibility="hidden"
         >
           Prosedur tidak ada di daftar
         </Text>

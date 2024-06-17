@@ -93,6 +93,7 @@ const ModalTypePainService = ({
           color={colors.primaryPurple}
           mb={5}
           onClick={handleClickAddOther}
+          visibility="hidden"
         >
           Tipe tidak ada di daftar
         </Text>
