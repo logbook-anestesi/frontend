@@ -91,6 +91,7 @@ const ModalDignose = ({
           color={colors.primaryPurple}
           mb={5}
           onClick={handleClickAddOther}
+          visibility="hidden"
         >
           Diagnose tidak ada di daftar
         </Text>

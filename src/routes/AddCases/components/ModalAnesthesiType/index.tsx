@@ -92,6 +92,7 @@ const ModalAnesthesiType = ({
           mb={5}
           onClick={handleClickAddOther}
           style={{ display: 'none' }}
+          visibility="hidden"
         >
           Tipe tidak ada di daftar
         </Text>
