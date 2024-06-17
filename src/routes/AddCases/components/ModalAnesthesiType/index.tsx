@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  // Text,
+  Text,
 } from '@chakra-ui/react';
 import { AnesthesiaType } from '../../../../hooks/useGetCasesForm/types';
 import {
@@ -20,7 +20,7 @@ import {
   useState,
 } from 'react';
 import { Search2Icon } from '@chakra-ui/icons';
-// import { colors } from '../../../../constants/colors';
+import { colors } from '../../../../constants/colors';
 import CardAnesthesiType from './CardAnesthesiType';
 import { useAddCasesContext } from '../../contexts';
 
@@ -60,10 +60,10 @@ const ModalAnesthesiType = ({
     setFilteredAnesthesi(filtered);
   };
 
-  // const handleClickAddOther = () => {
-  //   onOpenAddOther();
-  //   closeModal();
-  // };
+  const handleClickAddOther = () => {
+    onOpenAddOther();
+    closeModal();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>

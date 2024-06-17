@@ -9,7 +9,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  // Text,
+  Text,
 } from '@chakra-ui/react';
 import {
   ChangeEvent,
@@ -22,7 +22,7 @@ import { Search2Icon } from '@chakra-ui/icons';
 import { PainServiceType } from '../../../../hooks/useGetCasesForm/types';
 import { useAddCasesContext } from '../../../AddCases/contexts';
 import CardTypePainService from './CardTypePainService';
-// import { colors } from '../../../../constants/colors';
+import { colors } from '../../../../constants/colors';
 
 interface Props {
   isOpen: boolean;
@@ -62,10 +62,10 @@ const ModalTypePainService = ({
     setFilteredTypePain(filtered);
   };
 
-  // const handleClickAddOther = () => {
-  //   onOpenAddOther();
-  //   closeModal();
-  // };
+  const handleClickAddOther = () => {
+    onOpenAddOther();
+    closeModal();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} isCentered>
