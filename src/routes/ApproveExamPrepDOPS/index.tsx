@@ -38,11 +38,19 @@ const ApproveExamPrepDOPS = () => {
   const isAlman = type === 'alman';
   const isAcex = type === 'acex';
 
-  const formNotValidate =
-    procedure === '' ||
-    locationApproval === '' ||
-    feedback === false ||
-    date === '';
+  const validateForm = (): boolean => {
+    if (isAlman) {
+      return locationApproval === '' || feedback === false || date === '';
+    }
+
+    return (
+      procedure === '' ||
+      locationApproval === '' ||
+      feedback === false ||
+      date === '' ||
+      selectedOperation.length === 0
+    );
+  };
 
   const handleSubmit = async () => {
     const selectedOperationId = selectedOperation.map(
@@ -50,7 +58,7 @@ const ApproveExamPrepDOPS = () => {
     );
 
     console.log({ procedure, locationApproval, feedback, date });
-    if (formNotValidate) {
+    if (validateForm()) {
       toast({
         title: `Gagal Approve Ujian`,
         description: 'Harap isi semua form',
