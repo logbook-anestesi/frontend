@@ -47,8 +47,8 @@ const ApproveExamPrepDOPS = () => {
       procedure === '' ||
       locationApproval === '' ||
       feedback === false ||
-      date === '' ||
-      selectedOperation.length === 0
+      date === ''
+      // selectedOperation.length === 0
     );
   };
 
